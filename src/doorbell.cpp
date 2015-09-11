@@ -76,14 +76,11 @@ int main()
 
 	reset(screen, buzzer);
 
-	std::stringstream server;
-	server << getenv("SERVER");
-	message(screen, server.str());
-
 	bool wasPressed = false;
+	bool currentlyPressed = false;
 
 	for (;;) {
-		bool currentlyPressed = touch->isPressed();
+		currentlyPressed = touch->isPressed();
 		if ( currentlyPressed && ! wasPressed ) {
 			dingdong(screen, buzzer);
 		} else if (! currentlyPressed && wasPressed ) {
