@@ -20,6 +20,16 @@ void reset(upm::Jhd1313m1* screen, upm::Buzzer* buzzer) {
 	buzzer->stopSound();
 }
 
+void increment() {
+
+}
+
+void dingdong(upm::Jhd1313m1* screen, upm::Buzzer* buzzer) {
+	increment();
+	message(screen, "ding dong!");
+	buzzer->playSound(266, 0);
+}
+
 int main()
 {
 	// check that we are running on Galileo or Edison
@@ -48,11 +58,17 @@ int main()
 
 	reset(screen, buzzer);
 
+	bool wasPressed = false;
+
 	for (;;) {
-		if ( touch->isPressed() ) {
-			message(screen, "pressed");
+		bool currentlyPressed = touch->isPressed();
+		if ( currentlyPressed && ! wasPressed ) {
+			dingdong(screen, buzzer);
+		} else if (! currentlyPressed && wasPressed ) {
+			reset(screen, buzzer);
 		}
 
+		wasPressed = currentlyPressed;
 		sleep(1);
 	}
 
