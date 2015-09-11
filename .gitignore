@@ -1,4 +1,5 @@
 /Debug/
-.launch
+*.launch
 .cproject
 .project
+.settings
