@@ -6,12 +6,17 @@
 #include <buzzer.h>
 #include <jhd1313m1.h>
 
-void message(upm::Jhd1313m1* screen, const std::string& input) {
+void message(upm::Jhd1313m1* screen, const std::string& input, const std::size_t color = 0x0000ff) {
+	std::size_t red   = (color & 0xff0000) >> 16;
+	std::size_t green = (color & 0x00ff00) >> 8;
+	std::size_t blue  = (color & 0x0000ff);
+
 	// TODO: pad input string to fill up display
 	std::stringstream text;
 	text << input;
 	screen->setCursor(0,0);
 	screen->write(text.str());
+	screen->setColor(red, green, blue);
 }
 
 void reset(upm::Jhd1313m1* screen, upm::Buzzer* buzzer) {
