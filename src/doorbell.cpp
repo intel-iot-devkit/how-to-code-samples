@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <iostream>
 #include <unistd.h>
 #include <sstream>
@@ -5,6 +6,8 @@
 #include <ttp223.h>
 #include <buzzer.h>
 #include <jhd1313m1.h>
+
+#include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 void message(upm::Jhd1313m1* screen, const std::string& input, const std::size_t color = 0x0000ff) {
 	std::size_t red   = (color & 0xff0000) >> 16;
@@ -26,7 +29,17 @@ void reset(upm::Jhd1313m1* screen, upm::Buzzer* buzzer) {
 }
 
 void increment() {
+	if (!getenv("SERVER") && !getenv("AUTH_TOKEN")) {
+		std::cerr << "Server not configured." << std::endl;
+		return;
+	}
 
+	RestClient::headermap headers;
+	headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
+
+	RestClient::response r = RestClient::get(getenv("SERVER"), headers);
+	std::cerr << r.code << std::endl;
+	std::cerr << r.body << std::endl;
 }
 
 void dingdong(upm::Jhd1313m1* screen, upm::Buzzer* buzzer) {
@@ -62,6 +75,10 @@ int main()
 	}
 
 	reset(screen, buzzer);
+
+	std::stringstream server;
+	server << getenv("SERVER");
+	message(screen, server.str());
 
 	bool wasPressed = false;
 
