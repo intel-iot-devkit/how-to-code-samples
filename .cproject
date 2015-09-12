@@ -27,7 +27,7 @@
 								<option id="gnu.cpp.compiler.option.debugging.level.589657697" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="com.intel.iotdevkit.ide.gnu.cpp.option.include.paths.1757429090" name="Include paths (-I)" superClass="com.intel.iotdevkit.ide.gnu.cpp.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/upm"/>
-									<listOptionValue builtIn="false" value="/home/ron/Development/intel/intel-iot-examples/cpp/base-kit/doorbell/lib/restclient-cpp/include/restclient-cpp"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/doorbell}/lib/restclient-cpp/include/restclient-cpp"/>
 									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/mraa"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1172343338" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
