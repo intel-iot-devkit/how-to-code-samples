@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sstream>
 #include <thread>
+#include <chrono>
 
 #include <grove.h>
 #include <buzzer.h>
@@ -11,6 +12,12 @@
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 #include "../lib/crow/crow_all.h"
 
+upm::GroveRotary* rotary;
+upm::GroveButton* button;
+upm::Buzzer* buzzer;
+upm::Jhd1313m1* screen;
+
+float rotary_value = 0;
 
 void message(upm::Jhd1313m1* screen, const std::string& input, const std::size_t color = 0x0000ff) {
 	std::size_t red   = (color & 0xff0000) >> 16;
@@ -25,7 +32,7 @@ void message(upm::Jhd1313m1* screen, const std::string& input, const std::size_t
 	screen->setColor(red, green, blue);
 }
 
-void runner(upm::GroveButton* button) {
+void runner(upm::GroveRotary* rotary, upm::GroveButton* button, float& rot) {
 	bool wasPressed = false;
 	bool currentlyPressed = false;
 
@@ -37,41 +44,54 @@ void runner(upm::GroveButton* button) {
 			std::cerr << "Released" << std::endl;
 		}
 
+		rot = rotary->abs_value();
+		std::cerr << "Rotary: " << rot << std::endl;
+
 		wasPressed = currentlyPressed;
-		sleep(1);
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
 }
 
-int main() {
+void initDevices() {
 	// rotary connected to A0 (analog in)
-	upm::GroveRotary* rotary = new upm::GroveRotary(0);
+	rotary = new upm::GroveRotary(0);
 
 	// button connected to D4 (digital out)
-	upm::GroveButton* button = new upm::GroveButton(4);
+	button = new upm::GroveButton(4);
 
 	// buzzer connected to D5 (digital out)
-	upm::Buzzer* buzzer = new upm::Buzzer(5);
+	buzzer = new upm::Buzzer(5);
 
 	// screen connected to the default I2C bus
-	upm::Jhd1313m1* screen = new upm::Jhd1313m1(0);
+	screen = new upm::Jhd1313m1(0);
+}
 
-	std::thread t1(runner, button);
+void deleteDevices() {
+	delete rotary;
+	delete button;
+	delete buzzer;
+	delete screen;
+}
+
+int main() {
+	initDevices();
+
+	std::thread t1(runner, rotary, button, std::ref(rotary_value));
 
 	crow::SimpleApp app;
 
 	CROW_ROUTE(app, "/")
 	([]() {
-		return "Hello world!";
+		std::stringstream text;
+		text << "Rotary: " << rotary_value;
+		return text.str();
 	});
 
 	app.port(4567).multithreaded().run();
 
 	t1.join();
 
-	delete rotary;
-	delete button;
-	delete buzzer;
-	delete screen;
+	deleteDevices();
 
 	return 0;
 }
