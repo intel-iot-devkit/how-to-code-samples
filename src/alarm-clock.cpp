@@ -32,6 +32,16 @@ void message(upm::Jhd1313m1* screen, const std::string& input, const std::size_t
 	screen->setColor(red, green, blue);
 }
 
+void adjust_brightness(upm::Jhd1313m1* screen, float& value)
+{
+	std::size_t newColor;
+	newColor = std::round((value / 1020) * 255);
+	if (newColor > 255) newColor = 255;
+	if (newColor < 0) newColor = 0;
+
+	screen->setColor(newColor, newColor, newColor);
+}
+
 void runner(upm::GroveRotary* rotary, upm::GroveButton* button, float& rot) {
 	bool wasPressed = false;
 	bool currentlyPressed = false;
@@ -46,7 +56,7 @@ void runner(upm::GroveRotary* rotary, upm::GroveButton* button, float& rot) {
 
 		rot = rotary->abs_value();
 		std::cerr << "Rotary: " << rot << std::endl;
-
+		adjust_brightness(screen, rot);
 		wasPressed = currentlyPressed;
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
