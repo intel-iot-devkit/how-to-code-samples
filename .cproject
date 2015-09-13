@@ -34,7 +34,7 @@
 									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/upm"/>
 									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/mraa"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.dialect.std.1919642286" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.cpp.compiler.dialect.c++11" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.dialect.std.1919642286" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.cpp.compiler.dialect.c++1y" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.713740525" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="com.intel.iotdevkit.ide.tool.gnu.cross.c.linker.2060376833" name="Cross GCC Linker" superClass="com.intel.iotdevkit.ide.tool.gnu.cross.c.linker">
@@ -55,7 +55,7 @@
 									<listOptionValue builtIn="false" value="pthread"/>
 								</option>
 								<option id="com.intel.iotdevkit.ide.gnu.cpp.option.link.misc.other.2008281724" name="Miscellaneous" superClass="com.intel.iotdevkit.ide.gnu.cpp.option.link.misc.other" value="" valueType="string"/>
-								<option id="gnu.cpp.link.option.other.1550550857" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other" valueType="stringList"/>
+								<option id="gnu.cpp.link.option.other.1550550857" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1983928275" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
