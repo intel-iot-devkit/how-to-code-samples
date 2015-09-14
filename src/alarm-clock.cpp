@@ -100,24 +100,24 @@ struct Devices
 bool alarmRinging = false;
 std::time_t alarmTime ;
 
-bool time_for_alarm(std::time_t& alarm) {
+double countdown(std::time_t& target) {
 	time_t rawtime;
 	struct tm* timeinfo;
 	time (&rawtime);
 	timeinfo = localtime (&rawtime);
-	double countdown = std::difftime(mktime(timeinfo), alarm);
+	return std::difftime(mktime(timeinfo), target);
+}
 
-	if (countdown > 0 && countdown < 5 && !alarmRinging) {
+bool time_for_alarm(std::time_t& alarm) {
+	double remaining = countdown(alarm);
+
+	if (remaining > 0 && remaining < 5 && !alarmRinging) {
 		return true;
 	} else return false;
 }
 
 void log_wakeup() {
-	time_t rawtime;
-	struct tm* timeinfo;
-	time (&rawtime);
-	timeinfo = localtime (&rawtime);
-	double duration = std::difftime(mktime(timeinfo), alarmTime);
+	double duration = countdown(alarmTime);
 	std::cerr << "Seconds to wakeup: " << std::to_string(duration) << std::endl;
 
 	if (!getenv("SERVER") && !getenv("AUTH_TOKEN")) {
