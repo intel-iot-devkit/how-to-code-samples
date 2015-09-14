@@ -12,11 +12,13 @@ The "smart" alarm clock requires the following components from the Grove Starter
 
 ## How It Works
 
-This "smart" doorbell will do the following when the Grove Touch Sensor is pressed:
+This "smart" alarm clock has a number of useful features.
 
-- Make a noise with the buzzer
-- Display a message on the LCD Display
-- Optionally, store the total number of doorbell rings using the "Intel IoT Example Datastore" running on your own server, such as a Microsoft Azure or IBM Bluemix account.
+- Set the alarm time using a web page served directly from the Edison itself, using your mobile phone.
+- When the alarm goes off, the buzzer sounds, and the LCD display indicates its time to get up.
+- The rotary dial can be used to adjust the brightness of the display.
+- In addition, the smart alarm clock can access daily weather data via the Weather Underground API, and displays it on the LCD once you press the button when getting up.
+- Optionally, store how long it takes you to get up  each day using the "Intel IoT Example Datastore" running on your own server, such as a Microsoft Azure or IBM Bluemix account.
 
 ## How To Setup
 
