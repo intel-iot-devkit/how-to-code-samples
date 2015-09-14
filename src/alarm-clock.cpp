@@ -6,14 +6,13 @@
 #include <thread>
 #include <ctime>
 
-
 #include <grove.h>
 #include <buzzer.h>
 #include <jhd1313m1.h>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
-#include "../lib/crow/crow_all.h"
 
+#include "../lib/crow/crow_all.h"
 #include "index_html.h"
 
 struct Devices
@@ -100,6 +99,7 @@ struct Devices
 bool alarmRinging = false;
 std::time_t alarmTime ;
 
+// useful function used for checking how much time is left before alarm
 double countdown(std::time_t& target) {
 	time_t rawtime;
 	struct tm* timeinfo;
@@ -108,6 +108,12 @@ double countdown(std::time_t& target) {
 	return std::difftime(mktime(timeinfo), target);
 }
 
+// how much time from when the alarm went off, to when user pushed button
+double elapsed(std::time_t& target) {
+	return countdown(target);
+}
+
+// is it time to get up now?
 bool time_for_alarm(std::time_t& alarm) {
 	double remaining = countdown(alarm);
 
@@ -116,8 +122,9 @@ bool time_for_alarm(std::time_t& alarm) {
 	} else return false;
 }
 
+// call data server to log how long it took to wake up today
 void log_wakeup() {
-	double duration = countdown(alarmTime);
+	double duration = elapsed(alarmTime);
 	std::cerr << "Seconds to wakeup: " << std::to_string(duration) << std::endl;
 
 	if (!getenv("SERVER") && !getenv("AUTH_TOKEN")) {
@@ -136,6 +143,7 @@ void log_wakeup() {
 	std::cerr << r.body << std::endl;
 }
 
+// call weather underground API to get current weather conditions
 std::string get_weather() {
 	if (!getenv("API_KEY")) {
 		std::cerr << "Weather Underground API_KEY not configured." << std::endl;
@@ -155,9 +163,11 @@ std::string get_weather() {
 	return result;
 }
 
+// function called by worker thread for device communication
 void runner(Devices& devices, std::time_t& alarmTime) {
 	for (;;) {
 		devices.display_time();
+		devices.adjust_brightness();
 
 		if (time_for_alarm(alarmTime)) {
 			alarmRinging = true;
@@ -184,18 +194,19 @@ void runner(Devices& devices, std::time_t& alarmTime) {
 			}
 		}
 
-		devices.adjust_brightness();
-
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
 }
 
 int main() {
+	// create and initialize UPM devices
 	Devices devices;
 	devices.init();
 
+	// start worker thread for device communication
 	std::thread t1(runner, std::ref(devices), std::ref(alarmTime));
 
+	// define web server & routes
 	crow::SimpleApp app;
 
 	CROW_ROUTE(app, "/")
@@ -245,11 +256,11 @@ int main() {
 		return a;
 	});
 
+	// start web server
 	app.port(4567).multithreaded().run();
 
+	// all done
 	t1.join();
-
 	devices.cleanup();
-
 	return 0;
 }
