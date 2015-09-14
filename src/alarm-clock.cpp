@@ -78,11 +78,11 @@ struct Devices
 		std::size_t green = (color & 0x00ff00) >> 8;
 		std::size_t blue  = (color & 0x0000ff);
 
-		// TODO: pad input string to fill up display
-		std::stringstream text;
-		text << input;
+		std::string text(input);
+		text.resize(16, ' ');
+
 		screen->setCursor(0,0);
-		screen->write(text.str());
+		screen->write(text);
 		screen->setColor(red, green, blue);
 	}
 
