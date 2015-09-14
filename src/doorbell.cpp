@@ -9,25 +9,6 @@
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
-void message(upm::Jhd1313m1* screen, const std::string& input, const std::size_t color = 0x0000ff) {
-	std::size_t red   = (color & 0xff0000) >> 16;
-	std::size_t green = (color & 0x00ff00) >> 8;
-	std::size_t blue  = (color & 0x0000ff);
-
-	// TODO: pad input string to fill up display
-	std::stringstream text;
-	text << input;
-	screen->setCursor(0,0);
-	screen->write(text.str());
-	screen->setColor(red, green, blue);
-}
-
-void reset(upm::Jhd1313m1* screen, upm::Buzzer* buzzer) {
-	message(screen, "doorbot ready");
-	buzzer->setVolume(0.5);
-	buzzer->stopSound();
-}
-
 void increment() {
 	if (!getenv("SERVER") && !getenv("AUTH_TOKEN")) {
 		std::cerr << "Server not configured." << std::endl;
@@ -42,11 +23,62 @@ void increment() {
 	std::cerr << r.body << std::endl;
 }
 
-void dingdong(upm::Jhd1313m1* screen, upm::Buzzer* buzzer) {
-	increment();
-	message(screen, "ding dong!");
-	buzzer->playSound(266, 0);
-}
+struct Devices
+{
+	upm::TTP223* touch;
+	upm::Buzzer* buzzer;
+	upm::Jhd1313m1* screen;
+
+	Devices(){
+	};
+
+	void init() {
+		// touch sensor connected to D4 (digital in)
+		touch = new upm::TTP223(4);
+
+		// buzzer connected to D5 (digital out)
+		buzzer = new upm::Buzzer(5);
+		stop_ringing();
+
+		// screen connected to the default I2C bus
+		screen = new upm::Jhd1313m1(0);
+	};
+
+	void cleanup() {
+		delete touch;
+		delete buzzer;
+		delete screen;
+	}
+
+	void reset() {
+		message("doorbot ready");
+		stop_ringing();
+	}
+
+	void message(const std::string& input, const std::size_t color = 0x0000ff) {
+		std::size_t red   = (color & 0xff0000) >> 16;
+		std::size_t green = (color & 0x00ff00) >> 8;
+		std::size_t blue  = (color & 0x0000ff);
+
+		std::string text(input);
+		text.resize(16, ' ');
+
+		screen->setCursor(0,0);
+		screen->write(text);
+		screen->setColor(red, green, blue);
+	}
+
+	void dingdong() {
+		increment();
+		message("ding dong!");
+		buzzer->playSound(266, 0);
+	}
+
+	void stop_ringing() {
+		buzzer->stopSound();
+		buzzer->stopSound();
+	}
+};
 
 int main()
 {
@@ -59,41 +91,26 @@ int main()
 		return MRAA_ERROR_INVALID_PLATFORM;
 	}
 
-	// touch sensor connected to D4 (digital in)
-	upm::TTP223* touch = new upm::TTP223(4);
-
-	// buzzer connected to D5 (digital out)
-	upm::Buzzer* buzzer = new upm::Buzzer(5);
-
-	// screen connected to the default I2C bus
-	upm::Jhd1313m1* screen = new upm::Jhd1313m1(0);
-
-	// simple error checking
-	if ((touch == NULL) || (buzzer == NULL) || (screen == NULL)) {
-		std::cerr << "ERROR: Can't connect to all devices." << std::endl;
-		return MRAA_ERROR_UNSPECIFIED;
-	}
-
-	reset(screen, buzzer);
+	Devices devices;
+	devices.init();
+	devices.reset();
 
 	bool wasPressed = false;
 	bool currentlyPressed = false;
 
 	for (;;) {
-		currentlyPressed = touch->isPressed();
+		currentlyPressed = devices.touch->isPressed();
 		if ( currentlyPressed && ! wasPressed ) {
-			dingdong(screen, buzzer);
+			devices.dingdong();
 		} else if (! currentlyPressed && wasPressed ) {
-			reset(screen, buzzer);
+			devices.reset();
 		}
 
 		wasPressed = currentlyPressed;
 		sleep(1);
 	}
 
-	delete touch;
-	delete buzzer;
-	delete screen;
+	devices.cleanup();
 
 	return MRAA_SUCCESS;
 }
