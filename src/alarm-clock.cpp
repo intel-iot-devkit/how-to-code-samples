@@ -35,7 +35,7 @@ struct Devices
 
 		// buzzer connected to D5 (digital out)
 		buzzer = new upm::Buzzer(5);
-		buzzer->stopSound();
+		stop_buzzing();
 
 		// screen connected to the default I2C bus
 		screen = new upm::Jhd1313m1(0);
@@ -85,51 +85,48 @@ struct Devices
 		screen->write(text.str());
 		screen->setColor(red, green, blue);
 	}
+
+	void start_buzzing() {
+		buzzer->setVolume(0.5);
+		buzzer->playSound(2600, 0);
+	}
+
+	void stop_buzzing() {
+		buzzer->stopSound();
+		buzzer->stopSound();
+	}
 };
 
 bool alarmRinging = false;
 std::time_t alarmTime ;
 
-bool time_for_alarm() {
-	if (std::difftime(std::time(NULL), alarmTime) < 5 && !alarmRinging) {
+bool time_for_alarm(std::time_t& alarm) {
+	time_t rawtime;
+	struct tm* timeinfo;
+	time (&rawtime);
+	timeinfo = localtime (&rawtime);
+	double countdown = std::difftime(mktime(timeinfo), alarm);
+
+	if (countdown > 0 && countdown < 5 && !alarmRinging) {
 		return true;
 	} else return false;
 }
 
-void runner(Devices& devices, std::time_t& alarmTime) {
-	for (;;) {
-		devices.display_time();
+void log_wakeup() {
+	time_t rawtime;
+	struct tm* timeinfo;
+	time (&rawtime);
+	timeinfo = localtime (&rawtime);
+	double duration = std::difftime(mktime(timeinfo), alarmTime);
+	std::cerr << "Seconds to wakeup: " << std::to_string(duration) << std::endl;
 
-		if (time_for_alarm()) {
-			alarmRinging = true;
-			// TODO: get weather data
-		}
-
-		if (alarmRinging) {
-			if ( devices.button->value() ) {
-				alarmRinging = false;
-				devices.buzzer->stopSound();
-				// TODO: set alarm time to tomorrow
-			} else {
-				devices.buzzer->setVolume(0.5);
-				devices.buzzer->playSound(2600, 0);
-			}
-		}
-
-		devices.adjust_brightness();
-
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-	}
-}
-
-void log(const std::string& duration) {
 	if (!getenv("SERVER") && !getenv("AUTH_TOKEN")) {
 		std::cerr << "Server not configured." << std::endl;
 		return;
 	}
 
 	std::stringstream text;
-	text << "{\"value\": \"" << duration << "\"}";
+	text << "{\"value\": \"" << std::to_string(duration) << "\"}";
 
 	RestClient::headermap headers;
 	headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
@@ -137,6 +134,60 @@ void log(const std::string& duration) {
 	RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", text.str(), headers);
 	std::cerr << r.code << std::endl;
 	std::cerr << r.body << std::endl;
+}
+
+std::string get_weather() {
+	if (!getenv("API_KEY")) {
+		std::cerr << "Weather Underground API_KEY not configured." << std::endl;
+		return "";
+	}
+
+	std::stringstream url;
+	url <<  "http://api.wunderground.com/api/" << getenv("API_KEY") << "/conditions/q/CA/San_Francisco.json";
+
+	RestClient::headermap headers;
+	headers["Accept"] = "application/json";
+
+	RestClient::response r = RestClient::get(url.str(), headers);
+
+	auto x = crow::json::load(r.body);
+	std::string result(x["current_observation"]["weather"].s());
+	return result;
+}
+
+void runner(Devices& devices, std::time_t& alarmTime) {
+	for (;;) {
+		devices.display_time();
+
+		if (time_for_alarm(alarmTime)) {
+			alarmRinging = true;
+			devices.message(get_weather());
+		}
+
+		if (alarmRinging) {
+			if ( devices.button->value() ) {
+				alarmRinging = false;
+				devices.stop_buzzing();
+
+				// log how long it took to wake up
+				log_wakeup();
+
+				// set alarm time to tomorrow
+				struct tm* timeinfo;
+				timeinfo = localtime(&alarmTime);
+				timeinfo->tm_mday++;
+				alarmTime = mktime(timeinfo);
+				std::cerr << "New alarm time: " << alarmTime << std::endl;
+
+			} else {
+				devices.start_buzzing();
+			}
+		}
+
+		devices.adjust_brightness();
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	}
 }
 
 int main() {
@@ -149,25 +200,33 @@ int main() {
 
 	CROW_ROUTE(app, "/")
 	([](const crow::request& req) {
-		struct tm * timeinfo;
-		timeinfo = localtime(&alarmTime);
+		bool timeChanged = false;
+		std::time_t newTime = std::time(NULL);
+		struct tm* timeinfo;
+		timeinfo = localtime(&newTime);
 
 		if(req.url_params.get("hour") != nullptr) {
 			double hour = boost::lexical_cast<double>(req.url_params.get("hour"));
 			timeinfo->tm_hour = hour;
+			timeChanged = true;
 		}
 
 		if(req.url_params.get("minute") != nullptr) {
 			double minute = boost::lexical_cast<double>(req.url_params.get("minute"));
 			timeinfo->tm_min = minute;
+			timeChanged = true;
 		}
 
 		if(req.url_params.get("second") != nullptr) {
 			double second = boost::lexical_cast<double>(req.url_params.get("second"));
 			timeinfo->tm_sec = second;
+			timeChanged = true;
 		}
 
-		alarmTime = mktime(timeinfo);
+		if (timeChanged) {
+			alarmTime = mktime(timeinfo);
+			std::cerr << "Set alarm time: " << alarmTime << std::endl;
+		}
 
 		std::stringstream text;
 		text << index_html;
@@ -176,7 +235,7 @@ int main() {
 
 	CROW_ROUTE(app, "/alarm.json")
 	([]() {
-		struct tm * timeinfo;
+		struct tm* timeinfo;
 		timeinfo = localtime(&alarmTime);
 
 		crow::json::wvalue a;
