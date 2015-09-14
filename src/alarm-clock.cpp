@@ -122,6 +122,23 @@ void runner(Devices& devices, std::time_t& alarmTime) {
 	}
 }
 
+void log(const std::string& duration) {
+	if (!getenv("SERVER") && !getenv("AUTH_TOKEN")) {
+		std::cerr << "Server not configured." << std::endl;
+		return;
+	}
+
+	std::stringstream text;
+	text << "{\"value\": \"" << duration << "\"}";
+
+	RestClient::headermap headers;
+	headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
+
+	RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", text.str(), headers);
+	std::cerr << r.code << std::endl;
+	std::cerr << r.body << std::endl;
+}
+
 int main() {
 	Devices devices;
 	devices.init();
