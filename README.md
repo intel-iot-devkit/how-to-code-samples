@@ -63,7 +63,7 @@ https://github.com/hybridgroup/intel-iot-examples-datastore
 To run the example with the optional backend datastore you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse by:
 
 1. Select the "Run" menu and choose "Run Configurations". The "Run Configurations" dialog will be displayed.
-2. Click on "doorbell" under "C/C++ Remote Application". This will display the information for the
+2. Click on "doorbell" under "C/C++ Remote Application". This will display the information for your application.
 3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
 
 ```
