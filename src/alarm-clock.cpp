@@ -131,7 +131,27 @@ int main() {
 	crow::SimpleApp app;
 
 	CROW_ROUTE(app, "/")
-	([]() {
+	([](const crow::request& req) {
+		struct tm * timeinfo;
+		timeinfo = localtime(&alarmTime);
+
+		if(req.url_params.get("hour") != nullptr) {
+			double hour = boost::lexical_cast<double>(req.url_params.get("hour"));
+			timeinfo->tm_hour = hour;
+		}
+
+		if(req.url_params.get("minute") != nullptr) {
+			double minute = boost::lexical_cast<double>(req.url_params.get("minute"));
+			timeinfo->tm_min = minute;
+		}
+
+		if(req.url_params.get("second") != nullptr) {
+			double second = boost::lexical_cast<double>(req.url_params.get("second"));
+			timeinfo->tm_sec = second;
+		}
+
+		alarmTime = mktime(timeinfo);
+
 		std::stringstream text;
 		text << index_html;
 		return text.str();
@@ -139,9 +159,14 @@ int main() {
 
 	CROW_ROUTE(app, "/alarm.json")
 	([]() {
-		std::stringstream text;
-		text << alarmTime;
-		return text.str();
+		struct tm * timeinfo;
+		timeinfo = localtime(&alarmTime);
+
+		crow::json::wvalue a;
+		a["hours"] = timeinfo->tm_hour;
+		a["minutes"] = timeinfo->tm_min;
+		a["seconds"] = timeinfo->tm_sec;
+		return a;
 	});
 
 	app.port(4567).multithreaded().run();
