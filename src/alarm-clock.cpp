@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include <iostream>
+#include <fstream>
 #include <unistd.h>
 #include <sstream>
 #include <thread>
 #include <ctime>
+
 
 #include <grove.h>
 #include <buzzer.h>
@@ -11,6 +13,8 @@
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 #include "../lib/crow/crow_all.h"
+
+#include "index_html.h"
 
 struct Devices
 {
@@ -59,10 +63,10 @@ struct Devices
 		screen->write(str);
 	}
 
-	void adjust_brightness(float& value)
+	void adjust_brightness()
 	{
 		std::size_t newColor;
-		newColor = std::round((value / 1020) * 255);
+		newColor = std::round((rotary->abs_value() / 1020) * 255);
 		if (newColor > 255) newColor = 255;
 		if (newColor < 0) newColor = 0;
 
@@ -84,33 +88,35 @@ struct Devices
 };
 
 bool alarmRinging = false;
-float rotary_value = 0;
+std::time_t alarmTime ;
 
-
-void check_alarm() {
-
+bool time_for_alarm() {
+	if (std::difftime(std::time(NULL), alarmTime) < 5 && !alarmRinging) {
+		return true;
+	} else return false;
 }
 
-void runner(Devices& devices, float& rot) {
-	bool wasPressed = false;
-	bool currentlyPressed = false;
-
+void runner(Devices& devices, std::time_t& alarmTime) {
 	for (;;) {
 		devices.display_time();
 
-		check_alarm();
-
-		currentlyPressed = devices.button->value();
-		if ( currentlyPressed && ! wasPressed ) {
-			std::cerr << "Pressed" << std::endl;
-		} else if (! currentlyPressed && wasPressed ) {
-			std::cerr << "Released" << std::endl;
+		if (time_for_alarm()) {
+			alarmRinging = true;
+			// TODO: get weather data
 		}
-		wasPressed = currentlyPressed;
 
-		rot = devices.rotary->abs_value();
-		std::cerr << "Rotary: " << rot << std::endl;
-		devices.adjust_brightness(rot);
+		if (alarmRinging) {
+			if ( devices.button->value() ) {
+				alarmRinging = false;
+				devices.buzzer->stopSound();
+				// TODO: set alarm time to tomorrow
+			} else {
+				devices.buzzer->setVolume(0.5);
+				devices.buzzer->playSound(2600, 0);
+			}
+		}
+
+		devices.adjust_brightness();
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
@@ -120,14 +126,21 @@ int main() {
 	Devices devices;
 	devices.init();
 
-	std::thread t1(runner, std::ref(devices), std::ref(rotary_value));
+	std::thread t1(runner, std::ref(devices), std::ref(alarmTime));
 
 	crow::SimpleApp app;
 
 	CROW_ROUTE(app, "/")
 	([]() {
 		std::stringstream text;
-		text << "Rotary: " << rotary_value;
+		text << index_html;
+		return text.str();
+	});
+
+	CROW_ROUTE(app, "/alarm.json")
+	([]() {
+		std::stringstream text;
+		text << alarmTime;
 		return text.str();
 	});
 
