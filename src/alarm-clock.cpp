@@ -49,10 +49,10 @@ struct Devices
 
 	void display_time() {
 		time_t rawtime;
-		struct tm * timeinfo;
+		struct tm* timeinfo;
 		char buffer[80];
 
-		time (&rawtime);
+		time(&rawtime);
 		timeinfo = localtime(&rawtime);
 
 		strftime(buffer, 80, "%I:%M:%S", timeinfo);
@@ -103,8 +103,8 @@ std::time_t alarmTime ;
 double countdown(std::time_t& target) {
 	time_t rawtime;
 	struct tm* timeinfo;
-	time (&rawtime);
-	timeinfo = localtime (&rawtime);
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
 	return std::difftime(mktime(timeinfo), target);
 }
 
