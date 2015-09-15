@@ -199,6 +199,15 @@ void runner(Devices& devices, std::time_t& alarmTime) {
 }
 
 int main() {
+	// check that we are running on Galileo or Edison
+	mraa_platform_t platform = mraa_get_platform_type();
+	if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
+		(platform != MRAA_INTEL_GALILEO_GEN2) &&
+		(platform != MRAA_INTEL_EDISON_FAB_C)) {
+		std::cerr << "ERROR: Unsupported platform" << std::endl;
+		return MRAA_ERROR_INVALID_PLATFORM;
+	}
+
 	// create and initialize UPM devices
 	Devices devices;
 	devices.init();
@@ -262,5 +271,5 @@ int main() {
 	// all done
 	t1.join();
 	devices.cleanup();
-	return 0;
+	return MRAA_SUCCESS;
 }
