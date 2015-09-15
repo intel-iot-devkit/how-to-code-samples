@@ -9,6 +9,7 @@
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
+// call data server to increment the count of visitors who rang the doorbell
 void increment() {
 	if (!getenv("SERVER") && !getenv("AUTH_TOKEN")) {
 		std::cerr << "Server not configured." << std::endl;
@@ -91,6 +92,7 @@ int main()
 		return MRAA_ERROR_INVALID_PLATFORM;
 	}
 
+	// create and initialize UPM devices
 	Devices devices;
 	devices.init();
 	devices.reset();
