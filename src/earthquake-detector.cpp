@@ -10,22 +10,23 @@
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 #include "../lib/json-cpp/json/json.h"
 
-const std::string LATITUDE = "47.641944";
-const std::string LONGITUDE = "-122.127222";
+const std::string DEFAULT_LATITUDE = "47.641944";
+const std::string DEFAULT_LONGITUDE = "-122.127222";
 
-// call data server to increment the count of visitors who rang the doorbell
-void increment() {
-	if (!getenv("SERVER") && !getenv("AUTH_TOKEN")) {
-		std::cerr << "Server not configured." << std::endl;
-		return;
+std::string latitude() {
+	if (getenv("LATITUDE")) {
+		return getenv("LATITUDE");
+	} else {
+		return DEFAULT_LATITUDE;
 	}
+}
 
-	RestClient::headermap headers;
-	headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
-
-	RestClient::response r = RestClient::get(getenv("SERVER"), headers);
-	std::cerr << r.code << std::endl;
-	std::cerr << r.body << std::endl;
+std::string longitude() {
+	if (getenv("LONGITUDE")) {
+		return getenv("LONGITUDE");
+	} else {
+		return DEFAULT_LONGITUDE;
+	}
 }
 
 struct Devices
@@ -103,8 +104,8 @@ void verify(Devices* devices) {
 	query << "http://earthquake.usgs.gov/fdsnws/event/1/query?";
 	query << "format=geojson&";
 	query << "starttime=" << mbstr << "&";
-	query << "latitude=" << LATITUDE << "&";
-	query << "longitude=" << LONGITUDE << "&";
+	query << "latitude=" << latitude() << "&";
+	query << "longitude=" << longitude() << "&";
 	query << "maxradiuskm=500";
 
 	std::cerr << query.str();
