@@ -14,6 +14,7 @@
 
 #include "../lib/crow/crow_all.h"
 #include "index_html.h"
+#include "styles_css.h"
 
 struct Devices
 {
@@ -263,6 +264,13 @@ int main() {
 		a["minutes"] = timeinfo->tm_min;
 		a["seconds"] = timeinfo->tm_sec;
 		return a;
+	});
+
+	CROW_ROUTE(app, "/styles.css")
+	([]() {
+		std::stringstream text;
+		text << styles_css;
+		return text.str();
 	});
 
 	// start web server

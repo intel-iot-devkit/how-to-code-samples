@@ -50,7 +50,23 @@ Connect one end of a Grove cable into the "RGB LCD", then plug the other end int
 
 This example uses the `crow` web microframework library to provide a simple to use, yet powerful web server. The `crow` library requires the `libboost` package be installed on the Intel Edison, as well as adding the needed include and lib files to the Eclipse G++ Cross Compiler and G++ Cross Linker.
 
-TODO: Instructions on adding `libboost` include and lib goes here...
+Update the opkg base feeds, so you can install the needed dependencies. Instructions on how to do this are located here: http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html
+If you've already done this, you can skip to the next step.
+
+Now, install the boost libraries onto the Edison, by running:
+```
+opkg update
+opkg install boost-dev
+```
+
+Next, you need to copy the libraries and include files from the Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
+
+```
+scp USERNAME@xxx.xxx.x.xxx:/usr/include/boost/* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
+scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
+```
+
+Note that you will need to have turned on SSH by running the `configure_edison --password` command on the Edison. Once you've set the password, make sure you write it down. You only need to do this one time and it will be set when you reboot your Edison.
 
 This example also uses the `restclient-cpp` library to perform REST calls to the remote data server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
 
@@ -112,6 +128,14 @@ export AUTH_TOKEN="YOURTOKEN"
 4. Click on the "Apply" button to save your new environment variables.
 
 Now when you run your program using the "Run" button, it should be able to call your server to save the data right from the Edison.
+
+## Regenerating the HTML and CSS
+
+If you make any changes to either the `index.html` or `styles.css` files, you will need to regenerate the hex file used to serve up the assets on via the built-in Crow web server.
+
+```
+
+```
 
 ## Determining The Intel Edison IP Address
 
