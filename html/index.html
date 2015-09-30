@@ -2,24 +2,35 @@
 <html lang="en">
   <head>
     <title>Alarm Clock</title>
-    <style>
-    </style>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Alarm Clock</h1>
+    <div class="container">
+      <h1 class="title">Alarm Clock</h1>
 
-    <form>
-      <label for="hour">Hour</label>
-      <select id="hour" name="hour"></select>
+      <form class="col-md-8 col-md-offset-2">
+        <div class="row">
+          <div class="form-group col-sm-4">
+              <label for="hour">Hour</label>
+              <select id="hour" name="hour" class="form-control"></select>
+            </div>
 
-      <label for="minute">Minute</label>
-      <select id="minute" name="minute"></select>
+            <div class="form-group col-sm-4">
+              <label for="minute">Minute</label>
+              <select id="minute" name="minute" class="form-control"></select>
+            </div>
 
-      <label for="second">Second</label>
-      <select id="second" name="second"></select>
+            <div class="form-group col-sm-4">
+              <label for="second">Second</label>
+              <select id="second" name="second" class="form-control"></select>
+            </div>
+        </div>
 
-      <input type="submit" value="Set Alarm">
-    </form>
+        <div class="button-row">
+          <input class="btn btn-success btn-lg" type="submit" value="Set Alarm">
+        </div>
+      </form>
+    </div>
 
     <script>
       // use JS to populate form drop-downs
