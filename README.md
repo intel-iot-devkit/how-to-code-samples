@@ -1,21 +1,23 @@
 # Fire Alarm
 
-...
+Description here...
 
-This fire alarm requires the following components from the Grove Starter Kit Plus:
+The "smart" fire alarm requires the following components from the Grove Starter Kit Plus:
 
 1. Intel Edison with Arduino breakout board
-2. Grove Touch Sensor
+2. Grove Temperature Sensor
 3. Grove Buzzer
-4. RGB LCD Display
+4. RGB LCD display
 
 ## How It Works
 
-This "smart" doorbell will do the following when the Grove Touch Sensor is pressed:
+This "smart" fire alarm will monitor the ambient temperature with the Temperature Sensor.
 
-- Make a noise with the buzzer
-- Display a message on the LCD Display
-- Optionally, store the total number of doorbell rings using the "Intel IoT Example Datastore" running on your own server, such as a Microsoft Azure or IBM Bluemix account.
+If the temperature gets above a certain threshold (set to 28 degrees for this example) it sound an alarm through the buzzer and display components.
+
+In the case of a file alarm, if configured it will also optionally send a SMS to a specified number through Twilio.
+
+In additiona, you can optionally store the fire alarm stats using the "Intel IoT Example Datastore" running on your own server, such as a Microsoft Azure or IBM Bluemix account.
 
 ## How To Setup
 
@@ -31,19 +33,21 @@ Eclipse initial setup instructions go here...
 
 ### Connecting The Grove Sensors
 
-![](./../../../images/doorbell.jpg)
+![](./../../../images/fire-alarm.jpg)
 
 You will need to have the Grove Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove devices into the Grove shield. Make sure you have the tiny VCC switch on the Grove Shield set to the "5V" position.
 
-Plug one end of a Grove cable into the "Touch Sensor", then connect the other end to the "D4" port on the Grove Shield.
+Plug one end of a Grove cable into the "Temperature Sensor", then connect the other end to the "A0" port on the Grove Shield.
 
 Connect one end of a Grove cable into the "Buzzer", then plug the other end into the "D5" port on the Grove Shield.
 
-Plug one end of a Grove cable into the "RGB LCD", then connect the other end into any of the "I2C" ports on the Grove Shield.
+Plug one end of a Grove cable into the "RGB LCD", then plug the other end into any of the "I2C" ports on the Grove Shield.
 
 ### Intel Edison Setup
 
 This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
+
+It also uses the `twilio-cplusplus` library to communcate with the Twilio telephony service. The `twilio-cplusplus` library requires both the `libcurl` package and the `openssl` packages, which are already installed on the Intel Edison by default.
 
 ### Running The Code On Edison
 
@@ -67,8 +71,8 @@ To run the example with the optional backend datastore you need to set the `SERV
 3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
 
 ```
-chmod 755 /tmp/doorbell
-export SERVER="http://intel-examples.azurewebsites.net/counter/doorbell/inc"
+chmod 755 /tmp/fire-alarm
+export SERVER="http://intel-examples.azurewebsites.net/logger/fire-alarm"
 export AUTH_TOKEN="YOURTOKEN"
 ```
 
