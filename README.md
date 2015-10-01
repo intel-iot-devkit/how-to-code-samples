@@ -27,7 +27,14 @@ Not sure how to do that? [Here is an excellent guide from Github on how to get s
 
 ### Adding The Code To Eclipse IoT
 
-Eclipse initial setup instructions go here...
+You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
+
+- From the main menu bar, select "File > Import..."
+- The "Import wizard" dialog will open.
+- Select "General > Existing Project into Workspace" and click on the "Next" button.
+- Choose "Select root directory", then click on the associated "Browse" button to locate the directory that contains the project files.
+- Under "Projects" select the directory with the project files which you would like to import.
+- Click on the "Finish" button to import the files into Eclipse.
 
 ### Connecting The Grove Sensors
 
