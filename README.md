@@ -1,21 +1,23 @@
-# Smart Doorbell
+# Shop Floor Equipment Activity Monitor
 
-Someone's knocking at the door, someone's ringing the bell. So what happens when you are not home? You can use an Intel Edison to keep track of all your visitors. When someone rings the bell, not only will it make a sound, but it can also log it to a cloud-based storage system.
+Description here...
 
-This "smart" doorbell requires the following components from the Grove Starter Kit Plus:
+The shop floor equipment activity monitor requires the following components from the Grove Starter Kit Plus:
 
 1. Intel Edison with Arduino breakout board
-2. Grove Touch Sensor
-3. Grove Buzzer
+2. Grove Sound Sensor
+3. Grove Vibration Sensor
 4. RGB LCD Display
 
 ## How It Works
 
-This "smart" doorbell will do the following when the Grove Touch Sensor is pressed:
+This equipment activity monitor will watch for sound and vibration.
 
-- Make a noise with the buzzer
-- Display a message on the LCD Display
-- Optionally, store the total number of doorbell rings using the "Intel IoT Example Datastore" running on your own server, such as a Microsoft Azure or IBM Bluemix account.
+If both cross a defined threshold, it will light up the display to indicate the equipment is in use.
+
+It will then clear the display once the equipment is no longer being used.
+
+The monitor will also, optionally, store equipment usage start/stop events using the "Intel IoT Example Datastore" running on your own server, such as a Microsoft Azure or IBM Bluemix account.
 
 ## How To Setup
 
@@ -35,9 +37,9 @@ Eclipse initial setup instructions go here...
 
 You will need to have the Grove Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove devices into the Grove shield. Make sure you have the tiny VCC switch on the Grove Shield set to the "5V" position.
 
-Plug one end of a Grove cable into the "Touch Sensor", then connect the other end to the "D4" port on the Grove Shield.
+Plug one end of a Grove cable into the "Microphone", then connect the other end to the "AO" port on the Grove Shield.
 
-Connect one end of a Grove cable into the "Buzzer", then plug the other end into the "D5" port on the Grove Shield.
+Connect one end of a Grove cable into the "Piezo Vibration Sensor", then plug the other end into the "A2" port on the Grove Shield.
 
 Plug one end of a Grove cable into the "RGB LCD", then connect the other end into any of the "I2C" ports on the Grove Shield.
 
@@ -67,8 +69,8 @@ To run the example with the optional backend datastore you need to set the `SERV
 3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
 
 ```
-chmod 755 /tmp/doorbell
-export SERVER="http://intel-examples.azurewebsites.net/counter/doorbell/inc"
+chmod 755 /tmp/equipment-activity-monitor
+export SERVER="http://intel-examples.azurewebsites.net/logger/equipment-activity"
 export AUTH_TOKEN="YOURTOKEN"
 ```
 
