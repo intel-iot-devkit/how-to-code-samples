@@ -1,15 +1,20 @@
 # Earthquake Detector
 
-intro...
+Description here...
 
 This earthquake detector requires the following components from the Grove Starter Kit Plus:
 
 1. Intel Edison with Arduino breakout board
-...
+2. Grove Accelerometer
+3. RGB LCD Display
 
 ## How It Works
 
-...
+This earthquake detector will listen for vibrations using the accelerometer.
+
+When it thinks it detects an earthquake, it will attempt to verify with the USGS API that an earthquake occurred
+
+It will then use the LCD Display to either warn of the quake, or let you know it was  a false alarm.
 
 ## How To Setup
 
@@ -27,7 +32,11 @@ Eclipse initial setup instructions go here...
 
 ![](./../../../images/earthquake-detector.jpg)
 
-...
+You will need to have the Grove Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove devices into the Grove shield. Make sure you have the tiny VCC switch on the Grove Shield set to the "5V" position.
+
+Plug one end of a Grove cable into the "Accelerometer", then connect the other end to any of the "I2C" ports on the Grove Shield.
+
+Plug one end of a Grove cable into the "RGB LCD", then connect the other end into any of the "I2C" ports on the Grove Shield.
 
 ### Intel Edison Setup
 
