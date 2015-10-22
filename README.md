@@ -17,7 +17,7 @@ If the temperature gets above a certain threshold (set to 28 degrees for this ex
 
 In the case of a file alarm, if configured it will also optionally send a SMS to a specified number through Twilio.
 
-In additiona, you can optionally store the fire alarm stats using the "Intel IoT Example Datastore" running on your own server, such as a Microsoft Azure or IBM Bluemix account.
+In addition, you can optionally store the fire alarm stats using the "Intel IoT Example Datastore" running on your own server, such as a Microsoft Azure or IBM Bluemix account.
 
 ## How To Setup
 
@@ -74,14 +74,15 @@ https://github.com/hybridgroup/intel-iot-examples-datastore
 To run the example with the optional backend datastore you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse by:
 
 1. Select the "Run" menu and choose "Run Configurations". The "Run Configurations" dialog will be displayed.
-2. Click on "doorbell" under "C/C++ Remote Application". This will display the information for your application.
-3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
+2. Before running the project be sure sure select your Edison under the "connection" dropdown box. 
+3. Click on "fire-alarm" under "C/C++ Remote Application". This will display the information for your application.
+4. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
 
 ```
 chmod 755 /tmp/fire-alarm; export SERVER="http://intel-iot-example-data.azurewebsites.net/logger/fire-alarm"; export AUTH_TOKEN="Enter Auth Token Here"; export TWILIO_SID="Enter Twilio SID Here"; export TWILIO_TOKEN="Enter Twilio Token Here"; export TWILIO_TO="Enter Number to Send to here Formattted 555-555-5555"; export TWILIO_FROM="Enter Number to be Sent From Here Formated 555-555-5555"
 ```
 
-4. Click on the "Apply" button to save your new environment variables.
+5. Click on the "Apply" button to save your new environment variables.
 
 Now when you run your program using the "Run" button, it should be able to call your server to save the data right from the Edison.
 
