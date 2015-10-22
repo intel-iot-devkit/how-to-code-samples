@@ -71,9 +71,16 @@ https://github.com/hybridgroup/intel-iot-examples-datastore
 
 ### Connecting Your Edison to the Eclipse IDE
 
+![](./../../../images/ConnectionEclipseIDEWin.png)
 1. In the bottom left corner right-click in the area "Target SSH Conections" select "New..." then select "Connection..." and a new screen will appear. 
+
+![](./../../../ConnectionEclipseIDEWin2.png)
 2. In the "filter box" type the name of your edison. In the example mine is JustinEdison.
+
+![](./../../../ConnectionEclipseIDEWin3.png)
 3. In the "Select one of the found connections list; click on your device name. Then Ok. 
+
+![](./../../../images/ConnectionEclipseIDEWin4.png)
 4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect. 
 (If promted for a username and password the user is 'root' and password is whatever you set it up as when configuring the Edison board)
 
