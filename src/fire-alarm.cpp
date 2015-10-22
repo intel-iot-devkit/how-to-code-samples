@@ -17,7 +17,7 @@ using namespace std;
 #include "../lib/twilio-cplusplus/TwiML.h"
 using namespace twilio;
 
-const int ALARM_THRESHOLD = 50;
+const int ALARM_THRESHOLD = 28;
 const string TWILIO_API_VERSION = "2010-04-01";
 
 void send_sms() {
