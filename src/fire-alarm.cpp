@@ -36,6 +36,7 @@ void send_sms() {
 	vars.push_back(Var("Body", "fire alarm!"));
 	response = t.request("/" + TWILIO_API_VERSION + "/Accounts/" + getenv("TWILIO_SID") + "/SMS/Messages", "POST", vars);
 	cout << response << endl;
+
 }
 
 // call data server to note the alarm status
@@ -150,6 +151,8 @@ int main()
 		if (previousTemperature < ALARM_THRESHOLD && currentTemperature >= ALARM_THRESHOLD) {
 			notify();
 			devices.start_alarm();
+			send_sms();
+
 		}
 
 		if (previousTemperature >= ALARM_THRESHOLD && currentTemperature < ALARM_THRESHOLD) {
