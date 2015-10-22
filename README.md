@@ -1,6 +1,24 @@
-# Fire Alarm
+# Smart Fire Alarm
 
-Description here...
+## Introduction
+
+This smart fire alarm application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+
+From this exercise, developers will learn how to:
+- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run this code sample in Eclispe* IoT, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
+- Set up a web application server to store fire alarm data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Invoke the services of the Twilio* API for sending SMS messages.
+
+## What It Is
+
+Using an Intel® Edison board, this project lets you create a smart fire alarm that:
+- constantly monitors for unsafe temperature levels;
+- audibly notifies of alerts using the buzzer;
+- visually notifies of alerts on the LCD;
+- keeps track of fire alarm, using cloud-based data storage;
+- sends SMS messages to alert others of the possible fire.
 
 The "smart" fire alarm requires the following components from the Grove Starter Kit Plus:
 
@@ -19,7 +37,22 @@ In the case of a file alarm, if configured it will also optionally send a SMS to
 
 In addition, you can optionally store the fire alarm stats using the "Intel IoT Example Datastore" running on your own server, such as a Microsoft Azure or IBM Bluemix account.
 
-## How To Setup
+## Hardware requirements
+
+Grove* Starter Kit containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Grove* Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
+3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
+4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+## Software requirements
+
+1. [Eclipse* Iot version](https://software.intel.com/en-us/eclipse-getting-started-guide)
+2. Microsoft* Azure* account
+3. Twilio* account
+
+### How To Setup
 
 To begin, clone the Intel IoT Examples with git on your computer:
 
@@ -27,16 +60,30 @@ To begin, clone the Intel IoT Examples with git on your computer:
 
 Not sure how to do that? [Here is an excellent guide from Github on how to get started](https://help.github.com/desktop/guides/getting-started/).
 
+Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/hybridgroup/intel-iot-examples](https://github.com/hybridgroup/intel-iot-examples) and click on the "Download ZIP" button at the lower right. Once the ZIP file has finished downloading, uncompress it, and then use the files in the directory for this example.
+
 ### Adding The Code To Eclipse IoT
 
 You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
 
 - From the main menu bar, select "File > Import..."
+![](./../../../images/Eclipse-Menu.png)
+
 - The "Import wizard" dialog will open.
+![](./../../../images/Eclipse-Menu-Select-PiW.png)
+
 - Select "General > Existing Project into Workspace" and click on the "Next" button.
+![](./../../../images/Eclipse-Menu-Select-PiW.png)
+
 - Choose "Select root directory", then click on the associated "Browse" button to locate the directory that contains the project files.
+![](./../../../images/Eclipse-Menu-Select-RootDir.png)
+
 - Under "Projects" select the directory with the project files which you would like to import.
+![](./../../../images/Eclipse-Menu-Select-PiW-RootDir.png)
 - Click on the "Finish" button to import the files into Eclipse.
+
+![](./../../../images/Eclipse-Menu-Src-Loc.png)
+- Your main .cpp program will now bwe in your workspace under the src folder.
 
 ### Connecting The Grove Sensors
 
@@ -56,10 +103,13 @@ This example uses the `restclient-cpp` library to perform REST calls to the serv
 
 It also uses the `twilio-cplusplus` library to communcate with the Twilio telephony service. The `twilio-cplusplus` library requires both the `libcurl` package and the `openssl` packages, which are already installed on the Intel Edison by default.
 
-### Running The Code On Edison
+### Twilio API Key
 
-When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
-This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
+To optionally send SMS messages, you need to register for an account and get an API key from the Twilio web site: https://www.twilio.com/
+
+You cannot send SMS messages without obtaining a Twilio API key first. You can still run the example, but without the SMS alerts.
+
+To configure the example for the optional SMS sending, obtain a key from the Twilio web site as documented above.
 
 ## Data Store Server Setup
 
@@ -101,4 +151,23 @@ chmod 755 /tmp/fire-alarm; export SERVER="http://intel-iot-example-data.azureweb
 5. Click on the "Apply" button to save your new environment variables.
 
 Now when you run your program using the "Run" button, it should be able to call your server to save the data right from the Edison.
+
+### Running The Code On Edison
+
+![](./../../../images/Run-Eclipse.png)
+
+When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
+This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
+
+![](./../../../images/Run-Eclipse-Successful-Build.png)
+
+After running the program you should have a similar output as in the image above. 
+
+![](./../../../images/Run-Eclipse-Successful-Output.png)
+
+When the program is finished uploading to the edison board you will see the temperature output in celsius.
+
+![](./../../../images/Run-Eclipse-Successful-Output-SMS-Sent.png)
+
+When heating the temperature sensor another output message will show similar to the image above. This means you have successfully sent your sms.  
 
