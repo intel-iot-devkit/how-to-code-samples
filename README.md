@@ -74,10 +74,10 @@ https://github.com/hybridgroup/intel-iot-examples-datastore
 ![](./../../../images/ConnectionEclipseIDEWin.png)
 1. In the bottom left corner right-click in the area "Target SSH Conections" select "New..." then select "Connection..." and a new screen will appear. 
 
-![](./../../../ConnectionEclipseIDEWin2.png)
+![](./../../../images/ConnectionEclipseIDEWin2.png)
 2. In the "filter box" type the name of your edison. In the example mine is JustinEdison.
 
-![](./../../../ConnectionEclipseIDEWin3.png)
+![](./../../../images/ConnectionEclipseIDEWin3.png)
 3. In the "Select one of the found connections list; click on your device name. Then Ok. 
 
 ![](./../../../images/ConnectionEclipseIDEWin4.png)
