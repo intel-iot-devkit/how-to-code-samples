@@ -78,9 +78,7 @@ To run the example with the optional backend datastore you need to set the `SERV
 3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
 
 ```
-chmod 755 /tmp/fire-alarm
-export SERVER="http://intel-examples.azurewebsites.net/logger/fire-alarm"
-export AUTH_TOKEN="YOURTOKEN"
+chmod 755 /tmp/fire-alarm; export SERVER="http://intel-iot-example-data.azurewebsites.net/logger/fire-alarm"; export AUTH_TOKEN="Enter Auth Token Here"; export TWILIO_SID="Enter Twilio SID Here"; export TWILIO_TOKEN="Enter Twilio Token Here"; export TWILIO_TO="Enter Number to Send to here Formattted 555-555-5555"; export TWILIO_FROM="Enter Number to be Sent From Here Formated 555-555-5555"
 ```
 
 4. Click on the "Apply" button to save your new environment variables.
