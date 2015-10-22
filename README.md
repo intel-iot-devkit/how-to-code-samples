@@ -69,7 +69,16 @@ For information on how to setup your own cloud data server, go to:
 
 https://github.com/hybridgroup/intel-iot-examples-datastore
 
-### Running The Example With The Cloud Server
+### Connecting Your Edison to the Eclipse IDE
+
+1. In the bottom left corner right-click in the area "Target SSH Conections" select "New..." then select "Connection..." and a new screen will appear. 
+2. In the "filter box" type the name of your edison. In the example mine is JustinEdison.
+3. In the "Select one of the found connections list; click on your device name. Then Ok. 
+4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect. 
+(If promted for a username and password the user is 'root' and password is whatever you set it up as when configuring the Edison board)
+
+
+## Running The Example With The Cloud Server
 
 To run the example with the optional backend datastore you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse by:
 
@@ -86,15 +95,3 @@ chmod 755 /tmp/fire-alarm; export SERVER="http://intel-iot-example-data.azureweb
 
 Now when you run your program using the "Run" button, it should be able to call your server to save the data right from the Edison.
 
-## Determining The Intel Edison IP Address
-
-You can determine what IP address the Intel Edison is connected to by running:
-
-    ip addr show | grep wlan
-
-You will see output similar to:
-
-    3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
-        inet 192.168.1.13/24 brd 192.168.1.255 scope global wlan0
-
-The IP address is shown next to `inet`. In the example above, the IP address is `192.168.1.13`
