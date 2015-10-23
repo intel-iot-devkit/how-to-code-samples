@@ -58,16 +58,16 @@ Not sure how to do that? [Here is an excellent guide from Github on how to get s
 You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
 
 - From the main menu bar, select "File > Import..."
-![](./../../../images/cpp/eclipse-menu.png)
+![](./../../../images/cpp/cpp-eclipse-menu.png)
 
 - The "Import wizard" dialog will open.
-![](./../../../images/cpp/eclipse-menu-select-piw.png)
+![](./../../../images/cpp/cpp-eclipse-menu-select-piw.png)
 
 - Select "General > Existing Project into Workspace" and click on the "Next" button.
 ![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 
 - Choose "Select root directory", then click on the associated "Browse" button to locate the directory that contains the project files.
-![](./../../../images/cpp/eclipse-menu-select-rootdir.png)
+![](./../../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
 
 - Under "Projects" select the directory with the project files which you would like to import.
 ![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
