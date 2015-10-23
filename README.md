@@ -122,22 +122,22 @@ Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where
 1. Download and install WinSCP https://winscp.net/eng/download.php
 2. Once WinSCP is installed run the application.
 
-![](./../../../images/WinSCP-step1.png)
+![](./../../../images/WinSCP-step-1.png)
 3. Under the "File Protocol" select SCP.
 
-![](./../../../images/WinSCP-step2.png)
+![](./../../../images/WinSCP-step-2.png)
 4. "Host Name" is your Edison ip address. "User Name" is root. Finally the "Password" is whatever you set it up as when you configured your Edison.
 
-![](./../../../images/WinSCP-step3.png)
+![](./../../../images/WinSCP-step-3.png)
 5. You will then come to a screen similar to the above image. 
 
-![](./../../../images/WinSCP-step5.png)
+![](./../../../images/WinSCP-step-5.png)
 6. On this page you will need to move up a few directories until you are in the /<root> directory.
 
-![](./../../../images/WinSCP-step6.png)
+![](./../../../images/WinSCP-step-6.png)
 7. Once you are in the correct directory then go to this directory from the root /usr/include/boost grab the folder and drag it to /Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include folder. (This file may not be in your downloads directory, in the example I have it on my desktop)
 
-![](./../../../images/WinSCP-step7.png)
+![](./../../../images/WinSCP-step-7.png)
 8. Once this process is finished you will need to move up in both directories to /usr/lib/ and grab all 36 files that start with "libboost*" respectively an move them to /Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib.(This file may not be in your downloads directory, in the example I have it on my desktop)
 
 9. Once finished you may close the WinSCP application.
