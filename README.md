@@ -1,7 +1,5 @@
 # Smart Doorbell
 
-Someone's knocking at the door, someone's ringing the bell. So what happens when you are not home? You can use an Intel Edison to keep track of all your visitors. When someone rings the bell, not only will it make a sound, but it can also log it to a cloud-based storage system.
-
 ## Introduction
 
 This smart doorbell application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
@@ -64,27 +62,27 @@ Not sure how to do that? [Here is an excellent guide from Github on how to get s
 You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
 
 - From the main menu bar, select "File > Import..."
-![](./../../../images/Eclipse-Menu.png)
+![](./../../../images/cpp/cpp-eclipse-menu.png)
 
 - The "Import wizard" dialog will open.
-![](./../../../images/Eclipse-Menu-Select-PiW.png)
+![](./../../../images/cpp/cpp-eclipse-menu-select-epiw.png)
 
 - Select "General > Existing Project into Workspace" and click on the "Next" button.
-![](./../../../images/Eclipse-Menu-Select-PiW.png)
+![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 
 - Choose "Select root directory", then click on the associated "Browse" button to locate the directory that contains the project files.
-![](./../../../images/Eclipse-Menu-Select-RootDir.png)
+![](./../../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
 
 - Under "Projects" select the directory with the project files which you would like to import.
-![](./../../../images/Eclipse-Menu-Select-PiW-RootDir.png)
+![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 - Click on the "Finish" button to import the files into Eclipse.
 
-![](./../../../images/Eclipse-Menu-Src-Loc.png)
+![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
 - Your main .cpp program will now be in your workspace under the src folder.
 
 ### Connecting The Grove Sensors
 
-![](./../../../images/doorbell.jpg)
+![](./../../../images/js/doorbell.jpg)
 
 You will need to have the Grove Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove devices into the Grove shield. Make sure you have the tiny VCC switch on the Grove Shield set to the "5V" position.
 
@@ -124,12 +122,12 @@ Now when you run your program using the "Run" button, it should be able to call 
 
 ### Running The Code On Edison
 
-![](./../../../images/Run-Eclipse.png)
+![](./../../../images/cpp/cpp-run-eclipse.png)
 
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
 This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
-![](./../../../images/Run-Eclipse-Successful-Build.png)
+![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
 
 After running the program you should have a similar output as in the image above.
 
