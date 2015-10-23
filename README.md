@@ -70,10 +70,10 @@ You use the Eclipse "Import Wizard" to import an existing project into the works
 ![](./../../../images/cpp/eclipse-menu-select-rootdir.png)
 
 - Under "Projects" select the directory with the project files which you would like to import.
-![](./../../../images/Eclipse-Menu-Select-PiW-RootDir.png)
+![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 - Click on the "Finish" button to import the files into Eclipse.
 
-![](./../../../images/Eclipse-Menu-Src-Loc.png)
+![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
 - Your main .cpp program will now be in your workspace under the src folder.
 
 ### Connecting The Grove Sensors
