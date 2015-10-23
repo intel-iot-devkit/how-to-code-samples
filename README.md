@@ -58,16 +58,16 @@ Not sure how to do that? [Here is an excellent guide from Github on how to get s
 You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
 
 - From the main menu bar, select "File > Import..."
-![](./../../../images/Eclipse-Menu.png)
+![](./../../../images/cpp/eclipse-menu.png)
 
 - The "Import wizard" dialog will open.
-![](./../../../images/Eclipse-Menu-Select-PiW.png)
+![](./../../../images/cpp/eclipse-menu-select-piw.png)
 
 - Select "General > Existing Project into Workspace" and click on the "Next" button.
-![](./../../../images/Eclipse-Menu-Select-PiW.png)
+![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 
 - Choose "Select root directory", then click on the associated "Browse" button to locate the directory that contains the project files.
-![](./../../../images/Eclipse-Menu-Select-RootDir.png)
+![](./../../../images/cpp/eclipse-menu-select-rootdir.png)
 
 - Under "Projects" select the directory with the project files which you would like to import.
 ![](./../../../images/Eclipse-Menu-Select-PiW-RootDir.png)
@@ -78,7 +78,7 @@ You use the Eclipse "Import Wizard" to import an existing project into the works
 
 ### Connecting The Grove Sensors
 
-![](./../../../images/alarm-clock.jpg)
+![](./../../../images/js/alarm-clock.jpg)
 
 You will need to have the Grove Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove devices into the Grove shield. Make sure you have the tiny VCC switch on the Grove Shield set to the "5V" position.
 
@@ -118,22 +118,22 @@ Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where
 1. Download and install WinSCP https://winscp.net/eng/download.php
 2. Once WinSCP is installed run the application.
 
-![](./../../../images/WinSCP-step-1.png)
+![](./../../../images/cpp/cpp-winscp-step-1.png)
 3. Under the "File Protocol" select SCP.
 
-![](./../../../images/WinSCP-step-2.png)
+![](./../../../images/cpp/cpp-winscp-step-2.png)
 4. "Host Name" is your Edison ip address. "User Name" is root. Finally the "Password" is whatever you set it up as when you configured your Edison.
 
-![](./../../../images/WinSCP-step-3.png)
+![](./../../../images/cpp/cpp-winscp-step-3.png)
 5. You will then come to a screen similar to the above image. 
 
-![](./../../../images/WinSCP-step-5.png)
+![](./../../../images/cpp/cpp-winscp-step-5.png)
 6. On this page you will need to move up a few directories until you are in the /<root> directory.
 
-![](./../../../images/WinSCP-step-6.png)
+![](./../../../images/cpp/cpp-winscp-step-6.png)
 7. Once you are in the correct directory then go to this directory from the root /usr/include/boost grab the folder and drag it to /Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include folder. (This file may not be in your downloads directory, in the example I have it on my desktop)
 
-![](./../../../images/WinSCP-step-7.png)
+![](./../../../images/cpp/cpp-winscp-step-7.png)
 8. Once this process is finished you will need to move up in both directories to /usr/lib/ and grab all 36 files that start with "libboost*" respectively an move them to /Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib.(This file may not be in your downloads directory, in the example I have it on my desktop)
 
 9. Once finished you may close the WinSCP application.
@@ -200,12 +200,12 @@ Now when you run your program using the "Run" button, it should be able to call 
 
 ### Running The Code On Edison
 
-![](./../../../images/Run-Eclipse.png)
+![](./../../../images/cpp/cpp-run-eclipse.png)
 
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
 This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
-![](./../../../images/Run-Eclipse-Successful-Build.png)
+![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
 
 After running the program you should have a similar output as in the image above.
 
