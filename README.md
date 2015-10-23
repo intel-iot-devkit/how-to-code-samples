@@ -57,10 +57,6 @@ Not sure how to do that? [Here is an excellent guide from Github on how to get s
 
 You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
 
-### Adding The Code To Eclipse IoT
-
-You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
-
 - From the main menu bar, select "File > Import..."
 ![](./../../../images/Eclipse-Menu.png)
 
