@@ -20,13 +20,6 @@ Using an Intel® Edison board, this project lets you create a smart fire alarm th
 - keeps track of fire alarm, using cloud-based data storage;
 - sends SMS messages to alert others of the possible fire.
 
-The "smart" fire alarm requires the following components from the Grove Starter Kit Plus:
-
-1. Intel Edison with Arduino breakout board
-2. Grove Temperature Sensor
-3. Grove Buzzer
-4. RGB LCD display
-
 ## How It Works
 
 This "smart" fire alarm will monitor the ambient temperature with the Temperature Sensor.
