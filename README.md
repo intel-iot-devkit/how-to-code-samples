@@ -56,27 +56,27 @@ Just want to download a ZIP file? Just point your web browser to the Github repo
 You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
 
 - From the main menu bar, select "File > Import..."
-![](./../../../images/Eclipse-Menu.png)
+![](./../../../images/cpp/cpp-eclipse-menu.png)
 
 - The "Import wizard" dialog will open.
-![](./../../../images/Eclipse-Menu-Select-PiW.png)
+![](./../../../images/cpp/cpp-eclipse-menu-select-epiw.png)
 
 - Select "General > Existing Project into Workspace" and click on the "Next" button.
-![](./../../../images/Eclipse-Menu-Select-PiW.png)
+![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 
 - Choose "Select root directory", then click on the associated "Browse" button to locate the directory that contains the project files.
-![](./../../../images/Eclipse-Menu-Select-RootDir.png)
+![](./../../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
 
 - Under "Projects" select the directory with the project files which you would like to import.
-![](./../../../images/Eclipse-Menu-Select-PiW-RootDir.png)
+![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 - Click on the "Finish" button to import the files into Eclipse.
 
-![](./../../../images/Eclipse-Menu-Src-Loc.png)
-- Your main .cpp program will now bwe in your workspace under the src folder.
+![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
+- Your main .cpp program will now be in your workspace under the src folder.
 
 ### Connecting The Grove Sensors
 
-![](./../../../images/equipment-activity.jpg)
+![](./../../../images/js/equipment-activity.jpg)
 
 You will need to have the Grove Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove devices into the Grove shield. Make sure you have the tiny VCC switch on the Grove Shield set to the "5V" position.
 
@@ -92,16 +92,16 @@ This example uses the `restclient-cpp` library to perform REST calls to the serv
 
 ### Connecting Your Edison to the Eclipse IDE
 
-![](./../../../images/ConnectionEclipseIDEWin.png)
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win.png)
 1. In the bottom left corner right-click in the area "Target SSH Conections" select "New..." then select "Connection..." and a new screen will appear. 
 
-![](./../../../images/ConnectionEclipseIDEWin2.png)
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win2.png)
 2. In the "filter box" type the name of your edison. In the example mine is JustinEdison.
 
-![](./../../../images/ConnectionEclipseIDEWin3.png)
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win3.png)
 3. In the "Select one of the found connections list; click on your device name. Then Ok. 
 
-![](./../../../images/ConnectionEclipseIDEWin4.png)
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect. 
 (If promted for a username and password the user is 'root' and password is whatever you set it up as when configuring the Edison board)
 
@@ -139,13 +139,13 @@ Now when you run your program using the "Run" button, it should be able to call 
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
 This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
-![](./../../../images/Run-Eclipse-Successful-Build.png)
+![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
 
 After running the program you should have a similar output as in the image above.
 
 The LCD screen should now display ready.
 
-![](./../../../images/equp-act-mon-successful-output.png)
+![](./../../../images/cpp/cpp-equp-act-mon-successful-output.png)
 
 Successful out put be similar to the above image. 
  
