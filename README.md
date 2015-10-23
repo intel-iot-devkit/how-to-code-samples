@@ -1,12 +1,22 @@
 # Earthquake Detector
 
-Description here...
 
-This earthquake detector requires the following components from the Grove Starter Kit Plus:
+## Introduction
 
-1. Intel Edison with Arduino breakout board
-2. Grove Accelerometer
-3. RGB LCD Display
+This earthquake detector application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+
+From this exercise, developers will learn how to:
+- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
+- Invoke the services of the United States Geological Survey* API for accessing earthquake data.
+
+## What It Is
+
+Using an Intel® Edison board, this project lets you create a earthquake detector that:
+- senses motion using the digital accellerometer;
+- checks live earthquake data, using the USGS* API.
+- displays the earthquake on the LCD;
 
 ## How It Works
 
@@ -16,6 +26,19 @@ When it thinks it detects an earthquake, it will attempt to verify with the USGS
 
 It will then use the LCD Display to either warn of the quake, or let you know it was  a false alarm.
 
+
+## Hardware requirements
+
+Grove* Starter Kit containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Grove* 3-Axis Digital Accelerometer](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
+3. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+## Software requirements
+
+1. Eclipse* Iot Edition https://software.intel.com/en-us/eclipse-getting-started-guide
+
 ## How To Setup
 
 To begin, clone the Intel IoT Examples with git on your computer:
@@ -24,16 +47,30 @@ To begin, clone the Intel IoT Examples with git on your computer:
 
 Not sure how to do that? [Here is an excellent guide from Github on how to get started](https://help.github.com/desktop/guides/getting-started/).
 
+Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/hybridgroup/intel-iot-examples](https://github.com/hybridgroup/intel-iot-examples) and click on the "Download ZIP" button at the lower right. Once the ZIP file has finished downloading, uncompress it, and then use the files in the directory for this example.
+
 ### Adding The Code To Eclipse IoT
 
 You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
 
 - From the main menu bar, select "File > Import..."
+![](./../../../images/Eclipse-Menu.png)
+
 - The "Import wizard" dialog will open.
+![](./../../../images/Eclipse-Menu-Select-PiW.png)
+
 - Select "General > Existing Project into Workspace" and click on the "Next" button.
+![](./../../../images/Eclipse-Menu-Select-PiW.png)
+
 - Choose "Select root directory", then click on the associated "Browse" button to locate the directory that contains the project files.
+![](./../../../images/Eclipse-Menu-Select-RootDir.png)
+
 - Under "Projects" select the directory with the project files which you would like to import.
+![](./../../../images/Eclipse-Menu-Select-PiW-RootDir.png)
 - Click on the "Finish" button to import the files into Eclipse.
+
+![](./../../../images/Eclipse-Menu-Src-Loc.png)
+- Your main .cpp program will now bwe in your workspace under the src folder.
 
 ### Connecting The Grove Sensors
 
@@ -67,28 +104,34 @@ https://github.com/hybridgroup/intel-iot-examples-datastore
 To run the example with the optional backend datastore you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse by:
 
 1. Select the "Run" menu and choose "Run Configurations". The "Run Configurations" dialog will be displayed.
-2. Click on "doorbell" under "C/C++ Remote Application". This will display the information for your application.
+2. Click on "earthquake-detector" under "C/C++ Remote Application". This will display the information for your application.
 3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
 
 ```
-chmod 755 /tmp/earthquake-detector
-export SERVER="http://intel-examples.azurewebsites.net/counter/earthquake-detector/inc"
-export AUTH_TOKEN="YOURTOKEN"
+chmod 755 /tmp/earthquake-detector; export SERVER="http://intel-examples.azurewebsites.net/counter/earthquake-detector/inc"; export AUTH_TOKEN="YOURTOKEN"
 ```
 
 4. Click on the "Apply" button to save your new environment variables.
 
 Now when you run your program using the "Run" button, it should be able to call your server to save the data right from the Edison.
 
-## Determining The Intel Edison IP Address
+### Running The Code On Edison
 
-You can determine what IP address the Intel Edison is connected to by running:
+![](./../../../images/Run-Eclipse.png)
 
-    ip addr show | grep wlan
+When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
+This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
-You will see output similar to:
+![](./../../../images/Run-Eclipse-Successful-Build.png)
 
-    3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
-        inet 192.168.1.13/24 brd 192.168.1.255 scope global wlan0
+After running the program you should have a similar output as in the image above. 
 
-The IP address is shown next to `inet`. In the example above, the IP address is `192.168.1.13`
+![](./../../../images/Run-Eclipse-Successful-Output.png)
+
+When the the program loads correctly your RGB-LCD screen will display "quakebot ready."
+
+If you shake the accelerometer it will check to see if there really was an earthquake!
+
+
+
+
