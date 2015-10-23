@@ -143,5 +143,9 @@ This will compile the program using the Cross G++ Compiler, link it using the Cr
 
 After running the program you should have a similar output as in the image above.
 
-The LCD screen should now display ready, and if you make noise and vibrations you device will start and then stop depending on what is happening. 
+The LCD screen should now display ready.
+
+![](./../../../images/equp-act-mon-successful-output.png)
+
+Successful out put be similar to the above image. 
  
