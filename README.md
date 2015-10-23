@@ -1,7 +1,5 @@
 # Smart Alarm Clock
 
-Do you hate to get up in the morning? We cannot make it any easier, but we can at least add a little intelligence to the process. This project lets you create a "smart" alarm clock out of an Intel Edison. You can set the alarm time using your smart phone via the built-in web interface, live weather data is displayed on the LCD. Not only that, but for fans of the "quantified self" movement, the alarm clock keeps track of how long it takes you to wake up each day using cloud-based data storage.
-
 ## Introduction
 
 This smart alarm clock application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
@@ -61,7 +59,7 @@ You use the Eclipse "Import Wizard" to import an existing project into the works
 ![](./../../../images/cpp/cpp-eclipse-menu.png)
 
 - The "Import wizard" dialog will open.
-![](./../../../images/cpp/cpp-eclipse-menu-select-piw.png)
+![](./../../../images/cpp/cpp-eclipse-menu-select-epiw.png)
 
 - Select "General > Existing Project into Workspace" and click on the "Next" button.
 ![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
