@@ -75,9 +75,6 @@ struct Devices
 		buzzer->stopSound();
 	}
 	void senseMoisture() {
-		Devices devices;
-			devices.init();
-			devices.reset();
 	    while (shouldRun)
 	    {
 	        int val = moisture->value();
