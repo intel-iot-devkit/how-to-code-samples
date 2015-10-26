@@ -87,29 +87,19 @@ https://github.com/hybridgroup/intel-iot-examples-datastore
 
 ## Configuring The Example
 
-To configure the example for the optional Microsoft Azure data store, cluck run->run configurations. In the textbox for commands to execute before application add:
-
-
-
-
-## Running The Example With The Cloud Server
-
-To run the example with the optional backend datastore you need to set the `SERVER` and `AUTH_TOKEN` environment variables. 
+To configure the example with the optional backend datastore you need to set the `SERVER` and `AUTH_TOKEN` environment variables. 
 You can do this in Eclipse by:
-
 
 1. Select the "Run" menu and choose "Run Configurations". The "Run Configurations" dialog will be displayed.
 
 2. Before running the project be sure sure select your Edison under the "connection" dropdown box. 
 
-
 4. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
-
-
 
 ```
   chmod 755 /tmp/storage-unit-flood-detector; export SERVER="http://intel-iot-example-data.azurewebsites.net/logger/storage-unit-flood-detector"; export AUTH_TOKEN="YOUR AUTH TOKEN"
 ```
+
 ### Running The Code On Edison
 
 ![](./../../../images/cpp/cpp-run-eclipse.png)
