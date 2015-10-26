@@ -32,8 +32,6 @@ void notify() {
 
 	std::cerr << r.code << std::endl;
 	std::cerr << r.body << std::endl;
-	cout << r.code<<endl;
-	cout<< r.body<<endl;
 }
 
 int shouldRun = true;
@@ -114,7 +112,6 @@ int main()
 	devices.init();
 	devices.reset();
 	devices.senseMoisture();
-	notify();
 
     return 0;
 }
