@@ -69,7 +69,7 @@ You use the Eclipse "Import Wizard" to import an existing project into the works
 
 ### Connecting The Grove* Sensors
 
-![](./../../../images/flood-detect.jpg)
+![](./../../../images/js/flood-detect.jpg)
 
 You need to have a Grove* Shield connected to an Arduino-compatible breakout board, to plug in all the Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to "5V".
 
