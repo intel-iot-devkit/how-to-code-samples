@@ -1,0 +1,12 @@
+{
+  "name": "range-finder-scanner",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "mraa": "^0.7.3"
+  }
+}

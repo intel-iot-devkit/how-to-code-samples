@@ -1,0 +1,5 @@
+{
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/access-control",
+  "AUTH_TOKEN": "s3cr3t",
+  "CODE": "4321"
+}

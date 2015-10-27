@@ -1,0 +1,5 @@
+{
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/line-follower",
+  "AUTH_TOKEN": "s3cr3t",
+  "CLOCKWISE": 1
+}

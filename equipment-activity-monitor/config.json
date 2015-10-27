@@ -1,0 +1,6 @@
+{
+ "SERVER": "http://intel-examples.azurewebsites.net/logger/equipment-activity",
+ "AUTH_TOKEN": "s3cr3t",
+ "VIBRATION_THRESHOLD": 500,
+ "NOISE_THRESHOLD": 140
+}

@@ -1,0 +1,4 @@
+{
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/doorbell",
+  "AUTH_TOKEN": "s3cr3t"
+}

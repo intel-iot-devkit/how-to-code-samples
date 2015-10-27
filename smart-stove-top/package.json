@@ -1,0 +1,13 @@
+{
+  "name": "smart-stove-top",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "mraa": "^0.7.3",
+    "express": "^4.13.3",
+    "superagent": "^1.3.0"
+  }
+}

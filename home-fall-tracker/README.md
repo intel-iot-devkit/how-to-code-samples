@@ -1,45 +1,43 @@
-# Smart alarm clock
+# Home fall tracker
 
 ## Introduction
 
-This smart alarm clock application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This home fall tracker application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Intel® Galileo board.<br>
-- Set up a web application server to set the alarm time and store this alarm data using Azure Redis Cache* from Microsoft* Azure\*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.<br>
-- Invoke the services of the Weather Underground* API for accessing weather data.
+- Set up a web application server to store fall data using Azure Redis Cache* from Microsoft* Azure\*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.<br>
+- Invoke the services of the Twilio* API for sending text messages.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a smart alarm clock that:<br>
-- can be accessed with your mobile phone via the built-in web interface to set the alarm time;<br>
-- displays live weather data on the LCD;<br>
-- keeps track of how long it takes you to wake up each morning, using cloud-based data storage.
+Using an Intel® Edison board, this project lets you create a home fall tracker bracelet that:<br>
+- monitors for possible falls using the accelerometer;<br>
+- sends a text alert when a possible fall is detected;<br>
+- displays information that help is on the way using the OLED display;<br>
+- keeps track of detected devices, using cloud-based data storage.
 
 ## How it works
 
-This smart alarm clock has a number of useful features. Set the alarm using a web page served directly from the Intel® Edison board, using your mobile phone. When the alarm goes off, the buzzer sounds, and the LCD indicates it’s time to get up. The rotary dial can be used to adjust the brightness of the display.
+The home fall tracker bracelet detects potential falls with the accelerometer. If it detects a possible fall, it sends a text alert via Twilio* and lets the user know that their caretaker has been notified and help is on the way.
 
-In addition, the smart alarm clock can access daily weather data via the Weather Underground* API and use it to change the color of the LCD.
-Optionally, all data can also be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+Optionally, all data can be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
 
 ## Hardware requirements
 
-Grove* Starter Kit Plus containing:
+Xadow* Starter Kit containing:
 
-1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/groverotary.html)
-3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html).
-4. [Grove* Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
-5. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+1. Intel® Edison with a Xadow* expansion board
+2. [Xadow - OLED display](http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
+2. [Xadow - 3-Axis Accelerometer](http://iotdk.intel.com/docs/master/upm/node/classes/adxl345.html)
 
 ## Software requirements
 
 1. Intel® XDK IoT Edition
 2. Microsoft* Azure* account
-3. Weather Underground* API key
+3. Twilio* account
 
 ### How to set up
 
@@ -85,19 +83,19 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
     $ opkg install git
 
-### Connecting the Grove* sensors
+### Connecting the Xadow* sensors
 
-![](./../../images/js/alarm-clock.jpg)
+![](./../../images/js/fall-tracker.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
+You need to have a Xadow* expansion board connected to Intel® Edison to plug in all the Xadow* devices.
 
-1. Plug one end of a Grove* cable into the Grove* Rotary Analog Sensor, and connect the other end to the A0 port on the Grove* Shield.
+For more information on how to set up this expansion board, see this wiki page:
 
-2. Plug one end of a Grove* cable into the Grove* Button, and connect the other end to the D4 port on the Grove* Shield.
+<a href="http://www.seeedstudio.com/wiki/Xadow_-_Edison">http://www.seeedstudio.com/wiki/Xadow_-_Edison</a>
 
-3. Plug one end of a Grove* cable into the Grove* Buzzer, and connect the other end to the D5 port on the Grove* Shield.
+1. Plug one end of a Xadow* connector into the Xadow - OLED Display, and connect the other end to one of the side connectors on the Xadow* expansion board.
 
-4. Plug one end of a Grove* cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove* Shield.
+2. Plug one end of a Xadow* connector into the Xadow - 3-Axis Accelerometer, and connect the other end to one of the side connectors on the Xadow* expansion board.
 
 ### Manual Intel® Edison setup
 
@@ -109,19 +107,20 @@ To obtain the Node.js* modules needed for this example to execute on Intel® Edi
 npm install
 ```
 
-### Weather Underground* API key
+### Twilio* API key
 
-To optionally fetch the real-time weather information, you need to get an API key from the Weather Underground* web site:
+To optionally send text messages, you need to register for an account and get an API key from the Twilio* web site:
 
-<a href="http://www.wunderground.com/weather/api/">http://www.wunderground.com/weather/api</a>
+<a href="https://www.twilio.com">https://www.twilio.com</a>
 
-You cannot retrieve weather conditions without obtaining a Weather Underground* API key first. You can still run the example, but without the weather data.
+You cannot send text messages without obtaining a Twilio* API key first. You can still run the example, but without the text messages.
 
-Pass your Weather Underground* API key to the sample program by modifying the `WEATHER_API_KEY` key in the `config.json` file as follows:
+Pass your Twilio* API key and authentication token to the sample program by modifying the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
-  WEATHER_API_KEY: "YOURAPIKEY"
+  "TWILIO_ACCT_SID": "YOURAPIKEY",
+  "TWILIO_AUTH_TOKEN": "YOURTOKEN"
 }
 ```
 
@@ -135,12 +134,12 @@ For information on how to set up your own cloud data server, go to:
 
 ## Configuring the example
 
-To configure the example for the optional real-time weather data, obtain a key from the Weather Underground* web site as documented above, and then change the `WEATHER_API_KEY` and `LOCATION` keys in the `config.json` file as follows:
+To configure the example for sending optional text messages, obtain an API key from the Twilio* web site as explained above, and then change the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
-  "WEATHER_API_KEY": "YOURAPIKEY",
-  "LOCATION": "San_Francisco"
+  "TWILIO_ACCT_SID": "YOURAPIKEY",
+  "TWILIO_AUTH_TOKEN": "YOURTOKEN"
 }
 ```
 
@@ -148,21 +147,22 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 
 ```
 {
-  "SERVER": "http://intel-examples.azurewebsites.net/logger/alarm-clock",
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/fall-detector",
   "AUTH_TOKEN": "s3cr3t"
 }
 ```
 
-To configure the example for both the weather data and the Microsoft* Azure* data store, change the `WEATHER_API_KEY`, `LOCATION`, `SERVER`, and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for both the text messages and the Microsoft* Azure* data store, change the `TWILIO_ACCT_SID`, `TWILIO_AUTH_TOKEN`, `SERVER`, and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
-  "WEATHER_API_KEY": "YOURAPIKEY",
-  "LOCATION": "San_Francisco"
-  "SERVER": "http://intel-examples.azurewebsites.net/logger/alarm-clock",
+  "TWILIO_ACCT_SID": "YOURAPIKEY",
+  "TWILIO_AUTH_TOKEN": "YOURTOKEN",
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/fall-detector",
   "AUTH_TOKEN": "s3cr3t"
 }
 ```
+
 ## Running the program using Intel® XDK IoT Edition
 
 When you're ready to run the example, make sure you saved all the files.
@@ -179,7 +179,7 @@ Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the c
 
 If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
 
-![](./../../images/js/alarm-clock-output.png)
+![](./../../images/js/fall-tracker-output.png)
 
 You will see output similar to the above when the program is running.
 
@@ -188,12 +188,6 @@ You will see output similar to the above when the program is running.
 To run the example manually on Intel® Edison, establish an SSH connection to the board and execute the following command:
 
     node index.js
-
-### Setting the alarm
-
-The alarm is set using a single-page web interface served directly from the Intel® Edison board while the sample program is running.
-
-The web server runs on port `3000`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining the Intel® Edison IP address
 

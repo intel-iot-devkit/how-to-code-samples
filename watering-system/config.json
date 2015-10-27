@@ -1,0 +1,9 @@
+{
+  "TWILIO_ACCT_SID": "YOURAPIKEY",
+  "TWILIO_AUTH_TOKEN": "YOURTOKEN",
+  "TWILIO_OUTGOING_NUMBER": "323-555-1212",
+  "NUMBER_TO_SEND_TO": "213-555-1212",
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/watering-system",
+  "AUTH_TOKEN": "s3cr3t",
+  "ALARM_THRESHOLD": 28
+}

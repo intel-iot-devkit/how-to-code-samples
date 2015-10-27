@@ -1,0 +1,13 @@
+{
+  "name": "access-control",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "mraa": "^0.7.3",
+    "superagent": "^1.3.0"
+  }
+}

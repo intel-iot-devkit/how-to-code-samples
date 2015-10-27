@@ -1,0 +1,5 @@
+{
+ "SERVER": "http://intel-examples.azurewebsites.net/logger/air-quality",
+ "AUTH_TOKEN": "s3cr3t",
+ "THRESHOLD": 150
+}
