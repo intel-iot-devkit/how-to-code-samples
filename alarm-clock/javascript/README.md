@@ -53,7 +53,7 @@ Want to download a .zip file? In your web browser, go to <a href="https://github
 
 In Intel® XDK IoT Edition, select **Import Your Node.js Project**:
 
-![](./../../images/xdk-menu.png)
+![](./../../images/js/xdk-menu.png)
 
 Then, navigate to the directory where the example project exists, and select it:
 
