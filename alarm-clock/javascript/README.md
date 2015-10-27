@@ -57,15 +57,15 @@ In Intel® XDK IoT Edition, select **Import Your Node.js Project**:
 
 Then, navigate to the directory where the example project exists, and select it:
 
-![](./../../../images/xdk-select.png)
+![](./../../images/js/xdk-select.png)
 
 You need to connect to your Intel® Edison board from your computer to send code to it.
 
-![](./../../../images/xdk-select-device.png)
+![](./../../images/js/xdk-select-device.png)
 
 Click the **IoT Device** menu at the bottom left. If your Intel® Edison is automatically recognized, select it.
 
-![](./../../../images/xdk-manual-connect.png)
+![](./../../images/js/xdk-manual-connect.png)
 
 Otherwise, select **Add Manual Connection**.
 In the **Address** field, type `192.168.2.15`. In the **Port** field, type `58888`.
@@ -87,7 +87,7 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
 ### Connecting the Grove* sensors
 
-![](./../../../images/alarm-clock.jpg)
+![](./../../images/js/alarm-clock.jpg)
 
 You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
@@ -167,19 +167,19 @@ To configure the example for both the weather data and the Microsoft* Azure* dat
 
 When you're ready to run the example, make sure you saved all the files.
 
-![](./../../../images/xdk-upload.png)
+![](./../../images/js/xdk-upload.png)
 
 Click the **Upload** icon to upload the files to the Intel® Edison board.
 
-![](./../../../images/xdk-run.png)
+![](./../../images/js/xdk-run.png)
 
 Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the code on Intel® Edison.
 
-![](./../../../images/xdk-upload-run.png)
+![](./../../images/js/xdk-upload-run.png)
 
 If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
 
-![](./../../../images/alarm-clock-output.png)
+![](./../../images/js/alarm-clock-output.png)
 
 You will see output similar to the above when the program is running.
 
