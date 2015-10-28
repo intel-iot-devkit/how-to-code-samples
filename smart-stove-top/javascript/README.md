@@ -26,7 +26,7 @@ Optionally, all data can also be stored using the Intel® IoT Example Datastore 
 
 ## Hardware requirements
 
-Grove* Starter Kit Plus containing:
+Grove* Home Automation Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove* IR Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/otp538u.html)

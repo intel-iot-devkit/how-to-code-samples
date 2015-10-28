@@ -32,7 +32,7 @@ Optionally, it can store system events using the Intel® IoT Example Datastore r
 
 ## Hardware requirements
 
-Grove* Starter Kit Plus containing:
+Grove* Indoor Environment Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)

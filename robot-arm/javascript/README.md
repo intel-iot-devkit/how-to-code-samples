@@ -26,7 +26,7 @@ Additionally, the motors can be controlled individually via a web page served di
 
 ## Hardware requirements
 
-Grove* Starter Kit containing:
+Grove* Robotics Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove* Thumb Joystick](http://iotdk.intel.com/docs/master/upm/node/classes/joystick12.html)

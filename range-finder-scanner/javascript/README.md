@@ -23,7 +23,7 @@ These readings can be seen by viewing the web page served directly from Intel® 
 
 ## Hardware requirements
 
-Grove* Starter Kit Plus containing:
+Grove* Robotics Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
