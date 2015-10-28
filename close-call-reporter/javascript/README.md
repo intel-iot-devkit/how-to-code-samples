@@ -27,7 +27,7 @@ If a close call is detected (that is, the Grove* IR Distance Interrupter is trip
 
 ## Hardware requirements
 
-Grove* Starter Kit Plus containing:
+Grove* Transportation & Safety Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
