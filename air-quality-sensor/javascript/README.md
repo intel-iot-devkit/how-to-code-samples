@@ -1,41 +1,42 @@
-# BLE scan bracelet
+# Shop air quality monitor
 
 ## Introduction
 
-This Bluetooth* low energy (BLE) scan bracelet application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This air quality monitor application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Intel® Galileo board.<br>
-- Store detected BLE devices using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Store air quality data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a BLE scan bracelet that:<br>
-- searches for BLE devices that come within its scanning range;<br>
-- displays information about detected devices using the OLED display;<br>
-- keeps track of detected devices, using cloud-based data storage.
+Using an Intel® Edison board, this project lets you create an air quality monitor that:<br>
+- continuously checks the air quality for airborne contaminants;<br>
+- sounds an audible warning when the air quality is unhealthy;<br>
+- stores a record of each time the air quality sensor detects contaminants, using cloud-based data storage.
 
 ## How it works
 
-This BLE scanner bracelet uses a Xadow* expansion board for Intel® Edison and the OLED display included in the Xadow* kit.
+This shop air quality monitor uses the sensor to constantly keep track of airborne contaminants.
 
-With these components, we'll make a simple BLE scanner that displays information on the OLED display when BLE-equipped devices enter or exit its scanning range.
+If the sensor detects one of several different gases and the detected level exceeds a defined threshold, it makes a sound through the speaker to indicate a warning.
 
-Optionally, all data can be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+Also, optionally, the monitor stores the air quality data using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
 
-## Hardware requirements
+### Hardware requirements
 
-Xadow* Starter Kit containing:
+Grove* Home Automation Kit containing:
 
-1. Intel® Edison with a Xadow* expansion board
-2. [Xadow* - OLED display](http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
+1. Intel® Edison with an Arduino* breakout board
+2. [Grove* Air Quality Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/tp401.html)
+3. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
-## Software requirements
+### Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account
+2. Microsoft* Azure* account (optional)
 
 ### How to set up
 
@@ -43,7 +44,7 @@ To begin, clone the **Intel® IoT Examples** repository with Git* on your comput
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/hybridgroup/intel-iot-examples">https://github.com/hybridgroup/intel-iot-examples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel® XDK IoT Edition
 
@@ -81,23 +82,15 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
     $ opkg install git
 
-### Set up Intel® Edison for BLE development
+### Connecting the Grove* sensors
 
-For information on how to set up Intel® Edison for BLE development, see this post by Rex St John: 
+![](./../../images/js/air-quality.jpg)
 
-<a href="http://rexstjohn.com/configure-intel-edison-for-bluetooth-le-smart-development">http://rexstjohn.com/configure-intel-edison-for-bluetooth-le-smart-development</a>
+You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
-### Connecting the Xadow* sensors
+1. Plug one end of a Grove* cable into the Grove* Air Quality Sensor, and connect the other end to the AO port on the Grove* Shield.
 
-![](./../../images/js/ble-scan.jpg)
-
-You need to have a Xadow* expansion board connected to Intel® Edison to plug in all the Xadow* devices.
-
-For more information on how to set up this expansion board, see this wiki page:
-
-<a href="http://www.seeedstudio.com/wiki/Xadow_-_Edison">http://www.seeedstudio.com/wiki/Xadow_-_Edison</a>
-
-Plug one end of a Xadow* connector into the Xadow* OLED, and connect the other end to one of the side connectors on the Xadow* expansion board.
+2. Plug one end of a Grove* cable into the Grove* Speaker, and connect the other end to the D5 port on the Grove* Shield.
 
 ### Manual Intel® Edison setup
 
@@ -115,15 +108,15 @@ Optionally, you can store the data generated by this example program in a backen
 
 For information on how to set up your own cloud data server, go to:
 
-<a href="https://github.com/hybridgroup/intel-iot-examples-datastore">https://github.com/hybridgroup/intel-iot-examples-datastore</a>
+<a href="https://github.com/intel-iot-devkit/how-to-code-samples-datastore">https://github.com/intel-iot-devkit/how-to-code-samples-datastore</a>
 
-## Configuring The Example
+## Configuring the example
 
 To configure the example for the optional Microsoft* Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
-  "SERVER": "http://intel-examples.azurewebsites.net/logger/access-control",
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/air-quality",
   "AUTH_TOKEN": "s3cr3t"
 }
 ```
@@ -144,15 +137,9 @@ Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the c
 
 If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
 
-![](./../../images/js/ble-scan-output.png)
+![](./../../images/js/air-quality-output.png)
 
 You will see output similar to the above when the program is running.
-
-## Running the program manually
-
-To run the example manually on Intel® Edison, establish an SSH connection to the board and execute the following command:
-
-    node index.js
 
 ### Determining the Intel® Edison IP address
 
@@ -166,3 +153,4 @@ You will see the output similar to the following:
         inet 192.168.1.13/24 brd 192.168.1.255 scope global wlan0
 
 The IP address is shown next to `inet`. In the example above, the IP address is `192.168.1.13`.
+

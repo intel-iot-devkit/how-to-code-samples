@@ -1,42 +1,42 @@
-# Smart fire alarm
+# Plant lighting system
 
 ## Introduction
 
-This smart fire alarm application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This automatic plant lighting system monitor application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Intel® Galileo board.<br>
-- Set up a web application server to store fire alarm data using Azure Redis Cache* from Microsoft* Azure\*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.<br>
+- Set up a web application server to store lighting system data using Azure Redis Cache* from Microsoft* Azure\*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.<br>
 - Invoke the services of the Twilio* API for sending text messages.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a smart fire alarm that:<br>
-- constantly monitors for unsafe temperature levels;<br>
-- issues an audible notification using the buzzer;<br>
-- issues a visual notification using the LCD;<br>
-- keeps track of fire events, using cloud-based data storage;<br>
-- sends text messages to alert others of a possible fire.
+Using an Intel® Edison board, this project lets you create an automatic plant lighting monitor system that:<br>
+- checks if a separate automated lighting system is turned on or off based on a configurable schedule, by using a light sensor;<br>
+- can be accessed with your mobile phone via the built-in web interface to set the lighting times;<br>
+- also monitors the water levels using a connected moisture sensor;<br>
+- logs events from the lighting system, using cloud-based data storage;<br>
+- sends text messages to alert recipients if the system if not working as expected.
 
 ## How it works
 
-This smart fire alarm monitors the ambient temperature using the Grove* Temperature Sensor.
+The system allows setting the lighting schedule via a web page served directly from Intel® Edison by using your mobile phone.
 
-If the temperature exceeds a certain threshold (set to 28 degrees Celsius in this example), it sounds an alarm through the buzzer and displays an alert on the LCD.
+If the lighting is supposed to be on, but the light sensor does not detect any light, it sends a text alert to a specified number through Twilio*.
 
-In addition, it can send a text message to a specified number through Twilio*, warning the recipient of a possible fire danger.
+It also automatically checks and logs moisture sensor data at periodic intervals.
 
-Optionally, it can log fire events using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+Optionally, it can store system events using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
 
 ## Hardware requirements
 
 Grove* Starter Kit Plus containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
-3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
+2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
+3. [Grove* Light Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovelight.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
@@ -51,7 +51,7 @@ To begin, clone the **Intel® IoT Examples** repository with Git* on your comput
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/hybridgroup/intel-iot-examples">https://github.com/hybridgroup/intel-iot-examples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel® XDK IoT Edition
 
@@ -91,13 +91,13 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
 ### Connecting the Grove* sensors
 
-![](./../../images/js/fire-alarm.jpg)
+![](./../../images/js/lighting.jpg)
 
 You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
-1. Plug one end of a Grove* cable into the Grove* Temperature Sensor, and connect the other end to the A0 port on the Grove* Shield.
+1. Plug one end of a Grove* cable into the Grove* Light Sensor, and connect the other end to the A0 port on the Grove* Shield.
 
-2. Plug one end of a Grove* cable into the Grove* Buzzer, and connect the other end to the D5 port on the Grove* Shield.
+2. Plug one end of a Grove* cable into the Grove* Moisture Sensor, and connect the other end to the A1 port on the Grove* Shield.
 
 3. Plug one end of a Grove* cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove* Shield.
 
@@ -134,7 +134,7 @@ Optionally, you can store the data generated by this example program in a backen
 
 For information on how to set up your own cloud data server, go to:
 
-<a href="https://github.com/hybridgroup/intel-iot-examples-datastore">https://github.com/hybridgroup/intel-iot-examples-datastore</a>
+<a href="https://github.com/intel-iot-devkit/how-to-code-samples-datastore">https://github.com/intel-iot-devkit/how-to-code-samples-datastore</a>
 
 ## Configuring the example
 
@@ -151,7 +151,7 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 
 ```
 {
-  "SERVER": "http://intel-examples.azurewebsites.net/logger/fire-alarm",
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/lighting-system",
   "AUTH_TOKEN": "s3cr3t"
 }
 ```
@@ -162,7 +162,7 @@ To configure the example for both the text messages and the Microsoft* Azure* da
 {
   "TWILIO_ACCT_SID": "YOURAPIKEY",
   "TWILIO_AUTH_TOKEN": "YOURTOKEN",
-  "SERVER": "http://intel-examples.azurewebsites.net/logger/fire-alarm",
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/lighting-system",
   "AUTH_TOKEN": "s3cr3t"
 }
 ```
@@ -183,7 +183,7 @@ Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the c
 
 If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
 
-![](./../../images/js/fire-alarm-output.png)
+![](./../../images/js/lighting-system-output.png)
 
 You will see output similar to the above when the program is running.
 
@@ -192,6 +192,12 @@ You will see output similar to the above when the program is running.
 To run the example manually on Intel® Edison, establish an SSH connection to the board and execute the following command:
 
     node index.js
+
+### Setting the lighting schedule
+
+The schedule for the lighting system is set using a single-page web interface served from Intel® Edison while the sample program is running.
+
+The web server runs on port `3000`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining the Intel® Edison IP address
 

@@ -1,37 +1,37 @@
-# Close-call fleet driving reporter
+# Storage unit flood detector
 
 ## Introduction
 
-This close-call fleet driving reporter application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This storage unit flood detector application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Intel® Galileo board.<br>
-- Store the close-call data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Store water detection data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
-## What it is
+## What it Is
 
-Using an Intel® Edison board, this project lets you create a close-call fleet driving reporter that:<br>
-- monitors the Grove* IR Distance Interrupter;<br>
-- monitors the Grove* GPS;<br>
-- keeps track of close calls and logs them using cloud-based data storage.
+Using an Intel® Edison board, this project lets you create a storage unit flood detector that:<br>
+- continuously checks the moisture sensor;<br>
+- sounds an audible warning in case of a possible flooding;<br>
+- stores a record of each time water is detected, using cloud-based data storage.
 
 ## How it works
 
-This close-call reporter system monitors the direction the Grove* IR Distance Interrupter is pointed to.
+This storage unit flood detector uses the moisture sensor to constantly ensure that your stored belongings are not destroyed by water damage.
 
-It also keeps track of the GPS position of Intel® Edison, updating frequently to ensure accurate data.
+If the moisture level exceeds a defined threshold, it makes a sound to indicate a warning.
 
-If a close call is detected (that is, the Grove* IR Distance Interrupter is tripped), the Intel® Edison board, if configured, notifies the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+Optionally, the monitor can store moisture data using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
 
 ## Hardware requirements
 
 Grove* Starter Kit Plus containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
-3. [Grove* GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
+2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
+3. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
 ## Software requirements
 
@@ -44,7 +44,7 @@ To begin, clone the **Intel® IoT Examples** repository with Git* on your comput
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/hybridgroup/intel-iot-examples">https://github.com/hybridgroup/intel-iot-examples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel® XDK IoT Edition
 
@@ -84,13 +84,13 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
 ### Connecting the Grove* sensors
 
-![](./../../images/js/close-call.jpg)
+![](./../../images/js/flood-detect.jpg)
 
 You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
-1. Plug one end of a Grove* cable into the Grove* IR Distance Interrupter, and connect the other end to the D2 port on the Grove* Shield.
+1. Plug one end of a Grove* cable into the Grove* Moisture Sensor, and connect the other end to the A0 port on the Grove* Shield.
 
-2. Plug one end of a Grove* cable into the Grove* GPS, and connect the other end to the UART port on the Grove* Shield.
+2. Plug one end of a Grove* cable into the Grove* Speaker, and connect the other end to the D5 port on the Grove* Shield.
 
 ### Manual Intel® Edison setup
 
@@ -108,7 +108,7 @@ Optionally, you can store the data generated by this example program in a backen
 
 For information on how to set up your own cloud data server, go to:
 
-<a href="https://github.com/hybridgroup/intel-iot-examples-datastore">https://github.com/hybridgroup/intel-iot-examples-datastore</a>
+<a href="https://github.com/intel-iot-devkit/how-to-code-samples-datastore">https://github.com/intel-iot-devkit/how-to-code-samples-datastore</a>
 
 ## Configuring the example
 
@@ -116,7 +116,7 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 
 ```
 {
-  "SERVER": "http://intel-examples.azurewebsites.net/logger/close-call",
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/flood-detect",
   "AUTH_TOKEN": "s3cr3t"
 }
 ```
@@ -137,7 +137,7 @@ Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the c
 
 If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
 
-![](./../../images/js/close-call-output.png)
+![](./../../images/js/flood-detect-output.png)
 
 You will see output similar to the above when the program is running.
 

@@ -1,38 +1,36 @@
-# Wrist field data reporter
+# Robot arm
 
 ## Introduction
 
-This wrist field data reporter application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This robot arm application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Intel® Galileo board.<br>
-- Set up a web application server to view data using a web page served directly from Intel® Edison.
+- Set up a web application server to control a robot arm using a web page served directly from Intel® Edison.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a wrist field data reporter that:<br>
-- continuously monitors the data read from the digital barometer;<br>
-- displays the latest reading using the OLED display when the touch sensor is tapped;<br>
-- serves the recorded data in the JSON format directly from Intel® Edison.
+Using an Intel® Edison board, this project lets you create a robot arm that:<br>
+- continuously checks the Grove* Joystick;<br>
+- moves 2 stepper motors based on the joystick control;<br>
+- can be accessed via the built-in web interface to control the motors.
 
 ## How it works
 
-This wrist field data reporter can be used to sample barometer data at regular intervals.
+The robot arm example allows you to control a robotic arm using a thumb joystick.
+Each axis of the joystick corresponds to a motor to control.
 
-It also provides a way to look at the latest data captured, using the QTouch* sensor and the OLED display.
-
-These readings can be viewed or downloaded as JSON data served directly from an embedded web server running on Intel® Edison.
+Additionally, the motors can be controlled individually via a web page served directly from Intel® Edison.
 
 ## Hardware requirements
 
-Xadow* Starter Kit containing:
+Grove* Starter Kit containing:
 
-1. Intel® Edison with a Xadow* expansion board
-2. [Xadow* - OLED Display](http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
-3. [Xadow* - QTouch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/at42qt1070.html)
-4. [Xadow* - Atmospheric Pressure Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/bmpx8x.html)
+1. Intel® Edison with an Arduino* breakout board
+2. [Grove* Thumb Joystick](http://iotdk.intel.com/docs/master/upm/node/classes/joystick12.html)
+3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html) (x2)
 
 ## Software requirements
 
@@ -44,7 +42,7 @@ To begin, clone the **Intel® IoT Examples** repository with Git* on your comput
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/hybridgroup/intel-iot-examples">https://github.com/hybridgroup/intel-iot-examples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel® XDK IoT Edition
 
@@ -82,21 +80,19 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
     $ opkg install git
 
-### Connecting the Xadow* sensors
+### Connecting the Grove* sensors
 
-![](./../../images/js/field-data.jpg)
+![](./../../images/js/robot-arm.jpg)
 
-You need to have a Xadow* expansion board connected to Intel® Edison to plug in all the Xadow* devices.
+You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
-For more information on how to set up this expansion board, see this wiki page:
+You need to power Intel® Edison with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
-<a href="http://www.seeedstudio.com/wiki/Xadow_-_Edison">http://www.seeedstudio.com/wiki/Xadow_-_Edison</a>
+In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison board and the motors, so you need either 2 batteries or 2 power supplies in total.
 
-1. Plug one end of a Xadow* connector into the Xadow* - OLED Display, and connect the other end to one of the side connectors on the Xadow* expansion board.
+1. Plug each of the stepper motor controllers into 4 pins on the Arduino* breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino* breakout board (VCC), and to the separate 5V power for the motors (VM).
 
-2. Plug one end of a Xadow* connector into the Xadow* - Atmospheric Pressure Sensor, and connect the other end to one of the side connectors on the Xadow* expansion board.
-
-3. Plug one end of a Xadow* connector into the Xadow - QTouch* Sensor, and connect the other end to one of the other two connected devices.
+2. Plug one end of a Grove* cable into the Grove* Thumb Joystick, and connect the other end to the A0 port on the Grove* Shield.
 
 ### Manual Intel® Edison setup
 
@@ -124,7 +120,7 @@ Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the c
 
 If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
 
-![](./../../images/js/field-data-output.png)
+![](./../../images/js/robot-arm-output.png)
 
 You will see output similar to the above when the program is running.
 
@@ -134,9 +130,11 @@ To run the example manually on Intel® Edison, establish an SSH connection to th
 
     node index.js
 
-### Access Point Setup
+### Controlling via a browser
 
-For information on setting up Intel® Edison to serve as a WiFi access point, see [Intel's documentation on the matter](https://software.intel.com/en-us/getting-started-with-ap-mode-for-intel-edison-board).
+Optionally, the motors can be controlled directly via a web page served by the program running on Intel® Edison.
+
+The web server runs on port `3000`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining the Intel® Edison IP address
 

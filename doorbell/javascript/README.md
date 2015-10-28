@@ -1,42 +1,41 @@
-# Shop air quality monitor
+# Smart doorbell
 
 ## Introduction
 
-This air quality monitor application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This smart doorbell application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Intel® Galileo board.<br>
-- Store air quality data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Store the doorbell ring data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create an air quality monitor that:<br>
-- continuously checks the air quality for airborne contaminants;<br>
-- sounds an audible warning when the air quality is unhealthy;<br>
-- stores a record of each time the air quality sensor detects contaminants, using cloud-based data storage.
+Using an Intel® Edison board, this project lets you create a smart doorbell that:
+- issues an audible notification whenever the doorbell is rung;
+- issues a visual notification whenever the doorbell is rung;
+- keeps track of visitors using cloud-based data storage.
 
 ## How it works
 
-This shop air quality monitor uses the sensor to constantly keep track of airborne contaminants.
+This smart doorbell makes a noise with the buzzer when the Grove* Touch Sensor is pressed. In addition, it displays a message on the LCD.
 
-If the sensor detects one of several different gases and the detected level exceeds a defined threshold, it makes a sound through the speaker to indicate a warning.
+Optionally, doorbell ring data can also be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
 
-Also, optionally, the monitor stores the air quality data using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+## Hardware requirements
 
-### Hardware requirements
-
-Grove* Home Automation Kit containing:
+Grove* Starter Kit Plus containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Air Quality Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/tp401.html)
-3. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+2. [Grove* Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/ttp223.html)
+3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
+4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-### Software requirements
+## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account (optional)
+2. Microsoft* Azure* account
 
 ### How to set up
 
@@ -44,7 +43,7 @@ To begin, clone the **Intel® IoT Examples** repository with Git* on your comput
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/hybridgroup/intel-iot-examples">https://github.com/hybridgroup/intel-iot-examples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel® XDK IoT Edition
 
@@ -84,13 +83,15 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
 ### Connecting the Grove* sensors
 
-![](./../../images/js/air-quality.jpg)
+![](./../../images/js/doorbell.jpg)
 
 You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
-1. Plug one end of a Grove* cable into the Grove* Air Quality Sensor, and connect the other end to the AO port on the Grove* Shield.
+1. Plug one end of a Grove* cable into the Grove* Touch Sensor, and connect the other end to the D4 port on the Grove* Shield.
 
-2. Plug one end of a Grove* cable into the Grove* Speaker, and connect the other end to the D5 port on the Grove* Shield.
+2. Plug one end of a Grove* cable into the Grove* Buzzer, and connect the other end to the D5 port on the Grove* Shield.
+
+3. Plug one end of a Grove* cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove* Shield.
 
 ### Manual Intel® Edison setup
 
@@ -108,7 +109,7 @@ Optionally, you can store the data generated by this example program in a backen
 
 For information on how to set up your own cloud data server, go to:
 
-<a href="https://github.com/hybridgroup/intel-iot-examples-datastore">https://github.com/hybridgroup/intel-iot-examples-datastore</a>
+<a href="https://github.com/intel-iot-devkit/how-to-code-samples-datastore">https://github.com/intel-iot-devkit/how-to-code-samples-datastore</a>
 
 ## Configuring the example
 
@@ -116,7 +117,7 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 
 ```
 {
-  "SERVER": "http://intel-examples.azurewebsites.net/logger/air-quality",
+  "SERVER": "http://intel-examples.azurewebsites.net/counter/doorbell/inc",
   "AUTH_TOKEN": "s3cr3t"
 }
 ```
@@ -137,9 +138,15 @@ Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the c
 
 If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
 
-![](./../../images/js/air-quality-output.png)
+![](./../../images/js/doorbell-output.png)
 
 You will see output similar to the above when the program is running.
+
+## Running the program manually
+
+To run the example manually on Intel® Edison, establish an SSH connection to the board and execute the following command:
+
+    node index.js
 
 ### Determining the Intel® Edison IP address
 
@@ -153,4 +160,3 @@ You will see the output similar to the following:
         inet 192.168.1.13/24 brd 192.168.1.255 scope global wlan0
 
 The IP address is shown next to `inet`. In the example above, the IP address is `192.168.1.13`.
-

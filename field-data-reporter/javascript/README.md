@@ -1,42 +1,42 @@
-# Storage unit flood detector
+# Wrist field data reporter
 
 ## Introduction
 
-This storage unit flood detector application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This wrist field data reporter application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Intel® Galileo board.<br>
-- Store water detection data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a web application server to view data using a web page served directly from Intel® Edison.
 
-## What it Is
+## What it is
 
-Using an Intel® Edison board, this project lets you create a storage unit flood detector that:<br>
-- continuously checks the moisture sensor;<br>
-- sounds an audible warning in case of a possible flooding;<br>
-- stores a record of each time water is detected, using cloud-based data storage.
+Using an Intel® Edison board, this project lets you create a wrist field data reporter that:<br>
+- continuously monitors the data read from the digital barometer;<br>
+- displays the latest reading using the OLED display when the touch sensor is tapped;<br>
+- serves the recorded data in the JSON format directly from Intel® Edison.
 
 ## How it works
 
-This storage unit flood detector uses the moisture sensor to constantly ensure that your stored belongings are not destroyed by water damage.
+This wrist field data reporter can be used to sample barometer data at regular intervals.
 
-If the moisture level exceeds a defined threshold, it makes a sound to indicate a warning.
+It also provides a way to look at the latest data captured, using the QTouch* sensor and the OLED display.
 
-Optionally, the monitor can store moisture data using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+These readings can be viewed or downloaded as JSON data served directly from an embedded web server running on Intel® Edison.
 
 ## Hardware requirements
 
-Grove* Starter Kit Plus containing:
+Xadow* Starter Kit containing:
 
-1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
-3. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+1. Intel® Edison with a Xadow* expansion board
+2. [Xadow* - OLED Display](http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
+3. [Xadow* - QTouch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/at42qt1070.html)
+4. [Xadow* - Atmospheric Pressure Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/bmpx8x.html)
 
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account
 
 ### How to set up
 
@@ -44,7 +44,7 @@ To begin, clone the **Intel® IoT Examples** repository with Git* on your comput
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/hybridgroup/intel-iot-examples">https://github.com/hybridgroup/intel-iot-examples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel® XDK IoT Edition
 
@@ -82,15 +82,21 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
     $ opkg install git
 
-### Connecting the Grove* sensors
+### Connecting the Xadow* sensors
 
-![](./../../images/js/flood-detect.jpg)
+![](./../../images/js/field-data.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
+You need to have a Xadow* expansion board connected to Intel® Edison to plug in all the Xadow* devices.
 
-1. Plug one end of a Grove* cable into the Grove* Moisture Sensor, and connect the other end to the A0 port on the Grove* Shield.
+For more information on how to set up this expansion board, see this wiki page:
 
-2. Plug one end of a Grove* cable into the Grove* Speaker, and connect the other end to the D5 port on the Grove* Shield.
+<a href="http://www.seeedstudio.com/wiki/Xadow_-_Edison">http://www.seeedstudio.com/wiki/Xadow_-_Edison</a>
+
+1. Plug one end of a Xadow* connector into the Xadow* - OLED Display, and connect the other end to one of the side connectors on the Xadow* expansion board.
+
+2. Plug one end of a Xadow* connector into the Xadow* - Atmospheric Pressure Sensor, and connect the other end to one of the side connectors on the Xadow* expansion board.
+
+3. Plug one end of a Xadow* connector into the Xadow - QTouch* Sensor, and connect the other end to one of the other two connected devices.
 
 ### Manual Intel® Edison setup
 
@@ -100,25 +106,6 @@ To obtain the Node.js* modules needed for this example to execute on Intel® Edi
 
 ```
 npm install
-```
-
-### Microsoft* Azure* server setup
-
-Optionally, you can store the data generated by this example program in a backend database deployed using Microsoft* Azure\*, Node.js\*, and a Redis* data store.
-
-For information on how to set up your own cloud data server, go to:
-
-<a href="https://github.com/hybridgroup/intel-iot-examples-datastore">https://github.com/hybridgroup/intel-iot-examples-datastore</a>
-
-## Configuring the example
-
-To configure the example for the optional Microsoft* Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
-
-```
-{
-  "SERVER": "http://intel-examples.azurewebsites.net/logger/flood-detect",
-  "AUTH_TOKEN": "s3cr3t"
-}
 ```
 
 ## Running the program using Intel® XDK IoT Edition
@@ -137,7 +124,7 @@ Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the c
 
 If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
 
-![](./../../images/js/flood-detect-output.png)
+![](./../../images/js/field-data-output.png)
 
 You will see output similar to the above when the program is running.
 
@@ -146,6 +133,10 @@ You will see output similar to the above when the program is running.
 To run the example manually on Intel® Edison, establish an SSH connection to the board and execute the following command:
 
     node index.js
+
+### Access Point Setup
+
+For information on setting up Intel® Edison to serve as a WiFi access point, see [Intel's documentation on the matter](https://software.intel.com/en-us/getting-started-with-ap-mode-for-intel-edison-board).
 
 ### Determining the Intel® Edison IP address
 

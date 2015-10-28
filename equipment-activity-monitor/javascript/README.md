@@ -1,33 +1,40 @@
-# Range finder scanner
+# Shop-floor equipment activity monitor
 
-This range finder scanner application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+## Introduction
+
+This shop-floor equipment activity monitor application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Intel® Galileo board.<br>
-- Set up a web application server to view range finder data using a web page served directly from Intel® Edison.
+- Store equipment usage data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a range finding scanner that:<br>
-- continuously checks the Grove* IR Distance Interrupter;<br>
-- moves the stepper motor in a 360-degree circle;<br>
-- can be accessed via the built-in web interface to view range finder data.
+Using an Intel® Edison board, this project lets you create a shop-floor equipment activity monitor that:<br>
+- tracks equipment usage by monitoring sound and vibration sensors;<br>
+- issues a visual notification whenever the equipment is in use;<br>
+- logs equipment usage using cloud-based data storage.
 
 ## How it works
 
-As the stepper motor turns, it pauses to get readings from the Grove* IR Distance Interrupter.
+This equipment activity monitor watches for sound and vibration.
 
-These readings can be seen by viewing the web page served directly from Intel® Edison.
+If both exceed a defined threshold, it lights up the display to indicate the equipment is in use.
+
+Once the equipment is no longer used, it clears the display.
+
+Optionally, equipment usage start/stop events can also be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
 
 ## Hardware requirements
 
 Grove* Starter Kit Plus containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
-3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html)
+2. [Grove* Sound Sensor](http://www.seeedstudio.com/depot/Grove-Sound-Sensor-p-752.html)
+3. [Grove* Piezo Vibration Sensor](http://www.seeedstudio.com/depot/Grove-Piezo-Vibration-Sensor-p-1411.html)
+4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
 
@@ -40,7 +47,7 @@ To begin, clone the **Intel® IoT Examples** repository with Git* on your comput
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/hybridgroup/intel-iot-examples">https://github.com/hybridgroup/intel-iot-examples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel® XDK IoT Edition
 
@@ -80,17 +87,15 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
 ### Connecting the Grove* sensors
 
-![](./../../images/js/range-finder.jpg)
+![](./../../images/js/equipment-activity.jpg)
 
 You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
-You need to power Intel® Edison with the external power adaptor that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
+1. Plug one end of a Grove* cable into the Grove* Sound Sensor, and connect the other end to the A0 port on the Grove* Shield.
 
-In addition, you need a breadboard and an extra 5V power supply to provide power to the motor. Note: you need a separate battery or power supply for the motor. You cannot use the same power supply for both the Intel® Edison board and the motor, so you need either 2 batteries or 2 power supplies in total.
+2. Plug one end of a Grove* cable into the Grove* Piezo Vibration Sensor, and connect the other end to the A2 port on the Grove* Shield.
 
-1. Plug the stepper motor controller into pins 9, 10, 11, and 12 on the Arduino* breakout board for it to be able to be controlled. Connect the controller to ground (GND), to the 5V power coming from the Arduino* breakout board (VCC), and to the separate 5V power for the motor (VM).
-
-2. Plug one end of a Grove* cable into the Grove* IR Distance Interrupter, and connect the other end to the D2 port on the Grove* Shield.
+3. Plug one end of a Grove* cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove* Shield.
 
 ### Manual Intel® Edison setup
 
@@ -108,7 +113,7 @@ Optionally, you can store the data generated by this example program in a backen
 
 For information on how to set up your own cloud data server, go to:
 
-<a href="https://github.com/hybridgroup/intel-iot-examples-datastore">https://github.com/hybridgroup/intel-iot-examples-datastore</a>
+<a href="https://github.com/intel-iot-devkit/how-to-code-samples-datastore">https://github.com/intel-iot-devkit/how-to-code-samples-datastore</a>
 
 ## Configuring the example
 
@@ -116,7 +121,7 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 
 ```
 {
-  "SERVER": "http://intel-examples.azurewebsites.net/logger/line-follower",
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/equipment-activity",
   "AUTH_TOKEN": "s3cr3t"
 }
 ```
@@ -137,7 +142,7 @@ Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the c
 
 If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
 
-![](./../../images/js/range-finder-output.png)
+![](./../../images/js/equipment-activity-output.png)
 
 You will see output similar to the above when the program is running.
 
@@ -146,12 +151,6 @@ You will see output similar to the above when the program is running.
 To run the example manually on Intel® Edison, establish an SSH connection to the board and execute the following command:
 
     node index.js
-
-### Viewing the range data
-
-The range finder data is viewed using a single-page web interface served from Intel® Edison while the sample program is running.
-
-The web server runs on port `3000`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining the Intel® Edison IP address
 

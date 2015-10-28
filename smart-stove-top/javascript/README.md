@@ -1,41 +1,42 @@
-# Earthquake detector
+# Smart stove top
 
 ## Introduction
 
-This earthquake detector application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This smart stove top application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.<br>
-- Invoke the services of the United States Geological Survey* (USGS*) API for accessing earthquake data.
+- Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Intel® Galileo board.<br>
+- Set up a web application server to set the target temperature and store this data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create an earthquake detector that:<br>
-- senses motion using the digital accelerometer;<br>
-- checks live earthquake data, using the USGS* API;<br>
-- displays the earthquake on the LCD.
+Using an Intel® Edison board, this project lets you create a smart alarm clock that:<br>
+- can be accessed with your mobile phone via the built-in web interface to set the alarm time;<br>
+- displays live weather data on the LCD;<br>
+- keeps track of how long it takes you to wake up each morning, using cloud-based data storage.
 
 ## How it works
 
-This earthquake detector constantly reads the 3-axis digital accelerometer looking for movement that could indicate an earthquake.
-
-When it thinks it detects an earthquake, it attempts to verify with the USGS* API that an earthquake actually occurred.
-
-If so, it displays a warning on the LCD.
+This smart stove top sensor has a number of useful features designed to help you monitor the temperature of the food you are cooking on your legacy stove top.
+Set the target temperature for a pot on your range top via a web page served directly from Intel® Edison, using your mobile phone.
+When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, alarm goes off.
+Optionally, all data can also be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
 
 ## Hardware requirements
 
 Grove* Starter Kit Plus containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* 3-Axis Digital Accelerometer](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
-3. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+2. [Grove* IR Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/otp538u.html)
+3. [Grove* Flame Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/yg1006.html)
+4. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
 ## Software requirements
 
 1. Intel® XDK IoT Edition
+2. Microsoft* Azure* account
 
 ### How to set up
 
@@ -43,7 +44,7 @@ To begin, clone the **Intel® IoT Examples** repository with Git* on your comput
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/hybridgroup/intel-iot-examples">https://github.com/hybridgroup/intel-iot-examples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel® XDK IoT Edition
 
@@ -83,13 +84,15 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
 ### Connecting the Grove* sensors
 
-![](./../../images/js/earthquake-detector.jpg)
+![](./../../images/js/smart-stove.jpg)
 
 You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
-1. Plug one end of a Grove* cable into the Grove* 3-Axis Digital Accelerometer, and connect the other end to any of the I2C ports on the Grove* Shield.
+1. Plug one end of a Grove* cable into the Grove* IR Temperature Sensor, and connect the other end to the A0 port on the Grove* Shield.
 
-2. Plug one end of a Grove* cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove* Shield.
+2. Plug one end of a Grove* cable into the Grove* Flame Sensor, and connect the other end to the D4 port on the Grove* Shield.
+
+3. Plug one end of a Grove* cable into the Grove* Speaker, and connect the other end to the D5 port on the Grove* Shield.
 
 ### Manual Intel® Edison setup
 
@@ -101,14 +104,22 @@ To obtain the Node.js* modules needed for this example to execute on Intel® Edi
 npm install
 ```
 
+### Microsoft* Azure* server setup
+
+Optionally, you can store the data generated by this example program in a backend database deployed using Microsoft* Azure\*, Node.js\*, and a Redis* data store.
+
+For information on how to set up your own cloud data server, go to:
+
+<a href="https://github.com/intel-iot-devkit/how-to-code-samples-datastore">https://github.com/intel-iot-devkit/how-to-code-samples-datastore</a>
+
 ## Configuring the example
 
-To configure the example to check for earthquakes in your area, change the `LATITUDE` key in the `config.json` file as follows:
+To configure the example for the optional Microsoft* Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
-  "LATITUDE": "47.641944",
-  "LONGITUDE": "-122.127222"
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/stove-top",
+  "AUTH_TOKEN": "s3cr3t"
 }
 ```
 
@@ -128,7 +139,7 @@ Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the c
 
 If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
 
-![](./../../images/js/earthquake-detector-output.png)
+![](./../../images/js/smart-stove-output.png)
 
 You will see output similar to the above when the program is running.
 
@@ -137,6 +148,12 @@ You will see output similar to the above when the program is running.
 To run the example manually on Intel® Edison, establish an SSH connection to the board and execute the following command:
 
     node index.js
+
+### Setting the temperature
+
+The target temperature is set using a single-page web interface served from Intel® Edison while the sample program is running.
+
+The web server runs on port `3000`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining the Intel® Edison IP address
 
