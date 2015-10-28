@@ -203,6 +203,8 @@ To run the example manually on Intel® Edison, establish an SSH connection to th
 
 ### Setting the watering schedule
 
+![](./../../images/js/watering-system-web.png)
+
 The schedule for the watering system is set using a single-page web interface served from Intel® Edison while the sample program is running.
 
 The web server runs on port `3000`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
