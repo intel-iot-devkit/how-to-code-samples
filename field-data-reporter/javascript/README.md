@@ -134,6 +134,14 @@ To run the example manually on Intel® Edison, establish an SSH connection to th
 
     node index.js
 
+### Data Access via Browser
+
+![](./../../images/js/field-data-web.png)
+
+The data collected can be downloaded directly via a webpage as JSON, served by the program running on the Edison.
+
+The web server runs on the Intel Edison's port 3000, so if the Intel Edison is connected to WiFi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+
 ### Access Point Setup
 
 For information on setting up Intel® Edison to serve as a WiFi access point, see [Intel's documentation on the matter](https://software.intel.com/en-us/getting-started-with-ap-mode-for-intel-edison-board).
