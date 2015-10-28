@@ -191,7 +191,7 @@ To run the example manually on Intel® Edison, establish an SSH connection to th
 
 ### Setting the alarm
 
-![](./../../../images/js/alarm-clock-web.png)
+![](./../../images/js/alarm-clock-web.png)
 
 The alarm is set using a single-page web interface served directly from the Intel® Edison board while the sample program is running.
 
