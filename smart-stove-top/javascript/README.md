@@ -12,10 +12,10 @@ From this exercise, developers will learn how to:<br>
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a smart alarm clock that:<br>
-- can be accessed with your mobile phone via the built-in web interface to set the alarm time;<br>
-- displays live weather data on the LCD;<br>
-- keeps track of how long it takes you to wake up each morning, using cloud-based data storage.
+Using an Intel® Edison board, this project lets you create a smart stove top that:<br>
+- allows you to set a target temperature;<br>
+- monitors your stove and notifies you when your set temperature has been reached;<br>
+- stores historical temperature data using cloud-based data storage.
 
 ## How it works
 
