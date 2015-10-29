@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This close-call fleet driving reporter application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This close call fleet driving reporter application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
@@ -12,14 +12,14 @@ From this exercise, developers will learn how to:<br>
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a close-call fleet driving reporter that:<br>
+Using an Intel® Edison board, this project lets you create a close call fleet driving reporter that:<br>
 - monitors the Grove* IR Distance Interrupter;<br>
 - monitors the Grove* GPS;<br>
 - keeps track of close calls and logs them using cloud-based data storage.
 
 ## How it works
 
-This close-call reporter system monitors the direction the Grove* IR Distance Interrupter is pointed to.
+This close call reporter system monitors the direction the Grove* IR Distance Interrupter is pointed to.
 
 It also keeps track of the GPS position of Intel® Edison, updating frequently to ensure accurate data.
 
