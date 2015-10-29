@@ -1,4 +1,4 @@
-# Smart fire alarm
+# Fire alarm
 
 ## Introduction
 
