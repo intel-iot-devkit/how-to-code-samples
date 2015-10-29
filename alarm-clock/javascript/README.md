@@ -1,4 +1,4 @@
-# Smart alarm clock
+# Alarm clock
 
 ## Introduction
 
