@@ -1,4 +1,4 @@
-# Shop-floor equipment activity monitor
+# Equipment activity monitor
 
 ## Introduction
 
