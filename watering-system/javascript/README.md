@@ -1,4 +1,4 @@
-# Automatic watering system
+# Watering system
 
 ## Introduction
 
