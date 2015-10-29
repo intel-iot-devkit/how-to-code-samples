@@ -1,5 +1,7 @@
 # Line following robot
 
+## Introduction
+
 This line following robot application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
