@@ -1,4 +1,4 @@
-# Wrist field data reporter
+# Field data reporter
 
 ## Introduction
 
