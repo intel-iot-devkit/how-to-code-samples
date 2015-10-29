@@ -1,4 +1,4 @@
-# Smart doorbell
+# Doorbell
 
 ## Introduction
 
