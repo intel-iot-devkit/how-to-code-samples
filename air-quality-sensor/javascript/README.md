@@ -1,4 +1,4 @@
-# Shop air quality monitor
+# Air quality sensor
 
 ## Introduction
 
