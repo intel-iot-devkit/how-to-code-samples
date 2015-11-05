@@ -298,7 +298,7 @@ int main() {
   // start web server
   app.port(4567).multithreaded().run();
 
-  // all done
+  // wait forever for the thread to exit
   t1.join();
 
   return MRAA_SUCCESS;
