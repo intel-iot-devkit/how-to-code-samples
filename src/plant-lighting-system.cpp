@@ -25,18 +25,21 @@ const string TWILIO_API_VERSION = "2010-04-01";
 
 using namespace std;
 
+// TODO
 struct LightScheduleItem
 {
   bool on;
   bool off;
 };
 
+// TODO
 struct LightSchedule
 {
   LightScheduleItem schedule[24];
   bool turnedOn;
   bool turnedOff;
 
+  // Initialization
   LightSchedule() {
     turnedOn = false;
     turnedOff = false;
@@ -47,12 +50,13 @@ struct LightSchedule
     }
   };
 
+  // Sets the lighting schedule for one hour
   void set(int hour, bool on, bool off) {
     schedule[hour].on = on;
     schedule[hour].off = off;
   }
 
-  // useful function used for checking how much time is left before target time
+  // Useful function used for checking how much time is left before target time
   double countdown(std::time_t& target) {
     time_t rawtime;
     struct tm* timeinfo;
@@ -61,7 +65,7 @@ struct LightSchedule
     return std::difftime(mktime(timeinfo), target);
   }
 
-  // is it top of the hour?
+  // Is it top of the hour?
   bool it_is_hour(struct tm* timeinfo) {
     time_t alarmTime ;
     timeinfo->tm_min = 0;
@@ -75,14 +79,17 @@ struct LightSchedule
     } else return false;
   }
 
+  // Is it time to turn on?
   bool is_on_time(struct tm* timeinfo) {
     return schedule[timeinfo->tm_hour].on;
   }
 
+  // Is it time to turn off?
   bool is_off_time(struct tm* timeinfo) {
     return schedule[timeinfo->tm_hour].off;
   }
 
+  // Render the current lighting schedule as JSON
   crow::json::wvalue renderJSON() {
     crow::json::wvalue result;
     for (int i= 0; i < 24; i++) {
@@ -95,27 +102,30 @@ struct LightSchedule
   }
 };
 
+// TODO
 struct MoistureDataItem
 {
   int data;
   string when;
 };
 
+// TODO
 struct MoistureData
 {
   MoistureDataItem data[20];
   int lastReading;
 
+  // Initialization
   MoistureData() {
     lastReading = 0;
   };
 
-  // push this new value onto array
+  // Push this new value onto array
   void add(int val, string timestamp) {
 
   }
 
-  // nicely formatted text for the web page
+  // Nicely formatted text for the web page
   string renderText(){
     // TODO: return entire array
     string result;
@@ -124,7 +134,7 @@ struct MoistureData
   }
 };
 
-//send sms message using twilio api
+// Send sms message using twilio api
 void send_sms() {
   if (!getenv("TWILIO_SID") || !getenv("TWILIO_TOKEN") ||
       !getenv("TWILIO_TO") || !getenv("TWILIO_FROM")) {
@@ -145,7 +155,7 @@ void send_sms() {
   cout << response << endl;
 }
 
-// call data server to log the event
+// Log the event to the remote datastore
 void log(const std::string& event) {
   std::cerr << event << std::endl;
 
@@ -170,6 +180,7 @@ void log(const std::string& event) {
   cout << "Datastore updated." << endl;
 }
 
+// TODO
 struct Devices
 {
   upm::GroveLight* light;
@@ -183,6 +194,7 @@ struct Devices
   Devices() {
   };
 
+  // Initialization
   void init() {
     // screen connected to the default I2C bus
     screen = new upm::Jhd1313m1(0, 0x3E, 0x62);
@@ -194,22 +206,27 @@ struct Devices
     moisture = new upm::GroveMoisture(1);
   };
 
+  // TODO
   int readMoisture() {
     return moisture->value();
   }
 
+  // TODO
   int readLight() {
     return light->value();
   }
 
+  // TODO
   bool turned_on() {
     return turnedOn;
   }
 
+  // TODO
   bool turned_off() {
     return turnedOff;
   }
 
+  // TODO
   void turn_on() {
     if (turnedOn) return;
     turnedOn = true;
@@ -218,6 +235,7 @@ struct Devices
     log("on");
   }
 
+  // TODO
   void turn_off() {
     if (turnedOff) return;
     turnedOn = false;
@@ -226,6 +244,7 @@ struct Devices
     log("off");
   }
 
+  // TODO
   void display_time(struct tm* timeinfo) {
     char buffer[80];
     strftime(buffer, 80, "%I:%M:%S", timeinfo);
@@ -234,12 +253,14 @@ struct Devices
     message(str, 0x00ff00);
   }
 
+  // TODO
   void cleanup() {
     delete screen;
     delete moisture;
     delete light;
   }
 
+  // TODO
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
     std::size_t red = (color & 0xff0000) >> 16;
     std::size_t green = (color & 0x00ff00) >> 8;
@@ -308,16 +329,17 @@ Devices devices;
 LightSchedule schedule;
 MoistureData moistureData;
 
-// Handles ctrl-c or other orderly exits
+// Exit handler for program
 void exit_handler(int param)
 {
   devices.cleanup();
   exit(1);
 }
 
-// The main function for the example.
+// The main function for the example program
 int main()
 {
+  // handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
 
   // check that we are running on Galileo or Edison
@@ -386,7 +408,10 @@ int main()
     return crow::response("ok");
   });
 
+  // starts the web server
   app.port(3000).multithreaded().run();
+
+  // waits forever on the worker threads
   t1.join();
   t2.join();
   t3.join();
