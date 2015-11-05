@@ -13,7 +13,7 @@
 const int VIBRATION_THRESHOLD = 500;
 const int NOISE_THRESHOLD = 140;
 
-// Call data server to log activity to server
+// Call remote datastore server to log activity
 void notify(std::string message) {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     std::cerr << "Server not configured." << std::endl;
@@ -37,7 +37,7 @@ void notify(std::string message) {
   std::cerr << r.body << std::endl;
 }
 
-// TODO
+// The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::Microphone *mic = NULL;
@@ -50,7 +50,7 @@ struct Devices
   Devices(){
   };
 
-  // TODO
+  // Initialization function
   void init() {
     // mic connected to A0 (analog in)
     mic = new upm::Microphone(0);
@@ -65,19 +65,19 @@ struct Devices
     screen = new upm::Jhd1313m1(0);
   };
 
-  // TODO
+  // Cleanup on exit
   void cleanup() {
     delete mic;
     delete vibe;
     delete screen;
   }
 
-  // TODO
+  // Reset the display
   void reset() {
     message("ready");
   }
 
-  // TODO
+  // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
     std::size_t red   = (color & 0xff0000) >> 16;
     std::size_t green = (color & 0x00ff00) >> 8;
@@ -91,12 +91,12 @@ struct Devices
     screen->setColor(red, green, blue);
   }
 
-  // TODO
+  // Is there movement detected by the vibration sensor?
   bool is_movement() {
     return (vibe->getSample() >= VIBRATION_THRESHOLD);
   }
 
-  // TODO
+  // Is there noise detected by the sound sensor?
   bool is_noise() {
     int len = mic->getSampledWindow(2, 128, soundBuffer);
     if (len) {
@@ -142,6 +142,7 @@ int main()
   bool noise = false;
   bool inUse = false;
 
+  // every 1 sec, check for movement and noise
   for (;;) {
     movement = devices.is_movement();
     noise = devices.is_noise();
