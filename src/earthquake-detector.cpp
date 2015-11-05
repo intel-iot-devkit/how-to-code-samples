@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sstream>
 #include <ctime>
+#include <signal.h>
 
 #include <mma7660.h>
 #include <jhd1313m1.h>
