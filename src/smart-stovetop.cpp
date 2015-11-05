@@ -1,10 +1,11 @@
 #include <iostream>
 #include <string>
+#include <signal.h>
 
 #include <grove.h>
 #include <yg1006.h>
 #include <otp538u.h>
-#include <GroveSpeaker.h>
+#include <grovespeaker.h>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 #include "../lib/crow/crow_all.h"
