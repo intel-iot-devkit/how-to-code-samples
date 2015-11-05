@@ -83,9 +83,12 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
 ### Set up Intel® Edison for BLE development
 
-For information on how to set up Intel® Edison for BLE development, see this post by Rex St John: 
+To set up BLE for Intel® Edison, run the following command:
 
-<a href="http://rexstjohn.com/configure-intel-edison-for-bluetooth-le-smart-development">http://rexstjohn.com/configure-intel-edison-for-bluetooth-le-smart-development</a>
+```
+rfkill unblock bluetooth
+```
+
 
 ### Connecting the Xadow* sensors
 
