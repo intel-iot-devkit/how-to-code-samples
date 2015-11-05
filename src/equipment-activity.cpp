@@ -13,7 +13,7 @@
 const int VIBRATION_THRESHOLD = 500;
 const int NOISE_THRESHOLD = 140;
 
-// call data server to log activity to server
+// Call data server to log activity to server
 void notify(std::string message) {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     std::cerr << "Server not configured." << std::endl;
@@ -37,6 +37,7 @@ void notify(std::string message) {
   std::cerr << r.body << std::endl;
 }
 
+// TODO
 struct Devices
 {
   upm::Microphone *mic = NULL;
@@ -49,6 +50,7 @@ struct Devices
   Devices(){
   };
 
+  // TODO
   void init() {
     // mic connected to A0 (analog in)
     mic = new upm::Microphone(0);
@@ -63,16 +65,19 @@ struct Devices
     screen = new upm::Jhd1313m1(0);
   };
 
+  // TODO
   void cleanup() {
     delete mic;
     delete vibe;
     delete screen;
   }
 
+  // TODO
   void reset() {
     message("ready");
   }
 
+  // TODO
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
     std::size_t red   = (color & 0xff0000) >> 16;
     std::size_t green = (color & 0x00ff00) >> 8;
@@ -86,10 +91,12 @@ struct Devices
     screen->setColor(red, green, blue);
   }
 
+  // TODO
   bool is_movement() {
     return (vibe->getSample() >= VIBRATION_THRESHOLD);
   }
 
+  // TODO
   bool is_noise() {
     int len = mic->getSampledWindow(2, 128, soundBuffer);
     if (len) {
@@ -105,15 +112,17 @@ struct Devices
 
 Devices devices;
 
-// Handles ctrl-c or other orderly exits
+// Exit handler for program
 void exit_handler(int param)
 {
   devices.cleanup();
   exit(1);
 }
 
+// The main function for the example program
 int main()
 {
+  // handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
 
   // check that we are running on Galileo or Edison
@@ -147,8 +156,6 @@ int main()
     inUse = movement && noise;
     sleep(1);
   }
-
-  devices.cleanup();
 
   return MRAA_SUCCESS;
 }
