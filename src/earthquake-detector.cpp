@@ -13,6 +13,7 @@
 const std::string DEFAULT_LATITUDE = "47.641944";
 const std::string DEFAULT_LONGITUDE = "-122.127222";
 
+// TODO
 std::string latitude() {
   if (getenv("LATITUDE")) {
     return getenv("LATITUDE");
@@ -21,6 +22,7 @@ std::string latitude() {
   }
 }
 
+// TODO
 std::string longitude() {
   if (getenv("LONGITUDE")) {
     return getenv("LONGITUDE");
@@ -29,6 +31,7 @@ std::string longitude() {
   }
 }
 
+// TODO
 struct Devices
 {
   upm::MMA7660* accel;
@@ -37,6 +40,7 @@ struct Devices
   Devices(){
   };
 
+  // TODO
   void init() {
     // accelerometer connected to i2c
     accel = new upm::MMA7660(MMA7660_I2C_BUS,
@@ -50,19 +54,23 @@ struct Devices
     screen = new upm::Jhd1313m1(0);
   };
 
+  // TODO
   void cleanup() {
     delete accel;
     delete screen;
   }
 
+  // TODO
   void reset() {
     message("quakebot ready");
   }
 
+  // TODO
   void checking() {
     message("checking...");
   }
 
+  // TODO
   void warning() {
     message("Earthquake!");
   }
@@ -71,6 +79,7 @@ struct Devices
     message("No quake.");
   }
 
+  // TODO
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
     std::size_t red   = (color & 0xff0000) >> 16;
     std::size_t green = (color & 0x00ff00) >> 8;
@@ -84,11 +93,13 @@ struct Devices
     screen->setColor(red, green, blue);
   }
 
+  // TODO
   void getAcceleration(float* x, float* y, float* z) {
     accel->getAcceleration(x, y, z);
   }
 };
 
+// TODO
 void verify(Devices* devices) {
   devices->checking();
 
@@ -126,15 +137,17 @@ void verify(Devices* devices) {
 
 Devices devices;
 
-// Handles ctrl-c or other orderly exits
+// Exit handler for program
 void exit_handler(int param)
 {
   devices.cleanup();
   exit(1);
 }
 
+// The main function for the example program
 int main()
 {
+  // handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
 
   // check that we are running on Galileo or Edison
