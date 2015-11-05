@@ -12,7 +12,7 @@
 
 using namespace std;
 
-// TODO
+// Send notification to remote datastore
 void notify() {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     std::cerr << "Server not configured." << std::endl;
@@ -36,7 +36,7 @@ void notify() {
   std::cerr << r.body << std::endl;
 }
 
-// TODO
+// The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::Buzzer* buzzer;
@@ -45,7 +45,7 @@ struct Devices
   Devices(){
   };
 
-  // TODO
+  // Initialization function
   void init() {
     // buzzer connected to D5 (digital out)
     buzzer = new upm::Buzzer(5);
@@ -55,30 +55,36 @@ struct Devices
     moisture = new upm::GroveMoisture(0);
   }
 
-  // TODO
+  // Cleanup on exit
+  void cleanup() {
+    delete buzzer;
+    delete moisture;
+  }
+
+  // Reset the detector
   void reset() {
     stop_ringing();
   }
 
-  // TODO
+  // Starts the alarm
   void alarm() {
     notify();
     message();
     buzzer->playSound(266, 0);
   }
 
-  // TODO
+  // Displays message to console
   void message(){
     cout << "Alert! Water is Detected!";
   }
 
-  // TODO
+  // Stops the alarm
   void stop_ringing() {
     buzzer->stopSound();
     buzzer->stopSound();
   }
 
-  // TODO
+  // Every 1 second, reads the moisture sensor
   void senseMoisture() {
     for (;;) {
       int val = moisture->value();
