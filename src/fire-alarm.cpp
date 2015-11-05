@@ -20,6 +20,7 @@ using namespace twilio;
 const int ALARM_THRESHOLD = 28;
 const string TWILIO_API_VERSION = "2010-04-01";
 
+// TODO
 void send_sms() {
   if (!getenv("TWILIO_SID") || !getenv("TWILIO_TOKEN") ||
       !getenv("TWILIO_TO") || !getenv("TWILIO_FROM")) {
@@ -39,7 +40,7 @@ void send_sms() {
   cout << response << endl;
 }
 
-// call data server to note the alarm status
+// Call data server to note the alarm status
 void notify() {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     std::cerr << "Server not configured." << std::endl;
@@ -63,6 +64,7 @@ void notify() {
   std::cerr << r.body << std::endl;
 }
 
+// TODO
 struct Devices
 {
   upm::GroveTemp* temp;
@@ -72,6 +74,7 @@ struct Devices
   Devices(){
   };
 
+  // TODO
   void init() {
     // touch sensor connected to A0 (analog in)
     temp = new upm::GroveTemp(0);
@@ -85,17 +88,20 @@ struct Devices
     stop_alarm();
   };
 
+  // TODO
   void cleanup() {
     delete temp;
     delete buzzer;
     delete screen;
   }
 
+  // TODO
   void reset() {
     stop_alarm();
     message("Ready");
   }
 
+  // TODO
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
     std::size_t red   = (color & 0xff0000) >> 16;
     std::size_t green = (color & 0x00ff00) >> 8;
@@ -109,17 +115,20 @@ struct Devices
     screen->setColor(red, green, blue);
   }
 
+  // TODO
   void start_alarm() {
     message("Fire alarm!");
     buzzer->playSound(266, 0);
   }
 
+  // TODO
   void stop_alarm() {
     message("           ");
     buzzer->stopSound();
     buzzer->stopSound();
   }
 
+  // TODO
   int temperature() {
     return temp->value();
   }
@@ -127,15 +136,17 @@ struct Devices
 
 Devices devices;
 
-// Handles ctrl-c or other orderly exits
+// Exit handler for program
 void exit_handler(int param)
 {
   devices.cleanup();
   exit(1);
 }
 
+// The main function for the example program
 int main()
 {
+  // handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
 
   // check that we are running on Galileo or Edison
