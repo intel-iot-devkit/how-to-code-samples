@@ -25,21 +25,21 @@ const string TWILIO_API_VERSION = "2010-04-01";
 
 using namespace std;
 
-// TODO
+// An individual schedule item for a 1 hour time period
 struct LightScheduleItem
 {
   bool on;
   bool off;
 };
 
-// TODO
+// The entire lighting schedule
 struct LightSchedule
 {
   LightScheduleItem schedule[24];
   bool turnedOn;
   bool turnedOff;
 
-  // Initialization
+  // Initialization function
   LightSchedule() {
     turnedOn = false;
     turnedOff = false;
@@ -50,7 +50,7 @@ struct LightSchedule
     }
   };
 
-  // Sets the lighting schedule for one hour
+  // Sets the lighting schedule for a specific one hour period
   void set(int hour, bool on, bool off) {
     schedule[hour].on = on;
     schedule[hour].off = off;
@@ -102,20 +102,20 @@ struct LightSchedule
   }
 };
 
-// TODO
+// A single data reading for the connected moisture sensor
 struct MoistureDataItem
 {
   int data;
   string when;
 };
 
-// TODO
+// All of the data reads from the moisture sensor
 struct MoistureData
 {
   MoistureDataItem data[20];
   int lastReading;
 
-  // Initialization
+  // Initialization function
   MoistureData() {
     lastReading = 0;
   };
@@ -134,7 +134,7 @@ struct MoistureData
   }
 };
 
-// Send sms message using twilio api
+// Send sms message using Twilio api
 void send_sms() {
   if (!getenv("TWILIO_SID") || !getenv("TWILIO_TOKEN") ||
       !getenv("TWILIO_TO") || !getenv("TWILIO_FROM")) {
@@ -180,7 +180,7 @@ void log(const std::string& event) {
   cout << "Datastore updated." << endl;
 }
 
-// TODO
+// The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::GroveLight* light;
@@ -194,7 +194,7 @@ struct Devices
   Devices() {
   };
 
-  // Initialization
+  // Initialization function
   void init() {
     // screen connected to the default I2C bus
     screen = new upm::Jhd1313m1(0, 0x3E, 0x62);
@@ -206,27 +206,34 @@ struct Devices
     moisture = new upm::GroveMoisture(1);
   };
 
-  // TODO
+  // Cleanup on exit
+  void cleanup() {
+    delete screen;
+    delete moisture;
+    delete light;
+  }
+
+  // Reads the current value from the moisture sensor
   int readMoisture() {
     return moisture->value();
   }
 
-  // TODO
+  // Reads the current value from the light sensor
   int readLight() {
     return light->value();
   }
 
-  // TODO
+  // Is the light supposed to be turned on?
   bool turned_on() {
     return turnedOn;
   }
 
-  // TODO
+  // Is the light supposed to be turned off?
   bool turned_off() {
     return turnedOff;
   }
 
-  // TODO
+  // Turn on the light
   void turn_on() {
     if (turnedOn) return;
     turnedOn = true;
@@ -235,7 +242,7 @@ struct Devices
     log("on");
   }
 
-  // TODO
+  // Turn off the light
   void turn_off() {
     if (turnedOff) return;
     turnedOn = false;
@@ -244,7 +251,7 @@ struct Devices
     log("off");
   }
 
-  // TODO
+  // Display the current time on the LCD
   void display_time(struct tm* timeinfo) {
     char buffer[80];
     strftime(buffer, 80, "%I:%M:%S", timeinfo);
@@ -253,14 +260,7 @@ struct Devices
     message(str, 0x00ff00);
   }
 
-  // TODO
-  void cleanup() {
-    delete screen;
-    delete moisture;
-    delete light;
-  }
-
-  // TODO
+  // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
     std::size_t red = (color & 0xff0000) >> 16;
     std::size_t green = (color & 0x00ff00) >> 8;
