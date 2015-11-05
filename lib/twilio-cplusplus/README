@@ -1,0 +1,130 @@
+The C++ Twilio REST SDK simplifies the process of making requests to the Twilio REST API, generating TwiML and validating HTTP request signatures using C++.
+
+Checkout the library: git clone https://laurentluce@github.com/laurentluce/twilio-cplusplus.git
+
+Source files:
+- Rest.cpp: Twilio REST helper
+- TwiML.cpp: TwiML generation helper
+- Utils.cpp: Utils to validate a HTTP request signature: X-Twilio-Signature
+- Examples.cpp: Examples of usage
+- UnitTests.h: Unit tests
+- Makefile: makefile to build the library (requires libcurl and openssl), examples code and unit tests suite. Type 'make' to build the library. 'make examples' to build the examples, 'make unittests' to build the unit tests suite and run it.
+
+Don't forget to include Utils.h, Rest.h and TwiML.h at the top of your source code and to use the twilio namespace: "using namespace twilio;".
+
+The following code examples are based on a restaurant dish recommendation service using SMS for communication. We will go through the following examples:
+
+1- Receiving and replying to a SMS asking for a restaurant dish recommendation.
+2- Sending a daily recommendation to a list of subscribers using SMS.
+3- Retrieving the list of SMS we sent.
+
+We are going to use the C++ std namespace in the rest of the code: "using namespace std;".
+
+We need to define the following constants:
+
+--- C++ Code ---
+// Twilio REST API version
+const string API_VERSION = "2010-04-01";
+// Twilio Account Sid
+const string ACCOUNT_SID = "XXXX";
+// Twilio Auth Token
+const string ACCOUNT_TOKEN = "XXXX";
+// Twilio SMS URL
+const string SMS_URL = "http://www.example.com/sms";
+--- end C++ Code ---
+
+
+1- Receiving and replying to a SMS asking for a restaurant dish recommendation.
+
+When someone asks for a dish recommendation, he sends a SMS with a text such as "Burger in San Francisco". Twilio issues a HTTP POST request to your server with the text in the POST parameter "Body". The URL called is SMS_URL.
+
+First, we need to validate the HTTP POST request to make sure it is coming from a Twilio server. We use the Utils class to help us with that.
+
+--- C++ Code ---
+Utils utils (ACCOUNT_SID, ACCOUNT_TOKEN);
+// vars should contain the POST parameters received. It is a vector of Var structures: key/value.
+vector<Var> vars;
+vars.push_back(Var("AccountSid", "xxxx"));
+vars.push_back(Var("Body", "xxxx"));
+[ add all POST parameters received ]
+// signature is the hash we received in the X-Twilio-Signature header
+bool valid = utils.validateRequest(signature, SMS_URL, vars);
+if(!valid)
+  [ handle invalid request here ]
+--- end C++ Code ---
+
+Then we need to reply with our dish recommendation. We use the classes TwiMLResponse and Sms to help us generate the XML.
+
+--- C++ Code ---
+TwiMLResponse response;
+// Set SMS text based on what the user asked, which can be found in the "Body" POST parameter.
+Sms sms ("Gigantic Burger at Twilio at 501 Folsom St San Francisco");
+response.append(sms);
+[ reply with response.toXML() ]
+--- end C++ Code ---
+
+response.toXML() returns the following:
+<Response>
+  <Sms>
+    <![CDATA[Gigantic Burger at Twilio at 501 Folsom St San Francisco]]>
+  </Sms>
+</Response>
+
+
+2- Sending a daily recommendation to a list of subscribers using SMS.
+
+We need to issue POST requests using the following URL: /2010-04-01/Accounts/{AccountSid}/SMS/Messages. In the following code, "subscribers" is a vector containing the phone numbers that we need to send to. We use the class Rest to help us send the SMS messages.
+
+--- C++ Code ---
+Rest rest(ACCOUNT_SID, ACCOUNT_TOKEN);
+// Fill up the POST parameters vector
+vector<Var> vars;
+vars.push_back(Var("From", "xxx-xxx-xxxx"));
+vars.push_back(Var("Body", "Deluxe Ramen at Twilio at 501 Folsom St San Francisco"));
+vars.push_back(Var("To", ""));
+string res;
+// Go through the list of subscribers and issue a POST request for each one. 
+for(unsigned int i = 0; i < subscribers.size(); i++)
+{
+  // vars[2] refers to the "To" parameter
+  vars[2].value = subscribers[i];
+  res = rest.request("/" + API_VERSION + "/Accounts/" + ACCOUNT_SID + "/SMS/Messages", "POST", vars);
+  [ "res" contains the XML response returned by the Twilio server ]
+}
+--- end C++ Code ---
+
+
+3- Retrieving the list of SMS messages we sent and their status.
+
+We need to issue a GET request using the following URL: /2010-04-01/Accounts/{AccountSid}/SMS/Messages. We use the class Rest to help us with the GET request.
+
+--- C++ Code ---
+Rest rest(ACCOUNT_SID, ACCOUNT_TOKEN);
+// Fill up the GET parameters vector
+vector<Var> vars;
+vars.push_back(Var("From", "xxx-xxx-xxxx"));
+// we can also set "To" and "DateSent" to filter more
+string res;
+res = rest.request("/" + API_VERSION + "/Accounts/" + ACCOUNT_SID + "/SMS/Messages", "GET", vars);
+--- end C++ Code ---
+
+"res" should contain the list of SMS sent.
+<TwilioResponse>
+  <SMSMessages page="0" numpages="6"...>
+    <SMSMessage>
+      <Sid>SM800f449d0399ed014aae2bcc0cc2f2ec</Sid>
+      <DateCreated>Mon, 10 Dec 2010 03:45:01 +0000</DateCreated>
+      ...
+    </SMSMessage>
+    ...
+  </SMSMessages>
+</TwilioResponse>
+
+Note that pagination might need to be handled if the number of SMS messages is too large for one HTTP response. See http://www.twilio.com/docs/api/2010-04-01/rest/response#response-formats-list-paging-information for more details.
+
+There is a lot more you can do using the Twilio C++ library so go ahead and have fun with it. Don't hesitate to send Laurent Luce a message on GitHub if you have any feedback.
+
+Laurent Luce is a software engineer with expertise in networking and web services using technologies such as: Python, Django, Javascript, C++, MySQL and AWS.
+
+### LICENSE
+The Twilio SDK is distributed under the MIT License.
