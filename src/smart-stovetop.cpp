@@ -14,10 +14,10 @@
 
 using namespace std;
 
-// global temp value for app; will change when you use app
+// Global temp value for app; will change when you use app
 float myTemp = 1000;
 
-// send signal to server
+// Send notification to datastore
 void notify() {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     cerr << "Server not configured." << std::endl;
@@ -31,6 +31,7 @@ void notify() {
   cerr << r.body << std::endl;
 }
 
+// TODO
 struct Devices
 {
   upm::GroveSpeaker* speaker;
@@ -40,6 +41,7 @@ struct Devices
   Devices(){
   };
 
+  // TODO
   void init() {
     // speaker connected to D5 (digital out)
     speaker = new upm::GroveSpeaker(5);
@@ -54,18 +56,19 @@ struct Devices
     temps = new upm::OTP538U(0, 1, OTP538U_AREF);
   }
 
+  // TODO
   void cleanup() {
     delete speaker;
     delete flame;
     delete temps;
   }
 
-  // starts the alarm
+  // Starts the alarm
   void alarm() {
     speaker->playSound('c', true, "high");
   }
 
-  // keeps the flame sensor running
+  // Reads the flame sensor every 1s
   void senseFlame() {
     for(;;) {
       bool val = flame->flameDetected();
@@ -82,9 +85,9 @@ struct Devices
     }
   }
 
-  // keeps the ir temperature sensor running and checking every minute for object and ambient temp
-  // compares object temp to my temp
-  // sounds alarm if object temp is higher than set temp
+  // Continously reads the IR temperature sensor every 1 minute for
+  // both object and ambient temperature, and compares the two.
+  // Sounds alarm if object temp is higher than set temp.
   void senseTemp(){
     for(;;) {
       cout << "Ambient temp: " << std::fixed << setprecision(2)
@@ -104,27 +107,29 @@ struct Devices
   }
 };
 
-// keeps the flame sensor running
+// Keeps the flame sensor running
 void runFlame(Devices& devices) {
   devices.senseFlame();
 }
 
-// keeps the ir temperature sensor running and checking every minute for object and ambient temp
+// Keeps the ir temperature sensor running
 void runTemp(Devices& devices) {
   devices.senseTemp();
 }
 
 Devices devices;
 
-// Handles ctrl-c or other orderly exits
+// Exit handler for program
 void exit_handler(int param)
 {
   devices.cleanup();
   exit(1);
 }
 
+// The main function for the example program
 int main()
 {
+  // handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
 
   // check that we are running on Galileo or Edison
