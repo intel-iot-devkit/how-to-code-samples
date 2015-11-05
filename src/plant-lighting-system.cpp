@@ -107,12 +107,27 @@ struct MoistureDataItem
 {
   int data;
   string when;
+
+  // Initialization function
+  MoistureDataItem(int d, string w) {
+    data = d;
+    when = w;
+  };
+
+  string render() {
+    stringstream resultStream;
+    resultStream << "<tr>";
+    resultStream << "<td>" << when << "</td>";
+    resultStream << "<td>" << data << "</td>";
+    resultStream << "</tr>";
+    return resultStream.str();
+  }
 };
 
 // All of the data reads from the moisture sensor
 struct MoistureData
 {
-  MoistureDataItem data[20];
+  std::list<MoistureDataItem> data;
   int lastReading;
 
   // Initialization function
@@ -120,17 +135,22 @@ struct MoistureData
     lastReading = 0;
   };
 
-  // Push this new value onto array
+  // Push this new value onto list
   void add(int val, string timestamp) {
-
+    MoistureDataItem item(val, timestamp);
+    data.push_front(item);
+    if (data.size() > 20) {data.pop_back();}
   }
 
   // Nicely formatted text for the web page
-  string renderText(){
-    // TODO: return entire array
-    string result;
-    result = to_string(lastReading);
-    return result;
+  string renderText() {
+    stringstream resultStream;
+
+    for (std::list<MoistureDataItem>::iterator it = data.begin(); it != data.end(); ++it) {
+      resultStream << it->render() << '\n';
+    }
+
+    return resultStream.str();
   }
 };
 
@@ -279,9 +299,13 @@ struct Devices
 void runner(Devices& devices, MoistureData& moistureData) {
   for (;;)
   {
+    std::time_t now = std::time(NULL);
+    char mbstr[sizeof "2011-10-08T07:07:09Z"];
+    std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
+
     int moistureReading = devices.readMoisture();
-    moistureData.add(moistureReading, "TIMESTAMPHERE");
-    sleep(10000);
+    moistureData.add(moistureReading, mbstr);
+    sleep(10);
   }
 }
 
