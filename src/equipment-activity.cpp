@@ -15,130 +15,140 @@ const int NOISE_THRESHOLD = 140;
 
 // call data server to log activity to server
 void notify(std::string message) {
-	if (!getenv("SERVER") && !getenv("AUTH_TOKEN")) {
-		std::cerr << "Server not configured." << std::endl;
-		return;
-	}
+  if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
+    std::cerr << "Server not configured." << std::endl;
+    return;
+  }
 
-	std::time_t now = std::time(NULL);
-	char mbstr[sizeof "2011-10-08T07:07:09Z"];
-	std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
+  std::time_t now = std::time(NULL);
+  char mbstr[sizeof "2011-10-08T07:07:09Z"];
+  std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
 
-	std::stringstream payload;
-	payload << "{\"state\":";
-	payload << "\"" << message << " " << mbstr << "\"}";
+  std::stringstream payload;
+  payload << "{\"state\":";
+  payload << "\"" << message << " " << mbstr << "\"}";
 
-	RestClient::headermap headers;
-	headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
+  RestClient::headermap headers;
+  headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
 
-	RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
+  RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
 
-	std::cerr << r.code << std::endl;
-	std::cerr << r.body << std::endl;
+  std::cerr << r.code << std::endl;
+  std::cerr << r.body << std::endl;
 }
 
 struct Devices
 {
-	upm::Microphone *mic = NULL;
-	thresholdContext micCtx;
-	uint16_t soundBuffer [128];
+  upm::Microphone *mic = NULL;
+  thresholdContext micCtx;
+  uint16_t soundBuffer [128];
 
-	upm::LDT0028* vibe;
-	upm::Jhd1313m1* screen;
+  upm::LDT0028* vibe;
+  upm::Jhd1313m1* screen;
 
-	Devices(){
-	};
+  Devices(){
+  };
 
-	void init() {
-		// mic connected to A0 (analog in)
-		mic = new upm::Microphone(0);
-		micCtx.averageReading = 0;
-		micCtx.runningAverage = 0;
-		micCtx.averagedOver   = 2;
+  void init() {
+    // mic connected to A0 (analog in)
+    mic = new upm::Microphone(0);
+    micCtx.averageReading = 0;
+    micCtx.runningAverage = 0;
+    micCtx.averagedOver   = 2;
 
-		// vibration sensor connected to A2 (analog in)
-		vibe = new upm::LDT0028(2);
+    // vibration sensor connected to A2 (analog in)
+    vibe = new upm::LDT0028(2);
 
-		// screen connected to the default I2C bus
-		screen = new upm::Jhd1313m1(0);
-	};
+    // screen connected to the default I2C bus
+    screen = new upm::Jhd1313m1(0);
+  };
 
-	void cleanup() {
-		delete mic;
-		delete vibe;
-		delete screen;
-	}
+  void cleanup() {
+    delete mic;
+    delete vibe;
+    delete screen;
+  }
 
-	void reset() {
-		message("ready");
-	}
+  void reset() {
+    message("ready");
+  }
 
-	void message(const std::string& input, const std::size_t color = 0x0000ff) {
-		std::size_t red   = (color & 0xff0000) >> 16;
-		std::size_t green = (color & 0x00ff00) >> 8;
-		std::size_t blue  = (color & 0x0000ff);
+  void message(const std::string& input, const std::size_t color = 0x0000ff) {
+    std::size_t red   = (color & 0xff0000) >> 16;
+    std::size_t green = (color & 0x00ff00) >> 8;
+    std::size_t blue  = (color & 0x0000ff);
 
-		std::string text(input);
-		text.resize(16, ' ');
+    std::string text(input);
+    text.resize(16, ' ');
 
-		screen->setCursor(0,0);
-		screen->write(text);
-		screen->setColor(red, green, blue);
-	}
+    screen->setCursor(0,0);
+    screen->write(text);
+    screen->setColor(red, green, blue);
+  }
 
-	bool is_movement() {
-		return (vibe->getSample() >= VIBRATION_THRESHOLD);
-	}
+  bool is_movement() {
+    return (vibe->getSample() >= VIBRATION_THRESHOLD);
+  }
 
-	bool is_noise() {
-		int len = mic->getSampledWindow(2, 128, soundBuffer);
-		if (len) {
-			int thresh = mic->findThreshold(&micCtx, 30, soundBuffer, len);
-		    if (thresh) {
-		    	return true;
-		    }
-		}
+  bool is_noise() {
+    int len = mic->getSampledWindow(2, 128, soundBuffer);
+    if (len) {
+      int thresh = mic->findThreshold(&micCtx, 30, soundBuffer, len);
+        if (thresh) {
+          return true;
+        }
+    }
 
-		return false;
-	}
+    return false;
+  }
 };
+
+Devices devices;
+
+// Handles ctrl-c or other orderly exits
+void exit_handler(int param)
+{
+  devices.cleanup();
+  exit(1);
+}
 
 int main()
 {
-	// check that we are running on Galileo or Edison
-	mraa_platform_t platform = mraa_get_platform_type();
-	if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
-		(platform != MRAA_INTEL_GALILEO_GEN2) &&
-		(platform != MRAA_INTEL_EDISON_FAB_C)) {
-		std::cerr << "ERROR: Unsupported platform" << std::endl;
-		return MRAA_ERROR_INVALID_PLATFORM;
-	}
+  signal(SIGINT, exit_handler);
 
-	// create and initialize UPM devices
-	Devices devices;
-	devices.init();
-	devices.reset();
+  // check that we are running on Galileo or Edison
+  mraa_platform_t platform = mraa_get_platform_type();
+  if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
+    (platform != MRAA_INTEL_GALILEO_GEN2) &&
+    (platform != MRAA_INTEL_EDISON_FAB_C)) {
+    std::cerr << "ERROR: Unsupported platform" << std::endl;
+    return MRAA_ERROR_INVALID_PLATFORM;
+  }
 
-	bool movement = false;
-	bool noise = false;
-	bool inUse = false;
+  // create and initialize UPM devices
+  devices.init();
+  devices.reset();
 
-	for (;;) {
-		movement = devices.is_movement();
-		noise = devices.is_noise();
-		if ( movement && noise && !inUse ) {
-			notify("start");
-			devices.message("start");
-		} else if ( !(movement && noise) && inUse ) {
-			notify("stop");
-			devices.message("stop");
-		}
+  bool movement = false;
+  bool noise = false;
+  bool inUse = false;
 
-		inUse = movement && noise;
-		sleep(1);
-	}
+  for (;;) {
+    movement = devices.is_movement();
+    noise = devices.is_noise();
+    if ( movement && noise && !inUse ) {
+      notify("start");
+      devices.message("start");
+    } else if ( !(movement && noise) && inUse ) {
+      notify("stop");
+      devices.message("stop");
+    }
 
-	devices.cleanup();
+    inUse = movement && noise;
+    sleep(1);
+  }
 
-	return MRAA_SUCCESS;
+  devices.cleanup();
+
+  return MRAA_SUCCESS;
 }
