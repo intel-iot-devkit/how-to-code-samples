@@ -16,6 +16,7 @@
 #include "index_html.h"
 #include "styles_css.h"
 
+// The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::GroveRotary* rotary;
@@ -26,6 +27,7 @@ struct Devices
   Devices(){
   };
 
+  // Initialization function
   void init() {
     // rotary connected to A0 (analog in)
     rotary = new upm::GroveRotary(0);
@@ -41,6 +43,7 @@ struct Devices
     screen = new upm::Jhd1313m1(0);
   };
 
+  // Cleanup on exit
   void cleanup() {
     delete rotary;
     delete button;
@@ -48,6 +51,7 @@ struct Devices
     delete screen;
   }
 
+  // Display the current time on the LCD
   void display_time() {
     time_t rawtime;
     struct tm* timeinfo;
@@ -62,6 +66,7 @@ struct Devices
     message(str, 0x00ff00);
   }
 
+  // Adjust the brightness of the backlight on the LCD
   void adjust_brightness()
   {
     std::size_t newColor;
@@ -72,6 +77,7 @@ struct Devices
     screen->setColor(newColor, newColor, newColor);
   }
 
+  // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
     std::size_t red   = (color & 0xff0000) >> 16;
     std::size_t green = (color & 0x00ff00) >> 8;
@@ -85,21 +91,26 @@ struct Devices
     screen->setColor(red, green, blue);
   }
 
+  // Starts the buzzer making noise
   void start_buzzing() {
     buzzer->setVolume(0.5);
     buzzer->playSound(2600, 0);
   }
 
+  // Stops the buzzer making noise
   void stop_buzzing() {
     buzzer->stopSound();
     buzzer->stopSound();
   }
 };
 
+// Is the alarm currently ringing?
 bool alarmRinging = false;
+
+// The time that the alarm is currently set for
 std::time_t alarmTime ;
 
-// useful function used for checking how much time is left before alarm
+// Useful function used for checking how much time is left before alarm
 double countdown(std::time_t& target) {
   time_t rawtime;
   struct tm* timeinfo;
@@ -108,12 +119,12 @@ double countdown(std::time_t& target) {
   return std::difftime(mktime(timeinfo), target);
 }
 
-// how much time from when the alarm went off, to when user pushed button
+// How much time from when the alarm went off, to when user pushed button
 double elapsed(std::time_t& target) {
   return countdown(target);
 }
 
-// is it time to get up now?
+// Is it time to get up now?
 bool time_for_alarm(std::time_t& alarm) {
   double remaining = countdown(alarm);
 
@@ -122,7 +133,7 @@ bool time_for_alarm(std::time_t& alarm) {
   } else return false;
 }
 
-// call data server to log how long it took to wake up today
+// Call datastore to log how long it took to wake up today
 void log_wakeup() {
   double duration = elapsed(alarmTime);
   std::cerr << "Seconds to wakeup: " << std::to_string(duration) << std::endl;
@@ -143,7 +154,7 @@ void log_wakeup() {
   std::cerr << r.body << std::endl;
 }
 
-// call weather underground API to get current weather conditions
+// Call weather underground API to get current weather conditions
 std::string get_weather() {
   if (!getenv("API_KEY")) {
     std::cerr << "Weather Underground API_KEY not configured." << std::endl;
@@ -163,7 +174,7 @@ std::string get_weather() {
   return result;
 }
 
-// function called by worker thread for device communication
+// Function called by worker thread for device communication
 void runner(Devices& devices, std::time_t& alarmTime) {
   for (;;) {
     devices.display_time();
@@ -200,14 +211,16 @@ void runner(Devices& devices, std::time_t& alarmTime) {
 
 Devices devices;
 
-// Handles ctrl-c or other orderly exits
+// Exit handler for program
 void exit_handler(int param)
 {
   devices.cleanup();
   exit(1);
 }
 
+// The main function for the example program
 int main() {
+  // Handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
 
   // check that we are running on Galileo or Edison
