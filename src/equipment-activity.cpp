@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sstream>
 #include <ctime>
+#include <signal.h>
 
 #include <mic.h>
 #include <ldt0028.h>
