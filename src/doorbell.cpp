@@ -9,7 +9,7 @@
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
-// call data server to increment the count of visitors who rang the doorbell
+// Call datastore to increment the count of visitors who rang the doorbell
 void increment() {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     std::cerr << "Server not configured." << std::endl;
@@ -24,6 +24,7 @@ void increment() {
   std::cerr << r.body << std::endl;
 }
 
+// The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::TTP223* touch;
@@ -33,6 +34,7 @@ struct Devices
   Devices(){
   };
 
+  // Initialization function
   void init() {
     // touch sensor connected to D4 (digital in)
     touch = new upm::TTP223(4);
@@ -45,17 +47,20 @@ struct Devices
     screen = new upm::Jhd1313m1(0);
   };
 
+  // Cleanup on exit
   void cleanup() {
     delete touch;
     delete buzzer;
     delete screen;
   }
 
+  // Reset the doorbot
   void reset() {
     message("doorbot ready");
     stop_ringing();
   }
 
+  // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
     std::size_t red   = (color & 0xff0000) >> 16;
     std::size_t green = (color & 0x00ff00) >> 8;
@@ -69,12 +74,14 @@ struct Devices
     screen->setColor(red, green, blue);
   }
 
+  // Visual and audible notification that someone is at the door
   void dingdong() {
     increment();
     message("ding dong!");
     buzzer->playSound(266, 0);
   }
 
+  // Stop the ringing sound
   void stop_ringing() {
     buzzer->stopSound();
     buzzer->stopSound();
@@ -83,15 +90,17 @@ struct Devices
 
 Devices devices;
 
-// Handles ctrl-c or other orderly exits
+// Exit handler for program
 void exit_handler(int param)
 {
   devices.cleanup();
   exit(1);
 }
 
+// The main function for the example program
 int main()
 {
+  // Handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
 
   // check that we are running on Galileo or Edison
