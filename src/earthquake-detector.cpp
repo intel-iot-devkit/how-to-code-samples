@@ -13,7 +13,7 @@
 const std::string DEFAULT_LATITUDE = "47.641944";
 const std::string DEFAULT_LONGITUDE = "-122.127222";
 
-// TODO
+// Convenience function to return the configured latitude
 std::string latitude() {
   if (getenv("LATITUDE")) {
     return getenv("LATITUDE");
@@ -22,7 +22,7 @@ std::string latitude() {
   }
 }
 
-// TODO
+// Convenience function to return the configured latitude
 std::string longitude() {
   if (getenv("LONGITUDE")) {
     return getenv("LONGITUDE");
@@ -31,7 +31,7 @@ std::string longitude() {
   }
 }
 
-// TODO
+// The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::MMA7660* accel;
@@ -40,7 +40,7 @@ struct Devices
   Devices(){
   };
 
-  // TODO
+  // Initialization function
   void init() {
     // accelerometer connected to i2c
     accel = new upm::MMA7660(MMA7660_I2C_BUS,
@@ -54,32 +54,33 @@ struct Devices
     screen = new upm::Jhd1313m1(0);
   };
 
-  // TODO
+  // Cleanup on exit
   void cleanup() {
     delete accel;
     delete screen;
   }
 
-  // TODO
+  // Reset the display
   void reset() {
     message("quakebot ready");
   }
 
-  // TODO
+  // Display message when checking for earthquake
   void checking() {
     message("checking...");
   }
 
-  // TODO
+  // Display message when there really has been a recent earthquake
   void warning() {
     message("Earthquake!");
   }
 
+  // Display message when a false alarm
   void noquake() {
     message("No quake.");
   }
 
-  // TODO
+  // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
     std::size_t red   = (color & 0xff0000) >> 16;
     std::size_t green = (color & 0x00ff00) >> 8;
@@ -93,13 +94,14 @@ struct Devices
     screen->setColor(red, green, blue);
   }
 
-  // TODO
+  // Read the current data from the accelerometer
   void getAcceleration(float* x, float* y, float* z) {
     accel->getAcceleration(x, y, z);
   }
 };
 
-// TODO
+// Make a REST API call to the USGS to see if there has been
+// a recent earthquake detected in the local area
 void verify(Devices* devices) {
   devices->checking();
 
