@@ -83,7 +83,7 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
 ### Set up Intel® Edison for BLE development
 
-To set up BLE for Intel® Edison, run the following command:
+To set up Intel® Edison for BLE, run the following command:
 
 ```
 rfkill unblock bluetooth
