@@ -2,6 +2,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <sstream>
+#include <signal.h>
 
 #include <ttp223.h>
 #include <buzzer.h>
