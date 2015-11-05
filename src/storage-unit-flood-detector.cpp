@@ -12,6 +12,7 @@
 
 using namespace std;
 
+// TODO
 void notify() {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     std::cerr << "Server not configured." << std::endl;
@@ -35,6 +36,7 @@ void notify() {
   std::cerr << r.body << std::endl;
 }
 
+// TODO
 struct Devices
 {
   upm::Buzzer* buzzer;
@@ -43,6 +45,7 @@ struct Devices
   Devices(){
   };
 
+  // TODO
   void init() {
     // buzzer connected to D5 (digital out)
     buzzer = new upm::Buzzer(5);
@@ -52,25 +55,30 @@ struct Devices
     moisture = new upm::GroveMoisture(0);
   }
 
+  // TODO
   void reset() {
     stop_ringing();
   }
 
+  // TODO
   void alarm() {
     notify();
     message();
     buzzer->playSound(266, 0);
   }
 
+  // TODO
   void message(){
     cout << "Alert! Water is Detected!";
   }
 
+  // TODO
   void stop_ringing() {
     buzzer->stopSound();
     buzzer->stopSound();
   }
 
+  // TODO
   void senseMoisture() {
     for (;;) {
       int val = moisture->value();
@@ -97,17 +105,19 @@ struct Devices
 
 Devices devices;
 
-// Handles ctrl-c or other orderly exits
+// Exit handler for program
 void exit_handler(int param)
 {
   devices.cleanup();
   exit(1);
 }
 
+// The main function for the example program
 int main()
 {
+  // handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
-  
+
   // check that we are running on Galileo or Edison
   mraa_platform_t platform = mraa_get_platform_type();
   if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
