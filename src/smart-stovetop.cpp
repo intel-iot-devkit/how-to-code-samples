@@ -17,7 +17,7 @@ using namespace std;
 // Global temp value for app; will change when you use app
 float myTemp = 1000;
 
-// Send notification to datastore
+// Send notification to remote datastore
 void notify() {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     cerr << "Server not configured." << std::endl;
@@ -31,7 +31,7 @@ void notify() {
   cerr << r.body << std::endl;
 }
 
-// TODO
+// The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::GroveSpeaker* speaker;
@@ -41,7 +41,7 @@ struct Devices
   Devices(){
   };
 
-  // TODO
+  // Initialization function
   void init() {
     // speaker connected to D5 (digital out)
     speaker = new upm::GroveSpeaker(5);
@@ -56,7 +56,7 @@ struct Devices
     temps = new upm::OTP538U(0, 1, OTP538U_AREF);
   }
 
-  // TODO
+  // Cleanup on exit
   void cleanup() {
     delete speaker;
     delete flame;
@@ -68,7 +68,7 @@ struct Devices
     speaker->playSound('c', true, "high");
   }
 
-  // Reads the flame sensor every 1s
+  // Reads the flame sensor every 1 second
   void senseFlame() {
     for(;;) {
       bool val = flame->flameDetected();
@@ -168,7 +168,7 @@ int main()
   // start web server
   app.port(3000).multithreaded().run();
 
-  // all done
+  // waits forever on worker threads
   t1.join();
   t2.join();
 
