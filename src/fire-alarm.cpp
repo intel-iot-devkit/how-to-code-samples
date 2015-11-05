@@ -4,6 +4,7 @@
 #include <sstream>
 #include <ctime>
 #include <vector>
+#include <signal.h>
 
 #include <grove.h>
 #include <buzzer.h>
