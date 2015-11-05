@@ -20,7 +20,7 @@ using namespace twilio;
 const int ALARM_THRESHOLD = 28;
 const string TWILIO_API_VERSION = "2010-04-01";
 
-// TODO
+// Send an SMS notification using Twilio
 void send_sms() {
   if (!getenv("TWILIO_SID") || !getenv("TWILIO_TOKEN") ||
       !getenv("TWILIO_TO") || !getenv("TWILIO_FROM")) {
@@ -40,7 +40,7 @@ void send_sms() {
   cout << response << endl;
 }
 
-// Call data server to note the alarm status
+// Notify remote datastore server to note the alarm status
 void notify() {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     std::cerr << "Server not configured." << std::endl;
@@ -64,7 +64,7 @@ void notify() {
   std::cerr << r.body << std::endl;
 }
 
-// TODO
+// The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::GroveTemp* temp;
@@ -74,7 +74,7 @@ struct Devices
   Devices(){
   };
 
-  // TODO
+  // Initialization function
   void init() {
     // touch sensor connected to A0 (analog in)
     temp = new upm::GroveTemp(0);
@@ -88,20 +88,20 @@ struct Devices
     stop_alarm();
   };
 
-  // TODO
+  // Cleanup on exit
   void cleanup() {
     delete temp;
     delete buzzer;
     delete screen;
   }
 
-  // TODO
+  // Reset the fire alarm
   void reset() {
     stop_alarm();
     message("Ready");
   }
 
-  // TODO
+  // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
     std::size_t red   = (color & 0xff0000) >> 16;
     std::size_t green = (color & 0x00ff00) >> 8;
@@ -115,20 +115,20 @@ struct Devices
     screen->setColor(red, green, blue);
   }
 
-  // TODO
+  // Start the alarm
   void start_alarm() {
     message("Fire alarm!");
     buzzer->playSound(266, 0);
   }
 
-  // TODO
+  // Stop the alarm
   void stop_alarm() {
     message("           ");
     buzzer->stopSound();
     buzzer->stopSound();
   }
 
-  // TODO
+  // Read the current temperature from the connected sensor
   int temperature() {
     return temp->value();
   }
@@ -165,6 +165,7 @@ int main()
   int currentTemperature = 0;
   int previousTemperature = 0;
 
+  // every 1 second, check the temperature
   for (;;) {
     currentTemperature = devices.temperature();
     std::cerr << "Temp: " << currentTemperature << std::endl;
