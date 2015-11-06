@@ -296,7 +296,7 @@ int main() {
   });
 
   // start web server
-  app.port(4567).multithreaded().run();
+  app.port(3000).multithreaded().run();
 
   // wait forever for the thread to exit
   t1.join();
