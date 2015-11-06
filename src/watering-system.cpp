@@ -235,6 +235,7 @@ struct Devices
     delete flow;
     delete pump;
     delete moisture;
+    flow->stopFlowCounter();
   }
 
   // Reads the current value from the moisture sensor
@@ -244,10 +245,7 @@ struct Devices
 
   // Reads the current value from the flow sensor
   int readFlow() {
-	      flow->flowRate();
-	      sleep(2);
-	      flow->stopFlowCounter();
-    return 0; //light->value();
+    return flow->flowRate(); //light->value();
   }
 
   // Is the water supposed to be turned on?
@@ -307,6 +305,7 @@ void runner2(Devices& devices) {
 	  {
     	  send_sms();
       }
+      sleep(2);
   }
 }
 
