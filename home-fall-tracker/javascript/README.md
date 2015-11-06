@@ -30,8 +30,8 @@ Optionally, all data can be stored using the Intel® IoT Example Datastore runni
 Xadow* Starter Kit containing:
 
 1. Intel® Edison with a Xadow* expansion board
-2. [Xadow - OLED display](http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
-2. [Xadow - 3-Axis Accelerometer](http://iotdk.intel.com/docs/master/upm/node/classes/adxl345.html)
+2. [Xadow* - OLED display](http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
+2. [Xadow* - 3-Axis Accelerometer](http://iotdk.intel.com/docs/master/upm/node/classes/adxl345.html)
 
 ## Software requirements
 
@@ -89,9 +89,9 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
 You need to have a Xadow* expansion board connected to Intel® Edison to plug in all the Xadow* devices.
 
-1. Plug one end of a Xadow* connector into the Xadow - OLED Display, and connect the other end to one of the side connectors on the Xadow* expansion board.
+1. Plug one end of a Xadow* connector into the Xadow* - OLED Display, and connect the other end to one of the side connectors on the Xadow* expansion board.
 
-2. Plug one end of a Xadow* connector into the Xadow - 3-Axis Accelerometer, and connect the other end to one of the side connectors on the Xadow* expansion board.
+2. Plug one end of a Xadow* connector into the Xadow* - 3-Axis Accelerometer, and connect the other end to one of the side connectors on the Xadow* expansion board.
 
 ### Manual Intel® Edison setup
 
