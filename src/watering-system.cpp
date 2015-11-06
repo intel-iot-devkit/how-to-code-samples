@@ -169,7 +169,7 @@ void send_sms() {
 
   vars.push_back(Var("To", getenv("TWILIO_TO")));
   vars.push_back(Var("From", getenv("TWILIO_FROM")));
-  vars.push_back(Var("Body", "Watering Alert!"));
+  vars.push_back(Var("Body", "Watering System Alert!"));
   response = t.request("/" + TWILIO_API_VERSION + "/Accounts/" + getenv("TWILIO_SID") + "/SMS/Messages", "POST", vars);
   cout << "SMS Sent" << endl;
   cout << response << endl;
@@ -232,7 +232,7 @@ struct Devices
 
   // Cleanup on exit
   void cleanup() {
-	flow->stopFlowCounter();
+    flow->stopFlowCounter();
     delete flow;
     delete pump;
     delete moisture;
@@ -245,7 +245,7 @@ struct Devices
 
   // Reads the current value from the flow sensor
   int readFlow() {
-    return flow->flowRate(); //light->value();
+    return flow->flowRate();
   }
 
   // Is the water supposed to be turned on?
@@ -298,15 +298,13 @@ void runner(Devices& devices, MoistureData& moistureData) {
 
 // The thread that reads the flow sensor
 void runner2(Devices& devices) {
-  for (;;)
-  {
-
-      if(devices.readFlow())
-	  {
-    	  send_sms();
-    	  sleep(900);//not to spam text too frequently
-      }
-      sleep(2);
+  for (;;) {
+    if(devices.readFlow() < 1) {
+      log("watering system alert");
+      send_sms();
+      sleep(900);
+    }
+    sleep(2);
   }
 }
 
