@@ -301,7 +301,7 @@ void runner2(Devices& devices) {
   for (;;)
   {
 	  devices.readFlow();
-      if(devices.flow->flowRate()<=0)
+      if(devices.readFlow())
 	  {
     	  send_sms();
       }
