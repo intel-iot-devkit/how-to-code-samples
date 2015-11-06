@@ -7,7 +7,7 @@ This earthquake detector application is part of a series of how-to Intel® IoT c
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.<br>
+- Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.<br>
 - Invoke the services of the United States Geological Survey* (USGS*) API for accessing earthquake data.
 
 ## What it is
