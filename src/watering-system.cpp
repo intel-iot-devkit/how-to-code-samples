@@ -244,6 +244,9 @@ struct Devices
 
   // Reads the current value from the flow sensor
   int readFlow() {
+	      flow->flowRate();
+	      sleep(2);
+	      flow->stopFlowCounter();
     return 0; //light->value();
   }
 
@@ -299,24 +302,12 @@ void runner(Devices& devices, MoistureData& moistureData) {
 void runner2(Devices& devices) {
   for (;;)
   {
-      // we grab these (millis and flowCount) just for display
-      // purposes in this example
-     // uint32_t millis = devices.flow->getMillis();
-      //uint32_t flowCount = devices.flow->flowCounter();
-      float fr = devices.flow->flowRate();
-      // output milliseconds passed, flow count, and computed flow rate
-      //cout << "Millis: " << millis << " Flow Count: " << flowCount;
-      cout << " Flow Rate: " << fr << " LPM" << endl;
-      // best to gather data for at least one second for reasonable
-      // results.
-      sleep(2);
+	  devices.readFlow();
       if(devices.flow->flowRate()<=0)
 	  {
     	  send_sms();
       }
   }
-  devices.flow->stopFlowCounter();
-
 }
 
 // The thread that runs the scheduled tasks
