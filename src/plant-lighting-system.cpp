@@ -16,6 +16,7 @@ using std::vector;
 
 #include "../lib/crow/crow_all.h"
 #include "html.h"
+#include "styles.h"
 
 #include "../lib/twilio-cplusplus/Utils.h"
 #include "../lib/twilio-cplusplus/Rest.h"
@@ -430,6 +431,13 @@ int main()
   ([]() {
     devices.turn_off();
     return crow::response("ok");
+  });
+
+  CROW_ROUTE(app, "/styles.css")
+  ([]() {
+    std::stringstream text;
+    text << styles_css;
+    return text.str();
   });
 
   // starts the web server
