@@ -1,27 +1,27 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Smart Range</title>
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <div class="col-md-12">
-        <h1>Smart Range</h1>
+        <div class="col-md-12">
+            <h1>Smart Range</h1>
 
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label for="temp" class="col-md-3 control-label">Target Temperature (Celsius)</label>
-            <div class="col-md-4 input-group">
-              <input class="form-control" type="number" id="temp" name="temp">
-              <span class="input-group-btn">
-                <input class="btn btn-primary" type="submit" value="Set Target">
-              </span>
-            </div>
-          </div>
-        </form>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="temp" class="col-md-3 control-label">Target Temperature (Celsius)</label>
+                    <div class="col-md-4 input-group">
+                        <input class="form-control" type="number" id="temp" name="temp">
+                        <span class="input-group-btn">
+                            <input class="btn btn-primary" type="submit" value="Set Target">
+                        </span>
+                    </div>
+                </div>
+            </form>
 
-      </div>
+        </div>
     </div>
 
     <script>
@@ -40,5 +40,5 @@
         req.send();
       })();
     </script>
-  </body>
+</body>
 </html>

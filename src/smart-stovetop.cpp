@@ -10,6 +10,7 @@
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 #include "../lib/crow/crow_all.h"
 #include "html.h"
+#include "styles.h"
 
 #define OTP538U_AREF 5.0
 
@@ -165,6 +166,13 @@ int main()
       text << index_html;
       return text.str();
   });
+  CROW_ROUTE(app, "/styles.css")
+  ([]() {
+    std::stringstream text;
+    text << styles_css;
+    return text.str();
+  });
+
 
   // start web server
   app.port(3000).multithreaded().run();
