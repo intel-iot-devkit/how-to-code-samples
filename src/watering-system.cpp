@@ -232,10 +232,10 @@ struct Devices
 
   // Cleanup on exit
   void cleanup() {
+	flow->stopFlowCounter();
     delete flow;
     delete pump;
     delete moisture;
-    flow->stopFlowCounter();
   }
 
   // Reads the current value from the moisture sensor
