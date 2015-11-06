@@ -88,10 +88,6 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
 You need to have a Xadow* expansion board connected to Intel® Edison to plug in all the Xadow* devices.
 
-For more information on how to set up this expansion board, see this wiki page:
-
-<a href="http://www.seeedstudio.com/wiki/Xadow_-_Edison">http://www.seeedstudio.com/wiki/Xadow_-_Edison</a>
-
 1. Plug one end of a Xadow* connector into the Xadow* - OLED Display, and connect the other end to one of the side connectors on the Xadow* expansion board.
 
 2. Plug one end of a Xadow* connector into the Xadow* - Atmospheric Pressure Sensor, and connect the other end to one of the side connectors on the Xadow* expansion board.
