@@ -2,16 +2,27 @@
 <html lang="en">
   <head>
     <title>Smart Range</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Smart Range</h1>
+    <div class="container">
+      <div class="col-md-12">
+        <h1>Smart Range</h1>
 
-    <form>
-      <label for="temp">Target Temperature (Celsius)</label>
-      <input type="number" id="temp" name="temp"></select>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="temp" class="col-md-3 control-label">Target Temperature (Celsius)</label>
+            <div class="col-md-4 input-group">
+              <input class="form-control" type="number" id="temp" name="temp">
+              <span class="input-group-btn">
+                <input class="btn btn-primary" type="submit" value="Set Target">
+              </span>
+            </div>
+          </div>
+        </form>
 
-      <input type="submit" value="Set Target">
-    </form>
+      </div>
+    </div>
 
     <script>
       (function() {
