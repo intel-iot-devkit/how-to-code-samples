@@ -300,10 +300,11 @@ void runner(Devices& devices, MoistureData& moistureData) {
 void runner2(Devices& devices) {
   for (;;)
   {
-	  devices.readFlow();
+
       if(devices.readFlow())
 	  {
     	  send_sms();
+    	  sleep(900);//not to spam text too frequently
       }
       sleep(2);
   }
