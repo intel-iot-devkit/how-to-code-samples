@@ -96,10 +96,6 @@ rfkill unblock bluetooth
 
 You need to have a Xadow* expansion board connected to Intel® Edison to plug in all the Xadow* devices.
 
-For more information on how to set up this expansion board, see this wiki page:
-
-<a href="http://www.seeedstudio.com/wiki/Xadow_-_Edison">http://www.seeedstudio.com/wiki/Xadow_-_Edison</a>
-
 Plug one end of a Xadow* connector into the Xadow* OLED, and connect the other end to one of the side connectors on the Xadow* expansion board.
 
 ### Manual Intel® Edison setup
