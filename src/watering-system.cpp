@@ -218,6 +218,9 @@ struct Devices
   void init() {
     // water flow sensor to D2
     flow = new upm::GroveWFS(2);
+    flow->clearFlowCounter();
+    flow->startFlowCounter();
+
 
     // pump attached to D4
     pump = new mraa::Gpio(4);
@@ -296,18 +299,24 @@ void runner(Devices& devices, MoistureData& moistureData) {
 void runner2(Devices& devices) {
   for (;;)
   {
-    // int lightReading = devices.readLight();
-    //
-    // if ((lightReading < 2 && devices.turned_on()) ||
-    //     (lightReading > 4 && devices.turned_off())) {
-    //     log("Lighting alert");
-    //     devices.message("Lighting alert");
-    //     send_sms();
-    //     std::this_thread::sleep_for(std::chrono::milliseconds(600000));
-    // } else {
-    //     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    // }
+      // we grab these (millis and flowCount) just for display
+      // purposes in this example
+     // uint32_t millis = devices.flow->getMillis();
+      //uint32_t flowCount = devices.flow->flowCounter();
+      float fr = devices.flow->flowRate();
+      // output milliseconds passed, flow count, and computed flow rate
+      //cout << "Millis: " << millis << " Flow Count: " << flowCount;
+      cout << " Flow Rate: " << fr << " LPM" << endl;
+      // best to gather data for at least one second for reasonable
+      // results.
+      sleep(2);
+      if(devices.flow->flowRate()<=0)
+	  {
+    	  send_sms();
+      }
   }
+  devices.flow->stopFlowCounter();
+
 }
 
 // The thread that runs the scheduled tasks
