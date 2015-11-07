@@ -217,15 +217,11 @@ This will compile the program using the Cross G++ Compiler, link it using the Cr
 
 After running the program you should have a similar output as in the image above.
 
+The web server runs on port 3000, so if the Intel® Edison board is connected to Wi-Fi* on 192.168.1.13, the address to browse to if you are on the same network is http://192.168.1.13:3000.
+your app will be viewable at your edison ip:3000
+![](./../../../images/cpp/smrt-rng-app.png)
+
 ## Regenerating the HTML and CSS
 
 If you make any changes to either the `index.html` or `styles.css` files, you will need to regenerate the hex file used to serve up the assets on via the built-in Crow web server.
-
-### Setting The Alarm
-
-The alarm is set using a single-page web interface served directly from the Intel® Edison board while the example program is running.
-
-The web server runs on port 3000, so if the Intel® Edison board is connected to Wi-Fi* on 192.168.1.13, the address to browse to if you are on the same network is http://192.168.1.13:3000.
-
-
-
+We have a usefull tutorial on how to use the shell script here https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md
