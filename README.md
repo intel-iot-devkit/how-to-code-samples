@@ -2,18 +2,18 @@
 
 ## Introduction
 
-This smart alarm clock application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This smart alarm clock application is part of a series of how-to IntelÂ® IoT code sample exercises using the IntelÂ® IoT Developer Kit, IntelÂ® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run this code sample in Eclipse* IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
+- Connect the IntelÂ® Edison development platform, aÂ computing platform designed for prototyping and producing IoT and wearable computing products.
+- Interface with the IntelÂ® Edison platform IO and sensor repository using MRAA and UPM from the IntelÂ® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run this code sample in Eclipse* IoT Edition, an IDE forÂ creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your IntelÂ® Edison or Galileo board.
 - Set up a web application server to set the alarm time and store this alarm data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Invoke the services of the Weather Underground* API for accessing weather data.
 
 ## What It Is
 
-Using an Intel® Edison board, this project lets you create a smart alarm clock that:
+Using an IntelÂ® Edison board, this project lets you create a smart alarm clock that:
 - can be accessed with your mobile phone via the built-in web interface to set the alarm time;
 - displays live weather data on the LCD;
 - keeps track of how long it takes you to wake up each morning, using cloud-based data storage.
@@ -21,7 +21,7 @@ Using an Intel® Edison board, this project lets you create a smart alarm clock t
 ## Hardware requirements
 The "smart" alarm clock requires the following components from the Grove Starter Kit Plus:
 
-1. Intel® Edison with an Arduino* breakout board
+1. IntelÂ® Edison with an Arduino* breakout board
 2. [Grove* Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/groverotary.html)
 3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove* Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
@@ -112,29 +112,8 @@ Change the `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address th
 Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where you have installed the Eclipse IoT Development Kit.
 
 ## Copy the Libraries on Windows
- 
-1. Download and install WinSCP https://winscp.net/eng/download.php
-2. Once WinSCP is installed run the application.
 
-![](./../../../images/cpp/cpp-winscp-step-1.png)
-3. Under the "File Protocol" select SCP.
-
-![](./../../../images/cpp/cpp-winscp-step-2.png)
-4. "Host Name" is your Edison ip address. "User Name" is root. Finally the "Password" is whatever you set it up as when you configured your Edison.
-
-![](./../../../images/cpp/cpp-winscp-step-3.png)
-5. You will then come to a screen similar to the above image. 
-
-![](./../../../images/cpp/cpp-winscp-step-5.png)
-6. On this page you will need to move up a few directories until you are in the /<root> directory.
-
-![](./../../../images/cpp/cpp-winscp-step-6.png)
-7. Once you are in the correct directory then go to this directory from the root /usr/include/boost grab the folder and drag it to /Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include folder. (This file may not be in your downloads directory, in the example I have it on my desktop)
-
-![](./../../../images/cpp/cpp-winscp-step-7.png)
-8. Once this process is finished you will need to move up in both directories to /usr/lib/ and grab all 36 files that start with "libboost*" respectively an move them to /Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib.(This file may not be in your downloads directory, in the example I have it on my desktop)
-
-9. Once finished you may close the WinSCP application.
+We have a helpful link to get this set up here. https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md
 
 Note that you will need to have turned on SSH by running the `configure_edison --password` command on the Edison. Once you've set the password, make sure you write it down. You only need to do this one time and it will be set when you reboot your Edison.
 
@@ -207,7 +186,10 @@ This will compile the program using the Cross G++ Compiler, link it using the Cr
 
 After running the program you should have a similar output as in the image above.
 
-When the program uploads to the Edison board your rgb lcd display will show the current time. 
+When the program uploads to the Edison board your rgb lcd display will show the current time.
+
+![](./../../../images/cpp/alarm-app.png)
+A sample outout for the current web app.
 
 ## Regenerating the HTML and CSS
 
@@ -215,9 +197,6 @@ If you make any changes to either the `index.html` or `styles.css` files, you wi
 
 ### Setting The Alarm
 
-The alarm is set using a single-page web interface served directly from the Intel® Edison board while the example program is running.
+The alarm is set using a single-page web interface served directly from the IntelÂ® Edison board while the example program is running.
 
-The web server runs on port 3000, so if the Intel® Edison board is connected to Wi-Fi* on 192.168.1.13, the address to browse to if you are on the same network is http://192.168.1.13:3000.
-
-
-
+The web server runs on port 3000, so if the IntelÂ® Edison board is connected to Wi-Fi* onÂ 192.168.1.13, the address to browse to if you are on the same network isÂ http://192.168.1.13:3000.
