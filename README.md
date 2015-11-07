@@ -194,6 +194,7 @@ A sample outout for the current web app.
 ## Regenerating the HTML and CSS
 
 If you make any changes to either the `index.html` or `styles.css` files, you will need to regenerate the hex file used to serve up the assets on via the built-in Crow web server.
+We have a usefull tutorial on how to use the shell script here https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md
 
 ### Setting The Alarm
 
