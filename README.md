@@ -124,20 +124,21 @@ To configure the example for the both the the SMS and Microsoft Azure datastore,
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
 This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
-
-### Running The Code On Edison
-
 ![](./../../../images/cpp/cpp-run-eclipse.png)
 
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
 This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
-![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
+![](./../../../images/cpp/plant-ligt-app.png)
 
 After running the program you should have a similar output as in the image above.
 
 When the program uploads to the Edison board your rgb lcd display will show the current time. 
 
+your app will be viewable at your edison ip:3000
+![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
+
 ## Regenerating the HTML and CSS
 
 If you make any changes to either the `index.html` or `styles.css` files, you will need to regenerate the hex file used to serve up the assets on via the built-in Crow web server.
+We have a usefull tutorial on how to use the shell script here https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md
