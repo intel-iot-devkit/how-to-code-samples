@@ -36,10 +36,10 @@ Optionally, it can also log watering system events using the "Intel IoT Example 
 Grove* Environment & Agriculture Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grove*moisture.html)
+2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grovemoisture.html)
 3. [Water Pump](http://www.seeedstudio.com/depot/6V-Mini-Water-Pump-p-1945.html)
 4. [Water Flow Sensor](http://www.seeedstudio.com/depot/G18-Water-Flow-Sensor-p-1346.html)
-5. [Dry-reed Relay](http://iotdk.intel.com/docs/master/upm/node/classes/Grove*relay.html)
+5. [Dry-reed Relay](http://iotdk.intel.com/docs/master/upm/node/classes/Groverelay.html)
 
 ## Software requirements
 
