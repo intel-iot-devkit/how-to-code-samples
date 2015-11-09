@@ -9,6 +9,7 @@ From this exercise, developers will learn how to:
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run this code sample in Eclipse* IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
 - Store the doorbell ring data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a web application server to set the alarm time and store this alarm data using Azure Redis Cache* from Microsoft* Azure* or Redis* from IBM* Bluemix*, both cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What It Is
 
@@ -20,11 +21,13 @@ Using an Intel® Edison board, this project lets you create a smart doorbell that
 
 ## How It Works
 
-This "smart" doorbell will do the following when the Grove* Touch Sensor is pressed:
+This smart doorbell will do the following when the Grove* Touch Sensor is pressed:
 
-- Make a noise with the buzzer
-- Display a message on the LCD Display
-- Optionally, store the total number of doorbell rings using the "Intel IoT Example Datastore" running on your own server, such as a Microsoft Azure or IBM Bluemix account.
+The buzzer will sound notifying you that someone has pressed it. 
+
+In addition the RGB LCD Screen will display a message notifying you that someone is there.
+
+Optionally, store the total number of doorbell rings using the "Intel IoT Example Datastore" running on your own server, such as a Microsoft Azure or IBM Bluemix account.
 
 ## Hardware requirements
 
@@ -42,11 +45,12 @@ Grove* Starter Kit containing:
 
 ### How To Setup
 
-To begin, clone the Intel IoT Examples with git on your computer:
+To begin, clone the Intel® IoT Examples with git on your computer:
 
-    $ git clone https://github.com/hybridgroup/intel-iot-examples.git
+    $ git clone git clone https://github.com/intel-iot-devkit/intel-iot-examples.git
 
-Not sure how to do that? [Here is an excellent guide from Github on how to get started](https://help.github.com/desktop/guides/getting-started/).
+Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/intel-iot-devkit/intel-iot-examples](https://github.com/intel-iot-devkit/intel-iot-examples) 
+and click on the "Download ZIP" button at the lower right. Once the ZIP file has finished downloading, uncompress it, and then use the files in the directory for this example.
 
 ### Adding The Code To Eclipse IoT
 
@@ -87,14 +91,29 @@ Plug one end of a Grove* cable into the "RGB LCD", then connect the other end in
 
 This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
 
-Update the opkg base feeds, so you can install the needed dependencies. Instructions on how to do this are located here: http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html
-If you've already done this, you can skip to the next step.
+Update the opkg base feeds, so you can install the needed dependencies. SSH into the Intel Edison, then run this command:
+
+```
+vi /etc/opkg/base-feeds.conf
+```
+Edit the file so that it contains the following:
+
+```
+src/gz all http://repo.opkg.net/edison/repo/all
+src/gz edison http://repo.opkg.net/edison/repo/edison
+src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
+```
+Now save the file, by pressing the "ESC" key, then the `:` key, then the `q` key, and hitting `ENTER`.
+
+This only needs to be done once per Intel Edison board, so if you've already done it, you can skip to the next step.
 
 Now, install the boost libraries onto the Edison, by running:
 ```
 opkg update
 opkg install boost-dev
 ```
+
+Now save the file, by pressing the `ESC` key, then the `:` key, then the `q` key, and hitting `ENTER`.
 
 ## Copy the Libraries
 Next, you need to copy the libraries and include files from the Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
@@ -111,13 +130,12 @@ Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where
 
 We have a helpful link to get this set up here. https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md
 
-## Data Store Server Setup
+## Datastore Server Setup
 
-You can optionally store the data generated by this example program in a backend database deployed using Node.js, and the Redis datastore. You use your own account on a hosted service such as Microsoft Azure or IBM Bluemix.
-
+Optionally, you can store the data generated by this example program in a backend database deployed using Microsoft* Azure* or IBM* Bluemix*, Node.js, and a Redis data store.
 For information on how to setup your own cloud data server, go to:
 
-https://github.com/hybridgroup/intel-iot-examples-datastore
+https://github.com/intel-iot-devkit/intel-iot-examples-datastore
 
 ### Connecting Your Edison to the Eclipse IDE
 
