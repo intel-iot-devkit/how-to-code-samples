@@ -35,7 +35,7 @@ In addition, you can optionally store the fire alarm stats using the "Intel IoT 
 Grove* Starter Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grove*temp.html)
+2. [Grove* Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grovetemp.html)
 3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
