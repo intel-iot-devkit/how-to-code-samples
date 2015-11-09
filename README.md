@@ -35,7 +35,7 @@ In addition, you can optionally store the fire alarm stats using the "Intel IoT 
 Grove* Starter Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
+2. [Grove* Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grove*temp.html)
 3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
@@ -55,7 +55,7 @@ Not sure how to do that? [Here is an excellent guide from Github on how to get s
 
 Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/hybridgroup/intel-iot-examples](https://github.com/hybridgroup/intel-iot-examples) and click on the "Download ZIP" button at the lower right. Once the ZIP file has finished downloading, uncompress it, and then use the files in the directory for this example.
 
-### Adding The Code To Eclipse IoT
+## Adding The Code To Eclipse IoT
 
 You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
 
@@ -79,23 +79,47 @@ You use the Eclipse "Import Wizard" to import an existing project into the works
 - Your main .cpp program will now be in your workspace under the src folder.
 
 
-### Connecting The Grove Sensors
+### Connecting The Grove* Sensors
 
 ![](./../../../images/js/fire-alarm.jpg)
 
-You will need to have the Grove Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove devices into the Grove shield. Make sure you have the tiny VCC switch on the Grove Shield set to the "5V" position.
+You will need to have the Grove* Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to the "5V" position.
 
-Plug one end of a Grove cable into the "Temperature Sensor", then connect the other end to the "A0" port on the Grove Shield.
+Plug one end of a Grove* cable into the "Temperature Sensor", then connect the other end to the "A0" port on the Grove* Shield.
 
-Connect one end of a Grove cable into the "Buzzer", then plug the other end into the "D5" port on the Grove Shield.
+Connect one end of a Grove* cable into the "Buzzer", then plug the other end into the "D5" port on the Grove* Shield.
 
-Plug one end of a Grove cable into the "RGB LCD", then plug the other end into any of the "I2C" ports on the Grove Shield.
+Plug one end of a Grove* cable into the "RGB LCD", then plug the other end into any of the "I2C" ports on the Grove* Shield.
 
 ### Intel Edison Setup
 
 This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
 
 It also uses the `twilio-cplusplus` library to communcate with the Twilio telephony service. The `twilio-cplusplus` library requires both the `libcurl` package and the `openssl` packages, which are already installed on the Intel Edison by default.
+
+Update the opkg base feeds, so you can install the needed dependencies. Instructions on how to do this are located here: http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html
+If you've already done this, you can skip to the next step.
+
+Now, install the boost libraries onto the Edison, by running:
+```
+opkg update
+opkg install boost-dev
+```
+
+## Copy the Libraries
+Next, you need to copy the libraries and include files from the Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
+
+```
+scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
+scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
+```
+Change the `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address that you have set your Edison to.
+
+Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where you have installed the Eclipse IoT Development Kit.
+
+## Copy the Libraries on Windows
+
+We have a helpful link to get this set up here. https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md
 
 ### Twilio API Key
 
@@ -148,7 +172,7 @@ Now when you run your program using the "Run" button, it should be able to call 
 
 ### Running The Code On Edison
 
-![](./../../../images/Run-Eclipse.png)
+![](./../../../images/cpp/cpp-Run-Eclipse.png)
 
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
 This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
