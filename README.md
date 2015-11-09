@@ -103,7 +103,7 @@ src/gz edison http://repo.opkg.net/edison/repo/edison
 src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
 ```
 
-Now save the file, by pressing the "ESC" key, then the `:` key, then the `q` key, and hitting `ENTER`.
+Now save the file, by pressing the `ESC` key, then the `:` key, then the `q` key, and hitting `ENTER`.
 
 This only needs to be done once per Intel Edison board, so if you've already done it, you can skip to the next step.
 
