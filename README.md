@@ -7,7 +7,7 @@ This automatic plant lighting system monitor application is part of a series of 
 From this exercise, developers will learn how to:
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
+- Run this code sample in Eclipse IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
 - Set up a web application server to store lighting system data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Invoke the services of the Twilio* API for sending SMS messages.
 
@@ -36,15 +36,24 @@ Optionally, it can also store system events using the "Intel IoT Example Datasto
 Grove* Indoor Environment Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
-3. [Grove* Light Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovelight.html)
+2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grove*moisture.html)
+3. [Grove* Light Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grove*light.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
 
-1. Eclipse*  IoT Edition
+1. [Eclipse* Iot version](https://software.intel.com/en-us/eclipse-getting-started-guide)
 2. Microsoft* Azure* account
 3. Twilio* account
+
+### How To Setup
+
+To begin, clone the Intel IoT Examples with git on your computer:
+
+    $ git clone https://github.com/hybridgroup/intel-iot-examples.git
+
+Not sure how to do that? [Here is an excellent guide from Github on how to get started](https://help.github.com/desktop/guides/getting-started/).
+
 
 ## Adding The Code To Eclipse IoT
 
@@ -81,6 +90,38 @@ Plug one end of a Grove* cable into the "Grove* Moisture Sensor", and connect th
 
 Plug one end of a Grove* cable into the "Grove* RGB LCD", and connect the other end to any of the "I2C" ports on the Grove* Shield.
 
+### Intel Edison Setup
+
+This example uses the `crow` web microframework library to provide a simple to use, yet powerful web server. The `crow` library requires the `libboost` package be installed on the Intel Edison, as well as adding the needed include and lib files to the Eclipse G++ Cross Compiler and G++ Cross Linker.
+
+This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
+
+It also uses the `twilio-cplusplus` library to communcate with the Twilio telephony service. The `twilio-cplusplus` library requires both the `libcurl` package and the `openssl` packages, which are already installed on the Intel Edison by default.
+
+Update the opkg base feeds, so you can install the needed dependencies. Instructions on how to do this are located here: http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html
+If you've already done this, you can skip to the next step.
+
+Now, install the boost libraries onto the Edison, by running:
+```
+opkg update
+opkg install boost-dev
+```
+
+## Copy the Libraries
+Next, you need to copy the libraries and include files from the Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
+
+```
+scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
+scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
+```
+Change the `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address that you have set your Edison to.
+
+Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where you have installed the Eclipse IoT Development Kit.
+
+## Copy the Libraries on Windows
+
+We have a helpful link to get this set up here. https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md
+
 ### Twilio API Key
 
 To optionally send SMS messages, you need to register for an account and get an API key from the Twilio web site: https://www.twilio.com/
@@ -95,11 +136,26 @@ Pass the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` to the example program, by mo
 
 ### Microsoft Azure server setup
 
-Optionally, you can store the data generated by this example program in a backend database deployed using Microsoft Azure, Node.js, and a Redis data store.
+Optionally, you can store the data generated by this example program in a backend database deployed using Microsoft Azure.
 
 For information on how to setup your own cloud data server, go to:
 
 https://github.com/intel-iot-devkit/intel-iot-examples-datastore
+
+### Connecting Your Edison to the Eclipse IDE
+
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win.png)
+1. In the bottom left corner right-click in the area "Target SSH Conections" select "New..." then select "Connection..." and a new screen will appear. 
+
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win2.png)
+2. In the "filter box" type the name of your edison. In the example mine is JustinEdison.
+
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win3.png)
+3. In the "Select one of the found connections list; click on your device name. Then Ok. 
+
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
+4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect. 
+(If promted for a username and password the user is 'root' and password is whatever you set it up as when configuring the Edison board)
 
 ## Configuring The Example
 
@@ -129,14 +185,14 @@ This will compile the program using the Cross G++ Compiler, link it using the Cr
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
 This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
-![](./../../../images/cpp/plant-ligt-app.png)
-
+![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
 After running the program you should have a similar output as in the image above.
 
 When the program uploads to the Edison board your rgb lcd display will show the current time. 
 
 your app will be viewable at your edison ip:3000
-![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
+![](./../../../images/cpp/plant-ligt-app.png)
+
 
 ## Regenerating the HTML and CSS
 
