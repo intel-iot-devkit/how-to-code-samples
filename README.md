@@ -32,9 +32,9 @@ This "smart" alarm clock has a number of useful features.
 The "smart" alarm clock requires the following components from the Grove* Starter Kit Plus:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grove*rotary.html)
+2. [Grove* Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Groverotary.html)
 3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
-4. [Grove* Button](http://iotdk.intel.com/docs/master/upm/node/classes/Grove*button.html)
+4. [Grove* Button](http://iotdk.intel.com/docs/master/upm/node/classes/Grovebutton.html)
 5. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
