@@ -13,10 +13,11 @@ From this exercise, developers will learn how to:
 
 ## What It Is
 
-Using an Intel® Edison board, this project lets you create a earthquake detector that:
-- senses motion using the digital accellerometer;
-- checks live earthquake data, using the USGS* API.
-- displays the earthquake on the LCD;
+Using an Intel® Edison board, this project lets you create a earthquake detector that will sense motion using the digital accellerometer.
+
+In addition it checks live earthquake data, using the USGS* API.
+
+It will also display the earthquake on the LCD. 
 
 ## How It Works
 
@@ -39,15 +40,14 @@ Grove* Starter Kit containing:
 
 1. [Eclipse* Iot version](https://software.intel.com/en-us/eclipse-getting-started-guide)
 
-## How To Setup
+### How To Setup
 
-To begin, clone the Intel IoT Examples with git on your computer:
+To begin, clone the Intel® IoT Examples with git on your computer:
 
-    $ git clone https://github.com/hybridgroup/intel-iot-examples.git
+    $ git clone git clone https://github.com/intel-iot-devkit/intel-iot-examples.git
 
-Not sure how to do that? [Here is an excellent guide from Github on how to get started](https://help.github.com/desktop/guides/getting-started/).
-
-Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/hybridgroup/intel-iot-examples](https://github.com/hybridgroup/intel-iot-examples) and click on the "Download ZIP" button at the lower right. Once the ZIP file has finished downloading, uncompress it, and then use the files in the directory for this example.
+Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/intel-iot-devkit/intel-iot-examples](https://github.com/intel-iot-devkit/intel-iot-examples) 
+and click on the "Download ZIP" button at the lower right. Once the ZIP file has finished downloading, uncompress it, and then use the files in the directory for this example.
 
 ### Adding The Code To Eclipse IoT
 
@@ -86,8 +86,21 @@ Plug one end of a Grove* cable into the "RGB LCD", then connect the other end in
 
 This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
 
-Update the opkg base feeds, so you can install the needed dependencies. Instructions on how to do this are located here: http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html
-If you've already done this, you can skip to the next step.
+Update the opkg base feeds, so you can install the needed dependencies. SSH into the Intel Edison, then run this command:
+
+```
+vi /etc/opkg/base-feeds.conf
+```
+Edit the file so that it contains the following:
+
+```
+src/gz all http://repo.opkg.net/edison/repo/all
+src/gz edison http://repo.opkg.net/edison/repo/edison
+src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
+```
+Now save the file, by pressing the "ESC" key, then the `:` key, then the `q` key, and hitting `ENTER`.
+
+This only needs to be done once per Intel Edison board, so if you've already done it, you can skip to the next step.
 
 Now, install the boost libraries onto the Edison, by running:
 ```
@@ -95,7 +108,10 @@ opkg update
 opkg install boost-dev
 ```
 
-## Copy the Libraries
+Now save the file, by pressing the `ESC` key, then the `:` key, then the `q` key, and hitting `ENTER`.
+
+
+### Copy the Libraries
 Next, you need to copy the libraries and include files from the Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
 
 ```
