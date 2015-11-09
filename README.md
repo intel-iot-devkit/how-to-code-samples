@@ -7,7 +7,7 @@ This shop floor equipment activity monitor application is part of a series of ho
 From this exercise, developers will learn how to:
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
+- Run this code sample in Eclipse IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
 - Store the equipment usage data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What It Is
@@ -32,8 +32,8 @@ The monitor will also, optionally, store equipment usage start/stop events using
 Grove* Starter Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Sound Sensor](http://www.seeedstudio.com/depot/Grove-Sound-Sensor-p-752.html)
-3. [Grove* Piezo Vibration Sensor](http://www.seeedstudio.com/depot/Grove-Piezo-Vibration-Sensor-p-1411.html)
+2. [Grove* Sound Sensor](http://www.seeedstudio.com/depot/Grove*-Sound-Sensor-p-752.html)
+3. [Grove* Piezo Vibration Sensor](http://www.seeedstudio.com/depot/Grove*-Piezo-Vibration-Sensor-p-1411.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
@@ -74,21 +74,36 @@ You use the Eclipse "Import Wizard" to import an existing project into the works
 ![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
 - Your main .cpp program will now be in your workspace under the src folder.
 
-### Connecting The Grove Sensors
+### Connecting The Grove* Sensors
 
 ![](./../../../images/js/equipment-activity.jpg)
 
-You will need to have the Grove Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove devices into the Grove shield. Make sure you have the tiny VCC switch on the Grove Shield set to the "5V" position.
+You will need to have the Grove* Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to the "5V" position.
 
-Plug one end of a Grove cable into the "Microphone", then connect the other end to the "AO" port on the Grove Shield.
+Plug one end of a Grove* cable into the "Microphone", then connect the other end to the "AO" port on the Grove* Shield.
 
-Connect one end of a Grove cable into the "Piezo Vibration Sensor", then plug the other end into the "A2" port on the Grove Shield.
+Connect one end of a Grove* cable into the "Piezo Vibration Sensor", then plug the other end into the "A2" port on the Grove* Shield.
 
-Plug one end of a Grove cable into the "RGB LCD", then connect the other end into any of the "I2C" ports on the Grove Shield.
+Plug one end of a Grove* cable into the "RGB LCD", then connect the other end into any of the "I2C" ports on the Grove* Shield.
 
 ### Intel Edison Setup
 
 This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
+
+## Copy the Libraries
+Next, you need to copy the libraries and include files from the Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
+
+```
+scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
+scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
+```
+Change the `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address that you have set your Edison to.
+
+Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where you have installed the Eclipse IoT Development Kit.
+
+## Copy the Libraries on Windows
+
+We have a helpful link to get this set up here. https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md
 
 ### Connecting Your Edison to the Eclipse IDE
 
@@ -104,8 +119,6 @@ This example uses the `restclient-cpp` library to perform REST calls to the serv
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect. 
 (If promted for a username and password the user is 'root' and password is whatever you set it up as when configuring the Edison board)
-
-
 
 ### Running The Code On Edison
 
