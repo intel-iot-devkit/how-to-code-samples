@@ -14,10 +14,10 @@ From this exercise, developers will learn how to:
 
 Using an Intel® Edison board, this project lets you create a smart stove top that:
 
--monitors the temperature using the sensor, and gives an audible notification when your food has reached the desired temperature and you need to turn down the heat;
--can be accessed with your mobile phone via the built-in web interface to set the desired temperature;
--monitors for a possible fire, by using the attached flame sensor, and gives an urgent audible warning.;
--keeps track of the cooking temperature using cloud-based data storage.
+- monitors the temperature using the sensor, and gives an audible notification when your food has reached the desired temperature and you need to turn down the heat;
+- can be accessed with your mobile phone via the built-in web interface to set the desired temperature;
+- monitors for a possible fire, by using the attached flame sensor, and gives an urgent audible warning.;
+- keeps track of the cooking temperature using cloud-based data storage.
 
 
 ## How It Works
@@ -34,11 +34,11 @@ Grove* Home Automation Kit containing:
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove* IR Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/otp538u.html)
 3. [Grove* Flame Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/yg1006.html)
-4. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+4. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/Grove*speaker.html)
 
 ## Software requirements
 
-1. Eclipse* IoT Edition
+1. [Eclipse* Iot version](https://software.intel.com/en-us/eclipse-getting-started-guide)
 2. Microsoft* Azure* account
 
 
@@ -84,19 +84,19 @@ You use the Eclipse "Import Wizard" to import an existing project into the works
 ![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
 - Your main .cpp program will now be in your workspace under the src folder.
 
-### Connecting The Grove Sensors
+### Connecting The Grove* Sensors
 
 ![](./../../../images/js/smart-stove.jpg)
 
-You will need to have the Grove Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove devices into the Grove shield. Make sure you have the tiny VCC switch on the Grove Shield set to the "5V" position.
+You will need to have the Grove* Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to the "5V" position.
 
-Plug one end of a Grove cable into the "Rotary Analog Sensor", then connect the other end to the "A0" port on the Grove Shield.
+Plug one end of a Grove* cable into the "Rotary Analog Sensor", then connect the other end to the "A0" port on the Grove* Shield.
 
-Connect one end of a Grove cable into the "Button", then plug the other end into the "D4" port on the Grove Shield.
+Connect one end of a Grove* cable into the "Button", then plug the other end into the "D4" port on the Grove* Shield.
 
-Plug one end of a Grove cable into the "Buzzer", then connect the other end to the "D5" port on the Grove Shield.
+Plug one end of a Grove* cable into the "Buzzer", then connect the other end to the "D5" port on the Grove* Shield.
 
-Connect one end of a Grove cable into the "RGB LCD", then plug the other end into any of the "I2C" ports on the Grove Shield.
+Connect one end of a Grove* cable into the "RGB LCD", then plug the other end into any of the "I2C" ports on the Grove* Shield.
 
 ### Intel Edison Setup
 
@@ -122,32 +122,11 @@ Change the `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address th
 Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where you have installed the Eclipse IoT Development Kit.
 
 ## Copy the Libraries on Windows
- 
-1. Download and install WinSCP https://winscp.net/eng/download.php
-2. Once WinSCP is installed run the application.
-
-![](./../../../images/cpp/cpp-winscp-step-1.png)
-3. Under the "File Protocol" select SCP.
-
-![](./../../../images/cpp/cpp-winscp-step-2.png)
-4. "Host Name" is your Edison ip address. "User Name" is root. Finally the "Password" is whatever you set it up as when you configured your Edison.
-
-![](./../../../images/cpp/cpp-winscp-step-3.png)
-5. You will then come to a screen similar to the above image. 
-
-![](./../../../images/cpp/cpp-winscp-step-5.png)
-6. On this page you will need to move up a few directories until you are in the /<root> directory.
-
-![](./../../../images/cpp/cpp-winscp-step-6.png)
-7. Once you are in the correct directory then go to this directory from the root /usr/include/boost grab the folder and drag it to /Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include folder. (This file may not be in your downloads directory, in the example I have it on my desktop)
-
-![](./../../../images/cpp/cpp-winscp-step-7.png)
-8. Once this process is finished you will need to move up in both directories to /usr/lib/ and grab all 36 files that start with "libboost*" respectively an move them to /Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib.(This file may not be in your downloads directory, in the example I have it on my desktop)
-
-9. Once finished you may close the WinSCP application.
 
 Note that you will need to have turned on SSH by running the `configure_edison --password` command on the Edison. Once you've set the password, make sure you write it down. You only need to do this one time and it will be set when you reboot your Edison.
 
+We have an easy to use tutorial on how to do this in windows using WinSCP. https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md
+ 
 This example also uses the `restclient-cpp` library to perform REST calls to the remote data server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
 
 You will also want to set the current time zone to match the zone you are in. You do this using the `timedatectl` program on the Edison itself. For example:
@@ -161,25 +140,6 @@ timedatectl set-timezone America/Los_Angeles
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
 This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
-
-## Weather Underground Data Setup
-
-To optionally fetch the real-time weather information, you will need to get an API key from the Weather Underground web site at http://www.wunderground.com/weather/api/
-
-You will not be able to retrieve weather conditions without obtaining a Weather Underground API key first. You can still run the example, just without the weather data.
-
-To run the example with the optional weather data intefgration, you need to set the `API_KEY` environment variable. You can do this in Eclipse by:
-
-1. Select the "Run" menu and choose "Run Configurations". The "Run Configurations" dialog will be displayed.
-2. Click on "alarm-clock" under "C/C++ Remote Application". This will display the information for your application.
-3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the API key that correspond to your own setup:
-
-```
-chmod 755 /tmp/smart-stove; export API_KEY="YOURKEY"
-```
-
-4. Click on the "Apply" button to save your new environment variables.
-
 Now when you run your program using the "Run" button, it should be able to retrieve real-time weather data from the Edison.
 
 ## Data Store Server Setup
@@ -189,6 +149,21 @@ You can optionally store the data generated by this example program in a backend
 For information on how to setup your own cloud data server, go to:
 
 https://github.com/hybridgroup/intel-iot-examples-datastore
+
+### Connecting Your Edison to the Eclipse IDE
+
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win.png)
+1. In the bottom left corner right-click in the area "Target SSH Conections" select "New..." then select "Connection..." and a new screen will appear. 
+
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win2.png)
+2. In the "filter box" type the name of your edison. In the example mine is JustinEdison.
+
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win3.png)
+3. In the "Select one of the found connections list; click on your device name. Then Ok. 
+
+![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
+4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect. 
+(If promted for a username and password the user is 'root' and password is whatever you set it up as when configuring the Edison board)
 
 ### Running The Example With The Cloud Server
 
