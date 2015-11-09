@@ -8,7 +8,7 @@ From this exercise, developers will learn how to:
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
-- Set up a web application server to set the target temperature and store this data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a web application server to set the temperature and store this temperature data using Azure Redis Cache* from Microsoft* Azure* or Redis* from IBM* Bluemix*, both cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What It Is
 
@@ -22,7 +22,7 @@ Using an Intel® Edison board, this project lets you create a smart stove top tha
 
 ## How It Works
 
-This "smart" stove top sensor has a number of useful features, designed to help you monitor the temperature of the food you are cooking on your legacy stovetop.
+This smart stove top sensor has a number of useful features, designed to help you monitor the temperature of the food you are cooking on your legacy stovetop.
 Set the target temperature for a pot on your rangetop using a web page served directly from the Edison itself, using your mobile phone.
 When the target temperature is reached, the speaker chimes. If an open flame from a pot boiling over is detected, than an alarm sounds.
 Optionally, all data can also be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
@@ -52,14 +52,16 @@ cooking on your legacy stovetop. Set the target temperature for a pot
 on your rangetop using a web page served directly from the Edison itself, 
 using your mobile phone. When the target temperature is reached, the speaker chimes.
 If an open flame from a pot boiling over is detected, than an alarm sounds.
- Optionally, all data can also be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+Optionally, all data can also be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+
 ### How To Setup
 
-To begin, clone the Intel IoT Examples with git on your computer:
+To begin, clone the Intel® IoT Examples with git on your computer:
 
-    $ git clone https://github.com/hybridgroup/intel-iot-examples.git
+    $ git clone git clone https://github.com/intel-iot-devkit/intel-iot-examples.git
 
-Not sure how to do that? [Here is an excellent guide from Github on how to get started](https://help.github.com/desktop/guides/getting-started/).
+Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/intel-iot-devkit/intel-iot-examples](https://github.com/intel-iot-devkit/intel-iot-examples) 
+and click on the "Download ZIP" button at the lower right. Once the ZIP file has finished downloading, uncompress it, and then use the files in the directory for this example.
 
 ## Adding The Code To Eclipse IoT
 
@@ -100,26 +102,32 @@ Connect one end of a Grove* cable into the "RGB LCD", then plug the other end in
 
 ### Intel Edison Setup
 
-This example uses the `crow` web microframework library to provide a simple to use, yet powerful web server. The `crow` library requires the `libboost` package be installed on the Intel Edison, as well as adding the needed include and lib files to the Eclipse G++ Cross Compiler and G++ Cross Linker.
+This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
 
-Update the opkg base feeds, so you can install the needed dependencies. Instructions on how to do this are located here: http://alextgalileo.altervista.org/edison-package-repo-configuration-instructions.html
-If you've already done this, you can skip to the next step.
+Update the opkg base feeds, so you can install the needed dependencies. SSH into the Intel Edison, then run this command:
+
+```
+vi /etc/opkg/base-feeds.conf
+```
+Edit the file so that it contains the following:
+
+```
+src/gz all http://repo.opkg.net/edison/repo/all
+src/gz edison http://repo.opkg.net/edison/repo/edison
+src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
+```
+Now save the file, by pressing the "ESC" key, then the `:` key, then the `q` key, and hitting `ENTER`.
+
+This only needs to be done once per Intel Edison board, so if you've already done it, you can skip to the next step.
 
 Now, install the boost libraries onto the Edison, by running:
 ```
 opkg update
 opkg install boost-dev
 ```
-## Copy the Libraries
-Next, you need to copy the libraries and include files from the Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
 
-```
-scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
-scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
-```
-Change the `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address that you have set your Edison to.
+Now save the file, by pressing the `ESC` key, then the `:` key, then the `q` key, and hitting `ENTER`.
 
-Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where you have installed the Eclipse IoT Development Kit.
 
 ## Copy the Libraries on Windows
 
@@ -142,13 +150,12 @@ This will compile the program using the Cross G++ Compiler, link it using the Cr
 
 Now when you run your program using the "Run" button, it should be able to retrieve real-time weather data from the Edison.
 
-## Data Store Server Setup
+## Datastore Server Setup
 
-You can optionally store the data generated by this example program in a backend database deployed using Node.js, and the Redis datastore. You use your own account on a hosted service such as Microsoft Azure or IBM Bluemix.
-
+Optionally, you can store the data generated by this example program in a backend database deployed using Microsoft* Azure* or IBM* Bluemix*, Node.js, and a Redis data store.
 For information on how to setup your own cloud data server, go to:
 
-https://github.com/hybridgroup/intel-iot-examples-datastore
+https://github.com/intel-iot-devkit/intel-iot-examples-datastore
 
 ### Connecting Your Edison to the Eclipse IDE
 
@@ -189,14 +196,15 @@ When you're ready to run the example, you can click on the "Run" icon located in
 This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
-
 After running the program you should have a similar output as in the image above.
-
-The web server runs on port 3000, so if the Intel® Edison board is connected to Wi-Fi* on 192.168.1.13, the address to browse to if you are on the same network is http://192.168.1.13:3000.
-your app will be viewable at your edison ip:3000
-![](./../../../images/cpp/smrt-rng-app.png)
 
 ## Regenerating the HTML and CSS
 
 If you make any changes to either the `index.html` or `styles.css` files, you will need to regenerate the hex file used to serve up the assets on via the built-in Crow web server.
-We have a usefull tutorial on how to use the shell script here https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md
+We have a useful tutorial on how to use the shell script here https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md
+
+When the program uploads to the Edison board your rgb lcd display will show the current time.
+
+The web server runs on port 3000, so if the Intel® Edison board is connected to Wi-Fi* on 192.168.1.13, the address to browse to if you are on the same network is http://192.168.1.13:3000.
+your app will be viewable at your edison ip:3000
+![](./../../../images/cpp/smrt-rng-app.png)
