@@ -36,8 +36,8 @@ Optionally, it can also store system events using the "Intel IoT Example Datasto
 Grove* Indoor Environment Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grove*moisture.html)
-3. [Grove* Light Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grove*light.html)
+2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grovemoisture.html)
+3. [Grove* Light Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grovelight.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
