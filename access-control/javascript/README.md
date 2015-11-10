@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This access control system application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This access control system application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
@@ -28,7 +28,7 @@ This access control system provides the following user flow:
 
 Additionally, various events (`looking-for-motion`, `motion-detected`, `invalid-code`, etc.) are logged.
 
-Optionally, all data can be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+Optionally, all data can be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
 
 ## Hardware requirements
 
@@ -45,7 +45,7 @@ Grove* Starter Kit Plus containing:
 
 ### How to set up
 
-To begin, clone the **Intel® IoT Examples** repository with Git* on your computer as follows:
+To begin, clone the **Intel IoT Examples** repository with Git* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
