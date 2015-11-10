@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This Bluetooth* low energy (BLE) scan bracelet application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This Bluetooth* low energy (BLE) scan bracelet application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
@@ -23,7 +23,7 @@ This BLE scanner bracelet uses a Xadow* expansion board for Intel® Edison and t
 
 With these components, we'll make a simple BLE scanner that displays information on the OLED display when BLE-equipped devices enter or exit its scanning range.
 
-Optionally, all data can be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+Optionally, all data can be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
 
 ## Hardware requirements
 
@@ -39,7 +39,7 @@ Xadow* Starter Kit containing:
 
 ### How to set up
 
-To begin, clone the **Intel® IoT Examples** repository with Git* on your computer as follows:
+To begin, clone the **Intel IoT Code Samples** repository with Git* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -71,7 +71,7 @@ Click **Connect** to save your connection.
 
 Alternatively, you can set up the code manually on the Intel® Edison board.
 
-Clone the **Intel® IoT Examples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
+Clone the **Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
