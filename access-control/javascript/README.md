@@ -45,7 +45,7 @@ Grove* Starter Kit Plus containing:
 
 ### How to set up
 
-To begin, clone the **Intel IoT Examples** repository with Git* on your computer as follows:
+To begin, clone the **Intel IoT Code Samples** repository with Git* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -77,7 +77,7 @@ Click **Connect** to save your connection.
 
 Alternatively, you can set up the code manually on the Intel® Edison board.
 
-Clone the **Intel® IoT Examples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
+Clone the **Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
