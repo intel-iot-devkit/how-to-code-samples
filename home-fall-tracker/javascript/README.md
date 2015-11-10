@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This home fall tracker application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This home fall tracker application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
@@ -23,7 +23,7 @@ Using an Intel® Edison board, this project lets you create a home fall tracker 
 
 The home fall tracker bracelet detects potential falls with the accelerometer. If it detects a possible fall, it sends a text alert via Twilio* and lets the user know that their caretaker has been notified and help is on the way.
 
-Optionally, all data can be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+Optionally, all data can be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
 
 ## Hardware requirements
 
@@ -41,7 +41,7 @@ Xadow* Starter Kit containing:
 
 ### How to set up
 
-To begin, clone the **Intel® IoT Examples** repository with Git* on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -73,7 +73,7 @@ Click **Connect** to save your connection.
 
 Alternatively, you can set up the code manually on the Intel® Edison board.
 
-Clone the **Intel® IoT Examples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
+Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
