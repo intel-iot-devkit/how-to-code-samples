@@ -23,7 +23,7 @@ This shop air quality monitor uses the sensor to constantly keep track of airbor
 
 If the sensor detects one of several different gases and the detected level exceeds a defined threshold, it makes a sound through the speaker to indicate a warning.
 
-Also, optionally, the monitor stores the air quality data using the Intel® IoT Example Datastore running in your own Microsoft* Azure* account.
+Also, optionally, the monitor stores the air quality data using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
 
 ### Hardware requirements
 
