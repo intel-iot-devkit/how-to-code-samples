@@ -23,7 +23,7 @@ Using an Intel® Edison board, this project lets you create a smart alarm clock 
 This smart alarm clock has a number of useful features. Set the alarm using a web page served directly from the Intel® Edison board, using your mobile phone. When the alarm goes off, the buzzer sounds, and the LCD indicates it’s time to get up. The rotary dial can be used to adjust the brightness of the display.
 
 In addition, the smart alarm clock can access daily weather data via the Weather Underground* API and use it to change the color of the LCD.
-Optionally, all data can also be stored using the Intel IoT Example Datastore running in your own Microsoft* Azure* account.
+Optionally, all data can also be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
 
 ## Hardware requirements
 
