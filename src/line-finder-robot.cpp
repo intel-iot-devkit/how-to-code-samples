@@ -5,12 +5,12 @@
 #include <sstream>
 #include <thread>
 #include <ctime>
+#include <signal.h>
 
 #include <grovelinefinder.h>
 #include <uln200xa.h>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
-#include "../lib/crow/crow_all.h"
 
 using namespace std;
 

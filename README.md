@@ -82,8 +82,6 @@ Plug one end of a Grove* cable into the "Grove* Line Finder", and connect the ot
 
 ### Intel Edison Setup
 
-This example uses the `crow` web microframework library to provide a simple to use, yet powerful web server. The `crow` library requires the `libboost` package be installed on the Intel Edison, as well as adding the needed include and lib files to the Eclipse G++ Cross Compiler and G++ Cross Linker.
-
 Update the opkg base feeds, so you can install the needed dependencies. SSH into the Intel Edison, then run this command:
 
 ```
