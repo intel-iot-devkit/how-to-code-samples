@@ -13,7 +13,7 @@ From this exercise, developers will learn how to:
 
 ## What It Is
 
-Using an Intel� Edison board, this project lets you create a earthquake detector that will sense motion using the digital accellerometer.
+Using an Intel® Edison board, this project lets you create a earthquake detector that will sense motion using the digital accelerometer.
 
 In addition it checks live earthquake data, using the USGS* API.
 
@@ -21,28 +21,27 @@ It will also display the earthquake on the LCD.
 
 ## How It Works
 
-This earthquake detector will listen for vibrations using the accelerometer.
+This BLE scanner bracelet uses a Xadow* expansion board for Intel® Edison and the OLED display included in the Xadow* kit.
 
-When it thinks it detects an earthquake, it will attempt to verify with the USGS API that an earthquake occurred
+With these components, we'll make a simple BLE scanner that displays information on the OLED display when BLE-equipped devices enter or exit its scanning range.
 
-It will then use the LCD Display to either warn of the quake, or let you know it was  a false alarm.
-
+Optionally, all data can be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* or IBM* Bluemix* account.
 
 ## Hardware requirements
 
-Grove* Starter Kit containing:
+Xadow* Starter Kit containing:
 
-1. Intel� Edison with an Arduino* breakout board
-2. [Grove* 3-Axis Digital Accelerometer](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
-3. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+1. Intel® Edison with a Xadow* expansion board
+2. [Xadow* - OLED display](http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
 
 ## Software requirements
 
-1. [Eclipse* Iot version](https://software.intel.com/en-us/eclipse-getting-started-guide)
+1. [Eclipse* IoT version](https://software.intel.com/en-us/eclipse-getting-started-guide)
+2. Microsoft* Azure* account or IBM* Bluemix* account
 
 ### How To Setup
 
-To begin, clone the Intel� IoT Examples with git on your computer:
+To begin, clone the Intel® IoT Examples with git on your computer:
 
     $ git clone git clone https://github.com/intel-iot-devkit/intel-iot-examples.git
 
@@ -72,59 +71,17 @@ You use the Eclipse "Import Wizard" to import an existing project into the works
 ![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
 - Your main .cpp program will now be in your workspace under the src folder.
 
-### Connecting The Grove* Sensors
+### Connecting The Xadow* Sensors
 
-![](./../../../images/js/earthquake-detector.jpg)
+![](./../../../images/js/ble-scan.jpg)
 
-You will need to have the Grove* Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to the "5V" position.
+You need to have a Xadow* expansion board connected to Intel® Edison to plug in all the Xadow* devices.
 
-Plug one end of a Grove* cable into the "Accelerometer", then connect the other end to any of the "I2C" ports on the Grove* Shield.
-
-Plug one end of a Grove* cable into the "RGB LCD", then connect the other end into any of the "I2C" ports on the Grove* Shield.
+Plug one end of a Xadow* connector into the Xadow* OLED, and connect the other end to one of the side connectors on the Xadow* expansion board.
 
 ### Intel Edison Setup
 
 This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
-
-Update the opkg base feeds, so you can install the needed dependencies. SSH into the Intel Edison, then run this command:
-
-```
-vi /etc/opkg/base-feeds.conf
-```
-Edit the file so that it contains the following:
-
-```
-src/gz all http://repo.opkg.net/edison/repo/all
-src/gz edison http://repo.opkg.net/edison/repo/edison
-src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
-```
-Now save the file, by pressing the "ESC" key, then the `:` key, then the `q` key, and hitting `ENTER`.
-
-This only needs to be done once per Intel Edison board, so if you've already done it, you can skip to the next step.
-
-Now, install the boost libraries onto the Edison, by running:
-```
-opkg update
-opkg install boost-dev
-```
-
-Now save the file, by pressing the `ESC` key, then the `:` key, then the `q` key, and hitting `ENTER`.
-
-
-### Copy the Libraries
-Next, you need to copy the libraries and include files from the Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
-
-```
-scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
-scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
-```
-Change the `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address that you have set your Edison to.
-
-Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where you have installed the Eclipse IoT Development Kit.
-
-## Copy the Libraries on Windows
-
-We have a helpful link to get this set up here. https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md
 
 ### Running The Code On Edison
 
@@ -137,7 +94,7 @@ You can optionally store the data generated by this example program in a backend
 
 For information on how to setup your own cloud data server, go to:
 
-https://github.com/hybridgroup/intel-iot-examples-datastore
+https://github.com/intel-iot-devkit/intel-iot-examples-datastore
 
 ### Connecting Your Edison to the Eclipse IDE
 
@@ -163,7 +120,7 @@ To run the example with the optional backend datastore you need to set the `SERV
 3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
 
 ```
-chmod 755 /tmp/earthquake-detector; export SERVER="http://intel-examples.azurewebsites.net/counter/earthquake-detector/inc"; export AUTH_TOKEN="YOURTOKEN"
+chmod 755 /tmp/earthquake-detector; export SERVER="http://intel-examples.azurewebsites.net/logger/ble-scan"; export AUTH_TOKEN="YOURTOKEN"
 ```
 
 4. Click on the "Apply" button to save your new environment variables.
@@ -183,6 +140,6 @@ After running the program you should have a similar output as in the image above
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-output.png)
 
-When the the program loads correctly your RGB-LCD screen will display "quakebot ready."
+When the the program loads correctly your OLED screen will display "Scanning..."
 
-If you shake the accelerometer it will check to see if there really was an earthquake!
+As new Bluetooth LE devices are detected, the unique IDs will be displayed on the OLED screen.
