@@ -29,8 +29,6 @@
 								<option id="gnu.cpp.compiler.option.debugging.level.1374970732" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="com.intel.iotdevkit.ide.gnu.cpp.option.include.paths.304673440" name="Include paths (-I)" superClass="com.intel.iotdevkit.ide.gnu.cpp.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/mraa"/>
-									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/boost"/>
-									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/lib/crow}"/>
 									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/upm"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/line-finder-robot/lib/restclient-cpp/include/restclient-cpp}&quot;"/>
 								</option>
@@ -48,7 +46,6 @@
 									<listOptionValue builtIn="false" value="upm-grovelinefinder"/>
 									<listOptionValue builtIn="false" value="upm-uln200xa"/>
 									<listOptionValue builtIn="false" value="upm-grove"/>
-									<listOptionValue builtIn="false" value="boost_system"/>
 									<listOptionValue builtIn="false" value="boost_thread"/>
 									<listOptionValue builtIn="false" value="boost_filesystem"/>
 									<listOptionValue builtIn="false" value="boost_date_time"/>

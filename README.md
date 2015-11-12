@@ -80,83 +80,10 @@ Each of the stepper motor controllers will need to be plugged into 4 pins on the
 
 Plug one end of a Grove* cable into the "Grove* Line Finder", and connect the other end to the "D2" port on the Grove* Shield.
 
-### Intel Edison Setup
-
-Update the opkg base feeds, so you can install the needed dependencies. SSH into the Intel Edison, then run this command:
-
-```
-vi /etc/opkg/base-feeds.conf
-```
-
-Edit the file so that it contains the following:
-
-```
-src/gz all http://repo.opkg.net/edison/repo/all
-src/gz edison http://repo.opkg.net/edison/repo/edison
-src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
-```
-
-Now save the file, by pressing the `ESC` key, then the `:` key, then the `q` key, and hitting `ENTER`.
-
-This only needs to be done once per Intel Edison board, so if you've already done it, you can skip to the next step.
-
-Now, install the boost libraries onto the Intel Edison, by running:
-
-```
-opkg update
-opkg install boost-dev
-```
-
-## Copy the Libraries
-Next, you need to copy the libraries and include files from the Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
-
-```
-scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
-scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
-```
-
-Change the `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address that you have set your Edison to.
-
-Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where you have installed the Eclipse IoT Development Kit.
-
-## Copy the Libraries on Windows
-
-We have a helpful link to get this set up here. https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md
-
-Note that you will need to have turned on SSH by running the `configure_edison --password` command on the Edison. Once you've set the password, make sure you write it down. You only need to do this one time and it will be set when you reboot your Edison.
-
-This example also uses the `restclient-cpp` library to perform REST calls to the remote data server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
-
-You will also want to set the current time zone to match the zone you are in. You do this using the `timedatectl` program on the Edison itself. For example:
-
-```
-timedatectl set-timezone America/Los_Angeles
-```
-
 ### Running The Code On Edison
 
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
 This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
-
-## Weather Underground API Key
-
-To optionally fetch the real-time weather information, you need to get an API key from the Weather Underground web site: http://www.wunderground.com/weather/api/
-
-You cannot retrieve weather conditions without obtaining a Weather Underground API key first. You can still run the example, but without the weather data.
-
-To run the example with the optional weather data intefgration, you need to set the `API_KEY` environment variable. You can do this in Eclipse by:
-
-1. Select the "Run" menu and choose "Run Configurations". The "Run Configurations" dialog will be displayed.
-2. Click on "alarm-clock" under "C/C++ Remote Application". This will display the information for your application.
-3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the API key that correspond to your own setup:
-
-```
-chmod 755 /tmp/alarm-clock; export API_KEY="YOURKEY"
-```
-
-4. Click on the "Apply" button to save your new environment variables.
-
-Now when you run your program using the "Run" button, it should be able to retrieve real-time weather data from the Edison.
 
 ## Datastore Server Setup
 
