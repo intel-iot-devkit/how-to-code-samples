@@ -12,11 +12,10 @@ From this exercise, developers will learn how to:
 
 ## What It Is
 
-Using an Intel® Edison board, this project lets you create a earthquake detector that will sense motion using the digital accelerometer.
-
-In addition it checks live earthquake data, using the USGS* API.
-
-It will also display the earthquake on the LCD.
+Using an Intel® Edison board, this project lets you create a BLE scan bracelet that:
+- monitors for BLE devices that come within range;
+- displays information about detected devices using the OLED display;
+- keeps track of detected devices, using cloud-based data storage.
 
 ## How It Works
 
