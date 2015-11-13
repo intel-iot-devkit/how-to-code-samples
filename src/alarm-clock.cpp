@@ -99,6 +99,7 @@ struct Devices
 
   // Stops the buzzer making noise
   void stop_buzzing() {
+  buzzer->setVolume(0);
     buzzer->stopSound();
     buzzer->stopSound();
   }
@@ -136,10 +137,9 @@ bool time_for_alarm(std::time_t& alarm) {
 // Call datastore to log how long it took to wake up today
 void log_wakeup() {
   double duration = elapsed(alarmTime);
-  std::cerr << "Seconds to wakeup: " << std::to_string(duration) << std::endl;
+  std::cerr << "Alarm duration: " << std::to_string(duration) << std::endl;
 
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-    std::cerr << "Server not configured." << std::endl;
     return;
   }
 
@@ -150,8 +150,7 @@ void log_wakeup() {
   headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
 
   RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", text.str(), headers);
-  std::cerr << r.code << std::endl;
-  std::cerr << r.body << std::endl;
+  std::cout << "Datastore called. Result:" << r.code << std::endl;
 }
 
 // Call weather underground API to get current weather conditions
@@ -161,17 +160,22 @@ std::string get_weather() {
     return "";
   }
 
+  std::string location = getenv("LOCATION") ? getenv("LOCATION") : "CA/San_Francisco";
   std::stringstream url;
-  url <<  "http://api.wunderground.com/api/" << getenv("API_KEY") << "/conditions/q/CA/San_Francisco.json";
+  url << "http://api.wunderground.com/api/" << getenv("API_KEY") << "/conditions/q/" << location << ".json";
 
   RestClient::headermap headers;
   headers["Accept"] = "application/json";
 
   RestClient::response r = RestClient::get(url.str(), headers);
-
-  auto x = crow::json::load(r.body);
-  std::string result(x["current_observation"]["weather"].s());
-  return result;
+  if (r.code == 200) {
+    auto x = crow::json::load(r.body);
+    std::string result(x["current_observation"]["weather"].s());
+    return result;
+  } else {
+    std::cerr << "Unable to get weather data" << std::endl;
+    return "error";
+  }
 }
 
 // Function called by worker thread for device communication
