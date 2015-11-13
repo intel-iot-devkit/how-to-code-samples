@@ -22,15 +22,13 @@ float myTemp = 1000;
 // Send notification to remote datastore
 void notify() {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-    cerr << "Server not configured." << std::endl;
     return;
   }
 
   RestClient::headermap headers;
   headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
   RestClient::response r = RestClient::get(getenv("SERVER"), headers);
-  cerr << r.code << std::endl;
-  cerr << r.body << std::endl;
+  std::cout << "Datastore called. Result:" << r.code << std::endl;
 }
 
 // The hardware devices that the example is going to connect to
