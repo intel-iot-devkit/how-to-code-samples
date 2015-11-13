@@ -2,18 +2,18 @@
 
 ## Introduction
 
-This automatic watering system application is part of a series of how-to Intel®IoT code sample exercises using the Intel®IoT Developer Kit, Intel®Edison development platform, cloud platforms, APIs, and other technologies.
+This automatic watering system application is part of a series of how-to IntelÂ® IoT code sample exercises using the IntelÂ® IoT Developer Kit, IntelÂ® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
-- Connect the Intel®Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel®Edison platform IO and sensor repository using MRAA and UPM from the Intel®IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run this code sample in Eclipse* IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel®Edison or Galileo board.
-- Set up a web application server to set the watering system time and store this data using Azure Redis Cache* from Microsoft* Azure* or Redis* from IBM* Bluemix*, both cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Connect the IntelÂ® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
+- Interface with the IntelÂ® Edison platform IO and sensor repository using MRAA and UPM from the IntelÂ® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run this code sample in Eclipse* IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your IntelÂ® Edison or Galileo board.
+- Set up a web application server to set the watering system time and store this data using Azure Redis Cache* from Microsoft* Azure* or Redis Store* from IBM* Bluemix*, both cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Invoke the services of the Twilio* API for sending SMS messages.
 
 ## What It Is
 
-Using an Intel®Edison board, this project lets you create a automatic plant watering system that:
+Using an IntelÂ® Edison board, this project lets you create a automatic watering system that:
 - turns on and off a water pump based on a configurable schedule;
 - detects if watering system is pumping when expected, by using a water flow sensor;
 - can be accessed with your mobile phone via the built-in web interface to set the watering times;
@@ -29,7 +29,7 @@ It automatically checks the moisture sensor data at periodic intervals, and lets
 
 If the water pump is supposed to be on, but the water flow sensor does not detect that the pumping is talking place as expected, then it sends an SMS to a specified number through Twilio so the watering system can be repaired.
 
-Optionally, it can also log watering system events using the "Intel IoT Example Datastore" running on your own Microsoft Azure account.
+Optionally, it can also log watering system events using the "IntelÂ® IoT Example Datastore" running on your own Microsoft* Azure* or IBM* Bluemix* account.
 
 ## Hardware requirements
 
@@ -44,16 +44,16 @@ Grove* Environment & Agriculture Kit containing:
 ## Software requirements
 
 1. [Eclipse* Iot version](https://software.intel.com/en-us/eclipse-getting-started-guide)
-2. Microsoft* Azure* account
+2. Microsoft* Azure* or IBM* Bluemix* account
 3. Twilio* account
 
 ### How To Setup
 
-To begin, clone the Intel® IoT Examples with git on your computer:
+To begin, clone the IntelÂ® IoT Examples with git on your computer:
 
-    $ git clone git clone https://github.com/intel-iot-devkit/intel-iot-examples.git
+    $ git clone https://github.com/intel-iot-devkit/intel-iot-examples.git
 
-Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/intel-iot-devkit/intel-iot-examples](https://github.com/intel-iot-devkit/intel-iot-examples) 
+Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/intel-iot-devkit/intel-iot-examples](https://github.com/intel-iot-devkit/intel-iot-examples)
 and click on the "Download ZIP" button at the lower right. Once the ZIP file has finished downloading, uncompress it, and then use the files in the directory for this example.
 
 ## Adding The Code To Eclipse IoT
@@ -97,11 +97,13 @@ Connect the "Water Flow Sensor" by connecting the red wire to the "5V" pin on th
 
 Plug one end of a Grove* cable into the "Grove* Moisture Sensor", and connect the other end to the "A0" port on the Grove* Shield.
 
-### Intel Edison Setup
+### IntelÂ® Edison Setup
 
-This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
+This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the IntelÂ® Edison by default.
 
-Update the opkg base feeds, so you can install the needed dependencies. SSH into the Intel Edison, then run this command:
+This example also uses the `crow` web microframework library to provide a simple to use, yet powerful web server. The `crow` library requires the `libboost` package be installed on the IntelÂ® Edison, as well as adding the needed include and lib files to the Eclipse G++ Cross Compiler and G++ Cross Linker.
+
+Update the opkg base feeds, so you can install the needed dependencies. SSH into the IntelÂ® Edison, then run this command:
 
 ```
 vi /etc/opkg/base-feeds.conf
@@ -115,9 +117,9 @@ src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
 ```
 Now save the file, by pressing the "ESC" key, then the `:` key, then the `q` key, and hitting `ENTER`.
 
-This only needs to be done once per Intel Edison board, so if you've already done it, you can skip to the next step.
+This only needs to be done once per IntelÂ® Edison board, so if you've already done it, you can skip to the next step.
 
-Now, install the boost libraries onto the Edison, by running:
+Now, install the boost libraries onto the IntelÂ® Edison, by running:
 ```
 opkg update
 opkg install boost-dev
@@ -126,7 +128,7 @@ opkg install boost-dev
 Now save the file, by pressing the `ESC` key, then the `:` key, then the `q` key, and hitting `ENTER`.
 
 ## Copy the Libraries
-Next, you need to copy the libraries and include files from the Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
+Next, you need to copy the libraries and include files from the IntelÂ® Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
 
 ```
 scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
@@ -142,9 +144,9 @@ We have a helpful link to get this set up here. https://github.com/hybridgroup/i
 
 ### Twilio API Key
 
-To optionally send SMS messages, you need to register for an account and get an API key from the Twilio web site: https://www.twilio.com/
+To optionally send SMS messages, you need to register for an account and get an API key from the Twilio* web site: https://www.twilio.com/
 
-You cannot send SMS messages without obtaining a Twilio API key first. You can still run the example, but without the SMS alerts.
+You cannot send SMS messages without obtaining a Twilio* API key first. You can still run the example, but without the SMS alerts.
 
 Pass the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` to the example program, by modifying the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the run configuration menu -> commands to execute before application
 
@@ -152,27 +154,26 @@ Pass the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` to the example program, by mo
   "TWILIO_ACCT_SID": "YOURAPIKEY"; "TWILIO_AUTH_TOKEN": "YOURTOKEN"
 ```
 
-## Datastore Server Setup
+## Data Store Server Setup
 
 Optionally, you can store the data generated by this example program in a backend database deployed using Microsoft* Azure* or IBM* Bluemix*, Node.js, and a Redis data store.
 For information on how to setup your own cloud data server, go to:
 
 https://github.com/intel-iot-devkit/intel-iot-examples-datastore
 
-
 ### Connecting Your Edison to the Eclipse IDE
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win.png)
-1. In the bottom left corner right-click in the area "Target SSH Conections" select "New..." then select "Connection..." and a new screen will appear. 
+1. In the bottom left corner right-click in the area "Target SSH Conections" select "New..." then select "Connection..." and a new screen will appear.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win2.png)
 2. In the "filter box" type the name of your edison. In the example mine is JustinEdison.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win3.png)
-3. In the "Select one of the found connections list; click on your device name. Then Ok. 
+3. In the "Select one of the found connections list; click on your device name. Then Ok.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
-4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect. 
+4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect.
 (If promted for a username and password the user is 'root' and password is whatever you set it up as when configuring the Edison board)
 
 ## Configuring The Example
@@ -193,11 +194,6 @@ To configure the example for the both the the SMS and Microsoft Azure datastore,
 ```
   "TWILIO_ACCT_SID": "YOURAPIKEY"; "TWILIO_AUTH_TOKEN": "YOURTOKEN"; "SERVER": "http://intel-examples.azurewebsites.net/logger/lighting-system"; "AUTH_TOKEN": "s3cr3t"
 ```
-### Running The Code On Edison
-
-When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
-This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
-
 
 ### Running The Code On Edison
 
@@ -212,8 +208,15 @@ After running the program you should have a similar output as in the image above
 ## Regenerating the HTML and CSS
 
 If you make any changes to either the `index.html` or `styles.css` files, you will need to regenerate the hex file used to serve up the assets on via the built-in Crow web server.
+
 We have a useful tutorial on how to use the shell script here https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md
 
+### Setting The Watering Schedule
 
-The web server runs on port 3000, so if the Intel® Edison board is connected to Wi-Fi* on 192.168.1.13, the address to browse to if you are on the same network is http://192.168.1.13:3000.
 ![](./../../../images/cpp/water-sys-app.png)
+
+The schedule for the watering system is set using a single page web interface that is served up from the IntelÂ® Edison itself while the example program is running.
+
+The latest data values from the connected Grove* Moisture Sensor are displayed at the bottom of the web page.
+
+The web server runs on the IntelÂ® Edison's port 3000, so if the IntelÂ® Edison is connected to WiFi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.

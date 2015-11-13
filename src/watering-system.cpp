@@ -181,7 +181,6 @@ void log(const std::string& event) {
   std::cerr << event << std::endl;
 
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-    std::cerr << "Datastore not configured." << std::endl;
     return;
   }
 
@@ -197,8 +196,7 @@ void log(const std::string& event) {
   headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
 
   RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
-
-  cout << "Datastore updated." << endl;
+  std::cout << "Datastore called. Result:" << r.code << std::endl;
 }
 
 // The hardware devices that the example is going to connect to
