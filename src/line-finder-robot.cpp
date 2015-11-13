@@ -17,7 +17,6 @@ using namespace std;
 //function to send data to server
 void notify(std::string message) {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-    std::cerr << "Server not configured." << std::endl;
     return;
   }
 
@@ -33,9 +32,7 @@ void notify(std::string message) {
   headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
 
   RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
-
-  std::cerr << r.code << std::endl;
-  std::cerr << r.body << std::endl;
+  std::cout << "Datastore called. Result:" << r.code << std::endl;
 }
 
 // The hardware devices that the example is going to connect to
@@ -52,61 +49,65 @@ struct Devices
   void init() {
     // rotary connected to A0 (analog in)
     finder = new upm::GroveLineFinder(2);
+
     // left stepper motor connected to d9,10,11,12
     stepLeft = new upm::ULN200XA(4096, 9, 10, 11, 12);
+
     // right stepper motor connected to 4, 5, 6, 7
     stepRight = new upm::ULN200XA(4096, 4, 5, 6, 7);
-
   };
 
   // Cleanup on exit
   void cleanup() {
     delete finder;
+
     stepLeft->release();
     stepRight->release();
+
     delete stepLeft;
     delete stepRight;
-
-
   }
-  // function to make robot find and follow a black line
+
+  // Function to make robot find and follow a black line
   void findFollowLine(){
-	  for (;;){
-		  bool val = finder->blackDetected();
+    for (;;)
+    {
+      bool val = finder->blackDetected();
 
-		  if (val){
-			  moveForward();
-			  notify("Moving on line. \n");
-		  }
-		  else
-			  pivotClockwise();
-	  }
+      if (val) {
+        moveForward();
+        notify("Moving on line. \n");
+      }
+      else
+        pivotClockwise();
+    }
   }
-  //function to have both  motors move forward
-  //assuming motors are on opposite sides of each other
+
+  // Have both motors move forward, assuming motors
+  // are on opposite sides of each other
   void moveForward(){
-	  stepLeft->setSpeed(5);
-	  stepRight->setSpeed(5);
+    stepLeft->setSpeed(5);
+    stepRight->setSpeed(5);
 
-	  stepLeft->setDirection(upm::ULN200XA::DIR_CW);
-	  stepRight->setDirection(upm::ULN200XA::DIR_CCW);
+    stepLeft->setDirection(upm::ULN200XA::DIR_CW);
+    stepRight->setDirection(upm::ULN200XA::DIR_CCW);
 
-	  stepLeft->stepperSteps(4096);
-	  stepRight->stepperSteps(4096);
+    stepLeft->stepperSteps(4096);
+    stepRight->stepperSteps(4096);
 
   }
-  //function to have both motors pivot clockwise
-  //assuming motors are on opposite sides of each other
+
+  // Have both motors pivot clockwise, assuming motors
+  // are on opposite sides of each other
   void pivotClockwise(){
-	  stepLeft->setSpeed(5);
-	  stepRight->setSpeed(5);
+    stepLeft->setSpeed(5);
+    stepRight->setSpeed(5);
 
-	  stepLeft->setDirection(upm::ULN200XA::DIR_CW);
-	  stepRight->setDirection(upm::ULN200XA::DIR_CW);
+    stepLeft->setDirection(upm::ULN200XA::DIR_CW);
+    stepRight->setDirection(upm::ULN200XA::DIR_CW);
 
-	  stepLeft->stepperSteps(4096);
-	  stepRight->stepperSteps(4096);
-
+    stepLeft->stepperSteps(4096);
+    stepRight->stepperSteps(4096);
   }
 };
 
@@ -136,8 +137,8 @@ int main() {
   // create and initialize UPM devices
   devices.init();
 
-  for(;;){
-	  devices.findFollowLine();
+  for(;;) {
+    devices.findFollowLine();
   }
 
   return MRAA_SUCCESS;
