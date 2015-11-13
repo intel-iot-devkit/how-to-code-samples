@@ -13,7 +13,6 @@
 // Call datastore to increment the count of visitors who rang the doorbell
 void increment() {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-    std::cerr << "Server not configured." << std::endl;
     return;
   }
 
@@ -21,8 +20,7 @@ void increment() {
   headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
 
   RestClient::response r = RestClient::get(getenv("SERVER"), headers);
-  std::cerr << r.code << std::endl;
-  std::cerr << r.body << std::endl;
+  std::cout << "Datastore called. Result:" << r.code << std::endl;
 }
 
 // The hardware devices that the example is going to connect to
