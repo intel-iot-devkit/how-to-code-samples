@@ -1,17 +1,16 @@
 # Shop Air Quality Monitor
 
-This air quality monitor application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This air quality monitor application is part of a series of how-to IntelÂ® IoT code sample exercises using the IntelÂ® IoT Developer Kit, IntelÂ® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products. Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run this code sample in Eclipse IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
-- Store air quality data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Connect the IntelÂ® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products. Interface with the IntelÂ® Edison platform IO and sensor repository using MRAA and UPM from the IntelÂ® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run this code sample in Eclipse IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your IntelÂ® Edison or Galileo board.
+- Store air quality data using Azure Redis Cache* from Microsoft* Azure* or Redis Store* from IBM* Bluemix*, both cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What It Is
 
-Using an Intel® Edison board, this project lets you create a air quality monitor that:
-
+Using an IntelÂ® Edison board, this project lets you create a air quality monitor that:
 - continuously checks the air quality for airborne contaminants;
 - sounds an audible warning when the air quality is unhealthful;
 - stores a record of each time the air quality sensor detects contaminants, using cloud-based data storage.
@@ -22,20 +21,20 @@ This shop air quality monitor will use the sensor to constantly keep track of th
 
 If the sensor detects one of several different gases, and the detected level crosses a defined threshold, it will make a sound thru the speaker to indicate a warning.
 
-The monitor will also, optionally, store the air quality data using the "Intel IoT Example Datastore" running on your own Microsoft Azure account.
+The monitor will also, optionally, store the air quality data using the "Intel IoT Example Datastore" running on your own Microsoft* Azure* or IBM* Bluemix*  account.
 
 ## Hardware requirements
+
 Grove* Home Automation Kit containing:
 
-Intel® Edison with an Arduino* breakout board
-Grove* Air Quality Sensor
-Grove* Speaker
+1. IntelÂ® Edison with an Arduino* breakout board
+2. [Grove* Air Quality Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/tp401.html)
+3. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
-## Software requirements
+### Software requirements
 
-1. [Eclipse* Iot version](https://software.intel.com/en-us/eclipse-getting-started-guide)
-2. Microsoft* Azure* account
-3. Weather Underground* API key
+1. IntelÂ® XDK IoT Edition
+2. Microsoft* Azure* or IBM* Bluemix* account (optional)
 
 ### How To Setup
 
@@ -80,7 +79,9 @@ Plug one end of a Grove* cable into the "Grove* Speaker", and connect the other 
 
 ### Intel Edison Setup
 
-This example uses the `crow` web microframework library to provide a simple to use, yet powerful web server. The `crow` library requires the `libboost` package be installed on the Intel Edison, as well as adding the needed include and lib files to the Eclipse G++ Cross Compiler and G++ Cross Linker.
+This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the IntelÂ® Edison by default.
+
+This example also uses the `crow` web microframework library to provide a simple to use, yet powerful web server. The `crow` library requires the `libboost` package be installed on the Intel Edison, as well as adding the needed include and lib files to the Eclipse G++ Cross Compiler and G++ Cross Linker.
 
 Update the opkg base feeds, so you can install the needed dependencies. SSH into the Intel Edison, then run this command:
 
@@ -125,40 +126,12 @@ We have a helpful link to get this set up here. https://github.com/hybridgroup/i
 
 Note that you will need to have turned on SSH by running the `configure_edison --password` command on the Edison. Once you've set the password, make sure you write it down. You only need to do this one time and it will be set when you reboot your Edison.
 
-This example also uses the `restclient-cpp` library to perform REST calls to the remote data server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
-
-You will also want to set the current time zone to match the zone you are in. You do this using the `timedatectl` program on the Edison itself. For example:
-
-```
-timedatectl set-timezone America/Los_Angeles
-```
-
 ### Running The Code On Edison
 
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
 This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
-## Weather Underground API Key
-
-To optionally fetch the real-time weather information, you need to get an API key from the Weather Underground web site: http://www.wunderground.com/weather/api/
-
-You cannot retrieve weather conditions without obtaining a Weather Underground API key first. You can still run the example, but without the weather data.
-
-To run the example with the optional weather data intefgration, you need to set the `API_KEY` environment variable. You can do this in Eclipse by:
-
-1. Select the "Run" menu and choose "Run Configurations". The "Run Configurations" dialog will be displayed.
-2. Click on "alarm-clock" under "C/C++ Remote Application". This will display the information for your application.
-3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the API key that correspond to your own setup:
-
-```
-chmod 755 /tmp/air-quality-sensor; export "SERVER": "http://intel-examples.azurewebsites.net/logger/air-quality"; export "AUTH_TOKEN": "s3cr3t"
-```
-
-4. Click on the "Apply" button to save your new environment variables.
-
-Now when you run your program using the "Run" button, it should be able to retrieve real-time weather data from the Edison.
-
-## Datastore Server Setup
+## Data Store Server Setup
 
 Optionally, you can store the data generated by this example program in a backend database deployed using Microsoft* Azure* or IBM* Bluemix*, Node.js, and a Redis data store.
 
@@ -209,4 +182,3 @@ After building the program you should have a similar output as in the image abov
 
 ![](./../../../images/cpp/air-output.png)
 After running the program you should have a similar output as in the image above.
-
