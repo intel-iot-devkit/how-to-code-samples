@@ -25,7 +25,6 @@ void log(string event) {
   cout << event << endl;
 
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-    cerr << "Datastore not configured." << endl;
     return;
   }
 
@@ -41,8 +40,7 @@ void log(string event) {
   headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
 
   RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
-
-  cout << "Datastore updated." << endl;
+  std::cout << "Datastore called. Result:" << r.code << std::endl;
 }
 
 struct BLE
@@ -150,7 +148,7 @@ struct BLE
     }
   }
 
-  // when we find a device, we add to the list
+  // When we find a device, we add to the list
   void discovered(string address) {
     time_t now = time(NULL);
     if (found.find(address) == found.end())
