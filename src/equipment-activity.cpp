@@ -17,7 +17,6 @@ const int NOISE_THRESHOLD = 140;
 // Call remote datastore server to log activity
 void notify(std::string message) {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-    std::cerr << "Server not configured." << std::endl;
     return;
   }
 
@@ -33,9 +32,7 @@ void notify(std::string message) {
   headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
 
   RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
-
-  std::cerr << r.code << std::endl;
-  std::cerr << r.body << std::endl;
+  std::cout << "Datastore called. Result:" << r.code << std::endl;
 }
 
 // The hardware devices that the example is going to connect to
