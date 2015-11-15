@@ -41,6 +41,7 @@ void log(string event) {
 
   RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
   std::cout << "Datastore called. Result:" << r.code << std::endl;
+  std::cout << r.body << std::endl;
 }
 
 struct BLE
