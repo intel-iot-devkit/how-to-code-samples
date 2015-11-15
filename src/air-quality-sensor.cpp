@@ -14,99 +14,96 @@
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
-
 using namespace std;
 
 struct Devices
 {
-    upm::GroveSpeaker* speaker;
-    upm::TP401* airSensor;
+  upm::GroveSpeaker* speaker;
+  upm::TP401* airSensor;
 
-    Devices() {
-    };
+  Devices() {
+  };
 
-    // Initialization function
-    void init() {
-    	//speaker connected to digital D5
-        speaker = new upm::GroveSpeaker(5);
+  // Initialization function
+  void init() {
+  	//speaker connected to digital D5
+    speaker = new upm::GroveSpeaker(5);
 
-        //air sensor connected to analog A0
-        airSensor = new upm::TP401(0);
-        //start sensor warmup process
-        warmup();
+    //air sensor connected to analog A0
+    airSensor = new upm::TP401(0);
 
-    };
+    //start sensor warmup process
+    warmup();
+  };
 
-    void alarm() {
-      speaker->playSound('a', true, "high");
-      speaker->playSound('c', true, "high");
-      speaker->playSound('g', true, "high");
+  void alarm() {
+    speaker->playSound('a', true, "high");
+    speaker->playSound('c', true, "high");
+    speaker->playSound('g', true, "high");
+  }
 
+  void notify() {
+    if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
+      return;
     }
 
-    void notify() {
-      if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-        cerr << "Server not configured." << std::endl;
-        return;
-      }
+    std::time_t now = std::time(NULL);
+    char mbstr[sizeof "2011-10-08T07:07:09Z"];
+    std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
 
-      std::time_t now = std::time(NULL);
-      char mbstr[sizeof "2011-10-08T07:07:09Z"];
-      std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
+    std::stringstream payload;
+    payload << "{\"value\":";
+    payload << "\"" << mbstr << "\"}";
 
-      std::stringstream payload;
-      payload << "{\"value\":";
-      payload << "\"" << mbstr << "\"}";
+    RestClient::headermap headers;
+    headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
 
-      RestClient::headermap headers;
-      headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
+    RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
+    std::cout << "Datastore called. Result:" << r.code << std::endl;
+    std::cout << r.body << std::endl;
+  }
 
-      RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
+  void cleanup() {
+    delete speaker;
+    delete airSensor;
+  }
 
-      std::cerr << r.code << std::endl;
-      std::cerr << r.body << std::endl;
-    }
+  //values and console output
+  string airQuality(uint16_t value)
+  {
+    if(value < 50) return "Fresh Air";
+    if(value < 200) return "Normal Indoor Air";
+    if(value < 400) return "Low Pollution";
+    if(value < 600) return "High Pollution - Action Recommended";
+    return "Very High Pollution - Take Action Immediately";
+  }
 
-    void cleanup() {
-        delete speaker;
-        delete airSensor;
+  void warmup(){
+    cout << airSensor->name() << endl;
 
-    }
+    fprintf(stdout, "Heating sensor for 3 minutes...\n");
 
-    //values and console output
-    string airQuality(uint16_t value)
-    {
-        if(value < 50) return "Fresh Air";
-        if(value < 200) return "Normal Indoor Air";
-        if(value < 400) return "Low Pollution";
-        if(value < 600) return "High Pollution - Action Recommended";
-        return "Very High Pollution - Take Action Immediately";
-    }
-
-    void warmup(){
-        cout << airSensor->name() << endl;
-
-        fprintf(stdout, "Heating sensor for 3 minutes...\n");
-        // wait 3 minutes for sensor to warm up
-        for(int i = 0; i < 3; i++) {
-            if(i) {
-                fprintf(stdout, "Please wait, %d minute(s) passed..\n", i);
-            }
-            sleep(60);
+    // wait 3 minutes for sensor to warm up
+    for(int i = 0; i < 3; i++) {
+        if(i) {
+            fprintf(stdout, "Please wait, %d minute(s) passed..\n", i);
         }
-        fprintf(stdout, "Sensor ready!\n");
+        sleep(60);
     }
 
-    void airVal(){
-        uint16_t value = airSensor->getSample(); // Read raw value
-        float ppm = airSensor->getPPM();    // Read CO ppm (can vary slightly from previous read)
-        fprintf(stdout, "raw: %4d ppm: %5.2f   %s\n", value, ppm, airQuality(value).c_str());
-        usleep(2500000);    // Sleep for 2.5s
-        if (value > 400){
-        	notify();
-        	alarm();
-        }
+    fprintf(stdout, "Sensor ready!\n");
+  }
+
+  void airVal(){
+    uint16_t value = airSensor->getSample(); // Read raw value
+    float ppm = airSensor->getPPM();    // Read CO ppm (can vary slightly from previous read)
+    fprintf(stdout, "raw: %4d ppm: %5.2f   %s\n", value, ppm, airQuality(value).c_str());
+    usleep(2500000);    // Sleep for 2.5s
+    if (value > 400){
+    	notify();
+    	alarm();
     }
+  }
 };
 
 Devices devices;
