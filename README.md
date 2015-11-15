@@ -39,7 +39,7 @@ Grove* Starter Kit containing:
 ## Software requirements
 
 1. [Eclipse* Iot version](https://software.intel.com/en-us/eclipse-getting-started-guide)
-2. Microsoft* Azure* account
+2. Microsoft* Azure* or IBM* Bluemix* account
 
 ### How To Setup
 
@@ -103,11 +103,6 @@ This example uses the `restclient-cpp` library to perform REST calls to the serv
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect.
 (If promted for a username and password the user is 'root' and password is whatever you set it up as when configuring the Edison board)
-
-### Running The Code On Edison
-
-When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
-This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
 ## Data Store Server Setup
 
