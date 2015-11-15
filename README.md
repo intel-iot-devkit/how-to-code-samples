@@ -5,7 +5,7 @@
 This smart fire alarm application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
-- Connect the Intel® Edison development platform, a�computing platform designed for prototyping and producing IoT and wearable computing products.
+- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run this code sample in Eclipse* IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
 - Set up a web application server to store fire alarm data using Azure Redis Cache* from Microsoft* Azure* or Redis Store* from IBM* Bluemix*, both cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
@@ -35,7 +35,7 @@ Optionally, it can also log fire events using the "Intel IoT Example Datastore" 
 Grove* Starter Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/Grovetemp.html)
+2. [Grove* Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
 3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
