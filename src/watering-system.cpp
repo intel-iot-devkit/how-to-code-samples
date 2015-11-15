@@ -220,10 +220,10 @@ struct Devices
     flow->clearFlowCounter();
     flow->startFlowCounter();
 
-
     // pump attached to D4
     pump = new mraa::Gpio(4);
     pump->dir(mraa::DIR_OUT);
+    pump->write(0);
 
     // moisture sensor attached to A1
     moisture = new upm::GroveMoisture(1);
@@ -260,6 +260,7 @@ struct Devices
   // Turn on the water
   void turn_on() {
     if (turnedOn) return;
+    pump->write(1);
     turnedOn = true;
     turnedOff = false;
     message("on");
@@ -269,6 +270,7 @@ struct Devices
   // Turn off the water
   void turn_off() {
     if (turnedOff) return;
+    pump->write(0);
     turnedOn = false;
     turnedOff = true;
     message("off");
@@ -298,10 +300,11 @@ void runner(Devices& devices, MoistureData& moistureData) {
 // The thread that reads the flow sensor
 void runner2(Devices& devices) {
   for (;;) {
-    if(devices.readFlow() < 1) {
+    int flowRate = devices.readFlow();
+    if((devices.turned_on() && flowRate < 1) || (devices.turned_off() && flowRate > 0)) {
       log("watering system alert");
       send_sms();
-      sleep(900);
+      sleep(300);
     }
     sleep(2);
   }
