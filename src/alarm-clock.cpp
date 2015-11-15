@@ -151,6 +151,7 @@ void log_wakeup() {
 
   RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", text.str(), headers);
   std::cout << "Datastore called. Result:" << r.code << std::endl;
+  std::cout << r.body << std::endl;
 }
 
 // Call weather underground API to get current weather conditions
@@ -171,6 +172,7 @@ std::string get_weather() {
   if (r.code == 200) {
     auto x = crow::json::load(r.body);
     std::string result(x["current_observation"]["weather"].s());
+    std::cout << result << std::endl;
     return result;
   } else {
     std::cerr << "Unable to get weather data" << std::endl;
