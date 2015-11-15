@@ -21,6 +21,7 @@ void increment() {
 
   RestClient::response r = RestClient::get(getenv("SERVER"), headers);
   std::cout << "Datastore called. Result:" << r.code << std::endl;
+  std::cout << r.body << std::endl;
 }
 
 // The hardware devices that the example is going to connect to
