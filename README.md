@@ -25,11 +25,11 @@ The monitor will also, optionally, store the moisture data using the "Intel IoT 
 
 ## Hardware requirements
 
-Grove* Starter Kit containing:
+Grove* Home Automation Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
-3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
+3. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
 ## Software requirements
 
