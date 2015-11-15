@@ -95,7 +95,7 @@ Plug one end of a Grove* cable into the "Grove* Speaker", and connect the other 
 
 ### Intel Edison Setup
 
-This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
+This example uses the `restclient-cpp` library to perform REST calls to the remote data server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
 
 This example also uses the `crow` web microframework library to provide a simple to use, yet powerful web server. The `crow` library requires the `libboost` package be installed on the Intel Edison, as well as adding the needed include and lib files to the Eclipse G++ Cross Compiler and G++ Cross Linker.
 
@@ -104,6 +104,7 @@ Update the opkg base feeds, so you can install the needed dependencies. SSH into
 ```
 vi /etc/opkg/base-feeds.conf
 ```
+
 Edit the file so that it contains the following:
 
 ```
@@ -111,23 +112,35 @@ src/gz all http://repo.opkg.net/edison/repo/all
 src/gz edison http://repo.opkg.net/edison/repo/edison
 src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
 ```
-Now save the file, by pressing the "ESC" key, then the `:` key, then the `q` key, and hitting `ENTER`.
+
+Now save the file, by pressing the `ESC` key, then the `:` key, then the `q` key, and hitting `ENTER`.
 
 This only needs to be done once per Intel Edison board, so if you've already done it, you can skip to the next step.
 
-Now, install the boost libraries onto the Edison, by running:
+Now, install the boost libraries onto the Intel Edison, by running:
+
 ```
 opkg update
 opkg install boost-dev
 ```
 
-Now save the file, by pressing the `ESC` key, then the `:` key, then the `q` key, and hitting `ENTER`.
+## Copy the Libraries
+Next, you need to copy the libraries and include files from the Edison to your machine where you run Eclipse, so the G++ Cross Compiler and G++ Cross Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Edison).
+
+```
+scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
+scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
+```
+
+Change the `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address that you have set your Edison to.
+
+Change `~/Downloads/iotdk-ide-linux` to match the location on your machine where you have installed the Eclipse IoT Development Kit.
 
 ## Copy the Libraries on Windows
 
-Note that you will need to have turned on SSH by running the `configure_edison --password` command on the Edison. Once you've set the password, make sure you write it down. You only need to do this one time and it will be set when you reboot your Edison.
+We have a helpful link to get this set up here. https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md
 
-We have an easy to use tutorial on how to do this in windows using WinSCP. https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md
+Note that you will need to have turned on SSH by running the `configure_edison --password` command on the Edison. Once you've set the password, make sure you write it down. You only need to do this one time and it will be set when you reboot your Edison.
 
 ## Data Store Server Setup
 
