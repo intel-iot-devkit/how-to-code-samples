@@ -33,6 +33,7 @@ void notify(std::string message) {
 
   RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
   std::cout << "Datastore called. Result:" << r.code << std::endl;
+  std::cout << r.body << std::endl;
 }
 
 // The hardware devices that the example is going to connect to
@@ -94,7 +95,6 @@ struct Devices
 
     stepLeft->stepperSteps(4096);
     stepRight->stepperSteps(4096);
-
   }
 
   // Have both motors pivot clockwise, assuming motors
