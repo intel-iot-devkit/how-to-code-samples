@@ -32,8 +32,8 @@ Optionally, store equipment usage start/stop events can also be stored using the
 Grove* Starter Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Sound Sensor](http://www.seeedstudio.com/depot/Grove-Sound-Sensor-p-752.html)
-3. [Grove* Piezo Vibration Sensor](http://www.seeedstudio.com/depot/Grove-Piezo-Vibration-Sensor-p-1411.html)
+2. [Grove* Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/microphone.html)
+3. [Grove* Piezo Vibration Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/ldt0028.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
