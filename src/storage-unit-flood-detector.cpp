@@ -6,7 +6,7 @@
 
 #include <grove.h>
 #include <grovemoisture.h>
-#include <buzzer.h>
+#include <grovespeaker.h>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
@@ -31,12 +31,13 @@ void notify() {
 
   RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
   std::cout << "Datastore called. Result:" << r.code << std::endl;
+  std::cout << r.body << std::endl;
 }
 
 // The hardware devices that the example is going to connect to
 struct Devices
 {
-  upm::Buzzer* buzzer;
+  upm::GroveSpeaker* speaker;
   upm::GroveMoisture* moisture;
 
   Devices(){
@@ -44,9 +45,8 @@ struct Devices
 
   // Initialization function
   void init() {
-    // buzzer connected to D5 (digital out)
-    buzzer = new upm::Buzzer(5);
-    stop_ringing();
+    // speaker connected to D5 (digital out)
+    speaker = new upm::GroveSpeaker(5);
 
     // moisture sensor on analog (A0)
     moisture = new upm::GroveMoisture(0);
@@ -54,35 +54,19 @@ struct Devices
 
   // Cleanup on exit
   void cleanup() {
-    delete buzzer;
+    delete speaker;
     delete moisture;
-  }
-
-  // Reset the detector
-  void reset() {
-    stop_ringing();
   }
 
   // Starts the alarm
   void alarm() {
-    notify();
-    message();
-    buzzer->playSound(266, 0);
-  }
-
-  // Displays message to console
-  void message(){
     cout << "Alert! Water is Detected!";
-  }
-
-  // Stops the alarm
-  void stop_ringing() {
-    buzzer->stopSound();
-    buzzer->stopSound();
+    speaker->playSound('c', true, "high");
+    notify();
   }
 
   // Every 1 second, reads the moisture sensor
-  void senseMoisture() {
+  void sense_moisture() {
     for (;;) {
       int val = moisture->value();
       cout << "Moisture value: " << val << ", ";
@@ -97,8 +81,6 @@ struct Devices
 
       if (val >= 300)
          alarm();
-      else
-         stop_ringing();
 
       cout << endl;
       sleep(1);
@@ -132,8 +114,7 @@ int main()
 
   // create and initialize UPM devices
   devices.init();
-  devices.reset();
-  devices.senseMoisture();
+  devices.sense_moisture();
 
   return 0;
 }
