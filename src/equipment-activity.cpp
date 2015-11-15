@@ -33,6 +33,7 @@ void notify(std::string message) {
 
   RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
   std::cout << "Datastore called. Result:" << r.code << std::endl;
+  std::cout << r.body << std::endl;
 }
 
 // The hardware devices that the example is going to connect to
