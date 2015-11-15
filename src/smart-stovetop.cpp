@@ -29,6 +29,7 @@ void notify() {
   headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
   RestClient::response r = RestClient::get(getenv("SERVER"), headers);
   std::cout << "Datastore called. Result:" << r.code << std::endl;
+  std::cout << r.body << std::endl;
 }
 
 // The hardware devices that the example is going to connect to
@@ -164,13 +165,13 @@ int main()
       text << index_html;
       return text.str();
   });
+
   CROW_ROUTE(app, "/styles.css")
   ([]() {
     std::stringstream text;
     text << styles_css;
     return text.str();
   });
-
 
   // start web server
   app.port(3000).multithreaded().run();
