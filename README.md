@@ -134,7 +134,9 @@ This will compile the program using the Cross G++ Compiler, link it using the Cr
 
 After running the program you should have a similar output as in the image above.
 
-The LCD screen should now display ready.
+![](./../../../images/cpp/equipment-lcd.jpg)
+
+The LCD screen should now display "ready".
 
 ![](./../../../images/cpp/cpp-equp-act-mon-successful-output.png)
 
