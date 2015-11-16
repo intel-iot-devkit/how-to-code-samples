@@ -138,12 +138,15 @@ Now when you run your program using the "Run" button, it should be able to call 
 ![](./../../../images/cpp/cpp-run-eclipse.png)
 
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
-This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
 
-After running the program you should have a similar output as in the image above.
+This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-output.png)
+
+After running the program you should have a similar output as in the image above.
+
+![](./../../../images/cpp/fall-detect-oled.jpg)
 
 When the the program loads correctly your OLED screen will display "Fall Detected" in the case that a sudden motion of 4Gs or more is detected.
