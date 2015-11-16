@@ -215,6 +215,8 @@ This will compile the program using the Cross G++ Compiler, link it using the Cr
 
 After running the program you should have a similar output as in the image above.
 
+![](./../../../images/cpp/alarm-clock-lcd.jpg)
+
 When the program uploads to the Edison board your RGB LCD display will show the current time.
 
 ## Regenerating the HTML and CSS
