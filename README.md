@@ -149,4 +149,4 @@ After running the program you should have a similar output as in the image above
 
 ![](./../../../images/cpp/fall-detect-oled.jpg)
 
-When the the program loads correctly your OLED screen will display "Fall Detected" in the case that a sudden motion of 4Gs or more is detected.
+When the the program loads correctly your OLED screen will display "Fall Detected" in the case that a sudden motion of 5Gs or more is detected.
