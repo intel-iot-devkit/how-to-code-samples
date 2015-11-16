@@ -94,6 +94,8 @@ Plug one end of a Grove* cable into the "Grove* RGB LCD", and connect the other 
 
 This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
 
+In addition, this example uses the `twilio-cplusplus` library to perform REST calls to the Twilio SMS server. The code for `twilio-cplusplus` can be found in the `lib` directory. The `twilio-cplusplus` library requires the `ssl` and `crypto` packages, which are already installed on the Intel Edison by default.
+
 This example also uses the `crow` web microframework library to provide a simple to use, yet powerful web server. The `crow` library requires the `libboost` package be installed on the Intel Edison, as well as adding the needed include and lib files to the Eclipse G++ Cross Compiler and G++ Cross Linker.
 
 Update the opkg base feeds, so you can install the needed dependencies. SSH into the Intel Edison, then run this command:
@@ -141,11 +143,7 @@ To optionally send SMS messages, you need to register for an account and get an 
 
 You cannot send SMS messages without obtaining a Twilio API key first. You can still run the example, but without the SMS alerts.
 
-Pass the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` to the example program, by modifying the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the run configuration menu -> commands to execute before application
-
-```
-  "TWILIO_ACCT_SID": "YOURAPIKEY"; "TWILIO_AUTH_TOKEN": "YOURTOKEN"
-```
+To configure the example for the optional SMS sending, obtain a key from the Twilio web site as documented above.
 
 ## Data Store Server Setup
 
