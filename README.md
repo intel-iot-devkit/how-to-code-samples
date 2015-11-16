@@ -148,15 +148,18 @@ Now when you run your program using the "Run" button, it should be able to call 
 ![](./../../../images/cpp/cpp-run-eclipse.png)
 
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
-This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
 
-After running the program you should have a similar output as in the image above.
+This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-output.png)
 
-When the program is finished uploading to the Edison board you will see the temperature output in Celsius.
+After running the program you should have a similar output as in the image above.
+
+![](./../../../images/cpp/fire-alarm-lcd.jpg)
+
+When the program is finished uploading to the Edison board, the program will continously monitor the temperature. If it exceeds the threshold, the message "Fire Alarm!" will be displayed on the LCD display.
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-output-sms-sent.png)
 
