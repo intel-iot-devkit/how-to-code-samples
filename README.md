@@ -101,6 +101,8 @@ Plug one end of a Grove* cable into the "Grove* Moisture Sensor", and connect th
 
 This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel® Edison by default.
 
+In addition, this example uses the `twilio-cplusplus` library to perform REST calls to the Twilio SMS server. The code for `twilio-cplusplus` can be found in the `lib` directory. The `twilio-cplusplus` library requires the `ssl` and `crypto` packages, which are already installed on the Intel Edison by default.
+
 This example also uses the `crow` web microframework library to provide a simple to use, yet powerful web server. The `crow` library requires the `libboost` package be installed on the Intel® Edison, as well as adding the needed include and lib files to the Eclipse G++ Cross Compiler and G++ Cross Linker.
 
 Update the opkg base feeds, so you can install the needed dependencies. SSH into the Intel® Edison, then run this command:
