@@ -134,4 +134,6 @@ This will compile the program using the Cross G++ Compiler, link it using the Cr
 
 After running the program you should have a similar output as in the image above.
 
-When pressing the touch sensor you will hear the buzzer go off if your server is set up correctly you will be notified.
+![](./../../../images/cpp/doorbell-lcd.jpg)
+
+When the program uploads and runs on the Edison board, your RGB LCD display will show the above message. When pressing the touch sensor you will hear the buzzer go off, and if your server is set up correctly, you will be notified.
