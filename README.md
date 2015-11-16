@@ -130,14 +130,15 @@ Now when you run your program using the "Run" button, it should be able to call 
 ![](./../../../images/cpp/cpp-run-eclipse.png)
 
 When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
-This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
 
-After running the program you should have a similar output as in the image above.
+This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-output.png)
 
-When the the program loads correctly your OLED screen will display "Scanning..."
+After running the program you should have a similar output as in the image above.
+
+![](./../../../images/cpp/ble-scan-oled.jpg)
 
 As new Bluetooth LE devices are detected, the unique IDs will be displayed on the OLED screen.
