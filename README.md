@@ -93,6 +93,8 @@ Plug one end of a Grove* cable into the "RGB LCD", then plug the other end into 
 
 This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
 
+In addition, this example uses the `twilio-cplusplus` library to perform REST calls to the Twilio SMS server. The code for `twilio-cplusplus` can be found in the `lib` directory. The `twilio-cplusplus` library requires the `ssl` and `crypto` packages, which are already installed on the Intel Edison by default.
+
 ### Twilio API Key
 
 To optionally send SMS messages, you need to register for an account and get an API key from the Twilio web site: https://www.twilio.com/
