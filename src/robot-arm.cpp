@@ -48,26 +48,25 @@ struct Devices
 
   //functions to set speed and direction of motors
   //steps 4096 is one full revolution of the motor
-  //divided by 8 gives it 1/8 revolution
   void OneMoveClockwise(){
 	  stepOne->setSpeed(5);
 	  stepOne->setDirection(upm::ULN200XA::DIR_CW);
-	  stepOne->stepperSteps(4096/8);
+	  stepOne->stepperSteps(4096);
   }
   void OneMoveCounterClock(){
 	  stepOne->setSpeed(5);
 	  stepOne->setDirection(upm::ULN200XA::DIR_CCW);
-	  stepOne->stepperSteps(4096/8);
+	  stepOne->stepperSteps(4096);
   }
   void TwoMoveClockwise(){
 	  stepTwo->setSpeed(5);
 	  stepTwo->setDirection(upm::ULN200XA::DIR_CW);
-	  stepTwo->stepperSteps(4096/8);
+	  stepTwo->stepperSteps(4096);
   }
   void TwoMoveCounterClock(){
 	  stepTwo->setSpeed(5);
 	  stepTwo->setDirection(upm::ULN200XA::DIR_CCW);
-	  stepTwo->stepperSteps(4096/8);
+	  stepTwo->stepperSteps(4096);
   }
 
   //function to turn the joystick input -1, 0, or 1
@@ -107,7 +106,7 @@ struct Devices
 
 void runner(Devices& devices){
 	for(;;){
-		devices.joyMove();
+		//devices.joyMove();
 	}
 }
 Devices devices;
