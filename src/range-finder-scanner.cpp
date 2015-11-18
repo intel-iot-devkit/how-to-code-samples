@@ -47,36 +47,37 @@ struct Devices
   }
 
   void move(){
-	  //stepper rotates clockwise
+	  //stepper rotates clockwise one degree at a time
 	  stepper->setDirection(upm::ULN200XA::DIR_CW);
 	  stepper->setSpeed(5);
-	  stepper->stepperSteps(11);
+	  stepper->stepperSteps(4096/360);
   }
   void objCheck(){
 
     for(int i = 0; i<360; i++){
-      if (dInteruptor->objectDetected()){
+    	bool isDetected = dInteruptor->objectDetected();
+      if (isDetected){
         std::cout << "Object detected" << std::endl;
         degrees[i] = true;
-
       }
       else{
         std::cout << "Area is clear" << std::endl;
         degrees[i] = false;
       }
-      usleep(600000);
+      move();
+      sleep(1);
     }
   }
-
   crow::json::wvalue renderJSON() {
     crow::json::wvalue result;
-    for (int i= 0; i < 360; i++) {
+    for (int i = 0; i < 360; i++) {
       std::string iStr = std::to_string(i);
-      result["data"][iStr] = degrees[i] ? 1 : 0;
+      result["degree"][iStr] = degrees[i] ? 1 : 0;
     }
 
     return result;
   }
+
 
 };
 
@@ -129,20 +130,22 @@ int main() {
   });
 
   CROW_ROUTE(app, "/data.json")
-     .methods("PUT"_method, "GET"_method)
+     .methods("GET"_method)
      ([](const crow::request& req) {
-       if (req.method == "PUT"_method) {
+       if (req.method == "GET"_method) {
          auto x = crow::json::load(req.body);
-         if (!x)
-            return crow::response(400);
-
          if (x.size() != 360) {
            std::cout << "Invalid degree data" << std::endl;
+           return crow::response(400);
          }
-  	   return crow::response("ok");
-       } else {
-    	   return crow::response(devices.renderJSON());
-
+         else{
+        	// auto m = crow::response(renderJSON(devices));
+        	 //return m;
+        	// std::ostringstream os;
+        	// auto a = devices.renderJSON();
+        	 //os << a;
+        	 return crow::response{devices.renderJSON()};
+         }
        }
    });
 
