@@ -14,12 +14,13 @@
 #include "../lib/crow/crow_all.h"
 #include "html.h"
 
+bool degrees[360];
+
 // The hardware devices that the example is going to connect to
 struct Devices
 {
-  upm::RFR359F* dInteruptor;
+  upm::RFR359F* interuptor;
   upm::ULN200XA* stepper;
-  bool degrees[360];
 
 
   Devices(){
@@ -28,34 +29,33 @@ struct Devices
   // Initialization function
   void init() {
     // rotary connected to d2
-    dInteruptor = new upm::RFR359F(2);
+    interuptor = new upm::RFR359F(2);
 
     // stepper motor connected to d9,10,11,12
     stepper = new upm::ULN200XA(4096, 9, 10, 11, 12);
 
     for (int i = 0; i < 360; i++){
-    	degrees[i] = false;
+      degrees[i] = false;
     }
-
   };
 
   // Cleanup on exit
   void cleanup() {
-    delete dInteruptor;
+    delete interuptor;
     stepper->release();
     delete stepper;
   }
 
   void move(){
-	  //stepper rotates clockwise one degree at a time
-	  stepper->setDirection(upm::ULN200XA::DIR_CW);
-	  stepper->setSpeed(5);
-	  stepper->stepperSteps(4096/360);
+    //stepper rotates clockwise one degree at a time
+    stepper->setDirection(upm::ULN200XA::DIR_CW);
+    stepper->setSpeed(5);
+    stepper->stepperSteps(4096/360);
   }
-  void objCheck(){
 
+  void objCheck(){
     for(int i = 0; i<360; i++){
-    	bool isDetected = dInteruptor->objectDetected();
+      bool isDetected = interuptor->objectDetected();
       if (isDetected){
         std::cout << "Object detected" << std::endl;
         degrees[i] = true;
@@ -68,24 +68,13 @@ struct Devices
       sleep(1);
     }
   }
-  crow::json::wvalue renderJSON() {
-    crow::json::wvalue result;
-    for (int i = 0; i < 360; i++) {
-      std::string iStr = std::to_string(i);
-      result["degree"][iStr] = degrees[i] ? 1 : 0;
-    }
-
-    return result;
-  }
-
-
 };
 
 // Function called by worker thread for device communication
 void runner(Devices& devices) {
   for (;;) {
-	  devices.objCheck();
-	 // sleep(1);
+    devices.objCheck();
+   // sleep(1);
   }
 }
 
@@ -122,32 +111,21 @@ int main() {
   crow::SimpleApp app;
 
   CROW_ROUTE(app, "/")
-  ([](const crow::request& req) {
-	    std::stringstream text;
-	    text << index_html;
-	    return text.str();
-       // return crow::response(currentState.renderJSON());
+  ([]() {
+    std::stringstream text;
+    text << index_html;
+    return text.str();
   });
 
   CROW_ROUTE(app, "/data.json")
-     .methods("GET"_method)
-     ([](const crow::request& req) {
-       if (req.method == "GET"_method) {
-         auto x = crow::json::load(req.body);
-         if (x.size() != 360) {
-           std::cout << "Invalid degree data" << std::endl;
-           return crow::response(400);
-         }
-         else{
-        	// auto m = crow::response(renderJSON(devices));
-        	 //return m;
-        	// std::ostringstream os;
-        	// auto a = devices.renderJSON();
-        	 //os << a;
-        	 return crow::response{devices.renderJSON()};
-         }
-       }
-   });
+  ([](const crow::request& req) {
+    crow::json::wvalue result;
+    for (int i = 0; i < 360; i++) {
+      result[i] = degrees[i];
+    }
+
+    return crow::response{result};
+  });
 
   // start web server
   app.port(3000).multithreaded().run();
