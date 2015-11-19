@@ -34,8 +34,8 @@ Grove* Starter Kit containing:
 
 ## Software requirements
 
-1. [Eclipse* Iot version](https://software.intel.com/en-us/eclipse-getting-started-guide)
-2. Microsoft* Azure* account
+1. [Eclipse*](https://software.intel.com/en-us/eclipse-getting-started-guide)
+2. Microsoft* Azure* or IBM* Bluemix* account
 
 ## How to set up
 
@@ -116,7 +116,7 @@ To run the example with the optional backend data store, you need to set the `SE
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
 3. In the **Commands to execute before application** field, add the environment variables so it looks like this, except using the server and authentication token that correspond to your own setup:<br>
 ```
-chmod 755 /tmp/doorbell;export API_KEY="YOURKEY"; export SERVER="http://intel-examples.azurewebsites.net/counter/logger/alarm-clock"; export AUTH_TOKEN="YOURTOKEN"
+chmod 755 /tmp/doorbell;export API_KEY="YOURKEY"; export SERVER="http://intel-examples.azurewebsites.net/counter/doorbell/inc"; export AUTH_TOKEN="YOURTOKEN"
 ```
 
 4. Click **Apply** to save your new environment variables.
