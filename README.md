@@ -73,7 +73,7 @@ You use the Eclipse "Import Wizard" to import an existing project into the works
 
 ### Connecting The Xadow* Sensors
 
-![](./../../../images/js/ble-scan.jpg)
+![](./../../../images/js/fall-tracker.jpg)
 
 You need to have a Xadow* expansion board connected to Intel® Edison to plug in all the Xadow* devices.
 
