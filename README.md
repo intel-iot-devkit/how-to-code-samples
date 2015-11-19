@@ -77,7 +77,7 @@ Your main .cpp program is now displayed in your workspace under the **src** fold
 
 ![](./../../../images/js/equipment-activity.jpg)
 
-You will need to have the Grove* Shield connected to the Arduino*-compatible breakout board, in order to plug in all the various Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
+You will need to have the Grove* Shield connected to the Arduino\*-compatible breakout board, in order to plug in all the various Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
 1. Plug one end of a Grove* cable into the Grive* Sound Sensor, then connect the other end to the "AO" port on the Grove* Shield.
 2. Plus one end of a Grove* cable into the Grove* Piezo Vibration Sensor, then connect the other end to the "A2" port on the Grove* Shield.
