@@ -73,7 +73,7 @@ Your main .cpp program is now displayed in your workspace under the **src** fold
 
 ![](./../../../images/js/doorbell.jpg)
 
-You will need to have the Grove* Shield connected to the Arduino*-compatible breakout board, in order to plug in all the various Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
+You will need to have the Grove* Shield connected to the Arduino\*-compatible breakout board, in order to plug in all the various Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
 1. Plug one end of a Grove* cable into the Grove* Touch Sensor, then connect the other end to the "D4" port on the Grove* Shield.
 2. Plug one end of a Grove* cable into the Grove* Buzzer, then connect the other end to the "D5" port on the Grove* Shield.
