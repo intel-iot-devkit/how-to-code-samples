@@ -5,17 +5,17 @@
 This smart alarm clock application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Eclipse,* an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.<br>
-- Set up a web application server to set the alarm time and store this alarm data using Azure Redis Cache* from Microsoft* Azure* or Redis Store* from IBM* Bluemix*, both cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.<br>
+- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run this code sample in Eclipse,* an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.
+- Set up a web application server to set the alarm time and store this alarm data using Azure Redis Cache* from Microsoft* Azure* or Redis Store* from IBM* Bluemix*, both cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Invoke the services of the Weather Underground* API for accessing weather data.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a smart alarm clock that:<br>
-- can be accessed with your mobile phone via the built-in web interface to set the alarm time;<br>
-- displays live weather data on the LCD;<br>
+Using an Intel® Edison board, this project lets you create a smart alarm clock that:
+- can be accessed with your mobile phone via the built-in web interface to set the alarm time;
+- displays live weather data on the LCD;
 - keeps track of how long it takes you to wake up each morning, using cloud-based data storage.
 
 ## How it works
@@ -38,7 +38,7 @@ Grove* Starter Kit Plus containing:
 ## Software requirements
 
 1. [Eclipse*](https://software.intel.com/en-us/eclipse-getting-started-guide)
-2. Microsoft* Azure* account
+2. Microsoft* Azure* or IBM* Bluemix* account
 3. Weather Underground* API key
 
 ## How to set up
