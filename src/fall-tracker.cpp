@@ -161,8 +161,6 @@ void exit_handler(int param)
 // The main function for the example program
 int main()
 {
-  string address;
-
   // handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
 
