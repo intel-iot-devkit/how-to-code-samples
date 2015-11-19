@@ -1,4 +1,4 @@
-# Earthquake Detector
+# Earthquake detector
 
 ## Introduction
 
@@ -10,18 +10,18 @@ From this exercise, developers will learn how to:
 - Run this code sample in Eclipse* IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
 - Invoke the services of the United States Geological Survey* API for accessing earthquake data.
 
-## What It Is
+## What it is
 
 Using an Intel® Edison board, this project lets you create a earthquake detector that:
 - senses motion using the digital accellerometer;
 - checks live earthquake data, using the USGS* API.
 - displays the earthquake on the LCD;
 
-## How It Works
+## How it works
 
 This earthquake detector will constantly read the 3-axis digital accelerometer looking for movement that could indicate an earthquake.
 
-When it thinks it detects an earthquake, it will attempt to verify with the USGS API that an earthquake actually occurred
+When it thinks it detects an earthquake, it will attempt to verify with the USGS* API that an earthquake actually occurred
 
 If so, it will use the LCD Display to warn of the quake.
 
@@ -35,109 +35,89 @@ Grove* Starter Kit containing:
 
 ## Software requirements
 
-1. [Eclipse* Iot version](https://software.intel.com/en-us/eclipse-getting-started-guide)
+1. [Eclipse*](https://software.intel.com/en-us/eclipse-getting-started-guide)
 
-### How To Setup
+## How to set up
 
-To begin, clone the Intel® IoT Examples with git on your computer:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/intel-iot-examples.git
 
-Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/intel-iot-devkit/intel-iot-examples](https://github.com/intel-iot-devkit/intel-iot-examples)
-and click on the "Download ZIP" button at the lower right. Once the ZIP file has finished downloading, uncompress it, and then use the files in the directory for this example.
+Want to download a .zip file? In your web browser, go to [https://github.com/intel-iot-devkit/intel-iot-examples](https://github.com/intel-iot-devkit/intel-iot-examples) and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
-### Adding The Code To Eclipse IoT
+### Adding the program to Eclipse*
 
-You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
+In Eclipse*, select **Import Wizard** to import an existing project into the workspace as follows:
 
-- From the main menu bar, select "File > Import..."
+1. From the main menu, select **File > Import**.<br>
 ![](./../../../images/cpp/cpp-eclipse-menu.png)
 
-- The "Import wizard" dialog will open.
+2. The **Import Wizard** dialog box opens.
 ![](./../../../images/cpp/cpp-eclipse-menu-select-epiw.png)
 
-- Select "General > Existing Project into Workspace" and click on the "Next" button.
+3. Select **General > Existing Project into Workspace** and click **Next**.
 ![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 
-- Choose "Select root directory", then click on the associated "Browse" button to locate the directory that contains the project files.
+4. Click **Select root directory** and then the associated **Browse** button to locate the directory that contains the project files.
 ![](./../../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
 
-- Under "Projects" select the directory with the project files which you would like to import.
+5. Under **Projects**, select the directory with the project files you'd like to import.
 ![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
-- Click on the "Finish" button to import the files into Eclipse.
 
+6. Click **Finish** to import the files into Eclipse*.
 ![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
-- Your main .cpp program will now be in your workspace under the src folder.
 
-### Connecting The Grove* Sensors
+Your main .cpp program is now displayed in your workspace under the **src** folder.
+
+### Connecting the Grove* sensors
 
 ![](./../../../images/js/earthquake-detector.jpg)
 
-You will need to have the Grove* Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to the "5V" position.
+You will need to have the Grove* Shield connected to the Arduino-compatible breakout board, in order to plug in all the various Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
-Plug one end of a Grove* cable into the "Accelerometer", then connect the other end to any of the "I2C" ports on the Grove* Shield.
+1. Plug one end of a Grove* cable into the Grove* Accelerometer, then connect the other end to any of the "I2C" ports on the Grove* Shield.
+2. Plug one end of a Grove* cable into the Grove* RGB LCD, then connect the other end into any of the "I2C" ports on the Grove* Shield.
 
-Plug one end of a Grove* cable into the "RGB LCD", then connect the other end into any of the "I2C" ports on the Grove* Shield.
+### Intel® Edison setup
 
-### Intel Edison Setup
+This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on Intel® Edison by default.
 
-This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
+### Datastore server setup
 
-## Data Store Server Setup
+Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft* Azure\* or IBM* Bluemix*, Node.js\*, and a Redis\* data store.
 
-You can optionally store the data generated by this example program in a backend database deployed using Node.js, and the Redis datastore. You use your own account on a hosted service such as Microsoft Azure or IBM Bluemix.
+For information on how to set up your own cloud data server, go to:
 
-For information on how to setup your own cloud data server, go to:
+[https://github.com/intel-iot-devkit/intel-iot-examples-datastore](https://github.com/intel-iot-devkit/intel-iot-examples-datastore)
 
-https://github.com/hybridgroup/intel-iot-examples-datastore
-
-### Connecting Your Edison to the Eclipse IDE
+### Connecting your Intel® Edison to Eclipse*
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win.png)
-1. In the bottom left corner right-click in the area "Target SSH Conections" select "New..." then select "Connection..." and a new screen will appear.
+1. In the bottom left corner, right-click anywhere in the **Target SSH Connections** tab and select **New > Connection**.<br> The **Intel(R) IoT Target Connection** window appears.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win2.png)
-2. In the "filter box" type the name of your edison. In the example mine is JustinEdison.
+2. In the **Filter** field, type the name of your board.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win3.png)
-3. In the "Select one of the found connections list; click on your device name. Then Ok.
+3. In the **Select one of the found connections** list, select your device name and click **OK**.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
-4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect.
-(If promted for a username and password the user is 'root' and password is whatever you set it up as when configuring the Edison board)
+4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.
 
-### Running The Example With The Cloud Server
+If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring Intel® Edison.
 
-To run the example with the optional backend datastore you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse by:
-
-1. Select the "Run" menu and choose "Run Configurations". The "Run Configurations" dialog will be displayed.
-2. Click on "earthquake-detector" under "C/C++ Remote Application". This will display the information for your application.
-3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
-
-```
-chmod 755 /tmp/earthquake-detector; export SERVER="http://intel-examples.azurewebsites.net/counter/earthquake-detector/inc"; export AUTH_TOKEN="YOURTOKEN"
-```
-
-4. Click on the "Apply" button to save your new environment variables.
-
-Now when you run your program using the "Run" button, it should be able to call your server to save the data right from the Edison.
-
-### Running The Code On Edison
+### Running the code on Intel® Edison
 
 ![](./../../../images/cpp/cpp-run-eclipse.png)
 
-When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
+When you're ready to run the example, click **Run** at the top menu bar in Eclipse*. This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to Intel® Edison, and then executes it on the board itself.
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
 
-This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
-
-![](./../../../images/cpp/cpp-run-eclipse-successful-output.png)
-
-After running the program you should have a similar output as in the image above.
+After running the program, you should see output similar to the one in the image above.
 
 ![](./../../../images/cpp/earthquake-lcd.jpg)
 
-When the the program loads correctly your RGB-LCD screen will display "quakebot ready."
+When the the program loads correctly your Grove* RGB LCD screen will display "quakebot ready."
 
 If you shake the accelerometer it will check to see if there really was an earthquake!
