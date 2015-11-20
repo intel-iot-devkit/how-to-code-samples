@@ -119,7 +119,7 @@ To run the example with the optional backend data store, you need to set the `SE
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
 3. In the **Commands to execute before application** field, add the environment variables so it looks like this, except using the server and authentication token that correspond to your own setup:<br>
 ```
-chmod 755 /tmp/equipment-activity;export API_KEY="YOURKEY"; export SERVER="http://intel-examples.azurewebsites.net/logger/equipment-activity"; export AUTH_TOKEN="YOURTOKEN"
+chmod 755 /tmp/equipment-activity;export SERVER="http://intel-examples.azurewebsites.net/logger/equipment-activity"; export AUTH_TOKEN="YOURTOKEN"
 ```
 
 4. Click **Apply** to save your new environment variables.
