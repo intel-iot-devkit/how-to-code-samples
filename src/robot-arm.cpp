@@ -48,22 +48,22 @@ struct Devices
 
   //functions to set speed and direction of motors
   //steps 4096 is one full revolution of the motor
-  void OneMoveClockwise(){
+  void OnemoveXClockwise(){
 	  stepOne->setSpeed(5);
 	  stepOne->setDirection(upm::ULN200XA::DIR_CW);
 	  stepOne->stepperSteps(4096);
   }
-  void OneMoveCounterClock(){
+  void OnemoveXCounterClock(){
 	  stepOne->setSpeed(5);
 	  stepOne->setDirection(upm::ULN200XA::DIR_CCW);
 	  stepOne->stepperSteps(4096);
   }
-  void TwoMoveClockwise(){
+  void TwomoveXClockwise(){
 	  stepTwo->setSpeed(5);
 	  stepTwo->setDirection(upm::ULN200XA::DIR_CW);
 	  stepTwo->stepperSteps(4096);
   }
-  void TwoMoveCounterClock(){
+  void TwomoveXCounterClock(){
 	  stepTwo->setSpeed(5);
 	  stepTwo->setDirection(upm::ULN200XA::DIR_CCW);
 	  stepTwo->stepperSteps(4096);
@@ -79,34 +79,45 @@ struct Devices
 
   //functions to get xy axis from joystick
   float getX(){
-	 float x = scale(joy->getXInput());
+	 float x = joy->getXInput();
 		 return x;
   }
   float getY(){
-	  float y = scale(joy->getYInput());
+	  float y = joy->getYInput();
 	  	  return y;
   }
-//function for joystick input and movement
-  void joyMove(){
-	  float move = getX();
-	  float move2 = getY();
+//function for joystick input and moveXment
+  void joymove(){
+	  //gets xy values
+	  float moveX = getX();
+	  float moveY = getY();
+	  //makes xy values positive for easy use
+	  float x = fabs(moveX);
+	  float y = fabs(moveY);
+	  //makes xy values integer value for more easy use
+	  int xI = x*100;
+	  int yI = y*100;
 
-	  	  if(move == 1 )
-	  		OneMoveClockwise();
-	  	  else if(move == -1)
-	  		OneMoveCounterClock();
-
-	  	  if (move2 == 1)
-	  		TwoMoveClockwise();
-	  	  else if (move2 == -1)
-	  		TwoMoveCounterClock();
+  		  if (xI == 89){
+  			OnemoveXClockwise();
+  		  }
+  		  if (xI == 56){
+  			OnemoveXCounterClock();
+  		  }
+  		  if (yI == 53){
+  			TwomoveXClockwise();
+  		  }
+  		  if (yI == 84){
+  			TwomoveXCounterClock();
+  		  }
+	  	  sleep(1);
   }
 };
 
 
 void runner(Devices& devices){
 	for(;;){
-		//devices.joyMove();
+		devices.joymove();
 	}
 }
 Devices devices;
@@ -145,7 +156,7 @@ int main() {
   .methods("POST"_method)
   ([](const crow::request& req) {
       if (req.method == "POST"_method) {
-      devices.OneMoveClockwise();
+      devices.OnemoveXClockwise();
       return crow::response("OK");
       }
   });
@@ -154,7 +165,7 @@ int main() {
   .methods("POST"_method)
   ([](const crow::request& req) {
       if (req.method == "POST"_method) {
-      devices.OneMoveCounterClock();
+      devices.OnemoveXCounterClock();
       return crow::response("OK");
       }
   });
@@ -163,7 +174,7 @@ int main() {
   .methods("POST"_method)
   ([](const crow::request& req) {
       if (req.method == "POST"_method) {
-      devices.TwoMoveClockwise();
+      devices.TwomoveXClockwise();
       return crow::response("OK");
       }
   });
@@ -172,7 +183,7 @@ int main() {
   .methods("POST"_method)
   ([](const crow::request& req) {
       if (req.method == "POST"_method) {
-      devices.TwoMoveCounterClock();
+      devices.TwomoveXCounterClock();
       return crow::response("OK");
       }
   });
