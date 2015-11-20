@@ -86,7 +86,9 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 ### Intel® Edison setup
 
-This example uses the Crow* web micro-framework to provide a simple-to-use, yet powerful web server. The **crow** library requires the **libboost** package be installed on Intel® Edison, as well as adding the needed include and lib files to the Eclipse* Cross G++ Compiler and Cross G++ Linker.
+This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on Intel® Edison by default.
+
+This example also uses the Crow* web micro-framework to provide a simple-to-use, yet powerful web server. The **crow** library requires the **libboost** package be installed on Intel® Edison, as well as adding the needed include and lib files to the Eclipse* Cross G++ Compiler and Cross G++ Linker.
 
 1. Update opkg base feeds so you can install the needed dependencies. Establish an SSH connection to Intel® Edison and run the following command:<br>
 ```
@@ -131,9 +133,7 @@ We have a helpful link to get this set up here:
 
 Note: you need to turn SSH on by running the `configure_edison --password` command on the board. Once you set the password, make sure you write it down. You only need to do this one time and it is set when you reboot Intel® Edison.
 
-### Additional libraries and setup
-
-This example also uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on Intel® Edison by default.
+### Additional setup
 
 You also want to set the current time zone to match the zone you are in. Do this by using the `timedatectl` program on the board. For example:
 
@@ -184,7 +184,6 @@ For information on how to set up your own cloud data server, go to:
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.
 
-
 If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring Intel® Edison.
 
 ### Running the example with the cloud server
@@ -195,7 +194,7 @@ To run the example with the optional backend data store, you need to set the `SE
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
 3. In the **Commands to execute before application** field, add the environment variables so it looks like this, except using the server and authentication token that correspond to your own setup:<br>
 ```
-chmod 755 /tmp/alarm-clock;export API_KEY="YOURKEY"; export SERVER="http://intel-examples.azurewebsites.net/counter/logger/alarm-clock"; export AUTH_TOKEN="YOURTOKEN"
+chmod 755 /tmp/alarm-clock;export API_KEY="YOURKEY"; export SERVER="http://intel-examples.azurewebsites.net/logger/alarm-clock"; export AUTH_TOKEN="YOURTOKEN"
 ```
 
 4. Click **Apply** to save your new environment variables.
@@ -229,4 +228,4 @@ We have a useful tutorial on how to use the shell script here:
 
 The alarm is set using a single-page web interface served directly from the Intel® Edison board while the sample program is running.
 
-The web server runs on port `3000`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port **3000**, so if the Intel® Edison is connected to WiFi on **192.168.1.13**, the address to browse to if you are on the same network is **http://192.168.1.13:3000**.
