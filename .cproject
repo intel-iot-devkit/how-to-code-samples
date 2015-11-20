@@ -32,7 +32,6 @@
 									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/boost"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/lib/crow}"/>
 									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/upm"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/range-finder-scanner/lib/restclient-cpp/include/restclient-cpp}&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.dialect.std.1919642286" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.cpp.compiler.dialect.c++1y" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.713740525" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -69,7 +68,6 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="lib/restclient-cpp"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
