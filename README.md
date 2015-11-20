@@ -1,4 +1,4 @@
-# Home Fall Tracker
+# Home fall tracker
 
 ## Introduction
 
@@ -11,7 +11,7 @@ From this exercise, developers will learn how to:
 - Store detected falls using Azure Redis Cache* from Microsoft* Azure* or Redis Store* from IBM* Bluemix*, both cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Invoke the services of the Twilio* API for sending SMS messages.
 
-## What It Is
+## What it is
 
 Using an Intel® Edison board, this project lets you create a home fall tracker bracelet that:
 - monitors for possible falls using the accelerometer;
@@ -19,9 +19,9 @@ Using an Intel® Edison board, this project lets you create a home fall tracker 
 - displays information that jhelp is on the way using the OLED display;
 - keeps track of detected devices, using cloud-based data storage.
 
-## How It Works
+## How it works
 
-The home fall tracker bracelet will detect potential falls with the accelerometer. If it detects a possible fall, it will send an SMS alert via Twilio and let the user know that their caretaker has been notified, and help is on the way.
+The home fall tracker bracelet will detect potential falls with the accelerometer. If it detects a possible fall, it will send an SMS alert via Twilio* and let the user know that their caretaker has been notified, and help is on the way.
 
 Optionally, all data can be stored using the Intel® IoT Example Datastore running in your own Microsoft* Azure* or IBM* Bluemix* account.
 
@@ -35,41 +35,41 @@ Xadow* Starter Kit containing:
 
 ## Software requirements
 
-1. [Eclipse* IoT version](https://software.intel.com/en-us/eclipse-getting-started-guide)
+1. [Eclipse*](https://software.intel.com/en-us/eclipse-getting-started-guide)
 2. Microsoft* Azure* or IBM* Bluemix* account
 3. Twilio* account
 
-### How To Setup
+## How to set up
 
-To begin, clone the Intel® IoT Examples with git on your computer:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
 
-    $ git clone git clone https://github.com/intel-iot-devkit/intel-iot-examples.git
+    $ git clone https://github.com/intel-iot-devkit/intel-iot-examples.git
 
-Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/intel-iot-devkit/intel-iot-examples](https://github.com/intel-iot-devkit/intel-iot-examples)
-and click on the "Download ZIP" button at the lower right. Once the ZIP file has finished downloading, uncompress it, and then use the files in the directory for this example.
+Want to download a .zip file? In your web browser, go to [https://github.com/intel-iot-devkit/intel-iot-examples](https://github.com/intel-iot-devkit/intel-iot-examples) and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
-### Adding The Code To Eclipse IoT
+### Adding the program to Eclipse*
 
-You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
+In Eclipse*, select **Import Wizard** to import an existing project into the workspace as follows:
 
-- From the main menu bar, select "File > Import..."
+1. From the main menu, select **File > Import**.<br>
 ![](./../../../images/cpp/cpp-eclipse-menu.png)
 
-- The "Import wizard" dialog will open.
+2. The **Import Wizard** dialog box opens.
 ![](./../../../images/cpp/cpp-eclipse-menu-select-epiw.png)
 
-- Select "General > Existing Project into Workspace" and click on the "Next" button.
+3. Select **General > Existing Project into Workspace** and click **Next**.
 ![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 
-- Choose "Select root directory", then click on the associated "Browse" button to locate the directory that contains the project files.
+4. Click **Select root directory** and then the associated **Browse** button to locate the directory that contains the project files.
 ![](./../../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
 
-- Under "Projects" select the directory with the project files which you would like to import.
+5. Under **Projects**, select the directory with the project files you'd like to import.
 ![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
-- Click on the "Finish" button to import the files into Eclipse.
 
+6. Click **Finish** to import the files into Eclipse*.
 ![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
-- Your main .cpp program will now be in your workspace under the src folder.
+
+Your main .cpp program is now displayed in your workspace under the **src** folder.
 
 ### Connecting The Xadow* Sensors
 
@@ -79,73 +79,73 @@ You need to have a Xadow* expansion board connected to Intel® Edison to plug in
 
 Plug one end of a Xadow* connector into the Xadow* OLED, and connect the other end to one of the side connectors on the Xadow* expansion board.
 
-### Intel Edison Setup
+### Intel® Edison setup
 
-This example uses the `restclient-cpp` library to perform REST calls to the server. The code for `restclient-cpp` can be found in the `lib` directory. The `restclient-cpp` library requires the `libcurl` package, which is already installed on the Intel Edison by default.
+This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on Intel® Edison by default.
 
-In addition, this example uses the `twilio-cplusplus` library to perform REST calls to the Twilio SMS server. The code for `twilio-cplusplus` can be found in the `lib` directory. The `twilio-cplusplus` library requires the `ssl` and `crypto` packages, which are already installed on the Intel Edison by default.
+In addition, this example uses the **twilio-cplusplus** library to perform REST calls to the Twilio* SMS server. The code for **twilio-cplusplus** can be found in the **lib** directory. The **twilio-cplusplus** library requires the **ssl** and **crypto** packages, which are already installed on Intel® Edison by default.
 
-### Twilio API Key
+### Twilio* API Key
 
-To optionally send SMS messages, you need to register for an account and get an API key from the Twilio web site: https://www.twilio.com/
+To optionally send SMS messages, you need to register for an account and get an API key from the Twilio* web site: https://www.twilio.com/
 
-You cannot send SMS messages without obtaining a Twilio API key first. You can still run the example, but without the SMS alerts.
+You cannot send SMS messages without obtaining a Twilio* API key first. You can still run the example, but without the SMS alerts.
 
-To configure the example for the optional SMS sending, obtain a key from the Twilio web site as documented above.
+To configure the example for the optional SMS sending, obtain a key from the Twilio* web site as documented above.
 
-## Data Store Server Setup
+### Datastore server setup
 
-You can optionally store the data generated by this example program in a backend database deployed using Node.js, and the Redis datastore. You use your own account on a hosted service such as Microsoft* Azure* or IBM* Bluemix*.
+Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft* Azure\* or IBM* Bluemix*, Node.js\*, and a Redis\* data store.
 
-For information on how to setup your own cloud data server, go to:
+For information on how to set up your own cloud data server, go to:
 
-https://github.com/intel-iot-devkit/intel-iot-examples-datastore
+[https://github.com/intel-iot-devkit/intel-iot-examples-datastore](https://github.com/intel-iot-devkit/intel-iot-examples-datastore)
 
-### Connecting Your Edison to the Eclipse IDE
+### Connecting your Intel® Edison to Eclipse*
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win.png)
-1. In the bottom left corner right-click in the area "Target SSH Conections" select "New..." then select "Connection..." and a new screen will appear.
+1. In the bottom left corner, right-click anywhere in the **Target SSH Connections** tab and select **New > Connection**.<br> The **Intel(R) IoT Target Connection** window appears.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win2.png)
-2. In the "filter box" type the name of your edison. In the example mine is JustinEdison.
+2. In the **Filter** field, type the name of your board.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win3.png)
-3. In the "Select one of the found connections list; click on your device name. Then Ok.
+3. In the **Select one of the found connections** list, select your device name and click **OK**.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
-4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect.
-(If promted for a username and password the user is 'root' and password is whatever you set it up as when configuring the Edison board)
+4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.
 
-## Running The Example With The Cloud Server
+If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring Intel® Edison.
 
-To run the example with the optional backend datastore you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse by:
+### Running the example with the cloud server
 
-1. Select the "Run" menu and choose "Run Configurations". The "Run Configurations" dialog will be displayed.
-2. Before running the project be sure sure select your Edison under the "connection" dropdown box.
-3. Click on "fall-tracker" under "C/C++ Remote Application". This will display the information for your application.
-4. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
+To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse* as follows:
+
+1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
+2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
+3. In the **Commands to execute before application** field, add the environment variables so it looks like this, except using the server and authentication token that correspond to your own setup:
 
 ```
 chmod 755 /tmp/fall-tracker; export SERVER="http://intel-iot-example-data.azurewebsites.net/logger/fall-tracker"; export AUTH_TOKEN="Enter Auth Token Here"; export TWILIO_SID="Enter Twilio SID Here"; export TWILIO_TOKEN="Enter Twilio Token Here"; export TWILIO_TO="Enter Number to Send to here Formattted 555-555-5555"; export TWILIO_FROM="Enter Number to be Sent From Here Formated 555-555-5555"
 ```
 
-5. Click on the "Apply" button to save your new environment variables.
+4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the "Run" button, it should be able to call your server to save the data right from the Edison.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from Intel® Edison.
 
-### Running The Code On Edison
+### Running the code on Intel® Edison
 
 ![](./../../../images/cpp/cpp-run-eclipse.png)
 
-When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
+When you're ready to run the example, click **Run** at the top menu bar in Eclipse*. This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to Intel® Edison, and then executes it on the board itself.
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
 
-This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
+After running the program, you should see output similar to the one in the image above.
 
-![](./../../../images/cpp/cpp-run-eclipse-successful-output.png)
+![](./../../../images/cpp/cpp-equp-act-mon-successful-output.png)
 
-After running the program you should have a similar output as in the image above.
+Successful output should be similar to the above image.
 
 ![](./../../../images/cpp/fall-detect-oled.jpg)
 
