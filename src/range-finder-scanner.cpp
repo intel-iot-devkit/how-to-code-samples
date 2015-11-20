@@ -13,6 +13,7 @@
 
 #include "../lib/crow/crow_all.h"
 #include "html.h"
+#include "styles.h"
 
 bool degrees[360];
 
@@ -126,6 +127,14 @@ int main() {
 
     return crow::response{result};
   });
+
+  CROW_ROUTE(app, "/styles.css")
+  ([]() {
+    std::stringstream text;
+    text << styles_css;
+    return text.str();
+  });
+
 
   // start web server
   app.port(3000).multithreaded().run();

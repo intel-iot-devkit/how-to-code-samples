@@ -7,4 +7,4 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .title {margin-bottom:30px;text-align:center;}
 .button-row{text-align:center;margin-top:20px;}
-@media screen and (max-width:767px){.button-row .btn{display:block; width:100%;}}
+@media screen and (max-width:767px){.button-row .btn{display:block; width:100%;}} .btn{display:block; width:100%;}}:767px){.button-row .btn{display:block; width:100%;}}width:767px){.button-row .btn{display:block; width:100%;}}
