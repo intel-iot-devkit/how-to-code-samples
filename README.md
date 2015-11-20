@@ -1,4 +1,4 @@
-# Line Following Robot
+# Line following robot
 
 This line following robot application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
@@ -9,7 +9,7 @@ From this exercise, developers will learn how to:
 - Run this code sample in Eclipse* XDK IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
 - Set up a web application server to store line detection data using Azure Redis Cache* from Microsoft* Azure* or Redis* from IBM* Bluemix*, both cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
-## What It Is
+## What it is
 
 Using an Intel® Edison board, this project lets you create a line following robot that:
 
@@ -18,10 +18,10 @@ Using an Intel® Edison board, this project lets you create a line following rob
 - tries to pivot to find the line if not on it, using the stepper motors.
 - logs events from the line finder, using cloud-based data storage;
 
-## How It Works
+## How it works
 
 The Line Finder robot will use the two attached motors to attempt to follow a line while keeping track of it with the Line Finder sensor. If on the line, it will move forward. Otherwise, it will pivot in place, trying to locate it using the sensor.
-Optionally, it can also store system events using the "Intel IoT Example Datastore" running on your own Microsoft* Azure* or IBM* Bluemix* account.
+Optionally, it can also store system events using the "Intel® IoT Example Datastore" running on your own Microsoft* Azure* or IBM* Bluemix* account.
 
 ## Hardware requirements
 
@@ -33,105 +33,104 @@ Grove* Robotics Kit containing:
 
 ## Software requirements
 
-1. [Eclipse* Iot version](https://software.intel.com/en-us/eclipse-getting-started-guide)
+1. [Eclipse*](https://software.intel.com/en-us/eclipse-getting-started-guide)
 2. Microsoft* Azure* or IBM* Bluemix* account
 
-### How To Setup
+## How to set up
 
-To begin, clone the Intel® IoT Examples repository with Git on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/intel-iot-examples.git
 
-Just want to download a ZIP file? Just point your web browser to the Github repo at [https://github.com/intel-iot-devkit/intel-iot-examples](https://github.com/intel-iot-devkit/intel-iot-examples) and click on the "Download ZIP" button at the lower right. Once the ZIP file has finished downloading, uncompress it, and then use the files in the directory for this example.
+Want to download a .zip file? In your web browser, go to [https://github.com/intel-iot-devkit/intel-iot-examples](https://github.com/intel-iot-devkit/intel-iot-examples) and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
-## Adding The Code To Eclipse IoT
+### Adding the program to Eclipse*
 
-You use the Eclipse "Import Wizard" to import an existing project into the workspace as follows:
+In Eclipse*, select **Import Wizard** to import an existing project into the workspace as follows:
 
-- From the main menu bar, select "File > Import..."
+1. From the main menu, select **File > Import**.<br>
 ![](./../../../images/cpp/cpp-eclipse-menu.png)
 
-- The "Import wizard" dialog will open.
+2. The **Import Wizard** dialog box opens.
 ![](./../../../images/cpp/cpp-eclipse-menu-select-epiw.png)
 
-- Select "General > Existing Project into Workspace" and click on the "Next" button.
+3. Select **General > Existing Project into Workspace** and click **Next**.
 ![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 
-- Choose "Select root directory", then click on the associated "Browse" button to locate the directory that contains the project files.
+4. Click **Select root directory** and then the associated **Browse** button to locate the directory that contains the project files.
 ![](./../../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
 
-- Under "Projects" select the directory with the project files which you would like to import.
+5. Under **Projects**, select the directory with the project files you'd like to import.
 ![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
-- Click on the "Finish" button to import the files into Eclipse.
 
+6. Click **Finish** to import the files into Eclipse*.
 ![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
-- Your main .cpp program will now be in your workspace under the src folder.
 
-### Connecting The Grove* Sensors
+Your main .cpp program is now displayed in your workspace under the **src** folder.
+
+### Connecting the Grove* sensors
 
 ![](./../../../images/js/line-follower.jpg)
 
-You need to have a Grove* Shield connected to an Arduino-compatible breakout board, to plug in all the Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to "5V".
+You need to have a Grove* Shield connected to an Arduino-compatible breakout board, to plug in all the Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
-You will need to power the Intel Edison with the external power adaptor that came with your starter kit, or else substitute a external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
+You will need to power the Intel® Edison with the external power adaptor that came with your starter kit, or else substitute a external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
 
-In addition, you will need a breadboard and additional 5V power supply to provide power to both motors. Note you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel Edison and motors, so you will need either 2 batteries or 2 power supplies in total.
+In addition, you will need a breadboard and additional **5V** power supply to provide power to both motors. Note you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison and motors, so you will need either 2 batteries or 2 power supplies in total.
 
-Each of the stepper motor controllers will need to be plugged into 4 pins on the Arduino breakout board, for it to be able to be controlled. Stepper motor controller #1 will need to be connected to pins 4, 5, 6, & 7. Stepper motor controller #2 will need to be plugged into pins 9, 10, 11, & 12. Both must be connected to ground (GND), to the 5V power coming from the Arduino breakout board (VCC), and to the separate 5V power for the motors (VM).
+Each of the stepper motor controllers will need to be plugged into 4 pins on the Arduino* breakout board, for it to be able to be controlled. Stepper motor controller #1 will need to be connected to pins 4, 5, 6, & 7. Stepper motor controller #2 will need to be plugged into pins 9, 10, 11, & 12. Both must be connected to ground (GND), to the **5V** power coming from the Arduino* breakout board (VCC), and to the separate **5V** power for the motors (VM).
 
-Plug one end of a Grove* cable into the "Grove* Line Finder", and connect the other end to the "D2" port on the Grove* Shield.
+Plug one end of a Grove* cable into the Grove* Line Finder, and connect the other end to the "D2" port on the Grove* Shield.
 
-### Running The Code On Edison
+### Intel® Edison setup
 
-When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
-This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
+This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on Intel® Edison by default.
 
-## Data Store Server Setup
+### Datastore server setup
 
-Optionally, you can store the data generated by this example program in a backend database deployed using Microsoft* Azure* or IBM* Bluemix*, Node.js, and a Redis data store.
+Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft* Azure\* or IBM* Bluemix*, Node.js\*, and a Redis\* data store.
 
-For information on how to setup your own cloud data server, go to:
+For information on how to set up your own cloud data server, go to:
 
-https://github.com/intel-iot-devkit/intel-iot-examples-datastore
+[https://github.com/intel-iot-devkit/intel-iot-examples-datastore](https://github.com/intel-iot-devkit/intel-iot-examples-datastore)
 
-### Connecting Your Edison to the Eclipse IDE
+### Connecting your Intel® Edison to Eclipse*
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win.png)
-1. In the bottom left corner right-click in the area "Target SSH Conections" select "New..." then select "Connection..." and a new screen will appear.
+1. In the bottom left corner, right-click anywhere in the **Target SSH Connections** tab and select **New > Connection**.<br> The **Intel(R) IoT Target Connection** window appears.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win2.png)
-2. In the "filter box" type the name of your edison. In the example mine is JustinEdison.
+2. In the **Filter** field, type the name of your board.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win3.png)
-3. In the "Select one of the found connections list; click on your device name. Then Ok.
+3. In the **Select one of the found connections** list, select your device name and click **OK**.
 
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
-4. Your device will now appear in the "Target SSH Connections" area. Right-clickt it and select connect.
-(If promted for a username and password the user is 'root' and password is whatever you set it up as when configuring the Edison board)
+4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.
 
-### Running The Example With The Cloud Server
+If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring Intel® Edison.
 
-To run the example with the optional backend datastore you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse by:
+### Running the example with the cloud server
 
-1. Select the "Run" menu and choose "Run Configurations". The "Run Configurations" dialog will be displayed.
-2. Click on "doorbell" under "C/C++ Remote Application". This will display the information for the
-3. Add the environment variables to the field for "Commands to execute before application" so it ends up looking like this, except using the server and auth token that correspond to your own setup:
+To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse* as follows:
 
+1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
+2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
+3. In the **Commands to execute before application** field, add the environment variables so it looks like this, except using the server and authentication token that correspond to your own setup:<br>
 ```
-chmod 755 /tmp/alarm-clock;export API_KEY="YOURKEY"; export SERVER="http://intel-examples.azurewebsites.net/counter/logger/alarm-clock"; export AUTH_TOKEN="YOURTOKEN"
+chmod 755 /tmp/line-follower;export API_KEY="YOURKEY"; export SERVER="http://intel-examples.azurewebsites.net/logger/line-follower"; export AUTH_TOKEN="YOURTOKEN"
 ```
 
-4. Click on the "Apply" button to save your new environment variables.
+4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the "Run" button, it should be able to call your server to save the data right from the Edison.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from Intel® Edison.
 
-### Running The Code On Edison
+### Running the code on Intel® Edison
 
 ![](./../../../images/cpp/cpp-run-eclipse.png)
 
-When you're ready to run the example, you can click on the "Run" icon located in the menubar at the top of the Eclipse editor.
-This will compile the program using the Cross G++ Compiler, link it using the Cross G++ Linker, transfer the binary to the Edison, and then execute it on the Edison itself.
+When you're ready to run the example, click **Run** at the top menu bar in Eclipse*. This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to Intel® Edison, and then executes it on the board itself.
 
 ![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
 
-After running the program you should have a similar output as in the image above.
+After running the program, you should see output similar to the one in the image above.
