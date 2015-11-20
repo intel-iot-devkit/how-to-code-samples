@@ -105,7 +105,6 @@ For information on how to set up your own cloud data server, go to:
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.
 
-
 If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring Intel® Edison.
 
 ### Running the example with the cloud server
@@ -116,7 +115,7 @@ To run the example with the optional backend data store, you need to set the `SE
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
 3. In the **Commands to execute before application** field, add the environment variables so it looks like this, except using the server and authentication token that correspond to your own setup:<br>
 ```
-chmod 755 /tmp/doorbell;export API_KEY="YOURKEY"; export SERVER="http://intel-examples.azurewebsites.net/counter/doorbell/inc"; export AUTH_TOKEN="YOURTOKEN"
+chmod 755 /tmp/doorbell;export SERVER="http://intel-examples.azurewebsites.net/counter/doorbell/inc"; export AUTH_TOKEN="YOURTOKEN"
 ```
 
 4. Click **Apply** to save your new environment variables.
