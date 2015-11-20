@@ -19,20 +19,20 @@ using namespace std;
 struct Devices
 {
   upm::GroveSpeaker* speaker;
-  upm::TP401* airSensor;
+  upm::TP401* sensor;
 
   Devices() {
   };
 
   // Initialization function
   void init() {
-  	//speaker connected to digital D5
+  	// speaker connected to digital D5
     speaker = new upm::GroveSpeaker(5);
 
-    //air sensor connected to analog A0
-    airSensor = new upm::TP401(0);
+    // air sensor connected to analog A0
+    sensor = new upm::TP401(0);
 
-    //start sensor warmup process
+    // start sensor warmup process
     warmup();
   };
 
@@ -65,7 +65,7 @@ struct Devices
 
   void cleanup() {
     delete speaker;
-    delete airSensor;
+    delete sensor;
   }
 
   //values and console output
@@ -79,7 +79,7 @@ struct Devices
   }
 
   void warmup(){
-    cout << airSensor->name() << endl;
+    cout << sensor->name() << endl;
 
     fprintf(stdout, "Heating sensor for 3 minutes...\n");
 
@@ -95,14 +95,20 @@ struct Devices
   }
 
   void airVal(){
-    uint16_t value = airSensor->getSample(); // Read raw value
-    float ppm = airSensor->getPPM();    // Read CO ppm (can vary slightly from previous read)
+    // read raw value
+    uint16_t value = sensor->getSample();
+
+    // read CO ppm (can vary slightly from previous read)
+    float ppm = sensor->getPPM();
     fprintf(stdout, "raw: %4d ppm: %5.2f   %s\n", value, ppm, airQuality(value).c_str());
-    usleep(2500000);    // Sleep for 2.5s
+
     if (value > 400){
     	notify();
     	alarm();
     }
+
+    // sleep for 2.5s
+    usleep(2500000);
   }
 };
 
