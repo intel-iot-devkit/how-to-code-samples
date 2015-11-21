@@ -30,7 +30,7 @@
 								<option id="com.intel.iotdevkit.ide.gnu.cpp.option.include.paths.304673440" name="Include paths (-I)" superClass="com.intel.iotdevkit.ide.gnu.cpp.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/mraa"/>
 									<listOptionValue builtIn="false" value="${POKY_HOME}/usr/include/upm"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/line-finder-robot/lib/restclient-cpp/include/restclient-cpp}&quot;"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/line-finder-robot/lib/restclient-cpp/include/restclient-cpp}"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.dialect.std.1919642286" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.cpp.compiler.dialect.c++1y" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.713740525" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -46,10 +46,6 @@
 									<listOptionValue builtIn="false" value="upm-grovelinefinder"/>
 									<listOptionValue builtIn="false" value="upm-uln200xa"/>
 									<listOptionValue builtIn="false" value="upm-grove"/>
-									<listOptionValue builtIn="false" value="boost_thread"/>
-									<listOptionValue builtIn="false" value="boost_filesystem"/>
-									<listOptionValue builtIn="false" value="boost_date_time"/>
-									<listOptionValue builtIn="false" value="pthread"/>
 									<listOptionValue builtIn="false" value="curl"/>
 								</option>
 								<option id="com.intel.iotdevkit.ide.gnu.cpp.option.link.misc.other.2008281724" name="Miscellaneous" superClass="com.intel.iotdevkit.ide.gnu.cpp.option.link.misc.other" value="" valueType="string"/>

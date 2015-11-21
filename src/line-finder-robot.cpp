@@ -14,7 +14,7 @@
 
 using namespace std;
 
-//function to send data to server
+// Notify remote datastore
 void notify(std::string message) {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     return;
@@ -48,7 +48,7 @@ struct Devices
 
   // Initialization function
   void init() {
-    // rotary connected to A0 (analog in)
+    // line finder connected to d2
     finder = new upm::GroveLineFinder(2);
 
     // left stepper motor connected to d9,10,11,12
@@ -74,6 +74,7 @@ struct Devices
     for (;;)
     {
       bool val = finder->blackDetected();
+      std::cout << "Line detected: " << val << std::endl;
 
       if (val) {
         moveForward();
@@ -91,23 +92,26 @@ struct Devices
     stepRight->setSpeed(5);
 
     stepLeft->setDirection(upm::ULN200XA::DIR_CW);
-    stepRight->setDirection(upm::ULN200XA::DIR_CCW);
+    stepRight->setDirection(upm::ULN200XA::DIR_CW);
 
-    stepLeft->stepperSteps(4096);
-    stepRight->stepperSteps(4096);
+    stepLeft->stepperSteps(1024);
+    stepRight->stepperSteps(1024);
   }
 
-  // Have both motors pivot clockwise, assuming motors
+  // Have both motors pivot by one moving clockwise,
+  // and the other counterclockwise, assuming motors
   // are on opposite sides of each other
   void pivotClockwise(){
     stepLeft->setSpeed(5);
     stepRight->setSpeed(5);
 
     stepLeft->setDirection(upm::ULN200XA::DIR_CW);
-    stepRight->setDirection(upm::ULN200XA::DIR_CW);
+    stepRight->setDirection(upm::ULN200XA::DIR_CCW);
 
-    stepLeft->stepperSteps(4096);
-    stepRight->stepperSteps(4096);
+    stepLeft->stepperSteps(512);
+    stepRight->stepperSteps(512);
+
+    sleep(1);
   }
 };
 
