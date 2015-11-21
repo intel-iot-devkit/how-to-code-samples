@@ -23,13 +23,12 @@ struct Devices
   upm::RFR359F* interuptor;
   upm::ULN200XA* stepper;
 
-
   Devices(){
   };
 
   // Initialization function
   void init() {
-    // rotary connected to d2
+    // range finder connected to d2
     interuptor = new upm::RFR359F(2);
 
     // stepper motor connected to d9,10,11,12
@@ -47,14 +46,15 @@ struct Devices
     delete stepper;
   }
 
+  // Moves the stepper motor around and around
   void move(){
-    //stepper rotates clockwise one degree at a time
     stepper->setDirection(upm::ULN200XA::DIR_CW);
     stepper->setSpeed(5);
     stepper->stepperSteps(4096/360);
   }
 
-  void objCheck(){
+  // Check to see if any object has been detected
+  void check_object_detected(){
     for(int i = 0; i<360; i++){
       bool isDetected = interuptor->objectDetected();
       if (isDetected){
@@ -74,13 +74,12 @@ struct Devices
 // Function called by worker thread for device communication
 void runner(Devices& devices) {
   for (;;) {
-    devices.objCheck();
-   // sleep(1);
+    devices.check_object_detected();
   }
 }
 
 Devices devices;
-//currentState state;
+
 // Exit handler for program
 void exit_handler(int param)
 {
