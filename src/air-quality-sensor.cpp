@@ -12,6 +12,8 @@
 #include <grovespeaker.h>
 #include "tp401.h"
 
+#define WARNING_THRESHOLD 200
+
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 using namespace std;
@@ -36,12 +38,14 @@ struct Devices
     warmup();
   };
 
+  // Sounds an audible alarm
   void alarm() {
     speaker->playSound('a', true, "high");
     speaker->playSound('c', true, "high");
     speaker->playSound('g', true, "high");
   }
 
+  // Notify the remote datastore
   void notify() {
     if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
       return;
@@ -63,21 +67,23 @@ struct Devices
     std::cout << r.body << std::endl;
   }
 
+  // Cleanup on exit
   void cleanup() {
     delete speaker;
     delete sensor;
   }
 
-  //values and console output
-  string airQuality(uint16_t value)
+  // How is the air quality?
+  string air_quality(uint16_t value)
   {
-    if(value < 50) return "Fresh Air";
-    if(value < 200) return "Normal Indoor Air";
-    if(value < 400) return "Low Pollution";
-    if(value < 600) return "High Pollution - Action Recommended";
+    if(value < 30) return "Fresh Air";
+    if(value < 100) return "Normal Indoor Air";
+    if(value < 200) return "Low Pollution";
+    if(value < 300) return "High Pollution - Action Recommended";
     return "Very High Pollution - Take Action Immediately";
   }
 
+  // Warmup the air quality sensor for 3 minutes
   void warmup(){
     cout << sensor->name() << endl;
 
@@ -85,24 +91,25 @@ struct Devices
 
     // wait 3 minutes for sensor to warm up
     for(int i = 0; i < 3; i++) {
-        if(i) {
-            fprintf(stdout, "Please wait, %d minute(s) passed..\n", i);
-        }
-        sleep(60);
+      if(i) {
+        fprintf(stdout, "Please wait, %d minute(s) passed..\n", i);
+      }
+      sleep(60);
     }
 
     fprintf(stdout, "Sensor ready!\n");
   }
 
-  void airVal(){
+  // Check the air qulity by reading the sensor
+  void check_air_quality(){
     // read raw value
     uint16_t value = sensor->getSample();
 
     // read CO ppm (can vary slightly from previous read)
     float ppm = sensor->getPPM();
-    fprintf(stdout, "raw: %4d ppm: %5.2f   %s\n", value, ppm, airQuality(value).c_str());
+    fprintf(stdout, "raw: %4d ppm: %5.2f   %s\n", value, ppm, air_quality(value).c_str());
 
-    if (value > 400){
+    if (value > WARNING_THRESHOLD){
     	notify();
     	alarm();
     }
@@ -139,7 +146,7 @@ int main() {
   devices.init();
 
   for (;;) {
-  	devices.airVal();
+  	devices.check_air_quality();
   }
 
   return MRAA_SUCCESS;
