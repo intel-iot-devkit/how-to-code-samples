@@ -12,6 +12,7 @@
 #include <joystick12.h>
 
 #include "html.h"
+#include "css.h"
 #include "../lib/crow/crow_all.h"
 
 using namespace std;
@@ -186,6 +187,12 @@ int main() {
       devices.TwomoveXCounterClock();
       return crow::response("OK");
       }
+  });
+  CROW_ROUTE(app, "/styles.css")
+  ([]() {
+    std::stringstream text;
+    text << styles_css;
+    return text.str();
   });
 
   // start web server

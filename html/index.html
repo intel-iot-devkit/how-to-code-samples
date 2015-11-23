@@ -2,20 +2,25 @@
 <html lang="en">
 <head>
     <title>Robot Arm</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Robot Arm</h1>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="text-center title">Robot Arm</h1>
 
-    <div id="one">
-        <h4>Servo 1</h4>
-        <button id="one-cw">Clockwise</button>
-        <button id="one-ccw">Counterclockwise</button>
-    </div>
+            <div class="text-center button-row" id="one">
+                <h4>Servo 1</h4>
+                <button type="button" class="btn btn-success" id="one-cw">Clockwise</button>
+                <button type="button" class="btn btn-info" id="one-ccw">Counterclockwise</button>
+            </div>
 
-    <div id="two">
-        <h4>Servo 2</h4>
-        <button id="two-cw">Clockwise</button>
-        <button id="two-ccw">Counterclockwise</button>
+            <div class="text-center button-row" id="two">
+                <h4>Servo 2</h4>
+                <button type="button" class="btn btn-success" id="two-cw">Clockwise</button>
+                <button type="button" class="btn btn-info" id="two-ccw">Counterclockwise</button>
+            </div>
+        </div>
     </div>
 
     <script>
