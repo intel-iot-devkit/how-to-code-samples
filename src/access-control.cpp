@@ -6,8 +6,6 @@
 #include <thread>
 #include <ctime>
 #include <string>
-#include <chrono>
-
 
 #include <grove.h>
 #include <jhd1313m1.h>
@@ -17,7 +15,6 @@
 #include "../lib/crow/crow_all.h"
 #include "../src/html.h"
 
-const int accessCode = 1234; // the chosen code
 
 // The hardware devices that the example is going to connect to
 struct Devices
@@ -57,15 +54,13 @@ struct Devices
     screen->setCursor(0,0);
     screen->write(text);
     screen->setColor(red, green, blue);
-    sleep(2);
   }
   void detect(){
 	  bool val = motion->value();
-	  std::string msg = "Alarm-Started";
+	  std::string msg = "Person arrived at: ";
 	  if(val){
-		  message(msg, 0xff0000);
+		  message("Motion Detected", 0xff00ff);
 		  notify(msg);
-		  timer();
 	  }
 	  else{
 		  message("No motion Detected");
@@ -93,30 +88,14 @@ struct Devices
     std::cout << r.body << std::endl;
   }
 
-  time_t start = time(0);
-  double sec = difftime( time(0), start);
-
-  void timer(){
-
-	  if (sec >= 30){
-		  notify("Time out!");
-		  message("Alarm!", 0xff0000);
-		  time_t start = time(0);
-	  }
-  }
-
 };
 
 // Function called by worker thread for device communication
 void runner(Devices& devices) {
   for (;;) {
 	  	  devices.detect();
-	  	  }
+      }
     }
-void runner2(Devices& devices){
-
-		devices.timer();
-}
 Devices devices;
 
 // Exit handler for program
@@ -143,10 +122,8 @@ int main() {
   // create and initialize UPM devices
   devices.init();
 
-
   // start worker thread for device communication
   std::thread t1(runner, std::ref(devices));
-  std::thread t2(runner2, std::ref(devices));
 
   // define web server & routes
   crow::SimpleApp app;
@@ -161,32 +138,17 @@ int main() {
 
   CROW_ROUTE(app, "/alarm")
   .methods("GET"_method)
-  ([](const crow::request& req){
-      std::ostringstream os;
-
-      if(req.url_params.get("code") != nullptr) {
-          int code = boost::lexical_cast<int>(req.url_params.get("code"));
-          if (code != accessCode){
-        	  devices.notify("Incorrect Password");
-        	  devices.message("Incorrect Password!", 0xff0000);
-
-          }
-          else if(code == accessCode){
-        	  devices.notify("Correct Password");
-			  devices.message("Correct Password", 0x00ff00);
-
-          }
-      return crow::response{os.str()};
+  ([](const crow::request& req) {
+      if (req.method == "POST"_method) {
+    	  //check code here
       }
-      else
-    	  return crow::response(500);
+      return crow::response("OK");
   });
   // start web server
   app.port(3000).multithreaded().run();
 
   // wait forever for the thread to exit
   t1.join();
-  t2.join();
 
   return MRAA_SUCCESS;
 }
