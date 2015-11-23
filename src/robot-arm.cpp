@@ -156,37 +156,30 @@ int main() {
   CROW_ROUTE(app, "/one-cw")
   .methods("POST"_method)
   ([](const crow::request& req) {
-      if (req.method == "POST"_method) {
       devices.OnemoveXClockwise();
       return crow::response("OK");
-      }
+
   });
 
   CROW_ROUTE(app, "/one-ccw")
   .methods("POST"_method)
   ([](const crow::request& req) {
-      if (req.method == "POST"_method) {
       devices.OnemoveXCounterClock();
       return crow::response("OK");
-      }
   });
 
   CROW_ROUTE(app, "/two-cw")
   .methods("POST"_method)
   ([](const crow::request& req) {
-      if (req.method == "POST"_method) {
       devices.TwomoveXClockwise();
       return crow::response("OK");
-      }
   });
 
   CROW_ROUTE(app, "/two-ccw")
   .methods("POST"_method)
   ([](const crow::request& req) {
-      if (req.method == "POST"_method) {
       devices.TwomoveXCounterClock();
       return crow::response("OK");
-      }
   });
   CROW_ROUTE(app, "/styles.css")
   ([]() {
