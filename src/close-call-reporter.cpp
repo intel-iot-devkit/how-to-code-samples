@@ -13,6 +13,8 @@
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
+using namespace std;
+
 const size_t bufferLength = 256;
 
 // The hardware devices that the example is going to connect to
@@ -39,66 +41,71 @@ struct Devices
 
   int initPort(){
     if (!nmea->setupTty(B9600)) {
-      std::cerr << "Failed to setup tty port parameters" << std::endl;
+      cerr << "Failed to setup tty port parameters" << endl;
       return 1;
     }
     return 0;
   }
 
-  void gps_info(){
+	// Get GPS data
+  string gps_info(){
+    string result;
     char nmeaBuffer[bufferLength];
 
     if (nmea->dataAvailable()) {
       int rv = nmea->readData(nmeaBuffer, bufferLength);
       if (rv > 0) {
-        write(1, nmeaBuffer, rv);
-        std::cout << nmeaBuffer << std::endl;
+        result = nmeaBuffer;
+        return result;
       }
 
       if (rv < 0) {
-        std::cerr << "Port read error." << std::endl;
+        cerr << "Port read error." << endl;
+        return "GPS Error";
       }
     }
+
+    return "No GPS Data";
   }
 
-  void notify(std::string message) {
+	// Notify remote datastore where there is a close call
+  void notify(string message, string location) {
+    cout << message << endl;
+    cout << location << endl;
+
     if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
       return;
     }
 
-    std::time_t now = std::time(NULL);
+    time_t now = time(NULL);
     char mbstr[sizeof "2011-10-08T07:07:09Z"];
-    std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
+    strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&now));
 
-    std::stringstream payload;
-    payload << "{\"state\":";
-    payload << "\"" << message << " " << mbstr << "\"}";
+    stringstream payload;
+    payload << "{";
+    payload << "\"message\":";
+    payload << "\"" << message << " " << mbstr << "\"";
+    payload << "\"location\":";
+    payload << "\"" << location << "\"";
+    payload << "}";
 
     RestClient::headermap headers;
     headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
 
     RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
-    std::cout << "Datastore called. Result:" << r.code << std::endl;
-    std::cout << r.body << std::endl;
+    cout << "Datastore called. Result:" << r.code << endl;
+    cout << r.body << endl;
   }
 
+	// Check to see if any object is within range
   void check_object_detected(){
     if (detector->objectDetected()) {
-      std::cout << "Object detected" << std::endl;
+      notify("object-detected", gps_info());
     } else {
-      std::cout << "Area is clear" << std::endl;
+      cout << "Area is clear" << endl;
     }
-    sleep(1);
   }
 };
-
-// Function called by worker thread for device communication
-void runner(Devices& devices) {
-  for (;;) {
-    devices.gps_info();
-    usleep(100000);
-  }
-}
 
 Devices devices;
 
@@ -119,18 +126,17 @@ int main() {
   if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
     (platform != MRAA_INTEL_GALILEO_GEN2) &&
     (platform != MRAA_INTEL_EDISON_FAB_C)) {
-    std::cerr << "ERROR: Unsupported platform" << std::endl;
+    cerr << "ERROR: Unsupported platform" << endl;
     return MRAA_ERROR_INVALID_PLATFORM;
   }
 
   // create and initialize UPM devices
   devices.init();
 
-  // start worker thread for device communication
-  std::thread t1(runner, std::ref(devices));
-
-  // wait forever for the thread to exit
-  t1.join();
+	for (;;) {
+    devices.check_object_detected();
+    sleep(5);
+  }
 
   return MRAA_SUCCESS;
 }
