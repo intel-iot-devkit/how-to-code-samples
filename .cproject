@@ -45,9 +45,8 @@
 							</tool>
 							<tool command="i586-poky-linux-g++" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GLDErrorParser" id="com.intel.iotdevkit.ide.tool.gnu.cross.cpp.linker.749183985" name="Cross G++ Linker" superClass="com.intel.iotdevkit.ide.tool.gnu.cross.cpp.linker">
 								<option id="com.intel.iotdevkit.ide.gnu.cpp.option.link.libs.686001983" name="Libraries" superClass="com.intel.iotdevkit.ide.gnu.cpp.option.link.libs" valueType="libs">
-									<listOptionValue builtIn="false" value="upm-i2clcd"/>
-									<listOptionValue builtIn="false" value="upm-biss0001"/>
-									<listOptionValue builtIn="false" value="upm-buzzer"/>
+									<listOptionValue builtIn="false" value="upm-rfr359f"/>
+									<listOptionValue builtIn="false" value="upm-ublox6"/>
 									<listOptionValue builtIn="false" value="upm-grove"/>
 									<listOptionValue builtIn="false" value="boost_system"/>
 									<listOptionValue builtIn="false" value="boost_thread"/>
