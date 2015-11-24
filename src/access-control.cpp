@@ -5,6 +5,7 @@
 #include <sstream>
 #include <thread>
 #include <ctime>
+#include <chrono>
 #include <string>
 
 #include <grove.h>
@@ -15,11 +16,47 @@
 #include "../lib/crow/crow_all.h"
 #include "../src/html.h"
 
+using namespace std;
+
+bool countdownStarted = false;
+bool disarmed = false;
+bool alarmTriggered = false;
+
+// The time that the motion was detected
+chrono::time_point<chrono::system_clock> detectTime, currentTime, disarmTime;
+
+string access_code() {
+  if (!getenv("CODE")) {
+    return "4321";
+  } else {
+    return getenv("CODE");
+  }
+}
+
+void notify(std::string message) {
+  if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
+    return;
+  }
+
+  time_t now = std::time(NULL);
+  char mbstr[sizeof "2011-10-08T07:07:09Z"];
+  strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&now));
+
+  stringstream payload;
+  payload << "{\"state\":";
+  payload << "\"" << message << " " << mbstr << "\"}";
+
+  RestClient::headermap headers;
+  headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
+
+  RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
+  cout << "Datastore called. Result:" << r.code << endl;
+  cout << r.body << endl;
+}
 
 // The hardware devices that the example is going to connect to
 struct Devices
 {
-
   upm::Jhd1313m1* screen;
   upm::BISS0001* motion;
 
@@ -28,74 +65,100 @@ struct Devices
 
   // Initialization function
   void init() {
-
     // screen connected to the default I2C bus
     screen = new upm::Jhd1313m1(0);
+
     // motion sensor on digital D4
     motion = new upm::BISS0001(4);
   };
 
   // Cleanup on exit
   void cleanup() {
-
     delete screen;
     delete motion;
   }
 
   // Display a message on the LCD
-  void message(const std::string& input, const std::size_t color = 0x0000ff) {
-    std::size_t red   = (color & 0xff0000) >> 16;
-    std::size_t green = (color & 0x00ff00) >> 8;
-    std::size_t blue  = (color & 0x0000ff);
+  void message(const string& input, const size_t color = 0x0000ff) {
+  cout << input << std::endl;
+    size_t red   = (color & 0xff0000) >> 16;
+    size_t green = (color & 0x00ff00) >> 8;
+    size_t blue  = (color & 0x0000ff);
 
-    std::string text(input);
+    string text(input);
     text.resize(16, ' ');
 
     screen->setCursor(0,0);
     screen->write(text);
     screen->setColor(red, green, blue);
   }
-  void detect(){
-	  bool val = motion->value();
-	  std::string msg = "Person arrived at: ";
-	  if(val){
-		  message("Motion Detected", 0xff00ff);
-		  notify(msg);
-	  }
-	  else{
-		  message("No motion Detected");
-	  }
+
+  void trigger_alarm() {
+    alarmTriggered = true;
+    string msg = "Alarm triggered!";
+    message(msg, 0xff00ff);
+    notify(msg);
   }
 
-  void notify(std::string message) {
-    if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-      return;
+  void start_alarm_countdown() {
+    countdownStarted = true;
+    string msg = "Person detected";
+    message(msg, 0xff00ff);
+    notify(msg);
+  }
+
+  void detect() {
+    chrono::duration<double> elapsed;
+    currentTime = chrono::system_clock::now();
+
+    if (alarmTriggered) {
+      elapsed = currentTime - detectTime;
+
+      if (elapsed.count() > 120) {
+        reset();
+      }
+    } else if (disarmed) {
+      elapsed = currentTime - disarmTime;
+
+      if (elapsed.count() > 120) {
+        reset();
+      }
+    } else if (countdownStarted) {
+      elapsed = currentTime - detectTime;
+
+      if (elapsed.count() > 30) {
+        trigger_alarm();
+      }
+    } else if (motion->value()) {
+      detectTime = currentTime;
+      start_alarm_countdown();
+    } else {
+      message("Monitoring...");
     }
-
-    std::time_t now = std::time(NULL);
-    char mbstr[sizeof "2011-10-08T07:07:09Z"];
-    std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
-
-    std::stringstream payload;
-    payload << "{\"state\":";
-    payload << "\"" << message << " " << mbstr << "\"}";
-
-    RestClient::headermap headers;
-    headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
-
-    RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
-    std::cout << "Datastore called. Result:" << r.code << std::endl;
-    std::cout << r.body << std::endl;
   }
 
+  void disarm() {
+    disarmTime = chrono::system_clock::now();
+    disarmed = true;
+    countdownStarted = false;
+    alarmTriggered = false;
+  }
+
+  void reset() {
+    disarmed = false;
+    countdownStarted = false;
+    alarmTriggered = false;
+  }
 };
 
 // Function called by worker thread for device communication
 void runner(Devices& devices) {
   for (;;) {
-	  	  devices.detect();
-      }
-    }
+    devices.detect();
+    usleep(500);
+  }
+}
+
 Devices devices;
 
 // Exit handler for program
@@ -129,21 +192,25 @@ int main() {
   crow::SimpleApp app;
 
   CROW_ROUTE(app, "/")
-  ([](const crow::request& req) {
-
+  ([]() {
     std::stringstream text;
     text << index_html;
     return text.str();
   });
 
   CROW_ROUTE(app, "/alarm")
-  .methods("GET"_method)
   ([](const crow::request& req) {
-      if (req.method == "POST"_method) {
-    	  //check code here
+    if(req.url_params.get("code") != nullptr) {
+      if (access_code() == req.url_params.get("code")) {
+        devices.disarm();
+      } else {
+        notify("invalid code");
       }
-      return crow::response("OK");
+    }
+
+    return crow::response("OK");
   });
+
   // start web server
   app.port(3000).multithreaded().run();
 
