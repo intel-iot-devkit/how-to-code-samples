@@ -24,8 +24,12 @@ bool disarmed = false;
 bool alarmTriggered = false;
 
 // The time that the motion was detected
-chrono::time_point<chrono::system_clock> detectTime, currentTime, disarmTime;
+chrono::time_point<chrono::system_clock> detectTime;
 
+// The time that the alarm was disarmed
+chrono::time_point<chrono::system_clock> disarmTime;
+
+// The access code to be entered to disarm alarm system
 string access_code() {
   if (!getenv("CODE")) {
     return "4321";
@@ -34,6 +38,7 @@ string access_code() {
   }
 }
 
+// Notify the remote datastore
 void notify(std::string message) {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     return;
@@ -81,7 +86,7 @@ struct Devices
 
   // Display a message on the LCD
   void message(const string& input, const size_t color = 0x0000ff) {
-  cout << input << std::endl;
+    cout << input << std::endl;
     size_t red   = (color & 0xff0000) >> 16;
     size_t green = (color & 0x00ff00) >> 8;
     size_t blue  = (color & 0x0000ff);
@@ -94,6 +99,16 @@ struct Devices
     screen->setColor(red, green, blue);
   }
 
+  // Starts a countdown to sounding alarm after a person is detected
+  void start_alarm_countdown() {
+    countdownStarted = true;
+    detectTime = chrono::system_clock::now();
+    string msg = "Person detected";
+    message(msg, 0xff00ff);
+    notify(msg);
+  }
+
+  // Triggers alarm after a person has been detected, but did not enter the access code
   void trigger_alarm() {
     alarmTriggered = true;
     string msg = "Alarm triggered!";
@@ -101,43 +116,7 @@ struct Devices
     notify(msg);
   }
 
-  void start_alarm_countdown() {
-    countdownStarted = true;
-    string msg = "Person detected";
-    message(msg, 0xff00ff);
-    notify(msg);
-  }
-
-  void detect() {
-    chrono::duration<double> elapsed;
-    currentTime = chrono::system_clock::now();
-
-    if (alarmTriggered) {
-      elapsed = currentTime - detectTime;
-
-      if (elapsed.count() > 120) {
-        reset();
-      }
-    } else if (disarmed) {
-      elapsed = currentTime - disarmTime;
-
-      if (elapsed.count() > 120) {
-        reset();
-      }
-    } else if (countdownStarted) {
-      elapsed = currentTime - detectTime;
-
-      if (elapsed.count() > 30) {
-        trigger_alarm();
-      }
-    } else if (motion->value()) {
-      detectTime = currentTime;
-      start_alarm_countdown();
-    } else {
-      message("Monitoring...");
-    }
-  }
-
+  // Disarms the access control system
   void disarm() {
     disarmTime = chrono::system_clock::now();
     disarmed = true;
@@ -145,10 +124,35 @@ struct Devices
     alarmTriggered = false;
   }
 
+  // Resets the access control system
   void reset() {
     disarmed = false;
     countdownStarted = false;
     alarmTriggered = false;
+  }
+
+  // Helper function to determin how long since a time point something happened
+  int elapsed_since(chrono::time_point<chrono::system_clock> tp) {
+    chrono::duration<double> elapsed;
+    chrono::time_point<chrono::system_clock> now;
+    now = chrono::system_clock::now();
+    elapsed = now - tp;
+    return elapsed.count();
+  }
+
+  // Handles all of the detection logic for the access control system
+  void detect() {
+    if (alarmTriggered) {
+      if (elapsed_since(detectTime) > 120) reset();
+    } else if (disarmed) {
+      if (elapsed_since(disarmTime) > 120) reset();
+    } else if (countdownStarted) {
+      if (elapsed_since(detectTime) > 30) trigger_alarm();
+    } else if (motion->value()) {
+      start_alarm_countdown();
+    } else {
+      message("Monitoring...");
+    }
   }
 };
 
