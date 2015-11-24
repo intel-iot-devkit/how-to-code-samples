@@ -215,13 +215,13 @@ int main() {
 
     return crow::response("OK");
   });
+
   CROW_ROUTE(app, "/styles.css")
   ([]() {
     std::stringstream text;
     text << styles_css;
     return text.str();
   });
-
 
   // start web server
   app.port(3000).multithreaded().run();
