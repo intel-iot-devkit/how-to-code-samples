@@ -15,6 +15,7 @@
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 #include "../lib/crow/crow_all.h"
 #include "../src/html.h"
+#include "../src/css.h"
 
 using namespace std;
 
@@ -210,6 +211,13 @@ int main() {
 
     return crow::response("OK");
   });
+  CROW_ROUTE(app, "/styles.css")
+  ([]() {
+    std::stringstream text;
+    text << styles_css;
+    return text.str();
+  });
+
 
   // start web server
   app.port(3000).multithreaded().run();
