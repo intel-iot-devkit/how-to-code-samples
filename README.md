@@ -1,4 +1,4 @@
-# Close-Call Fleet Driving Reporter
+# Close-call fleet driving reporter
 
 ## Introduction
 
@@ -11,7 +11,7 @@ From this exercise, developers will learn how to:
 - Run this code sample in Eclipse* IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
 - Store the close-call data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
-## What It Is
+## What it is
 
 Using an Intel® Edison board, this project lets you create a close-call fleet driving reporter that:
 
@@ -19,7 +19,7 @@ Using an Intel® Edison board, this project lets you create a close-call fleet d
 - monitors the Grove* GPS;
 - keeps track of close-calls, and logs them using cloud-based data storage.
 
-## How It Works
+## How it works
 
 This Close Call Reporter system will monitor in the direction the Grove* IR Distance Interrupter is pointed.
 
@@ -40,7 +40,7 @@ Grove* Transportation & Safety Kit containing:
 1. [Eclipse*](https://software.intel.com/en-us/eclipse-getting-started-guide)
 2. Microsoft* Azure* or IBM* Bluemix* account
 
-### How To Setup
+### How to setup
 
 To begin, clone the Intel® IoT Examples repository with Git on your computer as follows:
 
