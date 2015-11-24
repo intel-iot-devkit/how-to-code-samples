@@ -1,4 +1,4 @@
-# Access Control System
+# Access control system
 
 ## Introduction
 
@@ -11,7 +11,7 @@ From this exercise, developers will learn how to:
 - Run this code sample in Eclipse* IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
 - Set up a web application server to let users enter the access code to disable the alarm system, and store this alarm data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
-## What It Is
+## What it is
 
 Using an Intel® Edison board, this project lets you create a smart access control system that:
 
@@ -19,7 +19,7 @@ Using an Intel® Edison board, this project lets you create a smart access contr
 - can be accessed with your mobile phone via the built-in web interface to disable the alarm;
 - keeps track of access, using cloud-based data storage.
 
-## How It Works
+## How it works
 
 This access control system provides the following user flow:
 
@@ -45,7 +45,7 @@ Grove* Transportation & Safety Kit containing:
 1. Eclipse* IoT Edition
 2. Microsoft* Azure* account
 
-### How To Setup
+### How to setup
 
 To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
 
@@ -77,7 +77,7 @@ In Eclipse*, select **Import Wizard** to import an existing project into the wor
 
 Your main .cpp program is now displayed in your workspace under the **src** folder.
 
-### Connecting The Grove* Sensors
+### Connecting the Grove* sensors
 
 ![](./../../../images/js/access-control.jpg)
 
@@ -86,7 +86,7 @@ You need to have a Grove* Shield connected to an Arduino-compatible breakout boa
 1. Plug one end of a Grove* cable into the Grove* PIR Motion Sensor, and connect the other end to the D4 port on the Grove* Shield.
 2. Plug one end of a Grove* cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove* Shield.
 
-### Intel Edison Setup
+### Intel® Edison setup
 This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on Intel® Edison by default.
 
 This example also uses the Crow* web micro-framework to provide a simple-to-use, yet powerful web server. The **crow** library requires the **libboost** package be installed on Intel® Edison, as well as adding the needed include and lib files to the Eclipse* Cross G++ Compiler and Cross G++ Linker.
@@ -191,7 +191,7 @@ We have a useful tutorial on how to use the shell script here:
 
 [https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md](https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md)
 
-### Disabling The Alarm
+### Disabling the alarm
 
 ![](./../../../images/js/access-control-web.png)
 
