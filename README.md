@@ -193,7 +193,7 @@ We have a useful tutorial on how to use the shell script here:
 
 ### Disabling the alarm
 
-![](./../../../images/js/access-control-web.png)
+![](./../../../images/cpp/access-control.png)
 
 The alarm is disabled using a single-page web interface served directly from the Intel® Edison board while the example program is running.
 
