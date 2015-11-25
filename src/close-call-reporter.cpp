@@ -30,7 +30,6 @@
 #include <string>
 #include <signal.h>
 
-#include <grove.h>
 #include <ublox6.h>
 #include <rfr359f.h>
 
