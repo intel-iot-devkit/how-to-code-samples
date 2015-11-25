@@ -31,7 +31,6 @@
 #include <string>
 #include <signal.h>
 
-#include <grove.h>
 #include <grovespeaker.h>
 #include "tp401.h"
 
