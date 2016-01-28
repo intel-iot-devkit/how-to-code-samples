@@ -32,7 +32,7 @@ Optionally, all data can be stored using the Intel IoT Examples Datastore runnin
 
 ## Hardware requirements
 
-Grove* Starter Kit Plus containing:
+Grove* Transportation & Safety Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove* PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
