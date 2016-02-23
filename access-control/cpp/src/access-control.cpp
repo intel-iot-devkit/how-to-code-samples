@@ -1,0 +1,256 @@
+/*
+ * Copyright (c) 2015 Intel Corporation.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+#include <unistd.h>
+#include <sstream>
+#include <thread>
+#include <ctime>
+#include <chrono>
+#include <string>
+
+#include <jhd1313m1.h>
+#include "biss0001.h"
+
+#include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
+
+#include "../lib/crow/crow_all.h"
+#include "../src/html.h"
+#include "../src/css.h"
+
+using namespace std;
+
+bool countdownStarted = false;
+bool disarmed = false;
+bool alarmTriggered = false;
+
+// The time that the motion was detected
+chrono::time_point<chrono::system_clock> detectTime;
+
+// The time that the alarm was disarmed
+chrono::time_point<chrono::system_clock> disarmTime;
+
+// The access code to be entered to disarm alarm system
+string access_code() {
+  if (!getenv("CODE")) {
+    return "4321";
+  } else {
+    return getenv("CODE");
+  }
+}
+
+// Notify the remote datastore
+void notify(std::string message) {
+  if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
+    return;
+  }
+
+  time_t now = std::time(NULL);
+  char mbstr[sizeof "2011-10-08T07:07:09Z"];
+  strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&now));
+
+  stringstream payload;
+  payload << "{\"state\":";
+  payload << "\"" << message << " " << mbstr << "\"}";
+
+  RestClient::headermap headers;
+  headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
+
+  RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload.str(), headers);
+  cout << "Datastore called. Result:" << r.code << endl;
+  cout << r.body << endl;
+}
+
+// The hardware devices that the example is going to connect to
+struct Devices
+{
+  upm::Jhd1313m1* screen;
+  upm::BISS0001* motion;
+
+  Devices(){
+  };
+
+  // Initialization function
+  void init() {
+    // screen connected to the default I2C bus
+    screen = new upm::Jhd1313m1(0);
+
+    // motion sensor on digital D4
+    motion = new upm::BISS0001(4);
+  };
+
+  // Cleanup on exit
+  void cleanup() {
+    delete screen;
+    delete motion;
+  }
+
+  // Display a message on the LCD
+  void message(const string& input, const size_t color = 0x0000ff) {
+    cout << input << std::endl;
+    size_t red   = (color & 0xff0000) >> 16;
+    size_t green = (color & 0x00ff00) >> 8;
+    size_t blue  = (color & 0x0000ff);
+
+    string text(input);
+    text.resize(16, ' ');
+
+    screen->setCursor(0,0);
+    screen->write(text);
+    screen->setColor(red, green, blue);
+  }
+
+  // Starts a countdown to sounding alarm after a person is detected
+  void start_alarm_countdown() {
+    countdownStarted = true;
+    detectTime = chrono::system_clock::now();
+    string msg = "Person detected";
+    message(msg, 0xff00ff);
+    notify(msg);
+  }
+
+  // Triggers alarm after a person has been detected, but did not enter the access code
+  void trigger_alarm() {
+    alarmTriggered = true;
+    string msg = "Alarm triggered!";
+    message(msg, 0xff00ff);
+    notify(msg);
+  }
+
+  // Disarms the access control system
+  void disarm() {
+    disarmTime = chrono::system_clock::now();
+    disarmed = true;
+    countdownStarted = false;
+    alarmTriggered = false;
+  }
+
+  // Resets the access control system
+  void reset() {
+    disarmed = false;
+    countdownStarted = false;
+    alarmTriggered = false;
+  }
+
+  // Helper function to determin how long since a time point something happened
+  int elapsed_since(chrono::time_point<chrono::system_clock> tp) {
+    chrono::duration<double> elapsed;
+    chrono::time_point<chrono::system_clock> now;
+    now = chrono::system_clock::now();
+    elapsed = now - tp;
+    return elapsed.count();
+  }
+
+  // Handles all of the detection logic for the access control system
+  void detect() {
+    if (alarmTriggered) {
+      if (elapsed_since(detectTime) > 120) reset();
+    } else if (disarmed) {
+      if (elapsed_since(disarmTime) > 120) reset();
+    } else if (countdownStarted) {
+      if (elapsed_since(detectTime) > 30) trigger_alarm();
+    } else if (motion->value()) {
+      start_alarm_countdown();
+    } else {
+      message("Monitoring...");
+    }
+  }
+};
+
+// Function called by worker thread for device communication
+void runner(Devices& devices) {
+  for (;;) {
+    devices.detect();
+    usleep(500);
+  }
+}
+
+Devices devices;
+
+// Exit handler for program
+void exit_handler(int param)
+{
+  devices.cleanup();
+  exit(1);
+}
+
+// The main function for the example program
+int main() {
+  // Handles ctrl-c or other orderly exits
+  signal(SIGINT, exit_handler);
+
+  // check that we are running on Galileo or Edison
+  mraa_platform_t platform = mraa_get_platform_type();
+  if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
+    (platform != MRAA_INTEL_GALILEO_GEN2) &&
+    (platform != MRAA_INTEL_EDISON_FAB_C)) {
+    std::cerr << "ERROR: Unsupported platform" << std::endl;
+    return MRAA_ERROR_INVALID_PLATFORM;
+  }
+
+  // create and initialize UPM devices
+  devices.init();
+
+  // start worker thread for device communication
+  std::thread t1(runner, std::ref(devices));
+
+  // define web server & routes
+  crow::SimpleApp app;
+
+  CROW_ROUTE(app, "/")
+  ([]() {
+    std::stringstream text;
+    text << index_html;
+    return text.str();
+  });
+
+  CROW_ROUTE(app, "/alarm")
+  ([](const crow::request& req) {
+    if(req.url_params.get("code") != nullptr) {
+      if (access_code() == req.url_params.get("code")) {
+        devices.disarm();
+      } else {
+        notify("invalid code");
+      }
+    }
+
+    return crow::response("OK");
+  });
+
+  CROW_ROUTE(app, "/styles.css")
+  ([]() {
+    std::stringstream text;
+    text << styles_css;
+    return text.str();
+  });
+
+  // start web server
+  app.port(3000).multithreaded().run();
+
+  // wait forever for the thread to exit
+  t1.join();
+
+  return MRAA_SUCCESS;
+}
