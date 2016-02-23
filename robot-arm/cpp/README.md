@@ -1,36 +1,38 @@
-# Robot arm
+﻿# Robot arm
 
 ## Introduction
 
-This robot arm application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This robot arm application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products. Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run this code sample in Eclipse IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
-- Set up a web application server to control a robot arm using a web page served up directly from the Intel® Edison.
+- Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run this code sample in Eclipse*, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Intel® Galileo board.
+- Set up a web application server to control a robot arm using a web page served up directly from the Intel® Edison board.
 
 ## What it is
 
 Using an Intel® Edison board, this project lets you create a robot arm that:
 
 - continuously checks the Grove* Joystick;
-- moves the 2 stepper motors based on the control of the joystick
-- can be accessed with via the built-in web interface to control the motors;
+- moves 2 stepper motors, based on the control of the joystick;
+- can be accessed via a built-in web interface to control the motors;
 
 ## How it works
 
 This example allows you to control a robotic arm using a thumb joystick. Each axis of the joystick corresponds to a motor to control.
 
-Additionally, the motors can be controlled individually via a web page served up directly from the Intel® Edison.
+Additionally, the motors can be controlled individually via a web page served up directly from the Intel® Edison board.
 
 ## Hardware requirements
 
 Grove* Robotics Kit containing:
 
-1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Thumb Joystick](http://iotdk.intel.com/docs/master/upm/node/classes/joystick12.html)
-3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html) (x2)
+1. Intel® Edison board with an Arduino* breakout board
+2. Grove* Base Shield V2
+3. [Grove* Thumb Joystick](http://iotdk.intel.com/docs/master/upm/node/classes/joystick12.html)
+4. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html) (x2)
 
 ## Software requirements
 
@@ -50,72 +52,56 @@ In Eclipse*, select **Import Wizard** to import an existing project into the wor
 
 1. From the main menu, select **File > Import**.<br>
 ![](./../../../images/cpp/cpp-eclipse-menu.png)
-
-2. The **Import Wizard** dialog box opens.
+2. The **Import Wizard** dialog box opens. Select **General > Existing Project into Workspace** and click **Next**.<br>
 ![](./../../../images/cpp/cpp-eclipse-menu-select-epiw.png)
-
-3. Select **General > Existing Project into Workspace** and click **Next**.
-![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
-
-4. Click **Select root directory** and then the associated **Browse** button to locate the directory that contains the project files.
+3. Click **Select root directory** and then the associated **Browse** button to locate the directory that contains the project files.<br>
 ![](./../../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
-
-5. Under **Projects**, select the directory with the project files you'd like to import.
+4. Under **Projects**, select the directory with the project files you'd like to import and click **OK** and then **Finish** to import the files into Eclipse*.<br>
 ![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
-
-6. Click **Finish** to import the files into Eclipse*.
+5. Your main .cpp program is now displayed in your workspace under the **src** folder.<br>
 ![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
-
-Your main .cpp program is now displayed in your workspace under the **src** folder.
 
 ### Connecting the Grove* sensors
 
+You need to have a Grove* Base Shield V2 connected to the Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Base Shield V2. Make sure you have the tiny VCC switch on the Grove* Base Shield V2 set to **5V**.
+
+You need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
+
+In addition, you need a breadboard and an extra **5V** power supply to provide power to both the motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison board and the motors, so you need either 2 batteries or 2 power supplies in total.
+
+1. Plug each of the stepper motor controllers into 4 pins on the Arduino* breakout board, for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7, and stepper motor controller #2 to pins 8, 9, 10, and 11. Connect both the controllers to ground (GND), to the **5V** power coming from the Arduino* breakout board (VCC), and to the separate **5V** power for the motors (VM).<br>
 ![](./../../../images/js/robot-arm.jpg)
+2. Plug one end of a Grove* cable into the Grove* Joystick, and connect the other end to the A0 port on the Grove* Base Shield V2.
 
-You will need to have the Grove* Shield connected to the Arduino*/-compatible breakout board, in order to plug in all the various Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+### Intel® Edison board setup
 
-You will need to power the Intel® Edison with the external power adaptor that came with your starter kit, or else substitute a external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
+This example uses the Crow* web micro-framework to provide a simple-to-use, yet powerful web server. The **crow** library requires the **libboost** package be installed on the Intel® Edison board, as well as adding the needed include and lib files to the Eclipse* Cross G++ Compiler and Cross G++ Linker.
 
-In addition, you will need a breadboard and additional **5V** power supply to provide power to both motors. Note you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison and motors, so you will need either 2 batteries or 2 power supplies in total.
+1. Update opkg base feeds so you can install the needed dependencies. Establish an SSH connection to the Intel® Edison board and run the following command:<br>
 
-Each of the stepper motor controllers will need to be plugged into 4 pins on the Arduino* breakout board, for it to be able to be controlled. Stepper motor controller #1 will need to be connected to pins 4, 5, 6, & 7. Stepper motor controller #2 will need to be plugged into pins 8, 9, 10, & 11. Both must be connected to ground (GND), to the **5V** power coming from the Arduino* breakout board (VCC), and to the separate **5V** power for the motors (VM).
-
-Plug one end of a Grove* cable into the Grove* Joystick, and connect the other end to the "A0" port on the Grove* Shield.
-
-### Intel® Edison setup
-
-This example uses the Crow* web micro-framework to provide a simple-to-use, yet powerful web server. The **crow** library requires the **libboost** package be installed on Intel® Edison, as well as adding the needed include and lib files to the Eclipse* Cross G++ Compiler and Cross G++ Linker.
-
-1. Update opkg base feeds so you can install the needed dependencies. Establish an SSH connection to Intel® Edison and run the following command:<br>
-```
-vi /etc/opkg/base-feeds.conf
-```
+        vi /etc/opkg/base-feeds.conf
 
 2. Edit the file so that it contains the following:<br>
-```
-src/gz all http://repo.opkg.net/edison/repo/all
-src/gz edison http://repo.opkg.net/edison/repo/edison
-src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
-```
+
+        src/gz all http://repo.opkg.net/edison/repo/all
+        src/gz edison http://repo.opkg.net/edison/repo/edison
+        src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
+
 3. Save the file by pressing **Esc**, then **:**, then **q**, and **Enter**.
 
 This only needs to be done once per Intel® Edison board, so if you've already done it, you can skip to the next step.
 
-Install the **boost** libraries onto Intel® Edison by running the following command:
+Install the **boost** libraries onto the Intel® Edison board by running the following command:
 
-```
-opkg update
-opkg install boost-dev
-```
+    opkg update
+    opkg install boost-dev
 
 ### Copy the libraries
 
-You need to copy the libraries and include files from the board to your computer where you're running Eclipse* so the Cross G++ Compiler and Cross G++ Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT Intel® Edison), as follows:
+You need to copy the libraries and include files from the board to your computer where you're running Eclipse* so the Cross G++ Compiler and Cross G++ Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Intel® Edison board), as follows:
 
-```
-scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
-scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
-```
+    scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
+    scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
 
 Change `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address you set your board to.
 
@@ -127,33 +113,30 @@ We have a helpful link to get this set up here:
 
 [https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md](https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md)
 
-Note: you need to turn SSH on by running the `configure_edison --password` command on the board. Once you set the password, make sure you write it down. You only need to do this one time and it is set when you reboot Intel® Edison.
+Note: you need to turn SSH on by running the `configure_edison --password` command on the board. Once you set the password, make sure you write it down. You only need to do this one time and it is set when you reboot the Intel® Edison board.
 
-### Connecting your Intel® Edison to Eclipse*
+### Connecting your Intel® Edison board to Eclipse*
 
+1. In the bottom left corner, right-click anywhere on the **Target SSH Connections** tab and select **New > Connection**.<br>
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win.png)
-1. In the bottom left corner, right-click anywhere in the **Target SSH Connections** tab and select **New > Connection**.<br> The **Intel(R) IoT Target Connection** window appears.
-
+2. The **Intel(R) IoT Target Connection** window appears. In the **Filter** field, type the name of your board.<br>
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win2.png)
-2. In the **Filter** field, type the name of your board.
-
+3. In the **Select one of the found connections** list, select your device name and click **OK**.<br>
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win3.png)
-3. In the **Select one of the found connections** list, select your device name and click **OK**.
-
+4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
-4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.
 
-If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring Intel® Edison.
+If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
 
-### Running the code on Intel® Edison
+### Running the code on the Intel® Edison board
 
+When you're ready to run the example, click **Run** at the top menu bar in Eclipse*.<br>
 ![](./../../../images/cpp/cpp-run-eclipse.png)
 
-When you're ready to run the example, click **Run** at the top menu bar in Eclipse*. This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to Intel® Edison, and then executes it on the board itself.
+This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.
 
+After running the program, you should see output similar to the one in the image below.<br>
 ![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
-
-After running the program, you should see output similar to the one in the image above.
 
 ## Regenerating HTML and CSS
 
@@ -162,10 +145,9 @@ We have a useful tutorial on how to use the shell script here:
 
 [https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md](https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md)
 
-### Controlling via web browser
+### Controlling the robot arm via a web browser
 
+The robot arm is controlled using a single-page web interface served directly from the Intel® Edison board while the sample program is running.<br>
 ![](./../../../images/cpp/robot-arm-web.png)
 
-The robot arm is controlled using a single-page web interface served directly from the Intel® Edison board while the example program is running.
-
-The web server runs on port **3000**, so if the Intel Edison is connected to WiFi on **192.168.1.13**, the address to browse to if you are on the same network is **http://192.168.1.13:3000**.
+The web server runs on port `3000`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
