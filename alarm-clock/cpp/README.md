@@ -57,22 +57,22 @@ Want to download a .zip file? In your web browser, go to [https://github.com/int
 In Eclipse*, select **Import Wizard** to import an existing project into the workspace as follows:
 
 1. From the main menu, select **File > Import**.<br>
-![](./../../../images/cpp/cpp-eclipse-menu.png)
+![](./../../images/cpp/cpp-eclipse-menu.png)
 2. The **Import Wizard** dialog box opens. Select **General > Existing Project into Workspace** and click **Next**.<br>
-![](./../../../images/cpp/cpp-eclipse-menu-select-epiw.png)
+![](./../../images/cpp/cpp-eclipse-menu-select-epiw.png)
 3. Click **Select root directory** and then the associated **Browse** button to locate the directory that contains the project files.<br>
-![](./../../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
+![](./../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
 4. Under **Projects**, select the directory with the project files you'd like to import and click **OK** and then **Finish** to import the files into Eclipse*.<br>
-![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
+![](./../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 5. Your main .cpp program is now displayed in your workspace under the **src** folder.<br>
-![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
+![](./../../images/cpp/cpp-eclipse-menu-src-loc.png)
 
 ### Connecting the Grove* sensors
 
 You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Base Shield V2. Make sure you have the tiny VCC switch on the Grove* Base Shield V2 set to **5V**.
 
 1. Plug one end of a Grove* cable into the Grove* Rotary Analog Sensor, and connect the other end to the A0 port on the Grove* Base Shield V2.<br>
-![](./../../../images/js/alarm-clock.jpg)
+![](./../../images/js/alarm-clock.jpg)
 2. Plug one end of a Grove* cable into the Grove* Button, and connect the other end to the D4 port on the Grove* Base Shield V2.
 3. Plug one end of a Grove* cable into the Grove* Buzzer, and connect the other end to the D5 port on the Grove* Base Shield V2.
 4. Plug one end of a Grove* cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove* Base Shield V2.
@@ -158,13 +158,13 @@ For information on how to set up your own cloud data server, go to:
 ### Connecting your Intel® Edison board to Eclipse*
 
 1. In the bottom left corner, right-click anywhere on the **Target SSH Connections** tab and select **New > Connection**.<br>
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win.png)
+![](./../../images/cpp/cpp-connection-eclipse-ide-win.png)
 2. The **Intel(R) IoT Target Connection** window appears. In the **Filter** field, type the name of your board.<br>
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win2.png)
+![](./../../images/cpp/cpp-connection-eclipse-ide-win2.png)
 3. In the **Select one of the found connections** list, select your device name and click **OK**.<br>
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win3.png)
+![](./../../images/cpp/cpp-connection-eclipse-ide-win3.png)
 4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
+![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 
 If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
 
@@ -185,15 +185,15 @@ Now, when you run your program using the **Run** button, it should be able to ca
 ### Running the code on the Intel® Edison board
 
 When you're ready to run the example, click **Run** at the top menu bar in Eclipse*.<br>
-![](./../../../images/cpp/cpp-run-eclipse.png)
+![](./../../images/cpp/cpp-run-eclipse.png)
 
 This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.
 
 After running the program, you should see output similar to the one in the image below.<br>
-![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
+![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
 
 When the program uploads to the Intel® Edison board, your RGB LCD shows the current time.<br>
-![](./../../../images/cpp/alarm-clock-lcd.jpg)
+![](./../../images/cpp/alarm-clock-lcd.jpg)
 
 ## Regenerating HTML and CSS
 
@@ -205,6 +205,6 @@ We have a useful tutorial on how to use the shell script here:
 ## Setting the alarm
 
 The alarm is set using a single-page web interface served directly from the Intel® Edison board while the sample program is running.<br>
-![](./../../../images/cpp/alarm-app.png)
+![](./../../images/cpp/alarm-app.png)
 
 The web server runs on port `3000`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.

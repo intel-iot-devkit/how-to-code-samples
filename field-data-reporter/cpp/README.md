@@ -53,22 +53,22 @@ Want to download a .zip file? In your web browser, go to [https://github.com/int
 In Eclipse*, select **Import Wizard** to import an existing project into the workspace as follows:
 
 1. From the main menu, select **File > Import**.<br>
-![](./../../../images/cpp/cpp-eclipse-menu.png)
+![](./../../images/cpp/cpp-eclipse-menu.png)
 2. The **Import Wizard** dialog box opens. Select **General > Existing Project into Workspace** and click **Next**.<br>
-![](./../../../images/cpp/cpp-eclipse-menu-select-epiw.png)
+![](./../../images/cpp/cpp-eclipse-menu-select-epiw.png)
 3. Click **Select root directory** and then the associated **Browse** button to locate the directory that contains the project files.<br>
-![](./../../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
+![](./../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
 4. Under **Projects**, select the directory with the project files you'd like to import and click **OK** and then **Finish** to import the files into Eclipse*.<br>
-![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
+![](./../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
 5. Your main .cpp program is now displayed in your workspace under the **src** folder.<br>
-![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
+![](./../../images/cpp/cpp-eclipse-menu-src-loc.png)
 
 ### Connecting the Xadow* sensors
 
 You need to have a Xadow* expansion board connected to the Intel® Edison board to plug in all the Xadow* devices.
 
 1. Plug one end of a Xadow* connector into the Xadow* OLED, and connect the other end to one of the side connectors on the Xadow* expansion board.<br>
-![](./../../../images/js/field-data.jpg)
+![](./../../images/js/field-data.jpg)
 2. Plug one end of a Xadow* connector into the Xadow* BMP180, and connect the other end to one of the side connectors on the Xadow* expansion board.
 3. Plug one end of a Xadow* connector into the Xadow* QTouch* sensor, and connect the other end to one of the other two connected devices.
 
@@ -117,32 +117,32 @@ Note: you need to turn SSH on by running the `configure_edison --password` comma
 ### Connecting your Intel® Edison board to Eclipse*
 
 1. In the bottom left corner, right-click anywhere on the **Target SSH Connections** tab and select **New > Connection**.<br>
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win.png)
+![](./../../images/cpp/cpp-connection-eclipse-ide-win.png)
 2. The **Intel(R) IoT Target Connection** window appears. In the **Filter** field, type the name of your board.<br>
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win2.png)
+![](./../../images/cpp/cpp-connection-eclipse-ide-win2.png)
 3. In the **Select one of the found connections** list, select your device name and click **OK**.<br>
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win3.png)
+![](./../../images/cpp/cpp-connection-eclipse-ide-win3.png)
 4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
+![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 
 If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
 
 ### Running the code on the Intel® Edison board
 
 When you're ready to run the example, click **Run** at the top menu bar in Eclipse*.<br>
-![](./../../../images/cpp/cpp-run-eclipse.png)
+![](./../../images/cpp/cpp-run-eclipse.png)
 
 This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.
 
 After running the program, you should see output similar to the one in the image below.<br>
-![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
+![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
 
 When the program uploads to the Intel® Edison board, your OLED display shows the current barometer reading when you touch any of the QTouch* buttons.<br>
-![](./../../../images/cpp/field-data-oled.jpg)
+![](./../../images/cpp/field-data-oled.jpg)
 
 ### Data access via a browser
 
 The data collected can be downloaded as JSON directly via a web page served by the sample program running on the Intel® Edison board.<br>
-![](./../../../images/js/field-data-web.png)
+![](./../../images/js/field-data-web.png)
 
 The web server runs on port `3000`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
