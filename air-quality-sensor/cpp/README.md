@@ -1,4 +1,4 @@
-﻿# Air quality monitor
+﻿# Air quality sensor
 
 This air quality monitor application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
 
