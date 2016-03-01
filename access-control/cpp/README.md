@@ -1,4 +1,4 @@
-﻿# Access control system
+﻿# Access control
 
 ## Introduction
 

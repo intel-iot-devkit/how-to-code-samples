@@ -1,4 +1,4 @@
-﻿# Wrist field data recorder
+﻿# Field data recorder
 
 ## Introduction
 
