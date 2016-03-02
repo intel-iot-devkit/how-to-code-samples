@@ -38,7 +38,7 @@ Grove* Starter Kit containing:
 
 ## Software requirements
 
-1. [Eclipse*](https://software.intel.com/en-us/eclipse-getting-started-guide)
+1. [Intel® System Studio IoT Edition (Eclipse* IDE for C/C++ and Java* development)](https://software.intel.com/en-us/eclipse-getting-started-guide)
 
 ## How to set up
 
@@ -50,7 +50,7 @@ Want to download a .zip file? In your web browser, go to [https://github.com/int
 
 ### Adding the program to Eclipse*
 
-In Eclipse*, select **Import Wizard** to import an existing project into the workspace as follows:
+In Eclipse\*, select **Import Wizard** to import an existing project into the workspace as follows:
 
 1. From the main menu, select **File > Import**.<br>
 ![](./../../images/cpp/cpp-eclipse-menu.png)
