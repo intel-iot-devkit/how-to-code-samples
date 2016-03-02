@@ -74,7 +74,7 @@ You need to have a Xadow* expansion board connected to the Intel® Edison board 
 
 ### Intel® Edison board setup
 
-This example uses the Crow* web micro-framework to provide a simple-to-use, yet powerful web server. The **crow** library requires the **libboost** package be installed on the Intel® Edison board, as well as adding the needed include and lib files to the Eclipse* Cross G++ Compiler and Cross G++ Linker.
+This example uses the Crow* web micro-framework to provide a simple-to-use, yet powerful web server. The Crow* library requires the **libboost** package be installed on the Intel® Edison board, as well as adding the needed include and lib files to the Eclipse* Cross G++ Compiler and Cross G++ Linker.
 
 1. Update opkg base feeds so you can install the needed dependencies. Establish an SSH connection to the Intel® Edison board and run the following command:<br>
 
