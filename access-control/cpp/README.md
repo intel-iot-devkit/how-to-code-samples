@@ -44,7 +44,7 @@ Grove* Transportation & Safety Kit containing:
 ## Software requirements
 
 1. [Eclipse*](https://software.intel.com/en-us/eclipse-getting-started-guide)
-2. Microsoft* Azure*, IBM\* Bluemix\*, or AWS\* account
+2. Microsoft* Azure\*, IBM\* Bluemix\*, or AWS\* account
 
 ### How to set up
 
