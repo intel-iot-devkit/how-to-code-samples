@@ -23,7 +23,7 @@ Using an Intel® Edison board, this project lets you create a wrist field data r
 
 This wrist field data recorder can be used to sample barometer data at regular intervals.
 
-It also provides a way to look at the latest data captured, using the QTouch* sensor and the OLED display.
+It also provides a way to look at the latest data captured, using the QTouch\* sensor and the OLED display.
 
 These readings can be viewed or downloaded as JSON data served up directly from an embedded web server running on the Intel® Edison board.
 
