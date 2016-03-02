@@ -1,40 +1,43 @@
-# Storage unit flood detector
+﻿# Storage unit flood detector
 
-This storage unit flood detector application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This storage unit flood detector application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
-Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run this code sample in Eclipse* IoT Edition, an IDE for creating new applications that interact with sensors, actuators, and so on, enabling you to get a quick start on developing software for your Intel® Edison or Galileo board.
-- Store water detection data using Azure Redis Cache* from Microsoft* Azure* or Redis Store* from IBM* Bluemix*, both cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+
+- Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run these code samples in the Intel® System Studio IoT Edition (Eclipse\* IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.
+- Store water detection data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon\* Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What it is
 
 Using an Intel® Edison board, this project lets you create a storage unit flood detector that:
+
 - continuously checks the moisture sensor;
 - sounds an audible warning when it looks like flooding;
-- stores a record of each time that water is detected, using cloud-based data storage.
+- stores a record of each time moisture is detected, using cloud-based data storage.
 
 ## How it works
 
-This storage unit flood detector will use the sensor to constantly monitor that your stored belongings are not destroyed by water damage.
+This storage unit flood detector uses the sensor to constantly make sure your stored belongings are not destroyed by water.
 
-If it crosses a defined threshold, it will make a sound to indicate a warning.
+If moisture level crosses a predefined threshold, it makes a sound to indicate a warning.
 
-The monitor will also, optionally, store the moisture data using the "Intel IoT Example Datastore" running on your own Microsoft* Azure* or IBM* Bluemix* account.
+Optionally, it can also store system events using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
 Grove* Home Automation Kit containing:
 
-1. Intel® Edison with an Arduino* breakout board
-2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
-3. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+1. Intel® Edison board with an Arduino* breakout board
+2. Grove* Base Shield V2
+3. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
+4. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
 ## Software requirements
 
-1. [Eclipse*](https://software.intel.com/en-us/eclipse-getting-started-guide)
-2. Microsoft* Azure* or IBM* Bluemix* account
+1. [Intel® System Studio IoT Edition (Eclipse* IDE for C/C++ and Java* development)](https://software.intel.com/en-us/eclipse-getting-started-guide)
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account
 
 ## How to set up
 
@@ -46,64 +49,51 @@ Want to download a .zip file? In your web browser, go to [https://github.com/int
 
 ### Adding the program to Eclipse*
 
-In Eclipse*, select **Import Wizard** to import an existing project into the workspace as follows:
+In Eclipse\*, select **Import Wizard** to import an existing project into the workspace as follows:
 
 1. From the main menu, select **File > Import**.<br>
-![](./../../../images/cpp/cpp-eclipse-menu.png)
-
-2. The **Import Wizard** dialog box opens.
-![](./../../../images/cpp/cpp-eclipse-menu-select-epiw.png)
-
-3. Select **General > Existing Project into Workspace** and click **Next**.
-![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
-
-4. Click **Select root directory** and then the associated **Browse** button to locate the directory that contains the project files.
-![](./../../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
-
-5. Under **Projects**, select the directory with the project files you'd like to import.
-![](./../../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
-
-6. Click **Finish** to import the files into Eclipse*.
-![](./../../../images/cpp/cpp-eclipse-menu-src-loc.png)
-
-Your main .cpp program is now displayed in your workspace under the **src** folder.
+![](./../../images/cpp/cpp-eclipse-menu.png)
+2. The **Import Wizard** dialog box opens. Select **General > Existing Project into Workspace** and click **Next**.<br>
+![](./../../images/cpp/cpp-eclipse-menu-select-epiw.png)
+3. Click **Select root directory** and then the associated **Browse** button to locate the directory that contains the project files.<br>
+![](./../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
+4. Under **Projects**, select the directory with the project files you'd like to import and click **OK** and then **Finish** to import the files into Eclipse*.<br>
+![](./../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
+5. Your main .cpp program is now displayed in your workspace under the **src** folder.<br>
+![](./../../images/cpp/cpp-eclipse-menu-src-loc.png)
 
 ### Connecting the Grove* sensors
 
-![](./../../../images/js/flood-detect.jpg)
+You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Base Shield V2. Make sure you have the tiny VCC switch on the Grove* Base Shield V2 set to **5V**.
 
-You need to have a Grove* Shield connected to an Arduino-compatible breakout board, to plug in all the Grove* devices into the Grove* shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
+1. Plug one end of a Grove* cable into the Grove* Moisture Sensor, and connect the other end to the A0 port on the Grove* Base Shield V2.<br>
+![](./../../images/js/flood-detect.jpg)
+2. Plug one end of a Grove* cable into the Grove* Speaker, and connect the other end to the D5 port on the Grove* Base Shield V2.
 
-1. Plug one end of a Grove* cable into the Grove* Moisture Sensor, and connect the other end to the "A0" port on the Grove* Shield.
-2. Plug one end of a Grove* cable into the Grove* Speaker, and connect the other end to the "D5" port on the Grove* Shield.
+### Intel® Edison board setup
 
-### Intel® Edison setup
-
-This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on Intel® Edison by default.
+This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on the Intel® Edison board by default.
 
 ### Datastore server setup
 
-Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft* Azure\* or IBM* Bluemix*, Node.js\*, and a Redis\* data store.
+Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft* Azure\*, IBM* Bluemix\*, or AWS\*, along with Node.js\*, and a Redis\* data store.
 
 For information on how to set up your own cloud data server, go to:
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-datastore](https://github.com/intel-iot-devkit/intel-iot-examples-datastore)
 
-### Connecting your Intel® Edison to Eclipse*
+### Connecting your Intel® Edison board to Eclipse*
 
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win.png)
-1. In the bottom left corner, right-click anywhere in the **Target SSH Connections** tab and select **New > Connection**.<br> The **Intel(R) IoT Target Connection** window appears.
+1. In the bottom left corner, right-click anywhere on the **Target SSH Connections** tab and select **New > Connection**.<br>
+![](./../../images/cpp/cpp-connection-eclipse-ide-win.png)
+2. The **Intel(R) IoT Target Connection** window appears. In the **Filter** field, type the name of your board.<br>
+![](./../../images/cpp/cpp-connection-eclipse-ide-win2.png)
+3. In the **Select one of the found connections** list, select your device name and click **OK**.<br>
+![](./../../images/cpp/cpp-connection-eclipse-ide-win3.png)
+4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
+![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win2.png)
-2. In the **Filter** field, type the name of your board.
-
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win3.png)
-3. In the **Select one of the found connections** list, select your device name and click **OK**.
-
-![](./../../../images/cpp/cpp-connection-eclipse-ide-win4.png)
-4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.
-
-If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring Intel® Edison.
+If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
 
 ### Running the example with the cloud server
 
@@ -112,24 +102,23 @@ To run the example with the optional backend data store, you need to set the `SE
 1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
 3. In the **Commands to execute before application** field, add the environment variables so it looks like this, except using the server and authentication token that correspond to your own setup:<br>
-```
-chmod 755 /tmp/flood-detect;export API_KEY="YOURKEY"; export SERVER="http://intel-examples.azurewebsites.net/counter/logger/flood-detect"; export AUTH_TOKEN="YOURTOKEN"
-```
+
+        chmod 755 /tmp/flood-detect;export API_KEY="YOURKEY"; export SERVER="http://intel-examples.azurewebsites.net/counter/logger/flood-detect"; export AUTH_TOKEN="YOURTOKEN"
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from Intel® Edison.
+Now, when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board.
 
-### Running the code on Intel® Edison
+### Running the code on the Intel® Edison board
 
-![](./../../../images/cpp/cpp-run-eclipse.png)
+When you're ready to run the example, click **Run** at the top menu bar in Eclipse*.<br>
+![](./../../images/cpp/cpp-run-eclipse.png)
 
-When you're ready to run the example, click **Run** at the top menu bar in Eclipse*. This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to Intel® Edison, and then executes it on the board itself.
+This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.
 
-![](./../../../images/cpp/cpp-run-eclipse-successful-build.png)
+After running the program, you should see output similar to the one in the image below.<br>
+![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
 
-After running the program, you should see output similar to the one in the image above.
+Then you get output from the sensor in the console, telling you if it is dry, moist, or wet.
 
-You will then get a moisture output from the sensor in the console, telling you if it is dry, moist, or wet.
-
-When the sensor detects enough moisture, it will send a signal to the server and the console output will inform you this has occurred.
+When the sensor detects enough moisture, it sends a signal to the server, and the console output informs you of this.
