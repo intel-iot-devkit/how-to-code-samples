@@ -117,7 +117,7 @@ Change `~/Downloads/iotdk-ide-linux` to match the location on your computer wher
 
 We have a helpful link to get this set up here:
 
-[https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md](https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/using-winscp.md)
+[using-winscp.md](./../../docs/cpp/using-winscp.md)
 
 Note: you need to turn SSH on by running the `configure_edison --password` command on the board. Once you set the password, make sure you write it down. You only need to do this once and it is set when you reboot the Intel® Edison board.
 
@@ -200,7 +200,7 @@ When the program uploads to the Intel® Edison board, your RGB LCD shows the cur
 If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow* web server.
 We have a useful tutorial on how to use the shell script here:
 
-[https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md](https://github.com/hybridgroup/intel-iot-examples/blob/master/cpp/docs/how-to-run-the-shellscript.md)
+[how-to-run-the-shellscript.md](./../../docs/cpp/how-to-run-the-shellscript.md)
 
 ## Setting the alarm
 
