@@ -9,7 +9,7 @@ From this exercise, developers will learn how to:
 - Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
 - Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run these code samples in the Intel® System Studio IoT Edition (Eclipse\* IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.
-- Invoke the services of the United States Geological Survey* (USGS) API for accessing earthquake data.
+- Invoke the services of the United States Geological Survey\* (USGS\*) API for accessing earthquake data.
 
 ## What it is
 
