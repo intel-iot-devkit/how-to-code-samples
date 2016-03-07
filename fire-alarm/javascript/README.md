@@ -1,4 +1,4 @@
-# Fire alarm
+# Fire alarm in JavaScript*
 
 ## Introduction
 
