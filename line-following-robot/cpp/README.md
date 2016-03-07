@@ -1,4 +1,4 @@
-﻿# Line following robot
+﻿# Line following robot in C++
 
 This line following robot application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
 
