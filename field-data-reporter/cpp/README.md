@@ -1,4 +1,4 @@
-﻿# Field data recorder
+﻿# Field data recorder in C++
 
 ## Introduction
 
