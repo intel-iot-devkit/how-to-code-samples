@@ -1,4 +1,4 @@
-﻿# Robot arm
+﻿# Robot arm in C++
 
 ## Introduction
 
