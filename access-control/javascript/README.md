@@ -1,4 +1,4 @@
-# Access control
+# Access control in JavaScript*
 
 ## Introduction
 
