@@ -1,4 +1,4 @@
-﻿# Equipment activity monitor
+﻿# Equipment activity monitor in C++
 
 ## Introduction
 
