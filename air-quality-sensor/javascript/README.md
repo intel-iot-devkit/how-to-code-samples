@@ -1,4 +1,4 @@
-# Air quality sensor
+# Air quality sensor in JavaScript*
 
 ## Introduction
 
