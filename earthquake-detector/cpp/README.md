@@ -1,4 +1,4 @@
-﻿# Earthquake detector
+﻿# Earthquake detector in C++
 
 ## Introduction
 
