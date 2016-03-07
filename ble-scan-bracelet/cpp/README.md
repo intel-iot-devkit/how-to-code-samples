@@ -1,4 +1,4 @@
-﻿# BLE scan bracelet
+﻿# BLE scan bracelet in C++
 
 ## Introduction
 
