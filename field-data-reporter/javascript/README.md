@@ -1,4 +1,4 @@
-# Field data reporter
+# Field data reporter in JavaScript*
 
 ## Introduction
 
