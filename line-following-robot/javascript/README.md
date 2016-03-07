@@ -1,4 +1,4 @@
-# Line following robot
+# Line following robot in JavaScript*
 
 ## Introduction
 
