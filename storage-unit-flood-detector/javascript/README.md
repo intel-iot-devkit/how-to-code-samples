@@ -1,4 +1,4 @@
-# Storage unit flood detector
+# Storage unit flood detector in JavaScript*
 
 ## Introduction
 
