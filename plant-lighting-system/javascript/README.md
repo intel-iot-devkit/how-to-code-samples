@@ -1,4 +1,4 @@
-# Plant lighting system
+# Plant lighting system in JavaScript*
 
 ## Introduction
 
