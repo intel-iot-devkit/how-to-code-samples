@@ -1,4 +1,4 @@
-# Smart stove top
+# Smart stove top in JavaScript*
 
 ## Introduction
 
