@@ -1,4 +1,4 @@
-﻿# Watering system
+﻿# Watering system in C++
 
 ## Introduction
 
