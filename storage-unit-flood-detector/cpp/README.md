@@ -1,4 +1,4 @@
-﻿# Storage unit flood detector
+﻿# Storage unit flood detector in C++
 
 This storage unit flood detector application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
 
