@@ -1,4 +1,4 @@
-# Range finder scanner
+# Range finder scanner in JavaScript*
 
 ## Introduction
 
