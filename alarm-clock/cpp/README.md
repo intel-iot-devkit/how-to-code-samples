@@ -1,4 +1,4 @@
-﻿# Alarm clock
+﻿# Alarm clock in C++
 
 ## Introduction
 
