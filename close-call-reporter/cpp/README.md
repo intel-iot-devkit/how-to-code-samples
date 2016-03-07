@@ -1,4 +1,4 @@
-﻿# Close call reporter
+﻿# Close call reporter in C++
 
 ## Introduction
 
