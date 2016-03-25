@@ -44,9 +44,6 @@ extern "C" {
   #include "MQTTClientPersistence.h"
 }
 
-#define ADDRESS     "tcp://localhost:1883"
-#define CLIENTID    "ExampleClientPub"
-#define TOPIC       "MQTT Examples"
 #define PAYLOAD     "Hello World!"
 #define QOS         1
 #define TIMEOUT     10000L
@@ -169,7 +166,7 @@ bool time_for_alarm(std::time_t& alarm) {
   } else return false;
 }
 
-void mqtt_call() {
+void log_mqtt(std::string payload) {
   if (!getenv("MQTT_SERVER")) {
     return;
   }
@@ -180,30 +177,47 @@ void mqtt_call() {
   MQTTClient_deliveryToken token;
   int rc;
 
-  MQTTClient_create(&client, getenv("MQTT_SERVER"), CLIENTID,
+  MQTTClient_create(&client, getenv("MQTT_SERVER"), getenv("MQTT_CLIENTID"),
      MQTTCLIENT_PERSISTENCE_NONE, NULL);
   conn_opts.keepAliveInterval = 20;
   conn_opts.cleansession = 1;
   conn_opts.username = getenv("MQTT_USERNAME");
   conn_opts.password = getenv("MQTT_PASSWORD");
 
+  MQTTClient_SSLOptions sslOptions = MQTTClient_SSLOptions_initializer;
+  sslOptions.enableServerCertAuth = false;
+  conn_opts.ssl = &sslOptions;
+
   if ((rc = MQTTClient_connect(client, &conn_opts)) != MQTTCLIENT_SUCCESS)
   {
      printf("Failed to connect to MQTT server, return code %d\n", rc);
      return;
   }
-  pubmsg.payload = (char *)PAYLOAD;
-  pubmsg.payloadlen = strlen(PAYLOAD);
+  pubmsg.payload = &payload;
+  pubmsg.payloadlen = payload.length();
   pubmsg.qos = QOS;
   pubmsg.retained = 0;
-  MQTTClient_publishMessage(client, TOPIC, &pubmsg, &token);
+  MQTTClient_publishMessage(client, getenv("MQTT_TOPIC"), &pubmsg, &token);
   printf("Waiting for up to %d seconds for publication of %s\n"
          "on topic %s for client with ClientID: %s\n",
-         (int)(TIMEOUT/1000), PAYLOAD, TOPIC, CLIENTID);
+         (int)(TIMEOUT/1000), &payload[0], getenv("MQTT_TOPIC"), getenv("MQTT_CLIENTID"));
   rc = MQTTClient_waitForCompletion(client, token, TIMEOUT);
-  printf("Message with delivery token %d delivered\n", token);
+  printf("MQTT Message with delivery token %d delivered\n", token);
   MQTTClient_disconnect(client, 10000);
   MQTTClient_destroy(&client);
+}
+
+void log_datastore(std::string payload) {
+  if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
+    return;
+  }
+
+  RestClient::headermap headers;
+  headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
+
+  RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", payload, headers);
+  std::cout << "Datastore called. Result:" << r.code << std::endl;
+  std::cout << r.body << std::endl;
 }
 
 // Call datastore to log how long it took to wake up today
@@ -211,21 +225,11 @@ void log_wakeup() {
   double duration = elapsed(alarmTime);
   std::cerr << "Alarm duration: " << std::to_string(duration) << std::endl;
 
-  mqtt_call();
-
-  if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-    return;
-  }
-
   std::stringstream text;
   text << "{\"value\": \"" << std::to_string(duration) << "\"}";
 
-  RestClient::headermap headers;
-  headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
-
-  RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", text.str(), headers);
-  std::cout << "Datastore called. Result:" << r.code << std::endl;
-  std::cout << r.body << std::endl;
+  log_mqtt(text.str());
+  log_datastore(text.str());
 }
 
 
