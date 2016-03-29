@@ -160,7 +160,6 @@ bool time_for_alarm(std::time_t& alarm) {
   } else return false;
 }
 
-
 // Call datastore/mqtt server to log how long it took to wake up today
 void log_wakeup() {
   double duration = elapsed(alarmTime);

@@ -5,6 +5,7 @@
 
 #include <stdlib.h>
 #include <iostream>
+#include <sstream>
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 void log_datastore(std::string payload);

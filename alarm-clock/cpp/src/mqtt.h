@@ -4,13 +4,13 @@
 
 #include <stdlib.h>
 #include <iostream>
+#include <sstream>
 
 extern "C" {
   #include "MQTTClient.h"
   #include "MQTTClientPersistence.h"
 }
 
-#define PAYLOAD     "Hello World!"
 #define QOS         1
 #define TIMEOUT     10000L
 

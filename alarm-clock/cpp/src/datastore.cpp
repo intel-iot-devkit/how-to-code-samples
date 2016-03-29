@@ -1,6 +1,7 @@
 
 #include "datastore.h"
 
+// Call datastore to log how long it took to wake up today
 void log_datastore(std::string payload) {
   if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
     return;
