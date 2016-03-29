@@ -131,7 +131,7 @@ cd paho.mqtt.c
 export prefix=/usr; make install
 ```
 
-Then logout form the SSH session, and copy the include files and compiled libs back from the Edison to the cross compiler on your local machine like this:
+Then logout from the SSH session, and copy the include files and compiled libs back from the Edison to the cross compiler on your local machine like this:
 ```
 scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/MQTT* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
 scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libpaho-mqtt* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
