@@ -236,7 +236,6 @@ void runner(Devices& devices, std::time_t& alarmTime) {
 }
 
 Devices devices;
-MQTTClient mqttClient;
 
 // Exit handler for program
 void exit_handler(int param)
