@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Intel Corporation.
+ * Copyright (c) 2015-2016 Intel Corporation.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -185,7 +185,13 @@ void log_mqtt(std::string payload) {
   conn_opts.password = getenv("MQTT_PASSWORD");
 
   MQTTClient_SSLOptions sslOptions = MQTTClient_SSLOptions_initializer;
-  sslOptions.enableServerCertAuth = false;
+  if (getenv("MQTT_CERT") && getenv("MQTT_KEY") && getenv("MQTT_CA")) {
+    sslOptions.keyStore = getenv("MQTT_CERT");
+    sslOptions.privateKey = getenv("MQTT_KEY");
+    sslOptions.trustStore = getenv("MQTT_CA");
+  } else {
+    sslOptions.enableServerCertAuth = false;
+  };
   conn_opts.ssl = &sslOptions;
 
   if ((rc = MQTTClient_connect(client, &conn_opts)) != MQTTCLIENT_SUCCESS)
