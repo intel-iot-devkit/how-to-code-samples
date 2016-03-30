@@ -172,7 +172,6 @@ void log_wakeup() {
   log_datastore(text.str());
 }
 
-
 // Call weather underground API to get current weather conditions
 std::string get_weather() {
   if (!getenv("API_KEY")) {
