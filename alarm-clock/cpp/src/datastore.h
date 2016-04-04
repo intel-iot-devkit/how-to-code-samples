@@ -29,12 +29,20 @@
 #include <sstream>
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
-/* Call nodejs/redis datastore to log how long it took to wake up today
+/* Call nodejs/redis datastore to log data record
  *
  * Uses the following required ENV vars:
  *  SERVER - protocol, host name, and port of the remote server
  *  AUTH_TOKEN - token string to use for authentication against the remote server
  */
 void log_datastore(std::string payload);
+
+/* Call nodejs/redis datastore to increment counter
+ *
+ * Uses the following required ENV vars:
+ *  SERVER - protocol, host name, and port of the remote server
+ *  AUTH_TOKEN - token string to use for authentication against the remote server
+ */
+void increment_datastore();
 
 #endif /* DATASTORE_H_ */

@@ -73,3 +73,8 @@ void log_mqtt(std::string payload) {
   MQTTClient_disconnect(client, 10000);
   MQTTClient_destroy(&client);
 }
+
+void increment_mqtt() {
+  std::string payload = "{\"counter\": \"1\" }";
+  log_mqtt(payload);
+}

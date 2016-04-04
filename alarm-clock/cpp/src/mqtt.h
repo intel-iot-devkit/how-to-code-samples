@@ -36,7 +36,7 @@ extern "C" {
 #define QOS         1
 #define TIMEOUT     10000L
 
-/* Call mqtt server to log how long it took to wake up today
+/* Call mqtt server to log data
  *
  * Uses the following required ENV vars:
  *  MQTT_SERVER - protocol, host name, and port of the MQTT server
@@ -51,5 +51,21 @@ extern "C" {
  *  MQTT_CA - file name of root Certificate Authority (CA) certificate for verifying the MQTT server
  */
 void log_mqtt(std::string payload);
+
+/* Call mqtt server to increment data
+ *
+ * Uses the following required ENV vars:
+ *  MQTT_SERVER - protocol, host name, and port of the MQTT server
+ *  MQTT_CLIENTID - MQTT client ID that will be used for publishing
+ *  MQTT_TOPIC - topic that will be used for publishing MQTT messages
+ *
+ * Uses the following optional ENV vars:
+ *  MQTT_USERNAME - username for authentication against the MQTT server
+ *  MQTT_PASSWORD - password for authentication against the MQTT server
+ *  MQTT_CERT - file name of the client certificate for authentication against the MQTT server
+ *  MQTT_KEY - file name of the key file for the client certificate for authentication against the MQTT server
+ *  MQTT_CA - file name of root Certificate Authority (CA) certificate for verifying the MQTT server
+ */
+void increment_mqtt();
 
 #endif /* MQTT_H_ */

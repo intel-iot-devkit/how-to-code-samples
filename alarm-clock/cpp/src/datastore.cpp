@@ -35,3 +35,16 @@ void log_datastore(std::string payload) {
   std::cout << "Datastore called. Result:" << r.code << std::endl;
   std::cout << r.body << std::endl;
 }
+
+void increment_datastore() {
+  if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
+    return;
+  }
+
+  RestClient::headermap headers;
+  headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
+
+  RestClient::response r = RestClient::get(getenv("SERVER"), headers);
+  std::cout << "Datastore called. Result:" << r.code << std::endl;
+  std::cout << r.body << std::endl;
+}
