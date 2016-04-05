@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Intel Corporation.
+ * Copyright (c) 2015-2016 Intel Corporation.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -21,6 +21,31 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * @file
+ * @ingroup howtocode
+ * @brief Doorbell in C++
+ *
+ * This smart doorbell application is part of a series of how-to Intel IoT code
+ * sample exercises using the Intel® IoT Developer Kit, Intel® Edison board,
+ * cloud platforms, APIs, and other technologies.
+ *
+ * @hardware Sensors used:\n
+ * Grove Touch Sensor\n
+ * Grove Buzzer\n
+ * Grove LCD RGB Backlight\n
+ *
+ * @cc
+ * @cxx -std=c++1y
+ * @ld -lupm-ttp223 -lupm-buzzer -lupm-i2clcd -lcurl
+ *
+ * Additional source files required to build this example:
+ * @req datastore.cpp
+ * @req mqtt.cpp
+ *
+ * @date 04/04/2016
+ */
+
 #include <stdlib.h>
 #include <iostream>
 #include <unistd.h>
@@ -31,20 +56,13 @@
 #include <buzzer.h>
 #include <jhd1313m1.h>
 
-#include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
+#include "datastore.h"
+#include "mqtt.h"
 
-// Call datastore to increment the count of visitors who rang the doorbell
+// Call datastore/mqtt to increment the count of visitors who rang the doorbell
 void increment() {
-  if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-    return;
-  }
-
-  RestClient::headermap headers;
-  headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
-
-  RestClient::response r = RestClient::get(getenv("SERVER"), headers);
-  std::cout << "Datastore called. Result:" << r.code << std::endl;
-  std::cout << r.body << std::endl;
+  increment_datastore();
+  increment_mqtt();
 }
 
 // The hardware devices that the example is going to connect to
