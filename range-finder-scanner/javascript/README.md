@@ -100,7 +100,7 @@ If you're running this code on your Intel® Edison manually, you need to install
 To obtain the Node.js* modules needed for this example to execute on Intel® Edison, run the following command:
 
 ```
-npm install node
+npm install
 ```
 
 ## Running the program using Intel® XDK IoT Edition
