@@ -19,9 +19,8 @@ var touch = new (require("jsupm_ttp223").TTP223)(4),
     buzzer = new (require("jsupm_buzzer").Buzzer)(5),
     screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // Colors used for the RGB LED
 var colors = { green: [0, 255, 0], white: [255, 255, 255] };
@@ -46,23 +45,39 @@ function reset() {
   buzzer.stopSound();
 }
 
-// Increment the datastore server's count of doorbell rings
+// Increment the datastore/mqtt server count of doorbell rings
 function increment() {
   console.log("doorbell ring");
 
-  if (!config.SERVER || !config.AUTH_TOKEN) {
+  datastore.increment(config);
+  mqtt.increment(config);
+}
+
+// Publish data to MQTT server
+function incrementMQTT() {
+  if (!config.MQTT_SERVER || !config.MQTT_CLIENTID) {
     return;
   }
 
-  function callback(err, res) {
-    if (err) { return console.error("err:", err); }
-    console.log("total # of doorbell rings:", res.body.value);
+  var data = {d: {count: 1}};
+  var options = {
+    clientId: config.MQTT_CLIENTID,
+    username: config.MQTT_USERNAME,
+    password: config.MQTT_PASSWORD
+  };
+
+  if (config.MQTT_CERT && config.MQTT_KEY) {
+    options.cert = fs.readFileSync(config.MQTT_CERT);
+    options.key = fs.readFileSync(config.MQTT_KEY);
   }
 
-  request
-    .get(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .end(callback);
+  console.log("Connecting to MQTT server...");
+  var client  = mqtt.connect(config.MQTT_SERVER, options);
+  client.on('connect', function () {
+    client.publish(config.MQTT_TOPIC, JSON.stringify(data));
+    console.log("MQTT message published:", data);
+    client.end();
+  });
 }
 
 // Logs a doorbell ring, prints a message to the display,

@@ -14,9 +14,8 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // Initialize the hardware devices
 var ULN200XA = require("jsupm_uln200xa");
@@ -67,18 +66,9 @@ function moveForward() {
 function log(callback) {
   console.log("active");
 
-  if (!config.SERVER || !config.AUTH_TOKEN) {
-    return;
-  }
-
-  request
-    .put(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: new Date().toISOString() })
-    .end(function(err, res) {
-      if (err) { return console.error("err:", err); }
-      callback();
-    });
+  var payload = { value: new Date().toISOString() };
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
 }
 
 // The main function repeatedly calls `findLine()`

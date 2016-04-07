@@ -20,9 +20,8 @@ var sound = new mic.Microphone(0),
     vibration = new (require("jsupm_ldt0028").LDT0028)(2),
     screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // Initialize the sound sensor
 var ctx = new mic.thresholdContext();
@@ -30,32 +29,14 @@ ctx.averageReading = 0;
 ctx.runningAverage = 0;
 ctx.averagedOver = 2;
 
-// Display and then store record in the remote datastore
+// Display and then store record in the remote datastore/mqtt server
 // of how long the equipment being monitored was in use for
 function notify(state) {
   console.log("Value: " + state + " " + new Date().toISOString());
+  var payload = { value: state + " " + new Date().toISOString() };
 
-  if (!config.SERVER || !config.AUTH_TOKEN) {
-    return;
-  }
-
-  function callback(err, res) {
-    if (err) { return console.error("err:", err); }
-    console.log("Server notified");
-  }
-
-  request
-    .put(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: state + " " + new Date().toISOString() })
-    .end(callback);
-}
-
-// Display a warning message on the I2C LCD display
-function warn() {
-  screen.setCursor(0, 0);
-  screen.write("EQUIPMENT IN USE");
-  screen.setColor(255, 255, 255);
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
 }
 
 // Clears the I2C LCD display

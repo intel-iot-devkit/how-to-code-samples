@@ -25,9 +25,8 @@ var config = JSON.parse(
 // to communicate with Bluetooth LE devices
 var noble = require("noble");
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // Initialize the hardware device
 var screen = new (require("jsupm_i2clcd").SSD1308)(0, 0x3C);
@@ -47,21 +46,9 @@ function log(name, state) {
   console.log(name, state);
   message(name + " " + state);
 
-  if (!config.SERVER || !config.AUTH_TOKEN)
-  {
-    return;
-  }
-
-  function callback(err, res) {
-    if (err) { console.error("err:", err); }
-    console.log("Device logged to datastore");
-  }
-
-  request
-    .put(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: name + " " + state + " " + new Date().toISOString() })
-    .end(callback);
+  var payload = { value: name + " " + state + " " + new Date().toISOString() };
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
 }
 
 // Check to see if any devices that we could previously

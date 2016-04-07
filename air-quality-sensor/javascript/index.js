@@ -18,9 +18,8 @@ var config = JSON.parse(
 var air = new (require("jsupm_gas").TP401)(0),
     speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(5);
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // Plays a chime sound using the Grove speaker
 function chime() {
@@ -32,22 +31,12 @@ function chime() {
 // Store record in the remote datastore when the air quality
 // level has exceeded the allowed threshold of safety
 function sendAlert() {
-  console.log("Air quality alert");
+  var msg = "Air quality alert";
+  console.log(msg);
 
-  if (!config.SERVER || !config.AUTH_TOKEN) {
-    return;
-  }
-
-  function callback(err, res) {
-    if (err) { return console.error("err:", err); }
-    console.log("Datastore notified of air quality alert");
-  }
-
-  request
-    .put(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: new Date().toISOString() })
-    .end(callback);
+  var payload = { value: msg };
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
 }
 
 // Alert user that the air quality level has exceeded

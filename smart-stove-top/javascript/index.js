@@ -22,9 +22,8 @@ var temp = new (require("jsupm_otp538u").OTP538U)(0, 1),
     flame = new (require("jsupm_yg1006").YG1006)(4),
     speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(5);
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // Plays an audible alarm when the temperature has exceeded
 // the target temperature
@@ -52,19 +51,10 @@ function fireAlarm() {
 function log() {
   function notify() {
     console.log(temp.objectTemperature());
+    var payload = { value: temp.objectTemperature() };
 
-    if (!config.SERVER || !config.AUTH_TOKEN) {
-      return;
-    }
-
-    request
-      .put(config.SERVER)
-      .set("X-Auth-Token", config.AUTH_TOKEN)
-      .send({ value: temp.objectTemperature() })
-      .end(function(err, res) {
-        if (err) { return console.error("err:", err); }
-        console.log("datastore notified of temperature");
-      });
+    datastore.log(config, payload);
+    mqtt.log(config, payload);
   }
 
   notify();

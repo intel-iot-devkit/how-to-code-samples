@@ -26,9 +26,8 @@ var events = new (require("events").EventEmitter)();
 // Colors used for the RGB LED
 var colors = { red: [255, 0, 0], white: [255, 255, 255] };
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // The program is using the `twilio` module
 // to make the remote calls to Twilio service
@@ -94,19 +93,9 @@ function notify() {
 
   notifySMS();
 
-  if (!config.SERVER || !config.AUTH_TOKEN) {
-    return;
-  }
-
-  // notify datastore of time alarm went off
-  request
-    .put(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: new Date().toISOString() })
-    .end(function(err, res) {
-      if (err) { return console.error("err:", err); }
-      console.log("datastore notified");
-    });
+  var payload = { value: "fire alarm", datetime: new Date().toISOString() };
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
 }
 
 // Loops every 500ms to check if the ambient temperature

@@ -14,9 +14,8 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // The program is using the `later` module
 // to handle scheduling of recurring tasks
@@ -55,24 +54,14 @@ for (var i = 0; i < 24; i++) {
 // Helper function to convert a value to an integer
 function toInt(h) { return +h; }
 
-// Display and then store record in the remote datastore
+// Display and then store record in the remote datastore/mqtt server
 // of each time a watering system event has occurred
 function log(event) {
   console.log(event);
-  if (!config.SERVER || !config.AUTH_TOKEN) {
-    return;
-  }
+  var payload = { value: event + " " + new Date().toISOString() };
 
-  function callback(err, res) {
-    if (err) { return console.error("err:", res.text); }
-    console.log("Server notified");
-  }
-
-  request
-    .put(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: event + " " + new Date().toISOString() })
-    .end(callback);
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
 }
 
 // Generates a later schedule for when the water should be turned on
