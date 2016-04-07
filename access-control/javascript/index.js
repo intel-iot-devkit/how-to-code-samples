@@ -14,9 +14,8 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // Colors used for the RGB LCD display
 var COLORS = {
@@ -37,25 +36,63 @@ var VALIDATED = false,
 var screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62),
     motion = new (require("jsupm_biss0001").BISS0001)(4);
 
-// Store record in the remote datastore when access control
-// event has occurred
+// Store record in the remote datastore and/or mqtt server
+// when access control event has occurred
 function log(event) {
   var msg = new Date().toISOString() + " " + event;
   console.log(msg);
 
+  var payload = { value: msg };
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
+}
+
+// Store data in the remote datastore
+function logDatastore(payload) {
   if (!config.SERVER || !config.AUTH_TOKEN) {
     return;
   }
 
   function callback(err, res) {
-    if (err) { return console.error("err:", err); }
+    if (err) {
+      return console.error("err:", err);
+    } else {
+      return console.log("Saved to datastore:", payload);
+    }
   }
 
   request
     .put(config.SERVER)
     .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: msg })
+    .send(payload)
     .end(callback);
+}
+
+// Publish data to MQTT server
+function logMQTT(payload) {
+  if (!config.MQTT_SERVER || !config.MQTT_CLIENTID) {
+    return;
+  }
+
+  var data = {d: payload}
+  var options = {
+    clientId: config.MQTT_CLIENTID,
+    username: config.MQTT_USERNAME,
+    password: config.MQTT_PASSWORD
+  };
+
+  if (config.MQTT_CERT && config.MQTT_KEY) {
+    options.cert = fs.readFileSync(config.MQTT_CERT);
+    options.key = fs.readFileSync(config.MQTT_KEY);
+  }
+
+  console.log("Connecting to MQTT server...");
+  var client  = mqtt.connect(config.MQTT_SERVER, options);
+  client.on('connect', function () {
+    client.publish(config.MQTT_TOPIC, JSON.stringify(data));
+    console.log("MQTT message published:", data);
+    client.end();
+  });
 }
 
 // Displays a message on the RGB LED

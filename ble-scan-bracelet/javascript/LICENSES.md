@@ -31,3 +31,7 @@ https://github.com/visionmedia/superagent/blob/master/LICENSE
 ## Noble
 License: MIT
 https://github.com/sandeepmistry/noble/blob/master/LICENSE
+
+## MQTT.js
+License: MIT
+https://github.com/mqttjs/MQTT.js/blob/master/LICENSE.md

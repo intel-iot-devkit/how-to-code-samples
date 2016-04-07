@@ -14,9 +14,8 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // Initialize the hardware devices
 var screen = new (require("jsupm_i2clcd").SSD1308)(0, 0x3C),
@@ -66,28 +65,17 @@ function alertSMS() {
   });
 }
 
-// Logs record in the remote datastore that a fall
-// may have occurred
+// Sends SMS and logs record in the remote datastore/mqtt server
+// that a fall may have occurred
 function alert() {
   console.log("Fall Detected!");
   message("Fall Detected!");
 
   alertSMS();
 
-  if (!config.SERVER || !config.AUTH_TOKEN) {
-    return;
-  }
-
-  function callback(err, res) {
-    if (err) { console.error("err:", err); }
-    console.log("Fall recorded to datastore")
-  }
-
-  request
-    .put(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: new Date().toISOString() })
-    .end(callback);
+  var payload = { value: new Date().toISOString() };
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
 }
 
 // The main function starts reading the accelerometer

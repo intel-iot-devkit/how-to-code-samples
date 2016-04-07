@@ -18,27 +18,17 @@ var config = JSON.parse(
 var moisture = new (require("jsupm_grovemoisture").GroveMoisture)(0),
     speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(5);
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // Store record in the remote datastore when moisture is detected
 function notify() {
   console.log("Moisture alarm");
 
-  if (!config.SERVER || !config.AUTH_TOKEN) {
-    return;
-  }
+  var payload = { value: new Date().toISOString() };
 
-  // notify datastore of alert
-  request
-    .put(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: new Date().toISOString() })
-    .end(function(err, res) {
-      if (err) { return console.error("err:", err); }
-      console.log("datastore notified of moisture alarm");
-    });
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
 }
 
 // Alert when moisture is detected

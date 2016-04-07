@@ -14,9 +14,8 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // The program is using the `nmea` module
 // parse the data coming from the GPS
@@ -68,20 +67,10 @@ function getLocation() {
 // event has occurred
 function report() {
   console.log("close call at", LOCATION);
-  if (!config.SERVER || !config.AUTH_TOKEN) {
-    return;
-  }
+  var payload = { value: new Date().toISOString() + " " + LOCATION };
 
-  function callback(err, res) {
-    if (err) { return console.error("err:", err); }
-    console.log("close call reported");
-  }
-
-  request
-    .put(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: new Date().toISOString() + " " + LOCATION })
-    .end(callback);
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
 }
 
 // The main function checks the distance sensor every 100ms,

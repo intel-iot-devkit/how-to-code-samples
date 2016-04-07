@@ -39,3 +39,7 @@ https://github.com/bunkat/later/blob/master/LICENSE
 ## Superagent
 License: MIT
 https://github.com/visionmedia/superagent/blob/master/LICENSE
+
+## MQTT.js
+License: MIT
+https://github.com/mqttjs/MQTT.js/blob/master/LICENSE.md

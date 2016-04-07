@@ -14,9 +14,8 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // The program is using the `later` module
 // to handle scheduling of recurring tasks
@@ -56,26 +55,15 @@ for (var i = 0; i < 24; i++) {
 // Helper function to convert a value to an integer
 function toInt(h) { return +h; }
 
-// Store record in the remote datastore when lighting or moisture
+// Store record in the remote datastore/mqtt server when lighting or moisture
 // event has occurred
 function log(event) {
   console.log(event);
   message(event);
 
-  if (!config.SERVER || !config.AUTH_TOKEN) {
-    return;
-  }
-
-  function callback(err, res) {
-    if (err) { return console.error("err:", res.text); }
-    console.log("Datastore updated");
-  }
-
-  request
-    .put(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: event + " " + new Date().toISOString() })
-    .end(callback);
+  var payload = { value: event + " " + new Date().toISOString() };
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
 }
 
 // Generates a later schedule for when the lights should be turned on
@@ -164,7 +152,7 @@ function server() {
       "</tr>"
     ].join("\n");
   }
-  
+
   // Serve up the main web page used to configure lighting times
   function index(req, res) {
     function serve(err, data) {

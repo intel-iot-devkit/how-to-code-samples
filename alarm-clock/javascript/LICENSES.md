@@ -35,3 +35,7 @@ https://github.com/moment/moment/blob/develop/LICENSE
 ## Superagent
 License: MIT
 https://github.com/visionmedia/superagent/blob/master/LICENSE
+
+## MQTT.js
+License: MIT
+https://github.com/mqttjs/MQTT.js/blob/master/LICENSE.md
