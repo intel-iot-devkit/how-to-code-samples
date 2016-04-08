@@ -1,0 +1,8 @@
+# JS
+*.xdk
+*.xdke
+**/node_modules/
+**/xdk/
+
+# C++
+**/Debug/
