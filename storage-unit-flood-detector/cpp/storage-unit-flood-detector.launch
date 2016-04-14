@@ -17,7 +17,7 @@
 <stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value=""/>
 <booleanAttribute key="org.eclipse.cdt.launch.remote.RemoteCDSFDebuggerTab.DEFAULTS_SET" value="true"/>
 <booleanAttribute key="org.eclipse.cdt.launch.use_terminal" value="true"/>
-<stringAttribute key="org.eclipse.debug.core.ATTR_PRERUN_CMDS" value="chmod 755 /tmp/equipment-activity-monitor; export SERVER=&quot;http://intel-iot-example-data.azurewebsites.net/logger/fire-alarm&quot;; export AUTH_TOKEN=&quot;123456&quot;"/>
+<stringAttribute key="org.eclipse.debug.core.ATTR_PRERUN_CMDS" value="chmod 755 /tmp/equipment-activity-monitor; export MQTT_SERVER=&quot;ssl://kcbymt.messaging.internetofthings.ibmcloud.com:8883&quot;; export MQTT_CLIENTID=&quot;d:kcbymt:justinEdison:myEdison&quot;; export MQTT_USERNAME=&quot;use-token-auth&quot;; export MQTT_PASSWORD=&quot;0Oa8*-xysqEJG&amp;&amp;LZz&quot;; export MQTT_TOPIC=&quot;iot-2/evt/status/fmt/json&quot;"/>
 <booleanAttribute key="org.eclipse.debug.core.ATTR_SKIP_DOWNLOAD_TO_TARGET" value="false"/>
 <stringAttribute key="org.eclipse.debug.core.ATTR_TARGET_PATH" value="/tmp/storage-unit-flood-detector"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
@@ -26,7 +26,7 @@
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="4"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.debug.core.REMOTE_TCP" value="JustinEdison"/>
+<stringAttribute key="org.eclipse.debug.core.REMOTE_TCP" value="Local"/>
 <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
 <listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>

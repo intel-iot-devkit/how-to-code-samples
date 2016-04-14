@@ -52,6 +52,7 @@
 									<listOptionValue builtIn="false" value="boost_filesystem"/>
 									<listOptionValue builtIn="false" value="upm-grovemoisture"/>
 									<listOptionValue builtIn="false" value="mraa"/>
+									<listOptionValue builtIn="false" value="paho-mqtt3cs"/>
 								</option>
 								<option id="com.intel.iotdevkit.ide.gnu.cpp.option.link.misc.other.2137425541" name="Miscellaneous" superClass="com.intel.iotdevkit.ide.gnu.cpp.option.link.misc.other"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1634372426" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
