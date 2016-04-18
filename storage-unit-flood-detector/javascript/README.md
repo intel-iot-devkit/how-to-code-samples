@@ -24,7 +24,7 @@ This storage unit flood detector uses the moisture sensor to constantly ensure t
 
 If the moisture level exceeds a defined threshold, it makes a sound to indicate a warning.
 
-Optionally, the monitor can store moisture data using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Optionally, the monitor can store moisture data using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -37,7 +37,7 @@ Grove* Home Automation Kit containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account (optional)
 
 ### How to set up
 

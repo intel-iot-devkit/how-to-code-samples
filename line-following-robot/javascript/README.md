@@ -23,7 +23,7 @@ Using an Intel® Edison board, this project lets you create a line following rob
 
 The line finder robot uses the two attached motors to attempt to follow a line, keeping track of it with the line finder sensor. If on the line, it moves forward. Otherwise, it pivots in place, trying to locate it using the line finder sensor.
 
-Optionally, it can store system events using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Optionally, it can store system events using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -36,7 +36,7 @@ Grove* Robotics Kit containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account (optional)
 
 ### How to set up
 
@@ -124,10 +124,12 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, add the `SERVER` and `AUTH_TOKEN` keys to the `config.json` file as follows:
 
 ```
 {
+  "CLOCKWISE": 1,
+  "WHITE_LINES": 0,
   "SERVER": "http://intel-examples.azurewebsites.net/logger/line-follower",
   "AUTH_TOKEN": "s3cr3t"
 }

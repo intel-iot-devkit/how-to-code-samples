@@ -25,7 +25,7 @@ This shop air quality monitor uses the sensor to constantly keep track of airbor
 
 If the sensor detects one of several different gases and the detected level exceeds a defined threshold, it makes a sound through the speaker to indicate a warning.
 
-Also, optionally, the monitor stores the air quality data using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Also, optionally, the monitor stores the air quality data using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ### Hardware requirements
 
@@ -38,7 +38,7 @@ Grove* Home Automation Kit containing:
 ### Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account (optional)
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account (optional)
 
 ### How to set up
 
@@ -122,10 +122,11 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below the "THRESHOLD" value as follows:
 
 ```
 {
+  "THRESHOLD": 50,
   "SERVER": "http://intel-examples.azurewebsites.net/logger/access-control",
   "AUTH_TOKEN": "s3cr3t"
 }

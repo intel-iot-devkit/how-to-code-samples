@@ -22,7 +22,7 @@ Using an Intel® Edison board, this project lets you create a smart doorbell tha
 
 This smart doorbell makes a noise with the buzzer when the Grove* Touch Sensor is pressed. In addition, it displays a message on the LCD.
 
-Optionally, doorbell ring data can also be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Optionally, doorbell ring data can also be stored using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -36,7 +36,7 @@ Grove* Starter Kit Plus containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account (optional)
 
 ### How to set up
 

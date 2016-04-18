@@ -25,7 +25,7 @@ This BLE scanner bracelet uses a Xadow* expansion board for Intel® Edison and t
 
 With these components, we'll make a simple BLE scanner that displays information on the OLED display when BLE-equipped devices enter or exit its scanning range.
 
-Optionally, all data can be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Optionally, all data can be stored using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -37,7 +37,7 @@ Xadow* Starter Kit containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account (optional)
 
 ### How to set up
 

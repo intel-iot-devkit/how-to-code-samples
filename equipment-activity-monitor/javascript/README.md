@@ -27,7 +27,7 @@ If both exceed a defined threshold, it lights up the display to indicate the equ
 
 Once the equipment is no longer used, it clears the display.
 
-Optionally, equipment usage start/stop events can also be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Optionally, equipment usage start/stop events can also be stored using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -41,7 +41,7 @@ Grove* Starter Kit Plus containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account (optional)
 
 ### How to set up
 
@@ -127,10 +127,12 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file after the required `VIBRATION_THRESHOLD` and `NOISE_THRESHOLD` keys as follows:
 
 ```
 {
+  "VIBRATION_THRESHOLD": 500,
+  "NOISE_THRESHOLD": 140,
   "SERVER": "http://intel-examples.azurewebsites.net/logger/equipment-activity",
   "AUTH_TOKEN": "s3cr3t"
 }

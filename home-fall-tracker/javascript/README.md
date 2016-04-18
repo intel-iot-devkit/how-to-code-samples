@@ -24,7 +24,7 @@ Using an Intel® Edison board, this project lets you create a home fall tracker 
 
 The home fall tracker bracelet detects potential falls with the accelerometer. If it detects a possible fall, it sends a text alert via Twilio* and lets the user know that their caretaker has been notified and help is on the way.
 
-Optionally, all data can be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Optionally, all data can be stored using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -37,8 +37,8 @@ Xadow* Starter Kit containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account
-3. Twilio* account
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account (optional)
+3. Twilio* account (optional)
 
 ### How to set up
 
