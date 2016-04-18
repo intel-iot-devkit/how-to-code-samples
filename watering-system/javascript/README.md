@@ -29,7 +29,7 @@ It automatically checks moisture sensor data at periodic intervals, and displays
 
 If the water pump is supposed to be on, but the water flow sensor does not detect that the pumping is talking place as expected, it sends a text message to a specified number through Twilio* so the watering system can be repaired.
 
-Optionally, it can also log watering system events using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
+Optionally, it can also log watering system events using the Intel IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 

@@ -27,7 +27,7 @@ If both exceed a defined threshold, it lights up the display to indicate the equ
 
 Once the equipment is no longer used, it clears the display.
 
-Optionally, equipment usage start/stop events can also be stored using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
+Optionally, equipment usage start/stop events can also be stored using the Intel IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 

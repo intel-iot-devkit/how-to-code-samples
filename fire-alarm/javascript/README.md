@@ -29,7 +29,7 @@ If the temperature exceeds a certain threshold (set to 28 degrees Celsius in thi
 
 In addition, it can send a text message to a specified number through Twilio*, warning the recipient of a possible fire danger.
 
-Optionally, it can log fire events using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
+Optionally, it can log fire events using the Intel IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 

@@ -24,7 +24,7 @@ This close call reporter system monitors the direction the Grove* IR Distance In
 
 It also keeps track of the GPS position of Intel® Edison, updating frequently to ensure accurate data.
 
-If a close call is detected (that is, the Grove* IR Distance Interrupter is tripped), the Intel® Edison board, if configured, notifies the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
+If a close call is detected (that is, the Grove* IR Distance Interrupter is tripped), the Intel® Edison board, if configured, notifies the Intel IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 

@@ -23,8 +23,10 @@ Using an Intel® Edison board, this project lets you create a smart stove top th
 
 This smart stove top sensor has a number of useful features designed to help you monitor the temperature of the food you are cooking on your legacy stove top.
 Set the target temperature for a pot on your range top via a web page served directly from Intel® Edison, using your mobile phone.
+
 When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, alarm goes off.
-Optionally, all data can also be stored using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
+
+Optionally, all data can be stored using the Intel IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 

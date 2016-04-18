@@ -29,7 +29,7 @@ If the lighting is supposed to be on, but the light sensor does not detect any l
 
 It also automatically checks and logs moisture sensor data at periodic intervals.
 
-Optionally, it can store system events using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
+Optionally, all data can be stored using the Intel IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
