@@ -30,7 +30,7 @@ This access control system provides the following user flow:
 
 Additionally, various events (`looking-for-motion`, `motion-detected`, `invalid-code`, etc.) are logged.
 
-Optionally, all data can be stored using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
+Optionally, all data can be stored using the Intel IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 

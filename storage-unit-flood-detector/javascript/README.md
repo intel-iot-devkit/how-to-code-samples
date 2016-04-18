@@ -24,7 +24,7 @@ This storage unit flood detector uses the moisture sensor to constantly ensure t
 
 If the moisture level exceeds a defined threshold, it makes a sound to indicate a warning.
 
-Optionally, the monitor can store moisture data using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
+Optionally, the monitor can store moisture data using the Intel IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
