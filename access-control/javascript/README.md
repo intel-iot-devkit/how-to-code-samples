@@ -30,7 +30,7 @@ This access control system provides the following user flow:
 
 Additionally, various events (`looking-for-motion`, `motion-detected`, `invalid-code`, etc.) are logged.
 
-Optionally, all data can be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Optionally, all data can be stored using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -43,7 +43,7 @@ Grove* Transportation & Safety Kit containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account (optional)
 
 ### How to set up
 
@@ -127,10 +127,11 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below the "CODE" key as follows:
 
 ```
 {
+  "CODE": "4321",
   "SERVER": "http://intel-examples.azurewebsites.net/logger/access-control",
   "AUTH_TOKEN": "s3cr3t"
 }

@@ -24,7 +24,7 @@ Using an Intel® Edison board, this project lets you create a smart stove top th
 This smart stove top sensor has a number of useful features designed to help you monitor the temperature of the food you are cooking on your legacy stove top.
 Set the target temperature for a pot on your range top via a web page served directly from Intel® Edison, using your mobile phone.
 When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, alarm goes off.
-Optionally, all data can also be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Optionally, all data can also be stored using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -38,7 +38,7 @@ Grove* Home Automation Kit containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account (optional)
 
 ### How to set up
 
@@ -124,10 +124,11 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file after the required `TARGET_TEMP` key as follows:
 
 ```
 {
+  "TARGET_TEMP": 30,
   "SERVER": "http://intel-examples.azurewebsites.net/logger/smart-stovetop",
   "AUTH_TOKEN": "s3cr3t"
 }

@@ -29,7 +29,7 @@ If the temperature exceeds a certain threshold (set to 28 degrees Celsius in thi
 
 In addition, it can send a text message to a specified number through Twilio*, warning the recipient of a possible fire danger.
 
-Optionally, it can log fire events using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Optionally, it can log fire events using the Intel IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -43,8 +43,8 @@ Grove* Starter Kit Plus containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft* Azure* account
-3. Twilio* account
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account (optional)
+3. Twilio* account (optional)
 
 ### How to set up
 
@@ -124,6 +124,7 @@ Pass your Twilio* API key and authentication token to the sample program by modi
 
 ```
 {
+  "ALARM_THRESHOLD": 28,
   "TWILIO_ACCT_SID": "YOURAPIKEY",
   "TWILIO_AUTH_TOKEN": "YOURTOKEN"
 }
@@ -147,28 +148,31 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-To configure the example for sending optional text messages, obtain an API key from the Twilio* web site as explained above, and then change the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for sending optional text messages, obtain an API key from the Twilio* web site as explained above, and then add the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys to the `config.json` file as follows:
 
 ```
 {
+  "ALARM_THRESHOLD": 28,
   "TWILIO_ACCT_SID": "YOURAPIKEY",
   "TWILIO_AUTH_TOKEN": "YOURTOKEN"
 }
 ```
 
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
+  "ALARM_THRESHOLD": 28,
   "SERVER": "http://intel-examples.azurewebsites.net/logger/fire-alarm",
   "AUTH_TOKEN": "s3cr3t"
 }
 ```
 
-To configure the example for both the text messages and the Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, change the `TWILIO_ACCT_SID`, `TWILIO_AUTH_TOKEN`, `SERVER`, and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for both the text messages and the Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* data store, add the `TWILIO_ACCT_SID`, `TWILIO_AUTH_TOKEN`, `SERVER`, and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
+  "ALARM_THRESHOLD": 28,
   "TWILIO_ACCT_SID": "YOURAPIKEY",
   "TWILIO_AUTH_TOKEN": "YOURTOKEN",
   "SERVER": "http://intel-examples.azurewebsites.net/logger/fire-alarm",
