@@ -30,6 +30,30 @@
 * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+/**
+ * @file
+ * @ingroup howtocode
+ * @brief Access control in C++
+ *
+ * This access-control application is part of a series of how-to Intel IoT code
+ * sample exercises using the Intel® IoT Developer Kit, Intel® Edison board,
+ * cloud platforms, APIs, and other technologies.
+ *
+ * @hardware Sensors used:\n
+ * Grove LCD RGB Backlight\n
+ * Grove PIR Motion Sensor\n
+ *
+ * @cc
+ * @cxx -std=c++1y
+ * @ld -lupm-i2clcd -lupm-biss0001 -lpaho-mqtt3cs -lupm-grove -lboost_system -lboost_thread -lboost_filesystem -lboost_date_time -lpthread -lcurl
+ *
+ * Additional source files required to build this example:
+ * @req datastore.cpp
+ * @req mqtt.cpp
+ *
+ * @date 04/04/2016
+ */
+
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>

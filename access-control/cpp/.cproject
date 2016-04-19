@@ -51,7 +51,6 @@
 									<listOptionValue builtIn="false" value="upm-i2clcd"/>
 									<listOptionValue builtIn="false" value="paho-mqtt3cs"/>
 									<listOptionValue builtIn="false" value="upm-biss0001"/>
-									<listOptionValue builtIn="false" value="upm-buzzer"/>
 									<listOptionValue builtIn="false" value="upm-grove"/>
 									<listOptionValue builtIn="false" value="boost_system"/>
 									<listOptionValue builtIn="false" value="boost_thread"/>

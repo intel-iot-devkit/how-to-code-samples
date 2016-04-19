@@ -30,6 +30,32 @@
 * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+/**
+ * @file
+ * @ingroup howtocode
+ * @brief Equipment activity monitor in C++
+ *
+ * This equipment-activity application is part of a series of how-to Intel IoT code
+ * sample exercises using the Intel® IoT Developer Kit, Intel® Edison board,
+ * cloud platforms, APIs, and other technologies.
+ *
+ * @hardware Sensors used:\n
+ * Grove Sound Sensor\n
+ * Grove Piezo Vibration Sensor\n
+ * Grove RGB LCD\n
+ *
+ * @cc
+ * @cxx -std=c++1y
+ * @ld -lupm-i2clcd -lump-mic -lupm-ldt0028 -lpaho-mqtt3cs -lcurl
+ *
+ * Additional source files required to build this example:
+ * @req datastore.cpp
+ * @req mqtt.cpp
+ *
+ * @date 04/04/2016
+ */
+
+
 #include <stdlib.h>
 #include <iostream>
 #include <unistd.h>

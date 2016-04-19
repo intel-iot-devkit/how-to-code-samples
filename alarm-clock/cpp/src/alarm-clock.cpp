@@ -30,6 +30,32 @@
 * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+/**
+ * @file
+ * @ingroup howtocode
+ * @brief Alarm clock in C++
+ *
+ * This alarm-clock application is part of a series of how-to Intel IoT code
+ * sample exercises using the Intel® IoT Developer Kit, Intel® Edison board,
+ * cloud platforms, APIs, and other technologies.
+ *
+ * @hardware Sensors used:\n
+ * Grove Rotary Angle Sensor\n
+ * Grove Button\n
+ * Grove Buzzer\n
+ * Grove RGB LCD\n
+ *
+ * @cc
+ * @cxx -std=c++1y
+ * @ld -lupm-i2clcd -lupm-buzzer -lpaho-mqtt3cs -lupm-grove -lboost_system -lboost_thread -lboost_filesystem -lboost_date_time -lpthread -lcurl
+ *
+ * Additional source files required to build this example:
+ * @req datastore.cpp
+ * @req mqtt.cpp
+ *
+ * @date 04/04/2016
+ */
+
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>

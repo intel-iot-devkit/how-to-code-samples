@@ -30,6 +30,29 @@
 * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+/**
+ * @file
+ * @ingroup howtocode
+ * @brief Home fall tracker in C++
+ *
+ * This fall-tracker application is part of a series of how-to Intel IoT code
+ * sample exercises using the Intel® IoT Developer Kit, Intel® Edison board,
+ * cloud platforms, APIs, and other technologies.
+ *
+ * @hardware Sensors used:\n
+ * Grove OLED Display 0.96"\n
+ * Grove 3 Axis Digital accelerometer (16g)\n
+ *
+ * @cc
+ * @cxx -std=c++1y
+ * @ld -lupm-i2clcd -lupm-adxl345 -lssl -lcrypto -lpaho-mqtt3cs -lcurl
+ *
+ * Additional source files required to build this example:
+ * @req datastore.cpp
+ * @req mqtt.cpp
+ *
+ * @date 04/04/2016
+ */
 #include <string>
 using std::string;
 #include <sstream>
