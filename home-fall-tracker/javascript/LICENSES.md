@@ -31,3 +31,7 @@ https://github.com/visionmedia/superagent/blob/master/LICENSE
 ## Twilio
 License: MIT
 https://github.com/twilio/twilio-node/blob/master/LICENSE
+
+## MQTT.js
+License: MIT
+https://github.com/mqttjs/MQTT.js/blob/master/LICENSE.md

@@ -1,3 +1,35 @@
+/*
+* Copyright (c) 2015-2016 Intel Corporation.
+*
+* Permission is hereby granted, free of charge, to any person (“User”) obtaining
+* a copy of this software and associated documentation files (the
+* "Software"), to deal in the Software without restriction, including
+* without limitation the rights to use, copy, modify, merge, publish,
+* distribute, sublicense, and/or sell copies of the Software, and to
+* permit persons to whom the Software is furnished to do so, subject to
+* the following conditions:
+*
+* The above copyright notice and this permission notice shall be
+* included in all copies or substantial portions of the Software.
+*
+* User understands, acknowledges, and agrees that: (i) the Software is sample software;
+* (ii) the Software is not designed or intended for use in any medical, life-saving
+* or life-sustaining systems, transportation systems, nuclear systems, or for any
+* other mission-critical application in which the failure of the system could lead to
+* critical injury or death; (iii) the Software may not be fully tested and may contain
+* bugs or errors; (iv) the Software is not intended or suitable for commercial release;
+* (v) no regulatory approvals for the Software have been obtained, and therefore Software
+* may not be certified for use in certain countries or environments.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+* NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+* LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+* OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+* WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
 "use strict";
 
 // The program is using the Node.js built-in `fs` module
@@ -14,9 +46,8 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
-// The program is using the `superagent` module
-// to make the remote calls to the data store
-var request = require("superagent");
+var datastore = require("./datastore");
+var mqtt = require("./mqtt");
 
 // The program is using the `later` module
 // to handle scheduling of recurring tasks
@@ -30,8 +61,11 @@ var mraa = require("mraa");
 // The program is using the `twilio` module
 // to make the remote calls to Twilio service
 // to send SMS alerts
-var twilio = require("twilio")(config.TWILIO_ACCT_SID,
-                               config.TWILIO_AUTH_TOKEN);
+var twilio;
+if (config.TWILIO_ACCT_SID && config.TWILIO_AUTH_TOKEN) {
+  twilio = require("twilio")(config.TWILIO_ACCT_SID,
+                                 config.TWILIO_AUTH_TOKEN);
+}
 
 // Used to store the schedule for turning on/off the
 // watering system, as well as store moisture data
@@ -55,24 +89,14 @@ for (var i = 0; i < 24; i++) {
 // Helper function to convert a value to an integer
 function toInt(h) { return +h; }
 
-// Display and then store record in the remote datastore
+// Display and then store record in the remote datastore/mqtt server
 // of each time a watering system event has occurred
 function log(event) {
   console.log(event);
-  if (!config.SERVER || !config.AUTH_TOKEN) {
-    return;
-  }
+  var payload = { value: event + " " + new Date().toISOString() };
 
-  function callback(err, res) {
-    if (err) { return console.error("err:", res.text); }
-    console.log("Server notified");
-  }
-
-  request
-    .put(config.SERVER)
-    .set("X-Auth-Token", config.AUTH_TOKEN)
-    .send({ value: event + " " + new Date().toISOString() })
-    .end(callback);
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
 }
 
 // Generates a later schedule for when the water should be turned on

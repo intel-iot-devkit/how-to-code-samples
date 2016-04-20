@@ -52,18 +52,12 @@
         clean();
         append(background);
 
-        var start = 0,
-            prev = false;
-
+        var start = 0;
         for (var i = 0; i < degrees.length; i++) {
-          var current = degrees[i];
-          if (!prev && current) { start = i }
-
-          if (prev && !current || i === degrees.length - 1) {
-            append(arc(start, i), "red");
-          }
-
-          prev = current;
+	  var current = degrees[i];
+	  if(current ){
+	    append(arc(i, i+1), "red");
+	  }
         }
       }
 
