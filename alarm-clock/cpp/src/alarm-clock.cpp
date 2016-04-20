@@ -1,24 +1,59 @@
 /*
- * Copyright (c) 2015 Intel Corporation.
+* Copyright (c) 2015-2016 Intel Corporation.
+*
+* Permission is hereby granted, free of charge, to any person (“User”) obtaining
+* a copy of this software and associated documentation files (the
+* "Software"), to deal in the Software without restriction, including
+* without limitation the rights to use, copy, modify, merge, publish,
+* distribute, sublicense, and/or sell copies of the Software, and to
+* permit persons to whom the Software is furnished to do so, subject to
+* the following conditions:
+*
+* The above copyright notice and this permission notice shall be
+* included in all copies or substantial portions of the Software.
+*
+* User understands, acknowledges, and agrees that: (i) the Software is sample software;
+* (ii) the Software is not designed or intended for use in any medical, life-saving
+* or life-sustaining systems, transportation systems, nuclear systems, or for any
+* other mission-critical application in which the failure of the system could lead to
+* critical injury or death; (iii) the Software may not be fully tested and may contain
+* bugs or errors; (iv) the Software is not intended or suitable for commercial release;
+* (v) no regulatory approvals for the Software have been obtained, and therefore Software
+* may not be certified for use in certain countries or environments.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+* NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+* LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+* OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+* WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+/**
+ * @file
+ * @ingroup howtocode
+ * @brief Alarm clock in C++
  *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to
- * the following conditions:
+ * This alarm-clock application is part of a series of how-to Intel IoT code
+ * sample exercises using the IntelÂ® IoT Developer Kit, IntelÂ® Edison board,
+ * cloud platforms, APIs, and other technologies.
  *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
+ * @hardware Sensors used:\n
+ * Grove Rotary Angle Sensor\n
+ * Grove Button\n
+ * Grove Buzzer\n
+ * Grove RGB LCD\n
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * @cc
+ * @cxx -std=c++1y
+ * @ld -lupm-i2clcd -lupm-buzzer -lpaho-mqtt3cs -lupm-grove -lboost_system -lboost_thread -lboost_filesystem -lboost_date_time -lpthread -lcurl
+ *
+ * Additional source files required to build this example:
+ * @req datastore.cpp
+ * @req mqtt.cpp
+ *
+ * @date 04/04/2016
  */
 
 #include <stdlib.h>
@@ -34,6 +69,9 @@
 #include <jhd1313m1.h>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
+
+#include "datastore.h"
+#include "mqtt.h"
 
 #include "../lib/crow/crow_all.h"
 #include "index_html.h"
@@ -157,24 +195,16 @@ bool time_for_alarm(std::time_t& alarm) {
   } else return false;
 }
 
-// Call datastore to log how long it took to wake up today
+// Call datastore/mqtt server to log how long it took to wake up today
 void log_wakeup() {
   double duration = elapsed(alarmTime);
   std::cerr << "Alarm duration: " << std::to_string(duration) << std::endl;
 
-  if (!getenv("SERVER") || !getenv("AUTH_TOKEN")) {
-    return;
-  }
-
   std::stringstream text;
   text << "{\"value\": \"" << std::to_string(duration) << "\"}";
 
-  RestClient::headermap headers;
-  headers["X-Auth-Token"] = getenv("AUTH_TOKEN");
-
-  RestClient::response r = RestClient::put(getenv("SERVER"), "text/json", text.str(), headers);
-  std::cout << "Datastore called. Result:" << r.code << std::endl;
-  std::cout << r.body << std::endl;
+  log_mqtt(text.str());
+  log_datastore(text.str());
 }
 
 // Call weather underground API to get current weather conditions

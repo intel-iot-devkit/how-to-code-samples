@@ -54,6 +54,7 @@
 									<listOptionValue builtIn="false" value="boost_date_time"/>
 									<listOptionValue builtIn="false" value="pthread"/>
 									<listOptionValue builtIn="false" value="curl"/>
+									<listOptionValue builtIn="false" value="paho-mqtt3cs"/>
 								</option>
 								<option id="com.intel.iotdevkit.ide.gnu.cpp.option.link.misc.other.2008281724" name="Miscellaneous" superClass="com.intel.iotdevkit.ide.gnu.cpp.option.link.misc.other" value="" valueType="string"/>
 								<option id="gnu.cpp.link.option.other.1550550857" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other"/>
