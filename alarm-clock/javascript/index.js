@@ -136,7 +136,7 @@ function getWeather() {
 // Display and then store record in the remote datastore and/or mqtt server
 // of how long the alarm was ringing before it was turned off
 function notify(duration) {
-  console.log("Alarm duration:" + duration);
+  console.log("Alarm duration (ms):" + duration);
 
   var payload = { value: duration };
   datastore.log(config, payload);
