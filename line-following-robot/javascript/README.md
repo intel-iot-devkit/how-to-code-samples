@@ -52,9 +52,17 @@ In Intel® XDK IoT Edition, select **Import Your Node.js Project**:
 
 ![](./../../images/js/xdk-menu.png)
 
+On the **New Project** screen, click on the folder icon:
+
+![](./../../images/js/xdk-new-project.png)
+
 Then, navigate to the directory where the example project exists, and select it:
 
 ![](./../../images/js/xdk-select.png)
+
+Choose a name for the project, then click on the **Create** button. Then click on the **Continue** button to finish creating your project:
+
+![](./../../images/js/xdk-new-project-name.png)
 
 You need to connect to your Intel® Edison board from your computer to send code to it.
 
