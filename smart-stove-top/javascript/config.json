@@ -1,5 +1,3 @@
 {
- "SERVER": "http://intel-examples.azurewebsites.net/logger/stove-top",
- "AUTH_TOKEN": "s3cr3t",
  "TARGET_TEMP": 30
 }

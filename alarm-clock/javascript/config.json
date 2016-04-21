@@ -1,6 +1,2 @@
 {
- "WEATHER_API_KEY": "abc123",
- "LOCATION": "San_Francisco",
- "SERVER": "http://intel-examples.azurewebsites.net/logger/alarm-clock",
- "AUTH_TOKEN": "s3cr3t"
 }
