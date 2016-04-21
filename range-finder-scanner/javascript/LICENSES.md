@@ -1,29 +1,20 @@
-# Licenses
+Copyright (c) 2015 - 2016 Intel Corporation.
 
-## UPM
-License: MIT, BSD, Boost Software License, Creative Commons Legal Code
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
 
-https://github.com/intel-iot-devkit/upm/blob/master/LICENSE
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
 
-https://github.com/intel-iot-devkit/upm/blob/master/src/st7735/license.txt
-
-https://github.com/intel-iot-devkit/upm/blob/master/src/pn532/license.txt
-
-https://github.com/intel-iot-devkit/upm/blob/master/cmake/modules/LICENSE_1_0.txt
-
-https://github.com/intel-iot-devkit/upm/blob/master/docs/images/LICENSE_CC_3_0.txt
-
-## MRAA
-License: MIT, Boost Software License, GNU LESSER GENERAL PUBLIC LICENSE, CMake - Cross Platform Makefile Generator
-
-https://github.com/intel-iot-devkit/mraa/blob/master/COPYING
-
-https://github.com/intel-iot-devkit/mraa/blob/master/cmake/modules/LICENSE_1_0.txt
-
-https://github.com/intel-iot-devkit/mraa/blob/master/cmake/modules/LICENSE.LGPL
-
-https://github.com/intel-iot-devkit/mraa/blob/master/cmake/modules/Copyright.txt
-
-## Express.js
-License: MIT
-https://github.com/strongloop/express/blob/master/LICENSE
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
