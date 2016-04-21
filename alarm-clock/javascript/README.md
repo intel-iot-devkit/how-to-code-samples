@@ -56,6 +56,10 @@ In Intel® XDK IoT Edition, select **Import Your Node.js Project**:
 
 ![](./../../images/js/xdk-menu.png)
 
+On the "New Project" screen, click on the folder icon:
+
+![](./../../images/js/xdk-new-project.png)
+
 Then, navigate to the directory where the example project exists, and select it:
 
 ![](./../../images/js/xdk-select.png)
