@@ -46,6 +46,10 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
+// The program is using the `superagent` module
+// to make the remote calls to the Weather Underground API
+var request = require("superagent");
+
 // Initialize the hardware devices
 var buzzer = new (require("jsupm_buzzer").Buzzer)(5),
     button = new (require("jsupm_grove").GroveButton)(4),
