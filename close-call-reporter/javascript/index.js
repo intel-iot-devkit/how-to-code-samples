@@ -105,7 +105,7 @@ function report() {
   mqtt.log(config, payload);
 }
 
-// The main function checks the distance sensor every 100ms,
+// The main function checks the distance sensor every 1 second,
 // and if any object is detected that is too close, it stores
 // that the event occured in the remote datastore
 function main() {
@@ -122,7 +122,7 @@ function main() {
     if (LOCATION && close && !prev) { report(); }
 
     prev = close;
-  }, 100);
+  }, 1000);
 }
 
 main();

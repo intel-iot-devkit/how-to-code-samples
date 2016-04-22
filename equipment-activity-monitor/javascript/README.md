@@ -131,7 +131,7 @@ To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, 
 
 ```
 {
-  "VIBRATION_THRESHOLD": 500,
+  "VIBRATION_THRESHOLD": 100,
   "NOISE_THRESHOLD": 140,
   "SERVER": "http://intel-examples.azurewebsites.net/logger/equipment-activity",
   "AUTH_TOKEN": "s3cr3t"
