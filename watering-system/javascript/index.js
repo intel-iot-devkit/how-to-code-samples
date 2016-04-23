@@ -71,7 +71,8 @@ if (config.TWILIO_ACCT_SID && config.TWILIO_AUTH_TOKEN) {
 // watering system, as well as store moisture data
 var SCHEDULE = {},
     MOISTURE = [],
-    intervals = [];
+    intervals = [],
+    smsSent = false;
 
 // Initialize the hardware devices
 var moisture = new (require("jsupm_grovemoisture").GroveMoisture)(0),
@@ -124,6 +125,11 @@ function alert() {
     return;
   }
 
+  // only send an SMS every 1 minute
+  if (smsSent) {
+    return;
+  }
+
   var opts = { to: config.NUMBER_TO_SEND_TO,
                from: config.TWILIO_OUTGOING_NUMBER,
                body: "watering system alarm" };
@@ -132,6 +138,11 @@ function alert() {
     if (err) { return console.error("err:", err); }
     console.log("SMS sent", response);
   });
+
+  smsSent = true;
+  setTimeout(function() {
+    smsSent = false;
+  }, 1000 * 60);
 }
 
 // Check that water is flowing

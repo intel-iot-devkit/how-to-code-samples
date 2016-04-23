@@ -65,6 +65,7 @@ var mqtt = require("./mqtt");
 // to make the remote calls to Twilio service
 // to send SMS alerts
 var twilio;
+var smsSent = false;
 if (config.TWILIO_ACCT_SID && config.TWILIO_AUTH_TOKEN) {
   twilio = require("twilio")(config.TWILIO_ACCT_SID,
                              config.TWILIO_AUTH_TOKEN);
@@ -109,6 +110,11 @@ function notifySMS() {
     return;
   }
 
+  // only send an SMS every 1 minute
+  if (smsSent) {
+    return;
+  }
+
   var opts = { to: config.NUMBER_TO_SEND_TO,
                from: config.TWILIO_OUTGOING_NUMBER,
                body: "fire alarm" };
@@ -118,6 +124,11 @@ function notifySMS() {
     if (err) { return console.error("err:", err); }
     console.log("SMS sent", response);
   });
+
+  smsSent = true;
+  setTimeout(function() {
+    smsSent = false;
+  }, 1000 * 60);
 }
 
 // Display and then store record in the remote datastore
