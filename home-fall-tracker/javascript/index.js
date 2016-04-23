@@ -57,6 +57,7 @@ var screen = new (require("jsupm_i2clcd").SSD1308)(0, 0x3C),
 // to make the remote calls to Twilio service
 // to send SMS alerts
 var twilio;
+var smsSent = false;
 if (config.TWILIO_ACCT_SID && config.TWILIO_AUTH_TOKEN) {
   twilio = require("twilio")(config.TWILIO_ACCT_SID,
                              config.TWILIO_AUTH_TOKEN);
@@ -94,6 +95,12 @@ function alertSMS() {
   if (!config.TWILIO_ACCT_SID || !config.TWILIO_AUTH_TOKEN) {
     return;
   }
+
+  // only send SMS every 1 minute
+  if (smsSent) {
+    return;
+  }
+
   var opts = { to: config.NUMBER_TO_SEND_TO,
                from: config.TWILIO_OUTGOING_NUMBER,
                body: "fall detected" };
@@ -102,6 +109,11 @@ function alertSMS() {
     if (err) { return console.error("err:", err); }
     console.log("SMS sent", response);
   });
+
+  smsSent = true;
+  setTimeout(function() {
+    smsSent = false;
+  }, 1000 * 60);
 }
 
 // Sends SMS and logs record in the remote datastore/mqtt server
