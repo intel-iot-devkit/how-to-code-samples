@@ -63,8 +63,8 @@
 #include <vector>
 #include <signal.h>
 
-#include <grove.h>
-#include <buzzer.h>
+#include <grove.hpp>
+#include <buzzer.hpp>
 #include <jhd1313m1.h>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"

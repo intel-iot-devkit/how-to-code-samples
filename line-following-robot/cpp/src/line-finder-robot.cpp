@@ -64,8 +64,8 @@
 #include <ctime>
 #include <signal.h>
 
-#include <grovelinefinder.h>
-#include <uln200xa.h>
+#include <grovelinefinder.hpp>
+#include <uln200xa.hpp>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 

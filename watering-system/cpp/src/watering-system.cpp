@@ -69,8 +69,8 @@ using std::string;
 using std::vector;
 
 #include <mraa.hpp>
-#include <grovewfs.h>
-#include <grovemoisture.h>
+#include <grovewfs.hpp>
+#include <grovemoisture.hpp>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 

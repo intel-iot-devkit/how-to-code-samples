@@ -65,8 +65,8 @@
 #include <signal.h>
 #include <math.h>
 
-#include <uln200xa.h>
-#include <joystick12.h>
+#include <uln200xa.hpp>
+#include <joystick12.hpp>
 
 #include "html.h"
 #include "css.h"

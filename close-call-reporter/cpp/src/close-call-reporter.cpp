@@ -62,8 +62,8 @@
 #include <string>
 #include <signal.h>
 
-#include <ublox6.h>
-#include <rfr359f.h>
+#include <ublox6.hpp>
+#include <rfr359f.hpp>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 

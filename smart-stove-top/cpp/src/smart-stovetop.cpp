@@ -58,10 +58,10 @@
 #include <string>
 #include <signal.h>
 
-#include <grove.h>
-#include <yg1006.h>
-#include <otp538u.h>
-#include <grovespeaker.h>
+#include <grove.hpp>
+#include <yg1006.hpp>
+#include <otp538u.hpp>
+#include <grovespeaker.hpp>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 #include "datastore.h"

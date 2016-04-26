@@ -59,7 +59,7 @@
 #include <ctime>
 #include <signal.h>
 
-#include <mma7660.h>
+#include <mma7660.hpp>
 #include <jhd1313m1.h>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
