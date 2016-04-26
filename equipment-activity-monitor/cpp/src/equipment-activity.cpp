@@ -63,8 +63,8 @@
 #include <ctime>
 #include <signal.h>
 
-#include <mic.h>
-#include <ldt0028.h>
+#include <mic.hpp>
+#include <ldt0028.hpp>
 #include <jhd1313m1.h>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"

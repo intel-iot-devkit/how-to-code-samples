@@ -61,8 +61,8 @@
 #include <sstream>
 #include <signal.h>
 
-#include <ttp223.h>
-#include <buzzer.h>
+#include <ttp223.hpp>
+#include <buzzer.hpp>
 #include <jhd1313m1.h>
 
 #include "datastore.h"
