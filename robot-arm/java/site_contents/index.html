@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Robot Arm</title>
+  </head>
+  <body>
+    <h1>Robot Arm</h1>
+
+    <div id="one">
+      <h4>Servo 1</h4>
+      <button id="one-cw">Clockwise</button>
+      <button id="one-ccw">Counterclockwise</button>
+    </div>
+
+    <div id="two">
+      <h4>Servo 2</h4>
+      <button id="two-cw">Clockwise</button>
+      <button id="two-ccw">Counterclockwise</button>
+    </div>
+
+    <script>
+      ["one", "two"].forEach(function(servo) {
+        ["cw", "ccw"].forEach(function(direction) {
+          var path = servo + "-" + direction;
+
+          function send() {
+            var req = new XMLHttpRequest();
+            req.open("post", "/" + path, true);
+            req.send();
+          }
+
+          document.getElementById(path).addEventListener("click", send);
+        });
+      });
+    </script>
+  </body>
+</html>

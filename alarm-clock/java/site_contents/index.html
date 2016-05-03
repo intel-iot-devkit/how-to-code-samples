@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Alarm Clock</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <h1>Alarm Clock</h1>
+
+    <form>
+      <label for="hour">Hour</label>
+      <select id="hour" name="hour"></select>
+
+      <label for="minute">Minute</label>
+      <select id="minute" name="minute"></select>
+
+      <label for="second">Second</label>
+      <select id="second" name="second"></select>
+
+      <input type="submit" value="Set Alarm">
+    </form>
+
+    <script>
+      // use JS to populate form drop-downs
+      var hour = document.getElementById("hour"),
+          minute = document.getElementById("minute"),
+          second = document.getElementById("second");
+
+      function option(num) {
+        var opt = document.createElement("option");
+        opt.setAttribute("value", num);
+        opt.text = num.toString();
+        return opt;
+      }
+
+      function range(start, end) {
+        var arr = [start];
+
+        start++;
+
+        while(start <= end) {
+          arr.push(start);
+          start++;
+        }
+
+        return arr;
+      }
+
+      function setAlarm(req) {
+        var json;
+
+        try {
+          json = JSON.parse(this.response);
+        } catch (e) {
+          return; // unable to parse JSON, something went wrong
+        }
+
+        hour.value = json.hour;
+        minute.value = json.minute;
+        second.value = json.second;
+      }
+
+      function fetch() {
+        var req = new XMLHttpRequest();
+        req.addEventListener("load", setAlarm);
+        req.open("get", "/alarm.json", true);
+        req.send();
+      }
+
+      function main() {
+        range(0, 23).map(option).forEach(function(opt) { hour.add(opt); });
+        range(0, 59).map(option).forEach(function(opt) { minute.add(opt); });
+        range(0, 59).map(option).forEach(function(opt) { second.add(opt); });
+
+        fetch();
+      }
+
+      main();
+    </script>
+  </body>
+</html>
