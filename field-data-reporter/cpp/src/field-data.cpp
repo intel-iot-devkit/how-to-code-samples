@@ -62,7 +62,7 @@
 #include <ctime>
 
 #include <ssd1308.h>
-#include <at42qt1070.h>
+#include <at42qt1070.hpp>
 #include <bmpx8x.h>
 #define OLED_DEVICE_ADDRESS    0x3C
 #define OLED_BUS_NUMBER        0x0

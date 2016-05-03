@@ -65,8 +65,8 @@
 #include <array>
 #include <string>
 
-#include <uln200xa.h>
-#include <rfr359f.h>
+#include <uln200xa.hpp>
+#include <rfr359f.hpp>
 
 #include "../lib/crow/crow_all.h"
 #include "html.h"

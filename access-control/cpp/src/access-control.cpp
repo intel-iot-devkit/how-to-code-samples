@@ -65,7 +65,7 @@
 #include <string>
 
 #include <jhd1313m1.h>
-#include "biss0001.h"
+#include "biss0001.hpp"
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 

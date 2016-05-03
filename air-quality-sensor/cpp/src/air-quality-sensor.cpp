@@ -64,7 +64,7 @@
 #include <string>
 #include <signal.h>
 
-#include <grovespeaker.h>
+#include <grovespeaker.hpp>
 #include "tp401.h"
 
 #define WARNING_THRESHOLD 200

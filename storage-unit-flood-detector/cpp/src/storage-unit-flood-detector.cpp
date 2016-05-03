@@ -59,9 +59,9 @@
 #include <ctime>
 #include <sstream>
 
-#include <grove.h>
-#include <grovemoisture.h>
-#include <grovespeaker.h>
+#include <grove.hpp>
+#include <grovemoisture.hpp>
+#include <grovespeaker.hpp>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 

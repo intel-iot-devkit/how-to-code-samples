@@ -67,7 +67,7 @@ using std::vector;
 #include <ssd1308.h>
 #define OLED_DEVICE_ADDRESS    0x3C
 #define OLED_BUS_NUMBER        0x0
-#include <adxl345.h>
+#include <adxl345.hpp>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
