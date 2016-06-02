@@ -177,7 +177,7 @@ You will see output similar to the following when the program is running.
 
 ![](./../../images/java/watering-system-web.png)
 
-The schedule for the lighting system is set using a single-page web interface served from Intel® Edison while the sample program is running.
+The schedule for the lighting system is set using a single-page web interface served from the Intel® Edison board while the sample program is running.
 
 The web server runs on port `8080`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
 
