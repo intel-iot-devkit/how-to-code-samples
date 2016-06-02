@@ -153,7 +153,7 @@ The IP address is shown next to `inet`. In the example above, the IP address is 
 
 ### Determining the IP address of the Intel® Edison board when connected via ethernet
 
-If you are using an Intel® Galileo, which connects via an ethernet cable, run the following command:
+If you are using an Intel® Galileo board, which connects via an ethernet cable, run the following command:
 
 	ip addr show 
 
