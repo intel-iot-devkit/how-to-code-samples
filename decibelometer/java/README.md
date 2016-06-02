@@ -1,8 +1,8 @@
-# Decibelometer
+# Sound detector
 
 ## Introduction
 
-This Decibelometer system application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This sound detector system application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
@@ -18,7 +18,7 @@ Using an Intel® Edison board, this project lets you create a smart loudness det
 
 ## How it works
 
-This decibelometer monitor uses the sensor to constantly keep track of the decibel level in a room.
+This sound detector monitor uses the sensor to constantly keep track of the decibel level in a room.
 Every 1sec the sensor finds the average sound samples and prints it to the RGB lcd screen.
 
 
@@ -57,7 +57,7 @@ In Intel® System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java
 
 ![](./../../images/java/new project.png)
 
-Give the project the name "Decibelometer" and click Next.
+Give the project the name "SoundDetector" and click Next.
 
 ![](./../../images/java/project name.png)
 
@@ -110,7 +110,7 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 
 ```
 
-  SERVER: "http://intel-examples.azurewebsites.net/logger/decibelometer"
+  SERVER: "http://intel-examples.azurewebsites.net/logger/sounddetector"
   AUTH_TOKEN: "s3cr3t"
 
 ```
