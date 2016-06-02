@@ -1,8 +1,8 @@
-# Simon Says game
+# Color match game
 
 ## Introduction
 
-This Simon Says game is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This color match game is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
@@ -12,8 +12,8 @@ From this exercise, developers will learn how to:<br>
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a Simon Says game<br>
-- a UI of the game is exposed through an embedded server, providing with the classic Simon Says buttons as well as a "start game" button<br>
+Using an Intel® Edison board, this project lets you create a color match game<br>
+- a UI of the game is exposed through an embedded server, providing with buttons for color matching as well as a "start game" button<br>
 - when starting the game, for each level a sequence of colors is displayed on the RGB LCD screen of the Intel® Edison board. The player needs to click on the corresponding buttons on the website.
 - for each level the sequence has one more color<br>
 - when a user clicks a color, the same color is displayed on the RGB LCD screen.
@@ -49,7 +49,7 @@ In Intel® System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java
 
 ![](./../../images/java/new project.png)
 
-Give the project the name "SimonSays" and click Next.
+Give the project the name "ColorMatch" and click Next.
 
 ![](./../../images/java/project name.png)
 
@@ -100,7 +100,7 @@ In order for the sample to run you will need to copy some files to the Intel® E
 Two sorts of files need to be copied from the sample repository:<br>
 
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
-2. web files- files within site_contents folder need to be copied to "/var/SimonSays"
+2. web files- files within site_contents folder need to be copied to "/var/ColorMatch"
 
 
 
@@ -122,7 +122,7 @@ You will see output similar to the following when the program is running.
 
 ![](./../../images/java/simon-says-web.JPG)
 
-The Simon says game is set using a single-page web interface served from the Intel® Edison board while the sample program is running.
+The color match game is set using a single-page web interface served from the Intel® Edison board while the sample program is running.
 
 The web server runs on port `8080`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080/home`.
 
