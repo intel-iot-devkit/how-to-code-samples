@@ -26,7 +26,7 @@ Optionally, it can store system events using the Intel IoT Examples Datastore ru
 
 Grove* Robotics Kit containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison platform with an Arduino* breakout board
 2. [Grove* Line Finder](http://iotdk.intel.com/docs/master/upm/node/classes/grovelinefinder.html)
 3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html) (x2)
 
@@ -59,7 +59,7 @@ Give the project the name "LineFollowingRobot" and click Next.
 ![](./../../images/java/project name.png)
 
 You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the Edison's IP address in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -89,7 +89,7 @@ The jars can be found at the IOT Devkit installation root path\iss-iot-win\devki
 
 You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
-You need to power Intel® Edison with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
+You need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
 In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison board and the motors, so you need either 2 batteries or 2 power supplies in total.
 
@@ -105,9 +105,9 @@ For information on how to set up your own cloud data server, go to:
 
 <a href="https://github.com/intel-iot-devkit/intel-iot-examples-datastore">https://github.com/intel-iot-devkit/intel-iot-examples-datastore</a>
 
-## Preparing Edison before running the project
+## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to Edison. This can be done using SCP through SSH.<br>
+In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.<br>
 The files need to be copied from the sample repository: <br>
 Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 
@@ -128,14 +128,14 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 
 When you're ready to run the example, make sure you saved all the files.
 
-Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
 
 
-### Determining the Intel® Edison IP address
+### Determining the IP address of the Intel® Edison board
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 

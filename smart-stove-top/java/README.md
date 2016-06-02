@@ -20,7 +20,7 @@ Using an Intel® Edison board, this project lets you create a smart stove top th
 ## How it works
 
 This smart stove top sensor has a number of useful features designed to help you monitor the temperature of the food you are cooking on your legacy stove top.
-Set the target temperature for a pot on your range top via a web page served directly from Intel® Edison, using your mobile phone.
+Set the target temperature for a pot on your range top via a web page served directly from the Intel® Edison board, using your mobile phone.
 When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, alarm goes off.
 Optionally, all data can also be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
 
@@ -28,7 +28,7 @@ Optionally, all data can also be stored using the Intel IoT Examples Datastore r
 
 Grove* Home Automation Kit containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison platform with an Arduino* breakout board
 2. [Grove* IR Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/otp538u.html)
 3. [Grove* Flame Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/yg1006.html)
 4. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
@@ -62,7 +62,7 @@ Give the project the name "SmartStoveTop" and click Next.
 ![](./../../images/java/project name.png)
 
 You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the Edison's IP address in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -119,9 +119,9 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 ```
 
 
-## Preparing Edison before running the project
+## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to Edison. This can be done using SCP through SSH.
+In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.
 Two sorts of files need to be copied from the sample repository:
 
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
@@ -133,7 +133,7 @@ Two sorts of files need to be copied from the sample repository:
 
 When you're ready to run the example, make sure you saved all the files.
 
-Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
 
@@ -147,13 +147,13 @@ You will see output similar to the following when the program is running.
 
 ![](./../../images/java/smart-stove-web.png)
 
-The target temperature is set using a single-page web interface served from Intel® Edison while the sample program is running.
+The target temperature is set using a single-page web interface served from the Intel® Edison board while the sample program is running.
 
-The web server runs on port `8080`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
+The web server runs on port `8080`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
 
-### Determining the Intel® Edison IP address
+### Determining the IP address of the the Intel® Edison board
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 

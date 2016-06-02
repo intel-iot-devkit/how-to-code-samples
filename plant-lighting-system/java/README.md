@@ -4,25 +4,27 @@
 
 This automatic plant lighting system monitor application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
-From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® System Studio IoT Edition . Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.<br>
-- Set up a web application server to set the alarm time and store this alarm data using Azure Redis Cache* from Microsoft* Azure\*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.<br>
+From this exercise, developers will learn how to:
+
+- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run this code sample in Intel® System Studio IoT Edition . Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.
+- Set up a web application server to set the alarm time and store this alarm data using Azure Redis Cache* from Microsoft* Azure\*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Invoke the services of the Weather Underground* API for accessing weather data.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create an automatic plant lighting monitor system that:<br>
-- checks if a separate automated lighting system is turned on or off based on a configurable schedule, by using a light sensor;<br>
-- can be accessed with your mobile phone via the built-in web interface to set the lighting times;<br>
-- also monitors the water levels using a connected moisture sensor;<br>
-- logs events from the lighting system, using cloud-based data storage;<br>
+Using an Intel® Edison board, this project lets you create an automatic plant lighting monitor system that:
+
+- checks if a separate automated lighting system is turned on or off based on a configurable schedule, by using a light sensor;
+- can be accessed with your mobile phone via the built-in web interface to set the lighting times;
+- also monitors the water levels using a connected moisture sensor;
+- logs events from the lighting system, using cloud-based data storage;
 - sends text messages to alert recipients if the system if not working as expected.
 
 ## How it works
 
-The system allows setting the lighting schedule via a web page served directly from Intel® Edison by using your mobile phone.
+The system allows setting the lighting schedule via a web page served directly from the Intel® Edison board by using your mobile phone.
 
 If the lighting is supposed to be on, but the light sensor does not detect any light, it sends a text alert to a specified number through Twilio*.
 
@@ -34,7 +36,7 @@ Optionally, it can store system events using the Intel IoT Examples Datastore ru
 
 Grove* Indoor Environment Kit containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison platform with an Arduino* breakout board
 2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
 3. [Grove* Light Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovelight.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
@@ -69,7 +71,7 @@ Give the project the name "PlantLightingSystem" and click Next.
 ![](./../../images/java/project name.png)
 
 You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the Edison's IP address in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -134,9 +136,9 @@ Also, to configure the example for the optional Microsoft* Azure* data store, ch
 ```
 
 
-## Preparing Edison before running the project
+## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to Edison. This can be done using SCP through SSH.
+In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.
 Two sorts of files need to be copied from the sample repository:<br>
 
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
@@ -148,7 +150,7 @@ Two sorts of files need to be copied from the sample repository:<br>
 
 When you're ready to run the example, make sure you saved all the files.
 
-Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
 
@@ -162,13 +164,13 @@ You will see output similar to the following when the program is running.
 
 ![](./../../images/java/lighting-system-web.png)
 
-The schedule for the lighting system is set using a single-page web interface served from Intel® Edison while the sample program is running.
+The schedule for the lighting system is set using a single-page web interface served from the Intel® Edison board while the sample program is running.
 
-The web server runs on port `8080`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
+The web server runs on port `8080`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
 
-### Determining the Intel® Edison IP address
+### Determining the IP address of the Intel® Edison board
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 

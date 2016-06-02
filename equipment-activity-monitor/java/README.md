@@ -31,7 +31,7 @@ Optionally, equipment usage start/stop events can also be stored using the Intel
 
 Grove* Starter Kit Plus containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison platform with an Arduino* breakout board
 2. [Grove* Sound Sensor](http://www.seeedstudio.com/depot/Grove-Sound-Sensor-p-752.html)
 3. [Grove* Piezo Vibration Sensor](http://www.seeedstudio.com/depot/Grove-Piezo-Vibration-Sensor-p-1411.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
@@ -65,7 +65,7 @@ Give the project the name "EquipmentActivityMonitor" and click Next.
 ![](./../../images/java/project name.png)
 
 You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the Edison's IP address in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -123,9 +123,9 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 ```
 To control sensor thresholds change the "VIBRATION_THRESHOLD" and "NOISE_THRESHOLD" keys in the configuration
 
-## Preparing Edison before running the project
+## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to Edison. This can be done using SCP through SSH:<br>
+In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH:<br>
 The files need to be copied from the sample repository: <br>
 Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 
@@ -136,14 +136,14 @@ Jar files- external libraries in the project need to be copied to "/usr/lib/java
 
 When you're ready to run the example, make sure you saved all the files.
 
-Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
 
 
-### Determining the Intel® Edison IP address
+### Determining the IP address of the Intel® Edison board
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 
