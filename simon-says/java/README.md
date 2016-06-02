@@ -14,7 +14,7 @@ From this exercise, developers will learn how to:<br>
 
 Using an Intel® Edison board, this project lets you create a Simon Says game<br>
 - a UI of the game is exposed through an embedded server, providing with the classic Simon Says buttons as well as a "start game" button<br>
-- when starting the game, for each level a sequence of colors is displayed on the Edison's RGB LCD screen. The player needs to click on the corresponding buttons on the website.
+- when starting the game, for each level a sequence of colors is displayed on the RGB LCD screen of the Intel® Edison board. The player needs to click on the corresponding buttons on the website.
 - for each level the sequence has one more color<br>
 - when a user clicks a color, the same color is displayed on the RGB LCD screen.
 - different tones are played when user clicks on color buttons.
@@ -23,7 +23,7 @@ Using an Intel® Edison board, this project lets you create a Simon Says game<br
 
 Grove* Indoor Environment Kit containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison platform with an Arduino* breakout board
 2. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 
@@ -54,7 +54,7 @@ Give the project the name "SimonSays" and click Next.
 ![](./../../images/java/project name.png)
 
 You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the Edison's IP address in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -94,9 +94,9 @@ For information on how to set up your own cloud data server, go to:
 
 <a href="https://github.com/intel-iot-devkit/intel-iot-examples-datastore">https://github.com/intel-iot-devkit/intel-iot-examples-datastore</a>
 
-## Preparing Edison before running the project
+## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to Edison. This can be done using SCP through SSH.
+In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.
 Two sorts of files need to be copied from the sample repository:<br>
 
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
@@ -108,7 +108,7 @@ Two sorts of files need to be copied from the sample repository:<br>
 
 When you're ready to run the example, make sure you saved all the files.
 
-Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
 
@@ -122,13 +122,13 @@ You will see output similar to the following when the program is running.
 
 ![](./../../images/java/simon-says-web.JPG)
 
-The simon says game is set using a single-page web interface served from Intel® Edison while the sample program is running.
+The Simon says game is set using a single-page web interface served from the Intel® Edison board while the sample program is running.
 
-The web server runs on port `8080`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080/home`.
+The web server runs on port `8080`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080/home`.
 
-### Determining the Intel® Edison IP address
+### Determining the IP address of the Intel® Edison board
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 

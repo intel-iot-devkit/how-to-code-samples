@@ -27,7 +27,7 @@ Optionally, doorbell ring data can also be stored using the Intel IoT Examples D
 
 Grove* Starter Kit Plus containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison platform with an Arduino* breakout board
 2. [Grove* Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/ttp223.html)
 3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
@@ -60,7 +60,7 @@ Give the project the name "Doorbell" and click Next.
 ![](./../../images/java/project name.png)
 
 You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the Edison's IP address in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -117,9 +117,9 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 }
 ```
 
-## Preparing Edison before running the project
+## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to Edison. Two sorts of files need to be copied from the sample repository:
+In order for the sample to run you will need to copy some files to the Intel® Edison board. Two sorts of files need to be copied from the sample repository:
 
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 
@@ -128,7 +128,7 @@ In order for the sample to run you will need to copy some files to Edison. Two s
 
 When you're ready to run the example, make sure you saved all the files.
 
-Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
 
@@ -138,9 +138,9 @@ You will see output similar to the following when the program is running.
 
 ![](./../../images/java/looks when running.png)
 
-### Determining the Intel® board's IP address, when connected via wireless
+### Determining the IP address of the Intel® Edison board when connected via wireless
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 
@@ -151,9 +151,9 @@ You will see the output similar to the following:
 
 The IP address is shown next to `inet`. In the example above, the IP address is `192.168.1.13`.
 
-### Determining the Intel® board's IP address, when connected via ethernet
+### Determining the IP address of the Intel® Edison board when connected via ethernet
 
-If you are using an Intel® Galileo, which connects via an ethernet cable, run the following command:
+If you are using an Intel® Galileo board, which connects via an ethernet cable, run the following command:
 
 	ip addr show 
 

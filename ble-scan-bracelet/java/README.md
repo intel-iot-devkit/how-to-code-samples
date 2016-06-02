@@ -19,7 +19,7 @@ Using an Intel® Edison board, this project lets you create a BLE scan bracelet 
 
 ## How it works
 
-This BLE scanner bracelet uses a Xadow* expansion board for Intel® Edison and the OLED display included in the Xadow* kit.
+This BLE scanner bracelet uses a Xadow* expansion board for the Intel® Edison platform and the OLED display included in the Xadow* kit.
 
 With these components, we'll make a simple BLE scanner that displays information on the OLED display when BLE-equipped devices enter or exit its scanning range.
 
@@ -29,7 +29,7 @@ Optionally, all data can be stored using the Intel IoT Examples Datastore runnin
 
 Xadow* Starter Kit containing:
 
-1. Intel® Edison with a Xadow* expansion board
+1. Intel® Edison platform with a Xadow* expansion board
 2. [Xadow* - OLED display](http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
 
 
@@ -61,7 +61,7 @@ Give the project the name "BleScanBracelet" and click Next.
 ![](./../../images/java/project name.png)
 
 You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the Edison's IP address in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -85,9 +85,9 @@ The jars can be found at the IOT Devkit installation root path\iss-iot-win\devki
 
 ![](./../../images/java/add external jars to build path.png)
 
-### Set up Intel® Edison for BLE development
+### Set up the Intel® Edison board for BLE development
 
-To set up Intel® Edison for BLE, run the following command:
+To set up the Intel® Edison board for BLE, run the following command:
 
 ```
 rfkill unblock bluetooth
@@ -98,7 +98,7 @@ rfkill unblock bluetooth
 
 ![](./../../images/java/ble-scan.jpg)
 
-You need to have a Xadow* expansion board connected to Intel® Edison to plug in all the Xadow* devices.
+You need to have a Xadow* expansion board connected to the Intel® Edison board to plug in all the Xadow* devices.
 
 Plug one end of a Xadow* connector into the Xadow* OLED, and connect the other end to one of the side connectors on the Xadow* expansion board.
 
@@ -125,9 +125,9 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 ```
 
 
-## Preparing Edison before running the project
+## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to Edison. This can be done using SCP through SSH.
+In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.
 The files need to be copied from the sample repository: <br>
 Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 
@@ -138,14 +138,14 @@ Jar files- external libraries in the project need to be copied to "/usr/lib/java
 
 When you're ready to run the example, make sure you saved all the files.
 
-Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
 
 
-### Determining the Intel® Edison IP address
+### Determining the IP address of the Intel® Edison board
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 
