@@ -4,19 +4,21 @@
 
 This smart fire alarm application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
-From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® System Studio IoT Edition . Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.<br>
+From this exercise, developers will learn how to:
+
+- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run this code sample in Intel® System Studio IoT Edition. Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.
 - Invoke the services of the Twilio* API for sending text messages.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a smart fire alarm that:<br>
-- constantly monitors for unsafe temperature levels;<br>
-- issues an audible notification using the buzzer;<br>
-- issues a visual notification using the LCD;<br>
-- keeps track of fire events, using cloud-based data storage;<br>
+Using an Intel® Edison board, this project lets you create a smart fire alarm that:
+
+- constantly monitors for unsafe temperature levels;
+- issues an audible notification using the buzzer;
+- issues a visual notification using the LCD;
+- keeps track of fire events, using cloud-based data storage;
 - sends text messages to alert others of a possible fire.
 
 ## How it works
@@ -33,7 +35,7 @@ Optionally, it can log fire events using the Intel IoT Examples Datastore runnin
 
 Grove* Starter Kit Plus containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison platform with an Arduino* breakout board
 2. [Grove* Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
 3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
@@ -68,7 +70,7 @@ Give the project the name "FireAlarm" and click Next.
 ![](./../../images/java/project name.png)
 
 You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the Edison's IP address in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -145,9 +147,9 @@ Also, to configure the example for the optional Microsoft* Azure* data store, ch
 ```
 
 
-## Preparing Edison before running the project
+## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to Edison. This can be done using SCP through SSH.
+In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.
 
 The files need to be copied from the sample repository: <br>
 Jar files- external libraries in the project need to be copied to "/usr/lib/java"
@@ -159,14 +161,14 @@ Jar files- external libraries in the project need to be copied to "/usr/lib/java
 
 When you're ready to run the example, make sure you saved all the files.
 
-Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
 
 
-### Determining the Intel® Edison IP address
+### Determining the IP address of the Intel® Edison board
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 

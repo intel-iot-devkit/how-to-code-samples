@@ -29,7 +29,7 @@ Optionally, all data can also be stored using the Intel IoT Examples Datastore r
 
 Grove* Starter Kit Plus containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison platform with an Arduino* breakout board
 2. [Grove* Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/java/classupm__grove_1_1_grove_rotary.html)
 3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/java/classupm__buzzer_1_1_buzzer.html).
 4. [Grove* Button](http://iotdk.intel.com/docs/master/upm/java/classupm__grove_1_1_grove_button.html)
@@ -64,7 +64,7 @@ Give the project the name "AlarmClock" and click Next.
 ![](./../../images/java/project name.png)
 
 You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the Edison's IP address in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+Choose a name for the connection and enter IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -157,9 +157,9 @@ To configure the example for both the weather data and the Microsoft* Azure* dat
   AUTH_TOKEN: "s3cr3t"
 
 ```
-## Preparing Edison before running the project
+## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to Edison. This can be done using SCP through SSH.<br>
+In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.<br>
 Two sorts of files need to be copied from the sample repository:
 
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
@@ -171,7 +171,7 @@ Two sorts of files need to be copied from the sample repository:
 
 When you're ready to run the example, make sure you saved all the files.
 
-Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
 
@@ -187,11 +187,11 @@ You will see output similar to the following when the program is running.
 
 The alarm is set using a single-page web interface served directly from the Intel® Edison board while the sample program is running.
 
-The web server runs on port `8080`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
+The web server runs on port `8080`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
 
-### Determining the Intel® Edison IP address
+### Determining the IP address of the Intel® Edison board
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 

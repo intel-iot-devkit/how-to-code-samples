@@ -8,7 +8,7 @@ From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® System Studio IoT Edition . Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.<br>
-- Set up a web application server to view range finder data using a web page served directly from Intel® Edison.
+- Set up a web application server to view range finder data using a web page served directly from the Intel® Edison board.
 
 ## What it is
 
@@ -21,12 +21,12 @@ Using an Intel® Edison board, this project lets you create a range finding scan
 
 As the stepper motor turns, it pauses to get readings from the Grove* IR Distance Interrupter.
 
-These readings can be seen by viewing the web page served directly from Intel® Edison.
+These readings can be seen by viewing the web page served directly from the Intel® Edison board.
 ## Hardware requirements
 
 Grove* Indoor Environment Kit containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison platform with an Arduino* breakout board
 2. [Grove* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html)
 
@@ -58,7 +58,7 @@ Give the project the name "RangeFinderScanner" and click Next.
 ![](./../../images/java/project name.png)
 
 You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the Edison's IP address in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -88,7 +88,7 @@ The jars can be found at the IOT Devkit installation root path\iss-iot-win\devki
 
 You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
-You need to power Intel® Edison with the external power adaptor that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
+You need to power the Intel® Edison board with the external power adaptor that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
 In addition, you need a breadboard and an extra 5V power supply to provide power to the motor. Note: you need a separate battery or power supply for the motor. You cannot use the same power supply for both the Intel® Edison board and the motor, so you need either 2 batteries or 2 power supplies in total.
 
@@ -98,9 +98,9 @@ In addition, you need a breadboard and an extra 5V power supply to provide power
 
 
 
-## Preparing Edison before running the project
+## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to Edison. This can be done using SCP through SSH.
+In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.
 Two sorts of files need to be copied from the sample repository:<br>
 
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
@@ -112,7 +112,7 @@ Two sorts of files need to be copied from the sample repository:<br>
 
 When you're ready to run the example, make sure you saved all the files.
 
-Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
 
@@ -126,13 +126,13 @@ You will see output similar to the following when the program is running.
 
 ![](./../../images/java/range-finder-web.png)
 
-The schedule for the lighting system is set using a single-page web interface served from Intel® Edison while the sample program is running.
+The schedule for the lighting system is set using a single-page web interface served from the Intel® Edison board while the sample program is running.
 
-The web server runs on port `8080`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
+The web server runs on port `8080`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
 
-### Determining the Intel® Edison IP address
+### Determining the IP address of the Intel® Edison board
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 
