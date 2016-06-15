@@ -50,11 +50,23 @@ var config = JSON.parse(
 // to make the remote calls to the Weather Underground API
 var request = require("superagent");
 
+
 // Initialize the hardware devices
-var buzzer = new (require("jsupm_buzzer").Buzzer)(5),
-    button = new (require("jsupm_grove").GroveButton)(4),
-    rotary = new (require("jsupm_grove").GroveRotary)(0),
-    screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
+var buzzer = new (require("jsupm_buzzer").Buzzer)(3),
+    button = new (require("jsupm_grove").GroveButton)(2);
+    
+    if (config.kit == "dfrobot"){
+      var screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
+      var current,
+          alarm;
+    } else {      
+      var screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
+      // Colors used for the RGB LED
+      var colors = { red: [255, 0, 0], white: [255, 255, 255] },
+          current,
+          alarm;
+     }     
+    
 
 // The program is using the `moment` module for easier time-based calculations,
 // to determine when the alarm should be sounded.
@@ -67,10 +79,6 @@ var mqtt = require("./mqtt");
 // hardware devices using the Node.js built-in `events` module
 var events = new (require("events").EventEmitter)();
 
-// Colors used for the RGB LED
-var colors = { red: [255, 0, 0], white: [255, 255, 255] },
-    current,
-    alarm;
 
 // Sets the background color on the RGB LED
 function color(string) {
@@ -107,8 +115,6 @@ function setupEvents() {
 
   setInterval(function() {
     var pressed = button.value();
-
-    events.emit("rotary", rotary.abs_value());
 
     if (pressed && !prev.button) { events.emit("button-press"); }
     if (!pressed && prev.button) { events.emit("button-release"); }
@@ -174,6 +180,27 @@ function startAlarm() {
   });
 }
 
+function startAlarmDF() {
+  var tick = true;
+
+  buzz();
+  getWeather();
+
+  var interval = setInterval(function() {
+    color(tick ? "white" : "red");
+    if (tick) { stopBuzzing(); } else { buzz(); }
+    tick = !tick;
+  }, 250);
+
+  events.once("button-press", function() {
+    clearInterval(interval);
+
+    // notify how long alarm took to be silenced
+    notify(moment().diff(alarm).toString());
+    alarm = alarm.add(1, "day");
+    stopBuzzing();
+  });
+}
 // Start the clock timer, then check every 50ms to see if is time to
 // turn on the alarm
 function startClock() {
@@ -186,7 +213,10 @@ function startClock() {
     // check if display needs to be updated
     if (after(time, current)) {
       message(time.format("h:mm:ss A"));
-      if (same(current, alarm)) { startAlarm(); }
+      if (config.kit != "dfrobot"){
+        if (same(current, alarm)) { startAlarm(); }
+      }else{if (same(current, alarm)) { startAlarmDF(); }}
+
     }
 
     current = time;
@@ -266,7 +296,10 @@ function main() {
   startClock();
   server();
 
-  events.on("rotary", adjustBrightness);
+  if (config.kit != "dfrobot"){
+    events.on("rotary", adjustBrightness);
+  }
+
 }
 
 main();
