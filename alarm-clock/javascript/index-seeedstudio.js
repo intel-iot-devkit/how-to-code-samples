@@ -88,74 +88,6 @@ function message(string, line) {
   screen.write(string);
 }
 
-// Call the remote Weather Underground API to check the weather conditions
-// change the LOCATION variable to set the location for which you want.
-function getWeather() {
-  if (!config.WEATHER_API_KEY) { return; }
-
-  var url = "http://api.wunderground.com/api/";
-
-  url += config.WEATHER_API_KEY;
-  url += "/conditions/q/CA/" + config.LOCATION + ".json";
-
-  function display(err, res) {
-    if (err) { return console.error("unable to get weather data", res.text); }
-    var conditions = res.body.current_observation.weather;
-    console.log("forecast:", conditions);
-    message(conditions, 1);
-  }
-
-  request.get(url).end(display);
-}
-
-// Display and then store record in the remote datastore and/or mqtt server
-// of how long the alarm was ringing before it was turned off
-function notify(duration) {
-
-  var payload = { value: duration };
-  datastore.log(config, payload);
-  mqtt.log(config, payload);
-}
-
-// Called to start the alarm when the time has come to get up
-function startAlarm() {
-  var tick = true;
-  console.log("Alarm duration (ms):" + duration);
-
-  color("red");
-  buzz();
-  getWeather();
-
-  var interval = setInterval(function() {
-    color(tick ? "white" : "red");
-    if (tick) { stopBuzzing(); } else { buzz(); }
-    tick = !tick;
-  }, 250);
-
-  events.once("button-press", function() {
-    clearInterval(interval);
-
-    // notify how long alarm took to be silenced
-    notify(moment().diff(alarm).toString());
-
-    alarm = alarm.add(1, "day");
-
-    color("white");
-    stopBuzzing();
-  });
-}
-
-// Adjust the brightness of the RGB LCD
-function adjustBrightness(value) {
-  var start = 0,
-      end = 1020,
-      val = Math.floor(((value - start) / end) * 255);
-
-  if (val > 255) { val = 255; }
-  if (val < 0) { val = 0; }
-
-  screen.setColor(val, val, val);
-}
 // Sound an audible alarm when it is time to get up
 function buzz() {
   buzzer.setVolume(0.5);
@@ -187,6 +119,63 @@ exports.setupEvents = function() {
   }, 100);
 }
 
+// Call the remote Weather Underground API to check the weather conditions
+// change the LOCATION variable to set the location for which you want.
+function getWeather() {
+  if (!config.WEATHER_API_KEY) { return; }
+
+  var url = "http://api.wunderground.com/api/";
+
+  url += config.WEATHER_API_KEY;
+  url += "/conditions/q/CA/" + config.LOCATION + ".json";
+
+  function display(err, res) {
+    if (err) { return console.error("unable to get weather data", res.text); }
+    var conditions = res.body.current_observation.weather;
+    console.log("forecast:", conditions);
+    message(conditions, 1);
+  }
+
+  request.get(url).end(display);
+}
+
+// Display and then store record in the remote datastore and/or mqtt server
+// of how long the alarm was ringing before it was turned off
+function notify(duration) {
+  console.log("Alarm duration (ms):" + duration);
+
+  var payload = { value: duration };
+  datastore.log(config, payload);
+  mqtt.log(config, payload);
+}
+
+// Called to start the alarm when the time has come to get up
+function startAlarm() {
+  var tick = true;
+
+  color("red");
+  buzz();
+  getWeather();
+
+  var interval = setInterval(function() {
+    color(tick ? "white" : "red");
+    if (tick) { stopBuzzing(); } else { buzz(); }
+    tick = !tick;
+  }, 250);
+
+  events.once("button-press", function() {
+    clearInterval(interval);
+
+    // notify how long alarm took to be silenced
+    notify(moment().diff(alarm).toString());
+
+    alarm = alarm.add(1, "day");
+
+    color("white");
+    stopBuzzing();
+  });
+}
+
 // Start the clock timer, then check every 50ms to see if is time to
 // turn on the alarm
 exports.startClock = function() {
@@ -205,6 +194,19 @@ exports.startClock = function() {
     current = time;
   }, 50);
 }
+
+// Adjust the brightness of the RGB LCD
+function adjustBrightness(value) {
+  var start = 0,
+      end = 1020,
+      val = Math.floor(((value - start) / end) * 255);
+
+  if (val > 255) { val = 255; }
+  if (val < 0) { val = 0; }
+
+  screen.setColor(val, val, val);
+}
+
 // Starts the built-in web server that serves up the web page
 // used to set the alarm time
 exports.server = function() {
@@ -252,4 +254,9 @@ exports.server = function() {
   app.get("/alarm.json", json);
 
   app.listen(3000);
+}
+
+exports.adjBrightness = function(){
+
+  events.on("rotary", adjustBrightness);
 }

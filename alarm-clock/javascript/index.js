@@ -28,8 +28,7 @@ function main() {
     seeed.setupEvents();
     seeed.startClock();
     seeed.server();
-    seeed.events.on("rotary", adjustBrightness);
-
+    seeed.adjBrightness();
   }
   
 }
