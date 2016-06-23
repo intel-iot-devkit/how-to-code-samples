@@ -46,9 +46,7 @@ var events = new (require("events").EventEmitter)();
 exports.events = events;
 
 // Colors used for the RGB LED
-var colors = { red: [255, 0, 0], white: [255, 255, 255] },
-    current,
-    alarm;
+var colors = { red: [255, 0, 0], white: [255, 255, 255] };
 
 // Sets the background color on the RGB LED
 exports.color - function(string) {
@@ -93,6 +91,8 @@ exports.setupEvents = function() {
 
     prev.button = pressed;
   }, 100);
+
+  events.on("rotary", adjustBrightness);
 }
 
 // Adjust the brightness of the RGB LCD
@@ -105,8 +105,4 @@ function adjustBrightness(value) {
   if (val < 0) { val = 0; }
 
   screen.setColor(val, val, val);
-}
-
-exports.adjBrightness = function(){
-  events.on("rotary", adjustBrightness);
 }

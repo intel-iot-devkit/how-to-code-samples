@@ -18,14 +18,24 @@ var config = JSON.parse(
 // to determine when the alarm should be sounded.
 var moment = require("moment");
 
+// Initialize the hardware for whichever kit we are using
+var board;
+if (config.kit == "dfrobot") {
+  board = require('./dfrobot.js');
+} else {
+  board = require('./seeedstudio.js');
+}
+
 var datastore = require("./datastore");
 var mqtt = require("./mqtt");
 
-var board;
+// State of the alarm
+var current,
+    alarm;
 
 // Start the clock timer, then check every 50ms to see if is time to
 // turn on the alarm
-function startClock = function() {
+function startClock() {
   function after(a, b) { return a.isAfter(b, "second"); }
   function same(a, b) { return a.isSame(b, "second"); }
 
@@ -46,6 +56,7 @@ function startClock = function() {
 function startAlarm() {
   var tick = true;
 
+  console.log("Alarm time");
   board.color("red");
   board.buzz();
   getWeather();
@@ -101,7 +112,7 @@ function getWeather() {
 
 // Starts the built-in web server that serves up the web page
 // used to set the alarm time
-function server = function() {
+function server() {
   var app = require("express")();
 
   // Serve up the main web page used to configure the alarm time
@@ -149,13 +160,6 @@ function server = function() {
 }
 
 function main() {
-  if (config.kit == "dfrobot"){
-    board = require('./dfrobot.js');
-  } else {
-    board = require('./seeedstudio.js');
-    board.adjBrightness();
-  }
-
   board.stopBuzzing();
   board.setupEvents();
 
