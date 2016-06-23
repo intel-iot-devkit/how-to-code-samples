@@ -28,6 +28,8 @@ Optionally, all data can also be stored using the Intel IoT Examples Datastore r
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Starter Kit Plus from Seeedstudio, or else the DFRobot Edison Starter Kit.
+
 Grove* Starter Kit Plus containing:
 
 1. Intel® Edison with an Arduino* breakout board
@@ -35,6 +37,13 @@ Grove* Starter Kit Plus containing:
 3. [Grove* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html).
 4. [Grove* Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
 5. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html).
+3. [Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
+4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
@@ -107,6 +116,16 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 3. Plug one end of a Grove* cable into the Grove* Buzzer, and connect the other end to the D5 port on the Grove* Shield.
 
 4. Plug one end of a Grove* cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove* Shield.
+
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/alarm-clock.jpg)
+
+You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Display Shield.
+
+1. Plug one end of a DFRobot* cable into the Button, and connect the other end to the A2 port on the LCD Display Shield.
+
+2. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A1 port on the LCD Display Shield.
 
 ### Manual Intel® Edison setup
 
