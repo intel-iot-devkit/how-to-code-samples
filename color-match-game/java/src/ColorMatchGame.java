@@ -6,7 +6,7 @@ import java.util.TimerTask;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SimonSays {
+public class ColorMatchGame {
 
 	private static LcdScreen lcdScreen = new LcdScreen();
 	private static ArrayList<String> colorSequence = new ArrayList<String>();

@@ -10,7 +10,7 @@ $(document).ready(function () {
     }
     
     $('#blueButton').click(function () {
-        $(".audioDemo").attr('src','simon1.mp3');
+        $(".audioDemo").attr('src','color1.mp3');
         $.get('../blue',function(r){
             $(".audioDemo").trigger('play');
             if(r === 'error'){
@@ -24,7 +24,7 @@ $(document).ready(function () {
     })
 
     $('#greenButton').click(function () {
-        $(".audioDemo").attr('src','simon2.mp3');
+        $(".audioDemo").attr('src','color2.mp3');
         $.get('../green',function(r){
             $(".audioDemo").trigger('play');
             if(r === 'error'){
@@ -38,7 +38,7 @@ $(document).ready(function () {
     })
 
     $('#redButton').click(function () {
-        $(".audioDemo").attr('src','simon3.mp3');
+        $(".audioDemo").attr('src','color3.mp3');
         $.get('../red',function(r){
             $(".audioDemo").trigger('play');
             if(r === 'error'){
@@ -52,7 +52,7 @@ $(document).ready(function () {
     })
 
     $('#yellowButton').click(function () {
-        $(".audioDemo").attr('src','simon4.mp3');
+        $(".audioDemo").attr('src','color4.mp3');
         $.get('../yellow',function(r){
             $(".audioDemo").trigger('play');
             if(r === 'error'){

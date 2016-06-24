@@ -49,7 +49,7 @@ In Intel® System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java
 
 ![](./../../images/java/new project.png)
 
-Give the project the name "ColorMatch" and click Next.
+Give the project the name "ColorMatchGame" and click Next.
 
 ![](./../../images/java/project name.png)
 
@@ -79,7 +79,7 @@ The jars can be found at the IOT Devkit installation root path\iss-iot-win\devki
 
 ### Connecting the Grove* sensors
 
-![](./../../images/java/SimonSays.jpg)
+![](./../../images/java/ColorMatchGame.jpg)
 
 You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
@@ -100,7 +100,7 @@ In order for the sample to run you will need to copy some files to the Intel® E
 Two sorts of files need to be copied from the sample repository:<br>
 
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
-2. web files- files within site_contents folder need to be copied to "/var/ColorMatch"
+2. web files- files within site_contents folder need to be copied to "/var/ColorMatchGame"
 
 
 
@@ -120,7 +120,7 @@ You will see output similar to the following when the program is running.
 
 ### Accessing the game
 
-![](./../../images/java/simon-says-web.JPG)
+![](./../../images/java/color-match-game-web.JPG)
 
 The color match game is set using a single-page web interface served from the Intel® Edison board while the sample program is running.
 
