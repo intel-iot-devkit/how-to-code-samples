@@ -41,6 +41,7 @@ var mraa = require("mraa");
 // Initialize the hardware devices
 var buzzer = new mraa.Gpio(15), // aka A1
     button = new (require("jsupm_grove").GroveButton)(16), // aka A2
+    rotary = new (require("jsupm_grove").GroveRotary)(3), // A3
     screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
 
 buzzer.dir(mraa.DIR_OUT);
@@ -74,7 +75,9 @@ exports.stopBuzzing = function() {
   buzzer.write(0);
 }
 
-// Loops every 100ms to check if the button was pressed, so we can fire
+// Loops every 100ms to check to fire a custom event with the
+// latest value of the rotary dial, so we can check if has been moved
+// Also checks to see if the button was pressed, so we can fire
 // our custom button events if needed
 exports.setupEvents = function() {
   var prev = { button: 0 };
@@ -86,5 +89,20 @@ exports.setupEvents = function() {
     if (!pressed && prev.button) { events.emit("button-release"); }
 
     prev.button = pressed;
+
+    events.emit("rotary", rotary.abs_value());
   }, 100);
+
+  events.on("rotary", adjustBrightness);
+}
+
+// Turn on/off LCD backlight
+function adjustBrightness(value) {
+  if (value > 512) {
+    console.log("backlight ON");
+    screen.backlightOn();  
+  } else {
+    console.log("backlight OFF");
+    screen.backlightOff();
+  }
 }
