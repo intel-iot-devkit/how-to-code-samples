@@ -163,3 +163,6 @@ You will see the output similar to the following:
 	    inet 10.237.104.143/24 brd 10.237.104.255 scope global enp0s20f6
 
 The IP address is shown next to `inet`. In the example above, the IP address is `10.237.104.143`. The name of the interface (here: enp0s20f6) may vary, but not by much.
+
+
+IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
