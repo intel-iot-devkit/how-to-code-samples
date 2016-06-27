@@ -1,4 +1,4 @@
-# Field data reporter in JavaScript*
+# Field data reporter in Java*
 
 ## Introduction
 
@@ -68,7 +68,7 @@ Choose a name for the connection and enter the IP address of the Intel® Edison 
 
 ![](./../../images/java/Target connection.png)
 
-You have successfully created an empty project. You now need to copy the source files and the config file to the project. 
+You have successfully created an empty project. You now need to copy the source files and the config file to the project.
 Drag all of the files from your git repository's "src" folder into the new project's src folder in Intel® System Studio IoT Edition. Make sure previously auto-generated main class is overridden.
 
 The project uses the following external jars: [gson-2.6.1](http://central.maven.org/maven2/com/google/code/gson/gson/2.6.1/gson-2.6.1.jar), [jetty-all-9.3.7.v20160115-uber](http://repo1.maven.org/maven2/org/eclipse/jetty/aggregate/jetty-all/9.3.7.v20160115/jetty-all-9.3.7.v20160115-uber.jar). These can be found in the Maven Central Repository. Create a "jars" folder in the project's root directory, and copy all needed jars in this folder.
