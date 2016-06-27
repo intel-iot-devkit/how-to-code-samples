@@ -6,7 +6,7 @@ import java.util.TimerTask;
  * @author rhassidi
  *
  */
-public class Decibelometer {
+public class SoundDetector {
 
     private static upm_mic.Microphone mic;
     private static upm_i2clcd.Jhd1313m1 rgbLcd;

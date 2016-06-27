@@ -27,13 +27,13 @@ public class ServerSetup {
 
 		//adding default servlet at "/" according to servlet spec
 		context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-		context.setResourceBase("/var/SimonSays/");
+		context.setResourceBase("/var/ColorMatchGame/");
 		context.setContextPath("/");
 		server.setHandler(context);
 
-		// add special path spec of "/home/" content mapped to the SimonSays folder
+		// add special path spec of "/home/" content mapped to the ColorMatchGame folder
 		ServletHolder holderHome = new ServletHolder("static-home", DefaultServlet.class);
-		holderPwd.setInitParameter("resourceBase","/var/SimonSays/");
+		holderPwd.setInitParameter("resourceBase","/var/ColorMatchGame/");
 		holderHome.setInitParameter("dirAllowed","true");
 		holderHome.setInitParameter("pathInfoOnly","true");
 		context.addServlet(holderHome,"/home/*");
