@@ -1,4 +1,4 @@
-# Plant lighting system
+# Plant lighting system in Java*
 
 ## Introduction
 
@@ -58,7 +58,7 @@ Want to download a .zip file? In your web browser, go to <a href="https://github
 
 ## Adding the program to Intel® System Studio IoT Edition
 
- ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars. 
+ ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars.
 
 Open Intel® System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
 
@@ -75,7 +75,7 @@ Choose a name for the connection and enter the IP address of the Intel® Edison 
 
 ![](./../../images/java/Target connection.png)
 
-You have successfully created an empty project. You now need to copy the source files and the config file to the project. 
+You have successfully created an empty project. You now need to copy the source files and the config file to the project.
 Drag all of the files from your git repository's "src" folder into the new project's src folder in Intel® System Studio IoT Edition. Make sure previously auto-generated main class is overridden.
 
 The project uses the following external jars: [gson-2.6.1](http://central.maven.org/maven2/com/google/code/gson/gson/2.6.1/gson-2.6.1.jar), [jetty-all-9.3.7.v20160115-uber](http://repo1.maven.org/maven2/org/eclipse/jetty/aggregate/jetty-all/9.3.7.v20160115/jetty-all-9.3.7.v20160115-uber.jar), [joda-time-2.9.2](http://repo.maven.apache.org/maven2/joda-time/joda-time/2.9.2/joda-time-2.9.2.jar), [twilio-java-sdk-6.3.0-jar-with-dependencies](http://repo.maven.apache.org/maven2/com/twilio/sdk/twilio-java-sdk/6.3.0/twilio-java-sdk-6.3.0-jar-with-dependencies.jar). These can be found in the Maven Central Repository. Create a "jars" folder in the project's root directory, and copy all needed jars in this folder.
@@ -119,7 +119,7 @@ For information on how to set up your own cloud data server, go to:
 
 ## Configuring the example
 
-Pass your Twilio* API key and authentication token to the sample program by modifying the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the `config.properties`. 
+Pass your Twilio* API key and authentication token to the sample program by modifying the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the `config.properties`.
 `NUMBER_TO_SEND_TO` and `TWILIO_OUTGOING_NUMBER` are also part of the twilio setup.
 
 Also, to configure the example for the optional Microsoft* Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
