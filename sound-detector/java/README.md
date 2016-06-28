@@ -1,4 +1,4 @@
-# Sound detector
+# Sound detector in Java*
 
 ## Introduction
 
@@ -49,7 +49,7 @@ Want to download a .zip file? In your web browser, go to <a href="https://github
 
 ## Adding the program to Intel® System Studio IoT Edition
 
- ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars. 
+ ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars.
 
 Open Intel® System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
 
@@ -66,7 +66,7 @@ Choose a name for the connection and enter the IP address of the Intel® Edison 
 
 ![](./../../images/java/Target connection.png)
 
-You have successfully created an empty project. You now need to copy the source files and the config file to the project. 
+You have successfully created an empty project. You now need to copy the source files and the config file to the project.
 Drag all of the files from your git repository's "src" folder into the new project's src folder in Intel® System Studio IoT Edition. Make sure previously auto-generated main class is overridden.
 
 The project uses the following external jars: [gson-2.6.1](http://central.maven.org/maven2/com/google/code/gson/gson/2.6.1/gson-2.6.1.jar). These can be found in the Maven Central Repository. Create a "jars" folder in the project's root directory, and copy all needed jars in this folder.
@@ -116,7 +116,7 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 ```
 ## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH. 
+In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.
 The files need to be copied from the sample repository: <br>
 
 Jar files- external libraries in the project need to be copied to "/usr/lib/java"
