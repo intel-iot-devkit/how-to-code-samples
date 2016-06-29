@@ -156,3 +156,5 @@ When the program is uploaded to the Intel® Edison board, the program starts to 
 
 When the temperature sensor is heated, another output message is displayed in the Eclipse* console, similarly to the image above. This means you successfully sent your SMS alert.<br>
 ![](./../../images/cpp/cpp-run-eclipse-successful-output-sms-sent.png)
+
+IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.

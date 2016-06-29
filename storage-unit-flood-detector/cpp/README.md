@@ -131,3 +131,5 @@ After running the program, you should see output similar to the one in the image
 Then you get output from the sensor in the console, telling you if it is dry, moist, or wet.
 
 When the sensor detects enough moisture, it sends a signal to the server, and the console output informs you of this.
+
+IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.

@@ -1,4 +1,4 @@
-# Doorbell
+# Doorbell in Java*
 
 ## Introduction
 
@@ -35,7 +35,7 @@ Grove* Starter Kit Plus containing:
 ## Software requirements
 
 1. Intel® IoT Developer Kit version of Eclipse
-2. Microsoft* Azure* account 
+2. Microsoft* Azure* account
 
 ### How to set up
 
@@ -47,7 +47,7 @@ Want to download a .zip file? In your web browser, go to <a href="https://github
 
 ## Adding the program to the Intel® IoT Developer Kit version of Eclipse
 
- ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars. 
+ ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars.
 
 Open Intel® System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
 
@@ -64,7 +64,7 @@ Choose a name for the connection and enter the IP address of the Intel® Edison 
 
 ![](./../../images/java/Target connection.png)
 
-You have successfully created an empty project. You now need to copy the source files and the config file to the project. 
+You have successfully created an empty project. You now need to copy the source files and the config file to the project.
 Drag all of the files from your git repository's "src" folder into the new project's src folder in Intel® System Studio IoT Edition. Make sure previously auto-generated main class is overridden.
 
 The project uses the following external jars: [httpcore-4.4.3](http://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.4.3/httpcore-4.4.3.jar), [httpclient-4.5.1](http://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.5.1/httpclient-4.5.1.jar). These can be found in the Maven Central Repository. Create a "jars" folder in the project's root directory, and copy all needed jars in this folder.
@@ -155,7 +155,7 @@ The IP address is shown next to `inet`. In the example above, the IP address is 
 
 If you are using an Intel® Galileo board, which connects via an ethernet cable, run the following command:
 
-	ip addr show 
+	ip addr show
 
 You will see the output similar to the following:
 
@@ -163,3 +163,6 @@ You will see the output similar to the following:
 	    inet 10.237.104.143/24 brd 10.237.104.255 scope global enp0s20f6
 
 The IP address is shown next to `inet`. In the example above, the IP address is `10.237.104.143`. The name of the interface (here: enp0s20f6) may vary, but not by much.
+
+
+IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.

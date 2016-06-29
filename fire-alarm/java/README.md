@@ -1,4 +1,4 @@
-# Fire alarm
+# Fire alarm in Java*
 
 ## Introduction
 
@@ -57,7 +57,7 @@ Want to download a .zip file? In your web browser, go to <a href="https://github
 
 ## Adding the program to Intel® System Studio IoT Edition
 
- ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars. 
+ ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars.
 
 Open Intel® System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
 
@@ -74,7 +74,7 @@ Choose a name for the connection and enter the IP address of the Intel® Edison 
 
 ![](./../../images/java/Target connection.png)
 
-You have successfully created an empty project. You now need to copy the source files and the config file to the project. 
+You have successfully created an empty project. You now need to copy the source files and the config file to the project.
 Drag all of the files from your git repository's "src" folder into the new project's src folder in Intel® System Studio IoT Edition. Make sure previously auto-generated main class is overridden.
 
 The project uses the following external jars: [gson-2.6.1](http://central.maven.org/maven2/com/google/code/gson/gson/2.6.1/gson-2.6.1.jar), [twilio-java-sdk-6.3.0-jar-with-dependencies](http://repo.maven.apache.org/maven2/com/twilio/sdk/twilio-java-sdk/6.3.0/twilio-java-sdk-6.3.0-jar-with-dependencies.jar). These can be found in the Maven Central Repository. Create a "jars" folder in the project's root directory, and copy all needed jars in this folder.
@@ -128,7 +128,7 @@ You cannot send text messages without obtaining a Twilio* API key first. You can
 
 ## Configuring the example
 
-Pass your Twilio* API key and authentication token to the sample program by modifying the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the `config.properties`. 
+Pass your Twilio* API key and authentication token to the sample program by modifying the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the `config.properties`.
 `NUMBER_TO_SEND_TO` and `TWILIO_OUTGOING_NUMBER` are also part of the twilio setup.
 'TEMPERATURE_THRESHOLD' defines the temperature threshold indicating a fire.
 
@@ -178,3 +178,6 @@ You will see the output similar to the following:
         inet 192.168.1.13/24 brd 192.168.1.255 scope global wlan0
 
 The IP address is shown next to `inet`. In the example above, the IP address is `192.168.1.13`.
+
+
+IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.

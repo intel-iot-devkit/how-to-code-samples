@@ -1,3 +1,26 @@
+/*
+* Copyright (c) 2015 - 2016 Intel Corporation.
+*
+* Permission is hereby granted, free of charge, to any person obtaining
+* a copy of this software and associated documentation files (the
+* "Software"), to deal in the Software without restriction, including
+* without limitation the rights to use, copy, modify, merge, publish,
+* distribute, sublicense, and/or sell copies of the Software, and to
+* permit persons to whom the Software is furnished to do so, subject to
+* the following conditions:
+*
+* The above copyright notice and this permission notice shall be
+* included in all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+* NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+* LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+* OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+* WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
 "use strict";
 
 // The program is using the Node.js built-in `fs` module
@@ -13,6 +36,10 @@ var path = require("path");
 var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
+
+// The program is using the `superagent` module
+// to make the remote calls to the Weather Underground API
+var request = require("superagent");
 
 // The program is using the `moment` module for easier time-based calculations,
 // to determine when the alarm should be sounded.
@@ -159,6 +186,12 @@ function server() {
   app.listen(3000);
 }
 
+// The main function makes sure the alarm buzzer is turned off,
+// then starts listening for events coming from the connected hardware.
+// the clock then starts ticking, and the built-in web server started up,
+// so that the user can configure their desired wake up time.
+// Lastly, the main function adjusts the brightness of the RGB LCD
+// when the rotary knob is turned.
 function main() {
   board.stopBuzzing();
   board.setupEvents();
