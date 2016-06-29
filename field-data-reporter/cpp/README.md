@@ -1,8 +1,8 @@
-﻿# Field data recorder in C++
+﻿# Field data reporter in C++
 
 ## Introduction
 
-This wrist field data recorder application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
+This wrist field data reporter application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
