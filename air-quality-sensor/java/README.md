@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This air quality monitor application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This air quality monitor application is part of a series of how-to Intel® ® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
@@ -13,8 +13,8 @@ From this exercise, developers will learn how to:<br>
 ## What it is
 
 Using an Intel® Edison board, this project lets you create an air quality reporter that:<br>
-- continuously checks the air quality for airborne contaminants;<br>
-- sounds an audible warning when the air quality is unhealthy;<br>
+- continuously checks the air quality for airborne contaminants.<br>
+- sounds an audible warning when the air quality is unhealthy.<br>
 - stores a record of each time the air quality sensor detects contaminants, using cloud-based data storage.
 
 ## How it works
@@ -23,21 +23,21 @@ This shop air quality monitor uses the sensor to constantly keep track of airbor
 
 If the sensor detects one of several different gases and the detected level exceeds a defined threshold, it makes a sound through the speaker to indicate a warning.
 
-Also, optionally, the monitor stores the air quality data using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Also, optionally, the monitor stores the air quality data using the Intel IoT Examples Data Store running in your own Microsoft Azure account.
 
 ## Hardware requirements
 
 Grove* Home Automation Kit containing:
 
 1. Intel® Edison platform with an Arduino* breakout board
-2. [Grove* Air Quality Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/tp401.html)
-3. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+2. Grove Air Quality Sensor (http://iotdk.intel.com/docs/master/upm/node/classes/tp401.html)
+3. Grove Speaker (http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
 
 ## Software requirements
 
-1. Intel® System Studio IoT Edition
-2. Microsoft* Azure* account (optional)
+1. Intel System Studio IoT Edition
+2. Microsoft Azure account (optional)
 
 ### How to set up
 
@@ -51,9 +51,9 @@ Want to download a .zip file? In your web browser, go to <a href="https://github
 
 ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars.
 
-Open Intel® System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
+Open Intel System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
 
-In Intel® System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java Project**:
+In Intel System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java Project**:
 
 ![](./../../images/java/new project.png)
 
@@ -61,8 +61,8 @@ Give the project the name "AirQualitySensor" and click Next.
 
 ![](./../../images/java/project name.png)
 
-You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+You now need to connect to your Intel Edison board from your computer to send code to it.
+Choose a name for the connection and enter the IP address of the Intel Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -90,15 +90,15 @@ The jars can be found at the IOT Devkit installation root path\iss-iot-win\devki
 
 ![](./../../images/java/air-quality.jpg)
 
-You need to have a Grove* Shield connected to an Arduino*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to 5V.
+You need to have a Grove Shield connected to an Arduino-compatible breakout board to plug all the Grove devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove Shield set to 5V.
 
-1. Plug one end of a Grove* cable into the Grove* Air Quality Sensor, and connect the other end to the AO port on the Grove* Shield.
+1. Plug one end of a Grove cable into the Grove* Air Quality Sensor, and connect the other end to the AO port on the Grove Shield.
 
-2. Plug one end of a Grove* cable into the Grove* Speaker, and connect the other end to the D5 port on the Grove* Shield.
+2. Plug one end of a Grove cable into the Grove Speaker, and connect the other end to the D5 port on the Grove Shield.
 
 ### Datastore server setup
 
-Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft* Azure, IBM Bluemix, or AWS, along with Node.js, and a Redis data store.
+Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft Azure, IBM Bluemix, or AWS, along with Node.js, and a Redis data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -106,7 +106,7 @@ For information on how to set up your own cloud data server, go to:
 
 ## Configuring the example
 
-To configure the example for the optional Microsoft* Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
+To configure the example for the optional Microsoft Azure data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
 
 ```
   SERVER=http://intel-examples.azurewebsites.net/logger/air-quality
@@ -116,16 +116,16 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 
 ## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.
+In order for the sample to run you will need to copy some files to the Intel Edison board. This can be done using SCP through SSH.
 The files need to be copied from the sample repository: <br>
 Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 
 
 
 
-## Running the program using Intel® System Studio IoT Edition
+## Running the program using Intel System Studio IoT Edition
 
-When you're ready to run the example, make sure you saved all the files.
+When you're ready to run the example, make sure you have saved all the files.
 
 Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
