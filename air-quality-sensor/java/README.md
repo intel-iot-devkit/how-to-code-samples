@@ -2,17 +2,17 @@
 
 ## Introduction
 
-This air quality monitor application is part of a series of how-to Intel® ® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This air quality monitor application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® System Studio IoT Edition . Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.<br>
+- Connect the Intel Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
+- Interface with the Intel Edison platform IO and sensor repository using MRAA and UPM from the Intel IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Run this code sample in Intel® System Studio IoT Edition . Intel System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.<br>
 - Store air quality data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create an air quality reporter that:<br>
+Using an Intel Edison board, this project lets you create an air quality reporter that:<br>
 - continuously checks the air quality for airborne contaminants.<br>
 - sounds an audible warning when the air quality is unhealthy.<br>
 - stores a record of each time the air quality sensor detects contaminants, using cloud-based data storage.
