@@ -1,0 +1,20 @@
+{
+  "title": "Earthquake Detector",
+  "sample": true,
+  "template": false,
+  "visible": true,
+  "repoSource": "github",
+  "repoUser": "intel-iot-devkit",
+  "repoName": "how-to-code-samples",
+  "repoPath": "tree/master/earthquake-detector/javascript",
+  "relName": "4.0.0",
+  "tooltip": "Earthquake detector app senses motion using the digital accelerometer.",
+  "description" : "Earthquake detector app senses motion using the digital accelerometer. Checks live earthquake data using the USGS* API. Displays earthquake data on the LCD.",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/earthquake-detector/javascript",
+  "highlights": [""],
+  "screenshotUrl": "",
+  "appName": "demo.xdk.iot",
+  "keywords": [""],
+  "iconUrl": ""
+}
