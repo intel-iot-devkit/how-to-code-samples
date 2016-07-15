@@ -2,19 +2,19 @@
 
 ## Introduction
 
-This robot arm application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This robot arm application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® System Studio IoT Edition . Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.<br>
-- Set up a web application server to control a robot arm using a web page served directly from the Intel® Edison board.
+- Connect the Intel Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
+- Interface with the Intel Edison platform IO and sensor repository using MRAA and UPM from the Intel IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Run this code sample in Intel System Studio IoT Edition. Intel System Studio IoT Edition lets you create and test applications on Intel-based IoT platforms.<br>
+- Set up a web application server to control a robot arm using a web page served directly from the Intel Edison board.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a robot arm that:<br>
-- continuously checks the Grove* Joystick;<br>
-- moves 2 stepper motors based on the joystick control;<br>
+Using an Intel Edison board, this project lets you create a robot arm that:<br>
+- continuously checks the Grove* Joystick.<br>
+- moves 2 stepper motors based on the joystick control.<br>
 - can be accessed via the built-in web interface to control the motors.
 
 ## How it works
@@ -44,13 +44,13 @@ To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on yo
 
 Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
-## Adding the program to Intel® System Studio IoT Edition
+## Adding the program to Intel System Studio IoT Edition
 
  ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars.
 
-Open Intel® System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
+Open Intel System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
 
-In Intel® System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java Project**:
+In Intel System Studio IoT Edition, select File -> new -> **Intel(R) IoT Java Project**:
 
 ![](./../../images/java/new project.png)
 
@@ -58,8 +58,8 @@ Give the project the name "RobotArm" and click Next.
 
 ![](./../../images/java/project name.png)
 
-You now need to connect to your Intel® Edison board from your computer to send code to it.
-Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
+You now need to connect to your Intel Edison board from your computer to send code to it.
+Choose a name for the connection and enter the IP address of the Intel Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
 
@@ -83,28 +83,26 @@ The jars can be found at the IOT Devkit installation root path\iss-iot-win\devki
 
 ![](./../../images/java/add external jars to build path.png)
 
-### Connecting the Grove* sensors
+### Connecting the Grove sensors
 
 ![](./../../images/java/robot-arm.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
+You need to have a Grove Shield connected to an Arduino-compatible breakout board to plug all the Grove devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
+You need to have a Grove Shield connected to an Arduino-compatible breakout board to plug all the Grove devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
-You need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
+You need to power the Intel Edison board with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
 In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison board and the motors, so you need either 2 batteries or 2 power supplies in total.
 
-1. Plug each of the stepper motor controllers into 4 pins on the Arduino* breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino* breakout board (VCC), and to the separate 5V power for the motors (VM).
+1. Plug each of the stepper motor controllers into 4 pins on the Arduino breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino breakout board (VCC), and to the separate 5V power for the motors (VM).
 
-2. Plug one end of a Grove* cable into the Grove* Thumb Joystick, and connect the other end to the A0 port on the Grove* Shield.
-
-
+2. Plug one end of a Grove cable into the Grove Thumb Joystick, and connect the other end to the A0 port on the Grove Shield.
 
 
-## Preparing the Intel® Edison board before running the project
+## Preparing the Intel Edison board before running the project
 
-In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.
+In order for the sample to run you will need to copy some files to the Intel Edison board. This can be done using SCP through SSH.
 
 Two sorts of files need to be copied from the sample repository:
 
@@ -112,15 +110,13 @@ Two sorts of files need to be copied from the sample repository:
 2. web files- files within site_contents folder need to be copied to "/var/RobotArm"
 
 
+## Running the program using Intel System Studio IoT Edition
 
-## Running the program using Intel® System Studio IoT Edition
+When you're ready to run the example, make sure you have saved all the files.
 
-When you're ready to run the example, make sure you saved all the files.
-
-Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
+Click the **Run** icon on the toolbar of Intel System Studio IoT Edition. This runs the code on the Intel Edison board.
 
 ![](./../../images/java/run project.png)
-
 
 
 You will see output similar to the following when the program is running.
