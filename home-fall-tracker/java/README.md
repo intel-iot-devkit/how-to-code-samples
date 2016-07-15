@@ -55,7 +55,7 @@ Open Intel System Studio IoT Edition, it will start by asking for a workspace di
 
 Intel System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java Project**:
 
-![](https://github.com/intel-iot-devkit/how-to-code-samples/blob/master/images/java/new%20project.png)
+![](./../images/java/new project.png)
 
 Give the project the name "HomeFallTracker" and click Next.
 
