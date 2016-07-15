@@ -1,4 +1,4 @@
-# Smart stove top in Java*
+# Stove top in Java*
 
 ## Introduction
 
@@ -20,9 +20,9 @@ Using an Intel Edison board, this project lets you create a smart stove top that
 ## How it works
 
 This smart stove top sensor has a number of useful features designed to help you monitor the temperature of the food you are cooking on your legacy stove top.
-Set the target temperature for a pot on your range top via a web page served directly from the Intel Edison board, using your mobile phone.
-When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, alarm goes off.
-Optionally, all data can also be stored using the Intel IoT Examples Datastore running in your own Microsoft Azure account.
+Set the target temperature for a pot on your stove top via a web page served directly from the Intel Edison board, using your mobile phone.
+When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, an alarm goes off.
+Optionally, all data can also be stored using the Intel IoT Example Data store running in your own Microsoft Azure account.
 
 ## Hardware requirements
 
