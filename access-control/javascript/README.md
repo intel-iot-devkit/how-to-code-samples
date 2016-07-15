@@ -30,19 +30,19 @@ This access control system provides the following user flow:
 
 Additionally, various events (`looking-for-motion`, `motion-detected`, `invalid-code`, etc.) are logged.
 
-Optionally, all data can be stored using the Intel IoT Examples data store or an MQTT server running in your own Microsoft Azure, IBM\* Bluemix\*, or AWS\* account.
+Optionally, all data can be stored using the Intel® IoT Examples data store or an MQTT server running in your own Microsoft Azure, IBM\* Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
 Grove* Transportation & Safety Kit containing:
 
-1. Intel Edison with an Arduino* breakout board
-2. [Grove PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
+1. Intel® Edison board with an Arduino* breakout board
+2. [Grove* PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
 3. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
 
-1. Intel XDK IoT Edition
+1. Intel® XDK IoT Edition
 2. Microsoft Azure, IBM\* Bluemix\*, or AWS\* account (optional)
 
 ### How to set up
@@ -55,7 +55,7 @@ Want to download a .zip file? In your web browser, go to <a href="https://github
 
 ## Adding the program to Intel® XDK IoT Edition
 
-In Intel XDK IoT Edition, select **Import Your Node.js Project**:
+In Intel® XDK IoT Edition, select **Import Your Node.js Project**:
 
 ![](./../../images/js/xdk-menu.png)
 
@@ -71,7 +71,7 @@ Choose a name for the project, then click on the **Create** button. Then click o
 
 ![](./../../images/js/xdk-new-project-name.png)
 
-You need to connect to your Intel Edison board from your computer to send code to it.
+You need to connect to your Intel® Edison board from your computer to send code to it.
 
 ![](./../../images/js/xdk-select-device.png)
 
@@ -83,9 +83,9 @@ Otherwise, select **Add Manual Connection**.
 In the **Address** field, type `192.168.2.15`. In the **Port** field, type `58888`.
 Click **Connect** to save your connection.
 
-### Installing the program manually on the Intel Edison board
+### Installing the program manually on the Intel® Edison board
 
-Alternatively, you can set up the code manually on the Intel Edison board.
+Alternatively, you can set up the code manually on the Intel® Edison board.
 
 Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
 
@@ -93,7 +93,7 @@ Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison bo
 
 Navigate to the directory with this example.
 
-To install Git* on the Intel Edison board, if you don’t have it yet, establish an SSH connection to the board and run the following command:
+To install Git* on the Intel® Edison board, if you don’t have it yet, establish an SSH connection to the board and run the following command:
 
     $ opkg install git
 
@@ -107,9 +107,9 @@ You need to have a Grov* Shield connected to an Arduino-compatible breakout boar
 
 2. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
 
-### Manual Intel Edison board setup
+### Manual Intel® Edison board setup
 
-If you're running this code on your Intel Edison board manually, you need to install some dependencies.
+If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
 
 To obtain the Node.js* modules needed for this example to execute on the Intel® Edison board, run the following command:
 
@@ -149,21 +149,21 @@ For information on how to configure the example for the optional Microsoft\* Azu
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
-## Running the program using Intel XDK IoT Edition
+## Running the program using Intel® XDK IoT Edition
 
 When you're ready to run the example, make sure you saved all the files.
 
 ![](./../../images/js/xdk-upload.png)
 
-Click the **Upload** icon to upload the files to the Intel Edison board.
+Click the **Upload** icon to upload the files to the Intel® Edison board.
 
 ![](./../../images/js/xdk-run.png)
 
-Click the **Run** icon at the bottom of Intel XDK IoT Edition. This runs the code on the Inte® Edison board.
+Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the code on the Inte® Edison board.
 
 ![](./../../images/js/xdk-upload-run.png)
 
-If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on the Intel Edison board.
+If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on the Intel® Edison board.
 
 ![](./../../images/js/access-control-output.png)
 
@@ -171,7 +171,7 @@ You will see output similar to the above when the program is running.
 
 ## Running the program manually
 
-To run the example manually on the Intel Edison board, establish an SSH connection to the board and execute the following command:
+To run the example manually on the Intel® Edison board, establish an SSH connection to the board and execute the following command:
 
     node index.js
 
@@ -179,13 +179,13 @@ To run the example manually on the Intel Edison board, establish an SSH connecti
 
 ![](./../../images/js/access-control-web.png)
 
-The alarm is disabled using a single-page web interface served directly from the Intel Edison board while the sample program is running.
+The alarm is disabled using a single-page web interface served directly from the Intel® Edison board while the sample program is running.
 
 The web server runs on port `3000`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
-### Determining the Intel Edison board's IP address
+### Determining the Intel® Edison board's IP address
 
-You can determine what IP address the Intel Edison board is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 
