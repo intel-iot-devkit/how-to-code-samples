@@ -137,9 +137,9 @@ Pass your Twilio API key and authentication token to the sample program by modif
 }
 ```
 
-## Preparing  Intel Edison before running the project
+## Preparing the Intel Edison board before running the project
 
-In order for the sample to run you will need to copy some files to  Intel Edison. This can be done using SCP through SSH. Two sorts of files need to be copied:
+In order for the sample to run you will need to copy some files to the Intel Edison board. This can be done using SCP through SSH. Two sorts of files need to be copied:
 
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 2. web files- files within site_contents folder need to be copied to "/var/HomeFallTracker"
