@@ -8,7 +8,7 @@ From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® System Studio IoT Edition. Intel® System Studio lets you create and test applications on Intel®-based IoT platforms.<br>
-- Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache* from Microsoft Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What it is
 
@@ -26,7 +26,7 @@ This access control system provides the following user flow:
 4. If the user enters the correct code, the system waits for 30 seconds before allowing the user to pass.
 
 Additionally, various events (looking-for-motion, motion-detected, invalid-code, etc.) are logged.
-Optionally, all data can be stored using the Intel IoT Examples data store running in your own Microsoft* Azure* account.
+Optionally, all data can be stored using the Intel® IoT Examples data store running in your own Microsoft Azure* account.
 
 ## Hardware requirements
 
@@ -34,12 +34,12 @@ Grove* Starter Kit Plus containing:
 
 1. Intel® Edison platform with an Arduino* breakout board
 2. Grove* PIR Motion Sensor(http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
-3. Grove* RGB LCD (http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+3. Grove RGB LCD (http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
 
 1. Intel® System Studio IoT Edition
-2. Microsoft* Azure* account
+2. Microsoft Azure* account
 
 ### How to set up
 
@@ -47,19 +47,19 @@ To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on yo
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel® System Studio IoT Edition
 
- ** The following screenshots are from the Alarm clock sample; however the technique for adding the program is the same, just with different source files and jars.
+ ** The following screenshots are from the Alarm clock sample; however, the technique for adding the program is the same but with different source files and jars.
 
-Open Intel® System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
+Open Intel® System Studio IoT Edition. It will start by asking for a workspace directory; choose one and then click OK.
 
 In Intel® System Studio IoT Edition, select File -> new -> **Intel(R) IoT Java Project**:
 
 ![](./../../images/java/new project.png)
 
-Give the project the name "AccessControl" and click Next.
+Give the project the name "AccessControl" and then click Next.
 
 ![](./../../images/java/project name.png)
 
@@ -92,15 +92,15 @@ The jars can be found at the IOT Devkit installation root path\iss-iot-win\devki
 
 ![](./../../images/java/access-control.jpg)
 
-You need to have a Grove* Shield connected to an Arduino*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure the tiny VCC switch on the Grove* Shield is set to 5V.
+You need to have a Grove* Shield connected to an Arduino*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure the tiny VCC switch on the Grove Shield is set to 5V.
 
-1. Plug one end of a Grove* cable into the Grove* PIR Motion Sensor, and then connect the other end to the D4 port on the Grove* Shield.
+1. Plug one end of a Grove cable into the Grove PIR Motion Sensor, and then connect the other end to the D4 port on the Grove Shield.
 
-2. Plug one end of a Grove* cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove* Shield.
+2. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
 
-### Datastore server setup
+### Data store server setup
 
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft* Azure*, IBM* Bluemix, or AWS, along with Node.js*, and a Redis* data store.
+Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure*, IBM* Bluemix, or AWS, along with Node.js*, and a Redis* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -108,7 +108,7 @@ For information on how to set up your own cloud data server, go to:
 
 ## Configuring the example
 
-To configure the example for the optional Microsoft* Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
+To configure the example for the optional Microsoft Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
 
 ```
 
@@ -127,7 +127,7 @@ To configure the example for the website, change the `CODE` key in the `codeConf
 
 ## Preparing the Intel® Edison board before running the project
 
-In order for the sample to run you will need to copy some files to the Intel® Edison board. Two sorts of files need to be copied from the sample repository:
+In order for the sample to run, you will need to copy some files to the Intel® Edison board. Two sorts of files need to be copied from the sample repository:
 
 1. Jar files: external libraries in the project need to be copied to "/usr/lib/java"
 2. web files: files within site_contents folder need to be copied to "/var/AccessControl"
@@ -140,7 +140,6 @@ When you're ready to run the example, make sure you have saved all the files.
 Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
-
 
 
 You will see output similar to the following when the program is running.
