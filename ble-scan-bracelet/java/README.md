@@ -2,17 +2,17 @@
 
 ## Introduction
 
-This Bluetooth* Low Energy (BLE) scan bracelet application is part of a series of how-to Intel Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This Bluetooth* Low Energy (BLE) scan bracelet application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
-- Connect the Intel Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel Edison platform IO and sensor repository using MRAA and UPM from the Intel IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® System Studio IoT Edition . Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.<br>
+- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
+- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Run this code sample in Intel® System Studio IoT Edition. Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.<br>
 - Store detected BLE devices using Azure Redis Cache* from Microsoft Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What it is
 
-Using an Intel Edison board, this project lets you create a BLE scan bracelet that:<br>
+Using an Intel® Edison board, this project lets you create a BLE scan bracelet that:<br>
 - searches for BLE devices that come within its scanning range.<br>
 - displays information about detected devices using the OLED display.<br>
 - keeps track of detected devices, using cloud-based data storage.
@@ -23,20 +23,20 @@ This BLE scanner bracelet uses a Xadow* expansion board for the Intel® Edison p
 
 With these components, we'll make a simple BLE scanner that displays information on the OLED display when BLE-equipped devices enter or exit its scanning range.
 
-Optionally, all data can be stored using the Intel IoT Examples Data store running in your own Microsoft Azure account.
+Optionally, all data can be stored using the Intel® IoT Examples Data store running in your own Microsoft Azure* account.
 
 ## Hardware requirements
 
 Xadow* Starter Kit containing:
 
 1. Intel® Edison platform with a Xadow* expansion board
-2. Xadow - OLED display  (http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
+2. Xadow* - OLED display  (http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
 
 
 ## Software requirements
 
-1. Intel System Studio IoT Edition
-2. Microsoft Azure account
+1. Intel® System Studio IoT Edition
+2. Microsoft Azure* account
 
 ### How to set up
 
@@ -44,23 +44,23 @@ To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on yo
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+To download a .zip file?, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel System Studio IoT Edition
 
  ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars.
 
-Open Intel System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
+Open Intel® System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and then click OK.
 
-In Intel System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java Project**:
+In Intel® System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java Project**:
 
 ![](./../../images/java/new project.png)
 
-Give the project the name "BleScanBracelet" and click Next.
+Give the project the name "BleScanBracelet" and then click Next.
 
 ![](./../../images/java/project name.png)
 
-You now need to connect to your Intel Edison board from your computer to send code to it.
+You now need to connect to your Intel® Edison board from your computer to send code to it.
 Choose a name for the connection and enter the IP address of the Intel® Edison board in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
 ![](./../../images/java/Target connection.png)
@@ -93,18 +93,17 @@ To set up the Intel® Edison board for BLE, run the following command:
 rfkill unblock bluetooth
 ```
 
-
-### Connecting the Grove sensors
+### Connecting the Grove* sensors
 
 ![](./../../images/java/ble-scan.jpg)
 
-You need to have a Xadow expansion board connected to the Intel Edison board to plug in all the Xadow devices.
+You need to have a Xadow* expansion board connected to the Intel® Edison board to plug in all the Xadow devices.
 
-Plug one end of a Xadow connector into the Xadow* OLED, and connect the other end to one of the side connectors on the Xadow* expansion board.
+Plug one end of a Xadow connector into the Xadow OLED, and connect the other end to one of the side connectors on the Xadow expansion board.
 
 ### Datastore server setup
 
-Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft Azure, IBM Bluemix, or AWS, along with Node.js*, and a Redis* data store.
+Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft Azure*, IBM Bluemix*, or AWS, along with Node.js*, and a Redis* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -113,9 +112,7 @@ For information on how to set up your own cloud data server, go to:
 
 ## Configuring the example
 
-
-
-To configure the example for the optional Microsoft* Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
+To configure the example for the optional Microsoft Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
 
 ```
 
@@ -124,28 +121,23 @@ To configure the example for the optional Microsoft* Azure* data store, change t
 
 ```
 
-
 ## Preparing the Intel® Edison board before running the project
 
 In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.
 The files need to be copied from the sample repository: <br>
 Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 
-
-
-
-## Running the program using Intel System Studio IoT Edition
+## Running the program using Intel® System Studio IoT Edition
 
 When you're ready to run the example, make sure you saved all the files.
 
-Click the Run icon on the toolbar of Intel System Studio IoT Edition. This runs the code on the Intel Edison board.
+Click the Run icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
 
-
 ### Determining the IP address of the Intel® Edison board
 
-You can determine what IP address the Intel Edison board is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 
