@@ -7,15 +7,15 @@ This wrist field data reporter application is part of a series of how-to Intel I
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.<br>
-- Set up a web application server to view data using a web page served directly from Intel® Edison.
+- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.<br>
+- Set up a web application server to view data using a web page served directly from Intel® Edison board.
 
 ## What it is
 
 Using an Intel® Edison board, this project lets you create a wrist field data reporter that:<br>
-- continuously monitors the data read from the digital barometer;<br>
-- displays the latest reading using the OLED display when the touch sensor is tapped;<br>
-- serves the recorded data in the JSON format directly from Intel® Edison.
+- continuously monitors the data read from the digital barometer.<br>
+- displays the latest reading using the OLED display when the touch sensor is tapped.<br>
+- serves the recorded data in the JSON format directly from the Intel® Edison board.
 
 ## How it works
 
@@ -23,16 +23,16 @@ This wrist field data reporter can be used to sample barometer data at regular i
 
 It also provides a way to look at the latest data captured, using the QTouch* sensor and the OLED display.
 
-These readings can be viewed or downloaded as JSON data served directly from an embedded web server running on Intel® Edison.
+These readings can be viewed or downloaded as JSON data served directly from an embedded web server running on the Intel® Edison board.
 
 ## Hardware requirements
 
 Xadow* Starter Kit containing:
 
-1. Intel® Edison with a Xadow* expansion board
-2. [Xadow* - OLED Display](http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
-3. [Xadow* - QTouch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/at42qt1070.html)
-4. [Xadow* - Atmospheric Pressure Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/bmpx8x.html)
+1. Intel® Edison board with a Xadow* expansion board
+2. [Xadow - OLED Display](http://iotdk.intel.com/docs/master/upm/node/classes/ssd1308.html)
+3. [Xadow - QTouch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/at42qt1070.html)
+4. [Xadow - Atmospheric Pressure Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/bmpx8x.html)
 
 ## Software requirements
 
@@ -44,7 +44,7 @@ To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on yo
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel® XDK IoT Edition
 
@@ -56,11 +56,11 @@ On the **New Project** screen, click on the folder icon:
 
 ![](./../../images/js/xdk-new-project.png)
 
-Then, navigate to the directory where the example project exists, and select it:
+Navigate to the directory where the example project exists and select it:
 
 ![](./../../images/js/xdk-select.png)
 
-Choose a name for the project, then click on the **Create** button. Then click on the **Continue** button to finish creating your project:
+Choose a name for the project and click on the **Create** button. Then click on the **Continue** button to finish creating your project:
 
 ![](./../../images/js/xdk-new-project-name.png)
 
@@ -76,7 +76,7 @@ Otherwise, select **Add Manual Connection**.
 In the **Address** field, type `192.168.2.15`. In the **Port** field, type `58888`.
 Click **Connect** to save your connection.
 
-### Installing the program manually on Intel® Edison
+### Installing the program manually on Intel® Edison board
 
 Alternatively, you can set up the code manually on the Intel® Edison board.
 
@@ -86,7 +86,7 @@ Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison bo
 
 Then, navigate to the directory with this example.
 
-To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH connection to the board and run the following command:
+To install Git* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
 
     $ opkg install git
 
@@ -94,19 +94,19 @@ To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH 
 
 ![](./../../images/js/field-data.jpg)
 
-You need to have a Xadow* expansion board connected to Intel® Edison to plug in all the Xadow* devices.
+You need to have a Xadow* expansion board connected to the Intel® Edison board to plug in all the Xadow devices.
 
-1. Plug one end of a Xadow* connector into the Xadow* - OLED Display, and connect the other end to one of the side connectors on the Xadow* expansion board.
+1. Plug one end of a Xadow connector into the Xadow - OLED Display, and connect the other end to one of the side connectors on the Xadow* expansion board.
 
-2. Plug one end of a Xadow* connector into the Xadow* - Atmospheric Pressure Sensor, and connect the other end to one of the side connectors on the Xadow* expansion board.
+2. Plug one end of a Xadow connector into the Xadow - Atmospheric Pressure Sensor, and connect the other end to one of the side connectors on the Xadow* expansion board.
 
-3. Plug one end of a Xadow* connector into the Xadow - QTouch* Sensor, and connect the other end to one of the other two connected devices.
+3. Plug one end of a Xadow connector into the Xadow - QTouch* Sensor, and connect the other end to one of the other two connected devices.
 
-### Manual Intel® Edison setup
+### Manual Intel® Edison board board setup
 
-If you're running this code on your Intel® Edison manually, you need to install some dependencies.
+If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
 
-To obtain the Node.js* modules needed for this example to execute on Intel® Edison, run the following command:
+To obtain the Node.js* modules needed for this example to execute on the Intel® Edison board, run the following command:
 
 ```
 npm install
@@ -114,7 +114,7 @@ npm install
 
 ## Running the program using Intel® XDK IoT Edition
 
-When you're ready to run the example, make sure you saved all the files.
+When you're ready to run the example, make sure you have saved all the files.
 
 ![](./../../images/js/xdk-upload.png)
 
@@ -122,11 +122,11 @@ Click the **Upload** icon to upload the files to the Intel® Edison board.
 
 ![](./../../images/js/xdk-run.png)
 
-Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/js/xdk-upload-run.png)
 
-If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
+If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on the Intel® Edison board.
 
 ![](./../../images/js/field-data-output.png)
 
@@ -134,7 +134,7 @@ You will see output similar to the above when the program is running.
 
 ## Running the program manually
 
-To run the example manually on Intel® Edison, establish an SSH connection to the board and execute the following command:
+To run the example manually on the Intel® Edison board, establish an SSH connection to the board and execute the following command:
 
     node index.js
 
@@ -142,21 +142,21 @@ To run the example manually on Intel® Edison, establish an SSH connection to th
 
 ![](./../../images/js/field-data-web.png)
 
-The data collected can be downloaded as JSON directly via a web page served by the program running on Intel® Edison.
+The data collected can be downloaded as JSON directly via a web page served by the program running on the Intel® Edison board.
 
-The web server runs on port `3000`, so if Intel® Edison is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Access point setup
 
-For information on how to set up Intel® Edison to serve as a WiFi* access point, see [Intel's documentation on the matter](https://software.intel.com/en-us/getting-started-with-ap-mode-for-intel-edison-board).
+For information on how to set up the Intel® Edison board to serve as a WiFi* access point, see [Intel's documentation on the matter](https://software.intel.com/en-us/getting-started-with-ap-mode-for-intel-edison-board).
 
-### Determining the Intel® Edison IP address
+### Determining the Intel® Edison board IP address
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 
-You will see the output similar to the following:
+You will see output similar to the following:
 
     3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
         inet 192.168.1.13/24 brd 192.168.1.255 scope global wlan0
