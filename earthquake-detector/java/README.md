@@ -105,7 +105,7 @@ For information on how to set up your own cloud data server, go to:
 
 ## Configuring the example
 
-To configure the example for the optional Microsoft Azure* data store, change the `SERVER`, `AUTH_TOKEN`, `QUAKE_SERVER`, `LATITUSE`, `LONGITUDE` and `MAX_RADIUS_KM` keys in the `config.properties` file as follows:
+To configure the example for the optional Microsoft Azure* data store, change the `SERVER`, `AUTH_TOKEN`, `QUAKE_SERVER`, `LATITUDE`, `LONGITUDE` and `MAX_RADIUS_KM` keys in the `config.properties` file as follows:
 
 ```
 

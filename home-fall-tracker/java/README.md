@@ -55,16 +55,16 @@ Open Intel® System Studio IoT Edition. It will start by asking for a workspace 
 
 Intel® System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java Project**:
 
-![](./../images/java/new project.png)
+![](./../../images/java/new project.png)
 
 Give the project the name "HomeFallTracker" and then click Next.
 
-![](./../images/java/project name.png)
+![](./../../images/java/project name.png)
 
 You now need to connect to your Intel® Edison board from your computer to send code to it.
 Choose a name for the connection and enter the Edison's IP address in the "Target Name" field. You can also try to Search for it using the "Search Target" button. Click finish when you are done.
 
-![](./../images/java/Target connection.png)
+![](./../../images/java/Target connection.png)
 
 You have successfully created an empty project. You now need to copy the source files and the config file to the project.
 Drag all of the files from your git repository's "src" folder into the new project's src folder in Intel® System Studio IoT Edition. Make sure previously auto-generated main class is overridden.
@@ -72,7 +72,7 @@ Drag all of the files from your git repository's "src" folder into the new proje
 The project uses the following external jars: [gson-2.6.1](http://central.maven.org/maven2/com/google/code/gson/gson/2.6.1/gson-2.6.1.jar), [twilio-java-sdk-6.3.0-jar-with-dependencies](http://repo.maven.apache.org/maven2/com/twilio/sdk/twilio-java-sdk/6.3.0/twilio-java-sdk-6.3.0-jar-with-dependencies.jar). These can be found in the Maven Central Repository. Create a "jars" folder in the project's root directory, and copy all needed jars in this folder.
 In Intel® System Studio IoT Edition, select all jar files in "jars" folder and  right click -> Build path -> Add to build the path.
 
-![](./../images/java/add to build path.png)
+![](./../../images/java/add to build path.png)
 
 Now you need to add the UPM jar files relevant to this specific sample.
 Right-click on the project's root -> Build path -> Configure build path. click on "add external JARs..."
@@ -84,7 +84,7 @@ For this sample you will need the following jars:
 
 The jars can be found at the IOT Devkit installation root path\iotdk-ide-win\devkit-x86\sysroots\i586-poky-linux\usr\lib\java
 
-![](./../images/java/add external jars to build path.png)
+![](./../../images/java/add external jars to build path.png)
 
 ### Connecting the Xadow* sensors
 
@@ -106,7 +106,7 @@ For information on how to set up your own cloud data server, go to:
 
 ## Configuring the example
 
-To configure the example for the optional Microsoft Azure* data store, change the `SERVER`, `AUTH_TOKEN`, `QUAKE_SERVER`, `LATITUSE`, `LONGITUDE` and `MAX_RADIUS_KM` keys in the `config.properties` file as follows:
+To configure the example for the optional Microsoft Azure* data store, change the `SERVER`, `AUTH_TOKEN`, `QUAKE_SERVER`, `LATITUDE`, `LONGITUDE` and `MAX_RADIUS_KM` keys in the `config.properties` file as follows:
 
 ```
 
@@ -149,11 +149,11 @@ When you're ready to run the example, make sure you saved all the files.
 
 Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on Intel® Edison board.
 
-![](./../images/java/run project.png)
+![](./../../images/java/run project.png)
 
 You will see output similar to the following when the program is running.
 
-![](./../images/java/looks when running.png)
+![](./../../images/java/looks when running.png)
 
 ### Determining the Intel® Edison IP address
 
