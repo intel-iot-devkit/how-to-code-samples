@@ -34,11 +34,19 @@ Optionally, all data can be stored using the Intel® IoT Examples data store or 
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Transportation and Safety Kit from Seeedstudio, or else the DFRobot Edison Starter Kit.
+
 Grove* Transportation and Safety Kit containing:
 
 1. Intel® Edison board with an Arduino* breakout board
 2. [Grove PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
 3. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [PIR (Motion) Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html).
+3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
@@ -107,6 +115,14 @@ You need to have a Grove* Shield connected to an Arduino*-compatible breakout bo
 1. Plug one end of a Grove cable into the Grove PIR Motion Sensor, and connect the other end to the D4 port on the Grove Shield.
 
 2. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
+
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/alarm-clock.jpg)
+
+You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Display Shield.
+
+1. Plug one end of a DFRobot* cable into the PIR (Motion) Sensor, and connect the other end to the A2 port on the LCD Display Shield.
 
 ### Manual Intel® Edison board setup
 

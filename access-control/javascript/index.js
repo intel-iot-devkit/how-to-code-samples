@@ -40,13 +40,6 @@ var config = JSON.parse(
 var datastore = require("./datastore");
 var mqtt = require("./mqtt");
 
-// Colors used for the RGB LCD display
-var COLORS = {
-  blue: [0, 0, 255],
-  red: [255, 0, 0],
-  white: [255, 255, 255]
-};
-
 var TIMEOUT = 30 * 1000;
 
 var CODE = config.CODE || "1234";
@@ -55,9 +48,13 @@ var VALIDATED = false,
     EXPECTING_CODE = false,
     ALARM_IN_PROGRESS = false;
 
-// Initialize the hardware devices
-var screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62),
-    motion = new (require("jsupm_biss0001").BISS0001)(4);
+// Initialize the hardware for whichever kit we are using
+var board;
+if (config.kit) {
+  board = require("./" + config.kit + ".js");
+} else {
+  board = require('./grove.js');
+}
 
 // Store record in the remote datastore and/or mqtt server
 // when access control event has occurred
@@ -70,27 +67,13 @@ function log(event) {
   mqtt.log(config, payload);
 }
 
-// Displays a message on the RGB LED
-function message(string) {
-  // pad string to avoid display issues
-  while (string.length < 16) { string += " "; }
-
-  screen.setCursor(0, 0);
-  screen.write(string);
-}
-
-// Sets the background color on the RGB LED
-function color(str) {
-  screen.setColor.apply(screen, COLORS[str] || COLORS.white);
-}
-
 // Turns on the alarm
 function startAlarm() {
   log("alarm-starting");
   ALARM_IN_PROGRESS = true;
 
-  color("red");
-  message("ALARM");
+  board.color("red");
+  board.message("ALARM");
 }
 
 // Tiurns off the alarm
@@ -102,8 +85,8 @@ function stopAlarm() {
 // Pauses looking for motion for 30 seconds
 function wait() {
   log("waiting");
-  color("white");
-  message("Waiting 30s");
+  board.color("white");
+  board.message("Waiting 30s");
   setTimeout(lookForMotion, TIMEOUT);
 }
 
@@ -112,8 +95,8 @@ function wait() {
 function alert() {
   log("motion-detected");
 
-  color("blue");
-  message("ALERT");
+  board.color("blue");
+  board.message("ALERT");
 
   EXPECTING_CODE = true;
 
@@ -142,11 +125,11 @@ function lookForMotion() {
 
   log("looking-for-motion");
 
-  color("white");
-  message("READY");
+  board.color("white");
+  board.message("READY");
 
   interval = setInterval(function() {
-    var movement = motion.value();
+    var movement = board.checkMovement();
 
     if (!prev && movement && !ALARM_IN_PROGRESS) {
       clearInterval(interval);
