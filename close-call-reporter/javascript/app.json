@@ -1,0 +1,20 @@
+{
+  "title": "Close-call Driving Reporter",
+  "sample": true,
+  "template": false,
+  "visible": true,
+  "repoSource": "github",
+  "repoUser": "intel-iot-devkit",
+  "repoName": "how-to-code-samples",
+  "repoPath": "tree/master/close-call-reporter/javascript",
+  "relName": "4.0.0",
+  "tooltip": "Close-call driving reporter that monitors the Grove* IR Distance Interrupter and the Grove* GPS.",
+  "description": "A 'close call' fleet driving reporter monitors the Grove* IR Distance Interrupter and the Grove* GPS. Maintains a history of close calls and logs them using cloud-based data storage.",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/close-call-reporter/javascript",
+  "highlights": [""],
+  "screenshotUrl": "",
+  "appName": "demo.xdk.iot",
+  "keywords": [""],
+  "iconUrl": ""
+}

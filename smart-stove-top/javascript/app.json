@@ -1,0 +1,20 @@
+{
+  "title": "Smart Stove Top",
+  "sample": true,
+  "template": false,
+  "visible": true,
+  "repoSource": "github",
+  "repoUser": "intel-iot-devkit",
+  "repoName": "how-to-code-samples",
+  "repoPath": "tree/master/smart-stove-top/javascript",
+  "relName": "4.0.0",
+  "tooltip": "Smart stove top application.",
+  "description" : "Smart stove top application has a number of useful features designed to help you monitor the temperature of the food you are cooking on your stove top. Set the target temperature for a pot on your range top via a web page served directly from Intel® Edison. When the target temperature is reached an audible notification is issued via the speaker. An alarm goes off if an open flame is detected. Optionally, all data can also be stored using the Intel IoT Example Datastore running in a Microsoft* Azure* account.",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/smart-stove-top/javascript",
+  "highlights": [""],
+  "screenshotUrl": "",
+  "appName": "demo.xdk.iot",
+  "keywords": [""],
+  "iconUrl": ""
+}

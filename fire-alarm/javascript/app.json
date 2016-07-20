@@ -1,0 +1,20 @@
+{
+  "title": "Fire Alarm",
+  "sample": true,
+  "template": false,
+  "visible": true,
+  "repoSource": "github",
+  "repoUser": "intel-iot-devkit",
+  "repoName": "how-to-code-samples",
+  "repoPath": "tree/master/fire-alarm/javascript",
+  "relName": "4.0.0",
+  "tooltip": "Smart fire alarm app detects unsafe temperature levels.",
+  "description" : "Smart fire alarm app detects unsafe temperature levels. An audible notification is issued using the buzzer. A visual notification is made using the LCD. A text messages is sent to alert others of a possible fire. Fire events are tracked using cloud-based data storage.",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/fire-alarm/javascript",
+  "highlights": [""],
+  "screenshotUrl": "",
+  "appName": "demo.xdk.iot",
+  "keywords": [""],
+  "iconUrl": ""
+}

@@ -1,0 +1,20 @@
+{
+  "title": "BLE Scan Bracelet",
+  "sample": true,
+  "template": false,
+  "visible": true,
+  "repoSource": "github",
+  "repoUser": "intel-iot-devkit",
+  "repoName": "how-to-code-samples",
+  "repoPath": "tree/master/ble-scan-bracelet/javascript",
+  "relName": "4.0.0",
+  "tooltip": "Bluetooth* Low Energy (BLE) scan bracelet application.",
+  "description": "Bluetooth* Low Energy (BLE) scan bracelet application searches for BLE devices that come within its scanning range. Displays information about any detected devices using the OLED display. Tracks history of detected devices using cloud-based data storage.",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/ble-scan-bracelet/javascript",
+  "highlights": [""],
+  "screenshotUrl": "",
+  "appName": "demo.xdk.iot",
+  "keywords": [""],
+  "iconUrl": ""
+}
