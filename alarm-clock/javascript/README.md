@@ -121,13 +121,13 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 ![](./../../images/js/alarm-clock.jpg)
 
-You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Display Shield.
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
 
-1. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A1 port on the LCD Display Shield.
+1. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A1 port on the LCD Keypad Shield.
 
-2. Plug one end of a DFRobot* cable into the Button, and connect the other end to the A2 port on the LCD Display Shield.
+2. Plug one end of a DFRobot* cable into the Button, and connect the other end to the A2 port on the LCD Keypad Shield.
 
-3. Plug one end of a DFRobot* cable into the Rotary Analog Sensor, and connect the other end to the A3 port on the LCD Display Shield.
+3. Plug one end of a DFRobot* cable into the Rotary Analog Sensor, and connect the other end to the A3 port on the LCD Keypad Shield.
 
 ### Manual Intel® Edison setup
 

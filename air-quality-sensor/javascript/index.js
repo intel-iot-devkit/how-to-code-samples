@@ -37,19 +37,16 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
-// Initialize the hardware devices
-var air = new (require("jsupm_gas").TP401)(0),
-    speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(5);
+// Initialize the hardware for whichever kit we are using
+var board;
+if (config.kit) {
+  board = require("./" + config.kit + ".js");
+} else {
+  board = require('./grove.js');
+}
 
 var datastore = require("./datastore");
 var mqtt = require("./mqtt");
-
-// Plays a chime sound using the Grove speaker
-function chime() {
-  speaker.playSound("a", true, "low");
-  speaker.playSound("c", true, "low");
-  speaker.playSound("g", true, "low");
-}
 
 // Store record in the remote datastore when the air quality
 // level has exceeded the allowed threshold of safety
@@ -66,7 +63,7 @@ function sendAlert() {
 // the allowed threshold of safety
 function alert() {
   sendAlert();
-  chime();
+  board.chime();
 }
 
 // Main function checks the air quality every 1 second,
@@ -77,8 +74,8 @@ function main() {
       half = config.THRESHOLD / 2;
 
   setInterval(function() {
-    var quality = air.getSample();
-      console.log(quality);
+    var quality = board.getAirSample();
+    console.log(quality);
     if (prev <= config.THRESHOLD && quality > config.THRESHOLD && prev !== 0) { alert(); }
     prev = quality;
   }, 1000);

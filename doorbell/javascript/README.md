@@ -20,11 +20,13 @@ Using an Intel® Edison board, this project lets you create a smart doorbell tha
 
 ## How it works
 
-This smart doorbell makes a noise with the buzzer when the Grove* Touch Sensor is pressed. In addition, it displays a message on the LCD.
+This smart doorbell makes a noise with the buzzer when the connected touch sensor is pressed. In addition, it displays a message on the LCD.
 
 Optionally, doorbell ring data can also be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
 
 ## Hardware requirements
+
+This sample can be used with either the Grove* Starter Kit Plus from Seeedstudio, or else the DFRobot Edison Starter Kit.
 
 Grove* Starter Kit Plus containing:
 
@@ -32,6 +34,13 @@ Grove* Starter Kit Plus containing:
 2. [Grove Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/ttp223.html)
 3. [Grove Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html).
+3. [Capacitive Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
+4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
@@ -101,6 +110,16 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 2. Plug one end of a Grove cable into the Grove Buzzer, and connect the other end to the D5 port on the Grove Shield.
 
 3. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
+
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/doorbell.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot* cable into the Touch Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
 
 ### Manual Intel® Edison board setup
 

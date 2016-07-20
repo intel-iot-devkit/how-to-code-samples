@@ -34,6 +34,13 @@ Grove* Transportation and Safety Kit containing:
 2. [Grove IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 3. [Grove GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
 
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [IR Distance Sensor]()
+3. [GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
+4. [I/O Expansion Shield]()
+
 ## Software requirements
 
 1. Intel® XDK IoT Edition
@@ -100,6 +107,16 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 1. Plug one end of a Grove cable into the Grove IR Distance Interrupter, and connect the other end to the D2 port on the Grove Shield.
 
 2. Plug one end of a Grove cable into the Grove GPS, and connect the other end to the UART port on the Grove Shield.
+
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/close-call.jpg)
+
+You need to have a DFRobot* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the DFRobot* I/O Expansion Shield.
+
+1. Plug one end of a DFRobot cable into the IR Distance Sensor, and connect the other end to the D5 port on the I/O Expansion Shield.
+
+2. Plug the attached GPS cable TX (color) to the I/O Expansion Shield's RX. Plug the attached GPS cable RX (color) to the I/O Expansion Shield's TX. Plug the attached GPS cable TX (color) to the I/O Expansion Shield's RX. Plug the attached GPS cable power (red) to the I/O Expansion Shield's 5V. Plug the attached GPS cable ground (black) to the I/O Expansion Shield's GND.
 
 ### Manual Intel® Edison setup
 

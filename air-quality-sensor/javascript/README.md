@@ -29,11 +29,20 @@ Also, optionally, the monitor stores the air quality data using the Intel® IoT 
 
 ### Hardware requirements
 
+This sample can be used with either the Grove* Home Automation Kit from Seeedstudio, or else the DFRobot Edison Starter Kit.
+
 Grove* Home Automation Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove Air Quality Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/tp401.html)
 3. [Grove Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Air Quality Sensor]().
+3. [Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html).
+4. [I/O Expansion Shield]()
 
 ### Software requirements
 
@@ -102,6 +111,16 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 1. Plug one end of a Grove cable into the Grove Air Quality Sensor, and connect the other end to the AO port on the Grove Shield.
 
 2. Plug one end of a Grove cable into the Grove Speaker, and connect the other end to the D5 port on the Grove Shield.
+
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/alarm-clock.jpg)
+
+You need to have a DFRobot* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the DFRobot* I/O Expansion Shield.
+
+1. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the D5 port on the DFRobot* I/O Expansion Shield.
+
+2. Plug one end of a DFRobot* cable into the Air Quality Sensor, and connect the other end to the A0 port on the DFRobot* I/O Expansion Shield.
 
 ### Installing the program manually on the Intel® Edison board
 
