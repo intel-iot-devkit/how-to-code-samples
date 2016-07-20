@@ -47,10 +47,10 @@ var moment = require("moment");
 
 // Initialize the hardware for whichever kit we are using
 var board;
-if (config.kit == "dfrobot") {
-  board = require('./dfrobot.js');
+if (config.kit) {
+  board = require("./" + config.kit + ".js");
 } else {
-  board = require('./seeedstudio.js');
+  board = require('./grove.js');
 }
 
 var datastore = require("./datastore");
