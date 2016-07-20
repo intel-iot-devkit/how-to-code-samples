@@ -40,7 +40,7 @@ exports.events = events;
 var colors = { red: [255, 0, 0], white: [255, 255, 255] };
 
 // Sets the background color on the RGB LED
-exports.color - function(string) {
+exports.color = function(string) {
   screen.setColor.apply(screen, colors[string] || colors.white);
 }
 
