@@ -1,43 +1,43 @@
-# Smart stove top in Java*
+# Stove top in Java*
 
 ## Introduction
 
-This smart stove top application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This smart stove top application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® System Studio IoT Edition . Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.<br>
-- Set up a web application server to set the target temperature and store this data using Azure Redis Cache* from Microsoft* Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Run this code sample in Intel® System Studio IoT Edition. Intel® System Studio IoT Edition lets you create and test applications on Intel-based IoT platforms.<br>
+- Set up a web application server to set the target temperature and store this data using Azure Redis Cache* from Microsoft Azure*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 
 ## What it is
 
 Using an Intel® Edison board, this project lets you create a smart stove top that:<br>
-- allows you to set a target temperature;<br>
-- monitors your stove and notifies you when your set temperature is reached;<br>
+- allows you to set a target temperature.<br>
+- monitors your stove and notifies you when your set temperature is reached.<br>
 - stores historical temperature data using cloud-based data storage.
 
 ## How it works
 
 This smart stove top sensor has a number of useful features designed to help you monitor the temperature of the food you are cooking on your legacy stove top.
-Set the target temperature for a pot on your range top via a web page served directly from the Intel® Edison board, using your mobile phone.
-When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, alarm goes off.
-Optionally, all data can also be stored using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Set the target temperature for a pot on your stove top via a web page served directly from the Intel® Edison board, using your mobile phone.
+When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, an alarm goes off.
+Optionally, all data can also be stored using the Intel® IoT Example Data store running in your own Microsoft Azure account.
 
 ## Hardware requirements
 
 Grove* Home Automation Kit containing:
 
 1. Intel® Edison platform with an Arduino* breakout board
-2. [Grove* IR Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/otp538u.html)
-3. [Grove* Flame Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/yg1006.html)
-4. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+2. [Grove IR Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/otp538u.html)
+3. [Grove Flame Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/yg1006.html)
+4. [Grove Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
 
 ## Software requirements
 
 1. Intel® System Studio IoT Edition
-2. Microsoft* Azure* account
+2. Microsoft Azure* account
 
 ### How to set up
 
@@ -45,19 +45,19 @@ To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on yo
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+To download a .zip file?, in your web browser, go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ## Adding the program to Intel® System Studio IoT Edition
 
  ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars.
 
-Open Intel® System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
+Open Intel® System Studio IoT Edition. It will start by asking for a workspace directory; choose one and then click OK.
 
-In Intel® System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java Project**:
+In Intel® System Studio IoT Edition, select File -> new -> **Intel(R) IoT Java Project**:
 
 ![](./../../images/java/new project.png)
 
-Give the project the name "SmartStoveTop" and click Next.
+Give the project the name "SmartStoveTop" and then click Next.
 
 ![](./../../images/java/project name.png)
 
@@ -75,9 +75,9 @@ In Intel® System Studio IoT Edition, select all jar files in "jars" folder and 
 ![](./../../images/java/add to build path.png)
 
 Now you need to add the UPM jar files relevant to this specific sample.
-right click on the project's root -> Build path -> Configure build path. Java Build Path -> 'Libraries' tab -> click on "add external JARs..."
+Right-click on the project's root -> Build path -> Configure build path. Java Build Path -> 'Libraries' tab -> click on "add external JARs..."
 
-for this sample you will need the following jars:
+For this sample you will need the following jars:
 
 1. upm_otp538u.jar
 2. upm_grovespeaker.jar
@@ -91,17 +91,17 @@ The jars can be found at the IOT Devkit installation root path\iss-iot-win\devki
 
 ![](./../../images/java/smart-stove.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
+You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
-1. Plug one end of a Grove* cable into the Grove* IR Temperature Sensor, and connect the other end to the A0 port on the Grove* Shield.
+1. Plug one end of a Grove cable into the Grove IR Temperature Sensor, and connect the other end to the A0 port on the Grove Shield.
 
-2. Plug one end of a Grove* cable into the Grove* Flame Sensor, and connect the other end to the D4 port on the Grove* Shield.
+2. Plug one end of a Grove cable into the Grove Flame Sensor, and connect the other end to the D4 port on the Grove Shield.
 
-3. Plug one end of a Grove* cable into the Grove* Speaker, and connect the other end to the D5 port on the Grove* Shield.
+3. Plug one end of a Grove cable into the Grove Speaker, and connect the other end to the D5 port on the Grove Shield.
 
-### Datastore server setup
+### Data store server setup
 
-Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft* Azure*, IBM* Bluemix, or AWS, along with Node.js*, and a Redis* data store.
+Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure*, IBM Bluemix*, or AWS, along with Node.js*, and a Redis* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -109,7 +109,7 @@ For information on how to set up your own cloud data server, go to:
 
 ## Configuring the example
 
-To configure the example for the optional Microsoft* Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
+To configure the example for the optional Microsoft Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
 
 ```
 
@@ -117,7 +117,6 @@ To configure the example for the optional Microsoft* Azure* data store, change t
   AUTH_TOKEN=mypassword
 
 ```
-
 
 ## Preparing the Intel® Edison board before running the project
 
@@ -127,17 +126,13 @@ Two sorts of files need to be copied from the sample repository:
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 2. web files- files within site_contents folder need to be copied to "/var/SmartStoveTop"
 
-
-
 ## Running the program using Intel® System Studio IoT Edition
 
-When you're ready to run the example, make sure you saved all the files.
+When you're ready to run the example, make sure you have saved all the files.
 
 Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
-
-
 
 You will see output similar to the following when the program is running.
 
@@ -157,7 +152,7 @@ You can determine what IP address the Intel® Edison board is connected to by ru
 
     ip addr show | grep wlan
 
-You will see the output similar to the following:
+You will see output similar to the following:
 
     3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
         inet 192.168.1.13/24 brd 192.168.1.255 scope global wlan0

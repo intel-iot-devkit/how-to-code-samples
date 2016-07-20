@@ -2,24 +2,24 @@
 
 ## Introduction
 
-This automatic plant lighting system monitor application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This automatic plant lighting system monitor application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
+- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run this code sample in Intel® System Studio IoT Edition . Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.
-- Set up a web application server to set the alarm time and store this alarm data using Azure Redis Cache* from Microsoft* Azure\*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Run this code sample in Intel® System Studio IoT Edition. Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.
+- Set up a web application server to set the alarm time and store this alarm data using Azure Redis Cache* from Microsoft Azure\*, cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Invoke the services of the Weather Underground* API for accessing weather data.
 
 ## What it is
 
 Using an Intel® Edison board, this project lets you create an automatic plant lighting monitor system that:
 
-- checks if a separate automated lighting system is turned on or off based on a configurable schedule, by using a light sensor;
-- can be accessed with your mobile phone via the built-in web interface to set the lighting times;
-- also monitors the water levels using a connected moisture sensor;
-- logs events from the lighting system, using cloud-based data storage;
+- checks if a separate automated lighting system is turned on or off based on a configurable schedule, by using a light sensor.
+- can be accessed with your mobile phone via the built-in web interface to set the lighting times.
+- also monitors the water levels using a connected moisture sensor.
+- logs events from the lighting system, using cloud-based data storage.
 - sends text messages to alert recipients if the system if not working as expected.
 
 ## How it works
@@ -30,22 +30,22 @@ If the lighting is supposed to be on, but the light sensor does not detect any l
 
 It also automatically checks and logs moisture sensor data at periodic intervals.
 
-Optionally, it can store system events using the Intel IoT Examples Datastore running in your own Microsoft* Azure* account.
+Optionally, it can store system events using the Intel® IoT Examples Data store running in your own Microsoft Azure* account.
 
 ## Hardware requirements
 
 Grove* Indoor Environment Kit containing:
 
 1. Intel® Edison platform with an Arduino* breakout board
-2. [Grove* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
-3. [Grove* Light Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovelight.html)
-4. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+2. [Grove Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
+3. [Grove Light Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovelight.html)
+4. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 
 ## Software requirements
 
 1. Intel® System Studio IoT Edition
-2. Microsoft* Azure* account
+2. Microsoft Azure* account
 3. Twilio* account
 
 ### How to set up
@@ -60,13 +60,13 @@ Want to download a .zip file? In your web browser, go to <a href="https://github
 
  ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars.
 
-Open Intel® System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
+Open Intel® System Studio IoT Edition. It will start by asking for a workspace directory; choose one and then click OK.
 
-In Intel® System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java Project**:
+In Intel® System Studio IoT Edition, select File -> new -> **Intel(R) IoT Java Project**:
 
 ![](./../../images/java/new project.png)
 
-Give the project the name "PlantLightingSystem" and click Next.
+Give the project the name "PlantLightingSystem" and then click Next.
 
 ![](./../../images/java/project name.png)
 
@@ -84,9 +84,9 @@ In Intel® System Studio IoT Edition, select all jar files in "jars" folder and 
 ![](./../../images/java/add to build path.png)
 
 Now you need to add the UPM jar files relevant to this specific sample.
-right click on the project's root -> Build path -> Configure build path. Java Build Path -> 'Libraries' tab -> click on "add external JARs..."
+Right-click on the project's root -> Build path -> Configure build path. Java Build Path -> 'Libraries' tab -> click on "add external JARs..."
 
-for this sample you will need the following jars:
+For this sample you will need the following jars:
 
 1. upm_grovemoisture.jar
 2. upm_grove.jar
@@ -100,18 +100,18 @@ The jars can be found at the IOT Devkit installation root path\iss-iot-win\devki
 
 ![](./../../images/java/lighting.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
+You need to have a Grove* Shield connected to an Arduino-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
-1. Plug one end of a Grove* cable into the Grove* Light Sensor, and connect the other end to the A0 port on the Grove* Shield.
+1. Plug one end of a Grove cable into the Grove Light Sensor, and connect the other end to the A0 port on the Grove Shield.
 
-2. Plug one end of a Grove* cable into the Grove* Moisture Sensor, and connect the other end to the A1 port on the Grove* Shield.
+2. Plug one end of a Grove cable into the Grove Moisture Sensor, and connect the other end to the A1 port on the Grove Shield.
 
-3. Plug one end of a Grove* cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove* Shield.
+3. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
 
 
-### Datastore server setup
+### Data store server setup
 
-Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft* Azure*, IBM* Bluemix, or AWS, along with Node.js*, and a Redis* data store.
+Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft Azure*, IBM Bluemix*, or AWS, along with Node.js*, and a Redis* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -120,9 +120,9 @@ For information on how to set up your own cloud data server, go to:
 ## Configuring the example
 
 Pass your Twilio* API key and authentication token to the sample program by modifying the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the `config.properties`.
-`NUMBER_TO_SEND_TO` and `TWILIO_OUTGOING_NUMBER` are also part of the twilio setup.
+`NUMBER_TO_SEND_TO` and `TWILIO_OUTGOING_NUMBER` are also part of the Twilio setup.
 
-Also, to configure the example for the optional Microsoft* Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
+Also, to configure the example for the optional Microsoft Azure* data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
 
 ```
 
@@ -135,7 +135,6 @@ Also, to configure the example for the optional Microsoft* Azure* data store, ch
 
 ```
 
-
 ## Preparing the Intel® Edison board before running the project
 
 In order for the sample to run you will need to copy some files to the Intel® Edison board. This can be done using SCP through SSH.
@@ -143,8 +142,6 @@ Two sorts of files need to be copied from the sample repository:<br>
 
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 2. web files- files within site_contents folder need to be copied to "/var/PlantLightingSystem"
-
-
 
 ## Running the program using Intel® System Studio IoT Edition
 
@@ -174,7 +171,7 @@ You can determine what IP address the Intel® Edison board is connected to by ru
 
     ip addr show | grep wlan
 
-You will see the output similar to the following:
+You will see output similar to the following:
 
     3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
         inet 192.168.1.13/24 brd 192.168.1.255 scope global wlan0

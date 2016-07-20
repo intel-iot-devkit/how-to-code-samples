@@ -2,19 +2,19 @@
 
 ## Introduction
 
-This range finder scanner application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This range finder scanner application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® System Studio IoT Edition . Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.<br>
+- Run this code sample in Intel® System Studio IoT Edition. Intel® System Studio IoT Edition lets you create and test applications on Intel®-based IoT platforms.<br>
 - Set up a web application server to view range finder data using a web page served directly from the Intel® Edison board.
 
 ## What it is
 
 Using an Intel® Edison board, this project lets you create a range finding scanner that:<br>
-- continuously checks the Grove* IR Distance Interrupter;<br>
-- moves the stepper motor in a 360-degree circle;<br>
+- continuously checks the Grove* IR Distance Interrupter.<br>
+- moves the stepper motor in a 360-degree circle.<br>
 - can be accessed via the built-in web interface to view range finder data.
 
 ## How it works
@@ -22,12 +22,13 @@ Using an Intel® Edison board, this project lets you create a range finding scan
 As the stepper motor turns, it pauses to get readings from the Grove* IR Distance Interrupter.
 
 These readings can be seen by viewing the web page served directly from the Intel® Edison board.
+
 ## Hardware requirements
 
 Grove* Indoor Environment Kit containing:
 
 1. Intel® Edison platform with an Arduino* breakout board
-2. [Grove* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
+2. [Grove IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html)
 
 
@@ -47,13 +48,13 @@ Want to download a .zip file? In your web browser, go to <a href="https://github
 
  ** The following screenshots are from the Alarm clock sample, however the technique for adding the program is the same, just with different source files and jars.
 
-Open Intel® System Studio IoT Edition, it will start by asking for a workspace directory. Choose one and click OK.
+Open Intel® System Studio IoT Edition. It will start by asking for a workspace directory; choose one and then click OK.
 
-In Intel® System Studio IoT Edition , select File -> new -> **Intel(R) IoT Java Project**:
+In Intel® System Studio IoT Edition, select File -> new -> **Intel(R) IoT Java Project**:
 
 ![](./../../images/java/new project.png)
 
-Give the project the name "RangeFinderScanner" and click Next.
+Give the project the name "RangeFinderScanner" and then click Next.
 
 ![](./../../images/java/project name.png)
 
@@ -71,9 +72,10 @@ In Intel® System Studio IoT Edition, select all jar files in "jars" folder and 
 ![](./../../images/java/add to build path.png)
 
 Now you need to add the UPM jar files relevant to this specific sample.
-right click on the project's root -> Build path -> Configure build path. Java Build Path -> 'Libraries' tab -> click on "add external JARs..."
 
-for this sample you will need the following jars:
+Right-click on the project's root -> Build path -> Configure build path. Java Build Path -> 'Libraries' tab -> click on "add external JARs..."
+
+For this sample you will need the following jars:
 
 1. upm_rfr359f.jar
 2. upm_uln200xa.jar
@@ -86,17 +88,15 @@ The jars can be found at the IOT Devkit installation root path\iss-iot-win\devki
 
 ![](./../../images/java/range-finder.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
+You need to have a Grove* Shield connected to an Arduino*-compatible breakout board to plug all the Grove devices into the Grove* Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
 You need to power the Intel® Edison board with the external power adaptor that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
 In addition, you need a breadboard and an extra 5V power supply to provide power to the motor. Note: you need a separate battery or power supply for the motor. You cannot use the same power supply for both the Intel® Edison board and the motor, so you need either 2 batteries or 2 power supplies in total.
 
-1. Plug the stepper motor controller into pins 9, 10, 11, and 12 on the Arduino* breakout board for it to be able to be controlled. Connect the controller to ground (GND), to the 5V power coming from the Arduino* breakout board (VCC), and to the separate 5V power for the motor (VM).
+1. Plug the stepper motor controller into pins 9, 10, 11, and 12 on the Arduino* breakout board for it to be able to be controlled. Connect the controller to ground (GND), to the 5V power coming from the Arduino breakout board (VCC), and to the separate 5V power for the motor (VM).
 
-2. Plug one end of a Grove* cable into the Grove* IR Distance Interrupter, and connect the other end to the D2 port on the Grove* Shield.
-
-
+2. Plug one end of a Grove cable into the Grove IR Distance Interrupter, and connect the other end to the D2 port on the Grove Shield.
 
 ## Preparing the Intel® Edison board before running the project
 
@@ -106,17 +106,13 @@ Two sorts of files need to be copied from the sample repository:<br>
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 2. web files- files within site_contents folder need to be copied to "/var/RangeFinderScanner"
 
-
-
 ## Running the program using Intel® System Studio IoT Edition
 
-When you're ready to run the example, make sure you saved all the files.
+When you're ready to run the example, make sure you have saved all the files.
 
 Click the **Run** icon on the toolbar of Intel® System Studio IoT Edition. This runs the code on the Intel® Edison board.
 
 ![](./../../images/java/run project.png)
-
-
 
 You will see output similar to the following when the program is running.
 
@@ -136,7 +132,7 @@ You can determine what IP address the Intel® Edison board is connected to by ru
 
     ip addr show | grep wlan
 
-You will see the output similar to the following:
+You will see output similar to the following:
 
     3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
         inet 192.168.1.13/24 brd 192.168.1.255 scope global wlan0
