@@ -30,12 +30,21 @@ Optionally, all data can be stored using the Intel® IoT Examples Datastore or a
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Home Automation Kit from Seeedstudio, or else the DFRobot* Edison Starter Kit with some additional DFRobot* parts.
+
 Grove* Home Automation Kit containing:
 
 1. Intel® Edison board with an Arduino* breakout board
 2. [Grove IR Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/otp538u.html)
 3. [Grove Flame Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/yg1006.html)
 4. [Grove Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
+3. [Flame Sensor]()
+4. [I/O Expansion Shield]()
 
 ## Software requirements
 
@@ -106,6 +115,18 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 2. Plug one end of a Grove cable into the Grove Flame Sensor, and connect the other end to the D4 port on the Grove Shield.
 
 3. Plug one end of a Grove cable into the Grove Speaker, and connect the other end to the D5 port on the Grove Shield.
+
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/smart-stove.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot* cable into the Analog Temperature Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot* cable into the Flame Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
+
+3. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A3 port on the LCD Keypad Shield.
 
 ### Manual Intel® Edison board setup
 

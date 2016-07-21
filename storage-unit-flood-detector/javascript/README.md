@@ -28,11 +28,20 @@ Optionally, the monitor can store moisture data using the Intel IoT Examples Dat
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Home Automation Kit from Seeedstudio, or else the DFRobot* Edison Starter Kit.
+
 Grove* Home Automation Kit containing:
 
 1. Intel® Edison board with an Arduino* breakout board
 2. [Grove Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
 3. [Grove Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Moisture Sensor]()
+3. [Buzzer]()
+4. [I/O Expansion Shield]()
 
 ## Software requirements
 
@@ -101,6 +110,16 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 1. Plug one end of a Grove cable into the Grove Moisture Sensor, and connect the other end to the A0 port on the Grove Shield.
 
 2. Plug one end of a Grove cable into the Grove Speaker, and connect the other end to the D5 port on the Grove Shield.
+
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/flood-detect.jpg)
+
+You need to have a I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the I/O Expansion Shield.
+
+1. Plug one end of a DFRobot* cable into the Moisture Sensor, and connect the other end to the A1 port on the I/O Expansion Shield.
+
+2. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the D3 port on the I/O Expansion Shield.
 
 ### Manual Intel® Edison board setup
 

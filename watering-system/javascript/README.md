@@ -33,6 +33,8 @@ Optionally, it can also log watering system events using the Intel® IoT Example
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Environment & Agriculture Kit from Seeedstudio, or else the DFRobot* Edison Starter Kit with some additional DFRobot* parts.
+
 Grove* Environment & Agriculture Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
@@ -40,6 +42,14 @@ Grove* Environment & Agriculture Kit containing:
 3. [Water Pump](http://www.seeedstudio.com/depot/6V-Mini-Water-Pump-p-1945.html)
 4. [Water Flow Sensor](http://www.seeedstudio.com/depot/G18-Water-Flow-Sensor-p-1346.html)
 5. [Grove Dry-Reed Relay](http://iotdk.intel.com/docs/master/upm/node/classes/groverelay.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Moisture Sensor]()
+3. [Water Pump]()
+4. [Relay Module]()
+5. [I/O Expansion Shield]()
 
 ## Software requirements
 
@@ -113,11 +123,36 @@ In addition, you need a breadboard and an extra 5V power supply to provide power
 You need to use the Grove Dry-Reed Relay board to connect the water pump.
 
 1. Plug one end of a Grove cable into the Grove Dry-Reed Relay, and connect the other end to the D4 port on the Grove Shield.
+
 2. Connect one wire from the pump to the 5V power source reserved for the pump.
+
 3. Connect the other wire from the pump to one of the power connectors on the Grove* Dry-Reed Relay board.
+
 4. Connect the other power connector on the Grove* Dry-Reed Relay board to the ground of the 5V power source reserved for the pump.
+
 5. Connect the Water Flow Sensor by plugging the red wire into the 5V pin, the black wire into the GND pin, and the yellow wire into digital pin 2 on the Grove Shield.
+
 6. Plug one end of a Grove cable into the Grove Moisture Sensor, and connect the other end to the A0 port on the Grove* Shield.
+
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/watering.jpg)
+
+You need to have a I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the I/O Expansion Shield.
+
+In addition, you need a breadboard and an extra 5V power supply to provide power to the pump. Note: you need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel® Edison board and the pump.
+
+You need to use the Relay Module to connect the water pump.
+
+1. Plug one end of a DFRobot* cable into the Relay Module, and connect the other end to the D4 port on the I/O Expansion Shield.
+
+2. Connect one wire from the pump to the 5V power source reserved for the pump.
+
+3. Connect the other wire from the pump to one of the power connectors on the Relay Module.
+
+4. Connect the other power connector on the Relay Module to the ground of the 5V power source reserved for the pump.
+
+5. Plug one end of a DFRobot* cable into the Moisture Sensor, and connect the other end to the A1 port on the I/O Expansion Shield.
 
 ### Manual Intel® Edison setup
 

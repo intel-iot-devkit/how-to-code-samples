@@ -27,11 +27,19 @@ If so, it displays a warning on the LCD.
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Starter Kit Plus from Seeedstudio, or else the DFRobot* Edison Starter Kit with some extra DFRobot* parts.
+
 Grove* Starter Kit Plus containing:
 
 1. Intel® Edison board with an Arduino* breakout board
 2. [Grove 3-Axis Digital Accelerometer](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
 3. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Triple Axis Accelerometer]().
+3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
@@ -75,7 +83,7 @@ Otherwise, select **Add Manual Connection**.
 In the **Address** field, type `192.168.2.15`. In the **Port** field, type `58888`.
 Click **Connect** to save your connection.
 
-### Installing the program manually on the Intel® Edison board 
+### Installing the program manually on the Intel® Edison board
 
 Alternatively, you can set up the code manually on the Intel® Edison board.
 
@@ -98,6 +106,18 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 1. Plug one end of a Grove cable into the Grove* 3-Axis Digital Accelerometer, and connect the other end to any of the I2C ports on the Grove* Shield.
 
 2. Plug one end of a Grove cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
+
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/earthquake-detector.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot* cable into the plug labeled "X" on the Triple-Axis Accelerometer, then connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot* cable into the plug labeled "Y" on the Triple-Axis Accelerometer, then connect the other end to the A2 port on the LCD Keypad Shield.
+
+3. Plug one end of a DFRobot* cable into the plug labeled "Z" on the Triple-Axis Accelerometer, then connect the other end to the A3 port on the LCD Keypad Shield.
 
 ### Manual Intel® Edison board setup
 

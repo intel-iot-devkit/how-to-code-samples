@@ -33,12 +33,21 @@ Optionally, all data can be stored using the Intel® IoT Examples Datastore or a
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Indoor Environment Kit from Seeedstudio, or else the DFRobot* Starter Kit for Intel® Edison along with some additional DFRobot* parts.
+
 Grove* Indoor Environment Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove Moisture Sensor](http://iotdk.Intel®.com/docs/master/upm/node/classes/grovemoisture.html)
 3. [Grove Light Sensor](http://iotdk.Intel®.com/docs/master/upm/node/classes/grovelight.html)
 4. [Grove RGB LCD](http://iotdk.Intel®.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Moisture Sensor]().
+3. [Analog Ambient Light Sensor]()
+4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
@@ -110,6 +119,16 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 2. Plug one end of a Grove cable into the Grove Moisture Sensor, and connect the other end to the A1 port on the Grove Shield.
 
 3. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
+
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/lighting.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot* cable into the Analog Ambient Light Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot* cable into the Moisture Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
 
 ### Manual Intel® Edison board setup
 

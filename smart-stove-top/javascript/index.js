@@ -40,34 +40,16 @@ var config = JSON.parse(
 // Set the initial default target temperature
 var TARGET_TEMP = config.TARGET_TEMP;
 
-// Initialize the hardware devices
-var temp = new (require("jsupm_otp538u").OTP538U)(0, 1),
-    flame = new (require("jsupm_yg1006").YG1006)(4),
-    speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(5);
+// Initialize the hardware for whichever kit we are using
+var board;
+if (config.kit) {
+  board = require("./" + config.kit + ".js");
+} else {
+  board = require('./grove.js');
+}
 
 var datastore = require("./datastore");
 var mqtt = require("./mqtt");
-
-// Plays an audible alarm when the temperature has exceeded
-// the target temperature
-function tempAlarm() {
-  speaker.playSound("a", true, "low");
-  speaker.playSound("c", true, "low");
-  speaker.playSound("d", true, "low");
-  speaker.playSound("b", false, "low");
-}
-
-// Plays an audible alarm when the flame sensor indicates
-// a possible fire
-function fireAlarm() {
-  var i = 0;
-  while (i < 10) {
-    speaker.playSound("a", true, "high");
-    speaker.playSound("c", true, "high");
-    speaker.playSound("g", true, "med");
-    i++;
-  }
-}
 
 // Log record in the remote datastore of the current temperature
 // every 1 minute
@@ -93,16 +75,16 @@ function monitor() {
       logging = false;
 
   setInterval(function() {
-    var temperature = temp.objectTemperature(),
-        fire = flame.flameDetected();
+    var temperature = board.objectTemperature(),
+        fire = board.flameDetected();
 
     if (!logging && temperature >= TARGET_TEMP) {
       logging = true;
       log();
     }
 
-    if (prev.temp <= TARGET_TEMP && temperature > TARGET_TEMP) { tempAlarm(); }
-    if (!prev.fire && fire) { fireAlarm(); }
+    if (prev.temp <= TARGET_TEMP && temperature > TARGET_TEMP) { board.tempAlarm(); }
+    if (!prev.fire && fire) { board.fireAlarm(); }
 
     prev.temp = temperature;
     prev.fire = fire;

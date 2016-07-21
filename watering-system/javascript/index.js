@@ -44,11 +44,6 @@ var mqtt = require("./mqtt");
 // to handle scheduling of recurring tasks
 var later = require("later");
 
-// The program is using the `mraa` module
-// to communicate directly with the digital
-// pin used to turn on/off the water pump
-var mraa = require("mraa");
-
 // The program is using the `twilio` module
 // to make the remote calls to Twilio service
 // to send SMS alerts
@@ -65,13 +60,23 @@ var SCHEDULE = {},
     intervals = [],
     smsSent = false;
 
-// Initialize the hardware devices
-var moisture = new (require("jsupm_grovemoisture").GroveMoisture)(0),
-    flow = new (require("jsupm_grovewfs").GroveWFS)(2),
-    pump = new mraa.Gpio(4);
+// Initialize the hardware for whichever kit we are using
+var board;
+if (config.kit) {
+  board = require("./" + config.kit + ".js");
+} else {
+  board = require('./grove.js');
+}
 
-// Set GPIO direction to output
-pump.dir(mraa.DIR_OUT);
+function turnOn() {
+  log("turn on");
+  board.turnOn();
+}
+
+function turnOff() {
+  log("turn off");
+  board.turnOff();
+}
 
 // Set up 0-23 hour schedules
 for (var i = 0; i < 24; i++) {
@@ -136,44 +141,6 @@ function alert() {
   }, 1000 * 60);
 }
 
-// Check that water is flowing
-function checkFlowOn() {
-  flow.clearFlowCounter();
-  flow.startFlowCounter();
-
-  setTimeout(function() {
-    if (flow.flowRate() < 1) { alert(); }
-  }, 2000);
-}
-
-// Check that water isn't flowing
-function checkFlowOff() {
-  flow.clearFlowCounter();
-  flow.startFlowCounter();
-
-  setTimeout(function() {
-    if (flow.flowRate() >= 0.5) { alert(); }
-  }, 2000);
-}
-
-// Turns on the water
-function turnOn() {
-  log("on");
-  pump.write(1);
-
-  // check flow started after 10 seconds
-  setTimeout(checkFlowOn, 10000);
-}
-
-// Turns off the water
-function turnOff() {
-  log("off");
-  pump.write(0);
-
-  // check flow stopped after 10 seconds
-  setTimeout(checkFlowOff, 10000);
-}
-
 // Updates the watering schedule, called by web page.
 function updateSchedule(data) {
   SCHEDULE = data;
@@ -234,7 +201,7 @@ function server() {
 // check the moisture level every 15 minutes
 function monitor() {
   setInterval(function() {
-    var value = moisture.value();
+    var value = board.moistureValue();
 
     MOISTURE.push({ value: value, time: new Date().toISOString() });
     log("moisture (" + value + ")");
@@ -251,6 +218,9 @@ function monitor() {
 function main() {
   server();
   monitor();
+  board.events.on("alert", function() {
+    alert();
+  }
 }
 
 main();
