@@ -45,7 +45,7 @@ exports.message = function(string, color) {
 
 // Reset the state of the doorbot
 exports.reset = function() {
-  message("doorbot ready");
+  this.message("doorbot ready");
   buzzer.setVolume(0.5);
 
   // we call #stopSound twice because otherwise buzzer may not actually stop

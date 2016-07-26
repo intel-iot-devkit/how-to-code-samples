@@ -87,7 +87,7 @@ function verify() {
     }
 
     // turn off after 15 seconds
-    setTimeout(stop, 15000);
+    setTimeout(board.stop, 15000);
   }
 
   // we'll check for quakes in the last ten minutes
@@ -114,7 +114,8 @@ function main() {
   var prev = false;
 
   setInterval(function() {
-    var quake = board.getAcceleration().x > 1;
+    var quake = board.getAcceleration();
+
     if (quake && !prev) { verify(); }
     prev = quake;
   }, 100);

@@ -26,7 +26,7 @@
 var exports = module.exports = {};
 
 // Initialize the hardware devices
-var screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
+var screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0),
     motion = new (require("jsupm_biss0001").BISS0001)(16);
 
 // Cannot set the background color on this LCD display

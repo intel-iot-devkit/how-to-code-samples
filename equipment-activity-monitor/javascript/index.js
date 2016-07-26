@@ -68,12 +68,11 @@ function main() {
   console.log("config.VIBRATION_THRESHOLD: ", config.VIBRATION_THRESHOLD);
 
   setInterval(function() {
-    var vibes = board.getVibrationSample();
-    console.log("Vibration: ", vibes);
-    var movement = (vibes >= config.VIBRATION_THRESHOLD);
+    var movement = board.getVibration(config.VIBRATION_THRESHOLD);
+    console.log("Movement: ", movement);
 
-    var noise = board.getNoise();
-    console.log("Noise level: ", noise);
+    var noise = board.getNoise(config.NOISE_THRESHOLD);
+    console.log("Noise: ", noise);
 
     if (movement && noise && !tripped) {
       notify("start");

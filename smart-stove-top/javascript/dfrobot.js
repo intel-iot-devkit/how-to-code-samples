@@ -25,37 +25,44 @@
 
 var exports = module.exports = {};
 
+// The program is using the `mraa` module
+// to communicate directly with the digital
+// pin used to turn on/off the buzzer, and read
+// the temperature sensor
+var mraa = require("mraa");
+
 // Initialize the DFRobot hardware devices
-var temp = new (require("jsupm_grove").GroveTemp)(1), // A1
-    flame = new (require("jsupm_grove").GroveTemp)(2), // A2
-    buzzer = new (require("jsupm_buzzer").Buzzer)(3), // A3
+var temp = new mraa.Aio(1), // A1
+    buzzer = new mraa.Gpio(16), // aka A2
+    flame = new mraa.Aio(3); // A3
+
+buzzer.dir(mraa.DIR_OUT);
 
 // Plays an audible alarm when the temperature has exceeded
 // the target temperature
 exports.tempAlarm = function() {
-  buzzer.setVolume(0.5);
-  buzzer.playSound(2600, 1000);
+  buzzer.write(1);
+  setTimeout(function() {
+    buzzer.write(0);
+  }, 1000);
 }
 
 // Plays an audible alarm when the flame sensor indicates
 // a possible fire
 exports.fireAlarm = function() {
-  var i = 0;
-  while (i < 10) {
-    buzzer.playSound(2600, 500);
-    buzzer.playSound(3600, 500);
-    buzzer.playSound(2600, 500);
-    i++;
-  }
+  buzzer.write(1);
+  setTimeout(function() {
+    buzzer.write(0);
+  }, 1000);
 }
 
 // returns the temperature of the pot or pan on the stovetop
 // using the analog temperature sensor
 exports.objectTemperature = function() {
-  return temp.objectTemperature();
+  return (500 * temp.read()) / 1024;
 }
 
 // returns if an open flame is detected using flame sensor
 exports.flameDetected = function() {
-  return (flame.value() >= 100);
+  return (flame.read() >= 800);
 }

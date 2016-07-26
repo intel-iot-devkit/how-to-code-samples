@@ -220,7 +220,7 @@ function main() {
   monitor();
   board.events.on("alert", function() {
     alert();
-  }
+  });
 }
 
 main();

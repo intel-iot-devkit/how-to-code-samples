@@ -45,24 +45,25 @@ exports.warn = function() {
 }
 
 // Clears the I2C LCD display
-exports.clear() = function() {
+exports.clear = function() {
   screen.setCursor(0, 0);
   screen.write("                ");
   screen.setColor(0, 0, 0);
 }
 
 // reads vibration sensor
-exports.getVibrationSample = function() {
-  return vibration.getSample();
+exports.getVibration = function(t) {
+  var sample = vibration.getSample();
+  return (sample >= t);
 }
 
 // reads audio level from mic
-exports.getNoise = function() {
+exports.getNoise = function(threshold) {
   var buffer = new mic.uint16Array(128),
       len = sound.getSampledWindow(2, 128, buffer);
 
   if (!len) { return; }
 
-  var noise = sound.findThreshold(ctx, config.NOISE_THRESHOLD, buffer, len);
+  var noise = sound.findThreshold(ctx, threshold, buffer, len);
   return noise;
 }

@@ -31,8 +31,8 @@ var exports = module.exports = {};
 var mraa = require("mraa");
 
 // Initialize the DFRobot hardware devices
-var moisture = new (require("jsupm_grovemoisture").GroveMoisture)(0),
-    pump = new mraa.Gpio(4);
+var moisture = new (require("jsupm_grovemoisture").GroveMoisture)(1), // A1
+    pump = new mraa.Gpio(16); // aka A2
 
 // Set GPIO direction to output
 pump.dir(mraa.DIR_OUT);

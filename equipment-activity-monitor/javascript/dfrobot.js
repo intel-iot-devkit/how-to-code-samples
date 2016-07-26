@@ -28,7 +28,7 @@ var exports = module.exports = {};
 // Initialize the DFRobot hardware devices
 var mic = require("jsupm_mic");
 var sound = new mic.Microphone(1), // A1
-    vibration = new (require("jsupm_ldt0028").LDT0028)(2), // A2
+    vibration = new (require("jsupm_grove").GroveButton)(16), // aka A2
     screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
 
 // Initialize the sound sensor
@@ -44,23 +44,24 @@ exports.warn = function() {
 }
 
 // Clears the LCD display
-exports.clear() = function() {
+exports.clear = function() {
   screen.setCursor(0, 0);
   screen.write("                ");
 }
 
-// reads vibration sensor
-exports.getVibrationSample = function() {
-  return vibration.getSample();
+// reads vibration sensor (low when triggered)
+exports.getVibration = function(t) {
+  var val = vibration.value();
+  return (val == 0);
 }
 
 // reads audio level from mic
-exports.getNoise = function() {
+exports.getNoise = function(t) {
   var buffer = new mic.uint16Array(128),
       len = sound.getSampledWindow(2, 128, buffer);
 
   if (!len) { return; }
 
-  var noise = sound.findThreshold(ctx, config.NOISE_THRESHOLD, buffer, len);
+  var noise = sound.findThreshold(ctx, t, buffer, len);
   return noise;
 }

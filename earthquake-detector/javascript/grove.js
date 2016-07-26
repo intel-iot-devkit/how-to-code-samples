@@ -57,9 +57,16 @@ exports.message = function(string, line) {
   screen.write(string);
 }
 
+// clear screen
+exports.stop = function() {
+  screen.setCursor(0, 0);
+  screen.setColor(0, 0, 0);
+  screen.write("                    ");
+}
+
 exports.getAcceleration = function() {
   accel.getAcceleration(ax, ay, az);
-  return { x: accelerometer.floatp_value(ax),
-           y: accelerometer.floatp_value(ay),
-           z: accelerometer.floatp_value(az) }
+  return (accelerometer.floatp_value(ax) > 1 ||
+          accelerometer.floatp_value(ay) > 1 ||
+          accelerometer.floatp_value(az) > 1)
 }

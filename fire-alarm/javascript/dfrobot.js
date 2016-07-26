@@ -25,10 +25,17 @@
 
 var exports = module.exports = {};
 
+// The program is using the `mraa` module
+// to communicate directly with the digital
+// pin used to turn on/off the buzzer
+var mraa = require("mraa");
+
 // Initialize the DFRobot hardware devices
-var temp = new (require("jsupm_grove").GroveTemp)(1), // A1
-    buzzer = new (require("jsupm_buzzer").Buzzer)(2), // A2
+var temp = new mraa.Aio(1), // A1
+    buzzer = new mraa.Gpio(16), // aka A2
     screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
+
+buzzer.dir(mraa.DIR_OUT);
 
 // No color support on this LCD display
 exports.color = function(string) {
@@ -46,22 +53,20 @@ exports.message = function(string, line) {
 
 // Sound an audible alarm when it is time to get up
 exports.buzz = function() {
-  buzzer.setVolume(0.5);
-  buzzer.playSound(2600, 0);
+  buzzer.write(1);
 }
 
 // Turn off the audible alarm
 exports.stopBuzzing = function() {
-  buzzer.stopSound();
-  buzzer.stopSound(); // if called only once, buzzer doesn't completely stop
+  buzzer.write(0);
 }
 
 // Reset the alarm
 exports.reset = function() {
-  message("", 1);
-  stopBuzzing();
+  this.message("", 1);
+  this.stopBuzzing();
 }
 
 exports.getTemperature = function() {
-  return temp.value();
+  return (500 * temp.read()) / 1024;
 }

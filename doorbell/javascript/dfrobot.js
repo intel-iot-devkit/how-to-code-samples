@@ -35,6 +35,8 @@ var buzzer = new mraa.Gpio(15), // aka A1
     touch = new (require("jsupm_grove").GroveButton)(16), // aka A2
     screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
 
+buzzer.dir(mraa.DIR_OUT);
+
 // Writes a message to the LCD display
 exports.message = function(string, color) {
   // pad string to avoid display issues
@@ -46,7 +48,7 @@ exports.message = function(string, color) {
 
 // Reset the state of the doorbot
 exports.reset = function() {
-  message("doorbot ready");
+  this.message("doorbot ready");
 
   buzzer.write(0);
 }
@@ -58,5 +60,5 @@ exports.playSound = function(hz, len) {
 
 // is the touch sensor pressed?
 exports.touchPressed = function() {
-  return touch.isPressed();
+  return touch.value();
 }

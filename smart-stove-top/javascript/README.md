@@ -124,9 +124,9 @@ You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breako
 
 1. Plug one end of a DFRobot* cable into the Analog Temperature Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
 
-2. Plug one end of a DFRobot* cable into the Flame Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
+2. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A2 port on the LCD Keypad Shield.
 
-3. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A3 port on the LCD Keypad Shield.
+3. Plug one end of a DFRobot* cable into the Flame Sensor, and connect the other end to the A3 port on the LCD Keypad Shield.
 
 ### Manual Intel® Edison board setup
 

@@ -31,8 +31,10 @@ var exports = module.exports = {};
 var mraa = require("mraa");
 
 // Initialize the DFRobot hardware devices
-var buzzer = new mraa.Gpio(5), // aka D5
-    air = new (require("jsupm_gas").MQ2)(0); // aka A0
+var buzzer = new mraa.Gpio(15), // aka A1
+    air = new (require("jsupm_gas").MQ2)(2); // aka A2
+
+buzzer.dir(mraa.DIR_OUT);
 
 // Plays a sound using the buzzer
 exports.chime = function() {

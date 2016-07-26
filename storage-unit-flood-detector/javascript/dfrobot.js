@@ -25,9 +25,16 @@
 
 var exports = module.exports = {};
 
+// The program is using the `mraa` module
+// to communicate directly with the digital
+// pin used to turn on/off the buzzer
+var mraa = require("mraa");
+
 // Initialize the DFRobot hardware devices
 var moisture = new (require("jsupm_grovemoisture").GroveMoisture)(1), // A1
-    buzzer = new (require("jsupm_buzzer").Buzzer)(2), // A2
+    buzzer = new mraa.Gpio(16); // aka A2
+
+buzzer.dir(mraa.DIR_OUT);
 
 // current moisture sensor reading
 exports.moistureValue = function() {
@@ -36,6 +43,8 @@ exports.moistureValue = function() {
 
 // play sound
 exports.playSound = function() {
-  buzzer.setVolume(0.5);
-  buzzer.playSound(2600, 1000);
+  buzzer.write(1);
+  setTimeout(function() {
+    buzzer.write(0);
+  }, 1000);
 }

@@ -55,8 +55,8 @@ var mqtt = require("./mqtt");
 // every 1 minute
 function log() {
   function notify() {
-    console.log(temp.objectTemperature());
-    var payload = { value: temp.objectTemperature() };
+    console.log(board.objectTemperature());
+    var payload = { value: board.objectTemperature() };
 
     datastore.log(config, payload);
     mqtt.log(config, payload);
@@ -83,12 +83,18 @@ function monitor() {
       log();
     }
 
-    if (prev.temp <= TARGET_TEMP && temperature > TARGET_TEMP) { board.tempAlarm(); }
-    if (!prev.fire && fire) { board.fireAlarm(); }
+    if (prev.temp <= TARGET_TEMP && temperature > TARGET_TEMP) { 
+        console.log("Temp. alarm");
+        board.tempAlarm(); 
+    }
+    if (!prev.fire && fire) { 
+        console.log("Fire alarm");
+        board.fireAlarm(); 
+    }
 
     prev.temp = temperature;
     prev.fire = fire;
-  }, 1000);
+  }, 500);
 }
 
 // Starts the built-in web server that serves up the web page

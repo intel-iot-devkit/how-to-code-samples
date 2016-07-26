@@ -144,13 +144,13 @@ In addition, you need a breadboard and an extra 5V power supply to provide power
 
 You need to use the Relay Module to connect the water pump.
 
-1. Plug one end of a DFRobot* cable into the Relay Module, and connect the other end to the D4 port on the I/O Expansion Shield.
+1. Plug one end of a DFRobot* cable into the Relay Module, and connect the other end to the A2 port on the I/O Expansion Shield.
 
-2. Connect one wire from the pump to the 5V power source reserved for the pump.
+2. Connect one wire from the pump to the GND of the power source reserved for the pump.
 
-3. Connect the other wire from the pump to one of the power connectors on the Relay Module.
+3. Connect the other wire from the pump to the NC (Normally Closed) connector on the Relay Module.
 
-4. Connect the other power connector on the Relay Module to the ground of the 5V power source reserved for the pump.
+4. Connect the COM (Common) connector on the Relay Module to the + of the 5V power source reserved for the pump.
 
 5. Plug one end of a DFRobot* cable into the Moisture Sensor, and connect the other end to the A1 port on the I/O Expansion Shield.
 

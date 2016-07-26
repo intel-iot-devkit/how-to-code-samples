@@ -32,9 +32,9 @@ var mraa = require("mraa");
 
 // Initialize the DFRobot hardware devices
 var screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
-var ax = new mraa.Aio(1),
-    ay = new mraa.Aio(2),
-    az = new mraa.Aio(3);
+var ax = new mraa.Aio(3), // A3
+    ay = new mraa.Aio(2), // A2
+    az = new mraa.Aio(1); // A1
 
 // Cannot set the background color on this LCD display
 exports.color = function(string) {
@@ -50,8 +50,14 @@ exports.message = function(string, line) {
   screen.write(string);
 }
 
+// clear screen
+exports.stop = function() {
+  screen.setCursor(0, 0);
+  screen.write("                    ");
+}
+
 exports.getAcceleration = function() {
-  return { x: ax.read(),
-           y: ay.read(),
-           z: az.read() }
+  return (ax.read() > 420 ||
+          ay.read() > 420 ||
+          az.read() > 420)
 }

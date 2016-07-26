@@ -20,11 +20,11 @@ Using an Intel® Edison board, this project lets you create a close call fleet d
 
 ## How it works
 
-This close call reporter system monitors the direction the Grove* IR Distance Interrupter is pointed to.
+This close call reporter system monitors the direction the IR Distance sensor is pointed to.
 
 It also keeps track of the GPS position of the Intel® Edison board, updating the position frequently to ensure accurate data.
 
-If a close call is detected (that is, the Grove* IR Distance Interrupter is tripped), the Intel® Edison board, if configured, notifies the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
+If a close call is detected (that is, the IR Distance sensor is tripped), the Intel® Edison board, if configured, notifies the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
 
 ## Hardware requirements
 

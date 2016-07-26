@@ -40,9 +40,9 @@ Grove* Home Automation Kit containing:
 DFRobot* Starter Kit for Intel® Edison containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Air Quality Sensor]().
-3. [Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html).
-4. [I/O Expansion Shield]()
+2. [Analog Gas Sensor](http://www.dfrobot.com/wiki/index.php?title=Analog_Gas_Sensor_SKU:SEN0127).
+3. [Buzzer](http://www.dfrobot.com/wiki/index.php?title=Digital_Buzzer_Module_(SKU:_DFR0032)).
+4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ### Software requirements
 
@@ -116,11 +116,11 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 ![](./../../images/js/alarm-clock.jpg)
 
-You need to have a DFRobot* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the DFRobot* I/O Expansion Shield.
+You need to have a DFRobot* LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the DFRobot* LCD Keypad Shield.
 
-1. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the D5 port on the DFRobot* I/O Expansion Shield.
+1. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A1 port on the DFRobot* LCD Keypad Shield.
 
-2. Plug one end of a DFRobot* cable into the Air Quality Sensor, and connect the other end to the A0 port on the DFRobot* I/O Expansion Shield.
+2. Plug one end of a DFRobot* cable into the Air Quality Sensor, and connect the other end to the A2 port on the DFRobot* I/O Expansion Shield.
 
 ### Installing the program manually on the Intel® Edison board
 

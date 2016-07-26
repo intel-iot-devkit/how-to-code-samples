@@ -61,9 +61,9 @@ exports.stopBuzzing = function() {
 
 // Reset the alarm
 exports.reset = function() {
-  color("white");
-  message("", 1);
-  stopBuzzing();
+  this.color("white");
+  this.message("", 1);
+  this.stopBuzzing();
 }
 
 exports.getTemperature = function() {
