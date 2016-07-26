@@ -118,7 +118,7 @@ You need to have a Grove* Shield connected to an Arduino*-compatible breakout bo
 
 ### Connecting the DFRobot* sensors
 
-![](./../../images/js/alarm-clock.jpg)
+![](./../../images/js/access-control-dfrobot.jpg)
 
 You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Display Shield.
 

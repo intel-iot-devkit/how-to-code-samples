@@ -110,7 +110,7 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 ### Connecting the DFRobot* sensors
 
-![](./../../images/js/close-call.jpg)
+![](./../../images/js/close-call-dfrobot.jpg)
 
 You need to have a DFRobot* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the DFRobot* I/O Expansion Shield.
 

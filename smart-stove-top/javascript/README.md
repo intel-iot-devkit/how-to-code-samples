@@ -118,7 +118,7 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 ### Connecting the DFRobot* sensors
 
-![](./../../images/js/smart-stove.jpg)
+![](./../../images/js/smart-stove-dfrobot.jpg)
 
 You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
 

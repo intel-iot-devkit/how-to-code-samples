@@ -114,7 +114,7 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 ### Connecting the DFRobot* sensors
 
-![](./../../images/js/alarm-clock.jpg)
+![](./../../images/js/air-quality-dfrobot.jpg)
 
 You need to have a DFRobot* LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the DFRobot* LCD Keypad Shield.
 

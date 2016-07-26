@@ -121,7 +121,7 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 ### Connecting the DFRobot* sensors
 
-![](./../../images/js/fire-alarm.jpg)
+![](./../../images/js/fire-alarm-dfrobot.jpg)
 
 You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
 

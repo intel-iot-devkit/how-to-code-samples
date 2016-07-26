@@ -136,7 +136,7 @@ You need to use the Grove Dry-Reed Relay board to connect the water pump.
 
 ### Connecting the DFRobot* sensors
 
-![](./../../images/js/watering.jpg)
+![](./../../images/js/watering-dfrobot.jpg)
 
 You need to have a I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the I/O Expansion Shield.
 
