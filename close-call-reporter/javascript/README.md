@@ -114,9 +114,9 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 You need to have a DFRobot* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the DFRobot* I/O Expansion Shield.
 
-1. Plug one end of a DFRobot cable into the IR Distance Sensor, and connect the other end to the D5 port on the I/O Expansion Shield.
+1. Plug one end of a DFRobot cable into the IR Distance Sensor, and connect the other end to the D4 port on the I/O Expansion Shield.
 
-2. Plug the attached GPS cable TX (color) to the I/O Expansion Shield's RX. Plug the attached GPS cable RX (color) to the I/O Expansion Shield's TX. Plug the attached GPS cable TX (color) to the I/O Expansion Shield's RX. Plug the attached GPS cable power (red) to the I/O Expansion Shield's 5V. Plug the attached GPS cable ground (black) to the I/O Expansion Shield's GND.
+2. Plug the attached GPS cable TX (white) to the I/O Expansion Shield's RX pin. Plug the attached GPS cable RX (black) to the I/O Expansion Shield's TX pin. Plug the attached GPS cable power (red) to any of the I/O Expansion Shield's 5V pins. Plug the attached GPS cable ground (thicker black) to any of the I/O Expansion Shield's GND.
 
 ### Manual Intel® Edison setup
 
