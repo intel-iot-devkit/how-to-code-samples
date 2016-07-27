@@ -155,10 +155,21 @@ For information on how to connect to your own cloud MQTT* messaging server, go t
 
 ## Configuring the example
 
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot",
+  "VIBRATION_THRESHOLD": 100,
+  "NOISE_THRESHOLD": 140
+}
+```
+
 To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file after the required `VIBRATION_THRESHOLD` and `NOISE_THRESHOLD` keys as follows:
 
 ```
 {
+  "kit": "grove",
   "VIBRATION_THRESHOLD": 100,
   "NOISE_THRESHOLD": 140,
   "SERVER": "http://intel-examples.azurewebsites.net/logger/equipment-activity",

@@ -131,10 +131,19 @@ npm install
 
 ## Configuring the example
 
-To configure the example to check for earthquakes in your area, change the `LATITUDE` key in the `config.json` file as follows:
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```
 {
+  "kit": "dfrobot"
+}
+```
+
+To configure the example to check for earthquakes in your area, change the `LATITUDE` and `LONGITUDE` keys in the `config.json` file as follows:
+
+```
+{
+  "kit": "grove",
   "LATITUDE": "47.641944",
   "LONGITUDE": "-122.127222"
 }

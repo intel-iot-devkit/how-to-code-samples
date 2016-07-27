@@ -173,10 +173,19 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot"
+}
+```
+
 To configure the example for the optional real-time weather data, obtain a key from the Weather Underground* website as documented above, and then change the `WEATHER_API_KEY` and `LOCATION` keys in the `config.json` file as follows:
 
 ```
 {
+  "kit": "grove",
   "WEATHER_API_KEY": "YOURAPIKEY",
   "LOCATION": "San_Francisco"
 }
@@ -186,6 +195,7 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
 
 ```
 {
+  "kit": "grove",
   "SERVER": "http://intel-examples.azurewebsites.net/logger/alarm-clock",
   "AUTH_TOKEN": "s3cr3t"
 }
@@ -195,6 +205,7 @@ To configure the example for both the weather data, as well as either the Micros
 
 ```
 {
+  "kit": "grove",
   "WEATHER_API_KEY": "YOURAPIKEY",
   "LOCATION": "San_Francisco"
   "SERVER": "http://intel-examples.azurewebsites.net/logger/alarm-clock",

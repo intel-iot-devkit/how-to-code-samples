@@ -166,10 +166,19 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot"
+}
+```
+
 To configure the example for sending optional text messages, obtain an API key from the Twilio* web site as explained above, and then add the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys to the `config.json` file as follows:
 
 ```
 {
+  "kit": "grove",
   "TWILIO_ACCT_SID": "YOURAPIKEY",
   "TWILIO_AUTH_TOKEN": "YOURTOKEN"
 }
@@ -179,6 +188,7 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
 
 ```
 {
+  "kit": "grove",
   "SERVER": "http://Intel-examples.azurewebsites.net/logger/lighting-system",
   "AUTH_TOKEN": "s3cr3t"
 }
@@ -188,6 +198,7 @@ To configure the example for both the text messages and the Microsoft Azure\*, I
 
 ```
 {
+  "kit": "grove",
   "TWILIO_ACCT_SID": "YOURAPIKEY",
   "TWILIO_AUTH_TOKEN": "YOURTOKEN",
   "SERVER": "http://Intel-examples.azurewebsites.net/logger/lighting-system",
