@@ -32,7 +32,7 @@ var nmea = require("nmea");
 // Initialize the DFRobot hardware devices
 var GPS = require("jsupm_ublox6");
 var gps = new GPS.Ublox6(0),
-    dist = new (require("jsupm_rfr359f").RFR359F)(6); // D6
+    dist = new (require("jsupm_rfr359f").RFR359F)(4); // D4
 
 if (!gps.setupTty(GPS.int_B38400)) {
   throw new Error("Failed to setup tty port parameters");
