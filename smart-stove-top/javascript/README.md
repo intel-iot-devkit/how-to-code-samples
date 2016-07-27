@@ -43,8 +43,8 @@ DFRobot* Starter Kit for Intel® Edison containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
-3. [Flame Sensor]()
-4. [I/O Expansion Shield]()
+3. [Flame Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=195)
+4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
 ## Software requirements
 

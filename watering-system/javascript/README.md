@@ -46,10 +46,10 @@ Grove* Environment & Agriculture Kit containing:
 DFRobot* Starter Kit for Intel® Edison containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Moisture Sensor]()
-3. [Water Pump]()
-4. [Relay Module]()
-5. [I/O Expansion Shield]()
+2. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599)
+3. [Immersible Pump & Water Tube](http://www.dfrobot.com/index.php?route=product/product&keyword=water pump&product_id=667)
+4. [Relay Module](http://www.dfrobot.com/index.php?route=product/product&product_id=64)
+5. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
 ## Software requirements
 

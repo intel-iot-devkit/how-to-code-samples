@@ -45,8 +45,8 @@ Grove* Indoor Environment Kit containing:
 DFRobot* Starter Kit for Intel® Edison containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Moisture Sensor]().
-3. [Analog Ambient Light Sensor]()
+2. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599).
+3. [Analog Ambient Light Sensor](www.dfrobot.com/index.php?route=product/product&product_id=1004)
 4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements

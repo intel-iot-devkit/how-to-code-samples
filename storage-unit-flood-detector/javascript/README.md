@@ -39,9 +39,9 @@ Grove* Home Automation Kit containing:
 DFRobot* Starter Kit for Intel® Edison containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Moisture Sensor]()
-3. [Buzzer]()
-4. [I/O Expansion Shield]()
+2. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599)
+3. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84)
+4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
 ## Software requirements
 

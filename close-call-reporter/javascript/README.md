@@ -37,9 +37,9 @@ Grove* Transportation and Safety Kit containing:
 DFRobot* Starter Kit for Intel® Edison containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [IR Distance Sensor]()
+2. [IR Distance Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=572)
 3. [GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
-4. [I/O Expansion Shield]()
+4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
 ## Software requirements
 
