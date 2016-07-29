@@ -1,0 +1,13 @@
+{
+  "name": "Line Following Robot",
+  "category": "How To Code Samples",
+  "description": "This sample: continuously checks the line finder sensor; moves forward if on the line, using stepper motors; tries to pivot to find the line if not on it, using stepper motors; logs events from the line finder sensor, using cloud-based data storage.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove Line Finder connected to digital pin 2 (Grove Base Shield Port D2)",
+               "Connect stepper motor controller #1 to pins 4, 5, 6, and 7, and stepper motor controller #2 to pins 9, 10, 11, and 12"],
+    "libs": ["upm", "curl", "paho"],
+    "compatible": ["Edison"]
+  }
+}

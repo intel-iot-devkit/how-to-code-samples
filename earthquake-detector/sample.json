@@ -1,0 +1,13 @@
+{
+  "name": "Earthquake Detector",
+  "category": "How To Code Samples",
+  "description": "This sample senses motion using a digital accelerometer, checks live earthquake data, using the USGS API an displays an earthquake warning on the LCD.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove LCD RGB Backlight on I2C",
+               "Grove 3-Axis Digital Accelerometer on I2C"],
+    "libs": ["upm", "curl"],
+    "compatible": ["Edison"]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Smart Stove Top",
+  "category": "How To Code Samples",
+  "description": "This smart-stovetop application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove IR Temerature Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
+               "Grove Speaker connected to digital pin 5 (Grove Base Shield Port D5)",
+               "Grove Flame Sensor connected to digital pin 4 (Grove Base Shield Port D4)"],
+    "libs": ["boost", "upm", "curl", "paho"],
+    "compatible": ["Edison"]
+  }
+}

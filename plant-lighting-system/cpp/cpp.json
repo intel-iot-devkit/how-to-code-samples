@@ -1,0 +1,5 @@
+{
+  "main": "src/plant-lighting-system.cpp",
+  "ldflags": "-lmraa -lupm-i2clcd -lupm-grovemoisture -lupm-ldt0028 -lpaho-mqtt3cs -lupm-grove -lboost_system -lboost_thread -lboost_filesystem -lboost_date_time -lpthread -lssl -lcrypto -lcurl ",
+  "cxxflags": "-std=c++1y"
+}

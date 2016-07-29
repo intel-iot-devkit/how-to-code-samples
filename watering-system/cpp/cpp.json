@@ -1,0 +1,5 @@
+{
+  "main": "src/watering-system.cpp",
+  "ldflags": "-lmraa -lupm-grovewfs -lupm-grovemoisture -lmraa -lpaho-mqtt3cs -lupm-grove -lboost_system -lboost_thread -lboost_filesystem -lboost_date_time -lpthread -lssl -lcrypto -lcurl ",
+  "cxxflags": "-std=c++1y"
+}

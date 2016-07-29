@@ -1,0 +1,14 @@
+{
+  "name": "Doorbell",
+  "category": "How To Code Samples",
+  "description": "Store the doorbell ring data using Azure* Redis Cache from Microsoft, Redis Store* from IBM Bluemix*, or ElastiCache* using Redis* from Amazon* Web Services* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove Touch Sensor connected to digital pin 4 (Grove Base Shield Port D4)",
+               "Grove Buzzer connected to digital pin 5 (Grove Base Shield Port D5)",
+               "Grove LCD RGB Backlight on I2C"],
+    "libs": ["upm", "curl", "paho"],
+    "compatible": ["Edison"]
+  }
+}

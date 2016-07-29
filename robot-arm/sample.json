@@ -1,0 +1,13 @@
+{
+  "name": "Robot Arm",
+  "category": "How To Code Samples",
+  "description": "This robot-arm application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Connect stepper motor controller #1 to pins 4, 5, 6, and 7, and stepper motor controller #2 to pins 8, 9, 10, and 11. ",
+               "Grove Joystick connected to analog pin 0 (Grove Base Shield Port A0)"],
+    "libs": ["boost", "upm", "curl", "paho"],
+    "compatible": ["Edison"]
+  }
+}

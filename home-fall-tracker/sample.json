@@ -1,0 +1,13 @@
+{
+  "name": "Home Fall Tracker",
+  "category": "How To Code Samples",
+  "description": "This sample: monitors for possible falls using the accelerometer; sends an SMS alert when a possible fall is detected; displays information that help is on the way using the OLED display; keeps track of detected falls, using cloud-based data storage.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Xadow OLED",
+               "Xadow 3-Axis Accelerometer"],
+    "libs": ["openssl", "upm", "curl", "paho"],
+    "compatible": ["Edison"]
+  }
+}

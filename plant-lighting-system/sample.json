@@ -1,0 +1,14 @@
+{
+  "name": "Plant lighting system",
+  "category": "How To Code Samples",
+  "description": "This sample checks if a separate automated lighting system is turned on or off based on a configurable schedule, by using a light sensor; can be accessed with your mobile phone via a built-in web interface to set the lighting periods; additionally monitors water levels using a connected moisture sensor; logs events from the lighting system, using cloud-based data storage; sends text messages to alert the user if the system is not working as expected.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove Light Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
+               "Grove Moisture Sensor connected to analog pin 1 (Grove Base Shield Port A1)",
+               "Grove RGB LCD on I2C"],
+    "libs": ["boost", "openssl", "upm", "curl", "paho"],
+    "compatible": ["Edison"]
+  }
+}

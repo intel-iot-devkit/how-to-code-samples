@@ -1,0 +1,13 @@
+{
+  "name": "Sound Detector",
+  "category": "How To Code Samples",
+  "description": "Displays the current average volume on the lcd screen and colors the screen by the scale (from low to high volume): WHITE, YELLOW, GREEN, BLUE, PURPLE, RED",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove RGB LCD on I2C",
+               "Grove Sound Sensor connected to analog pin 0 (Grove Base Shield Port A0)"],
+    "libs": ["upm"],
+    "compatible": ["Edison"]
+  }
+}

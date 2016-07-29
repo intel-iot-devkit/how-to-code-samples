@@ -1,0 +1,14 @@
+{
+  "name": "Field data reporter",
+  "category": "How To Code Samples",
+  "description": "This sample continuously monitors the data read from the digital barometer and displays latest readings using the OLED display, when the touch sensor is tapped.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Xadow OLED",
+               "Xadow QTouch",
+               "Xadow BMP180"],
+    "libs": ["boost", "upm"],
+    "compatible": ["Edison"]
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "main": "src/ble-scan.cpp",
+  "ldflags": "-lmraa -lupm-i2clcd -lcurl -lpaho-mqtt3cs -lbluetooth ",
+  "cxxflags": "-std=c++1y"
+}

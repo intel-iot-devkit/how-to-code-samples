@@ -1,0 +1,5 @@
+{
+  "main": "src/earthquake-detector.cpp",
+  "ldflags": "-lmraa -lupm-i2clcd -lcurl -lupm-mma7660 ",
+  "cxxflags": "-std=c++1y"
+}

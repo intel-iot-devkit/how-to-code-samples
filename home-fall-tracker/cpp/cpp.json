@@ -1,0 +1,5 @@
+{
+  "main": "src/fall-tracker.cpp",
+  "ldflags": "-lmraa -lupm-i2clcd -lpaho-mqtt3cs -lssl -lcrypto -lcurl -lupm-adxl345 ",
+  "cxxflags": "-std=c++1y"
+}

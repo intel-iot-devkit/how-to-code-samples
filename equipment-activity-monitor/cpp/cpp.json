@@ -1,0 +1,5 @@
+{
+  "main": "src/equipment-activity.cpp",
+  "ldflags": "-lmraa -lupm-i2clcd -lpaho-mqtt3cs -lcurl -lupm-mic -lupm-ldt0028 ",
+  "cxxflags": "-std=c++1y"
+}
