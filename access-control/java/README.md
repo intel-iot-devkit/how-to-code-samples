@@ -108,9 +108,7 @@ For information on how to set up your own cloud data server, go to:
 
 ## Configuring the example
 
-Make sure you use the server URL and authentication token that correspond to your own data store server setup.
-
-To configure the example for the optional data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
+To configure the example for the optional data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file to the server URL and authentication token that correspond to your own data store server setup. For example:
 
 ```
 
@@ -119,7 +117,7 @@ To configure the example for the optional data store, change the `SERVER` and `A
 
 ```
 
-To configure the example for the website, change the `CODE` key in the `codeConfig.properties` file as follows:
+To configure the required access code to be used for the example app, change the `CODE` key in the `config.properties` file to whatever you want to use. For example:
 
 ```
 
