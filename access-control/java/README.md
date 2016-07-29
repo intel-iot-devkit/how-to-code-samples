@@ -108,6 +108,8 @@ For information on how to set up your own cloud data server, go to:
 
 ## Configuring the example
 
+Make sure you use the server URL and authentication token that correspond to your own data store server setup.
+
 To configure the example for the optional data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file as follows:
 
 ```
@@ -124,8 +126,6 @@ To configure the example for the website, change the `CODE` key in the `codeConf
   CODE: "4321"
 
 ```
-
-Make sure you use the server URL and authentication token that correspond to your own data store server setup.
 
 ## Preparing the Intel® Edison board before running the project
 
