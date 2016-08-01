@@ -1,20 +1,20 @@
 ﻿# Range finder scanner in C++
 
-This range finder scanner application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
+This range finder scanner application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
 - Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
 - Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run these code samples in the Intel® System Studio IoT Edition (Eclipse\* IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.
+- Run these code samples in the Intel® System Studio IoT Edition (Eclipse\* IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.
 - Set up a web application server to view range finder data using a web page served up directly from the Intel® Edison board.
 
 ## What It Is
 
 Using an Intel® Edison board, this project lets you create a range finding scanner that:
 
-- continuously checks the Grove* IR Distance Interrupter;
-- moves the stepper motor in a 360-degree circle;
+- continuously checks the Grove* IR Distance Interrupter.
+- moves the stepper motor in a 360-degree circle.
 - can be accessed via a built-in web interface to view range finder data.
 
 ## How It Works
@@ -27,8 +27,8 @@ These readings can be viewed on a web page served up directly from the Intel® E
 Grove* Robotics Kit containing:
 
 1. Intel® Edison board with an Arduino* breakout board
-2. Grove* Base Shield V2
-3. [Grove* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
+2. Grove Base Shield V2
+3. [Grove IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 4. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html)
 
 ## Software requirements
@@ -37,15 +37,15 @@ Grove* Robotics Kit containing:
 
 ## How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository onto your computer with Git* as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
-Want to download a .zip file? In your web browser, go to [https://github.com/intel-iot-devkit/how-to-code-samples](https://github.com/intel-iot-devkit/how-to-code-samples) and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+To download a .zip file, in your web browser go to [https://github.com/intel-iot-devkit/how-to-code-samples](https://github.com/intel-iot-devkit/how-to-code-samples) and click the **Download ZIP** button on the right-hand side. Once the .zip file is downloaded, uncompress it and use the files in the directory for this example.
 
-### Adding the program to Eclipse*
+### Adding the program to Eclipse
 
-In Eclipse\*, select **Import Wizard** to import an existing project into the workspace as follows:
+In Eclipse, select **Import Wizard** to import an existing project into the workspace as follows:
 
 1. From the main menu, select **File > Import**.<br>
 ![](./../../images/cpp/cpp-eclipse-menu.png)
@@ -60,19 +60,21 @@ In Eclipse\*, select **Import Wizard** to import an existing project into the wo
 
 ### Connecting the Grove* sensors
 
-You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove* Base Shield V2. Make sure you have the tiny VCC switch on the Grove* Base Shield V2 set to **5V**.
+You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
 
 You need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
 
-In addition, you need a breadboard and an extra **5V** power supply to provide power to the stepper motor. Note: you need a separate battery or power supply for the motor. You cannot use the same power supply for both the Intel® Edison board and the motor, so you need either 2 batteries or 2 power supplies in total.
+In addition, you need a breadboard and an extra **5V** power supply to provide power to the stepper motor. 
 
-1. Plug the stepper motor controller into 4 pins on the Arduino* breakout board, for it to be able to be controlled. Connect it to pins 9, 10, 11, and 12. It also must be connected to ground (GND), to the **5V** power coming from the Arduino* breakout board (VCC), and to the separate **5V** power for the motor (VM).<br>
+Note: You need a separate battery or power supply for the motor. You cannot use the same power supply for both the Intel® Edison board and the motor, so you need either 2 batteries or 2 power supplies in total.
+
+1. Plug the stepper motor controller into four pins (9, 10, 11, and 12) on the Arduino* breakout board. It also must be connected to ground (GND), to the **5V** power coming from the Arduino* breakout board (VCC), and to the separate **5V** power for the motor (VM).<br>
 ![](./../../images/js/range-finder.jpg)
 2. Plug one end of a Grove* cable into the Grove* IR Distance Interrupter, and connect the other end to the D2 port on the Grove* Base Shield V2.
 
 ### Intel® Edison board setup
 
-This example uses the Crow* web micro-framework to provide a simple-to-use, yet powerful web server. The Crow* library requires the **libboost** package be installed on the Intel® Edison board, as well as adding the needed include and lib files to the Eclipse* Cross G++ Compiler and Cross G++ Linker.
+This example uses the Crow web micro-framework to provide a simple-to-use, yet powerful web server. The Crow library requires the **libboost** package be installed on the Intel® Edison board, as well as adding the needed include and lib files to the Eclipse Cross G++ Compiler and Cross G++ Linker.
 
 1. Update opkg base feeds so you can install the needed dependencies. Establish an SSH connection to the Intel® Edison board and run the following command:<br>
 
@@ -106,11 +108,11 @@ Change `~/Downloads/iotdk-ide-linux` to match the location on your computer wher
 
 ### Copy the libraries on Windows*
 
-We have a helpful link to get this set up here:
+For help installing and using WinSCP, go to this link:
 
 [using-winscp.md](./../../docs/cpp/using-winscp.md)
 
-Note: you need to turn SSH on by running the `configure_edison --password` command on the board. Once you set the password, make sure you write it down. You only need to do this once and it is set when you reboot the Intel® Edison board.
+Note: You need to turn SSH on by running the `configure_edison --password` command on the board. Once you set the password, make sure you write it down. You only need to do this once and it is set when you reboot the Intel® Edison board.
 
 ### Connecting your Intel® Edison board to Eclipse*
 
@@ -127,7 +129,7 @@ If prompted for the username and password, the username is **root** and the pass
 
 ### Running the code on the Intel® Edison board
 
-When you're ready to run the example, click **Run** at the top menu bar in Eclipse*.<br>
+When you're ready to run the example, click **Run** at the top menu bar in Eclipse.<br>
 ![](./../../images/cpp/cpp-run-eclipse.png)
 
 This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.
@@ -138,7 +140,7 @@ After running the program, you should see output similar to the one in the image
 ## Regenerating HTML and CSS
 
 If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow* web server.
-We have a useful tutorial on how to use the shell script here:
+For help using the shell script, go to this link:
 
 [how-to-run-the-shellscript.md](./../../docs/cpp/how-to-run-the-shellscript.md)
 
@@ -147,6 +149,6 @@ We have a useful tutorial on how to use the shell script here:
 Range data is viewed using a single-page web interface served directly from the Intel® Edison board while the sample program is running.<br>
 ![](./../../images/js/range-finder-web.png)
 
-The web server runs on port `3000`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel® Edison board is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
