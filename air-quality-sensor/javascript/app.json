@@ -11,7 +11,7 @@
   "tooltip": "Checks the air for airborne contaminants.",
   "description": "Continuously checks the air for airborne contaminants and sounds an audible warning when the air quality is unhealthy. Stores a record of each time the air quality sensor detects contaminants via cloud-based data storage.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/air-quality-sensor/javascript",
+  "articleUrl": "https://software.intel.com/en-us/articles/air-quality-sensor",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",

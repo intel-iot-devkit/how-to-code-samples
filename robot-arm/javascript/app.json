@@ -11,7 +11,7 @@
   "tooltip": "Control a robotic arm using a thumb joystick.",
   "description" : "Control a robotic arm using a thumb joystick. Each axis of the joystick corresponds to a motor within the robot arm.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/robot-arm/javascript",
+  "articleUrl": "https://software.intel.com/en-us/articles/robot-arm",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",

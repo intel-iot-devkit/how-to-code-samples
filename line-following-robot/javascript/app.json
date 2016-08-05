@@ -11,7 +11,7 @@
   "tooltip": "Line following robot application.",
   "description" : "Line following robot application uses two motors to follow a line. The line is detected using the line finder sensor. When on the line, the system moves forward. Otherwise, the system pivots in place, trying to locate the line.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/line-following-robot/javascript",
+  "articleUrl": "https://software.intel.com/en-us/articles/line-following-robot",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",

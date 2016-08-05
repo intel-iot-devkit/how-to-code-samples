@@ -11,7 +11,7 @@
   "tooltip": "Home fall tracker app detects possible falls using the accelerometer.",
   "description" : "Home fall tracker app detects possible falls using the accelerometer. A text alert is sent when a fall is detected. A message indicating that help is on the way is displayed using the OLED display. Data is stored using cloud-based data storage.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/home-fall-tracker/javascript",
+  "articleUrl": "https://software.intel.com/en-us/articles/home-fall-tracker",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",

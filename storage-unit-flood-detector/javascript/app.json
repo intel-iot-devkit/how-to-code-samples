@@ -11,7 +11,7 @@
   "tooltip": "Storage unit flood detection app that uses the moisture sensor.",
   "description" : "Storage unit flood detection app that uses the moisture sensor to insure that your stored belongings are not destroyed by water damage. If the moisture level exceeds a defined threshold it makes a sound to indicate a warning. Optionally, the monitor can store moisture data using the Intel IoT Example Datastore running in a Microsoft* Azure* account.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/storage-unit-flood-detector/javascript",
+  "articleUrl": "https://software.intel.com/en-us/articles/storage-unit-flood-detector",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",
