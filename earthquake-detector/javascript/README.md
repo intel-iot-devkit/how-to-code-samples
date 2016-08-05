@@ -32,7 +32,7 @@ This sample can be used with either the Grove* Starter Kit Plus from Seeedstudio
 Grove* Starter Kit Plus containing:
 
 1. Intel® Edison board with an Arduino* breakout board
-2. [Grove 3-Axis Digital Accelerometer](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
+2. [Grove 3-Axis Digital Accelerometer (1.5G)](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
 3. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 DFRobot* Starter Kit for Intel® Edison containing:

@@ -43,7 +43,8 @@ DFRobot* Starter Kit for Intel® Edison containing:
 1. Intel® Edison with an Arduino* breakout board
 2. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
 3. [Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
-4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
+4. [Rotary Dial]()
+5. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 

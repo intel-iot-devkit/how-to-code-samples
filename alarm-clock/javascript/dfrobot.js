@@ -91,10 +91,8 @@ exports.setupEvents = function() {
 // Turn on/off LCD backlight
 function adjustBrightness(value) {
   if (value < 512) {
-    console.log("backlight ON");
     screen.displayOn();
   } else {
-    console.log("backlight OFF");
     screen.displayOff();
   }
 }
