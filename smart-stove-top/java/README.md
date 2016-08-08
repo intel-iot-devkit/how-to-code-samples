@@ -1,4 +1,4 @@
-# Stove top in Java*
+# Smart stove top in Java*
 
 ## Introduction
 
