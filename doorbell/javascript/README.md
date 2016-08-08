@@ -20,11 +20,13 @@ Using an Intel® Edison board, this project lets you create a smart doorbell tha
 
 ## How it works
 
-This smart doorbell makes a noise with the buzzer when the Grove* Touch Sensor is pressed. In addition, it displays a message on the LCD.
+This smart doorbell makes a noise with the buzzer when the connected touch sensor is pressed. In addition, it displays a message on the LCD.
 
 Optionally, doorbell ring data can also be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
 
 ## Hardware requirements
+
+This sample can be used with either the Grove* Starter Kit Plus from Seeedstudio, or else the DFRobot Edison Starter Kit.
 
 Grove* Starter Kit Plus containing:
 
@@ -32,6 +34,13 @@ Grove* Starter Kit Plus containing:
 2. [Grove Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/ttp223.html)
 3. [Grove Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
+3. [Capacitive Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
+4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
@@ -102,6 +111,16 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 3. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
 
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/doorbell-dfrobot.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot* cable into the Touch Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
+
 ### Manual Intel® Edison board setup
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
@@ -130,10 +149,19 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot"
+}
+```
+
 To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
+  "kit": "grove",
   "SERVER": "http://intel-examples.azurewebsites.net/counter/doorbell/inc",
   "AUTH_TOKEN": "s3cr3t"
 }

@@ -20,11 +20,11 @@ Using an Intel® Edison board, this project lets you create a close call fleet d
 
 ## How it works
 
-This close call reporter system monitors the direction the Grove* IR Distance Interrupter is pointed to.
+This close call reporter system monitors the direction the IR Distance sensor is pointed to.
 
 It also keeps track of the GPS position of the Intel® Edison board, updating the position frequently to ensure accurate data.
 
-If a close call is detected (that is, the Grove* IR Distance Interrupter is tripped), the Intel® Edison board, if configured, notifies the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
+If a close call is detected (that is, the IR Distance sensor is tripped), the Intel® Edison board, if configured, notifies the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
 
 ## Hardware requirements
 
@@ -33,6 +33,13 @@ Grove* Transportation and Safety Kit containing:
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 3. [Grove GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [IR Distance Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=572)
+3. [GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
+4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
 ## Software requirements
 
@@ -101,6 +108,16 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 2. Plug one end of a Grove cable into the Grove GPS, and connect the other end to the UART port on the Grove Shield.
 
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/close-call-dfrobot.jpg)
+
+You need to have a DFRobot* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the DFRobot* I/O Expansion Shield.
+
+1. Plug one end of a DFRobot cable into the IR Distance Sensor, and connect the other end to the D4 port on the I/O Expansion Shield.
+
+2. Plug the attached GPS cable TX (white) to the I/O Expansion Shield's RX pin. Plug the attached GPS cable RX (black) to the I/O Expansion Shield's TX pin. Plug the attached GPS cable power (red) to any of the I/O Expansion Shield's 5V pins. Plug the attached GPS cable ground (thicker black) to any of the I/O Expansion Shield's GND.
+
 ### Manual Intel® Edison setup
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
@@ -129,10 +146,19 @@ For information on how to connect to your own cloud MQTT* messaging server, go t
 
 ## Configuring the example
 
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot"
+}
+```
+
 To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
+  "kit": "grove",
   "SERVER": "http://intel-examples.azurewebsites.net/logger/access-control",
   "AUTH_TOKEN": "s3cr3t"
 }

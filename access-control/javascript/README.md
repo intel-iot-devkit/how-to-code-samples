@@ -34,11 +34,19 @@ Optionally, all data can be stored using the Intel® IoT Examples data store or 
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Transportation and Safety Kit from Seeedstudio, or else the DFRobot Edison Starter Kit.
+
 Grove* Transportation and Safety Kit containing:
 
 1. Intel® Edison board with an Arduino* breakout board
 2. [Grove PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
 3. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [PIR (Motion) Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html).
+3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
@@ -108,6 +116,14 @@ You need to have a Grove* Shield connected to an Arduino*-compatible breakout bo
 
 2. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
 
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/access-control-dfrobot.jpg)
+
+You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Display Shield.
+
+1. Plug one end of a DFRobot* cable into the PIR (Motion) Sensor, and connect the other end to the A2 port on the LCD Display Shield.
+
 ### Manual Intel® Edison board setup
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
@@ -136,10 +152,20 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot",
+  "CODE": "4321"
+}
+```
+
 To configure the example for the optional Microsoft Azure*, IBM Bluemix\*, or AWS data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below the "CODE" key as follows:
 
 ```
 {
+  "kit": "grove",
   "CODE": "4321",
   "SERVER": "http://intel-examples.azurewebsites.net/logger/access-control",
   "AUTH_TOKEN": "s3cr3t"

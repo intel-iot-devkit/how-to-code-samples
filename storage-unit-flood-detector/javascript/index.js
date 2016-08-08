@@ -37,9 +37,13 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
-// Initialize the hardware devices
-var moisture = new (require("jsupm_grovemoisture").GroveMoisture)(0),
-    speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(5);
+// Initialize the hardware for whichever kit we are using
+var board;
+if (config.kit) {
+  board = require("./" + config.kit + ".js");
+} else {
+  board = require('./grove.js');
+}
 
 var datastore = require("./datastore");
 var mqtt = require("./mqtt");
@@ -58,10 +62,7 @@ function notify() {
 function alert() {
   notify();
 
-  // play quick chime
-  speaker.playSound("a", true, "low");
-  speaker.playSound("c", true, "low");
-  speaker.playSound("g", true, "low");
+  board.playSound();
 }
 
 // The main function monitors the connected hardware every 1
@@ -72,7 +73,7 @@ function main() {
   var prev;
 
   setInterval(function() {
-    var value = moisture.value();
+    var value = board.moistureValue();
     if (prev === 0 && value !== 0) { alert(); }
     prev = value;
   }, 1000);

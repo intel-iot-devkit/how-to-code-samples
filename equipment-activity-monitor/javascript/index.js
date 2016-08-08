@@ -37,20 +37,16 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
-// Initialize the hardware devices
-var mic = require("jsupm_mic");
-var sound = new mic.Microphone(0),
-    vibration = new (require("jsupm_ldt0028").LDT0028)(2),
-    screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
+// Initialize the hardware for whichever kit we are using
+var board;
+if (config.kit) {
+  board = require("./" + config.kit + ".js");
+} else {
+  board = require('./grove.js');
+}
 
 var datastore = require("./datastore");
 var mqtt = require("./mqtt");
-
-// Initialize the sound sensor
-var ctx = new mic.thresholdContext();
-ctx.averageReading = 0;
-ctx.runningAverage = 0;
-ctx.averagedOver = 2;
 
 // Display and then store record in the remote datastore/mqtt server
 // of how long the equipment being monitored was in use for
@@ -62,20 +58,6 @@ function notify(state) {
   mqtt.log(config, payload);
 }
 
-// Display a warning message on the I2C LCD display
-function warn() {
-  screen.setCursor(0, 0);
-  screen.write("EQUIPMENT IN USE");
-  screen.setColor(255, 255, 255);
-}
-
-// Clears the I2C LCD display
-function clear() {
-  screen.setCursor(0, 0);
-  screen.write("                ");
-  screen.setColor(0, 0, 0);
-}
-
 // Main function, checks every 20ms to see if either vibrations or
 // sounds are detected.
 // If either are detected, and the program is not already in the
@@ -83,30 +65,23 @@ function clear() {
 // and notifies the server.
 function main() {
   var tripped = false;
-
-    console.log("config.VIBRATION_THRESHOLD: ", config.VIBRATION_THRESHOLD);
+  console.log("config.VIBRATION_THRESHOLD: ", config.VIBRATION_THRESHOLD);
 
   setInterval(function() {
-    var vibes = vibration.getSample();
-    console.log("Vibration: ", vibes);
-    var movement = (vibes >= config.VIBRATION_THRESHOLD);
+    var movement = board.getVibration(config.VIBRATION_THRESHOLD);
+    console.log("Movement: ", movement);
 
-    var buffer = new mic.uint16Array(128),
-        len = sound.getSampledWindow(2, 128, buffer);
-
-    if (!len) { return; }
-
-    var noise = sound.findThreshold(ctx, config.NOISE_THRESHOLD, buffer, len);
-    console.log("Noise level: ", noise);
+    var noise = board.getNoise(config.NOISE_THRESHOLD);
+    console.log("Noise: ", noise);
 
     if (movement && noise && !tripped) {
       notify("start");
-      warn();
+      board.warn();
     }
 
     if (!(movement && noise) && tripped) {
       notify("stop");
-      clear();
+      board.clear();
     }
 
     tripped = movement && noise;

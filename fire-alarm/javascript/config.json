@@ -1,3 +1,4 @@
 {
-  "ALARM_THRESHOLD": 28
+  "kit": "grove",
+  "ALARM_THRESHOLD": 40
 }

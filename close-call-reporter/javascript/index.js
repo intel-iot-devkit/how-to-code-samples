@@ -40,50 +40,14 @@ var config = JSON.parse(
 var datastore = require("./datastore");
 var mqtt = require("./mqtt");
 
-// The program is using the `nmea` module
-// parse the data coming from the GPS
-var nmea = require("nmea");
+var LOCATION;
 
-// Initialize the hardware devices
-var GPS = require("jsupm_ublox6");
-var gps = new GPS.Ublox6(0),
-    dist = new (require("jsupm_rfr359f").RFR359F)(2);
-
-if (!gps.setupTty(GPS.int_B9600)) {
-  throw new Error("Failed to setup tty port parameters");
-}
-
-var GPS_BUFFER_LENGTH = 256,
-    GPS_BUFFER = new GPS.charArray(GPS_BUFFER_LENGTH),
-    LOCATION;
-
-// Reads the GPS to get the current location
-function getLocation() {
-  var data = "";
-
-  // batch data so we get complete NMEA sentences
-  while (data.slice(-1) !== "\n") {
-    var length = gps.readData(GPS_BUFFER, GPS_BUFFER_LENGTH);
-
-    if (!length) {
-      // some sort of read error occured
-      throw new Error("port read error");
-    }
-
-    // read only the number of characters
-    // specified by gps.readData
-    for (var i = 0; i < length; i++) {
-      data += GPS_BUFFER.getitem(i);
-    }
-  }
-
-  data.split("\n").forEach(function(str) {
-    try {
-      if (nmea.parse(str).sentence === "GGA") { LOCATION = str; }
-    } catch (e) {
-      // issue parsing NMEA data
-    }
-  });
+// Initialize the hardware for whichever kit we are using
+var board;
+if (config.kit) {
+  board = require("./" + config.kit + ".js");
+} else {
+  board = require('./grove.js');
 }
 
 // Store record in the remote datastore when close call
@@ -103,10 +67,10 @@ function main() {
   var prev = false;
 
   setInterval(function() {
-    var close = dist.objectDetected();
+    var close = board.objectDetected();
 
-    if (gps.dataAvailable()) {
-        getLocation();
+    if (board.gpsDataAvailable()) {
+        LOCATION = board.getGpsLocation();
     } else {
         console.log("No GPS data available...")
     }

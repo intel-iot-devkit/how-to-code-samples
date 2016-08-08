@@ -60,18 +60,12 @@ var SCHEDULE = {},
     MOISTURE = [],
     intervals = [];
 
-// Initialize the hardware devices
-var light = new (require("jsupm_grove").GroveLight)(0),
-    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(1),
-    screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
-
-// Displays a message on the RGB LED
-function message(string, line) {
-  // pad string to avoid display issues
-  while (string.length < 16) { string += " "; }
-
-  screen.setCursor(line || 0, 0);
-  screen.write(string);
+// Initialize the hardware for whichever kit we are using
+var board;
+if (config.kit) {
+  board = require("./" + config.kit + ".js");
+} else {
+  board = require('./grove.js');
 }
 
 // Set up 0-23 hour schedules
@@ -86,7 +80,7 @@ function toInt(h) { return +h; }
 // event has occurred
 function log(event) {
   console.log(event);
-  message(event);
+  board.message(event);
 
   var payload = { value: event + " " + new Date().toISOString() };
   datastore.log(config, payload);
@@ -113,7 +107,7 @@ function offSchedule() {
 
 // send a text indicating something's wrong
 function alert() {
-  message("Lighting alert");
+  board.message("Lighting alert");
 
   if (!config.TWILIO_ACCT_SID || !config.TWILIO_AUTH_TOKEN) {
     return;
@@ -141,12 +135,12 @@ function alert() {
 
 // Are the lights on?
 function checkLightsOn() {
-  if (light.value() < 2) { alert(); }
+  if (board.checkLightsOn()) { alert(); }
 }
 
 // Are the lights off?
 function checkLightsOff() {
-  if (light.value() > 4) { alert(); }
+  if (board.checkLightsOff()) { alert(); }
 }
 
 // Turns on the lights
@@ -226,7 +220,7 @@ function server() {
 // Log the moisture level every 15 minutes
 function monitor() {
   setInterval(function() {
-    var value = moisture.value();
+    var value = board.moistureValue();
 
     MOISTURE.push({ value: value, time: new Date().toISOString() });
     log("moisture (" + value + ")");

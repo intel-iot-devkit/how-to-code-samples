@@ -27,11 +27,19 @@ If so, it displays a warning on the LCD.
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Starter Kit Plus from Seeedstudio, or else the DFRobot* Edison Starter Kit with some extra DFRobot* parts.
+
 Grove* Starter Kit Plus containing:
 
 1. Intel® Edison board with an Arduino* breakout board
-2. [Grove 3-Axis Digital Accelerometer](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
+2. [Grove 3-Axis Digital Accelerometer (1.5G)](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
 3. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Triple Axis Accelerometer](http://www.dfrobot.com/index.php?route=product/product&description=true&product_id=507).
+3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
@@ -75,7 +83,7 @@ Otherwise, select **Add Manual Connection**.
 In the **Address** field, type `192.168.2.15`. In the **Port** field, type `58888`.
 Click **Connect** to save your connection.
 
-### Installing the program manually on the Intel® Edison board 
+### Installing the program manually on the Intel® Edison board
 
 Alternatively, you can set up the code manually on the Intel® Edison board.
 
@@ -91,13 +99,25 @@ To install Git* on the Intel® Edison board, if you don’t have it yet, establi
 
 ### Connecting the Grove* sensors
 
-![](./../../images/js/earthquake-detector.jpg)
+![](./../../images/js/earthquake-detector-dfrobot.jpg)
 
 You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
 1. Plug one end of a Grove cable into the Grove* 3-Axis Digital Accelerometer, and connect the other end to any of the I2C ports on the Grove* Shield.
 
 2. Plug one end of a Grove cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
+
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/earthquake-detector.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot* cable into the plug labeled "X" on the Triple-Axis Accelerometer, then connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot* cable into the plug labeled "Y" on the Triple-Axis Accelerometer, then connect the other end to the A2 port on the LCD Keypad Shield.
+
+3. Plug one end of a DFRobot* cable into the plug labeled "Z" on the Triple-Axis Accelerometer, then connect the other end to the A3 port on the LCD Keypad Shield.
 
 ### Manual Intel® Edison board setup
 
@@ -111,10 +131,19 @@ npm install
 
 ## Configuring the example
 
-To configure the example to check for earthquakes in your area, change the `LATITUDE` key in the `config.json` file as follows:
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```
 {
+  "kit": "dfrobot"
+}
+```
+
+To configure the example to check for earthquakes in your area, change the `LATITUDE` and `LONGITUDE` keys in the `config.json` file as follows:
+
+```
+{
+  "kit": "grove",
   "LATITUDE": "47.641944",
   "LONGITUDE": "-122.127222"
 }

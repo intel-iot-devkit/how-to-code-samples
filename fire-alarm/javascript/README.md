@@ -23,7 +23,7 @@ Using an Intel® Edison board, this project lets you create a smart fire alarm t
 
 ## How it works
 
-This smart fire alarm monitors the ambient temperature using the Grove* Temperature Sensor.
+This smart fire alarm monitors the ambient temperature using the connected temperature sensor.
 
 If the temperature exceeds a certain threshold (set to 28 degrees Celsius in this example), it sounds an alarm through the buzzer and displays an alert on the LCD.
 
@@ -33,12 +33,21 @@ Optionally, it can log fire events using the Intel IoT Examples Datastore or an 
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Starter Kit Plus from Seeedstudio, or else the DFRobot Edison Starter Kit.
+
 Grove* Starter Kit Plus containing:
 
 1. Intel® Edison board with an Arduino* breakout board
 2. [Grove Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
 3. [Grove Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
+3. [Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
+4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
@@ -110,6 +119,16 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 3. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
 
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/fire-alarm-dfrobot.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot* cable into the Analog Temperature Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A2 port on the LCD Keypad Shield.
+
 ### Manual Intel® Edison board setup
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
@@ -156,10 +175,20 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot",
+  "ALARM_THRESHOLD": 28
+}
+```
+
 To configure the example for sending optional text messages, obtain an API key from the Twilio* web site as explained above, and then add the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys to the `config.json` file as follows:
 
 ```
 {
+  "kit": "grove",
   "ALARM_THRESHOLD": 28,
   "TWILIO_ACCT_SID": "YOURAPIKEY",
   "TWILIO_AUTH_TOKEN": "YOURTOKEN"
@@ -170,6 +199,7 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
 
 ```
 {
+  "kit": "grove",
   "ALARM_THRESHOLD": 28,
   "SERVER": "http://intel-examples.azurewebsites.net/logger/fire-alarm",
   "AUTH_TOKEN": "s3cr3t"
@@ -180,6 +210,7 @@ To configure the example for both the text messages and the Microsoft Azure\*, I
 
 ```
 {
+  "kit": "grove",
   "ALARM_THRESHOLD": 28,
   "TWILIO_ACCT_SID": "YOURAPIKEY",
   "TWILIO_AUTH_TOKEN": "YOURTOKEN",

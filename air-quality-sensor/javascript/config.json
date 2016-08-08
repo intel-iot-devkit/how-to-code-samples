@@ -1,3 +1,4 @@
 {
- "THRESHOLD": 50
+  "kit": "grove",
+  "THRESHOLD": 50
 }

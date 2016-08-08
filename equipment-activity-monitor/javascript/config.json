@@ -1,4 +1,5 @@
 {
+ "kit": "grove",
  "VIBRATION_THRESHOLD": 100,
- "NOISE_THRESHOLD": 140
+ "NOISE_THRESHOLD": 0
 }

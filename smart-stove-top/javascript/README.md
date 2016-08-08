@@ -30,12 +30,21 @@ Optionally, all data can be stored using the Intel® IoT Examples Datastore or a
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Home Automation Kit from Seeedstudio, or else the DFRobot* Edison Starter Kit with some additional DFRobot* parts.
+
 Grove* Home Automation Kit containing:
 
 1. Intel® Edison board with an Arduino* breakout board
 2. [Grove IR Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/otp538u.html)
 3. [Grove Flame Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/yg1006.html)
 4. [Grove Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
+3. [Flame Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=195)
+4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
 ## Software requirements
 
@@ -107,6 +116,18 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 3. Plug one end of a Grove cable into the Grove Speaker, and connect the other end to the D5 port on the Grove Shield.
 
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/smart-stove-dfrobot.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot* cable into the Analog Temperature Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A2 port on the LCD Keypad Shield.
+
+3. Plug one end of a DFRobot* cable into the Flame Sensor, and connect the other end to the A3 port on the LCD Keypad Shield.
+
 ### Manual Intel® Edison board setup
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
@@ -135,10 +156,20 @@ For information on how to connect to your own cloud MQTT* messaging server, go t
 
 ## Configuring the example
 
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot",
+  "TARGET_TEMP": 30
+}
+```
+
 To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file after the required `TARGET_TEMP` key as follows:
 
 ```
 {
+  "kit": "grove",
   "TARGET_TEMP": 30,
   "SERVER": "http://intel-examples.azurewebsites.net/logger/smart-stovetop",
   "AUTH_TOKEN": "s3cr3t"

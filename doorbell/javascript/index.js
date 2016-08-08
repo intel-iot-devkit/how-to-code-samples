@@ -37,36 +37,16 @@ var config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "config.json"))
 );
 
-// Initialize the hardware devices
-var touch = new (require("jsupm_ttp223").TTP223)(4),
-    buzzer = new (require("jsupm_buzzer").Buzzer)(5),
-    screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
+// Initialize the hardware for whichever kit we are using
+var board;
+if (config.kit) {
+  board = require("./" + config.kit + ".js");
+} else {
+  board = require('./grove.js');
+}
 
 var datastore = require("./datastore");
 var mqtt = require("./mqtt");
-
-// Colors used for the RGB LED
-var colors = { green: [0, 255, 0], white: [255, 255, 255] };
-
-// Writes a message to the I2C LCD display
-function message(string, color) {
-  // pad string to avoid display issues
-  while (string.length < 16) { string += " "; }
-
-  screen.setCursor(0, 0);
-  screen.write(string);
-  screen.setColor.apply(screen, color || colors.white);
-}
-
-// Reset the state of the doorbot
-function reset() {
-  message("doorbot ready");
-  buzzer.setVolume(0.5);
-
-  // we call #stopSound twice because otherwise buzzer may not actually stop
-  buzzer.stopSound();
-  buzzer.stopSound();
-}
 
 // Increment the datastore/mqtt server count of doorbell rings
 function increment() {
@@ -80,21 +60,21 @@ function increment() {
 // and rings the buzzer
 function dingdong() {
   increment();
-  message("ding dong!", colors.green);
-  buzzer.playSound(2600, 0);
+  board.message("ding dong!", "green");
+  board.playSound(2600, 0);
 }
 
 // Main function, resets the doorbot, and then checks every
 // 50ms to see if anyone has rung the bell
 function main() {
-  reset();
+  board.reset();
 
   var prev = false;
 
   setInterval(function() {
-    var current = touch.isPressed();
+    var current = board.touchPressed();
     if (current && !prev) { dingdong(); }
-    if (!current && prev) { reset(); }
+    if (!current && prev) { board.reset(); }
     prev = current;
   }, 50);
 }

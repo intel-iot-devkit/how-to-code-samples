@@ -29,11 +29,20 @@ Also, optionally, the monitor stores the air quality data using the Intel® IoT 
 
 ### Hardware requirements
 
+This sample can be used with either the Grove* Home Automation Kit from Seeedstudio, or else the DFRobot Edison Starter Kit.
+
 Grove* Home Automation Kit containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove Air Quality Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/tp401.html)
 3. [Grove Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Analog Gas Sensor](http://www.dfrobot.com/wiki/index.php?title=Analog_Gas_Sensor_SKU:SEN0127).
+3. [Buzzer](http://www.dfrobot.com/wiki/index.php?title=Digital_Buzzer_Module_(SKU:_DFR0032)).
+4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ### Software requirements
 
@@ -103,6 +112,16 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 2. Plug one end of a Grove cable into the Grove Speaker, and connect the other end to the D5 port on the Grove Shield.
 
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/air-quality-dfrobot.jpg)
+
+You need to have a DFRobot* LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the DFRobot* LCD Keypad Shield.
+
+1. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A1 port on the DFRobot* LCD Keypad Shield.
+
+2. Plug one end of a DFRobot* cable into the Air Quality Sensor, and connect the other end to the A2 port on the DFRobot* I/O Expansion Shield.
+
 ### Installing the program manually on the Intel® Edison board
 
 If you're running this code on your Intel® Edison manually, you need to install some dependencies.
@@ -131,10 +150,20 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot",
+  "THRESHOLD": 50
+}
+```
+
 To configure the example for the optional Microsoft Azure*, IBM Bluemix*, or AWS data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below the "THRESHOLD" value as follows:
 
 ```
 {
+  "kit": "grove",
   "THRESHOLD": 50,
   "SERVER": "http://intel-examples.azurewebsites.net/logger/access-control",
   "AUTH_TOKEN": "s3cr3t"

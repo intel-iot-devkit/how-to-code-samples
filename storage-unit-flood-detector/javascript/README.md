@@ -28,11 +28,20 @@ Optionally, the monitor can store moisture data using the Intel IoT Examples Dat
 
 ## Hardware requirements
 
+This sample can be used with either the Grove* Home Automation Kit from Seeedstudio, or else the DFRobot* Edison Starter Kit.
+
 Grove* Home Automation Kit containing:
 
 1. Intel® Edison board with an Arduino* breakout board
 2. [Grove Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
 3. [Grove Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+
+DFRobot* Starter Kit for Intel® Edison containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599)
+3. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84)
+4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
 ## Software requirements
 
@@ -102,6 +111,16 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 2. Plug one end of a Grove cable into the Grove Speaker, and connect the other end to the D5 port on the Grove Shield.
 
+### Connecting the DFRobot* sensors
+
+![](./../../images/js/flood-detect-dfrobot.jpg)
+
+You need to have a I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the I/O Expansion Shield.
+
+1. Plug one end of a DFRobot* cable into the Moisture Sensor, and connect the other end to the A1 port on the I/O Expansion Shield.
+
+2. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A2 port on the I/O Expansion Shield.
+
 ### Manual Intel® Edison board setup
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
@@ -130,10 +149,19 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot"
+}
+```
+
 To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
+  "kit": "grove",
   "SERVER": "http://intel-examples.azurewebsites.net/logger/flood-detect",
   "AUTH_TOKEN": "s3cr3t"
 }
