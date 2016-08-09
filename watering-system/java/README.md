@@ -141,7 +141,7 @@ To configure the example for the optional data store, change the `SERVER` and `A
   TWILIO_ACCT_SID="YOURAPIKEY"
   TWILIO_AUTH_TOKEN="YOURTOKEN"
   TWILIO_OUTGOING_NUMBER="YOURTWILIOOUTGOINGNUMBER"
-  NUMBER_TO_SEND_TO="YOURNUMBERTOSEND"
+  NUMBER_TO_SEND_TO="NUMBERTOSENDTO"
   SERVER=http://mysamples.azurewebsites.net/logger/lighting-system
   AUTH_TOKEN=mypassword
 
