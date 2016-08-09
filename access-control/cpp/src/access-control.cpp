@@ -55,7 +55,7 @@
 #include <chrono>
 #include <string>
 
-#include <jhd1313m1.h>
+#include <jhd1313m1.hpp>
 #include "biss0001.hpp"
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"

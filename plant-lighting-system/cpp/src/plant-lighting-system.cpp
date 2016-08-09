@@ -57,7 +57,7 @@ using std::string;
 using std::vector;
 
 #include "grove.hpp"
-#include <jhd1313m1.h>
+#include <jhd1313m1.hpp>
 #include <grovemoisture.hpp>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"

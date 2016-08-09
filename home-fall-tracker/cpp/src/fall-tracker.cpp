@@ -55,7 +55,7 @@ using std::string;
 #include <vector>
 using std::vector;
 
-#include <ssd1308.h>
+#include <ssd1308.hpp>
 #define OLED_DEVICE_ADDRESS    0x3C
 #define OLED_BUS_NUMBER        0x0
 #include <adxl345.hpp>
