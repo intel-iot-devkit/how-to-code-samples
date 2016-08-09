@@ -56,7 +56,7 @@
 #include <signal.h>
 
 #include <grovespeaker.hpp>
-#include "tp401.h"
+#include "tp401.hpp"
 
 #define WARNING_THRESHOLD 200
 

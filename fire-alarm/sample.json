@@ -1,0 +1,14 @@
+{
+  "name": "Fire Alarm",
+  "category": "How To Code Samples",
+  "description": "This sample: constantly monitors for unsafe temperature levels, audibly notifies of alerts using the buzzer. Visually notifies of alerts using the LCD. Keeps track of fire alarm data, using cloud-based storage. Sends text messages to alert others of a possible fire.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove LCD RGB Backlight on I2C",
+               "Grove Buzzer connected to digital pin 5 (Grove Base Shield Port D5)",
+               "Grove Temperature Sensor connected to analog pin 0 (Grove Base Shield Port A0)"],
+    "libs": ["openssl", "upm", "curl", "paho"],
+    "compatible": ["Edison"]
+  }
+}

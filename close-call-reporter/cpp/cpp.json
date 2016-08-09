@@ -1,0 +1,5 @@
+{
+  "main": "src/close-call-reporter.cpp",
+  "ldflags": "-lmraa -lupm-rfr359f -lpaho-mqtt3cs -lupm-ublox6 -lupm-grove -lboost_system -lboost_thread -lboost_filesystem -lboost_date_time -lpthread -lcurl ",
+  "cxxflags": "-std=c++1y"
+}

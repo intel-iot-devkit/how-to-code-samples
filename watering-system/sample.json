@@ -1,0 +1,14 @@
+{
+  "name": "Watering System",
+  "category": "How To Code Samples",
+  "description": "This watering-system application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove Moisture Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
+               "Grove Water Flow Sensor connected to digital pin 2 (Grove Base Shield Port D2)",
+               "Grove Dry-reed Relay connected to digital pin 4 (Grove Base Shield Port D4)"],
+    "libs": ["boost", "upm", "curl", "paho", "openssl"],
+    "compatible": ["Edison"]
+  }
+}

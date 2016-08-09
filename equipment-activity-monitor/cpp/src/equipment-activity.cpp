@@ -56,7 +56,7 @@
 
 #include <mic.hpp>
 #include <ldt0028.hpp>
-#include <jhd1313m1.h>
+#include <jhd1313m1.hpp>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 

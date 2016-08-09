@@ -1,0 +1,14 @@
+{
+  "name": "Equipment activity monitor",
+  "category": "How To Code Samples",
+  "description": "Store the equipment usage data using Azure* Redis Cache from Microsoft, Redis Store* from IBM Bluemix*, or ElastiCache* using Redis* from Amazon Web Services* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove Sound Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
+               "Grove Piezo Vibration Sensor connected to analog pin 2 (Grove Base Shield Port A2)",
+               "Grove LCD RGB Backlight on I2C"],
+    "libs": ["upm", "curl", "paho"],
+    "compatible": ["Edison"]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Range Finer Scanner",
+  "category": "How To Code Samples",
+  "description": "This range-finder-scanner application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove Distance Interrupter connected to digital pin 2 (Grove Base Shield Port D2)",
+               "ULN200XA Stepper Driver connected to pins 9, 10, 11, and 12"],
+    "libs": ["boost", "upm", "curl", "paho"],
+    "compatible": ["Edison"]
+  }
+}

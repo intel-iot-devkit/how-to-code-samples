@@ -54,7 +54,7 @@
 
 using namespace std;
 
-#include <ssd1308.h>
+#include <ssd1308.hpp>
 #define OLED_DEVICE_ADDRESS    0x3C
 #define OLED_BUS_NUMBER        0x0
 

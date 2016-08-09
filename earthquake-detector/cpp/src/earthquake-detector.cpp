@@ -51,7 +51,7 @@
 #include <signal.h>
 
 #include <mma7660.hpp>
-#include <jhd1313m1.h>
+#include <jhd1313m1.hpp>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 #include "../lib/json-cpp/json/json.h"

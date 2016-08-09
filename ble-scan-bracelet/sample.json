@@ -1,0 +1,12 @@
+{
+  "name": "BLE scan bracelet",
+  "category": "How To Code Samples",
+  "description": "Store detected BLE devices using Azure* Redis Cache from Microsoft, Redis Store* from IBM Bluemix*, or ElastiCache* using Redis* from Amazon Web Services* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Xadow OLED"],
+    "libs": ["upm", "curl", "paho"],
+    "compatible": ["Edison"]
+  }
+}

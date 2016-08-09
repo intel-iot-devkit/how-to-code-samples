@@ -1,0 +1,5 @@
+{
+  "main": "src/line-finder-robot.cpp",
+  "ldflags": "-lmraa -lupm-grovelinefinder -lpaho-mqtt3cs -lupm-uln200xa -lupm-grove -lcurl ",
+  "cxxflags": "-std=c++1y"
+}

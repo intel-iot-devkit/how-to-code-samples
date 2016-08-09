@@ -1,0 +1,12 @@
+{
+  "name": "Color Match Game",
+  "category": "How To Code Samples",
+  "description": "When starting the game, for each level a sequence of colors is displayed on the RGB LCD screen of the Intel® Edison board. The player needs to click on the corresponding buttons on the website.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove LCD RGB Backlight on I2C"],
+    "libs": ["boost", "upm"],
+    "compatible": ["Edison"]
+  }
+}

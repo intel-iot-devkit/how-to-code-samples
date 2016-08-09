@@ -57,7 +57,7 @@
 
 #include <grove.hpp>
 #include <buzzer.hpp>
-#include <jhd1313m1.h>
+#include <jhd1313m1.hpp>
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 

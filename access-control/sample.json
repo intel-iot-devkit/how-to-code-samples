@@ -1,0 +1,13 @@
+{
+  "name": "Access control",
+  "category": "How To Code Samples",
+  "description": " Set up a web application server to let users enter the access code to disable the alarm system, and store this alarm data using Azure Redis Cache* from Microsoft* Azure*, Redis Store* from IBM* Bluemix*, or ElastiCache* using Redis* from Amazon* Web Services* (AWS*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.",
+  "author": "Intel Corporation & Hybrid Group",
+  "date": "2016-05-04",
+  "platform" : {
+    "hwreq" : ["Grove LCD RGB Backlight on I2C",
+               "Grove PIR Motion Sensor connected to digital pin 4 (Grove Base Shield Port D4)"],
+    "libs": ["boost", "upm", "curl", "paho"],
+    "compatible": ["Edison"]
+  }
+}

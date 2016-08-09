@@ -54,7 +54,7 @@
 
 #include <ttp223.hpp>
 #include <buzzer.hpp>
-#include <jhd1313m1.h>
+#include <jhd1313m1.hpp>
 
 #include "datastore.h"
 #include "mqtt.h"

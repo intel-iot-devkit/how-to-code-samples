@@ -1,0 +1,5 @@
+{
+  "main": "src/storage-unit-flood-detector.cpp",
+  "ldflags": "-lmraa -lupm-grovespeaker -lupm-grovemoisture -lpaho-mqtt3cs -lcurl ",
+  "cxxflags": "-std=c++1y"
+}
