@@ -128,8 +128,8 @@ Pass your Twilio API key and authentication token to the sample program by modif
 ```
   TWILIO_ACCT_SID="YOURAPIKEY"
   TWILIO_AUTH_TOKEN="YOURTOKEN"
-  TWILIO_OUTGOING_NUMBER=323-555-1212
-  NUMBER_TO_SEND_TO=213-555-1212
+  TWILIO_OUTGOING_NUMBER="YOURTWILIOOUTGOINGNUMBER"
+  NUMBER_TO_SEND_TO="NUMBERTOSENDTO"
 ```
 
 ## Preparing the Intel® Edison board before running the project
