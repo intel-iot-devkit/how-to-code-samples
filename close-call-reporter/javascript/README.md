@@ -8,8 +8,8 @@ From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or from the Intel® Galileo board.<br>
-- Store the close-call data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Store the close-call data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
@@ -24,17 +24,17 @@ This close call reporter system monitors the direction the IR Distance sensor is
 
 It also keeps track of the GPS position of the Intel® Edison board, updating the position frequently to ensure accurate data.
 
-If a close call is detected (that is, the IR Distance sensor is tripped), the Intel® Edison board, if configured, notifies the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
+If a close call is detected (that is, the IR Distance sensor is tripped), the Intel® Edison board, if configured, notifies the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
 
 ## Hardware requirements
 
-Grove* Transportation and Safety Kit containing:
+Grove* Transportation and Safety Kit, containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
-3. [Grove GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
+2. [Grove\* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
+3. [Grove\* GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
 
-DFRobot* Starter Kit for Intel® Edison containing:
+DFRobot* Starter Kit for Intel® Edison, containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [IR Distance Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=572)
@@ -44,7 +44,7 @@ DFRobot* Starter Kit for Intel® Edison containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft Azure\*, IBM Bluemix\*, or AWS account (optional)
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
 
 ### How to set up
 
@@ -94,25 +94,25 @@ Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison bo
 
 Then, navigate to the directory with this example.
 
-To install Git* on Intel® Edison, if you don’t have it yet, establish an SSH connection to the board and run the following command:
+To install Git\* on Intel® Edison, if you don’t have it yet, establish an SSH connection to the board and run the following command:
 
     $ opkg install git
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
 ![](./../../images/js/close-call.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove cable into the Grove IR Distance Interrupter, and connect the other end to the D2 port on the Grove Shield.
+1. Plug one end of a Grove cable into the Grove\* IR Distance Interrupter, and connect the other end to the D2 port on the Grove\* Shield.
 
-2. Plug one end of a Grove cable into the Grove GPS, and connect the other end to the UART port on the Grove Shield.
+2. Plug one end of a Grove cable into the Grove\* GPS, and connect the other end to the UART port on the Grove\* Shield.
 
-### Connecting the DFRobot* sensors
+### Connecting the DFRobot\* sensors
 
 ![](./../../images/js/close-call-dfrobot.jpg)
 
-You need to have a DFRobot* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the DFRobot* I/O Expansion Shield.
+You need to have a DFRobot\* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* I/O Expansion Shield.
 
 1. Plug one end of a DFRobot cable into the IR Distance Sensor, and connect the other end to the D4 port on the I/O Expansion Shield.
 
@@ -122,7 +122,7 @@ You need to have a DFRobot* I/O Expansion Shield connected to an Arduino\*-compa
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
 
-To obtain the Node.js* modules needed for this example to execute on the Intel® Edison board, run the following command:
+To obtain the Node.js\* modules needed for this example to execute on the Intel® Edison board, run the following command:
 
 ```
 npm install
@@ -130,7 +130,7 @@ npm install
 
 ### Data store server setup
 
-Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
+Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -138,7 +138,7 @@ For information on how to set up your own cloud data server, go to:
 
 ### MQTT server setup
 
-You can also optionally store the data generated by this sample program using MQTT\*, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS.
+You can also optionally store the data generated by this sample program using MQTT\*, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS.
 
 For information on how to connect to your own cloud MQTT* messaging server, go to:
 
@@ -154,7 +154,7 @@ To configure the example for the Grove* kit, just leave the `kit` key in the `co
 }
 ```
 
-To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
@@ -164,7 +164,7 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
 }
 ```
 
-For information on how to configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS MQTT messaging server, go to:
+For information on how to configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS MQTT messaging server, go to:
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
