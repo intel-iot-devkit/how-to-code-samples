@@ -25,9 +25,28 @@
 
 var exports = module.exports = {};
 
-// Initialize the grove hardware devices
-var screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62),
-    motion = new (require("jsupm_biss0001").BISS0001)(4);
+var mraa = require('mraa');
+
+// devices
+var motion, screen;
+
+// pins
+var motionPin = 4,
+    i2cBus = 6;
+
+// Initialize the seeedstudio hardware devices
+exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    motionPin += 512;
+    i2cBus = 512;
+  }
+
+  screen = new (require("jsupm_i2clcd").Jhd1313m1)(i2cBus, 0x3E, 0x62),
+  motion = new (require("jsupm_biss0001").BISS0001)(motionPin);
+}
 
 // Colors used for the RGB LED
 // Colors used for the RGB LCD display

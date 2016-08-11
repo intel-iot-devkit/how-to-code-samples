@@ -25,15 +25,33 @@
 
 var exports = module.exports = {};
 
-// Initialize the Grove hardware devices
-var accelerometer = require("jsupm_mma7660");
-var accel = new accelerometer.MMA7660(0, 76),
-    screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
+var mraa = require('mraa');
 
-// Initialize the accelerometer to enable 64 samples per second
-accel.setModeStandby();
-accel.setSampleRate(1);
-accel.setModeActive();
+// devices
+var accel, screen;
+
+// pins
+var i2cBus = 6;
+
+var accelerometer = require("jsupm_mma7660");
+
+// Initialize the Grove hardware devices
+exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    i2cBus = 512;
+  }
+
+  accel = new accelerometer.MMA7660(i2cBus, 0x4c),
+  screen = new (require("jsupm_i2clcd").Jhd1313m1)(i2cBus, 0x3E, 0x62);
+
+  // Initialize the accelerometer to enable 64 samples per second
+  accel.setModeStandby();
+  accel.setSampleRate(1);
+  accel.setModeActive();
+}
 
 var ax, ay, az;
 ax = accelerometer.new_floatp();
@@ -66,6 +84,7 @@ exports.stop = function() {
 
 exports.getAcceleration = function() {
   accel.getAcceleration(ax, ay, az);
+
   return (accelerometer.floatp_value(ax) > 1 ||
           accelerometer.floatp_value(ay) > 1 ||
           accelerometer.floatp_value(az) > 1)

@@ -25,17 +25,37 @@
 
 var exports = module.exports = {};
 
-// Initialize the Grove hardware devices
+var mraa = require('mraa');
 var mic = require("jsupm_mic");
-var sound = new mic.Microphone(0),
-    vibration = new (require("jsupm_ldt0028").LDT0028)(2),
-    screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
 
-// Initialize the sound sensor
-var ctx = new mic.thresholdContext();
-ctx.averageReading = 0;
-ctx.runningAverage = 0;
-ctx.averagedOver = 2;
+// devices
+var sound, vibration, screen, ctx;
+
+// pins
+var soundPin = 0,
+    vibrationPin = 2,
+    i2cBus = 6;
+
+// Initialize the Grove hardware devices
+exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    soundPin += 512;
+    vibrationPin += 512;
+    i2cBus = 512;
+  }
+
+  sound = new mic.Microphone(soundPin),
+  vibration = new (require("jsupm_ldt0028").LDT0028)(vibrationPin),
+  screen = new (require("jsupm_i2clcd").Jhd1313m1)(i2cBus, 0x3E, 0x62);
+
+  ctx = new mic.thresholdContext();
+  ctx.averageReading = 0;
+  ctx.runningAverage = 0;
+  ctx.averagedOver = 2;
+}
 
 // Display a warning message on the I2C LCD display
 exports.warn = function() {

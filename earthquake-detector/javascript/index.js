@@ -44,6 +44,7 @@ if (config.kit) {
 } else {
   board = require('./grove.js');
 }
+board.init(config);
 
 // The program is using the `superagent` module
 // to make the remote calls to the data store

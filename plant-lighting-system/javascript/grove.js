@@ -25,10 +25,31 @@
 
 var exports = module.exports = {};
 
+var mraa = require('mraa');
+
+// devices
+var light, moisture, screen;
+
+// pins
+var lightPin = 0,
+    moisturePin = 1,
+    i2cBus = 6;
+
 // Initialize the Grove hardware devices
-var light = new (require("jsupm_grove").GroveLight)(0),
-    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(1),
-    screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
+exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    lightPin += 512;
+    moisturePin += 512;
+    i2cBus = 512;
+  }
+
+  light = new (require("jsupm_grove").GroveLight)(lightPin);
+  moisture = new (require("jsupm_grovemoisture").GroveMoisture)(moisturePin);
+  screen = new (require("jsupm_i2clcd").Jhd1313m1)(i2cBus, 0x3E, 0x62);
+}
 
 // Displays a message on the RGB LED
 exports.message = function(string, line) {

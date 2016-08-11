@@ -36,6 +36,10 @@ var moisture = new (require("jsupm_grovemoisture").GroveMoisture)(1), // A1
 
 buzzer.dir(mraa.DIR_OUT);
 
+exports.init = function(config) {
+  return;
+}
+
 // current moisture sensor reading
 exports.moistureValue = function() {
   return moisture.value();

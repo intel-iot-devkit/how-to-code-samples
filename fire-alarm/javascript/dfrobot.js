@@ -37,6 +37,10 @@ var temp = new mraa.Aio(1), // A1
 
 buzzer.dir(mraa.DIR_OUT);
 
+exports.init = function(config) {
+  return;
+}
+
 // No color support on this LCD display
 exports.color = function(string) {
   return;

@@ -38,6 +38,10 @@ var temp = new mraa.Aio(1), // A1
 
 buzzer.dir(mraa.DIR_OUT);
 
+exports.init = function(config) {
+  return;
+}
+
 // Plays an audible alarm when the temperature has exceeded
 // the target temperature
 exports.tempAlarm = function() {

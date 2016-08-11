@@ -25,11 +25,35 @@
 
 var exports = module.exports = {};
 
-// Initialize the Grove hardware devices
-var temp = new (require("jsupm_otp538u").OTP538U)(0, 1),
-    flame = new (require("jsupm_yg1006").YG1006)(4),
-    speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(5);
+var mraa = require('mraa');
 
+// devices
+var temp, flame, speaker;
+
+// pins
+var ambientTempPin = 0,
+    objectTempPin = 1,
+    flamePin = 4,
+    speakerPin = 5,
+    referenceVoltage = 5.0;
+
+// Initialize the Grove hardware devices
+exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    ambientTempPin += 512;
+    objectTempPin += 512;
+    flamePin += 512;
+    speakerPin += 512;
+    referenceVoltage = 3.3;
+  }
+
+  temp = new (require("jsupm_otp538u").OTP538U)(ambientTempPin, objectTempPin, referenceVoltage),
+  flame = new (require("jsupm_yg1006").YG1006)(flamePin),
+  speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(speakerPin);
+}
 
 // Plays an audible alarm when the temperature has exceeded
 // the target temperature

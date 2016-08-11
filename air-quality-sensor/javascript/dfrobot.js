@@ -36,6 +36,10 @@ var buzzer = new mraa.Gpio(15), // aka A1
 
 buzzer.dir(mraa.DIR_OUT);
 
+exports.init = function(config) {
+  return;
+}
+
 // Plays a sound using the buzzer
 exports.chime = function() {
   buzzer.write(1);

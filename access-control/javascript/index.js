@@ -55,6 +55,7 @@ if (config.kit) {
 } else {
   board = require('./grove.js');
 }
+board.init(config);
 
 // Store record in the remote datastore and/or mqtt server
 // when access control event has occurred

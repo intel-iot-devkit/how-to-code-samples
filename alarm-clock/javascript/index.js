@@ -52,6 +52,7 @@ if (config.kit) {
 } else {
   board = require('./grove.js');
 }
+board.init(config);
 
 var datastore = require("./datastore");
 var mqtt = require("./mqtt");

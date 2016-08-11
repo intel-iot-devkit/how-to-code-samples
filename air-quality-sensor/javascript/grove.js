@@ -25,9 +25,28 @@
 
 var exports = module.exports = {};
 
+var mraa = require('mraa');
+
+// devices
+var air, speaker;
+
+// pins
+var gasPin = 0,
+    speakerPin = 5;
+
 // Initialize the Grove hardware devices
-var air = new (require("jsupm_gas").TP401)(0),
-    speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(5);
+exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    gasPin += 512;
+    speakerPin += 512;
+  }
+
+  air = new (require("jsupm_gas").TP401)(gasPin),
+  speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(speakerPin);
+}
 
 // Plays a chime sound using the Grove speaker
 exports.chime = function() {
