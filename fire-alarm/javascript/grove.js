@@ -33,7 +33,8 @@ var temp, buzzer, screen;
 // pins
 var tempPin = 0,
     buzzerPin = 5,
-    i2cBus = 6;
+    i2cBus = 6,
+    voltageAdjust = 1.0;
 
 // Initialize the Grove hardware devices
 exports.init = function(config) {
@@ -44,6 +45,7 @@ exports.init = function(config) {
     tempPin += 512;
     buzzerPin += 512;
     i2cBus = 512;
+    voltageAdjust = 0.66;
   }
 
   temp = new (require("jsupm_grove").GroveTemp)(tempPin),
@@ -88,6 +90,5 @@ exports.reset = function() {
 }
 
 exports.getTemperature = function() {
-    console.log(temp.value());
-  return temp.value();
+  return temp.value() * voltageAdjust;
 }
