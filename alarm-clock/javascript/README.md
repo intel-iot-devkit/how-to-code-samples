@@ -28,17 +28,17 @@ Optionally, all data can also be stored using the Intel® IoT Examples Datastore
 
 ## Hardware requirements
 
-This sample can be used with either the Grove* Starter Kit Plus from Seeedstudio, or else the DFRobot Edison Starter Kit.
+This sample can be used with either the Grove\* Starter Kit Plus from Seeed Studio, or else the DFRobot\* Edison Starter Kit.
 
-Grove* Starter Kit Plus containing:
+Grove* Starter Kit Plus, containing:
 
 1. Intel® Edison with an Arduino* breakout board
-2. [Grove Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/groverotary.html)
-3. [Grove Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html).
-4. [Grove Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
-5. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+2. [Grove\* Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/groverotary.html)
+3. [Grove\* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html).
+4. [Grove\* Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
+5. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot* Starter Kit for Intel® Edison containing:
+DFRobot* Starter Kit for Intel® Edison, containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
@@ -49,8 +49,8 @@ DFRobot* Starter Kit for Intel® Edison containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft Azure\*, IBM Bluemix\*, or AWS account (optional)
-3. Weather Underground* API key (optional)
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
+3. Weather Underground\* API key (optional)
 
 ### How to set up
 
@@ -100,7 +100,7 @@ Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison bo
 
 Then, navigate to the directory with this example.
 
-To install Git* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
+To install Git\* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
 
     $ opkg install git
 
@@ -108,47 +108,47 @@ To install Git* on the Intel® Edison board (if you don’t have it yet), establ
 
 ![](./../../images/js/alarm-clock.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove cable into the Grove Rotary Analog Sensor, and connect the other end to the A0 port on the Grove Shield.
+1. Plug one end of a Grove\* cable into the Grove\* Rotary Analog Sensor, and connect the other end to the A0 port on the Grove\* Shield.
 
-2. Plug one end of a Grove cable into the Grove Button, and connect the other end to the D4 port on the Grove Shield.
+2. Plug one end of a Grove\* cable into the Grove Button, and connect the other end to the D4 port on the Grove\* Shield.
 
-3. Plug one end of a Grove cable into the Grove Buzzer, and connect the other end to the D5 port on the Grove Shield.
+3. Plug one end of a Grove\* cable into the Grove Buzzer, and connect the other end to the D5 port on the Grove\* Shield.
 
-4. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
+4. Plug one end of a Grove\* cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
-### Connecting the DFRobot* sensors
+### Connecting the DFRobot\* sensors
 
 ![](./../../images/js/alarm-clock-dfrobot.jpg)
 
-You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
-1. Plug one end of a DFRobot* cable into the Buzzer, and connect the other end to the A1 port on the LCD Keypad Shield.
+1. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the LCD Keypad Shield.
 
-2. Plug one end of a DFRobot* cable into the Button, and connect the other end to the A2 port on the LCD Keypad Shield.
+2. Plug one end of a DFRobot\* cable into the Button, and connect the other end to the A2 port on the LCD Keypad Shield.
 
-3. Plug one end of a DFRobot* cable into the Rotary Analog Sensor, and connect the other end to the A3 port on the LCD Keypad Shield.
+3. Plug one end of a DFRobot\* cable into the Rotary Analog Sensor, and connect the other end to the A3 port on the LCD Keypad Shield.
 
 ### Manual Intel® Edison setup
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
 
-To obtain the Node.js* modules needed for this example to execute on the Intel® Edison board, run the following command:
+To obtain the Node.js\* modules needed for this example to execute on the Intel® Edison board, run the following command:
 
 ```
 npm install
 ```
 
-### Weather Underground* API key
+### Weather Underground\* API key
 
-To optionally fetch the real-time weather information, you need to get an API key from the Weather Underground* website:
+To optionally fetch the real-time weather information, you need to get an API key from the Weather Underground\* website:
 
 <a href="http://www.wunderground.com/weather/api/">http://www.wunderground.com/weather/api</a>
 
 You cannot retrieve weather conditions without obtaining a Weather Underground* API key first. You can still run the example, but without the weather data.
 
-Pass your Weather Underground* API key to the sample program by modifying the `WEATHER_API_KEY` key in the `config.json` file as follows:
+Pass your Weather Underground\* API key to the sample program by modifying the `WEATHER_API_KEY` key in the `config.json` file as follows:
 
 ```
 {
@@ -158,7 +158,7 @@ Pass your Weather Underground* API key to the sample program by modifying the `W
 
 ### Data store server setup
 
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
+Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -166,7 +166,7 @@ For information on how to set up your own cloud data server, go to:
 
 ### MQTT server setup
 
-You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS.
+You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS.
 
 For information on how to connect to your own cloud MQTT messaging server, go to:
 
@@ -174,7 +174,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```
 {
@@ -182,7 +182,7 @@ To configure the example for the Grove* kit, just leave the `kit` key in the `co
 }
 ```
 
-To configure the example for the optional real-time weather data, obtain a key from the Weather Underground* website as documented above, and then change the `WEATHER_API_KEY` and `LOCATION` keys in the `config.json` file as follows:
+To configure the example for the optional real-time weather data, obtain a key from the Weather Underground\* website as documented above, and then change the `WEATHER_API_KEY` and `LOCATION` keys in the `config.json` file as follows:
 
 ```
 {
@@ -192,7 +192,7 @@ To configure the example for the optional real-time weather data, obtain a key f
 }
 ```
 
-To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
@@ -202,7 +202,7 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
 }
 ```
 
-To configure the example for both the weather data, as well as either the Microsoft Azure\*, IBM Bluemix\*, or AWS data store, change the `WEATHER_API_KEY`, `LOCATION`, `SERVER`, and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for both the weather data, as well as either the Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `WEATHER_API_KEY`, `LOCATION`, `SERVER`, and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
@@ -214,7 +214,7 @@ To configure the example for both the weather data, as well as either the Micros
 }
 ```
 
-For information on how to configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS MQTT messaging server, go to:
+For information on how to configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS MQTT messaging server, go to:
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
