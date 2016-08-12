@@ -8,9 +8,9 @@ From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® Galileo board.<br>
-- Set up a web application server to store lighting system data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon\* Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub\* from Microsoft Azure\*, IoT\* from IBM Bluemix\*, or IoT from Amazon Web Services\* (AWS, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
-- Invoke the services of the Twilio* API for sending text messages.
+- Set up a web application server to store lighting system data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a MQTT-based server using IoT Hub\* from Microsoft\* Azure\*, IoT\* from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Invoke the services of the Twilio\* API for sending text messages.
 
 ## What it is
 
@@ -25,26 +25,26 @@ Using an Intel® Edison board, this project lets you create an automatic plant l
 
 The system allows setting the lighting schedule via a web page served directly from the Intel® Edison board by using your mobile phone.
 
-If the lighting is supposed to be on, but the light sensor does not detect any light, it sends a text alert to a specified number through Twilio*.
+If the lighting is supposed to be on, but the light sensor does not detect any light, it sends a text alert to a specified number through Twilio\*.
 
 It also automatically checks and logs moisture sensor data at periodic intervals.
 
-Optionally, all data can be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
+Optionally, all data can be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
 
 ## Hardware requirements
 
-This sample can be used with either the Grove* Indoor Environment Kit from Seeedstudio, or else the DFRobot* Starter Kit for Intel® Edison along with some additional DFRobot* parts.
+This sample can be used with either the Grove\* Indoor Environment Kit from Seeed Studio, or else the DFRobot\* Starter Kit for Intel® Edison along with some additional DFRobot\* parts.
 
-Grove* Indoor Environment Kit containing:
+Grove\* Indoor Environment Kit, containing:
 
-1. Intel® Edison with an Arduino* breakout board
-2. [Grove Moisture Sensor](http://iotdk.Intel®.com/docs/master/upm/node/classes/grovemoisture.html)
-3. [Grove Light Sensor](http://iotdk.Intel®.com/docs/master/upm/node/classes/grovelight.html)
-4. [Grove RGB LCD](http://iotdk.Intel®.com/docs/master/upm/node/classes/jhd1313m1.html)
+1. Intel® Edison with an Arduino\* breakout board
+2. [Grove\* Moisture Sensor](http://iotdk.Intel®.com/docs/master/upm/node/classes/grovemoisture.html)
+3. [Grove\* Light Sensor](http://iotdk.Intel®.com/docs/master/upm/node/classes/grovelight.html)
+4. [Grove\* RGB LCD](http://iotdk.Intel®.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot* Starter Kit for Intel® Edison containing:
+DFRobot\* Starter Kit for Intel® Edison containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison with an Arduino\* breakout board
 2. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599).
 3. [Analog Ambient Light Sensor](www.dfrobot.com/index.php?route=product/product&product_id=1004)
 4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
@@ -52,12 +52,12 @@ DFRobot* Starter Kit for Intel® Edison containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft Azure\*, IBM Bluemix\*, or AWS account (optional)
-3. Twilio* account (optional)
+2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
+3. Twilio\* account (optional)
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/Intel-iot-devkit/how-to-code-samples.git
 
@@ -104,7 +104,7 @@ Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison bo
 
 Then, navigate to the directory with this example.
 
-To install Git* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
+To install Git\* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
 
     $ opkg install git
 
@@ -112,23 +112,23 @@ To install Git* on the Intel® Edison board (if you don’t have it yet), establ
 
 ![](./../../images/js/lighting.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove cable into the Grove Light Sensor, and connect the other end to the A0 port on the Grove Shield.
+1. Plug one end of a Grove cable into the Grove\* Light Sensor, and connect the other end to the A0 port on the Grove\* Shield.
 
-2. Plug one end of a Grove cable into the Grove Moisture Sensor, and connect the other end to the A1 port on the Grove Shield.
+2. Plug one end of a Grove cable into the Grove\* Moisture Sensor, and connect the other end to the A1 port on the Grove\* Shield.
 
-3. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
+3. Plug one end of a Grove cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
-### Connecting the DFRobot* sensors
+### Connecting the DFRobot\* sensors
 
 ![](./../../images/js/lighting-dfrobot.jpg)
 
 You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
 
-1. Plug one end of a DFRobot* cable into the Analog Ambient Light Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
+1. Plug one end of a DFRobot\* cable into the Analog Ambient Light Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
 
-2. Plug one end of a DFRobot* cable into the Moisture Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
+2. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
 
 ### Manual Intel® Edison board setup
 
@@ -140,9 +140,9 @@ To obtain the Node.js* modules needed for this example to execute on the Intel®
 npm install
 ```
 
-### Twilio* API key
+### Twilio\* API key
 
-To optionally send text messages, you need to register for an account and get an API key from the Twilio* website:
+To optionally send text messages, you need to register for an account and get an API key from the Twilio\* website:
 
 <a href="https://www.twilio.com">https://www.twilio.com</a>
 
@@ -150,7 +150,7 @@ You cannot send text messages without obtaining a Twilio API key first. You can 
 
 ### Datastore server setup
 
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
+Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -158,7 +158,7 @@ For information on how to set up your own cloud data server, go to:
 
 ### MQTT server setup
 
-You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS.
+You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS.
 
 For information on how to connect to your own cloud MQTT messaging server, go to:
 
@@ -166,7 +166,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```
 {
@@ -174,7 +174,7 @@ To configure the example for the Grove* kit, just leave the `kit` key in the `co
 }
 ```
 
-To configure the example for sending optional text messages, obtain an API key from the Twilio* web site as explained above, and then add the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys to the `config.json` file as follows:
+To configure the example for sending optional text messages, obtain an API key from the Twilio\* web site as explained above, and then add the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys to the `config.json` file as follows:
 
 ```
 {
@@ -184,7 +184,7 @@ To configure the example for sending optional text messages, obtain an API key f
 }
 ```
 
-To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS data store, add the `SERVER` and `AUTH_TOKEN` keys to the `config.json` file as follows:
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, add the `SERVER` and `AUTH_TOKEN` keys to the `config.json` file as follows:
 
 ```
 {
@@ -194,7 +194,7 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
 }
 ```
 
-To configure the example for both the text messages and the Microsoft Azure\*, IBM Bluemix\*, or AWS data store, add the `TWILIO_ACCT_SID`, `TWILIO_AUTH_TOKEN`, `SERVER`, and `AUTH_TOKEN` keys to the `config.json` file as follows:
+To configure the example for both the text messages and the Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, add the `TWILIO_ACCT_SID`, `TWILIO_AUTH_TOKEN`, `SERVER`, and `AUTH_TOKEN` keys to the `config.json` file as follows:
 
 ```
 {
@@ -206,7 +206,7 @@ To configure the example for both the text messages and the Microsoft Azure\*, I
 }
 ```
 
-For information on how to configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS MQTT messaging server, go to:
+For information on how to configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS MQTT messaging server, go to:
 
 [https://github.com/Intel-iot-devkit/Intel-iot-examples-mqtt/](https://github.com/Intel-iot-devkit/Intel-iot-examples-mqtt/)
 
