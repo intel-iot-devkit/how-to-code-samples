@@ -101,11 +101,11 @@ To install Git* on the Intel® Edison board, if you don’t have it yet, establi
 
 ![](./../../images/js/earthquake-detector-dfrobot.jpg)
 
-You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove cable into the Grove\* 3-Axis Digital Accelerometer, and connect the other end to any of the I2C ports on the Grove\* Shield.
+1. Plug one end of a Grove\* cable into the Grove\* 3-Axis Digital Accelerometer, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
-2. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
+2. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
 ### Connecting the DFRobot* sensors
 
