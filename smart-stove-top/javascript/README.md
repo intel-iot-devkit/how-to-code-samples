@@ -39,7 +39,7 @@ Grove* Home Automation Kit, containing:
 3. [Grove\* Flame Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/yg1006.html)
 4. [Grove\* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
-DFRobot* Starter Kit for Intel® Edison containing:
+DFRobot* Starter Kit for Intel® Edison, containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
