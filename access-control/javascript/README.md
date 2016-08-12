@@ -42,7 +42,7 @@ Grove* Transportation and Safety Kit, containing:
 2. [Grove\* PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
 3. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot* Starter Kit for Intel® Edison containing:
+DFRobot* Starter Kit for Intel® Edison, containing:
 
 1. Intel® Edison with an Arduino\* breakout board
 2. [PIR (Motion) Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html).
