@@ -1,4 +1,4 @@
-# Watering system in JavaScript*
+﻿# Watering system in JavaScript*
 
 ## Introduction
 
@@ -9,9 +9,8 @@ From this exercise, developers will learn how to:<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.<br>
 - Set up a web application server to store watering system data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
-- Invoke the services of the Twilio\* API for sending text messages.
-
+- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Invoke the services of the Twilio* API for sending text messages.
 ## What it is
 
 Using an Intel® Edison board, this project lets you create an automatic watering system that:<br>
@@ -35,15 +34,15 @@ Optionally, it can also log watering system events using the Intel® IoT Example
 
 This sample can be used with either the Grove\* Environment & Agriculture Kit from Seeed Studio, or else the DFRobot\* Edison Starter Kit with some additional DFRobot\* parts.
 
-Grove* Environment & Agriculture Kit, containing:
+Grove\* Environment & Agriculture Kit, containing:
 
-1. Intel® Edison with an Arduino\* breakout board
-2. [Grove Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
+1. Intel® Edison with an Arduino* breakout board
+2. [Grove\* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
 3. [Water Pump](http://www.seeedstudio.com/depot/6V-Mini-Water-Pump-p-1945.html)
 4. [Water Flow Sensor](http://www.seeedstudio.com/depot/G18-Water-Flow-Sensor-p-1346.html)
 5. [Grove\* Dry-Reed Relay](http://iotdk.intel.com/docs/master/upm/node/classes/groverelay.html)
 
-DFRobot* Starter Kit for Intel® Edison, containing:
+DFRobot\* Starter Kit for Intel® Edison, containing:
 
 1. Intel® Edison with an Arduino\* breakout board
 2. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599)
@@ -122,7 +121,7 @@ In addition, you need a breadboard and an extra 5V power supply to provide power
 
 You need to use the Grove\* Dry-Reed Relay board to connect the water pump.
 
-1. Plug one end of a Grov\*e cable into the Grove\* Dry-Reed Relay, and connect the other end to the D4 port on the Grove\* Shield.
+1. Plug one end of a Grove\* cable into the Grove\* Dry-Reed Relay, and connect the other end to the D4 port on the Grove\* Shield.
 
 2. Connect one wire from the pump to the 5V power source reserved for the pump.
 
@@ -199,7 +198,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```
 {
@@ -275,7 +274,7 @@ To run the example manually on Intel® Edison, establish an SSH connection to th
 
 The schedule for the watering system is set using a single-page web interface served from Intel® Edison while the sample program is running.
 
-The web server runs on port `3000`, so if Intel® Edison is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if Intel® Edison is connected to WiFi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining the Intel® Edison IP address
 
