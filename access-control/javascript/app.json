@@ -11,7 +11,7 @@
   "tooltip": "Monitors a motion sensor to detect when someone or something is in an area that requires authorization.",
   "description": "Create a smart access control system that monitors a motion sensor to detect when someone or something is in an area that requires authorization.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/access-control/javascript",
+  "articleUrl": "https://software.intel.com/en-us/articles/access-control",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",

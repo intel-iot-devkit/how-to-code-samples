@@ -11,7 +11,7 @@
   "tooltip": "Checks the air for airborne contaminants.",
   "description" : "Shop-floor equipment activity monitor detects sound and vibration. If both exceed a defined threshold, a display is lit to indicate equipment is in use. When the equipment is no longer in use the display is cleared. Optionally, equipment usage start and stop events can be stored online using the Intel IoT Examples Datastore running in a Microsoft* Azure* account.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/equipment-activity-monitor/javascript",
+  "articleUrl": "https://software.intel.com/en-us/articles/equipment-activity-monitor",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",
