@@ -29,7 +29,7 @@ If so, it displays a warning on the LCD.
 
 This sample can be used with either the Grove\* Starter Kit Plus from Seeed Studio, or else the DFRobot\* Edison Starter Kit with some extra DFRobot\* parts.
 
-Grove* Starter Kit Plus, containing:
+Grove\* Starter Kit Plus, containing:
 
 1. Intel® Edison board with an Arduino* breakout board
 2. [Grove\* 3-Axis Digital Accelerometer (1.5G)](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
@@ -93,11 +93,11 @@ Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison bo
 
 Then, navigate to the directory with this example.
 
-To install Git* on the Intel® Edison board, if you don’t have it yet, establish an SSH connection to the board and run the following command:
+To install Git\* on the Intel® Edison board, if you don’t have it yet, establish an SSH connection to the board and run the following command:
 
     $ opkg install git
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
 ![](./../../images/js/earthquake-detector-dfrobot.jpg)
 
@@ -107,7 +107,7 @@ You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout 
 
 2. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
-### Connecting the DFRobot* sensors
+### Connecting the DFRobot\* sensors
 
 ![](./../../images/js/earthquake-detector.jpg)
 
@@ -139,13 +139,13 @@ https://software.intel.com/en-us/node/633284
 
 You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
-The Arduino*/Genuino* 101 needs to have the Firmata* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino*/Genuino* 101.
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
 
 You will also need to configure the `config.json` in the example to use the Arduino*/Genuino* 101. See the section "Configuring the example" below.
 
 ## Configuring the example
 
-To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```
 {
@@ -153,7 +153,7 @@ To configure the example for the Grove* kit, just leave the `kit` key in the `co
 }
 ```
 
-To configure the example for the Arduino*/Genuino* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
 
 ```
 {
@@ -162,7 +162,7 @@ To configure the example for the Arduino*/Genuino* 101, add a `platform` key wit
 }
 ```
 
-The DFRobot* variation of this example does not yet support the Arduino*/Genuino* 101.
+The DFRobot\* variation of this example does not yet support the Arduino\*/Genuino\* 101.
 
 To configure the example to check for earthquakes in your area, change the `LATITUDE` and `LONGITUDE` keys in the `config.json` file as follows:
 
