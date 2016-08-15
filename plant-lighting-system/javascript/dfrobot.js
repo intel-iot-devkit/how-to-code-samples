@@ -30,6 +30,10 @@ var light = new (require("jsupm_grove").GroveLight)(1), // A1
     moisture = new (require("jsupm_grovemoisture").GroveMoisture)(2), // A2
     screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
 
+exports.init = function(config) {
+  return;
+}
+    
 // Displays a message on the LCD
 exports.message = function(string, line) {
   // pad string to avoid display issues

@@ -37,6 +37,10 @@ ctx.averageReading = 0;
 ctx.runningAverage = 0;
 ctx.averagedOver = 2;
 
+exports.init = function(config) {
+  return;
+}
+
 // Display a warning message on the I2C LCD display
 exports.warn = function() {
   screen.setCursor(0, 0);

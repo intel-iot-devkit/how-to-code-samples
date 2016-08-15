@@ -36,6 +36,10 @@ var ax = new mraa.Aio(3), // A3
     ay = new mraa.Aio(2), // A2
     az = new mraa.Aio(1); // A1
 
+exports.init = function(config) {
+  return;
+}
+    
 // Cannot set the background color on this LCD display
 exports.color = function(string) {
   return;

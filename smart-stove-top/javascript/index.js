@@ -47,6 +47,7 @@ if (config.kit) {
 } else {
   board = require('./grove.js');
 }
+board.init(config);
 
 var datastore = require("./datastore");
 var mqtt = require("./mqtt");
@@ -83,13 +84,13 @@ function monitor() {
       log();
     }
 
-    if (prev.temp <= TARGET_TEMP && temperature > TARGET_TEMP) { 
+    if (prev.temp <= TARGET_TEMP && temperature > TARGET_TEMP) {
         console.log("Temp. alarm");
-        board.tempAlarm(); 
+        board.tempAlarm();
     }
-    if (!prev.fire && fire) { 
+    if (!prev.fire && fire) {
         console.log("Fire alarm");
-        board.fireAlarm(); 
+        board.fireAlarm();
     }
 
     prev.temp = temperature;

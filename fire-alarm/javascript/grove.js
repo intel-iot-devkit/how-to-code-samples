@@ -25,10 +25,33 @@
 
 var exports = module.exports = {};
 
+var mraa = require('mraa');
+
+// devices
+var temp, buzzer, screen;
+
+// pins
+var tempPin = 0,
+    buzzerPin = 5,
+    i2cBus = 6,
+    voltageAdjust = 1.0;
+
 // Initialize the Grove hardware devices
-var temp = new (require("jsupm_grove").GroveTemp)(0),
-    buzzer = new (require("jsupm_buzzer").Buzzer)(5),
-    screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
+exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    tempPin += 512;
+    buzzerPin += 512;
+    i2cBus = 512;
+    voltageAdjust = 0.66;
+  }
+
+  temp = new (require("jsupm_grove").GroveTemp)(tempPin),
+  buzzer = new (require("jsupm_buzzer").Buzzer)(buzzerPin),
+  screen = new (require("jsupm_i2clcd").Jhd1313m1)(i2cBus, 0x3E, 0x62);
+}
 
 // Colors used for the RGB LED
 var colors = { red: [255, 0, 0], white: [255, 255, 255] };
@@ -67,5 +90,5 @@ exports.reset = function() {
 }
 
 exports.getTemperature = function() {
-  return temp.value();
+  return temp.value() * voltageAdjust;
 }

@@ -25,10 +25,31 @@
 
 var exports = module.exports = {};
 
+var mraa = require('mraa');
+
+// devices
+var touch, buzzer, screen;
+
+// pins
+var touchPin = 4,
+    buzzerPin = 5,
+    i2cBus = 6;
+
 // Initialize the Grove hardware devices
-var touch = new (require("jsupm_ttp223").TTP223)(4),
-    buzzer = new (require("jsupm_buzzer").Buzzer)(5),
-    screen = new (require("jsupm_i2clcd").Jhd1313m1)(6, 0x3E, 0x62);
+exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    touchPin += 512;
+    buzzerPin += 512;
+    i2cBus = 512;
+  }
+
+  touch = new (require("jsupm_ttp223").TTP223)(touchPin);
+  buzzer = new (require("jsupm_buzzer").Buzzer)(buzzerPin);
+  screen = new (require("jsupm_i2clcd").Jhd1313m1)(i2cBus, 0x3E, 0x62);
+}
 
 // Colors used for the RGB LED
 var colors = { green: [0, 255, 0], white: [255, 255, 255] };

@@ -67,6 +67,7 @@ if (config.kit) {
 } else {
   board = require('./grove.js');
 }
+board.init(config);
 
 function turnOn() {
   log("turn on");

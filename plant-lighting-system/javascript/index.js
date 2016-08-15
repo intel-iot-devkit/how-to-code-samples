@@ -67,6 +67,7 @@ if (config.kit) {
 } else {
   board = require('./grove.js');
 }
+board.init(config);
 
 // Set up 0-23 hour schedules
 for (var i = 0; i < 24; i++) {

@@ -140,6 +140,20 @@ To obtain the Node.js* modules needed for this example to execute on the Intel®
 npm install
 ```
 
+### Intel® IoT Gateway setup
+
+You can run this example using an Intel® IoT Gateway connected to an Arduino*/Genuino* 101.
+
+Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
+
+https://software.intel.com/en-us/node/633284
+
+You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
+
+The Arduino*/Genuino* 101 needs to have the Firmata* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino*/Genuino* 101.
+
+You will also need to configure the `config.json` in the example to use the Arduino*/Genuino* 101. See the section "Configuring the example" below.
+
 ### Twilio\* API key
 
 To optionally send text messages, you need to register for an account and get an API key from the Twilio\* website:
@@ -173,6 +187,17 @@ To configure the example for the Grove\* kit, just leave the `kit` key in the `c
   "kit": "dfrobot"
 }
 ```
+
+To configure the example for the Arduino*/Genuino* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
+
+```
+{
+  "kit": "grove",
+  "platform": "firmata"
+}
+```
+
+The DFRobot* variation of this example does not yet support the Arduino*/Genuino* 101.
 
 To configure the example for sending optional text messages, obtain an API key from the Twilio\* web site as explained above, and then add the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys to the `config.json` file as follows:
 

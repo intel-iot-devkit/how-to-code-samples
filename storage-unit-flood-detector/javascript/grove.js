@@ -26,8 +26,28 @@
 var exports = module.exports = {};
 
 // Initialize the Grove hardware devices
-var moisture = new (require("jsupm_grovemoisture").GroveMoisture)(1),
-    speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(5);
+var mraa = require('mraa');
+
+// devices
+var moisture, speaker;
+
+// pins
+var moisturePin = 1,
+    speakerPin = 5;
+
+// Initialize the Grove hardware devices
+exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    moisturePin += 512;
+    speakerPin += 512;
+  }
+
+  moisture = new (require("jsupm_grovemoisture").GroveMoisture)(moisturePin),
+  speaker = new (require("jsupm_grovespeaker").GroveSpeaker)(speakerPin);
+}
 
 // current moisture sensor reading
 exports.moistureValue = function() {

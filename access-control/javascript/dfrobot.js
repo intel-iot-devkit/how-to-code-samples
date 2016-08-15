@@ -29,6 +29,10 @@ var exports = module.exports = {};
 var screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0),
     motion = new (require("jsupm_biss0001").BISS0001)(16);
 
+exports.init = function(config) {
+  return;
+}
+
 // Cannot set the background color on this LCD display
 exports.color = function(string) {
   return;
