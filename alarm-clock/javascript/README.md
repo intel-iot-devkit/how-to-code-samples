@@ -9,7 +9,7 @@ From this exercise, developers will learn how to:<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.<br>
 - Set up a web application server to set the alarm time and store this alarm data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub\* from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 - Invoke the services of the Weather Underground* API for accessing weather data.
 
 ## What it is
@@ -24,13 +24,13 @@ Using an Intel® Edison board, this project lets you create a smart alarm clock 
 This smart alarm clock has a number of useful features. Set the alarm using a web page served directly from the Intel® Edison board using your mobile phone. When the alarm goes off, the buzzer sounds and the LCD indicates it’s time to get up. The rotary dial can be used to adjust the brightness of the display.
 
 In addition, the smart alarm clock can access daily weather data via the Weather Underground* API and use it to change the color of the LCD.
-Optionally, all data can also be stored using the Intel® IoT Examples Datastore running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
+Optionally, all data can also be stored using the Intel® IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
 
 ## Hardware requirements
 
 This sample can be used with either the Grove\* Starter Kit Plus from Seeed Studio, or else the DFRobot\* Edison Starter Kit.
 
-Grove* Starter Kit Plus, containing:
+Grove\* Starter Kit Plus, containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Grove\* Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/groverotary.html)
@@ -38,7 +38,7 @@ Grove* Starter Kit Plus, containing:
 4. [Grove\* Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
 5. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot* Starter Kit for Intel® Edison, containing:
+DFRobot\* Starter Kit for Intel® Edison, containing:
 
 1. Intel® Edison with an Arduino* breakout board
 2. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
@@ -54,7 +54,7 @@ DFRobot* Starter Kit for Intel® Edison, containing:
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -104,7 +104,7 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
     $ opkg install git
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
 ![](./../../images/js/alarm-clock.jpg)
 
@@ -142,7 +142,7 @@ npm install
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino*/Genuino* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
@@ -150,9 +150,9 @@ https://software.intel.com/en-us/node/633284
 
 You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
-The Arduino*/Genuino* 101 needs to have the Firmata* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino*/Genuino* 101.
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
 
-You will also need to configure the `config.json` in the example to use the Arduino*/Genuino* 101. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
 
 ### Weather Underground\* API key
 
@@ -196,7 +196,7 @@ To configure the example for the Grove\* kit, just leave the `kit` key in the `c
 }
 ```
 
-To configure the example for the Arduino*/Genuino* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
 
 ```
 {
@@ -205,7 +205,7 @@ To configure the example for the Arduino*/Genuino* 101, add a `platform` key wit
 }
 ```
 
-The DFRobot* variation of this example does not yet support the Arduino*/Genuino* 101.
+The DFRobot\* variation of this example does not yet support the Arduino\*/Genuino\* 101.
 
 To configure the example for the optional real-time weather data, obtain a key from the Weather Underground\* website as documented above, and then change the `WEATHER_API_KEY` and `LOCATION` keys in the `config.json` file as follows:
 
