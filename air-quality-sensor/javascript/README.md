@@ -9,7 +9,7 @@ From this exercise, developers will learn how to:<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo boards.<br>
 - Store air quality data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon\* Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub\* from Microsoft\* Azure\*, IoT\* from IBM\* Bluemix\*, or IoT\* from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 
 ## What it is
@@ -29,11 +29,11 @@ Also, optionally, the monitor stores the air quality data using the Intel® IoT 
 
 ### Hardware requirements
 
-This sample can be used with either the Grove* Home Automation Kit from Seeed Studio, or else the DFRobot\* Edison Starter Kit.
+This sample can be used with either the Grove\* Home Automation Kit from Seeed Studio, or else the DFRobot\* Edison Starter Kit.
 
 Grove* Home Automation Kit, containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison with an Arduino\* breakout board
 2. [Grove* Air Quality Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/tp401.html)
 3. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
@@ -106,7 +106,7 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 ![](./../../images/js/air-quality.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
 1. Plug one end of a Grove\* cable into the Grove\* Air Quality Sensor, and connect the other end to the AO port on the Grove\* Shield.
 
@@ -116,7 +116,7 @@ You need to have a Grove* Shield connected to an Arduino\*-compatible breakout b
 
 ![](./../../images/js/air-quality-dfrobot.jpg)
 
-You need to have a DFRobot* LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the DFRobot* LCD Keypad Shield.
+You need to have a DFRobot\* LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* LCD Keypad Shield.
 
 1. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the DFRobot\* LCD Keypad Shield.
 
@@ -134,7 +134,7 @@ npm install
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino*/Genuino* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
@@ -142,9 +142,9 @@ https://software.intel.com/en-us/node/633284
 
 You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
-The Arduino*/Genuino* 101 needs to have the Firmata* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino*/Genuino* 101.
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
 
-You will also need to configure the `config.json` in the example to use the Arduino*/Genuino* 101. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
 
 ### Data store server setup
 
@@ -164,7 +164,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```
 {
@@ -173,7 +173,7 @@ To configure the example for the Grove* kit, just leave the `kit` key in the `co
 }
 ```
 
-To configure the example for the Arduino*/Genuino* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
 
 ```
 {
