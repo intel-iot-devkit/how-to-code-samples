@@ -141,7 +141,7 @@ npm install
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino*\ 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
