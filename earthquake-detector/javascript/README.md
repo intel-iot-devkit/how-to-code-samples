@@ -131,7 +131,7 @@ npm install
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino*/Genuino* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
@@ -141,7 +141,7 @@ You must install the Intel® XDK on the Intel® IoT Gateway, by following the di
 
 The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
 
-You will also need to configure the `config.json` in the example to use the Arduino*/Genuino* 101. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
 
 ## Configuring the example
 
