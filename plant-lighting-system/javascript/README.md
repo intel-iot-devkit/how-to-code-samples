@@ -9,7 +9,7 @@ From this exercise, developers will learn how to:<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® Galileo board.<br>
 - Set up a web application server to store lighting system data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub\* from Microsoft\* Azure\*, IoT\* from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 - Invoke the services of the Twilio\* API for sending text messages.
 
 ## What it is
@@ -108,11 +108,11 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
     $ opkg install git
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
 ![](./../../images/js/lighting.jpg)
 
-You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
 1. Plug one end of a Grove cable into the Grove\* Light Sensor, and connect the other end to the A0 port on the Grove\* Shield.
 
@@ -124,7 +124,7 @@ You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout 
 
 ![](./../../images/js/lighting-dfrobot.jpg)
 
-You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot* devices into the LCD Keypad Shield.
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
 1. Plug one end of a DFRobot\* cable into the Analog Ambient Light Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
 
@@ -142,7 +142,7 @@ npm install
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino*/Genuino* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
@@ -150,9 +150,9 @@ https://software.intel.com/en-us/node/633284
 
 You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
-The Arduino*/Genuino* 101 needs to have the Firmata* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino*/Genuino* 101.
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
 
-You will also need to configure the `config.json` in the example to use the Arduino*/Genuino* 101. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
 
 ### Twilio\* API key
 
@@ -188,7 +188,7 @@ To configure the example for the Grove\* kit, just leave the `kit` key in the `c
 }
 ```
 
-To configure the example for the Arduino*/Genuino* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
 
 ```
 {
@@ -197,7 +197,7 @@ To configure the example for the Arduino*/Genuino* 101, add a `platform` key wit
 }
 ```
 
-The DFRobot* variation of this example does not yet support the Arduino*/Genuino* 101.
+The DFRobot\* variation of this example does not yet support the Arduino\*/Genuino\* 101.
 
 To configure the example for sending optional text messages, obtain an API key from the Twilio\* web site as explained above, and then add the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys to the `config.json` file as follows:
 
