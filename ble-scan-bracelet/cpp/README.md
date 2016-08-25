@@ -1,22 +1,22 @@
-﻿# BLE scan bracelet in C++
+﻿# Bluetooth\* low energy scan bracelet in C++
 
 ## Introduction
 
-This Bluetooth\* low energy (BLE) scan bracelet application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
+This Bluetooth\* low energy scan bracelet application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
 - Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
 - Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.
-- Store detected BLE devices using Azure* Redis Cache from Microsoft, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Store detected Bluetooth\* low energy devices using Azure* Redis Cache from Microsoft, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub\* from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a BLE scan bracelet that:
+Using an Intel® Edison board, this project lets you create a Bluetooth\* low energy scan bracelet that:
 
-- monitors for BLE devices within its scanning range.
+- monitors for Bluetooth\* low energy devices within its scanning range.
 - displays information about detected devices using the OLED display.
 - keeps track of detected devices, using cloud-based data storage.
 
