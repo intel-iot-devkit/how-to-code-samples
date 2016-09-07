@@ -60,10 +60,10 @@
 #include "../src/css.h"
 
 #include "kits.h"
-#if INTEL_IOT_KIT == GROVEKIT
-#include "grovekit.hpp"
-#elif INTEL_IOT_KIT == DFROBOTKIT
+#if INTEL_IOT_KIT == DFROBOTKIT
 #include "dfrobotkit.hpp"
+#else
+#include "grovekit.hpp"
 #endif
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
