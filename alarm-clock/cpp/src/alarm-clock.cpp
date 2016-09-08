@@ -44,7 +44,7 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 04/04/2016
+ * @date 09/06/2016
  */
 
 #include <stdlib.h>
@@ -55,18 +55,21 @@
 #include <thread>
 #include <ctime>
 
-#include <grove.hpp>
-#include <buzzer.hpp>
-#include <jhd1313m1.hpp>
+#include "../lib/crow/crow_all.h"
+#include "index_html.h"
+#include "styles_css.h"
+
+#include "kits.h"
+#if INTEL_IOT_KIT == DFROBOTKIT
+#include "dfrobotkit.hpp"
+#else
+#include "grovekit.hpp"
+#endif
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 #include "datastore.h"
 #include "mqtt.h"
-
-#include "../lib/crow/crow_all.h"
-#include "index_html.h"
-#include "styles_css.h"
 
 // The hardware devices that the example is going to connect to
 struct Devices
