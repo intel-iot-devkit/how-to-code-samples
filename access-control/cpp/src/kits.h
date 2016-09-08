@@ -24,4 +24,7 @@
 #ifndef KITS_H_
 #define KITS_H_
 
+#define GROVEKIT 1
+#define DFROBOTKIT 2
+
 #endif /* KITS_H_ */
