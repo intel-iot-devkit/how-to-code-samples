@@ -111,7 +111,7 @@ struct Devices
 
   // Stops the buzzer making noise
   void stop_buzzing() {
-	buzzer->write(0);
+	  buzzer->write(0);
   }
 };
 
