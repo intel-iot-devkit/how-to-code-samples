@@ -43,7 +43,7 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 04/04/2016
+ * @date 09/17/2016
  */
 
 
@@ -54,21 +54,20 @@
 #include <ctime>
 #include <signal.h>
 
-#include <mic.hpp>
-#include <ldt0028.hpp>
-#include <jhd1313m1.hpp>
+#include "kits.h"
+#if INTEL_IOT_KIT == DFROBOTKIT
+#include "dfrobotkit.hpp"
+#else
+#include "grovekit.hpp"
+#endif
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 #include "datastore.h"
 #include "mqtt.h"
 
-const int VIBRATION_THRESHOLD = 500;
-const int NOISE_THRESHOLD = 140;
-
 // Call remote datastore server to log activity
 void notify(std::string message) {
-
   std::time_t now = std::time(NULL);
   char mbstr[sizeof "2011-10-08T07:07:09Z"];
   std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
@@ -77,82 +76,10 @@ void notify(std::string message) {
   text << "{\"state\":";
   text << "\"" << message << " " << mbstr << "\"}";
 
+  std::cout << message << " " << mbstr << std::endl;
   log_mqtt(text.str());
   log_datastore(text.str());
 }
-
-// The hardware devices that the example is going to connect to
-struct Devices
-{
-  upm::Microphone *mic = NULL;
-  thresholdContext micCtx;
-  uint16_t soundBuffer [128];
-
-  upm::LDT0028* vibe;
-  upm::Jhd1313m1* screen;
-
-  Devices(){
-  };
-
-  // Initialization function
-  void init() {
-    // mic connected to A0 (analog in)
-    mic = new upm::Microphone(0);
-    micCtx.averageReading = 0;
-    micCtx.runningAverage = 0;
-    micCtx.averagedOver   = 2;
-
-    // vibration sensor connected to A2 (analog in)
-    vibe = new upm::LDT0028(2);
-
-    // screen connected to the default I2C bus
-    screen = new upm::Jhd1313m1(0);
-  };
-
-  // Cleanup on exit
-  void cleanup() {
-    delete mic;
-    delete vibe;
-    delete screen;
-  }
-
-  // Reset the display
-  void reset() {
-    message("ready");
-  }
-
-  // Display a message on the LCD
-  void message(const std::string& input, const std::size_t color = 0x0000ff) {
-    std::size_t red   = (color & 0xff0000) >> 16;
-    std::size_t green = (color & 0x00ff00) >> 8;
-    std::size_t blue  = (color & 0x0000ff);
-
-    std::string text(input);
-    text.resize(16, ' ');
-
-    screen->setCursor(0,0);
-    screen->write(text);
-    screen->setColor(red, green, blue);
-  }
-
-  // Is there movement detected by the vibration sensor?
-  bool is_movement() {
-    return (vibe->getSample() >= VIBRATION_THRESHOLD);
-  }
-
-  // Is there noise detected by the sound sensor?
-  bool is_noise() {
-    int len = mic->getSampledWindow(2, 128, soundBuffer);
-    if (len) {
-      int thresh = mic->findThreshold(&micCtx, 30, soundBuffer, len);
-        if (thresh) {
-          return true;
-        }
-    }
-
-    return false;
-  }
-};
 
 Devices devices;
 
@@ -191,11 +118,11 @@ int main()
     movement = devices.is_movement();
     noise = devices.is_noise();
     if ( movement && noise && !inUse ) {
-      notify("start");
-      devices.message("start");
+      notify("equipment start");
+      devices.message("equipment start");
     } else if ( !(movement && noise) && inUse ) {
-      notify("stop");
-      devices.message("stop");
+      notify("equipment stop");
+      devices.message("equipment stop");
     }
 
     inUse = movement && noise;
