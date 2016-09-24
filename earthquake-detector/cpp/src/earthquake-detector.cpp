@@ -40,7 +40,7 @@
  *
  * Additional source files required to build this example:
  *
- * @date 04/04/2016
+ * @date 09/22/2016
  */
 
 #include <stdlib.h>
@@ -148,7 +148,6 @@ int main()
 
   bool motionDetected = false;
   bool prev = false;
-  float ax = 0, ay = 0, az = 0;
 
   for (;;) {
     motionDetected = devices.getAcceleration();

@@ -43,9 +43,8 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 09/17/2016
+ * @date 09/22/2016
  */
-
 
 #include <stdlib.h>
 #include <iostream>
