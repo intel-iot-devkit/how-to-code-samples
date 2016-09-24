@@ -42,17 +42,21 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 04/04/2016
+ * @date 09/22/2016
  */
+
 #include <stdlib.h>
 #include <iostream>
 #include <signal.h>
 #include <ctime>
 #include <sstream>
 
-#include <grove.hpp>
-#include <grovemoisture.hpp>
-#include <grovespeaker.hpp>
+#include "kits.h"
+#if INTEL_IOT_KIT == DFROBOTKIT
+#include "dfrobotkit.hpp"
+#else
+#include "grovekit.hpp"
+#endif
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
@@ -63,7 +67,6 @@ using namespace std;
 
 // Send notification to remote datastore
 void notify() {
-
   std::time_t now = std::time(NULL);
   char mbstr[sizeof "2011-10-08T07:07:09Z"];
   std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
@@ -76,61 +79,36 @@ void notify() {
   log_datastore(text.str());
 }
 
-// The hardware devices that the example is going to connect to
-struct Devices
-{
-  upm::GroveSpeaker* speaker;
-  upm::GroveMoisture* moisture;
-
-  Devices(){
-  };
-
-  // Initialization function
-  void init() {
-    // speaker connected to D5 (digital out)
-    speaker = new upm::GroveSpeaker(5);
-
-    // moisture sensor on analog (A0)
-    moisture = new upm::GroveMoisture(0);
-  }
-
-  // Cleanup on exit
-  void cleanup() {
-    delete speaker;
-    delete moisture;
-  }
-
-  // Starts the alarm
-  void alarm() {
-    cout << "Alert! Water is Detected!";
-    speaker->playSound('c', true, "high");
-    notify();
-  }
-
-  // Every 1 second, reads the moisture sensor
-  void sense_moisture() {
-    for (;;) {
-      int val = moisture->value();
-      cout << "Moisture value: " << val << ", ";
-      if (val >= 0 && val < 300)
-          cout << "dry";
-      else if (val >= 300 && val < 600)
-          cout << "moist";
-      else
-          cout << "wet";
-
-      cout << endl;
-
-      if (val >= 300)
-         alarm();
-
-      cout << endl;
-      sleep(1);
-    }
-  }
-};
-
 Devices devices;
+
+// Starts the alarm
+void alarm() {
+  cout << "Alert! Water is Detected!";
+  devices.alarm();
+  notify();
+}
+
+// Every 1 second, reads the moisture sensor
+void sense_moisture() {
+  for (;;) {
+    int val = devices.readMoisture();
+    cout << "Moisture value: " << val << ", ";
+    if (val >= 0 && val < 300)
+        cout << "dry";
+    else if (val >= 300 && val < 600)
+        cout << "moist";
+    else
+        cout << "wet";
+
+    cout << endl;
+
+    if (val >= 300)
+       alarm();
+
+    cout << endl;
+    sleep(1);
+  }
+}
 
 // Exit handler for program
 void exit_handler(int param)
@@ -156,7 +134,7 @@ int main()
 
   // create and initialize UPM devices
   devices.init();
-  devices.sense_moisture();
+  sense_moisture();
 
   return 0;
 }
