@@ -44,31 +44,18 @@ Grove* Transportation and Safety Kit containing:
 
 ## Software requirements
 
-1. [Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/eclipse-getting-started-guide)
-2. Microsoft Azure\*, IBM Bluemix\*, or AWS account
+1. [Intel® System Studio (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/eclipse-getting-started-guide)
+2. Microsoft Azure\*, IBM Bluemix\*, or AWS account (optional)
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
+This sample is already one of the IoT examples included in Intel® System Studio. To start using it, follow these steps:
 
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-To download a .zip file, in your web browser go to [https://github.com/intel-iot-devkit/how-to-code-samples](https://github.com/intel-iot-devkit/how-to-code-samples) and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
-
-### Adding the program to Eclipse
-
-In Eclipse, select **Import Wizard** to import an existing project into the workspace as follows:
-
-1. From the main menu, select **File > Import**.<br>
-![](./../../images/cpp/cpp-eclipse-menu.png)
-2. The **Import Wizard** dialog box opens. Select **General > Existing Project into Workspace** and click **Next**.<br>
-![](./../../images/cpp/cpp-eclipse-menu-select-epiw.png)
-3. Click **Select root directory** and then the associated **Browse** button to locate the directory that contains the project files.<br>
-![](./../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
-4. Under **Projects**, select the directory with the project files you'd like to import and click **OK** and then **Finish** to import the files into Eclipse.<br>
-![](./../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
-5. Your main .cpp program is now displayed in your workspace under the **src** folder.<br>
-![](./../../images/cpp/cpp-eclipse-menu-src-loc.png)
+1. From the main menu, select **Intel® IoT > Import IoT Examples**.<br>
+(image here)
+2. The **Intel System Studio IoT Edition Examples** tab opens. Expand the tree view for **C++ > How To Code Samples > Access Control** and click **Import Example**.<br>
+(image here)
+3. Rest of the steps here, also with images...<br>
 
 ### Connecting the Grove* sensors
 
