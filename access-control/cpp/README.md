@@ -52,10 +52,21 @@ Grove* Transportation and Safety Kit containing:
 This sample is already one of the IoT examples included in Intel® System Studio. To start using it, follow these steps:
 
 1. From the main menu, select **Intel® IoT > Import IoT Examples**.<br>
-(image here)
-2. The **Intel System Studio IoT Edition Examples** tab opens. Expand the tree view for **C++ > How To Code Samples > Access Control** and click **Import Example**.<br>
-(image here)
-3. Rest of the steps here, also with images...<br>
+![](./../../images/cpp/import-iot-examples.png)
+2. The **Intel System Studio IoT Edition Examples** tab opens. Click the offline button so it becomes online.<br>
+![](./../../images/cpp/click-offline.png)
+3. Expand the tree view for **C++ > How To Code Samples > Access control** and click **Import Example**.<br>
+![](./../../images/cpp/click-how-to-code-samples.png)
+4. A new window will open for you and you will need to choose a name for your project and click **Next**.<br>
+![](./../../images/cpp/enter-project-name.png)
+5. The next tab will ask for connection name and target name. If you do not know these click **Search Target**.<br>
+![](./../../images/cpp/search-target.png)
+6. Select your Edison from the dropdown list. Select **OK**.<br>
+![](./../../images/cpp/click-how-to-code-samples.png)
+7. Your connection name and target name should be filled in. Select **Finish**.<br>
+![](./../../images/cpp/finish-target.png)
+8. Your project source files will now be available on the on the upper left of your IDE by default.<br>
+![](./../../images/cpp/project-src-imported.png)
 
 ### Connecting the Grove* sensors
 
