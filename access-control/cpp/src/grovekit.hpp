@@ -39,6 +39,8 @@
 
 using namespace std;
 
+int screenBus, motionPin;
+
 // The hardware devices that the example is going to connect to
 struct Devices
 {
@@ -50,11 +52,28 @@ struct Devices
 
   // Initialization function
   void init() {
+    // Set pins/init as needed for specific platforms
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        screenBus = 0,
+        motionPin = 4;
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        screenBus = 0 + 512,
+        motionPin = 4 + 512;
+        break;
+      default:
+        std::cerr << "ERROR: Unsupported hardware platform" << std::endl;
+    }
+
     // screen connected to the default I2C bus
-    screen = new upm::Jhd1313m1(0);
+    screen = new upm::Jhd1313m1(screenBus);
 
     // motion sensor on digital D4
-    motion = new upm::BISS0001(4);
+    motion = new upm::BISS0001(motionPin);
   };
 
   // Cleanup on exit
