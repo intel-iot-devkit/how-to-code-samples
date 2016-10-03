@@ -44,7 +44,7 @@ Grove* Transportation and Safety Kit containing:
 
 ## Software requirements
 
-1. [Intel® System Studio (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/eclipse-getting-started-guide)
+1. [Intel® System Studio (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/node/672439)
 2. Microsoft Azure\*, IBM Bluemix\*, or AWS account (optional)
 
 ### How to set up
@@ -53,19 +53,23 @@ This sample is already one of the IoT examples included in Intel® System Studio
 
 1. From the main menu, select **Intel® IoT > Import IoT Examples**.<br>
 ![](./../../images/cpp/import-iot-examples.png)
-2. The **Intel System Studio IoT Edition Examples** tab opens. Click the offline button so it becomes online.<br>
-![](./../../images/cpp/click-offline.png)
-3. Expand the tree view for **C++ > How To Code Samples > Access control** and click **Import Example**.<br>
+2. Expand the tree view for **C++ > How To Code Samples > Access control** and click **Import Example**.<br>
 ![](./../../images/cpp/click-how-to-code-samples.png)
-4. A new window will open for you and you will need to choose a name for your project and click **Next**.<br>
-![](./../../images/cpp/enter-project-name.png)
-5. The next tab will ask for connection name and target name. If you do not know these click **Search Target**.<br>
+3. Select your developer board from the selection window then select **Next**.<br>
+![](./../../images/cpp/select-board.png)
+4. Select **Intel® IoT C/C++ project** from the Select a project type window then click **Next**.<br>
+![](./../../images/cpp/select-project-type.png)
+5. Select **Yocto** from the Selct target OS dropdown menu then click **Next**.<br>
+![](./../../images/cpp/select-os.png)
+6. The next tab will ask for connection name and target name. If you do not know these click **Search Target**.<br>
 ![](./../../images/cpp/search-target.png)
-6. Select your Edison from the dropdown list. Select **OK**.<br>
+7. Select your Edison from the dropdown list. Select **OK**.<br>
 ![](./../../images/cpp/click-how-to-code-samples.png)
-7. Your connection name and target name should be filled in. Select **Finish**.<br>
+8. Your connection name and target name should be filled in. Select **Finish**.<br>
 ![](./../../images/cpp/finish-target.png)
-8. Your project source files will now be available on the on the upper left of your IDE by default.<br>
+9. A new window will open for you and you will need to choose a name for your project and click **Next**.<br>
+![](./../../images/cpp/enter-project-name.png)
+10. Your project source files will now be available on the on the upper left of your IDE by default.<br>
 ![](./../../images/cpp/project-src-imported.png)
 
 ### Connecting the Grove* sensors
@@ -76,49 +80,6 @@ You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible br
 ![](./../../images/js/access-control.jpg)
 2. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Base Shield V2.
 
-### Intel® Edison board setup
-
-This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on the Intel® Edison board by default.
-
-This example also uses the Crow* web micro-framework to provide a simple-to-use, yet powerful web server. The Crow library requires the **libboost** package be installed on the Intel® Edison board, as well as adding the needed include and lib files to the Eclipse Cross G++ Compiler and Cross G++ Linker.
-
-1. Update opkg base feeds so you can install the needed dependencies. Establish an SSH connection to the Intel® Edison board and run the following command:<br>
-
-        vi /etc/opkg/base-feeds.conf
-
-2. Edit the file so that it contains the following:<br>
-
-        src/gz all http://repo.opkg.net/edison/repo/all
-        src/gz edison http://repo.opkg.net/edison/repo/edison
-        src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
-
-3. Save the file by pressing **Esc**, then **:**, then **q**, and **Enter**.
-
-This only needs to be done once per Intel® Edison board; if you've already done it, you can skip to the next step.
-
-Install the **boost** libraries onto the Intel® Edison board by running the following command:
-
-    opkg update
-    opkg install boost-dev
-
-### Copy the libraries
-
-You need to copy the libraries and include files from the board to your computer where you're running Eclipse so the Cross G++ Compiler and Cross G++ Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Intel® Edison board), as follows:
-
-    scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
-    scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
-
-Change `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address you set your board to.
-
-Change `~/Downloads/iotdk-ide-linux` to match the location on your computer where you installed the Intel® IoT Developer Kit.
-
-### Copy the libraries on Windows*
-
-We have a helpful link to get this set up here:
-
-[using-winscp.md](./../../docs/cpp/using-winscp.md)
-
-Note: You need to turn SSH on by running the `configure_edison --password` command on the board. Once you set the password, make sure you write it down. You only need to do this once and it is set when you reboot the Intel® Edison board.
 
 ### Data store server setup
 
