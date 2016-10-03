@@ -99,44 +99,6 @@ You need to use the Grove* Dry-reed Relay board to connect the Water Pump.
 7. Plug the Water Flow Sensor's yellow wire into the 2 pin (aka digital pin 2) on the Grove* Base Shield V2.
 8. Plug one end of a Grove cable into the Grove* Moisture Sensor, and connect the other end to the A0 port on the Grove Base Shield V2.
 
-### Intel® Edison board setup
-
-This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on the Intel® Edison board by default.
-
-In addition, this example uses the **twilio-cplusplus** library to perform REST calls to the Twilio* SMS server. The code for **twilio-cplusplus** can be found in the **lib** directory. The **twilio-cplusplus** library requires the **ssl** and **crypto** packages, which are already installed on the Intel® Edison board by default.
-
-This example also uses the Crow web micro-framework to provide a simple-to-use, yet powerful web server. The Crow library requires the **libboost** package be installed on the Intel® Edison board, as well as adding the needed include and lib files to the Eclipse Cross G++ Compiler and Cross G++ Linker.
-
-1. Update opkg base feeds so you can install the needed dependencies. Establish an SSH connection to the Intel® Edison board and run the following command:<br>
-
-        vi /etc/opkg/base-feeds.conf
-
-2. Edit the file so that it contains the following:<br>
-
-        src/gz all http://repo.opkg.net/edison/repo/all
-        src/gz edison http://repo.opkg.net/edison/repo/edison
-        src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
-
-3. Save the file by pressing **Esc**, then **:**, then **q**, and **Enter**.
-
-This only needs to be done once per Intel® Edison board; if you've already done it, you can skip to the next step.
-
-Install the **boost** libraries onto the Intel® Edison board by running the following command:
-
-    opkg update
-    opkg install boost-dev
-
-### Copy the libraries
-
-You need to copy the libraries and include files from the board to your computer where you're running Eclipse so the Cross G++ Compiler and Cross G++ Linker can find them. The easiest way to do this is by running the `scp` command from your computer (NOT the Intel® Edison board), as follows:
-
-    scp -r USERNAME@xxx.xxx.x.xxx:/usr/include/boost ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/include
-    scp USERNAME@xxx.xxx.x.xxx:/usr/lib/libboost* ~/Downloads/iotdk-ide-linux/devkit-x86/sysroots/i586-poky-linux/usr/lib
-
-Change `USERNAME@xxx.xxx.x.xxx` to match whatever username and IP address you set your board to.
-
-Change `~/Downloads/iotdk-ide-linux` to match the location on your computer where you installed the Intel® IoT Developer Kit.
-
 ### Copy the libraries on Windows*
 
 For help installing and using WinSCP, go to this link:
