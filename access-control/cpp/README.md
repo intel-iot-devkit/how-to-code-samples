@@ -138,13 +138,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ### Connecting your Intel® Edison board to Eclipse
 
-1. In the bottom left corner, right-click anywhere on the **Target SSH Connections** tab and select **New > Connection**.<br>
-![](./../../images/cpp/cpp-connection-eclipse-ide-win.png)
-2. The **Intel(R) IoT Target Connection** window appears. In the **Filter** field, type the name of your board.<br>
-![](./../../images/cpp/cpp-connection-eclipse-ide-win2.png)
-3. In the **Select one of the found connections** list, select your device name and click **OK**.<br>
-![](./../../images/cpp/cpp-connection-eclipse-ide-win3.png)
-4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
+1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 
 If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
