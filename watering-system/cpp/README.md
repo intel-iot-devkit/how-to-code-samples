@@ -58,7 +58,7 @@ This sample is already one of the IoT examples included in Intel® System Studio
 
 1. From the main menu, select **Intel® IoT > Import IoT Examples**.<br>
 ![](./../../images/cpp/import-iot-examples.png)
-2. Expand the tree view for **C++ > How To Code Samples > Access control** and click **Import Example**.<br>
+2. Expand the tree view for **C++ > How To Code Samples > Watering System** and click **Import Example**.<br>
 ![](./../../images/cpp/click-how-to-code-samples.png)
 3. Select your developer board from the selection window then select **Next**.<br>
 ![](./../../images/cpp/select-board.png)
