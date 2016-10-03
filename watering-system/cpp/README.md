@@ -48,8 +48,8 @@ Grove* Environment & Agriculture Kit containing:
 
 ## Software requirements
 
-1. [Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/eclipse-getting-started-guide)
-2. Microsoft Azure\*, IBM Bluemix\*, or AWS account
+1. [Intel® System Studio (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/node/672439)
+2. Microsoft Azure\*, IBM Bluemix\*, or AWS account (optional)
 3. Twilio* account
 
 ### How to set up
@@ -58,19 +58,23 @@ This sample is already one of the IoT examples included in Intel® System Studio
 
 1. From the main menu, select **Intel® IoT > Import IoT Examples**.<br>
 ![](./../../images/cpp/import-iot-examples.png)
-2. The **Intel System Studio IoT Edition Examples** tab opens. Click the offline button so it becomes online.<br>
-![](./../../images/cpp/click-offline.png)
-3. Expand the tree view for **C++ > How To Code Samples > Watering System** and click **Import Example**.<br>
+2. Expand the tree view for **C++ > How To Code Samples > Access control** and click **Import Example**.<br>
 ![](./../../images/cpp/click-how-to-code-samples.png)
-4. A new window will open for you and you will need to choose a name for your project and click **Next**.<br>
-![](./../../images/cpp/enter-project-name.png)
-5. The next tab will ask for connection name and target name. If you do not know these click **Search Target**.<br>
+3. Select your developer board from the selection window then select **Next**.<br>
+![](./../../images/cpp/select-board.png)
+4. Select **Intel® IoT C/C++ project** from the Select a project type window then click **Next**.<br>
+![](./../../images/cpp/select-project-type.png)
+5. Select **Yocto** from the Selct target OS dropdown menu then click **Next**.<br>
+![](./../../images/cpp/select-os.png)
+6. The next tab will ask for connection name and target name. If you do not know these click **Search Target**.<br>
 ![](./../../images/cpp/search-target.png)
-6. Select your Edison from the dropdown list. Select **OK**.<br>
+7. Select your Edison from the dropdown list. Select **OK**.<br>
 ![](./../../images/cpp/click-how-to-code-samples.png)
-7. Your connection name and target name should be filled in. Select **Finish**.<br>
+8. Your connection name and target name should be filled in. Select **Finish**.<br>
 ![](./../../images/cpp/finish-target.png)
-8. Your project source files will now be available on the on the upper left of your IDE by default.<br>
+9. A new window will open for you and you will need to choose a name for your project and click **Next**.<br>
+![](./../../images/cpp/enter-project-name.png)
+10. Your project source files will now be available on the on the upper left of your IDE by default.<br>
 ![](./../../images/cpp/project-src-imported.png)
 
 ### Connecting the Grove* sensors
@@ -167,13 +171,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ### Connecting your Intel® Edison board to Eclipse
 
-1. In the bottom left corner, right-click anywhere on the **Target SSH Connections** tab and select **New > Connection**.<br>
-![](./../../images/cpp/cpp-connection-eclipse-ide-win.png)
-2. The **Intel(R) IoT Target Connection** window appears. In the **Filter** field, type the name of your board.<br>
-![](./../../images/cpp/cpp-connection-eclipse-ide-win2.png)
-3. In the **Select one of the found connections** list, select your device name and click **OK**.<br>
-![](./../../images/cpp/cpp-connection-eclipse-ide-win3.png)
-4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
+1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 
 If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
