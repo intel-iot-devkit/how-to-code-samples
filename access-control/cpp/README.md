@@ -35,12 +35,19 @@ Optionally, all data can be stored using the Intel® IoT Examples Data store or 
 
 ## Hardware requirements
 
-Grove* Transportation and Safety Kit containing:
+This sample can be used with either the Grove\* Transportation and Safety Kit from Seeed Studio, or else the DFRobot\* Edison Starter Kit.
+
+Grove\* Transportation and Safety Kit, containing:
 
 1. Intel® Edison board with an Arduino* breakout board
-2. Grove Base Shield V2
-3. [Grove PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
-4. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+2. [Grove\* PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
+3. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+DFRobot\* Starter Kit for Intel® Edison, containing:
+
+1. Intel® Edison with an Arduino\* breakout board
+2. [PIR (Motion) Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html).
+3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
@@ -80,6 +87,14 @@ You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible br
 ![](./../../images/js/access-control.jpg)
 2. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Base Shield V2.
 
+### Connecting the DFRobot\* sensors
+
+![](./../../images/js/access-control-dfrobot.jpg)
+
+You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Display Shield.
+
+1. Plug one end of a DFRobot\* cable into the PIR (Motion) Sensor, and connect the other end to the A2 port on the LCD Display Shield.
+
 
 ### Data store server setup
 
@@ -104,6 +119,14 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
 
+## Configuring the example
+
+To configure the example for the Grove* kit just leave the kits.h file as is. To configure the example to the DFRobot* kit, change the DFROBOTKIT number in the kits.h file to 0 as follows:
+
+```
+#define GROVEKIT 1
+#define DFROBOTKIT 0
+```
 ### Running the example with the cloud server
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse as follows:
