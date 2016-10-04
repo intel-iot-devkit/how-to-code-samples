@@ -119,14 +119,16 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
 
-## Configuring the example
+## Configuring the example for your hardware kit
 
-To configure the example for the Grove* kit just leave the kits.h file as is. To configure the example to the DFRobot* kit, change the DFROBOTKIT number in the kits.h file to 0 as follows:
+To configure the example for the specific hardware kit that you are using, either Grove\* or DFRobot\*:
 
-```
-#define GROVEKIT 1
-#define DFROBOTKIT 0
-```
+1. Right-click on **Properties** for your project.<br> The **Properties** dialog box is displayed.
+2. Expand the section **C/C++ General**. <br>Click on the **Paths and Symbols** sub-section, and click on the **Symbols** tab.
+3. Now click on **GNU C++**, and click on the **Add** button.
+4. In the **Name** field, enter "INTEL_IOT_KIT".
+5. In the **Value** field, enter either "GROVEKIT" (this is the default) or "DFROBOTKIT", depending on which hardware kit you wish to use.
+
 ### Running the example with the cloud server
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse as follows:
