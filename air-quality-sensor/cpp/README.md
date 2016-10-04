@@ -100,14 +100,22 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt)
 
-## Configuring the example
+## Configuring the example for your hardware kit
 
-To configure the example for the Grove* kit just leave the kits.h file as is. To configure the example to the DFRobot* kit, change the DFROBOTKIT number in the kits.h file to 0 as follows:
+To configure the example for the specific hardware kit that you are using, either Grove\* or DFRobot\*:
 
-```
-#define GROVEKIT 1
-#define DFROBOTKIT 0
-```
+1. From the main menu, select **Project > Properties** dialog box is displayed.
+![](./../../images/cpp/click-project-properties.png)
+2. Expand the section **C/C++ General**. <br>Click on the **Paths and Symbols** sub-section, and click on the **Symbols** tab.
+![](./../../images/cpp/click-gen-path-symbols.png)
+3. Now click on **GNU C++**, and click on the **Add** button.
+![](./../../images/cpp/click-gnupp-add.png)
+4. In the **Name** field, enter "INTEL_IOT_KIT". In the **Value** field, enter either "GROVEKIT" (this is the default) or "DFROBOTKIT", depending on which hardware kit you wish to use.
+![](./../../images/cpp/add-name-and-var.png)
+5. Your new name symbol and value will now be displayed. Click **OK**.
+![](./../../images/cpp/name-var-ok.png)
+6. Another dialog box will appear asking to rebuild project. Click **OK**. 
+![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
 ### Connecting your Intel® Edison board to Eclipse
 
