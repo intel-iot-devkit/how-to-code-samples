@@ -36,6 +36,12 @@ Grove* Starter Kit containing:
 3. [Grove 3-Axis Digital Accelerometer](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
 4. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
+DFRobot\* Starter Kit for Intel® Edison, containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Triple Axis Accelerometer](http://www.dfrobot.com/index.php?route=product/product&description=true&product_id=507).
+3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
+
 ## Software requirements
 
 1. [Intel® System Studio (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/node/672439)
@@ -76,6 +82,15 @@ You need to have the Grove* Base Shield V2 connected to an Arduino\*-compatible 
 ### Intel® Edison board setup
 
 This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on the Intel® Edison board by default.
+
+## Configuring the example
+
+To configure the example for the Grove* kit just leave the kits.h file as is. To configure the example to the DFRobot* kit, change the DFROBOTKIT number in the kits.h file to 0 as follows:
+
+```
+#define GROVEKIT 1
+#define DFROBOTKIT 0
+```
 
 ### Connecting your Intel® Edison board to Eclipse
 
