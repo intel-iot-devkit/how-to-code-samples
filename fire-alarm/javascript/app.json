@@ -11,10 +11,12 @@
   "tooltip": "Smart fire alarm app detects unsafe temperature levels.",
   "description" : "Smart fire alarm app detects unsafe temperature levels. An audible notification is issued using the buzzer. A visual notification is made using the LCD. A text messages is sent to alert others of a possible fire. Fire events are tracked using cloud-based data storage.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "targets": ["edison"],
+  "runtimes": ["node"],
   "articleUrl": "https://software.intel.com/en-us/articles/fire-alarm",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",
-  "keywords": [""],
+  "keywords": ["temperature sensor","buzzer","lcd"],
   "iconUrl": ""
 }

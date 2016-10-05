@@ -11,10 +11,12 @@
   "tooltip": "Smart doorbell app that issues an audible and visual notification.",
   "description" : "Smart doorbell app that issues an audible and visual notification whenever the doorbell is rung. Keeps track of visitors using cloud-based data storage.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "targets": ["edison"],
+  "runtimes": ["node"],
   "articleUrl": "https://software.intel.com/en-us/articles/doorbell",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",
-  "keywords": [""],
+  "keywords": ["touch sensor","buzzer","lcd"],
   "iconUrl": ""
 }
