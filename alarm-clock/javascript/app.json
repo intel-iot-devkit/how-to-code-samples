@@ -11,10 +11,12 @@
   "tooltip": "Smart alarm clock and weather station.",
   "description": "Smart alarm clock that can be configured with your mobile phone via the built-in web interface. Displays live weather data on the LCD. Maintains a history of how long it takes you to wake up each morning using cloud-based data storage.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "targets": ["edison"],
+  "runtimes": ["node"],
   "articleUrl": "https://software.intel.com/en-us/articles/alarm-clock",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",
-  "keywords": [""],
+  "keywords": ["rotary dial","buzzer","button","lcd"],
   "iconUrl": ""
 }

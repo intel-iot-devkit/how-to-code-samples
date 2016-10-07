@@ -11,10 +11,12 @@
   "tooltip": "Checks the air for airborne contaminants.",
   "description" : "Field data reporter app samples barometer data at regular intervals. Displays latest data captured using the QTouch* sensor and the OLED display. Readings can be viewed or downloaded as JSON data served directly by an embedded web server running on the Intel® Edison.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "targets": ["edison"],
+  "runtimes": ["node"],
   "articleUrl": "https://software.intel.com/en-us/articles/field-data-reporter",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",
-  "keywords": [""],
+  "keywords": ["oled","qtouch sensor","atmospheric pressure sensor"],
   "iconUrl": ""
 }

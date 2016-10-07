@@ -11,10 +11,12 @@
   "tooltip": "Earthquake detector app senses motion using the digital accelerometer.",
   "description" : "Earthquake detector app senses motion using the digital accelerometer. Checks live earthquake data using the USGS* API. Displays earthquake data on the LCD.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "targets": ["edison"],
+  "runtimes": ["node"],
   "articleUrl": "https://software.intel.com/en-us/articles/earthquake-detector",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",
-  "keywords": [""],
+  "keywords": ["accelerometer","lcd"],
   "iconUrl": ""
 }

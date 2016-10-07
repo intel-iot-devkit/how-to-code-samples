@@ -11,10 +11,12 @@
   "tooltip": "Close-call driving reporter that monitors the Grove* IR Distance Interrupter and the Grove* GPS.",
   "description": "A 'close call' fleet driving reporter monitors the Grove* IR Distance Interrupter and the Grove* GPS. Maintains a history of close calls and logs them using cloud-based data storage.",
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "targets": ["edison"],
+  "runtimes": ["node"],
   "articleUrl": "https://software.intel.com/en-us/articles/close-call-reporter",
   "highlights": [""],
   "screenshotUrl": "",
   "appName": "demo.xdk.iot",
-  "keywords": [""],
+  "keywords": ["ir distance sensor","gps"],
   "iconUrl": ""
 }
