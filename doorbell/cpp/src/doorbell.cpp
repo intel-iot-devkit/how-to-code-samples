@@ -52,6 +52,8 @@
 #include <sstream>
 #include <signal.h>
 
+using namespace std;
+
 #include "kits.h"
 #if INTEL_IOT_KIT == DFROBOTKIT
 #include "dfrobotkit.hpp"

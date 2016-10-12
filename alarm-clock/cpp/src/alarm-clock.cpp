@@ -59,6 +59,8 @@
 #include "index_html.h"
 #include "styles_css.h"
 
+using namespace std;
+
 #include "kits.h"
 #if INTEL_IOT_KIT == DFROBOTKIT
 #include "dfrobotkit.hpp"

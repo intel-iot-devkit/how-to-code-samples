@@ -28,6 +28,8 @@
 #include <buzzer.hpp>
 #include <jhd1313m1.hpp>
 
+using namespace std;
+
 // The hardware devices that the example is going to connect to
 struct Devices
 {
@@ -35,19 +37,56 @@ struct Devices
   upm::Buzzer* buzzer;
   upm::Jhd1313m1* screen;
 
+  int screenBus, tempPin, buzzerPin;
+
   Devices(){
   };
 
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        screenBus = 0;
+        tempPin = 0;
+        buzzerPin = 5;
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        screenBus = 0 + 512;
+        tempPin = 0 + 512;
+        buzzerPin = 5 + 512;
+        break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        screenBus = 0 + 512;
+        tempPin = 0 + 512;
+        buzzerPin = 5 + 512;
+    }
+  }
+
   // Initialization function
   void init() {
+    set_pins();
+
     // touch sensor connected to A0 (analog in)
-    temp = new upm::GroveTemp(0);
+    temp = new upm::GroveTemp(tempPin);
 
     // buzzer connected to D5 (digital out)
-    buzzer = new upm::Buzzer(5);
+    buzzer = new upm::Buzzer(buzzerPin);
 
     // screen connected to the default I2C bus
-    screen = new upm::Jhd1313m1(0);
+    screen = new upm::Jhd1313m1(screenBus);
 
     stop_alarm();
   };
@@ -66,12 +105,12 @@ struct Devices
   }
 
   // Display a message on the LCD
-  void message(const std::string& input, const std::size_t color = 0x0000ff) {
-    std::size_t red   = (color & 0xff0000) >> 16;
-    std::size_t green = (color & 0x00ff00) >> 8;
-    std::size_t blue  = (color & 0x0000ff);
+  void message(const string& input, const size_t color = 0x0000ff) {
+    size_t red   = (color & 0xff0000) >> 16;
+    size_t green = (color & 0x00ff00) >> 8;
+    size_t blue  = (color & 0x0000ff);
 
-    std::string text(input);
+    string text(input);
     text.resize(16, ' ');
 
     screen->setCursor(0,0);

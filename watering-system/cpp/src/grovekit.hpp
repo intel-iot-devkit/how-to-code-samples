@@ -37,6 +37,8 @@ struct Devices
   upm::GroveMoisture* moisture;
   mraa::Gpio* pump;
 
+  int flowPin, moistPin, pumpPin;
+
   int moistureReading = 0;
   bool turnedOn = false;
   bool turnedOff = false;
@@ -44,20 +46,55 @@ struct Devices
   Devices() {
   };
 
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        flowPin = 2;
+        moistPin = 1;
+        pumpPin = 4;
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        flowPin = 2 + 512;
+        moistPin = 1 + 512;
+        pumpPin = 4 + 512;
+        break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        flowPin = 2 + 512;
+        moistPin = 1 + 512;
+        pumpPin = 4 + 512;
+    }
+  }
+
   // Initialization function
   void init() {
+    set_pins();
+
     // water flow sensor to D2
-    flow = new upm::GroveWFS(2);
+    flow = new upm::GroveWFS(flowPin);
     flow->clearFlowCounter();
     flow->startFlowCounter();
 
     // pump attached to D4
-    pump = new mraa::Gpio(4);
+    pump = new mraa::Gpio(pumpPin);
     pump->dir(mraa::DIR_OUT);
     pump->write(0);
 
     // moisture sensor attached to A1
-    moisture = new upm::GroveMoisture(1);
+    moisture = new upm::GroveMoisture(moistPin);
   };
 
   // Cleanup on exit

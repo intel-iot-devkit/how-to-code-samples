@@ -28,12 +28,17 @@
 #include <jhd1313m1.hpp>
 #include <grovemoisture.hpp>
 
+using namespace std;
+
 // The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::GroveLight* light;
   upm::Jhd1313m1* screen;
   upm::GroveMoisture* moisture;
+
+  int screenBus, lightPin, moistPin;
+
   int moistureReading = 0;
   int lightReading = 0;
   bool turnedOn = false;
@@ -42,16 +47,51 @@ struct Devices
   Devices() {
   };
 
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        screenBus = 0;
+        lightPin = 0;
+        moistPin = 1;
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        screenBus = 0 + 512;
+        lightPin = 0 + 512;
+        moistPin = 1 + 512;
+        break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        screenBus = 0 + 512;
+        lightPin = 0 + 512;
+        moistPin = 1 + 512;
+    }
+  }
+
   // Initialization function
   void init() {
+    set_pins();
+
     // screen connected to the default I2C bus
-    screen = new upm::Jhd1313m1(0, 0x3E, 0x62);
+    screen = new upm::Jhd1313m1(screenBus, 0x3E, 0x62);
 
     // Light sensor attached to A0
-    light = new upm::GroveLight(0);
+    light = new upm::GroveLight(lightPin);
 
     // moisture sensor attached to A1
-    moisture = new upm::GroveMoisture(1);
+    moisture = new upm::GroveMoisture(moistPin);
   };
 
   // Cleanup on exit

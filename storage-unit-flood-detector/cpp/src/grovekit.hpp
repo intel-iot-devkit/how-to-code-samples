@@ -28,22 +28,58 @@
 #include <grovemoisture.hpp>
 #include <grovespeaker.hpp>
 
+using namespace std;
+
 // The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::GroveSpeaker* speaker;
   upm::GroveMoisture* moisture;
 
+  int speakerPin, moistPin;
+
   Devices(){
   };
 
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        speakerPin = 5;
+        moistPin = 0;
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        speakerPin = 5 + 512;
+        moistPin = 0 + 512;
+        break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        speakerPin = 5 + 512;
+        moistPin = 0 + 512;
+    }
+  }
+
   // Initialization function
   void init() {
+    set_pins();
+
     // speaker connected to D5 (digital out)
-    speaker = new upm::GroveSpeaker(5);
+    speaker = new upm::GroveSpeaker(speakerPin);
 
     // moisture sensor on analog (A0)
-    moisture = new upm::GroveMoisture(0);
+    moisture = new upm::GroveMoisture(moistPin);
   }
 
   // Cleanup on exit

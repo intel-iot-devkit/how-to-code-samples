@@ -27,25 +27,55 @@
 #include <grovespeaker.hpp>
 #include <tp401.hpp>
 
-#define WARNING_THRESHOLD 200
-
 using namespace std;
+
+#define WARNING_THRESHOLD 200
 
 struct Devices
 {
   upm::GroveSpeaker* speaker;
   upm::TP401* sensor;
 
+  int speakerPin, airPin;
+
   Devices() {
   };
 
   // Initialization function
   void init() {
+    // Set pins/init as needed for specific platforms
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        speakerPin = 5;
+        airPin = 0;
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        speakerPin = 5 + 512;
+        airPin = 0 + 512;
+        break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        speakerPin = 5 + 512;
+        airPin = 0 + 512;
+    }
+
   	// speaker connected to digital D5
-    speaker = new upm::GroveSpeaker(5);
+    speaker = new upm::GroveSpeaker(speakerPin);
 
     // air sensor connected to analog A0
-    sensor = new upm::TP401(0);
+    sensor = new upm::TP401(airPin);
 
     // start sensor warmup process
     warmup();

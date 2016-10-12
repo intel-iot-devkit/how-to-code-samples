@@ -51,6 +51,8 @@
 #include <ctime>
 #include <sstream>
 
+using namespace std;
+
 #include "kits.h"
 #if INTEL_IOT_KIT == DFROBOTKIT
 #include "dfrobotkit.hpp"
@@ -63,15 +65,13 @@
 #include "datastore.h"
 #include "mqtt.h"
 
-using namespace std;
-
 // Send notification to remote datastore
 void notify() {
-  std::time_t now = std::time(NULL);
+  time_t now = time(NULL);
   char mbstr[sizeof "2011-10-08T07:07:09Z"];
-  std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
+  strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&now));
 
-  std::stringstream text;
+  stringstream text;
   text << "{\"value\":";
   text << "\"" << mbstr << "\"}";
 
@@ -122,15 +122,6 @@ int main()
 {
   // handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
-
-  // check that we are running on Galileo or Edison
-  mraa_platform_t platform = mraa_get_platform_type();
-  if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
-    (platform != MRAA_INTEL_GALILEO_GEN2) &&
-    (platform != MRAA_INTEL_EDISON_FAB_C)) {
-    std::cerr << "ERROR: Unsupported platform" << std::endl;
-    return MRAA_ERROR_INVALID_PLATFORM;
-  }
 
   // create and initialize UPM devices
   devices.init();
