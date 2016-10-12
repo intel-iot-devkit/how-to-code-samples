@@ -50,6 +50,8 @@
 #include <ctime>
 #include <signal.h>
 
+using namespace std;
+
 #include "kits.h"
 #if INTEL_IOT_KIT == DFROBOTKIT
 #include "dfrobotkit.hpp"
@@ -60,11 +62,11 @@
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 #include "../lib/json-cpp/json/json.h"
 
-const std::string DEFAULT_LATITUDE = "47.641944";
-const std::string DEFAULT_LONGITUDE = "-122.127222";
+const string DEFAULT_LATITUDE = "47.641944";
+const string DEFAULT_LONGITUDE = "-122.127222";
 
 // Convenience function to return the configured latitude
-std::string latitude() {
+string latitude() {
   if (getenv("LATITUDE")) {
     return getenv("LATITUDE");
   } else {
@@ -73,7 +75,7 @@ std::string latitude() {
 }
 
 // Convenience function to return the configured latitude
-std::string longitude() {
+string longitude() {
   if (getenv("LONGITUDE")) {
     return getenv("LONGITUDE");
   } else {
@@ -87,14 +89,14 @@ void verify(Devices* devices) {
   devices->checking();
 
   // we'll check for quakes in the last ten minutes
-  std::time_t base = std::time(NULL);
+  time_t base = time(NULL);
   struct tm* tm = localtime(&base);
   tm->tm_min -= 10;
   time_t next = mktime(tm);
   char mbstr[sizeof "2011-10-08T07:07:09Z"];
-  std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&next));
+  strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&next));
 
-  std::stringstream query;
+  stringstream query;
   query << "http://earthquake.usgs.gov/fdsnws/event/1/query?";
   query << "format=geojson&";
   query << "starttime=" << mbstr << "&";
@@ -102,12 +104,12 @@ void verify(Devices* devices) {
   query << "longitude=" << longitude() << "&";
   query << "maxradiuskm=500";
 
-  std::cerr << query.str();
+  cerr << query.str();
 
   RestClient::response r = RestClient::get(query.str());
 
   Json::Value root;
-  std::istringstream str(r.body);
+  istringstream str(r.body);
   str >> root;
 
   const Json::Value features = root["features"];
@@ -132,15 +134,6 @@ int main()
 {
   // handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
-
-  // check that we are running on Galileo or Edison
-  mraa_platform_t platform = mraa_get_platform_type();
-  if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
-    (platform != MRAA_INTEL_GALILEO_GEN2) &&
-    (platform != MRAA_INTEL_EDISON_FAB_C)) {
-    std::cerr << "ERROR: Unsupported platform" << std::endl;
-    return MRAA_ERROR_INVALID_PLATFORM;
-  }
 
   // create and initialize UPM devices
   devices.init();

@@ -39,35 +39,52 @@
 
 using namespace std;
 
-int screenBus, motionPin;
-
 // The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::Jhd1313m1* screen;
   upm::BISS0001* motion;
 
+  int screenBus, motionPin;
+
   Devices(){
   };
 
-  // Initialization function
-  void init() {
-    // Set pins/init as needed for specific platforms
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
     mraa_platform_t platform = mraa_get_platform_type();
     switch (platform) {
       case MRAA_INTEL_GALILEO_GEN1:
       case MRAA_INTEL_GALILEO_GEN2:
       case MRAA_INTEL_EDISON_FAB_C:
-        screenBus = 0,
+        screenBus = 0;
         motionPin = 4;
         break;
       case MRAA_GENERIC_FIRMATA:
-        screenBus = 0 + 512,
+        screenBus = 0 + 512;
         motionPin = 4 + 512;
         break;
       default:
-        std::cerr << "ERROR: Unsupported hardware platform" << std::endl;
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        screenBus = 0 + 512;
+        motionPin = 4 + 512;
     }
+  }
+
+  // Initialization function
+  void init() {
+	  mraa_init();
+
+    set_pins();
 
     // screen connected to the default I2C bus
     screen = new upm::Jhd1313m1(screenBus);

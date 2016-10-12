@@ -31,6 +31,8 @@ const int NOISE_THRESHOLD = 140;
 #include <ldt0028.hpp>
 #include <jhd1313m1.hpp>
 
+using namespace std;
+
 // The hardware devices that the example is going to connect to
 struct Devices
 {
@@ -41,22 +43,59 @@ struct Devices
   upm::LDT0028* vibe;
   upm::Jhd1313m1* screen;
 
+  int screenBus, micPin, vibePin;
+
   Devices(){
+  };
+
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        screenBus = 0;
+        micPin = 0;
+        vibePin = 2;
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        screenBus = 0 + 512;
+        micPin = 0 + 512;
+        vibePin = 2 + 512;
+        break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << endl;
+        }
+        screenBus = 0 + 512;
+        micPin = 0 + 512;
+        vibePin = 2 + 512;
+    }
   };
 
   // Initialization function
   void init() {
+    set_pins();
+
     // mic connected to A0 (analog in)
-    mic = new upm::Microphone(0);
+    mic = new upm::Microphone(micPin);
     micCtx.averageReading = 0;
     micCtx.runningAverage = 0;
     micCtx.averagedOver   = 2;
 
     // vibration sensor connected to A2 (analog in)
-    vibe = new upm::LDT0028(2);
+    vibe = new upm::LDT0028(vibePin);
 
     // screen connected to the default I2C bus
-    screen = new upm::Jhd1313m1(0);
+    screen = new upm::Jhd1313m1(screenBus);
   };
 
   // Cleanup on exit

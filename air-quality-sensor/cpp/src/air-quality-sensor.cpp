@@ -55,6 +55,8 @@
 #include <string>
 #include <signal.h>
 
+using namespace std;
+
 #include "kits.h"
 #if INTEL_IOT_KIT == DFROBOTKIT
 #include "dfrobotkit.hpp"
@@ -105,15 +107,6 @@ void exit_handler(int param)
 int main() {
   // Handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
-
-  // check that we are running on Galileo or Edison
-  mraa_platform_t platform = mraa_get_platform_type();
-  if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
-    (platform != MRAA_INTEL_GALILEO_GEN2) &&
-    (platform != MRAA_INTEL_EDISON_FAB_C)) {
-    std::cerr << "ERROR: Unsupported platform" << std::endl;
-    return MRAA_ERROR_INVALID_PLATFORM;
-  }
 
   // create and initialize UPM devices
   devices.init();

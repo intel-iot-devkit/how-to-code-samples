@@ -59,6 +59,8 @@
 #include "../src/html.h"
 #include "../src/css.h"
 
+using namespace std;
+
 #include "kits.h"
 #if INTEL_IOT_KIT == DFROBOTKIT
 #include "dfrobotkit.hpp"
@@ -70,8 +72,6 @@
 
 #include "datastore.h"
 #include "mqtt.h"
-
-using namespace std;
 
 Devices devices;
 

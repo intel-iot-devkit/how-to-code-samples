@@ -59,6 +59,10 @@ using std::string;
 using std::vector;
 
 #include "../lib/crow/crow_all.h"
+#include "html.h"
+#include "styles.h"
+
+using namespace std;
 
 #include "kits.h"
 #if INTEL_IOT_KIT == DFROBOTKIT
@@ -72,16 +76,11 @@ using std::vector;
 #include "datastore.h"
 #include "mqtt.h"
 
-#include "html.h"
-#include "styles.h"
-
 #include "../lib/twilio-cplusplus/Utils.h"
 #include "../lib/twilio-cplusplus/Rest.h"
 #include "../lib/twilio-cplusplus/TwiML.h"
 using namespace twilio;
 const string TWILIO_API_VERSION = "2010-04-01";
-
-using namespace std;
 
 // An individual schedule item for a 1 hour time period
 struct WateringScheduleItem
@@ -115,12 +114,12 @@ struct WateringSchedule
   }
 
   // Useful function used for checking how much time is left before target time
-  double countdown(std::time_t& target) {
+  double countdown(time_t& target) {
     time_t rawtime;
     struct tm* timeinfo;
     time(&rawtime);
     timeinfo = localtime(&rawtime);
-    return std::difftime(mktime(timeinfo), target);
+    return difftime(mktime(timeinfo), target);
   }
 
   // Is it top of the hour?
@@ -185,7 +184,7 @@ struct MoistureDataItem
 // All of the data reads from the moisture sensor
 struct MoistureData
 {
-  std::list<MoistureDataItem> data;
+  list<MoistureDataItem> data;
   int lastReading;
 
   // Initialization function
@@ -204,7 +203,7 @@ struct MoistureData
   string renderText() {
     stringstream resultStream;
 
-    for (std::list<MoistureDataItem>::iterator it = data.begin(); it != data.end(); ++it) {
+    for (list<MoistureDataItem>::iterator it = data.begin(); it != data.end(); ++it) {
       resultStream << it->render() << '\n';
     }
 
@@ -216,7 +215,7 @@ struct MoistureData
 void send_sms() {
   if (!getenv("TWILIO_SID") || !getenv("TWILIO_TOKEN") ||
       !getenv("TWILIO_TO") || !getenv("TWILIO_FROM")) {
-    std::cerr << "Twilio not configured." << std::endl;
+    cerr << "Twilio not configured." << endl;
     return;
   }
 
@@ -235,13 +234,13 @@ void send_sms() {
 
 // Log the event to the remote datastore
 void log(const std::string& event) {
-  std::cerr << event << std::endl;
+  cerr << event << endl;
 
-  std::time_t now = std::time(NULL);
+  time_t now = time(NULL);
   char mbstr[sizeof "2011-10-08T07:07:09Z"];
-  std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
+  strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&now));
 
-  std::stringstream text;
+  stringstream text;
   text << "{\"value\":";
   text << "\"" << event << mbstr << "\"}";
 
@@ -257,9 +256,9 @@ MoistureData moistureData;
 void runner(Devices& devices, MoistureData& moistureData) {
   for (;;)
   {
-    std::time_t now = std::time(NULL);
+    time_t now = time(NULL);
     char mbstr[sizeof "2011-10-08T07:07:09Z"];
-    std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
+    strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&now));
 
     int moistureReading = devices.readMoisture();
     moistureData.add(moistureReading, mbstr);
@@ -298,7 +297,7 @@ void runner3(Devices& devices, WateringSchedule& schedule) {
       }
     }
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    this_thread::sleep_for(chrono::milliseconds(1000));
   }
 }
 
@@ -315,20 +314,11 @@ int main()
   // handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
 
-  // check that we are running on Galileo or Edison
-  mraa_platform_t platform = mraa_get_platform_type();
-  if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
-      (platform != MRAA_INTEL_GALILEO_GEN2) &&
-      (platform != MRAA_INTEL_EDISON_FAB_C)) {
-      cerr << "ERROR: Unsupported platform" << endl;
-      return MRAA_ERROR_INVALID_PLATFORM;
-  }
-
   devices.init();
 
-  std::thread t1(runner, ref(devices), ref(moistureData));
-  std::thread t2(runner2, ref(devices));
-  std::thread t3(runner3, ref(devices), ref(schedule));
+  thread t1(runner, ref(devices), ref(moistureData));
+  thread t2(runner2, ref(devices));
+  thread t3(runner3, ref(devices), ref(schedule));
 
   crow::SimpleApp app;
 
@@ -342,7 +332,7 @@ int main()
     string mst;
     mst = moistureData.renderText();
     size_t f = page.find("$MOISTUREDATA$");
-    page.replace(f, std::string("$MOISTUREDATA$").length(), mst);
+    page.replace(f, string("$MOISTUREDATA$").length(), mst);
     return page;
   });
 
@@ -383,7 +373,7 @@ int main()
 
   CROW_ROUTE(app, "/styles.css")
   ([]() {
-    std::stringstream text;
+    stringstream text;
     text << styles_css;
     return text.str();
   });

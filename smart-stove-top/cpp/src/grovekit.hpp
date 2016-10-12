@@ -29,6 +29,8 @@
 #include <otp538u.hpp>
 #include <grovespeaker.hpp>
 
+using namespace std;
+
 // The hardware devices that the example is going to connect to
 struct Devices
 {
@@ -36,22 +38,66 @@ struct Devices
   upm::YG1006* flame;
   upm::OTP538U* temps;
 
+  int speakerPin, flamePin, tempPin1, tempPin2;
+  float referenceVoltage;
+
   Devices(){
   };
 
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        speakerPin = 5;
+        flamePin = 4;
+        tempPin1 = 0;
+        tempPin2 = 1;
+        referenceVoltage = 5.0;
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        speakerPin = 5 + 512;
+        flamePin = 4 + 512;
+        tempPin1 = 0 + 512;
+        tempPin2 = 1 + 512;
+        referenceVoltage = 3.3;
+        break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        speakerPin = 5 + 512;
+        flamePin = 4 + 512;
+        tempPin1 = 0 + 512;
+        tempPin2 = 1 + 512;
+        referenceVoltage = 3.3;
+    }
+  }
+
   // Initialization function
   void init() {
+    set_pins();
+
     // speaker connected to D5 (digital out)
-    speaker = new upm::GroveSpeaker(5);
+    speaker = new upm::GroveSpeaker(speakerPin);
 
     // flame sensor on D4
-    flame = new upm::YG1006(4);
+    flame = new upm::YG1006(flamePin);
 
     // Instantiate a OTP538U on analog pins A0 and A1
     // A0 is used for the Ambient Temperature and A1 is used for the
     // Object temperature.
     // only plug ir temp sensor into A0 with this code
-    temps = new upm::OTP538U(0, 1, OTP538U_AREF);
+    temps = new upm::OTP538U(tempPin1, tempPin2, referenceVoltage);
   }
 
   // Cleanup on exit
