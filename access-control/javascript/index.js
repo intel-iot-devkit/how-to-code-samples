@@ -85,7 +85,7 @@ function stopAlarm() {
 
 // Pauses looking for motion for 30 seconds
 function wait() {
-  log("waiting");
+  log("waiting-for-motion");
   board.color("white");
   board.message("Waiting 30s");
   setTimeout(lookForMotion, TIMEOUT);

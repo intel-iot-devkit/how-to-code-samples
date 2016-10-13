@@ -91,7 +91,7 @@ function moveForward() {
 
 // Store record in the remote datastore when robot is active
 function log(callback) {
-  console.log("active");
+  console.log("robot active");
 
   var payload = { value: new Date().toISOString() };
   console.log(payload);

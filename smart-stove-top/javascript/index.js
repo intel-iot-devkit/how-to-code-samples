@@ -56,7 +56,7 @@ var mqtt = require("./mqtt");
 // every 1 minute
 function log() {
   function notify() {
-    console.log(board.objectTemperature());
+    console.log("temperature:", board.objectTemperature());
     var payload = { value: board.objectTemperature() };
 
     datastore.log(config, payload);

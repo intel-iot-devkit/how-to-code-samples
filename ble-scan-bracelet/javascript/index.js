@@ -85,7 +85,7 @@ function checkForMissing() {
     p = known[id];
     if ( p.advertisement) {
       name = p.advertisement.localName;
-      log(name, "exited");
+      log(name, "device-exited");
     }
 
     delete known[id];
@@ -101,7 +101,7 @@ function discovered(p) {
 
   // check if new peripheral
   if (!known[id]) {
-    log(name, "entered");
+    log(name, "device-entered");
     known[id] = { peripheral: p };
   }
 

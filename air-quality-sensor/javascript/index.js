@@ -76,7 +76,7 @@ function main() {
 
   setInterval(function() {
     var quality = board.getAirSample();
-    console.log(quality);
+    console.log("Air quality:", quality);
     if (prev <= config.THRESHOLD && quality > config.THRESHOLD && prev !== 0) { alert(); }
     prev = quality;
   }, 1000);
