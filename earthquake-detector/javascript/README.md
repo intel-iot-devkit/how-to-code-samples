@@ -99,7 +99,7 @@ To install Git\* on the Intel® Edison board, if you don’t have it yet, establ
 
 ### Connecting the Grove\* sensors
 
-![](./../../images/js/earthquake-detector-dfrobot.jpg)
+![](./../../images/js/earthquake-detector.jpg)
 
 You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
@@ -109,7 +109,7 @@ You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout 
 
 ### Connecting the DFRobot\* sensors
 
-![](./../../images/js/earthquake-detector.jpg)
+![](./../../images/js/earthquake-detector-dfrobot.jpg)
 
 You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
