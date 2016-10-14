@@ -43,6 +43,8 @@ struct Devices
 
   // Initialization function
   void init() {
+    mraa_init();
+    
     // rotary connected to A3 (analog in)
     rotary = new upm::GroveRotary(3);
 
@@ -50,8 +52,6 @@ struct Devices
     button = new upm::GroveButton(16);
 
     // buzzer connected to A1 (aka digital out 15)
-    mraa_init();
-
     buzzer = new mraa::Gpio(15);
     buzzer->dir(mraa::DIR_OUT);
     stop_buzzing();
