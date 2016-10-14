@@ -8,6 +8,10 @@
     "hwreq" : ["Grove LCD RGB Backlight on I2C",
                "Grove 3-Axis Digital Accelerometer on I2C"],
     "libs": ["upm", "curl"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }

@@ -9,6 +9,10 @@
                "Grove Piezo Vibration Sensor connected to analog pin 2 (Grove Base Shield Port A2)",
                "Grove LCD RGB Backlight on I2C"],
     "libs": ["upm", "curl", "paho"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }

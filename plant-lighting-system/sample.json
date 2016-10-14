@@ -9,6 +9,10 @@
                "Grove Moisture Sensor connected to analog pin 1 (Grove Base Shield Port A1)",
                "Grove RGB LCD on I2C"],
     "libs": ["boost", "openssl", "upm", "curl", "paho"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }

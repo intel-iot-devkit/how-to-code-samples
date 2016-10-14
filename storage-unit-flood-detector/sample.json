@@ -8,6 +8,10 @@
     "hwreq" : ["Grove Moisture Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
                "Grove Speaker connected to digital pin 5 (Grove Base Shield Port D5)"],
     "libs": ["upm", "curl", "paho"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }

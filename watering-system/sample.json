@@ -9,6 +9,10 @@
                "Grove Water Flow Sensor connected to digital pin 2 (Grove Base Shield Port D2)",
                "Grove Dry-reed Relay connected to digital pin 4 (Grove Base Shield Port D4)"],
     "libs": ["boost", "upm", "curl", "paho", "openssl"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }

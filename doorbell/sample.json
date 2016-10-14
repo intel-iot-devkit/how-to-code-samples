@@ -9,6 +9,10 @@
                "Grove Buzzer connected to digital pin 5 (Grove Base Shield Port D5)",
                "Grove LCD RGB Backlight on I2C"],
     "libs": ["upm", "curl", "paho"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }
