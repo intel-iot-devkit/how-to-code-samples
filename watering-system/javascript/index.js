@@ -70,12 +70,12 @@ if (config.kit) {
 board.init(config);
 
 function turnOn() {
-  log("turn on");
+  log("water on");
   board.turnOn();
 }
 
 function turnOff() {
-  log("turn off");
+  log("water off");
   board.turnOff();
 }
 

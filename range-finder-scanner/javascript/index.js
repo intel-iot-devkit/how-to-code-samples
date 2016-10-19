@@ -74,7 +74,7 @@ function sweep() {
 
   function work() {
     STATE[degree] = dist.objectDetected();
-    console.log(degree, STATE[degree]);
+    console.log(degree, "degrees", STATE[degree]);
     degree = degree === 359 ? 0 : degree + 1;
     move();
     setTimeout(work, 10);

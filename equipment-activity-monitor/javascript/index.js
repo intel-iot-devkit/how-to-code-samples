@@ -52,7 +52,7 @@ var mqtt = require("./mqtt");
 // Display and then store record in the remote datastore/mqtt server
 // of how long the equipment being monitored was in use for
 function notify(state) {
-  console.log("Value: " + state + " " + new Date().toISOString());
+  console.log(state, new Date().toISOString());
   var payload = { value: state + " " + new Date().toISOString() };
 
   datastore.log(config, payload);
@@ -66,22 +66,21 @@ function notify(state) {
 // and notifies the server.
 function main() {
   var tripped = false;
-  console.log("config.VIBRATION_THRESHOLD: ", config.VIBRATION_THRESHOLD);
 
   setInterval(function() {
     var movement = board.getVibration(config.VIBRATION_THRESHOLD);
-    console.log("Movement: ", movement);
+    console.log("Movement value: ", movement);
 
     var noise = board.getNoise(config.NOISE_THRESHOLD);
-    console.log("Noise: ", noise);
+    console.log("Noise value: ", noise);
 
     if (movement && noise && !tripped) {
-      notify("start");
+      notify("equipment-start");
       board.warn();
     }
 
     if (!(movement && noise) && tripped) {
-      notify("stop");
+      notify("equipment-stop");
       board.clear();
     }
 

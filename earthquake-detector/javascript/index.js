@@ -53,14 +53,14 @@ var request = require("superagent");
 // Display message on RGB LCD when program checking
 // USGS earthquake data
 function checking() {
-  console.log("Checking...");
+  console.log("Checking for quakes...");
   board.message("Checking...");
 }
 
 // Display message on RGB LCD when USGS indicated an
 // earthquake occurred
 function warn() {
-  console.log("Earthquake!");
+  console.log("Earthquake was detected!");
   board.color("red");
   board.message("Earthquake!");
 }
@@ -68,7 +68,7 @@ function warn() {
 // Display message on RGB LCD when USGS indicated no
 // earthquake occurred
 function noquake() {
-  console.log("No quake.");
+  console.log("No quake detected.");
   board.color("white");
   board.message("No quake.");
 }

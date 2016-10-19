@@ -146,13 +146,13 @@ function checkLightsOff() {
 
 // Turns on the lights
 function turnOn() {
-  log("on");
+  log("light-on");
   setTimeout(checkLightsOn, 1000);
 }
 
 // Turns off the lights
 function turnOff() {
-  log("off");
+  log("light-off");
   setTimeout(checkLightsOff, 1000);
 }
 
