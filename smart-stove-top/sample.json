@@ -7,7 +7,11 @@
   "platform" : {
     "hwreq" : ["Grove IR Temerature Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
                "Grove Speaker connected to digital pin 5 (Grove Base Shield Port D5)",
-               "Grove Flame Sensor connected to digital pin 4 (Grove Base Shield Port D4)"],
+               "Grove Flame Sensor connected to digital pin 4 (Grove Base Shield Port D4)",
+               "or",
+               "DFRobot temperature sensor connected to A1 (analog in)",
+               "DFRobot buzzer connected to A2 (aka digital out 16)",
+               "DFRobot flame sensor on A3 (analog in"],
     "libs": ["boost", "upm", "curl", "paho"],
     "compatible": [
          "Edison",

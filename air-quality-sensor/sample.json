@@ -6,7 +6,10 @@
   "date": "2016-05-04",
   "platform" : {
     "hwreq" : ["Grove Air Quality Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
-                "Grove Speaker connected to digital pin 5 (Grove Base Shield Port D5)"],
+                "Grove Speaker connected to digital pin 5 (Grove Base Shield Port D5)",
+                "or",
+                "DFRobot Speaker connected to digital pin 5 (DFRobot io expansion sheild D5)",
+                "DFRobot Air Sensor connected to analog pin 0 (DFRobot IO expansion sheild"],
     "libs": ["boost", "upm", "curl", "paho"],
     "compatible": [
          "Edison",

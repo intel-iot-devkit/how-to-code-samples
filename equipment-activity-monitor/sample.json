@@ -7,7 +7,11 @@
   "platform" : {
     "hwreq" : ["Grove Sound Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
                "Grove Piezo Vibration Sensor connected to analog pin 2 (Grove Base Shield Port A2)",
-               "Grove LCD RGB Backlight on I2C"],
+               "Grove LCD RGB Backlight on I2C",
+               "or",
+               "DFRobot LCD Display Shield",
+               "DFRobot mic connected to A0",
+               "DFRobot vibration sensor connected to A0 (DFRobot digital 16)"],
     "libs": ["upm", "curl", "paho"],
     "compatible": [
          "Edison",

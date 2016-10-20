@@ -7,7 +7,11 @@
   "platform" : {
     "hwreq" : ["Grove LCD RGB Backlight on I2C",
                "Grove Buzzer connected to digital pin 5 (Grove Base Shield Port D5)",
-               "Grove Temperature Sensor connected to analog pin 0 (Grove Base Shield Port A0)"],
+               "Grove Temperature Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
+               "or",
+               "DFRobot LCD Display Shield",
+               "DFRobot temperature sensor connected to A1 (analog in)",
+               "DFRobot buzzer connected to A2 (aka digital out 16)"],
     "libs": ["openssl", "upm", "curl", "paho"],
     "compatible": [
          "Edison",

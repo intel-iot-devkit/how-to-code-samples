@@ -8,7 +8,12 @@
     "hwreq" : ["Grove Rotary Angle Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
                "Grove Button connected to digital pin 4 (Grove Base Shield Port D4)",
                "Grove Buzzer connected to digital pin 5 (Grove Base Shield Port D5)",
-               "Grove RGB LCD connected to I2C"],
+               "Grove RGB LCD connected to I2C",
+               "or",
+               "DFRobot LCD Display Shield",
+               "DFRobot Rotary Angle Sensor connected to analog pin 3 (DFRobot IO expansion board A3)",
+               "DFRobot button connected to A2 (DFRobot IO expansion board A2 aka digital out 16)",
+               "DFRobot buzzer connected to A1 (DFRobot IO expansion board A1 aka digital out 15)"],
     "libs": ["boost", "upm", "curl", "paho"],
     "compatible": [
          "Edison",

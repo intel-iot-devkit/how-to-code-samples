@@ -74,7 +74,7 @@ You need to have a Xadow* expansion board connected to the Intel® Edison board 
 2. Plug one end of a Xadow connector into the Xadow BMP180, and connect the other end to one of the side connectors on the Xadow expansion board.
 3. Plug one end of a Xadow connector into the Xadow QTouch* sensor, and connect the other end to one of the other two connected devices.
 
-### Connecting your Intel® Edison board to Eclipse
+### Connecting your Intel® Edison board to Intel® System Studio
 
 1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
@@ -83,7 +83,7 @@ If prompted for the username and password, the username is **root** and the pass
 
 ### Running the code on the Intel® Edison board
 
-When you're ready to run the example, click **Run** at the top menu bar in Eclipse.<br>
+When you're ready to run the example, click **Run** at the top menu bar in Intel® System Studio.<br>
 ![](./../../images/cpp/cpp-run-eclipse.png)
 
 This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.

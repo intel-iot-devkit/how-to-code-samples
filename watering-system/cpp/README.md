@@ -2,12 +2,12 @@
 
 ## Introduction
 
-This automatic watering system application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
+This automatic watering system application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
-- Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.
 - Set up a web application server to set the watering system time and store this data using Azure* Redis Cache from Microsoft, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Invoke the services of the Twilio\* API for sending text messages.
@@ -15,7 +15,7 @@ From this exercise, developers will learn how to:
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create an automatic watering system that:
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create an automatic watering system that:
 
 - turns a water pump on and off based on a configurable schedule.
 - detects if the watering system is pumping when expected, by using a water flow sensor.
@@ -27,7 +27,7 @@ Using an Intel® Edison board, this project lets you create an automatic waterin
 
 This watering system application has several useful features.
 
-Using your mobile phone, you can set the watering system schedule using a web page served directly from the Intel® Edison board.
+Using your mobile phone, you can set the watering system schedule using a web page served directly from the Intel® Edison board or Intel® IoT Gateway.
 
 The watering system automatically checks the moisture sensor data at specified intervals and displays that data on the web page.
 
@@ -131,7 +131,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt)
 
-### Connecting your Intel® Edison board to Eclipse
+### Connecting your Intel® Edison board or Intel® IoT Gateway to Intel® System Studio
 
 1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
@@ -140,7 +140,7 @@ If prompted for the username and password, the username is **root** and the pass
 
 ### Running the example with the cloud server
 
-To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse as follows:
+To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
 
 1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
@@ -150,14 +150,14 @@ To run the example with the optional backend data store, you need to set the `SE
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board or Intel® IoT Gateway.
 
-### Running the code on the Intel® Edison board
+### Running the code on the Intel® Edison board or Intel® IoT Gateway
 
-When you're ready to run the example, click **Run** at the top menu bar in Eclipse.<br>
+When you're ready to run the example, click **Run** at the top menu bar in Intel® System Studio.<br>
 ![](./../../images/cpp/cpp-run-eclipse.png)
 
-This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.
+This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board or Intel® IoT Gateway, and then executes it on the board itself.
 
 After running the program, you should see output similar to the one in the image below.<br>
 ![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
@@ -175,11 +175,11 @@ For help using the shell script, go to this link:
 
 ## Setting the watering schedule
 
-The schedule for the watering system is set using a single-page web interface served up from the Intel® Edison board while the sample program is running.<br>
+The schedule for the watering system is set using a single-page web interface served up from the Intel® Edison board or Intel® IoT Gateway while the sample program is running.<br>
 ![](./../../images/cpp/water-sys-app.png)
 
 The latest data values from the connected Grove* Moisture Sensor are displayed at the bottom of the web page.
 
-The web server runs on port `3000`; if the Intel® Edison board is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`; if the Intel® Edison board or Intel® IoT Gateway is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
