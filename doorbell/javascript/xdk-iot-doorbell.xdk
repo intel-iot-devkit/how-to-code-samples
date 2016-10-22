@@ -9,7 +9,7 @@
     },
     "sourceDirectory": "",
     "cordovaPluginsDirectory": "plugins",
-    "startFile": "main.js",
+    "startFile": "index.js",
     "projectTags": [],
     "projectFiles": {},
     "projectDirectories": {
