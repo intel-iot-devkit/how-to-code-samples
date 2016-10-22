@@ -1,22 +1,18 @@
 {
   "title": "Doorbell",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
   "sample": true,
   "template": false,
   "visible": true,
+  "sortWeight" : "0.0",
   "repoSource": "github",
   "repoUser": "intel-iot-devkit",
   "repoName": "how-to-code-samples",
   "repoPath": "tree/master/doorbell/javascript",
-  "relName": "4.0.0",
   "tooltip": "Smart doorbell app that issues an audible and visual notification.",
   "description" : "Smart doorbell app that issues an audible and visual notification whenever the doorbell is rung. Keeps track of visitors using cloud-based data storage.",
-  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "targets": ["edison"],
-  "runtimes": ["node"],
-  "articleUrl": "https://software.intel.com/en-us/articles/doorbell",
-  "highlights": [""],
-  "screenshotUrl": "",
-  "appName": "demo.xdk.iot",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/doorbell/javascript",
   "keywords": ["touch sensor","buzzer","lcd"],
-  "iconUrl": ""
+  "targets": ["edison"],
+  "runtimes": ["node"]
 }

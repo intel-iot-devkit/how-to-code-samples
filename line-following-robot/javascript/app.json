@@ -1,22 +1,18 @@
 {
   "title": "Line Following Robot",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
   "sample": true,
   "template": false,
   "visible": true,
+  "sortWeight" : "0.0",
   "repoSource": "github",
   "repoUser": "intel-iot-devkit",
   "repoName": "how-to-code-samples",
   "repoPath": "tree/master/line-following-robot/javascript",
-  "relName": "4.0.0",
   "tooltip": "Line following robot application.",
   "description" : "Line following robot application uses two motors to follow a line. The line is detected using the line finder sensor. When on the line, the system moves forward. Otherwise, the system pivots in place, trying to locate the line.",
-  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "targets": ["edison"],
-  "runtimes": ["node"],
-  "articleUrl": "https://software.intel.com/en-us/articles/line-following-robot",
-  "highlights": [""],
-  "screenshotUrl": "",
-  "appName": "demo.xdk.iot",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/line-following-robot/javascript",
   "keywords": ["line finder","motor controller"],
-  "iconUrl": ""
+  "targets": ["edison"],
+  "runtimes": ["node"]
 }

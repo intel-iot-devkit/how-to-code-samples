@@ -1,22 +1,18 @@
 {
   "title": "Alarm Clock",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
   "sample": true,
   "template": false,
   "visible": true,
+  "sortWeight" : "0.0",
   "repoSource": "github",
   "repoUser": "intel-iot-devkit",
   "repoName": "how-to-code-samples",
   "repoPath": "tree/master/alarm-clock/javascript",
-  "relName": "4.0.0",
   "tooltip": "Smart alarm clock and weather station.",
   "description": "Smart alarm clock that can be configured with your mobile phone via the built-in web interface. Displays live weather data on the LCD. Maintains a history of how long it takes you to wake up each morning using cloud-based data storage.",
-  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "targets": ["edison"],
-  "runtimes": ["node"],
-  "articleUrl": "https://software.intel.com/en-us/articles/alarm-clock",
-  "highlights": [""],
-  "screenshotUrl": "",
-  "appName": "demo.xdk.iot",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/alarm-clock/javascript",
   "keywords": ["rotary dial","buzzer","button","lcd"],
-  "iconUrl": ""
+  "targets": ["edison"],
+  "runtimes": ["node"]
 }

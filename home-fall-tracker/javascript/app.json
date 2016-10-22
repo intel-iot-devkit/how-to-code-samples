@@ -1,22 +1,18 @@
 {
   "title": "Home Fall Tracker",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
   "sample": true,
   "template": false,
   "visible": true,
+  "sortWeight" : "0.0",
   "repoSource": "github",
   "repoUser": "intel-iot-devkit",
   "repoName": "how-to-code-samples",
   "repoPath": "tree/master/home-fall-tracker/javascript",
-  "relName": "4.0.0",
   "tooltip": "Home fall tracker app detects possible falls using the accelerometer.",
   "description" : "Home fall tracker app detects possible falls using the accelerometer. A text alert is sent when a fall is detected. A message indicating that help is on the way is displayed using the OLED display. Data is stored using cloud-based data storage.",
-  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "targets": ["edison"],
-  "runtimes": ["node"],
-  "articleUrl": "https://software.intel.com/en-us/articles/home-fall-tracker",
-  "highlights": [""],
-  "screenshotUrl": "",
-  "appName": "demo.xdk.iot",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/home-fall-tracker/javascript",
   "keywords": ["oled","accelerometer"],
-  "iconUrl": ""
+  "targets": ["edison"],
+  "runtimes": ["node"]
 }
