@@ -77,24 +77,24 @@ using namespace std;
 bool alarmRinging = false;
 
 // The time that the alarm is currently set for
-std::time_t alarmTime ;
+time_t alarmTime ;
 
 // Useful function used for checking how much time is left before alarm
-double countdown(std::time_t& target) {
+double countdown(time_t& target) {
   time_t rawtime;
   struct tm* timeinfo;
   time(&rawtime);
   timeinfo = localtime(&rawtime);
-  return std::difftime(mktime(timeinfo), target);
+  return difftime(mktime(timeinfo), target);
 }
 
 // How much time from when the alarm went off, to when user pushed button
-double elapsed(std::time_t& target) {
+double elapsed(time_t& target) {
   return countdown(target);
 }
 
 // Is it time to get up now?
-bool time_for_alarm(std::time_t& alarm) {
+bool time_for_alarm(time_t& alarm) {
   double remaining = countdown(alarm);
 
   if (remaining > 0 && remaining < 5 && !alarmRinging) {
@@ -105,24 +105,24 @@ bool time_for_alarm(std::time_t& alarm) {
 // Call datastore/mqtt server to log how long it took to wake up today
 void log_wakeup() {
   double duration = elapsed(alarmTime);
-  std::cerr << "Alarm duration: " << std::to_string(duration) << std::endl;
+  cerr << "Alarm duration: " << to_string(duration) << endl;
 
-  std::stringstream text;
-  text << "{\"value\": \"" << std::to_string(duration) << "\"}";
+  stringstream text;
+  text << "{\"value\": \"" << to_string(duration) << "\"}";
 
   log_mqtt(text.str());
   log_datastore(text.str());
 }
 
 // Call weather underground API to get current weather conditions
-std::string get_weather() {
+string get_weather() {
   if (!getenv("API_KEY")) {
-    std::cerr << "Weather Underground API_KEY not configured." << std::endl;
+    cerr << "Weather Underground API_KEY not configured." << endl;
     return "";
   }
 
-  std::string location = getenv("LOCATION") ? getenv("LOCATION") : "CA/San_Francisco";
-  std::stringstream url;
+  string location = getenv("LOCATION") ? getenv("LOCATION") : "CA/San_Francisco";
+  stringstream url;
   url << "http://api.wunderground.com/api/" << getenv("API_KEY") << "/conditions/q/" << location << ".json";
 
   RestClient::headermap headers;
@@ -131,17 +131,17 @@ std::string get_weather() {
   RestClient::response r = RestClient::get(url.str(), headers);
   if (r.code == 200) {
     auto x = crow::json::load(r.body);
-    std::string result(x["current_observation"]["weather"].s());
-    std::cout << result << std::endl;
+    string result(x["current_observation"]["weather"].s());
+    cout << result << endl;
     return result;
   } else {
-    std::cerr << "Unable to get weather data" << std::endl;
+    cerr << "Unable to get weather data" << endl;
     return "error";
   }
 }
 
 // Function called by worker thread for device communication
-void runner(Devices& devices, std::time_t& alarmTime) {
+void runner(Devices& devices, time_t& alarmTime) {
   for (;;) {
     devices.display_time();
     devices.adjust_brightness();
@@ -164,14 +164,14 @@ void runner(Devices& devices, std::time_t& alarmTime) {
         timeinfo = localtime(&alarmTime);
         timeinfo->tm_mday++;
         alarmTime = mktime(timeinfo);
-        std::cerr << "New alarm time: " << alarmTime << std::endl;
+        cerr << "New alarm time: " << alarmTime << endl;
 
       } else {
         devices.start_buzzing();
       }
     }
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    this_thread::sleep_for(chrono::milliseconds(1000));
   }
 }
 
@@ -189,20 +189,11 @@ int main() {
   // Handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
 
-  // check that we are running on Galileo or Edison
-  mraa_platform_t platform = mraa_get_platform_type();
-  if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
-    (platform != MRAA_INTEL_GALILEO_GEN2) &&
-    (platform != MRAA_INTEL_EDISON_FAB_C)) {
-    std::cerr << "ERROR: Unsupported platform" << std::endl;
-    return MRAA_ERROR_INVALID_PLATFORM;
-  }
-
   // create and initialize UPM devices
   devices.init();
 
   // start worker thread for device communication
-  std::thread t1(runner, std::ref(devices), std::ref(alarmTime));
+  thread t1(runner, ref(devices), ref(alarmTime));
 
   // define web server & routes
   crow::SimpleApp app;
@@ -210,7 +201,7 @@ int main() {
   CROW_ROUTE(app, "/")
   ([](const crow::request& req) {
     bool timeChanged = false;
-    std::time_t newTime = std::time(NULL);
+    time_t newTime = time(NULL);
     struct tm* timeinfo;
     timeinfo = localtime(&newTime);
 
@@ -234,10 +225,10 @@ int main() {
 
     if (timeChanged) {
       alarmTime = mktime(timeinfo);
-      std::cerr << "Set alarm time: " << alarmTime << std::endl;
+      cerr << "Set alarm time: " << alarmTime << endl;
     }
 
-    std::stringstream text;
+    stringstream text;
     text << index_html;
     return text.str();
   });
@@ -256,7 +247,7 @@ int main() {
 
   CROW_ROUTE(app, "/styles.css")
   ([]() {
-    std::stringstream text;
+    stringstream text;
     text << styles_css;
     return text.str();
   });

@@ -78,7 +78,7 @@ void notify() {
   std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
 
   std::stringstream text;
-  text << "{\"value\":";
+  text << "{\"air-quality-alert\":";
   text << "\"" << mbstr << "\"}";
 
   log_mqtt(text.str());

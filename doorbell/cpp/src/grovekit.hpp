@@ -42,9 +42,8 @@ struct Devices
   Devices(){
   };
 
-  // Initialization function
-  void init() {
-    // Set pins/init as needed for specific platforms
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
     mraa_platform_t platform = mraa_get_platform_type();
     switch (platform) {
       case MRAA_INTEL_GALILEO_GEN1:
@@ -74,16 +73,21 @@ struct Devices
         touchPin = 4 + 512;
         buzzerPin = 5 + 512;
     }
+  };
+
+  // Initialization function
+  void init() {
+    set_pins();
 
     // touch sensor connected to D4 (digital in)
-    touch = new upm::TTP223(4);
+    touch = new upm::TTP223(touchPin);
 
     // buzzer connected to D5 (digital out)
-    buzzer = new upm::Buzzer(5);
+    buzzer = new upm::Buzzer(buzzerPin);
     stop_ringing();
 
     // screen connected to the default I2C bus
-    screen = new upm::Jhd1313m1(0);
+    screen = new upm::Jhd1313m1(screenBus);
   };
 
   // Cleanup on exit
@@ -114,8 +118,8 @@ struct Devices
   }
 
   // Visual and audible notification that someone is at the door
-  void dingdong() {
-    message("ding dong!");
+  void ring() {
+    message("ring!");
     buzzer->playSound(266, 0);
   }
 

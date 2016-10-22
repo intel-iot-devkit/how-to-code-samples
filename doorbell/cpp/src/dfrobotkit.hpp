@@ -77,8 +77,8 @@ struct Devices
   }
 
   // Visual and audible notification that someone is at the door
-  void dingdong() {
-    message("ding dong!");
+  void ring() {
+    message("ring!");
     buzzer->write(1);
   }
 

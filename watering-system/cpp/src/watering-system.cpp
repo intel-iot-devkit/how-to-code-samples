@@ -226,7 +226,7 @@ void send_sms() {
 
   vars.push_back(Var("To", getenv("TWILIO_TO")));
   vars.push_back(Var("From", getenv("TWILIO_FROM")));
-  vars.push_back(Var("Body", "Watering System Alert!"));
+  vars.push_back(Var("Body", "Watering System Malfunction!"));
   response = t.request("/" + TWILIO_API_VERSION + "/Accounts/" + getenv("TWILIO_SID") + "/SMS/Messages", "POST", vars);
   cout << "SMS Sent" << endl;
   cout << response << endl;
@@ -271,7 +271,7 @@ void runner2(Devices& devices) {
   for (;;) {
     int flowRate = devices.readFlow();
     if((devices.turned_on() && flowRate < 1) || (devices.turned_off() && flowRate > 0)) {
-      log("watering system alert");
+      log("watering system malfunction");
       send_sms();
       sleep(300);
     }
@@ -290,10 +290,10 @@ void runner3(Devices& devices, WateringSchedule& schedule) {
     if (schedule.it_is_hour(timeinfo)) {
       if (schedule.is_on_time(timeinfo)) {
         devices.turn_on();
-        log("on");
+        log("pump on");
       } else if (schedule.is_off_time(timeinfo)) {
         devices.turn_off();
-        log("on");
+        log("pump off");
       }
     }
 
