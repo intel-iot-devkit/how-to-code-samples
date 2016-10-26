@@ -1,22 +1,18 @@
 {
   "title": "Ranger Finder Scanner",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
   "sample": true,
   "template": false,
   "visible": true,
+  "sortWeight" : "0.0",
   "repoSource": "github",
   "repoUser": "intel-iot-devkit",
   "repoName": "how-to-code-samples",
   "repoPath": "tree/master/range-finder-scanner/javascript",
-  "relName": "4.0.0",
   "tooltip": "Step motor controlled range finder.",
   "description" : "As the stepper motor turns, it pauses to get readings from the Grove* IR Distance Interrupter. Readings can be seen by viewing a web page served directly from the Intel® Edison.",
-  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "targets": ["edison"],
-  "runtimes": ["node"],
-  "articleUrl": "https://software.intel.com/en-us/articles/range-finder-scanner",
-  "highlights": [""],
-  "screenshotUrl": "",
-  "appName": "demo.xdk.iot",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/range-finder-scanner/javascript",
   "keywords": ["ir distance sensor","motor controller"],
-  "iconUrl": ""
+  "targets": ["edison"],
+  "runtimes": ["node"]
 }

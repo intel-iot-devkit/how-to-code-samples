@@ -1,22 +1,18 @@
 {
   "title": "Watering System",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
   "sample": true,
   "template": false,
   "visible": true,
+  "sortWeight" : "0.0",
   "repoSource": "github",
   "repoUser": "intel-iot-devkit",
   "repoName": "how-to-code-samples",
   "repoPath": "tree/master/watering-system/javascript",
-  "relName": "4.0.0",
   "tooltip": "Automatic watering system application.",
   "description": "Automatic watering system application to set a watering schedule via a web page served directly from an Intel® Edison system. Automatically checks the moisture sensor data at periodic intervals. If the water pump is enabled, but the water flow sensor does not detect flowing water, a text message can be sent via Twilio* as a repair alert. Optionally, you can also log watering system events using the Intel IoT Examples Datastore running in your Microsoft* Azure* account.",
-  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "targets": ["edison"],
-  "runtimes": ["node"],
-  "articleUrl": "https://software.intel.com/en-us/articles/watering-system",
-  "highlights": [""],
-  "screenshotUrl": "",
-  "appName": "demo.xdk.iot",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/watering-system/javascript",
   "keywords": ["moisture sensor","water pump","water flow sensor"],
-  "iconUrl": ""
+  "targets": ["edison"],
+  "runtimes": ["node"]
 }

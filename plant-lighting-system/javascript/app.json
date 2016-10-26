@@ -1,22 +1,18 @@
 {
   "title": "Plant Lighting System",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
   "sample": true,
   "template": false,
   "visible": true,
+  "sortWeight" : "0.0",
   "repoSource": "github",
   "repoUser": "intel-iot-devkit",
   "repoName": "how-to-code-samples",
   "repoPath": "tree/master/plant-lighting-system/javascript",
-  "relName": "4.0.0",
   "tooltip": "Automatic plant lighting system control.",
   "description" : "Automatic plant lighting system control sets a lighting schedule via a web page served directly from Intel® Edison. A text alert is sent via Twilio* if lights should be on but the light sensor detect no light. Also automatically checks and logs moisture sensor data at periodic intervals. Optionally, you can store system event data using the Intel IoT Examples Datastore running in a Microsoft* Azure* account.",
-  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-  "targets": ["edison"],
-  "runtimes": ["node"],
-  "articleUrl": "https://software.intel.com/en-us/articles/plant-lighting-system",
-  "highlights": [""],
-  "screenshotUrl": "",
-  "appName": "demo.xdk.iot",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/plant-lighting-system/javascript",
   "keywords": ["moisture sensor","light sensor","lcd"],
-  "iconUrl": ""
+  "targets": ["edison"],
+  "runtimes": ["node"]
 }
