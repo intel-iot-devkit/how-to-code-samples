@@ -15,10 +15,10 @@ with open("config.json") as data:
 
 if "kit" in config:
     print("loading board config \"", config["kit"], "\" from config.json", sep = "")
-    board = import_module(config["kit"])
+    Board = getattr(import_module(config["kit"]), config["kit"].capitalize() + "Board")
 else:
     print("loading default board config")
-    board = import_module("grove")
+    Board = import_module("grove").GroveBoard
 
 # clock functions
 current_time = utcnow().replace(seconds=-1)
@@ -50,11 +50,11 @@ def start_alarm():
     }
 
     board.start_buzzer()
-    board.set_screen_background("red")
+    board.change_background("red")
 
     def alarm_actions():
         tick = alarm_state["tick"]
-        board.set_screen_background("white" if tick else "red")
+        board.change_background("white" if tick else "red")
         if tick:
              board.stop_buzzer() 
         else:
@@ -68,7 +68,7 @@ def start_alarm():
         global alarm_time
         alarm_interval.remove()
         alarm_time = alarm_time.replace(days=1)
-        board.set_screen_background("white")
+        board.change_background("white")
         board.stop_buzzer()
 
     emitter.once("button-pressed", stop_alarm)
@@ -106,7 +106,8 @@ def serve_json():
     return payload        
 
 def main():
-    board.init_hardware(config)
+    global board
+    board = Board(config)
     board.stop_buzzer()
     start_clock()
     run(host = "0.0.0.0", port = 5000)

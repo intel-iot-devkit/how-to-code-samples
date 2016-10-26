@@ -9,80 +9,76 @@ from pyupm_grove import GroveButton, GroveRotary
 from mraa import addSubplatform, GENERIC_FIRMATA
 
 from events import scheduler, emitter, ms
+from board import Board
 
-# pin mappings
-buzzer_pin = 6
-button_pin = 5
-rotary_pin = 0
-i2c_bus = 6
+class GroveBoard(Board):
 
-# hardware functions
-def start_buzzer():
-    buzzer.setVolume(0.5)
-    buzzer.playSound(2600, 0)
+    def __init__(self, config):
 
-def stop_buzzer():
-    buzzer.stopSound()
-    buzzer.stopSound()
+        # pin mappings
+        self.buzzer_pin = 6
+        self.button_pin = 5
+        self.rotary_pin = 0
+        self.i2c_bus = 6
 
-def write_message(message, line=0):
-    message = message.ljust(16)
-    screen.setCursor(line, 0)
-    screen.write(message)
+        if "platform" in config and config["platform"] == "firmata":
+            addSubplatform("firmata", "/dev/ttyACM0")
+            self.buzzer_pin += 512
+            self.button_pin += 512
+            self.rotary_pin += 512
+            self.i2c_bus += 512
+        
+        self.buzzer = Buzzer(self.buzzer_pin)
+        self.button = GroveButton(self.button_pin)
+        self.rotary = GroveRotary(self.rotary_pin)
+        self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
 
-def set_screen_background(color):
-    colors = {
-        "red": lambda: screen.setColor(255, 0, 0),
-        "white": lambda: screen.setColor(255, 255, 255)
-    }
-    colors.get(color, colors["white"])()
+        # setup hardware event dispatch
+        emitter.on("rotary", self.change_brightness)
 
-# setup hardware event dispatch
-def hardware_event_loop():    
-    global prev_button
-    emitter.emit("rotary", value=rotary.abs_value())
-    pressed = button.value()
-    prev_button = 0
+        self.prev_button = 0
 
-    if pressed and not prev_button:
-        emitter.emit("button-pressed")
+        def hardware_event_loop():
+            rotary = self.rotary
+            emitter.emit("rotary", value=rotary.abs_value())
 
-    if not pressed and prev_button:
-        emitter.emit("button-released")
+            pressed = self.button.value()
 
-    prev_button = pressed
+            if pressed and not self.prev_button:
+                emitter.emit("button-pressed")
 
-scheduler.add_job(hardware_event_loop, "interval", seconds=ms(250))
+            if not pressed and self.prev_button:
+                emitter.emit("button-released")
 
-def brightness_adjustment(value):
-    start = 0
-    end = 1020
-    value = int(floor((value - start) / end * 255))
-    value = 0 if value < 0 else 255 if value > 255 else value
-    screen.setColor(value, value, value)
+            self.prev_button = pressed
+        
+        scheduler.add_job(hardware_event_loop, "interval", seconds=ms(250))
 
-emitter.on("rotary", brightness_adjustment)
+    # hardware functions
+    def start_buzzer(self):
+        self.buzzer.setVolume(0.5)
+        self.buzzer.playSound(2600, 0)
 
-# hardware init
-def init_hardware(config):
-    global buzzer_pin
-    global button_pin
-    global rotary_pin
-    global i2c_bus
+    def stop_buzzer(self):
+        self.buzzer.stopSound()
+        self.buzzer.stopSound()
 
-    global buzzer
-    global button
-    global rotary
-    global screen
+    def write_message(self, message, line=0):
+        message = message.ljust(16)
+        self.screen.setCursor(line, 0)
+        self.screen.write(message)
 
-    if "platform" in config and config["platform"] == "firmata":
-        addSubplatform("firmata", "/dev/ttyACM0")
-        buzzer_pin += 512
-        button_pin += 512
-        rotary_pin += 512
-        i2c_bus += 512
+    def change_background(self, color):
+        colors = {
+            "red": lambda: self.screen.setColor(255, 0, 0),
+            "white": lambda: self.screen.setColor(255, 255, 255)
+        }
+        colors.get(color, colors["white"])()
 
-    buzzer = Buzzer(buzzer_pin)
-    button = GroveButton(button_pin)
-    rotary = GroveRotary(rotary_pin)
-    screen = Jhd1313m1(i2c_bus, 0x3E, 0x62)
+    def change_brightness(self, value):
+        start = 0
+        end = 1020
+        value = int(floor((value - start) / end * 255))
+        value = 0 if value < 0 else 255 if value > 255 else value
+        self.screen.setColor(value, value, value)   
+    
