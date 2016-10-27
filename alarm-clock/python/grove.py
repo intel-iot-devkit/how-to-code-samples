@@ -1,6 +1,7 @@
 from __future__ import print_function, division
 
 from math import floor
+from collections import deque
 
 from pyupm_buzzer import Buzzer
 from pyupm_i2clcd import Jhd1313m1

@@ -8,6 +8,7 @@ from bottle import route, request, run, static_file
 from arrow import utcnow
 
 from events import scheduler, emitter, ms
+from weather import get_weather
 
 # load config.json data
 with open("config.json") as data:
@@ -19,6 +20,8 @@ if "kit" in config:
 else:
     print("loading default board config")
     Board = import_module("grove").GroveBoard
+
+board = Board(config)
 
 # clock functions
 current_time = utcnow().replace(seconds=-1)
@@ -40,7 +43,7 @@ def start_clock():
 
     current_time = time
 
-scheduler.add_job(start_clock, "interval", seconds=ms(50))
+scheduler.add_job(start_clock, "interval", coalesce=True, seconds=ms(50))
 
 def start_alarm():
     global alarm_time
@@ -52,6 +55,13 @@ def start_alarm():
     board.start_buzzer()
     board.change_background("red")
 
+    #try:
+    conditions = get_weather(config)
+    print("forecast:", conditions)
+    board.write_message(conditions, line=1)
+    # except:
+    #     print("unable to get weather data")
+
     def alarm_actions():
         tick = alarm_state["tick"]
         board.change_background("white" if tick else "red")
@@ -61,7 +71,6 @@ def start_alarm():
              board.start_buzzer()
         alarm_state["tick"] = not tick
     
-    print("schedule alarm_actions")
     alarm_interval = scheduler.add_job(alarm_actions, "interval", seconds=ms(250))
 
     def stop_alarm():
@@ -106,8 +115,6 @@ def serve_json():
     return payload        
 
 def main():
-    global board
-    board = Board(config)
     board.stop_buzzer()
     start_clock()
     run(host = "0.0.0.0", port = 5000)
