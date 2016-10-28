@@ -9,6 +9,7 @@ from arrow import utcnow
 
 from events import scheduler, emitter, ms
 from weather import get_weather
+from mqtt import publish_message
 
 # load config.json data
 with open("config.json") as data:
@@ -55,12 +56,13 @@ def start_alarm():
     board.start_buzzer()
     board.change_background("red")
 
-    #try:
-    conditions = get_weather(config)
-    print("forecast:", conditions)
-    board.write_message(conditions, line=1)
-    # except:
-    #     print("unable to get weather data")
+    try:
+        conditions = get_weather(config)
+        if (conditions):
+            print("forecast:", conditions)
+            board.write_message(conditions, line=1)
+    except:
+        print("unable to get weather data")
 
     def alarm_actions():
         tick = alarm_state["tick"]
@@ -73,8 +75,16 @@ def start_alarm():
     
     alarm_interval = scheduler.add_job(alarm_actions, "interval", seconds=ms(250))
 
+    def notify(duration):
+        print("Alarm duration (ms):", duration)
+        publish_message(config, { "value": duration })
+
     def stop_alarm():
         global alarm_time
+
+        total_ms = (utcnow() - alarm_time).total_seconds() * 1000
+        notify(total_ms)
+
         alarm_interval.remove()
         alarm_time = alarm_time.replace(days=1)
         board.change_background("white")
