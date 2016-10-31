@@ -28,6 +28,10 @@ from board import Board
 
 class DfrobotBoard(Board):
 
+    """
+    Board class for drobot hardware.
+    """
+
     def __init__(self, config):
 
         # pin mappings

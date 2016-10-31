@@ -30,6 +30,10 @@ SERVER = "SERVER"
 AUTH_TOKEN = "AUTH_TOKEN"
 
 def store_message(config, payload):
+
+    """
+    Publish message to remote data store.
+    """
     
     if not { SERVER, AUTH_TOKEN } <= set(config): return
 

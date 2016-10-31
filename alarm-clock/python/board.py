@@ -23,6 +23,10 @@ from abc import ABCMeta, abstractmethod
 
 class Board(object):
 
+    """
+    Base class for Board hardware implementations
+    """
+
     __metaclass__ = ABCMeta
 
     @abstractmethod

@@ -22,6 +22,10 @@
 from requests import get as get_http, HTTPError
 
 def get_weather(config):
+
+    """
+    Get weather data from Weather Underground.
+    """
     
     if not { "WEATHER_API_KEY", "LOCATION" } <= set(config): return
 

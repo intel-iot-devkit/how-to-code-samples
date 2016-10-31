@@ -21,11 +21,20 @@
 
 from __future__ import print_function, division
 
-# imports
-from simplejson import load as load_json
+# This program is using the Python stand 'importlib' module
+# to dynamically import the correct Board class based on config.json
 from importlib import import_module
-from datetime import datetime, timedelta
+
+# This program is using the 'simplejson' package
+# to serialize and deserialize json data.
+from simplejson import load as load_json
+
+# This program is using the 'bottle' package
+# to server static html files and JSON data.
 from bottle import route, request, run, static_file
+
+# This program is using the 'arrow' package for easier time-based calculations
+# to determine when the alarm should sound
 from arrow import utcnow
 
 from events import scheduler, emitter, ms
@@ -33,7 +42,8 @@ from weather import get_weather
 from mqtt import publish_message
 from storage import store_message
 
-# load config.json data
+# Load configuration data from `config.json` file. Edit this file
+# to change to correct values for your configuration
 with open("config.json") as data:
     config = load_json(data)
 
@@ -57,6 +67,12 @@ def same(t, c):
     return t.floor("second") == c.floor("second")
 
 def start_clock():
+
+    """
+    Start clock timer.
+    Checks every 50ms to update time and to start the alarm.
+    """
+
     global current_time
     time = utcnow()
     if after(time, current_time):
@@ -69,6 +85,11 @@ def start_clock():
 scheduler.add_job(start_clock, "interval", coalesce=True, seconds=ms(50))
 
 def start_alarm():
+
+    """
+    Start the alarm timer.
+    """
+
     global alarm_time
 
     alarm_state = {
@@ -87,6 +108,12 @@ def start_alarm():
         print("unable to get weather data")
 
     def alarm_actions():
+
+        """
+        Perform alarm actions.
+        Alternates LCD background color and buzzer sound.
+        """
+
         tick = alarm_state["tick"]
         board.change_background("white" if tick else "red")
         if tick:
@@ -98,12 +125,22 @@ def start_alarm():
     alarm_interval = scheduler.add_job(alarm_actions, "interval", seconds=ms(250))
 
     def notify(duration):
+
+        """
+        Publish data to MQTT server and data store.
+        """
+
         print("Alarm duration (ms):", duration)
         payload = { "value": duration }
         publish_message(config, payload)
         store_message(config, payload)
 
     def stop_alarm():
+
+        """
+        Stop the alarm timer and reset hardare.
+        """
+
         global alarm_time
 
         total_ms = (utcnow() - alarm_time).total_seconds() * 1000
@@ -125,6 +162,11 @@ alarm_duration = {
 
 @route('/')
 def serve_index():
+
+    """
+    Serve the 'index.html' file and process alarm query parameters.
+    """
+
     global alarm_time
     global alarm_duration
     print("query:", request.query)
@@ -141,6 +183,11 @@ def serve_index():
 
 @route('/alarm.json')
 def serve_json():
+
+    """
+    Serve 'alarm.json' with duration to alarm trigger.
+    """
+
     payload = { 
         "hour": alarm_duration["hour"], 
         "minute": alarm_duration["minute"], 
@@ -149,6 +196,11 @@ def serve_json():
     return payload        
 
 def main():
+
+    """
+    Start main function.
+    """
+
     board.stop_buzzer()
     start_clock()
     run(host = "0.0.0.0", port = 5000)

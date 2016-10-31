@@ -34,6 +34,10 @@ from board import Board
 
 class GroveBoard(Board):
 
+    """
+    Board class for Grove hardware.
+    """
+
     def __init__(self, config):
 
         # pin mappings

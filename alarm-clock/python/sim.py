@@ -25,6 +25,10 @@ from board import Board
 
 class SimBoard(Board):
 
+    """
+    Board class for simulated hardware debug.
+    """
+
     def __init__(*args, **kwargs): pass
 
     def start_buzzer(self):

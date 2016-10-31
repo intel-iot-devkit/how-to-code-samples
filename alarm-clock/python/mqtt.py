@@ -38,6 +38,10 @@ MQTT_TOPIC = "MQTT_TOPIC"
 
 def publish_message(config, payload):
 
+    """
+    Publish message to MQTT server.
+    """
+
     if not { MQTT_SERVER, MQTT_CLIENTID, MQTT_TOPIC } <= set(config): return
 
     server = config[MQTT_SERVER]
