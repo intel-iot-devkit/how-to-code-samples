@@ -10,6 +10,7 @@ from arrow import utcnow
 from events import scheduler, emitter, ms
 from weather import get_weather
 from mqtt import publish_message
+from storage import store_message
 
 # load config.json data
 with open("config.json") as data:
@@ -77,7 +78,9 @@ def start_alarm():
 
     def notify(duration):
         print("Alarm duration (ms):", duration)
-        publish_message(config, { "value": duration })
+        payload = { "value": duration }
+        publish_message(config, payload)
+        store_message(config, payload)
 
     def stop_alarm():
         global alarm_time
