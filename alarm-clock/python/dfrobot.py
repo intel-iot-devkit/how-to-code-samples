@@ -1,37 +1,23 @@
-from __future__ import print_function, division
-
-from math import floor
-
-from pyupm_buzzer import Buzzer
-from pyupm_i2clcd import Jhd1313m1
+from mraa import Gpio
+from pyupm_i2clcd import SAINSMARTKS
 from pyupm_grove import GroveButton, GroveRotary
-
-from mraa import addSubplatform, GENERIC_FIRMATA
 
 from events import scheduler, emitter, ms
 from board import Board
 
-class GroveBoard(Board):
+class DfrobotBoard(Board):
 
     def __init__(self, config):
 
         # pin mappings
-        self.buzzer_pin = 6
-        self.button_pin = 5
-        self.rotary_pin = 0
-        self.i2c_bus = 6
-
-        if "platform" in config and config["platform"] == "firmata":
-            addSubplatform("firmata", "/dev/ttyACM0")
-            self.buzzer_pin += 512
-            self.button_pin += 512
-            self.rotary_pin += 512
-            self.i2c_bus += 512
+        self.buzzer_pin = 15
+        self.button_pin = 16
+        self.rotary_pin = 3
         
-        self.buzzer = Buzzer(self.buzzer_pin)
+        self.buzzer = Gpio(self.buzzer_pin)
         self.button = GroveButton(self.button_pin)
         self.rotary = GroveRotary(self.rotary_pin)
-        self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
+        self.screen = SAINSMARTKS(8, 9, 4, 5, 6, 7, 0)
 
         # setup hardware event dispatch
         emitter.on("rotary", self.change_brightness)
@@ -61,8 +47,7 @@ class GroveBoard(Board):
         Start the hardware buzzer.
         """
 
-        self.buzzer.setVolume(0.5)
-        self.buzzer.playSound(2600, 0)
+        self.buzzer.write(1)
 
     def stop_buzzer(self):
 
@@ -70,8 +55,7 @@ class GroveBoard(Board):
         Stop the hardware buzzer.
         """
 
-        self.buzzer.stopSound()
-        self.buzzer.stopSound()
+        self.buzzer.write(0)
 
     def write_message(self, message, line=0):
 
@@ -84,26 +68,23 @@ class GroveBoard(Board):
         self.screen.write(message)
 
     def change_background(self, color):
-
+        
         """
         Change LCD screen background color.
+        No effect on the dfrobot.
         """
-
-        colors = {
-            "red": lambda: self.screen.setColor(255, 0, 0),
-            "white": lambda: self.screen.setColor(255, 255, 255)
-        }
-        colors.get(color, colors["white"])()
+        
+        pass
 
     def change_brightness(self, value):
 
         """
         Change LCD screen brightness.
+        Only supports on (value < 512) and off (value >= 512) on the drobot.
         """
 
-        start = 0
-        end = 1020
-        value = int(floor((value - start) / end * 255))
-        value = 0 if value < 0 else 255 if value > 255 else value
-        self.screen.setColor(value, value, value)   
+        if value < 512:
+            screen.displayOff()
+        else:
+            screen.displayOn()
     
