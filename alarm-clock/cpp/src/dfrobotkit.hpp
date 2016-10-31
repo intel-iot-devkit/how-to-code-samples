@@ -44,7 +44,7 @@ struct Devices
   // Initialization function
   void init() {
     mraa_init();
-    
+
     // rotary connected to A3 (analog in)
     rotary = new upm::GroveRotary(3);
 
@@ -57,7 +57,7 @@ struct Devices
     stop_buzzing();
 
     // screen connected to the default pins
-    upm::SAINSMARTKS* screen = new upm::SAINSMARTKS();
+    screen = new upm::SAINSMARTKS();
   };
 
   // Cleanup on exit
@@ -97,6 +97,7 @@ struct Devices
 
   // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
+    cerr << input << endl;
     std::string text(input);
     text.resize(16, ' ');
 

@@ -73,11 +73,11 @@ Devices devices;
 
 // Notify the remote datastore
 void notify() {
-  std::time_t now = std::time(NULL);
+  time_t now = time(NULL);
   char mbstr[sizeof "2011-10-08T07:07:09Z"];
-  std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
+  strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&now));
 
-  std::stringstream text;
+  stringstream text;
   text << "{\"air-quality-alert\":";
   text << "\"" << mbstr << "\"}";
 
@@ -99,6 +99,7 @@ void check_air_quality(){
 // Exit handler for program
 void exit_handler(int param)
 {
+  close_mqtt();
   devices.cleanup();
   exit(1);
 }

@@ -176,6 +176,7 @@ void runner(Devices& devices) {
 // Exit handler for program
 void exit_handler(int param)
 {
+  close_mqtt();
   devices.cleanup();
   exit(1);
 }

@@ -88,6 +88,18 @@ You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible br
 3. Plug one end of a Grove cable into the Grove Buzzer, and connect the other end to the D5 port on the Grove Base Shield V2.
 4. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Base Shield V2.
 
+### Connecting the DFRobot\* sensors
+
+![](./../../images/js/alarm-clock-dfrobot.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot\* cable into the Button, and connect the other end to the A2 port on the LCD Keypad Shield.
+
+3. Plug one end of a DFRobot\* cable into the Rotary Analog Sensor, and connect the other end to the A3 port on the LCD Keypad Shield.
+
 ### Additional setup
 
 You also want to set the current time zone to match the zone you are in. Do this by using the `timedatectl` program on the board. For example:
@@ -154,7 +166,7 @@ To configure the example for the specific hardware kit that you are using, eithe
 ![](./../../images/cpp/add-name-and-var.png)
 5. Your new name symbol and value will now be displayed. Click **OK**.
 ![](./../../images/cpp/name-var-ok.png)
-6. Another dialog box will appear asking to rebuild project. Click **OK**. 
+6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
 ### Connecting your Intel® Edison board or Intel® IoT Gateway to Intel® System Studio

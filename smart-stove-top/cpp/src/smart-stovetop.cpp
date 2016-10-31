@@ -99,6 +99,7 @@ void senseFlame() {
 		else
 		{
 			cout << "No flame detected." << endl;
+			devices.stopAlarm();
 			sleep(1);
 		}
 	}
