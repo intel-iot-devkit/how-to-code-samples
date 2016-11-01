@@ -203,7 +203,7 @@ def main():
 
     board.stop_buzzer()
     start_clock()
-    run(host = "0.0.0.0", port = 5000)
+    run(host = "0.0.0.0", port = 3000)
 
 if __name__ == "__main__":
     main()
