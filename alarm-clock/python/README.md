@@ -48,23 +48,20 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ## Software requirements
 
-1. Intel® XDK IoT Edition
-2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
-3. Weather Underground\* API key (optional)
+1. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
+2. Weather Underground\* API key (optional)
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
+To begin, you'll need to copy the **How-To Intel IoT Code Samples** repository on to the Intel® Edison board the methods below:
 
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
+#### Installing the program manually on the Intel® Edison board using Git
 
-To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+You'll need to manually set up the code manually on the Intel® Edison board.
 
-### Installing the program manually on the Intel® Edison board
+Establish an SSH connection to the Intel® Edison board.
 
-Alternatively, you can set up the code manually on the Intel® Edison board.
-
-Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
+Then clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board running the following command:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -76,7 +73,7 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 ### Connecting the Grove\* sensors
 
-![](./../../images/js/alarm-clock.jpg)
+![Grove Hardware Connections](./../../images/js/alarm-clock.jpg)
 
 You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
@@ -90,7 +87,7 @@ You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout 
 
 ### Connecting the DFRobot\* sensors
 
-![](./../../images/js/alarm-clock-dfrobot.jpg)
+![DFRobot Hardware Connections](./../../images/js/alarm-clock-dfrobot.jpg)
 
 You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
@@ -104,7 +101,13 @@ You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breako
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
 
-Instructions here...
+To obtain the Python\* packages needed for this example to execute on the Intel® Edison board:
+
+Establish an SSH connection to the board and navigate to the directory with this example.
+
+Then run the following command:
+
+    $ pip install -r requirements.txt
 
 ### Intel® IoT Gateway setup
 
@@ -126,7 +129,20 @@ You cannot retrieve weather conditions without obtaining a Weather Underground* 
 
 Pass your Weather Underground\* API key to the sample program as follows:
 
-Instructions here...
+1. Open the `config.json` file in the root of the project folder.
+2. Add the following keys to the JSON file:
+    - `WEATHER_API_KEY` with the value set to the API key provided by Weather Underground.
+    - `LOCATION` with the value set to the name of city. For this example we'll use the value `San_Francisco`.
+
+Your `config.json` file should look like the following when done:
+
+```JSON
+{
+    "board": "grove",
+    "WEATHER_API_KEY": "[Your Weather Underground API key]",
+    "LOCATION": "San_Francisco"
+}
+```
 
 ### Data store server setup
 
@@ -146,17 +162,74 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-Instructions here...
+To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```JSON
+{
+  "kit": "dfrobot"
+}
+```
+
+To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
+
+```JSON
+{
+  "kit": "grove",
+  "platform": "firmata"
+}
+```
+
+The DFRobot\* variation of this example does not yet support the Arduino\*/Genuino\* 101.
+
+To configure the example for the optional real-time weather data, obtain a key from the Weather Underground\* website as documented above, and then change the `WEATHER_API_KEY` and `LOCATION` keys in the `config.json` file as follows:
+
+```JSON
+{
+  "kit": "grove",
+  "WEATHER_API_KEY": "YOURAPIKEY",
+  "LOCATION": "San_Francisco"
+}
+```
+
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+
+```JSON
+{
+  "kit": "grove",
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/alarm-clock",
+  "AUTH_TOKEN": "s3cr3t"
+}
+```
+
+To configure the example for both the weather data, as well as either the Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `WEATHER_API_KEY`, `LOCATION`, `SERVER`, and `AUTH_TOKEN` keys in the `config.json` file as follows:
+
+```JSON
+{
+  "kit": "grove",
+  "WEATHER_API_KEY": "YOURAPIKEY",
+  "LOCATION": "San_Francisco",
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/alarm-clock",
+  "AUTH_TOKEN": "s3cr3t"
+}
+```
+
+For information on how to configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS MQTT messaging server, go to:
+
+[https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
 ## Running the program
 
-To run the example on the Intel® Edison board, establish an SSH connection to the board and execute the following command:
+To run the example on the Intel® Edison board, establish an SSH connection to the board and execute the following commands:
 
-    python alarm-clock.py
+Navigate to the directory with this example on the Edison.
+
+Then run the following command:
+
+    $ python .
 
 ### Setting the alarm
 
-![](./../../images/js/alarm-clock-web.png)
+![Alarm Clock HTML Page](./../../images/js/alarm-clock-web.png)
 
 The alarm is set using a single-page web interface served directly from the Intel® Edison board while the sample program is running.
 
@@ -166,7 +239,7 @@ The web server runs on port `3000`, so if the Intel® Edison board is connected 
 
 You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
-    ip addr show | grep wlan
+    $ ip addr show | grep wlan
 
 You will see the output similar to the following:
 
