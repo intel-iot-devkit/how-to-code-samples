@@ -33,7 +33,7 @@
  * @hardware Sensors used:\n
  * Grove Speaker\n
  * Grove Flame Sensor\n
- * Grove IR Temerature Sensor\n
+ * Grove IR Temperature Sensor\n
  *
  * @cc
  * @cxx -std=c++1y

@@ -83,7 +83,7 @@ You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible br
 
 For this example, you need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or else substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
 
-In addition, you need a breadboard and an extra **5V** power supply to provide power to the pump. 
+In addition, you need a breadboard and an extra **5V** power supply to provide power to the pump.
 
 Note: You need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel® Edison board and the pump, so you need either 2 batteries or 2 power supplies.
 
@@ -98,6 +98,26 @@ You need to use the Grove* Dry-reed Relay board to connect the Water Pump.
 6. Plug the Water Flow Sensor's black wire into the GND pin on the Grove* Base Shield V2.
 7. Plug the Water Flow Sensor's yellow wire into the 2 pin (aka digital pin 2) on the Grove* Base Shield V2.
 8. Plug one end of a Grove cable into the Grove* Moisture Sensor, and connect the other end to the A0 port on the Grove Base Shield V2.
+
+### Connecting the DFRobot\* sensors
+
+![](./../../images/js/watering-dfrobot.jpg)
+
+You need to have a I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the I/O Expansion Shield.
+
+In addition, you need a breadboard and an extra 5V power supply to provide power to the pump. Note: you need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel® Edison board and the pump.
+
+You need to use the Relay Module to connect the water pump.
+
+1. Plug one end of a DFRobot\* cable into the Relay Module, and connect the other end to the A2 port on the I/O Expansion Shield.
+
+2. Connect one wire from the pump to the GND of the power source reserved for the pump.
+
+3. Connect the other wire from the pump to the NC (Normally Closed) connector on the Relay Module.
+
+4. Connect the COM (Common) connector on the Relay Module to the + of the 5V power source reserved for the pump.
+
+5. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A1 port on the I/O Expansion Shield.
 
 ### Copy the libraries on Windows*
 

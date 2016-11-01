@@ -45,8 +45,8 @@ struct Devices
     buzzer->dir(mraa::DIR_OUT);
     stop_alarm();
 
-    // moisture sensor on analog (A0)
-    moisture = new upm::GroveMoisture(0);
+    // moisture sensor on analog (A2)
+    moisture = new upm::GroveMoisture(2);
   }
 
   // Cleanup on exit

@@ -80,6 +80,16 @@ You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible br
 ![](./../../images/js/flood-detect.jpg)
 2. Plug one end of a Grove cable into the Grove* Speaker, and connect the other end to the D5 port on the Grove* Base Shield V2.
 
+### Connecting the DFRobot\* sensors
+
+![](./../../images/js/flood-detect-dfrobot.jpg)
+
+You need to have a I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the I/O Expansion Shield.
+
+1. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A1 port on the I/O Expansion Shield.
+
+2. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A2 port on the I/O Expansion Shield.
+
 ### Intel® Edison board setup
 
 This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on the Intel® Edison board by default.
@@ -114,7 +124,7 @@ To configure the example for the specific hardware kit that you are using, eithe
 ![](./../../images/cpp/add-name-and-var.png)
 5. Your new name symbol and value will now be displayed. Click **OK**.
 ![](./../../images/cpp/name-var-ok.png)
-6. Another dialog box will appear asking to rebuild project. Click **OK**. 
+6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
 ### Connecting your Intel® Edison board or Intel® IoT Gateway to Intel® System Studio

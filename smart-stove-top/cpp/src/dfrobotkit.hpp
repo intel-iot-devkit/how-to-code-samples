@@ -25,70 +25,58 @@
 #define DFROBOTKIT_HPP_
 
 #include <mraa.hpp>
-#include <grove.hpp>
-#include <sainsmartks.hpp>
 
 // The hardware devices that the example is going to connect to
 struct Devices
 {
-  upm::GroveButton* touch;
+  mraa::Aio* flame;
   mraa::Gpio* buzzer;
-  upm::SAINSMARTKS* screen;
+  mraa::Aio* temps;
 
   Devices(){
   };
 
   // Initialization function
   void init() {
-    // button connected to A1 (aka digital out 15)
-    touch = new upm::GroveButton(15);
-
-    // buzzer connected to A2 (aka digital out 16)
     mraa_init();
 
+    // temperature sensor connected to A1 (analog in)
+    temps = new mraa::Aio(1);
+
+    // buzzer connected to A2 (aka digital out 16)
     buzzer = new mraa::Gpio(16);
     buzzer->dir(mraa::DIR_OUT);
-    stop_ringing();
+    stopAlarm();
 
-    // screen connected to the default pins
-    screen = new upm::SAINSMARTKS();
-  };
+    // flame sensor on A3
+    flame = new mraa::Aio(3);
+  }
 
   // Cleanup on exit
   void cleanup() {
-    delete touch;
     delete buzzer;
-    delete screen;
+    delete flame;
+    delete temps;
   }
 
-  // Reset the doorbot
-  void reset() {
-    message("doorbot ready");
-    stop_ringing();
-  }
-
-  // Display a message on the LCD
-  void message(const std::string& input, const std::size_t color = 0x0000ff) {
-    std::string text(input);
-    text.resize(16, ' ');
-
-    screen->setCursor(0,0);
-    screen->write(text);
-  }
-
-  // Visual and audible notification that someone is at the door
-  void ring() {
-    message("ring!");
+  // Starts the alarm
+  void alarm() {
     buzzer->write(1);
   }
 
-  // Stop the ringing sound
-  void stop_ringing() {
+  // Stops the alarm
+  void stopAlarm() {
     buzzer->write(0);
   }
 
-  bool is_pressed() {
-	 return touch->value();
+  // Reads the flame sensor
+  bool flameDetected() {
+    return (flame->read() >= 800);
+  }
+
+  // Reads the ambient temperature sensor
+  float objectTemperature(){
+	   return (500 * temps->read()) / 1024;
   }
 };
 
