@@ -63,7 +63,7 @@ Establish an SSH connection to the Intel® Edison board.
 
 Then clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board running the following command:
 
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
+    $ git clone --single-branch --depth 1 --branch master https://github.com/intel-iot-devkit/how-to-code-samples.git
 
 Then, navigate to the directory with this example.
 
@@ -105,8 +105,9 @@ To obtain the Python\* packages needed for this example to execute on the Intel�
 
 Establish an SSH connection to the board and navigate to the directory with this example.
 
-Then run the following command:
+Then run the following commands:
 
+    $ pip install --upgrade pip
     $ pip install -r requirements.txt
 
 ### Intel® IoT Gateway setup
