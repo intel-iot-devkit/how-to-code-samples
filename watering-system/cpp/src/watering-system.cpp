@@ -45,9 +45,8 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 04/04/2016
+ * @date 09/22/2016
  */
-
 
 #include <string>
 using std::string;
@@ -59,16 +58,20 @@ using std::string;
 #include <vector>
 using std::vector;
 
-#include <mraa.hpp>
-#include <grovewfs.hpp>
-#include <grovemoisture.hpp>
+#include "../lib/crow/crow_all.h"
+
+#include "kits.h"
+#if INTEL_IOT_KIT == DFROBOTKIT
+#include "dfrobotkit.hpp"
+#else
+#include "grovekit.hpp"
+#endif
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 #include "datastore.h"
 #include "mqtt.h"
 
-#include "../lib/crow/crow_all.h"
 #include "html.h"
 #include "styles.h"
 
@@ -246,89 +249,9 @@ void log(const std::string& event) {
   log_datastore(text.str());
 }
 
-// The hardware devices that the example is going to connect to
-struct Devices
-{
-  upm::GroveWFS* flow;
-  upm::GroveMoisture* moisture;
-  mraa::Gpio* pump;
-
-  int moistureReading = 0;
-  bool turnedOn = false;
-  bool turnedOff = false;
-
-  Devices() {
-  };
-
-  // Initialization function
-  void init() {
-    // water flow sensor to D2
-    flow = new upm::GroveWFS(2);
-    flow->clearFlowCounter();
-    flow->startFlowCounter();
-
-    // pump attached to D4
-    pump = new mraa::Gpio(4);
-    pump->dir(mraa::DIR_OUT);
-    pump->write(0);
-
-    // moisture sensor attached to A1
-    moisture = new upm::GroveMoisture(1);
-  };
-
-  // Cleanup on exit
-  void cleanup() {
-    flow->stopFlowCounter();
-    delete flow;
-    delete pump;
-    delete moisture;
-  }
-
-  // Reads the current value from the moisture sensor
-  int readMoisture() {
-    return moisture->value();
-  }
-
-  // Reads the current value from the flow sensor
-  int readFlow() {
-    return flow->flowRate();
-  }
-
-  // Is the water supposed to be turned on?
-  bool turned_on() {
-    return turnedOn;
-  }
-
-  // Is the water supposed to be turned off?
-  bool turned_off() {
-    return turnedOff;
-  }
-
-  // Turn on the water
-  void turn_on() {
-    if (turnedOn) return;
-    pump->write(1);
-    turnedOn = true;
-    turnedOff = false;
-    message("on");
-    log("on");
-  }
-
-  // Turn off the water
-  void turn_off() {
-    if (turnedOff) return;
-    pump->write(0);
-    turnedOn = false;
-    turnedOff = true;
-    message("off");
-    log("off");
-  }
-
-  // Displays message to console
-  void message(string msg){
-    cout << msg << endl;
-  }
-};
+Devices devices;
+WateringSchedule schedule;
+MoistureData moistureData;
 
 // The thread that reads the moisture sensor
 void runner(Devices& devices, MoistureData& moistureData) {
@@ -368,18 +291,16 @@ void runner3(Devices& devices, WateringSchedule& schedule) {
     if (schedule.it_is_hour(timeinfo)) {
       if (schedule.is_on_time(timeinfo)) {
         devices.turn_on();
+        log("on");
       } else if (schedule.is_off_time(timeinfo)) {
         devices.turn_off();
+        log("on");
       }
     }
 
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
   }
 }
-
-Devices devices;
-WateringSchedule schedule;
-MoistureData moistureData;
 
 // Exit handler for program
 void exit_handler(int param)
@@ -459,6 +380,7 @@ int main()
     devices.turn_off();
     return crow::response("ok");
   });
+
   CROW_ROUTE(app, "/styles.css")
   ([]() {
     std::stringstream text;

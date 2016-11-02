@@ -43,16 +43,18 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 04/04/2016
+ * @date 09/22/2016
  */
 #include <iostream>
 #include <string>
 #include <signal.h>
 
-#include <grove.hpp>
-#include <yg1006.hpp>
-#include <otp538u.hpp>
-#include <grovespeaker.hpp>
+#include "kits.h"
+#if INTEL_IOT_KIT == DFROBOTKIT
+#include "dfrobotkit.hpp"
+#else
+#include "grovekit.hpp"
+#endif
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 #include "datastore.h"
@@ -61,8 +63,6 @@
 #include "html.h"
 #include "styles.h"
 
-#define OTP538U_AREF 5.0
-
 using namespace std;
 
 // Global temp value for app; will change when you use app
@@ -70,7 +70,6 @@ float myTemp = 1000;
 
 // Send notification to remote datastore
 void notify() {
-
 	  std::time_t now = std::time(NULL);
 	  char mbstr[sizeof "2011-10-08T07:07:09Z"];
 	  std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
@@ -83,93 +82,54 @@ void notify() {
 	  log_datastore(text.str());
 }
 
-// The hardware devices that the example is going to connect to
-struct Devices
-{
-  upm::GroveSpeaker* speaker;
-  upm::YG1006* flame;
-  upm::OTP538U* temps;
+Devices devices;
 
-  Devices(){
-  };
+// Reads the flame sensor every 1 second
+void senseFlame() {
+	for(;;) {
+		bool val = devices.flameDetected();
+		if (val) {
+			cout << "Flame detected." << endl;
+			devices.alarm();
+		}
 
-  // Initialization function
-  void init() {
-    // speaker connected to D5 (digital out)
-    speaker = new upm::GroveSpeaker(5);
+		else
+		{
+			cout << "No flame detected." << endl;
+			sleep(1);
+		}
+	}
+}
 
-    // flame sensor on D4
-    flame = new upm::YG1006(4);
+// Continously reads the IR temperature sensor every 1 minute for
+// both object and ambient temperature, and compares the two.
+// Sounds alarm if object temp is higher than set temp.
+void senseTemp(){
+	for(;;) {
+		float temp1 = devices.objectTemperature();
 
-    // Instantiate a OTP538U on analog pins A0 and A1
-    // A0 is used for the Ambient Temperature and A1 is used for the
-    // Object temperature.
-    // only plug ir temp sensor into A0 with this code
-    temps = new upm::OTP538U(0, 1, OTP538U_AREF);
-  }
+		cout << "Temp: " << std::fixed << setprecision(2)
+				 << temp1
+				 << " C" << endl;
 
-  // Cleanup on exit
-  void cleanup() {
-    delete speaker;
-    delete flame;
-    delete temps;
-  }
-
-  // Starts the alarm
-  void alarm() {
-    speaker->playSound('c', true, "high");
-  }
-
-  // Reads the flame sensor every 1 second
-  void senseFlame() {
-    for(;;) {
-      bool val = flame->flameDetected();
-      if (val) {
-        cout << "Flame detected." << endl;
-        alarm();
-      }
-
-      else
-      {
-        cout << "No flame detected." << endl;
-        sleep(1);
-      }
-    }
-  }
-
-  // Continously reads the IR temperature sensor every 1 minute for
-  // both object and ambient temperature, and compares the two.
-  // Sounds alarm if object temp is higher than set temp.
-  void senseTemp(){
-    for(;;) {
-      cout << "Ambient temp: " << std::fixed << setprecision(2)
-           << temps->ambientTemperature()
-           << " C, Object temp: " << temps->objectTemperature()
-           << " C" << endl;
-
-      float temp1 = temps->objectTemperature();
-
-      if(temp1 >= myTemp){
-        alarm();
-        notify();
-      }
-      else
-        sleep(60);
-    }
-  }
-};
+		if(temp1 >= myTemp){
+			devices.alarm();
+			notify();
+		}
+		else
+			sleep(60);
+	}
+}
 
 // Keeps the flame sensor running
 void runFlame(Devices& devices) {
-  devices.senseFlame();
+  senseFlame();
 }
 
 // Keeps the ir temperature sensor running
 void runTemp(Devices& devices) {
-  devices.senseTemp();
+  senseTemp();
 }
-
-Devices devices;
 
 // Exit handler for program
 void exit_handler(int param)

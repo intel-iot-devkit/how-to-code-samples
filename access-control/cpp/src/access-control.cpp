@@ -55,19 +55,25 @@
 #include <chrono>
 #include <string>
 
-#include <jhd1313m1.hpp>
-#include "biss0001.hpp"
+#include "../lib/crow/crow_all.h"
+#include "../src/html.h"
+#include "../src/css.h"
+
+#include "kits.h"
+#if INTEL_IOT_KIT == DFROBOTKIT
+#include "dfrobotkit.hpp"
+#else
+#include "grovekit.hpp"
+#endif
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 #include "datastore.h"
 #include "mqtt.h"
 
-#include "../lib/crow/crow_all.h"
-#include "../src/html.h"
-#include "../src/css.h"
-
 using namespace std;
+
+Devices devices;
 
 bool countdownStarted = false;
 bool disarmed = false;
@@ -79,18 +85,8 @@ chrono::time_point<chrono::system_clock> detectTime;
 // The time that the alarm was disarmed
 chrono::time_point<chrono::system_clock> disarmTime;
 
-// The access code to be entered to disarm alarm system
-string access_code() {
-  if (!getenv("CODE")) {
-    return "4321";
-  } else {
-    return getenv("CODE");
-  }
-}
-
 // Notify the remote datastore
 void notify(std::string message) {
-
   time_t now = std::time(NULL);
   char mbstr[sizeof "2011-10-08T07:07:09Z"];
   strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&now));
@@ -103,111 +99,79 @@ void notify(std::string message) {
   log_datastore(text.str());
 }
 
-// The hardware devices that the example is going to connect to
-struct Devices
-{
-  upm::Jhd1313m1* screen;
-  upm::BISS0001* motion;
+// Starts a countdown to sounding alarm after a person is detected
+void start_alarm_countdown() {
+  countdownStarted = true;
+  detectTime = chrono::system_clock::now();
+  string msg = "Person detected";
+  devices.message(msg, 0xff00ff);
+  notify(msg);
+}
 
-  Devices(){
-  };
+// Triggers alarm after a person has been detected, but did not enter the access code
+void trigger_alarm() {
+  alarmTriggered = true;
+  string msg = "Alarm triggered!";
+  devices.message(msg, 0xff00ff);
+  notify(msg);
+}
 
-  // Initialization function
-  void init() {
-    // screen connected to the default I2C bus
-    screen = new upm::Jhd1313m1(0);
+// Disarms the access control system
+void disarm() {
+  disarmTime = chrono::system_clock::now();
+  disarmed = true;
+  countdownStarted = false;
+  alarmTriggered = false;
+}
 
-    // motion sensor on digital D4
-    motion = new upm::BISS0001(4);
-  };
+// Resets the access control system
+void reset() {
+  disarmed = false;
+  countdownStarted = false;
+  alarmTriggered = false;
+}
 
-  // Cleanup on exit
-  void cleanup() {
-    delete screen;
-    delete motion;
+// Helper function to determin how long since a time point something happened
+int elapsed_since(chrono::time_point<chrono::system_clock> tp) {
+  chrono::duration<double> elapsed;
+  chrono::time_point<chrono::system_clock> now;
+  now = chrono::system_clock::now();
+  elapsed = now - tp;
+  return elapsed.count();
+}
+
+// Handles all of the detection logic for the access control system
+void detect() {
+  if (alarmTriggered) {
+    if (elapsed_since(detectTime) > 120) reset();
+  } else if (disarmed) {
+    if (elapsed_since(disarmTime) > 120) reset();
+  } else if (countdownStarted) {
+    if (elapsed_since(detectTime) > 30) trigger_alarm();
+  } else if (devices.motion->value()) {
+    start_alarm_countdown();
+  } else {
+    devices.message("Monitoring...");
   }
+}
 
-  // Display a message on the LCD
-  void message(const string& input, const size_t color = 0x0000ff) {
-    cout << input << std::endl;
-    size_t red   = (color & 0xff0000) >> 16;
-    size_t green = (color & 0x00ff00) >> 8;
-    size_t blue  = (color & 0x0000ff);
 
-    string text(input);
-    text.resize(16, ' ');
-
-    screen->setCursor(0,0);
-    screen->write(text);
-    screen->setColor(red, green, blue);
+// The access code to be entered to disarm alarm system
+string access_code() {
+  if (!getenv("CODE")) {
+    return "4321";
+  } else {
+    return getenv("CODE");
   }
-
-  // Starts a countdown to sounding alarm after a person is detected
-  void start_alarm_countdown() {
-    countdownStarted = true;
-    detectTime = chrono::system_clock::now();
-    string msg = "Person detected";
-    message(msg, 0xff00ff);
-    notify(msg);
-  }
-
-  // Triggers alarm after a person has been detected, but did not enter the access code
-  void trigger_alarm() {
-    alarmTriggered = true;
-    string msg = "Alarm triggered!";
-    message(msg, 0xff00ff);
-    notify(msg);
-  }
-
-  // Disarms the access control system
-  void disarm() {
-    disarmTime = chrono::system_clock::now();
-    disarmed = true;
-    countdownStarted = false;
-    alarmTriggered = false;
-  }
-
-  // Resets the access control system
-  void reset() {
-    disarmed = false;
-    countdownStarted = false;
-    alarmTriggered = false;
-  }
-
-  // Helper function to determin how long since a time point something happened
-  int elapsed_since(chrono::time_point<chrono::system_clock> tp) {
-    chrono::duration<double> elapsed;
-    chrono::time_point<chrono::system_clock> now;
-    now = chrono::system_clock::now();
-    elapsed = now - tp;
-    return elapsed.count();
-  }
-
-  // Handles all of the detection logic for the access control system
-  void detect() {
-    if (alarmTriggered) {
-      if (elapsed_since(detectTime) > 120) reset();
-    } else if (disarmed) {
-      if (elapsed_since(disarmTime) > 120) reset();
-    } else if (countdownStarted) {
-      if (elapsed_since(detectTime) > 30) trigger_alarm();
-    } else if (motion->value()) {
-      start_alarm_countdown();
-    } else {
-      message("Monitoring...");
-    }
-  }
-};
+}
 
 // Function called by worker thread for device communication
 void runner(Devices& devices) {
   for (;;) {
-    devices.detect();
+    detect();
     usleep(500);
   }
 }
-
-Devices devices;
 
 // Exit handler for program
 void exit_handler(int param)
@@ -250,7 +214,7 @@ int main() {
   ([](const crow::request& req) {
     if(req.url_params.get("code") != nullptr) {
       if (access_code() == req.url_params.get("code")) {
-        devices.disarm();
+        disarm();
       } else {
         notify("invalid code");
       }

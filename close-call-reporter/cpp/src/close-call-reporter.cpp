@@ -42,7 +42,7 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 04/04/2016
+ * @date 09/07/2016
  */
 #include <stdlib.h>
 #include <iostream>
@@ -53,8 +53,12 @@
 #include <string>
 #include <signal.h>
 
-#include <ublox6.hpp>
-#include <rfr359f.hpp>
+#include "kits.h"
+#if INTEL_IOT_KIT == DFROBOTKIT
+#include "dfrobotkit.hpp"
+#else
+#include "grovekit.hpp"
+#endif
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
@@ -63,91 +67,37 @@
 
 using namespace std;
 
-const size_t bufferLength = 256;
-
-// The hardware devices that the example is going to connect to
-struct Devices
-{
-  upm::RFR359F* detector;
-  upm::Ublox6* nmea;
-
-  Devices(){
-  };
-
-  // Initialization function
-  void init() {
-    detector = new upm::RFR359F(2);
-    nmea = new upm::Ublox6(0);
-    initPort();
-  };
-
-  // Cleanup on exit
-  void cleanup() {
-    delete detector;
-    delete nmea;
-  }
-
-  int initPort(){
-    if (!nmea->setupTty(B9600)) {
-      cerr << "Failed to setup tty port parameters" << endl;
-      return 1;
-    }
-    return 0;
-  }
-
-	// Get GPS data
-  string gps_info(){
-    string result;
-    char nmeaBuffer[bufferLength];
-
-    if (nmea->dataAvailable()) {
-      int rv = nmea->readData(nmeaBuffer, bufferLength);
-      if (rv > 0) {
-        result = nmeaBuffer;
-        return result;
-      }
-
-      if (rv < 0) {
-        cerr << "Port read error." << endl;
-        return "GPS Error";
-      }
-    }
-
-    return "No GPS Data";
-  }
-
-	// Notify remote datastore where there is a close call
-  void notify(string message, string location) {
-    cout << message << endl;
-    cout << location << endl;
-
-    time_t now = time(NULL);
-    char mbstr[sizeof "2011-10-08T07:07:09Z"];
-    strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&now));
-
-    stringstream text;
-    text << "{";
-    text << "\"message\":";
-    text << "\"" << message << " " << mbstr << "\"";
-    text << "\"location\":";
-    text << "\"" << location << "\"";
-    text << "}";
-
-    log_mqtt(text.str());
-    log_datastore(text.str());
-  }
-
-	// Check to see if any object is within range
-  void check_object_detected(){
-    if (detector->objectDetected()) {
-      notify("object-detected", gps_info());
-    } else {
-      cout << "Area is clear" << endl;
-    }
-  }
-};
-
 Devices devices;
+
+// Notify remote datastore where there is a close call
+void notify(string message, string location) {
+  cout << message << endl;
+  cout << location << endl;
+
+  time_t now = time(NULL);
+  char mbstr[sizeof "2011-10-08T07:07:09Z"];
+  strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&now));
+
+  stringstream text;
+  text << "{";
+  text << "\"message\":";
+  text << "\"" << message << " " << mbstr << "\"";
+  text << "\"location\":";
+  text << "\"" << location << "\"";
+  text << "}";
+
+  log_mqtt(text.str());
+  log_datastore(text.str());
+}
+
+// Check to see if any object is within range
+void check_object_detected(){
+  if (devices.objectDetected()) {
+    notify("object-detected", devices.gps_info());
+  } else {
+    cout << "Area is clear" << endl;
+  }
+}
 
 // Exit handler for program
 void exit_handler(int param)
@@ -174,7 +124,7 @@ int main() {
   devices.init();
 
 	for (;;) {
-    devices.check_object_detected();
+    check_object_detected();
     sleep(5);
   }
 

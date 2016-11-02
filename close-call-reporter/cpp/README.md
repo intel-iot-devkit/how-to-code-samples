@@ -37,33 +37,42 @@ Grove* Transportation and Safety Kit containing:
 3. [Grove IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 4. [Grove GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
 
+DFRobot* Starter Kit for Intel® Edison, containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [IR Distance Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=572)
+3. [GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
+4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
+
 ## Software requirements
 
-1. [Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/eclipse-getting-started-guide)
-2. Microsoft Azure\*, IBM Bluemix\*, or AWS account
+1. [Intel® System Studio (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/node/672439)
+2. Microsoft Azure\*, IBM Bluemix\*, or AWS account (optional)
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository onto your computer with Git* as follows:
+This sample is already one of the IoT examples included in Intel® System Studio. To start using it, follow these steps:
 
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-To download a .zip file, in your web browser, go to [https://github.com/intel-iot-devkit/how-to-code-samples](https://github.com/intel-iot-devkit/how-to-code-samples) and click the **Download ZIP** button on the right-hand side. Once the .zip file is downloaded, uncompress it and use the files in the directory for this example.
-
-### Adding the program to Eclipse
-
-In Eclipse\*, select **Import Wizard** to import an existing project into the workspace as follows:
-
-1. From the main menu, select **File > Import**.<br>
-![](./../../images/cpp/cpp-eclipse-menu.png)
-2. The **Import Wizard** dialog box opens. Select **General > Existing Project into Workspace** and click **Next**.<br>
-![](./../../images/cpp/cpp-eclipse-menu-select-epiw.png)
-3. Click **Select root directory** and then the associated **Browse** button to locate the directory that contains the project files.<br>
-![](./../../images/cpp/cpp-eclipse-menu-select-rootdir.png)
-4. Under **Projects**, select the directory with the project files you'd like to import and click **OK** and then **Finish** to import the files into Eclipse.<br>
-![](./../../images/cpp/cpp-eclipse-menue-epiw-rootdir.png)
-5. Your main .cpp program is now displayed in your workspace under the **src** folder.<br>
-![](./../../images/cpp/cpp-eclipse-menu-src-loc.png)
+1. From the main menu, select **Intel® IoT > Import IoT Examples**.<br>
+![](./../../images/cpp/import-iot-examples.png)
+2. Expand the tree view for **C++ > How To Code Samples > Close Call Reporter** and click **Import Example**.<br>
+![](./../../images/cpp/click-how-to-code-samples.png)
+3. Select your developer board from the selection window then select **Next**.<br>
+![](./../../images/cpp/select-board.png)
+4. Select **Intel® IoT C/C++ project** from the Select a project type window then click **Next**.<br>
+![](./../../images/cpp/select-project-type.png)
+5. Select **Yocto** from the Selct target OS dropdown menu then click **Next**.<br>
+![](./../../images/cpp/select-os.png)
+6. The next tab will ask for connection name and target name. If you do not know these click **Search Target**.<br>
+![](./../../images/cpp/search-target.png)
+7. Select your Edison from the dropdown list. Select **OK**.<br>
+![](./../../images/cpp/click-how-to-code-samples.png)
+8. Your connection name and target name should be filled in. Select **Finish**.<br>
+![](./../../images/cpp/finish-target.png)
+9. A new window will open for you and you will need to choose a name for your project and click **Next**.<br>
+![](./../../images/cpp/enter-project-name.png)
+10. Your project source files will now be available on the on the upper left of your IDE by default.<br>
+![](./../../images/cpp/project-src-imported.png)
 
 ### Connecting the Grove* sensors
 
@@ -93,17 +102,27 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt)
 
+## Configuring the example for your hardware kit
+
+To configure the example for the specific hardware kit that you are using, either Grove\* or DFRobot\*:
+
+1. From the main menu, select **Project > Properties** dialog box is displayed.
+![](./../../images/cpp/click-project-properties.png)
+2. Expand the section **C/C++ General**. <br>Click on the **Paths and Symbols** sub-section, and click on the **Symbols** tab.
+![](./../../images/cpp/click-gen-path-symbols.png)
+3. Now click on **GNU C++**, and click on the **Add** button.
+![](./../../images/cpp/click-gnupp-add.png)
+4. In the **Name** field, enter "INTEL_IOT_KIT". In the **Value** field, enter either "GROVEKIT" (this is the default) or "DFROBOTKIT", depending on which hardware kit you wish to use.
+![](./../../images/cpp/add-name-and-var.png)
+5. Your new name symbol and value will now be displayed. Click **OK**.
+![](./../../images/cpp/name-var-ok.png)
+6. Another dialog box will appear asking to rebuild project. Click **OK**. 
+![](./../../images/cpp/path-symbol-rebuild-ok.png)
+
 ### Connecting your Intel® Edison board to Eclipse
 
-1. In the bottom left corner, right-click anywhere on the **Target SSH Connections** tab and select **New > Connection**.<br>
-![](./../../images/cpp/cpp-connection-eclipse-ide-win.png)
-2. The **Intel(R) IoT Target Connection** window appears. In the **Filter** field, type the name of your board.<br>
-![](./../../images/cpp/cpp-connection-eclipse-ide-win2.png)
-3. In the **Select one of the found connections** list, select your device name and click **OK**.<br>
-![](./../../images/cpp/cpp-connection-eclipse-ide-win3.png)
-4. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
+1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
-
 If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
 
 ### Running the example with the cloud server

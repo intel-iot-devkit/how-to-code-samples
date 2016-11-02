@@ -43,7 +43,7 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 04/04/2016
+ * @date 09/22/2016
  */
 
 #include <stdlib.h>
@@ -54,9 +54,12 @@
 #include <vector>
 #include <signal.h>
 
-#include <grove.hpp>
-#include <buzzer.hpp>
-#include <jhd1313m1.hpp>
+#include "kits.h"
+#if INTEL_IOT_KIT == DFROBOTKIT
+#include "dfrobotkit.hpp"
+#else
+#include "grovekit.hpp"
+#endif
 
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
@@ -94,7 +97,6 @@ void send_sms() {
 
 // Notify remote datastore server to note the alarm status
 void notify() {
-
   std::time_t now = std::time(NULL);
   char mbstr[sizeof "2011-10-08T07:07:09Z"];
   std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
@@ -106,76 +108,6 @@ void notify() {
   log_mqtt(text.str());
   log_datastore(text.str());
 }
-
-// The hardware devices that the example is going to connect to
-struct Devices
-{
-  upm::GroveTemp* temp;
-  upm::Buzzer* buzzer;
-  upm::Jhd1313m1* screen;
-
-  Devices(){
-  };
-
-  // Initialization function
-  void init() {
-    // touch sensor connected to A0 (analog in)
-    temp = new upm::GroveTemp(0);
-
-    // buzzer connected to D5 (digital out)
-    buzzer = new upm::Buzzer(5);
-
-    // screen connected to the default I2C bus
-    screen = new upm::Jhd1313m1(0);
-
-    stop_alarm();
-  };
-
-  // Cleanup on exit
-  void cleanup() {
-    delete temp;
-    delete buzzer;
-    delete screen;
-  }
-
-  // Reset the fire alarm
-  void reset() {
-    stop_alarm();
-    message("Ready");
-  }
-
-  // Display a message on the LCD
-  void message(const std::string& input, const std::size_t color = 0x0000ff) {
-    std::size_t red   = (color & 0xff0000) >> 16;
-    std::size_t green = (color & 0x00ff00) >> 8;
-    std::size_t blue  = (color & 0x0000ff);
-
-    std::string text(input);
-    text.resize(16, ' ');
-
-    screen->setCursor(0,0);
-    screen->write(text);
-    screen->setColor(red, green, blue);
-  }
-
-  // Start the alarm
-  void start_alarm() {
-    message("Fire alarm!");
-    buzzer->playSound(266, 0);
-  }
-
-  // Stop the alarm
-  void stop_alarm() {
-    message("           ");
-    buzzer->stopSound();
-    buzzer->stopSound();
-  }
-
-  // Read the current temperature from the connected sensor
-  int temperature() {
-    return temp->value();
-  }
-};
 
 Devices devices;
 
