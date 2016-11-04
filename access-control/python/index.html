@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Access Control</title>
+
+    <style>
+      * { box-sizing: border-box;}
+
+      html {
+        font-size: 30px;
+        font-family: sans-serif;
+      }
+
+      button {
+        font-size: 30px;
+        background: none;
+        border: 1px solid #444;
+        border-radius: 5px;
+        margin: 5px;
+        cursor: pointer;
+      }
+
+      #pad .row button {
+        width: 55px;
+        height: 55px;
+      }
+
+      button:hover {
+        background: #efefef;
+      }
+
+      #display, #submit, #clear {
+        display: block;
+        width: 205px;
+      }
+
+      #display {
+        margin: 5px;
+        font-family: monospace;
+        border: 1px solid #444;
+        text-align: center;
+        color: red;
+        line-height: 1;
+        min-height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="pad">
+      <div id="display"></div>
+
+      <div class="row">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+      </div>
+
+      <div class="row">
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+      </div>
+
+      <div class="row">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+      </div>
+
+      <button id="submit">Submit</button>
+      <button id="clear">Clear</button>
+    </div>
+
+    <script>
+      var numpad = document.querySelectorAll("#pad .row button"),
+          display = document.getElementById("display"),
+          submit = document.getElementById("submit"),
+          clear = document.getElementById("clear");
+
+      function add(e) {
+        if (display.textContent.length >= 4) { return; }
+        var num = e.target.textContent;
+        display.textContent += num;
+      }
+
+      function clearDisplay() {
+        display.textContent = "";
+      }
+
+      clear.addEventListener("click", clearDisplay);
+
+      submit.addEventListener("click", function() {
+        var req = new XMLHttpRequest(),
+            code = display.textContent;
+
+        req.open("get", "/alarm?code=" + code, true);
+        req.send();
+
+        clearDisplay();
+      });
+
+      for (var i = 0; i < numpad.length; i++) {
+        numpad[i].addEventListener("click", add);
+      }
+    </script>
+  </body>
+</html>
