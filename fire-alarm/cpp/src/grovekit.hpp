@@ -106,6 +106,7 @@ struct Devices
 
   // Display a message on the LCD
   void message(const string& input, const size_t color = 0x0000ff) {
+    cout << input << std::endl;
     size_t red   = (color & 0xff0000) >> 16;
     size_t green = (color & 0x00ff00) >> 8;
     size_t blue  = (color & 0x0000ff);
