@@ -6,7 +6,10 @@
   "date": "2016-05-04",
   "platform" : {
     "hwreq" : ["Grove Distance Interrupter connected to digital pin 2 (Grove Base Shield Port D2)",
-               "Grove GPS connected to UART"],
+               "Grove GPS connected to UART",
+               "or",
+               "DFRobot Distance Interrupter connected to digital pin 2 (DFRobot IO expansion board Port D2)",
+               "DFRobot GPS connected to UART"],
     "libs": ["boost", "upm", "curl", "paho"],
     "compatible": ["Edison"]
   }

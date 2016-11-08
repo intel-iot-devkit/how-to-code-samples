@@ -104,7 +104,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt)
 
-### Connecting your Intel® Edison board to Eclipse
+### Connecting your Intel® Edison board to Intel® System Studio
 
 1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
@@ -113,7 +113,7 @@ If prompted for the username and password, the username is **root** and the pass
 
 ### Running the example with the cloud server
 
-To run the example with the optional back-end data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse as follows:
+To run the example with the optional back-end data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
 
 1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
@@ -127,7 +127,7 @@ Now when you run your program using the **Run** button, it should be able to cal
 
 ### Running the code on the Intel® Edison board
 
-When you're ready to run the example, click **Run** at the top menu bar in Eclipse.<br>
+When you're ready to run the example, click **Run** at the top menu bar in Intel® System Studio.<br>
 ![](./../../images/cpp/cpp-run-eclipse.png)
 
 This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.

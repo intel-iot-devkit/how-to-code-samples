@@ -27,27 +27,59 @@
 #include <mma7660.hpp>
 #include <jhd1313m1.hpp>
 
+using namespace std;
+
 // The hardware devices that the example is going to connect to
 struct Devices
 {
   upm::MMA7660* accel;
   upm::Jhd1313m1* screen;
 
+  int i2cBus;
+
   Devices(){
+  };
+
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        i2cBus = 0;
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        i2cBus = 0 + 512;
+        break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << endl;
+        }
+        i2cBus = 0 + 512;
+    }
   };
 
   // Initialization function
   void init() {
-    // accelerometer connected to i2c
-    accel = new upm::MMA7660(MMA7660_I2C_BUS,
-                                MMA7660_DEFAULT_I2C_ADDR);
+    set_pins();
+
+    // accelerometer connected to i2c bus
+    accel = new upm::MMA7660(i2cBus, MMA7660_DEFAULT_I2C_ADDR);
 
     accel->setModeStandby();
     accel->setSampleRate(upm::MMA7660::AUTOSLEEP_64);
     accel->setModeActive();
 
-    // screen connected to the default I2C bus
-    screen = new upm::Jhd1313m1(0);
+    // screen connected to the i2c bus
+    screen = new upm::Jhd1313m1(i2cBus);
   };
 
   // Cleanup on exit
@@ -77,12 +109,13 @@ struct Devices
   }
 
   // Display a message on the LCD
-  void message(const std::string& input, const std::size_t color = 0x0000ff) {
-    std::size_t red   = (color & 0xff0000) >> 16;
-    std::size_t green = (color & 0x00ff00) >> 8;
-    std::size_t blue  = (color & 0x0000ff);
+  void message(const string& input, const size_t color = 0x0000ff) {
+    cerr << input << endl;
+    size_t red   = (color & 0xff0000) >> 16;
+    size_t green = (color & 0x00ff00) >> 8;
+    size_t blue  = (color & 0x0000ff);
 
-    std::string text(input);
+    string text(input);
     text.resize(16, ' ');
 
     screen->setCursor(0,0);

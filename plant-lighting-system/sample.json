@@ -7,8 +7,16 @@
   "platform" : {
     "hwreq" : ["Grove Light Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
                "Grove Moisture Sensor connected to analog pin 1 (Grove Base Shield Port A1)",
-               "Grove RGB LCD on I2C"],
+               "Grove RGB LCD on I2C",
+               "or",
+               "DFRobot LCD Display Shield",
+               "DFRobot Light sensor attached to A1",
+               "DFRobot moisture sensor attached to A2"],
     "libs": ["boost", "openssl", "upm", "curl", "paho"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }

@@ -66,10 +66,20 @@ struct Devices
 
   // Reads the current value from the flow sensor
   int readFlow() {
-    if (turnedOn)
-      return 1;
-    if (turnedOff)
-      return 0;
+    if (turnedOn) {
+     if (readMoisture() > 30) {
+    	 return 1;
+     } else {
+    	 return 0;
+     }
+    }
+    if (turnedOff) {
+    	if (readMoisture() < 30) {
+    		return 0;
+    	} else {
+    		return 1;
+    	}
+    }
     return 0;
   }
 

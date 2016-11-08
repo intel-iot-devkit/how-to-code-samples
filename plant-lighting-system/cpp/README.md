@@ -2,12 +2,12 @@
 
 ## Introduction
 
-This automatic plant lighting system monitor application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
+This automatic plant lighting system monitor application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
-- Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.
 - Set up a web application server to set the lighting time and store this data using Azure* Redis Cache from Microsoft, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Invoke the services of the Twilio\* API for sending text messages.
@@ -15,7 +15,7 @@ From this exercise, developers will learn how to:
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create an automatic plant lighting monitor system that:
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create an automatic plant lighting monitor system that:
 
 - checks if a separate automated lighting system is turned on or off based on a configurable schedule, by using a light sensor.
 - can be accessed with your mobile phone to set the lighting periods via a built-in web interface.
@@ -27,7 +27,7 @@ Using an Intel® Edison board, this project lets you create an automatic plant l
 
 This lighting system has a few useful features.
 
-You can set the lighting system schedule via a web page served directly from the Intel® Edison board, using your mobile phone.
+You can set the lighting system schedule via a web page served directly from the Intel® Edison board or Intel® IoT Gateway, using your mobile phone.
 
 If the lighting is supposed to be on but the light sensor does not detect light, the application sends an SMS alert to a specified number through Twilio\*.
 
@@ -92,6 +92,16 @@ You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible br
 2. Plug one end of a Grove cable into the Grove Moisture Sensor, and connect the other end to the A1 port on the Grove Base Shield V2.
 3. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Base Shield V2.
 
+### Connecting the DFRobot\* sensors
+
+![](./../../images/js/lighting-dfrobot.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot\* cable into the Analog Ambient Light Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
+
 ### Twilio* API Key
 
 To optionally send text messages, you need to register for an account and get an API key from the Twilio* web site:
@@ -99,6 +109,16 @@ To optionally send text messages, you need to register for an account and get an
 [https://www.twilio.com](https://www.twilio.com)
 
 You can still run the example, but without a Twilio API key you cannot send SMS alerts.
+
+### Intel® IoT Gateway setup
+
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+
+Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
+
+https://software.intel.com/en-us/node/633284
+
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
 
 ### Data store server setup
 
@@ -130,19 +150,19 @@ To configure the example for the specific hardware kit that you are using, eithe
 ![](./../../images/cpp/add-name-and-var.png)
 5. Your new name symbol and value will now be displayed. Click **OK**.
 ![](./../../images/cpp/name-var-ok.png)
-6. Another dialog box will appear asking to rebuild project. Click **OK**. 
+6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
-### Connecting your Intel® Edison board to Eclipse
+### Connecting your Intel® Edison board or Intel® IoT Gateway to Intel® System Studio
 
 1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 
-If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
+If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board or Intel® IoT Gateway.
 
 ### Running the example with the cloud server
 
-To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse as follows:
+To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® IoT Gateway to Intel® System Studio as follows:
 
 1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
@@ -152,14 +172,14 @@ To run the example with the optional backend data store, you need to set the `SE
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board or Intel® IoT Gateway.
 
 ### Running the code on the Intel® Edison board
 
-When you're ready to run the example, click **Run** at the top menu bar in Eclipse.<br>
+When you're ready to run the example, click **Run** at the top menu bar in Intel® System Studio.<br>
 ![](./../../images/cpp/cpp-run-eclipse.png)
 
-This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.
+This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board or Intel® IoT Gateway, and then executes it on the board itself.
 
 After running the program, you should see output similar to the one in the image below.<br>
 ![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
@@ -176,11 +196,11 @@ For help using the shell script, go to this link:
 
 ### Setting the lighting schedule
 
-The schedule for the lighting system is set using a single-page web interface served up from the Intel® Edison board while the sample program is running.<br>
+The schedule for the lighting system is set using a single-page web interface served up from the Intel® Edison board or Intel® IoT Gateway while the sample program is running.<br>
 ![](./../../images/cpp/plant-ligt-app.png)
 
 The latest data values from the connected Grove* Moisture Sensor are displayed at the bottom of the web page.
 
-The web server runs on port `3000`, so if the Intel® Edison board is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel® Edison board or Intel® IoT Gateway is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.

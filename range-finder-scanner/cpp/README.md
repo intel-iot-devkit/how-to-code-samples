@@ -1,17 +1,17 @@
 ﻿# Range finder scanner in C++
 
-This range finder scanner application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
+This range finder scanner application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
-- Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run these code samples in the Intel® System Studio IoT Edition (Eclipse\* IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.
 - Set up a web application server to view range finder data using a web page served up directly from the Intel® Edison board.
 
 ## What It Is
 
-Using an Intel® Edison board, this project lets you create a range finding scanner that:
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a range finding scanner that:
 
 - continuously checks the Grove* IR Distance Interrupter.
 - moves the stepper motor in a 360-degree circle.
@@ -74,16 +74,26 @@ Note: You need a separate battery or power supply for the motor. You cannot use 
 ![](./../../images/js/range-finder.jpg)
 2. Plug one end of a Grove* cable into the Grove* IR Distance Interrupter, and connect the other end to the D2 port on the Grove* Base Shield V2.
 
-### Connecting your Intel® Edison board to Eclipse
+### Connecting your Intel® Edison board or Intel® IoT Gateway to Intel® System Studio
 
 1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 
 If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
 
-### Running the code on the Intel® Edison board
+### Intel® IoT Gateway setup
 
-When you're ready to run the example, click **Run** at the top menu bar in Eclipse.<br>
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+
+Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
+
+https://software.intel.com/en-us/node/633284
+
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
+
+### Running the code on the Intel® Edison board or Intel® IoT Gateway
+
+When you're ready to run the example, click **Run** at the top menu bar in Intel® System Studio.<br>
 ![](./../../images/cpp/cpp-run-eclipse.png)
 
 This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.
@@ -103,6 +113,6 @@ For help using the shell script, go to this link:
 Range data is viewed using a single-page web interface served directly from the Intel® Edison board while the sample program is running.<br>
 ![](./../../images/js/range-finder-web.png)
 
-The web server runs on port `3000`, so if the Intel® Edison board is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel® Edison board or Intel® IoT Gateway is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.

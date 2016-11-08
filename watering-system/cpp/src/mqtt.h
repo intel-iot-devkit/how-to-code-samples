@@ -21,7 +21,6 @@
 * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-
 #ifndef MQTT_H_
 #define MQTT_H_
 
@@ -68,5 +67,10 @@ void log_mqtt(std::string payload);
  *  MQTT_CA - file name of root Certificate Authority (CA) certificate for verifying the MQTT server
  */
 void increment_mqtt();
+
+/* Cleanup mqtt resources
+ *
+ */
+void close_mqtt();
 
 #endif /* MQTT_H_ */

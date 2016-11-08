@@ -6,8 +6,15 @@
   "date": "2016-05-04",
   "platform" : {
     "hwreq" : ["Grove LCD RGB Backlight on I2C",
-               "Grove 3-Axis Digital Accelerometer on I2C"],
+               "Grove 3-Axis Digital Accelerometer on I2C",
+               "or",
+               "DFRobot LCD Display Shield",
+               "DFRobot accelerometer connected to A1-A3"],
     "libs": ["upm", "curl"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }

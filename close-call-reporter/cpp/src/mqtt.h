@@ -68,4 +68,9 @@ void log_mqtt(std::string payload);
  */
 void increment_mqtt();
 
+/* Cleanup mqtt resources
+ *
+ */
+void close_mqtt();
+
 #endif /* MQTT_H_ */

@@ -1,18 +1,18 @@
 ﻿# Storage unit flood detector in C++
 
-This storage unit flood detector application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
+This storage unit flood detector application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
-- Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run these code samples in the Intel® System Studio IoT Edition (Eclipse\* IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.
 - Store water detection data using Azure* Redis Cache from Microsoft, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (IBM), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services\* (IBM), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a storage unit flood detector that:
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a storage unit flood detector that:
 
 - continuously checks the moisture sensor.
 - sounds an audible warning when it looks like flooding.
@@ -80,6 +80,16 @@ You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible br
 ![](./../../images/js/flood-detect.jpg)
 2. Plug one end of a Grove cable into the Grove* Speaker, and connect the other end to the D5 port on the Grove* Base Shield V2.
 
+### Connecting the DFRobot\* sensors
+
+![](./../../images/js/flood-detect-dfrobot.jpg)
+
+You need to have a I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the I/O Expansion Shield.
+
+1. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A1 port on the I/O Expansion Shield.
+
+2. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A2 port on the I/O Expansion Shield.
+
 ### Intel® Edison board setup
 
 This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on the Intel® Edison board by default.
@@ -114,19 +124,31 @@ To configure the example for the specific hardware kit that you are using, eithe
 ![](./../../images/cpp/add-name-and-var.png)
 5. Your new name symbol and value will now be displayed. Click **OK**.
 ![](./../../images/cpp/name-var-ok.png)
-6. Another dialog box will appear asking to rebuild project. Click **OK**. 
+6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
-### Connecting your Intel® Edison board to Eclipse
+### Connecting your Intel® Edison board or Intel® IoT Gateway to Intel® System Studio
+
 
 1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
 
 If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
 
+### Intel® IoT Gateway setup
+
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+
+Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
+
+https://software.intel.com/en-us/node/633284
+
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
+
 ### Running the example with the cloud server
 
-To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse as follows:
+To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio
+ as follows:
 
 1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
@@ -136,14 +158,15 @@ To run the example with the optional backend data store, you need to set the `SE
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board or Intel® IoT Gateway.
 
-### Running the code on the Intel® Edison board
+### Running the code on the Intel® Edison board or Intel® IoT Gateway
 
-When you're ready to run the example, click **Run** at the top menu bar in Eclipse.<br>
+When you're ready to run the example, click **Run** at the top menu bar in Intel® System Studio
+.<br>
 ![](./../../images/cpp/cpp-run-eclipse.png)
 
-This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.
+This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board or Intel® IoT Gateway, and then executes it on the board or Intel® IoT Gateway itself.
 
 After running the program, you should see output similar to the one in the image below.<br>
 ![](./../../images/cpp/cpp-run-eclipse-successful-build.png)

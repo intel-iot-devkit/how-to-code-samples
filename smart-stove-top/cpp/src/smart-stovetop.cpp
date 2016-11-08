@@ -33,7 +33,7 @@
  * @hardware Sensors used:\n
  * Grove Speaker\n
  * Grove Flame Sensor\n
- * Grove IR Temerature Sensor\n
+ * Grove IR Temperature Sensor\n
  *
  * @cc
  * @cxx -std=c++1y
@@ -49,6 +49,12 @@
 #include <string>
 #include <signal.h>
 
+#include "../lib/crow/crow_all.h"
+#include "html.h"
+#include "styles.h"
+
+using namespace std;
+
 #include "kits.h"
 #if INTEL_IOT_KIT == DFROBOTKIT
 #include "dfrobotkit.hpp"
@@ -59,9 +65,6 @@
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 #include "datastore.h"
 #include "mqtt.h"
-#include "../lib/crow/crow_all.h"
-#include "html.h"
-#include "styles.h"
 
 using namespace std;
 
@@ -70,16 +73,16 @@ float myTemp = 1000;
 
 // Send notification to remote datastore
 void notify() {
-	  std::time_t now = std::time(NULL);
-	  char mbstr[sizeof "2011-10-08T07:07:09Z"];
-	  std::strftime(mbstr, sizeof(mbstr), "%FT%TZ", std::localtime(&now));
+	time_t now = std::time(NULL);
+	char mbstr[sizeof "2011-10-08T07:07:09Z"];
+	strftime(mbstr, sizeof(mbstr), "%FT%TZ", localtime(&now));
 
-	  std::stringstream text;
-	  text << "{\"value\":";
-	  text << "\"" << mbstr << "\"}";
+	stringstream text;
+	text << "{\"value\":";
+	text << "\"" << mbstr << "\"}";
 
-	  log_mqtt(text.str());
-	  log_datastore(text.str());
+	log_mqtt(text.str());
+	log_datastore(text.str());
 }
 
 Devices devices;
@@ -96,6 +99,7 @@ void senseFlame() {
 		else
 		{
 			cout << "No flame detected." << endl;
+			devices.stopAlarm();
 			sleep(1);
 		}
 	}
@@ -144,15 +148,6 @@ int main()
   // handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
 
-  // check that we are running on Galileo or Edison
-  mraa_platform_t platform = mraa_get_platform_type();
-  if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
-    (platform != MRAA_INTEL_GALILEO_GEN2) &&
-    (platform != MRAA_INTEL_EDISON_FAB_C)) {
-    cerr << "ERROR: Unsupported platform" << endl;
-    return MRAA_ERROR_INVALID_PLATFORM;
-  }
-
   // create and initialize UPM devices
   devices.init();
 
@@ -179,7 +174,7 @@ int main()
 
   CROW_ROUTE(app, "/styles.css")
   ([]() {
-    std::stringstream text;
+    stringstream text;
     text << styles_css;
     return text.str();
   });

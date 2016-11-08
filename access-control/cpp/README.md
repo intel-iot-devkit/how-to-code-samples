@@ -2,19 +2,19 @@
 
 ## Introduction
 
-This access control system application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
+This access control system application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
-- Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.
 - Set up a web application server to let users enter the access code to disable the alarm system, and store this alarm data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a smart access control system that:
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a smart access control system that:
 
 - monitors a motion sensor to detect when a person is in an area that requires authorization.
 - can be accessed with your mobile phone via a built-in web interface to disable the alarm.
@@ -95,6 +95,15 @@ You need to have a LCD Display Shield connected to an Arduino\*-compatible break
 
 1. Plug one end of a DFRobot\* cable into the PIR (Motion) Sensor, and connect the other end to the A2 port on the LCD Display Shield.
 
+### Intel® IoT Gateway setup
+
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+
+Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
+
+https://software.intel.com/en-us/node/633284
+
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
 
 ### Data store server setup
 
@@ -112,7 +121,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt)
 
-### Connecting your Intel® Edison board to Eclipse
+### Connecting your Intel® Edison board or Intel® IoT Gateway to Intel® System Studio
 
 1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
@@ -133,12 +142,12 @@ To configure the example for the specific hardware kit that you are using, eithe
 ![](./../../images/cpp/add-name-and-var.png)
 5. Your new name symbol and value will now be displayed. Click **OK**.
 ![](./../../images/cpp/name-var-ok.png)
-6. Another dialog box will appear asking to rebuild project. Click **OK**. 
+6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
 ### Running the example with the cloud server
 
-To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse as follows:
+To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
 
 1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
@@ -150,9 +159,9 @@ To run the example with the optional backend data store, you need to set the `SE
 
 Now, when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board.
 
-### Running the code on the Intel® Edison board
+### Running the code on the Intel® Edison board or Intel® IoT Gateway
 
-When you're ready to run the example, click **Run** at the top menu bar in Eclipse.<br>
+When you're ready to run the example, click **Run** at the top menu bar in Intel® System Studio.<br>
 ![](./../../images/cpp/cpp-run-eclipse.png)
 
 This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.
@@ -172,6 +181,6 @@ We have a useful tutorial on how to use the shell script here:
 The alarm is disabled using a single-page web interface served directly from the Intel® Edison board while the sample program is running.<br>
 ![](./../../images/cpp/access-control.png)
 
-The web server runs on port `3000`, so if the Intel® Edison board is connected to WiFi* on `192.168.1.13`; the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel® Edison board or Intel® IoT Gateway is connected to WiFi* on `192.168.1.13`; the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.

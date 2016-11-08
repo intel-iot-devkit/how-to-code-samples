@@ -31,6 +31,8 @@ const int NOISE_THRESHOLD = 140;
 #include <grove.hpp>
 #include <sainsmartks.hpp>
 
+using namespace std;
+
 // The hardware devices that the example is going to connect to
 struct Devices
 {
@@ -73,6 +75,7 @@ struct Devices
 
   // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
+    cerr << input << endl;
     std::string text(input);
     text.resize(16, ' ');
 

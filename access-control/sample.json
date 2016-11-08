@@ -6,8 +6,15 @@
   "date": "2016-05-04",
   "platform" : {
     "hwreq" : ["Grove LCD RGB Backlight on I2C",
-               "Grove PIR Motion Sensor connected to digital pin 4 (Grove Base Shield Port D4)"],
+               "Grove PIR Motion Sensor connected to digital pin 4 (Grove Base Shield Port D4)",
+               "or",
+               "DFRobot LCD Display Shield",
+               "DFRobot PIR (Motion) Sensor connected to pin A2 (configured as digital pin 16)"],
     "libs": ["boost", "upm", "curl", "paho"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }

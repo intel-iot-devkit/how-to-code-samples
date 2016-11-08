@@ -7,8 +7,15 @@
   "platform" : {
     "hwreq" : ["Grove Moisture Sensor connected to analog pin 0 (Grove Base Shield Port A0)",
                "Grove Water Flow Sensor connected to digital pin 2 (Grove Base Shield Port D2)",
-               "Grove Dry-reed Relay connected to digital pin 4 (Grove Base Shield Port D4)"],
+               "Grove Dry-reed Relay connected to digital pin 4 (Grove Base Shield Port D4)",
+               "or",
+               "DFRobot pump attached to A2 (aka D16)",
+               "DFRobot moisture sensor attached to A1"],
     "libs": ["boost", "upm", "curl", "paho", "openssl"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }

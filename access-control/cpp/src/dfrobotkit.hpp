@@ -53,8 +53,8 @@ struct Devices
     // screen connected to the default I2C bus
     screen = new upm::SAINSMARTKS();
 
-    // motion sensor on digital D4
-    motion = new upm::BISS0001(4);
+    // motion sensor on pin A2, acting as digital D16
+    motion = new upm::BISS0001(16);
   };
 
   // Cleanup on exit

@@ -45,16 +45,52 @@ struct Devices
   upm::Jhd1313m1* screen;
   upm::BISS0001* motion;
 
+  int screenBus, motionPin;
+
   Devices(){
   };
 
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        screenBus = 0;
+        motionPin = 4;
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        screenBus = 0 + 512;
+        motionPin = 4 + 512;
+        break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        screenBus = 0 + 512;
+        motionPin = 4 + 512;
+    }
+  }
+
   // Initialization function
   void init() {
+	  mraa_init();
+
+    set_pins();
+
     // screen connected to the default I2C bus
-    screen = new upm::Jhd1313m1(0);
+    screen = new upm::Jhd1313m1(screenBus);
 
     // motion sensor on digital D4
-    motion = new upm::BISS0001(4);
+    motion = new upm::BISS0001(motionPin);
   };
 
   // Cleanup on exit

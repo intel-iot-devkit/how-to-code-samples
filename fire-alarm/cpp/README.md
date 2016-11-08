@@ -2,12 +2,12 @@
 
 ## Introduction
 
-This smart fire alarm application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
+This smart fire alarm application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
-- Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.
 - Set up a web application server to store fire alarm data using Azure* Redis Cache from Microsoft, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Invoke the services of the Twilio\* API for sending text messages.
@@ -15,7 +15,7 @@ From this exercise, developers will learn how to:
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a smart fire alarm that:
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a smart fire alarm that:
 
 - constantly monitors for unsafe temperature levels.
 - audibly notifies of alerts using the buzzer.
@@ -90,6 +90,16 @@ You need to have the Grove* Base Shield V2 connected to an Arduino\*-compatible 
 2. Plug one end of a Grove cable into the Grove Buzzer and connect the other end to the D5 port on the Grove Base Shield V2.
 3. Plug one end of a Grove cable into the Grove RGB LCD and plug the other end into any of the I2C ports on the Grove Base Shield V2.
 
+### Connecting the DFRobot\* sensors
+
+![](./../../images/js/fire-alarm-dfrobot.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot\* cable into the Analog Temperature Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A2 port on the LCD Keypad Shield.
+
 ### Intel® Edison board setup
 
 This example uses the **restclient-cpp** library to perform REST calls to the remote data server. The code can be found in the **lib** directory. The **restclient-cpp** library requires the **libcurl** package, which is already installed on the Intel® Edison board by default.
@@ -103,6 +113,16 @@ To optionally send text messages, you need to register for an account and get an
 [https://www.twilio.com](https://www.twilio.com)
 
 You cannot send text messages without obtaining a Twilio API key first. You can still run the example, but without SMS alerts.
+
+### Intel® IoT Gateway setup
+
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+
+Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
+
+https://software.intel.com/en-us/node/633284
+
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
 
 ### Data store server setup
 
@@ -134,10 +154,10 @@ To configure the example for the specific hardware kit that you are using, eithe
 ![](./../../images/cpp/add-name-and-var.png)
 5. Your new name symbol and value will now be displayed. Click **OK**.
 ![](./../../images/cpp/name-var-ok.png)
-6. Another dialog box will appear asking to rebuild project. Click **OK**. 
+6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
-### Connecting your Intel® Edison board to Eclipse
+### Connecting your Intel® Edison board to Intel® System Studio
 
 1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
 ![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
@@ -146,7 +166,7 @@ If prompted for the username and password, the username is **root** and the pass
 
 ### Running the example with the cloud server
 
-To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse as follows:
+To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
 
 1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
@@ -156,14 +176,14 @@ To run the example with the optional backend data store, you need to set the `SE
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board or Intel® IoT Gateway.
 
-### Running the code on the Intel® Edison board
+### Running the code on the Intel® Edison board or Intel® IoT Gateway
 
-When you're ready to run the example, click **Run** at the top menu bar in Eclipse.<br>
+When you're ready to run the example, click **Run** at the top menu bar in Intel® System Studio.<br>
 ![](./../../images/cpp/cpp-run-eclipse.png)
 
-This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board, and then executes it on the board itself.
+This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board or Intel® IoT Gateway, and then executes it on the board itself.
 
 After running the program, you should see output similar to the one in the image below.<br>
 ![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
@@ -174,7 +194,7 @@ Successful output should be similar to the one in the image below.<br>
 When the program is uploaded to the Intel® Edison board, the program starts to continuously monitor the temperature. If it exceeds the threshold, the `Fire Alarm!` message is displayed on the LCD.<br>
 ![](./../../images/cpp/fire-alarm-lcd.jpg)
 
-When the temperature sensor is heated, another output message is displayed in the Eclipse console, similar to the image above. This means you sent your SMS alert successfully.<br>
+When the temperature sensor is heated, another output message is displayed in the Intel® System Studio console, similar to the image above. This means you sent your SMS alert successfully.<br>
 ![](./../../images/cpp/cpp-run-eclipse-successful-output-sms-sent.png)
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.

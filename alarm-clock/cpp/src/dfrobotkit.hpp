@@ -43,6 +43,8 @@ struct Devices
 
   // Initialization function
   void init() {
+    mraa_init();
+
     // rotary connected to A3 (analog in)
     rotary = new upm::GroveRotary(3);
 
@@ -50,14 +52,12 @@ struct Devices
     button = new upm::GroveButton(16);
 
     // buzzer connected to A1 (aka digital out 15)
-    mraa_init();
-
     buzzer = new mraa::Gpio(15);
     buzzer->dir(mraa::DIR_OUT);
     stop_buzzing();
 
     // screen connected to the default pins
-    upm::SAINSMARTKS* screen = new upm::SAINSMARTKS();
+    screen = new upm::SAINSMARTKS();
   };
 
   // Cleanup on exit
@@ -97,6 +97,7 @@ struct Devices
 
   // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
+    cerr << input << endl;
     std::string text(input);
     text.resize(16, ' ');
 

@@ -27,6 +27,8 @@
 #include <mraa.hpp>
 #include <sainsmartks.hpp>
 
+using namespace std;
+
 // The hardware devices that the example is going to connect to
 struct Devices
 {
@@ -69,6 +71,7 @@ struct Devices
 
   // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
+    cerr << input << endl;
     std::string text(input);
     text.resize(16, ' ');
 
@@ -90,7 +93,7 @@ struct Devices
 
   // Read the current temperature from the connected sensor
   int temperature() {
-    return temp->read();
+    return (500 * temp->read()) / 1024;
   }
 };
 

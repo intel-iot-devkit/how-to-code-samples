@@ -27,6 +27,8 @@
 #include <mraa.hpp>
 #include <sainsmartks.hpp>
 
+using namespace std;
+
 // The hardware devices that the example is going to connect to
 struct Devices
 {
@@ -79,6 +81,7 @@ struct Devices
 
   // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
+	  cerr << input << endl;
     std::string text(input);
     text.resize(16, ' ');
 
@@ -92,7 +95,7 @@ struct Devices
     ax = accelX->read();
     ay = accelY->read();
     az = accelZ->read();
-    return (ax > 420 || ay > 420 || az > 420);
+    return (ax > 600 || ay > 600 || az > 600);
   }
 };
 

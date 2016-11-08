@@ -41,17 +41,17 @@ struct Devices
   // Initialization function
   void init() {
     // button connected to A1 (aka digital out 15)
-    button = new upm::GroveButton(15);
+    touch = new upm::GroveButton(15);
 
     // buzzer connected to A2 (aka digital out 16)
     mraa_init();
 
     buzzer = new mraa::Gpio(16);
     buzzer->dir(mraa::DIR_OUT);
-    stop_buzzing();
+    stop_ringing();
 
     // screen connected to the default pins
-    upm::SAINSMARTKS* screen = new upm::SAINSMARTKS();
+    screen = new upm::SAINSMARTKS();
   };
 
   // Cleanup on exit
@@ -69,6 +69,7 @@ struct Devices
 
   // Display a message on the LCD
   void message(const std::string& input, const std::size_t color = 0x0000ff) {
+    cerr << input << endl;
     std::string text(input);
     text.resize(16, ' ');
 
@@ -77,8 +78,8 @@ struct Devices
   }
 
   // Visual and audible notification that someone is at the door
-  void dingdong() {
-    message("ding dong!");
+  void ring() {
+    message("ring!");
     buzzer->write(1);
   }
 
@@ -88,7 +89,7 @@ struct Devices
   }
 
   bool is_pressed() {
-	  return touch->isPressed();
+	 return touch->value();
   }
 };
 
