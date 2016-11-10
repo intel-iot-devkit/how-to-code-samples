@@ -25,7 +25,6 @@ from pyupm_i2clcd import Jhd1313m1
 
 from mraa import addSubplatform, GENERIC_FIRMATA
 
-from scheduler import scheduler, ms
 from board import Board
 
 class GroveBoard(Board):

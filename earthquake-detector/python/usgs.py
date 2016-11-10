@@ -22,7 +22,6 @@
 from __future__ import print_function
 
 from datetime import datetime, timedelta
-from traceback import print_exc
 
 from requests import get as get_http
 
