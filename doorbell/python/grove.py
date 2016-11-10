@@ -21,11 +21,13 @@
 
 from __future__ import print_function
 
+from pyupm_ttp223 import TTP223
+from pyupm_buzzer import Buzzer
 from pyupm_i2clcd import Jhd1313m1
 
 from mraa import addSubplatform, GENERIC_FIRMATA
 
-from constants.hardware import MOTION_DETECTED
+from constants.hardware import TOUCH_DETECTED
 
 from scheduler import scheduler, ms
 from board import Board
@@ -39,17 +41,22 @@ class GroveBoard(Board):
     def __init__(self, config):
 
         super(GroveBoard, self).__init__()
-        
+
         # pin mappings
+        self.touch_pin = 4
+        self.buzzer_pin = 5
         self.i2c_bus = 6
 
         if "platform" in config and config["platform"] == "firmata":
             addSubplatform("firmata", "/dev/ttyACM0")
+            self.touch_pin += 512
+            self.buzzer_pin += 512
             self.i2c_bus += 512
-        
+
+        self.touch = TTP223(self.touch_pin)
+        self.buzzer = Buzzer(self.buzzer_pin)
         self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
 
-    
     def update_hardware_state(self):
 
         """
@@ -77,7 +84,8 @@ class GroveBoard(Board):
 
         colors = {
             "red": lambda: self.screen.setColor(255, 0, 0),
+            "green": lambda: self.screen.setColor(0, 255, 0),
             "blue": lambda: self.screen.setColor(0, 0, 255),
             "white": lambda: self.screen.setColor(255, 255, 255)
         }
-        colors.get(color, colors["white"])()  
+        colors.get(color, colors["white"])()

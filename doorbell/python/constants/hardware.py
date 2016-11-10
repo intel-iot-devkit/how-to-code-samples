@@ -19,19 +19,5 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from logging import basicConfig
-from apscheduler.schedulers.background import BackgroundScheduler
-
-basicConfig()
-
-scheduler = BackgroundScheduler()
-
-scheduler.start()
-
-def ms(ms):
-
-    """
-    Converts milliseconds to seconds
-    """
-
-    return ms * 0.001
+# hardware events
+TOUCH_DETECTED = "touch-detected"
