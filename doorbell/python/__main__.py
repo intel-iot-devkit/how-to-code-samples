@@ -24,7 +24,7 @@ from __future__ import print_function, division
 from sys import exit
 from signal import SIGINT, signal
 
-from datetime import datetime
+from time import sleep
 
 # This program is using the Python stand 'importlib' module
 # to dynamically import the correct Board class based on config.json
@@ -33,6 +33,8 @@ from importlib import import_module
 # This program is using the 'simplejson' package
 # to serialize and deserialize json data.
 from simplejson import load as load_json
+
+from doorbell import Doorbell
 
 from mqtt import publish_message
 from storage import store_message
@@ -56,6 +58,8 @@ def signal_handler(signal, frame):
 
 signal(SIGINT, signal_handler)
 
+doorbell = Doorbell(config, board)
+
 def main():
 
     """
@@ -63,7 +67,13 @@ def main():
     """
 
     print("Running doorbell example.")
-    signal.pause()
+
+    try:
+        while True:
+            signal.pause()
+    except AttributeError:
+        while True:
+            sleep(0.05)
 
 if __name__ == "__main__":
     main()

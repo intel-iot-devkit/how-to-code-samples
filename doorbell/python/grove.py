@@ -27,9 +27,8 @@ from pyupm_i2clcd import Jhd1313m1
 
 from mraa import addSubplatform, GENERIC_FIRMATA
 
-from constants.hardware import TOUCH_DETECTED
+from constants.hardware import TOUCH_DOWN, TOUCH_UP
 
-from scheduler import scheduler, ms
 from board import Board
 
 class GroveBoard(Board):
@@ -41,6 +40,8 @@ class GroveBoard(Board):
     def __init__(self, config):
 
         super(GroveBoard, self).__init__()
+
+        self.touch_state = False
 
         # pin mappings
         self.touch_pin = 4
@@ -57,15 +58,51 @@ class GroveBoard(Board):
         self.buzzer = Buzzer(self.buzzer_pin)
         self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
 
+        self.stop_buzzer()
+
     def update_hardware_state(self):
 
         """
         Update hardware state.
         """
 
-        pass
+        current_touch_state = self.detect_touch()
+        if (self.touch_state != current_touch_state):
+
+            if (current_touch_state == True):
+                self.trigger_hardware_event(TOUCH_DOWN)
+            else:
+                self.trigger_hardware_event(TOUCH_UP)
+
+            self.touch_state = current_touch_state
 
     # hardware functions
+    def detect_touch(self):
+
+        """
+        Detect touch state.
+        """
+
+        return self.touch.isPressed()
+
+    def start_buzzer(self):
+
+        """
+        Start buzzer.
+        """
+
+        self.buzzer.playSound(2600, 0)
+
+    def stop_buzzer(self):
+
+        """
+        Stop buzzer.
+        """
+
+        self.buzzer.setVolume(0.5)
+        self.buzzer.stopSound()
+        self.buzzer.stopSound()
+
     def write_message(self, message, line=0):
 
         """

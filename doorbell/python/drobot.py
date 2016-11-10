@@ -19,9 +19,13 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from pyupm_i2clcd import SAINSMARTKS
+from mraa import Gpio, DIR_OUT
 
-from events import scheduler, emitter, ms
+from pyupm_i2clcd import SAINSMARTKS
+from pyupm_grove import GroveButton
+
+from constants.hardware import TOUCH_DOWN, TOUCH_UP
+
 from board import Board
 
 class DfrobotBoard(Board):
@@ -33,8 +37,15 @@ class DfrobotBoard(Board):
     def __init__(self, config):
 
         super(GroveBoard, self).__init__()
+
+        self.touch_pin = 16
+        self.buzzer_pin = 15
         
+        self.touch = GroveButton(self.touch_pin)
+        self.buzzer = Gpio(self.buzzer_pin)
         self.screen = Jhd1313m1(8, 9, 4, 5, 6, 7, 0)
+
+        self.buzzer.dir(DIR_OUT)
     
     def update_hardware_state(self):
 
@@ -42,9 +53,41 @@ class DfrobotBoard(Board):
         Update hardware state.
         """
 
-        pass
+        current_touch_state = self.detect_touch()
+        if (self.touch_state != current_touch_state):
+
+            if (current_touch_state == True):
+                self.trigger_hardware_event(TOUCH_DOWN)
+            else:
+                self.trigger_hardware_event(TOUCH_UP)
+
+            self.touch_state = current_touch_state
 
     # hardware functions
+    def detect_touch(self):
+
+        """
+        Detect touch state.
+        """
+
+        return self.touch.value()
+
+    def start_buzzer(self):
+
+        """
+        Start buzzer.
+        """
+
+        self.buzzer.write(1)
+
+    def stop_buzzer(self):
+
+        """
+        Stop buzzer.
+        """
+        
+        self.buzzer.write(0)
+
     def write_message(self, message, line=0):
 
         """

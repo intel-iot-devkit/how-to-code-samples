@@ -19,6 +19,26 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# hardware events
-TOUCH_DOWN = "touch-down"
-TOUCH_UP = "touch-up"
+from constants.hardware import TOUCH_DOWN, TOUCH_UP
+
+class Doorbell(object):
+
+    def __init__(self, config, board):
+
+        self.config = config
+        self.board = board
+
+        self.board.add_event_handler(TOUCH_DOWN, self.ding_dong)
+        self.board.add_event_handler(TOUCH_UP, self.reset)
+
+        self.reset()
+
+    def ding_dong(self):
+        self.board.write_message("ding dong!")
+        self.board.change_background("green")
+        self.board.start_buzzer()
+
+    def reset(self):
+        self.board.write_message("doorbot ready")  
+        self.board.change_background("white")
+        self.board.stop_buzzer()
