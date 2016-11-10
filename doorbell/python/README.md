@@ -44,8 +44,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ## Software requirements
 
-1. Intel® XDK IoT Edition
-2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
+1. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
 
 ### How to set up
 
@@ -93,13 +92,16 @@ You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breako
 
 ### Manual Intel® Edison board setup
 
-If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
+If you're running this code on your Intel® Edison board manually, you will need to install some dependencies.
 
-To obtain the Node.js\* modules needed for this example to execute on the Intel® Edison board, run the following command:
+To obtain the Python\* packages needed for this example to execute on the Intel® Edison board:
 
-```
-npm install
-```
+Establish an SSH connection to the board and navigate to the directory with this example.
+
+Then run the following commands:
+
+    $ pip install --upgrade pip
+    $ pip install -r requirements.txt
 
 ### Intel® IoT Gateway setup
 
