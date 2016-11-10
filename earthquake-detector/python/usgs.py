@@ -19,21 +19,45 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# app specific
-BOARD = "board"
-LATITUDE = "LATITUDE"
-LONGITUDE = "LONGITUDE"
+from __future__ import print_function
 
-# MQTT server
-MQTT_SERVER = "MQTT_SERVER"
-MQTT_PORT = "MQTT_PORT"
-MQTT_CLIENTID = "MQTT_CLIENTID"
-MQTT_USERNAME = "MQTT_USERNAME"
-MQTT_PASSWORD = "MQTT_PASSWORD"
-MQTT_CERT = "MQTT_CERT"
-MQTT_KEY = "MQTT_KEY"
-MQTT_TOPIC = "MQTT_TOPIC"
+from datetime import datetime, timedelta
+from traceback import print_exc
 
-# remote data store
-SERVER = "SERVER"
-AUTH_TOKEN = "AUTH_TOKEN"
+from requests import get as get_http
+
+from scheduler import scheduler
+
+def verify_earthquake(config):
+
+    """
+    Verify earthquake using USGS service.
+    """
+    
+    if not { LATITUDE, LONGITUDE } <= set(config): return False
+
+    geo_lat = config[LATITUDE]
+    geo_long = config[LONGITUDE]
+
+    server = "http://earthquake.usgs.gov/fdsnws/event/1/query"
+
+    time_window = datetime.utcnow() - timedelta(minutes=10)
+
+    query = {
+        "format": "getjson",
+        "starttime": time_window.isoformat(),
+        "latitude": geo_lat,
+        "longitude": geo_long,
+        "maxradiuskm": 500
+    }
+    
+    def perform_request(): 
+        print("calling USGS service")
+        response = get_http(server, params=query)
+        response.raise_for_status()
+        data = response.json()
+        event_count = len(data["features"])
+        return True if event_count > 0 else False
+
+    scheduler.add_job(perform_request)
+    
