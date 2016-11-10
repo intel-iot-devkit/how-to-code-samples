@@ -21,6 +21,9 @@
 
 from __future__ import print_function, division
 
+from sys import exit
+from signal import SIGINT, signal
+
 from datetime import datetime
 
 # This program is using the Python stand 'importlib' module
@@ -48,13 +51,19 @@ else:
 
 board = Board(config)
 
+def signal_handler(signal, frame):
+    exit(0)
+
+signal(SIGINT, signal_handler)
+
 def main():
 
     """
     Start main function.
     """
 
-    pass
+    print("Running doorbell example.")
+    signal.pause()
 
 if __name__ == "__main__":
     main()
