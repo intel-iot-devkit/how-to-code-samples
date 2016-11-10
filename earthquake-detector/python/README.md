@@ -1,31 +1,44 @@
-# [Project Name] in Python*
+# Earthquake detector in Python*
 
 ## Introduction
 
-This smart doorbell application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This earthquake detector application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or from the Intel® Galileo board.<br>
-- Store the doorbell ring data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Invoke the services of the United States Geological Survey (USGS) API for accessing earthquake data.
 
 ## What it is
 
-[Content Here]
+Using an Intel® Edison board, this project lets you create an earthquake detector that:<br>
+- senses motion using the digital accelerometer.<br>
+- checks live earthquake data, using the USGS API.<br>
+- displays the earthquake on the LCD.
 
 ## How it works
 
-[Content Here]
+This earthquake detector constantly reads the 3-axis digital accelerometer looking for movement that could indicate an earthquake.
+
+When it thinks it detects an earthquake, it attempts to verify with the USGS API that an earthquake actually occurred.
+
+If so, it displays a warning on the LCD.
 
 ## Hardware requirements
 
-[Content Here]
+This sample can be used with either the Grove\* Starter Kit Plus from Seeed Studio, or else the DFRobot\* Edison Starter Kit with some extra DFRobot\* parts.
 
-## Software requirements
+Grove\* Starter Kit Plus, containing:
 
-1. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
+1. Intel® Edison board with an Arduino* breakout board
+2. [Grove\* 3-Axis Digital Accelerometer (1.5G)](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
+3. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+
+DFRobot\* Starter Kit for Intel® Edison, containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Triple Axis Accelerometer](http://www.dfrobot.com/index.php?route=product/product&description=true&product_id=507).
+3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ### How to set up
 
@@ -51,11 +64,25 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 ### Connecting the Grove\* sensors
 
-[Content Here]
+![](./../../images/js/earthquake-detector.jpg)
+
+You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
+
+1. Plug one end of a Grove\* cable into the Grove\* 3-Axis Digital Accelerometer, and connect the other end to any of the I2C ports on the Grove\* Shield.
+
+2. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
 ### Connecting the DFRobot\* sensors
 
-[Content Here]
+![](./../../images/js/earthquake-detector-dfrobot.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot\* cable into the plug labeled "X" on the Triple-Axis Accelerometer, then connect the other end to the A1 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot\* cable into the plug labeled "Y" on the Triple-Axis Accelerometer, then connect the other end to the A2 port on the LCD Keypad Shield.
+
+3. Plug one end of a DFRobot\* cable into the plug labeled "Z" on the Triple-Axis Accelerometer, then connect the other end to the A3 port on the LCD Keypad Shield.
 
 ### Manual Intel® Edison board setup
 
@@ -84,25 +111,36 @@ The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If y
 
 You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
 
-### Data store server setup
-
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
-
-For information on how to set up your own cloud data server, go to:
-
-[https://github.com/intel-iot-devkit/intel-iot-examples-datastore](https://github.com/intel-iot-devkit/intel-iot-examples-datastore)
-
-### MQTT server setup
-
-You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS.
-
-For information on how to connect to your own cloud MQTT messaging server, go to:
-
-[https://github.com/intel-iot-devkit/intel-iot-examples-mqtt](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt)
-
 ## Configuring the example
 
-[Content Here]
+To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot"
+}
+```
+
+To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
+
+```
+{
+  "kit": "grove",
+  "platform": "firmata"
+}
+```
+
+The DFRobot\* variation of this example does not yet support the Arduino\*/Genuino\* 101.
+
+To configure the example to check for earthquakes in your area, change the `LATITUDE` and `LONGITUDE` keys in the `config.json` file as follows:
+
+```
+{
+  "kit": "grove",
+  "LATITUDE": "47.641944",
+  "LONGITUDE": "-122.127222"
+}
+```
 
 ## Running the program manually
 
