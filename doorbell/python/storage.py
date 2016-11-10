@@ -23,14 +23,14 @@ from __future__ import print_function
 
 from traceback import print_exc
 
-from requests import put as put_http
+from requests import put as put_http, get as get_http
 from requests.exceptions import RequestException
 
 from constants.config import SERVER, AUTH_TOKEN
 
 from scheduler import scheduler
 
-def store_message(config, payload):
+def store_message(config, payload, method="PUT"):
 
     """
     Publish message to remote data store.
@@ -46,7 +46,10 @@ def store_message(config, payload):
     }
     
     def perform_request(): 
-        response = put_http(server, headers=headers, json=payload)
+        if (method == "GET"):
+            response = get_http(server, headers=headers, json=payload)
+        else:
+            response = put_http(server, headers=headers, json=payload)
         response.raise_for_status()
         print("saved to data store")
 

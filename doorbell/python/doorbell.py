@@ -21,6 +21,8 @@
 
 from constants.hardware import TOUCH_DOWN, TOUCH_UP
 
+from log import increment
+
 class Doorbell(object):
 
     def __init__(self, config, board):
@@ -34,6 +36,7 @@ class Doorbell(object):
         self.reset()
 
     def ding_dong(self):
+        increment(self.config)
         self.board.write_message("ding dong!")
         self.board.change_background("green")
         self.board.start_buzzer()

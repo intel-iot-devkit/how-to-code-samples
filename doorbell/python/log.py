@@ -26,14 +26,30 @@ from datetime import datetime
 from mqtt import publish_message
 from storage import store_message
 
+def send(config, payload):
+
+    """
+    Publish payload to MQTT server and data store.
+    """
+
+    publish_message(config, payload)
+    store_message(config, payload, method="GET")
+
+def increment(config):
+
+    """
+    Publish timestamp to MQTT server and data store.
+    """
+
+    payload = { "counter": datetime.utcnow().isoformat() }
+    send(config, payload)
+
 def log(config, event):
 
     """
-    Publish data to MQTT server and data store.
+    Publish message to MQTT server and data store.
     """
 
     message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
-    print(message)
     payload = { "value": message }
-    publish_message(config, payload)
-    store_message(config, payload)
+    send(config, payload)
