@@ -33,7 +33,7 @@ class Detector(object):
         self.board = board
 
         self.reset()
-        self.board.add_event_listener(ACCELERATION_DETECTED, self.detect_earthquake)
+        self.board.add_event_handler(ACCELERATION_DETECTED, self.detect_earthquake)
     
     def display_verifying(self):
 

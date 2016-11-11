@@ -39,7 +39,7 @@ class GroveBoard(Board):
     def __init__(self, config):
 
         super(GroveBoard, self).__init__()
-        
+
         # pin mappings
         self.i2c_bus = 6
 
@@ -50,13 +50,18 @@ class GroveBoard(Board):
         self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
         self.accelerometer = MMA7660(self.i2c_bus, 0x4C)
 
-        self.acceleration_detected = False
-
         # accelerometer setup
         self.ax = accel_float()
         self.ay = accel_float()
         self.az = accel_float()
 
+        self.accelerometer.setModeStandby()
+        self.accelerometer.setSampleRate(0x01)
+        self.accelerometer.setModeActive()
+
+        self.acceleration_detected = False
+
+        print(self.ax)
     
     def update_hardware_state(self):
 
@@ -81,7 +86,7 @@ class GroveBoard(Board):
         ax = accel_value(self.ax)
         ay = accel_value(self.ay)
         az = accel_value(self.az)
-        if (ax > 1 OR ay > 1 OR az > 1):
+        if (ax > 1.2 or ay > 1.2 or az > 1.2):
             return True
         else:
             return False

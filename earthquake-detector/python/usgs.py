@@ -25,6 +25,8 @@ from datetime import datetime, timedelta
 
 from requests import get as get_http
 
+from constants.config import LATITUDE, LONGITUDE
+
 from scheduler import scheduler
 
 def verify_earthquake(config):
@@ -43,7 +45,7 @@ def verify_earthquake(config):
     time_window = datetime.utcnow() - timedelta(minutes=10)
 
     query = {
-        "format": "getjson",
+        "format": "geojson",
         "starttime": time_window.isoformat(),
         "latitude": geo_lat,
         "longitude": geo_long,

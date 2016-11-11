@@ -45,7 +45,10 @@ class Board(object):
         Signal hardware event.
         """
 
-        self.emitter.emit(event, *args, **kwargs)
+        def handler():
+            self.emitter.emit(event, *args, **kwargs)
+        
+        scheduler.add_job(handler)
 
     def add_event_handler(self, event, handler, once=False):
 
