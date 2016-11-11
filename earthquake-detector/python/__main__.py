@@ -21,6 +21,11 @@
 
 from __future__ import print_function, division
 
+from sys import exit
+from signal import SIGINT, signal
+
+from time import sleep
+
 # This program is using the Python stand 'importlib' module
 # to dynamically import the correct Board class based on config.json
 from importlib import import_module
@@ -45,6 +50,11 @@ else:
 
 board = Board(config)
 
+def signal_handler(signal, frame):
+    exit(0)
+
+signal(SIGINT, signal_handler)
+
 detector = Detector(config, board)
 
 def main():
@@ -53,7 +63,14 @@ def main():
     Start main function.
     """
 
-    pass
+    print("Running earthquake detector example.")
+
+    try:
+        while True:
+            signal.pause()
+    except AttributeError:
+        while True:
+            sleep(0.05)
 
 if __name__ == "__main__":
     main()
