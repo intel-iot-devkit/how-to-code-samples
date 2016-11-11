@@ -19,41 +19,5 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from __future__ import print_function, division
-
-# This program is using the Python stand 'importlib' module
-# to dynamically import the correct Board class based on config.json
-from importlib import import_module
-
-# This program is using the 'simplejson' package
-# to serialize and deserialize json data.
-from simplejson import load as load_json
-
-from detector import Detector
-
-# Load configuration data from `config.json` file. Edit this file
-# to change to correct values for your configuration
-with open("config.json") as data:
-    config = load_json(data)
-
-if "kit" in config:
-    print("loading board config \"", config["kit"], "\" from config.json", sep = "")
-    Board = getattr(import_module(config["kit"]), config["kit"].capitalize() + "Board")
-else:
-    print("loading default board config")
-    Board = import_module("grove").GroveBoard
-
-board = Board(config)
-
-detector = Detector(config, board)
-
-def main():
-
-    """
-    Start main function.
-    """
-
-    pass
-
-if __name__ == "__main__":
-    main()
+# hardware events
+ACCELERATION_DETECTED = "acceleration-detected"

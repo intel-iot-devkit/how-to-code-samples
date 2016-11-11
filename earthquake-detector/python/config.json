@@ -1,3 +1,5 @@
 {
-    "kit": "grove"
+    "kit": "grove",
+    "LATITUDE": "47.641944",
+    "LONGITUDE": "-122.127222"
 }

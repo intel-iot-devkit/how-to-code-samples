@@ -50,13 +50,10 @@ def verify_earthquake(config):
         "maxradiuskm": 500
     }
     
-    def perform_request(): 
-        print("calling USGS service")
-        response = get_http(server, params=query)
-        response.raise_for_status()
-        data = response.json()
-        event_count = len(data["features"])
-        return True if event_count > 0 else False
-
-    scheduler.add_job(perform_request)
+    print("calling USGS service")
+    response = get_http(server, params=query)
+    response.raise_for_status()
+    data = response.json()
+    event_count = len(data["features"])
+    return True if event_count > 0 else False
     

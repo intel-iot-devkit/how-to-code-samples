@@ -22,8 +22,11 @@
 from __future__ import print_function
 
 from pyupm_i2clcd import Jhd1313m1
+from pyupm_mma7660 import MMA7660, new_floatp as accel_float, floatp_value as accel_value
 
 from mraa import addSubplatform, GENERIC_FIRMATA
+
+from constants.hardware import ACCELERATION_DETECTED
 
 from board import Board
 
@@ -45,6 +48,14 @@ class GroveBoard(Board):
             self.i2c_bus += 512
         
         self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
+        self.accelerometer = MMA7660(self.i2c_bus, 0x4C)
+
+        self.acceleration_detected = False
+
+        # accelerometer setup
+        self.ax = accel_float()
+        self.ay = accel_float()
+        self.az = accel_float()
 
     
     def update_hardware_state(self):
@@ -53,9 +64,28 @@ class GroveBoard(Board):
         Update hardware state.
         """
 
-        pass
+        current_acceleration = self.detect_acceleration()
+        if (current_acceleration != self.acceleration_detected):
+            if (current_acceleration == True):
+                self.trigger_hardware_event(ACCELERATION_DETECTED)
+            self.acceleration_detected = current_acceleration
 
     # hardware functions
+    def detect_acceleration(self):
+
+        """
+        Detect acceleration change.
+        """
+
+        self.accelerometer.getAcceleration(self.ax, self.ay, self.az)
+        ax = accel_value(self.ax)
+        ay = accel_value(self.ay)
+        az = accel_value(self.az)
+        if (ax > 1 OR ay > 1 OR az > 1):
+            return True
+        else:
+            return False
+
     def write_message(self, message, line=0):
 
         """
