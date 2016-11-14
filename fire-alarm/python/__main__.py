@@ -58,7 +58,7 @@ board = Board(config)
 def monitorTemperature():
 
     """
-    Read temperature sensor in Celsius.
+    Read temperature sensor in Celsius and check against threshold.
     """
     global current
     global prev
@@ -104,7 +104,7 @@ def start_alarm():
     def notify(temperature):
 
         """
-        Publish data to MQTT server and data store.
+        Publish data to MQTT server and data store and send SMS.
         """
 
         payload = { "value": temperature }
