@@ -61,7 +61,7 @@ class GroveBoard(Board):
     def get_temperature(self):
 
         """
-        Start the hardware buzzer.
+        Get the temperature and convert to degrees celcius.
         """
 
         return self.temperature.value()
