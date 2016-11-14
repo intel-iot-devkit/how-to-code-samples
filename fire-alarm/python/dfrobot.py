@@ -49,7 +49,7 @@ class DfrobotBoard(Board):
     def get_temperature(self):
 
         """
-        Start the hardware buzzer.
+        Get the temperature and convert to degrees celcius.
         """
         return  (500 * self.temperature.read()) / 1024
          
