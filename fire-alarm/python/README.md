@@ -1,4 +1,4 @@
-# Fire alarm in JavaScript*
+# Fire alarm in Python*
 
 ## Introduction
 
