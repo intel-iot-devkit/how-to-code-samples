@@ -7,39 +7,39 @@ This close-call fleet driving reporter application is part of a series of how-to
 From this exercise, developers will learn how to:
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run these code samples in the Intel® System Studio IoT Edition (Eclipse\* IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.
-- Store the close-call data using Azure* Redis Cache from Microsoft, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub\* from Microsoft Azure\*, IoT\* from IBM Bluemix\*, or IoT\* from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run these code samples in the Intel® System Studio IoT Edition (Eclipse\* IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® Galileo board.
+- Store the close-call data using Azure Redis Cache\* from Microsoft, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a MQTT-based server using Microsoft Azure\* IoT Hub, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
 Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a close-call fleet driving reporter that:
 
-- monitors the Grove* IR Distance Interrupter;
-- monitors the Grove* GPS;
+- monitors the Grove\* IR Distance Interrupter;
+- monitors the Grove\* GPS;
 - keeps track of close calls and logs them using cloud-based data storage.
 
 ## How it works
 
-This close-call reporter system monitors the direction in which the Grove* IR Distance Interrupter is pointed.
+This close-call reporter system monitors the direction in which the Grove\* IR Distance Interrupter is pointed.
 
 It also keeps track of the GPS coordinates of the Intel® Edison board, updating frequently to ensure accurate data.
 
-If a close call is detected (the Grove* IR Distance Interrupter is tripped), the Intel® Edison board, if configured, notifies the Intel IoT Examples Datastore or MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
+If a close call is detected (the Grove\* IR Distance Interrupter is tripped), the Intel® Edison board, if configured, notifies the Intel® IoT Examples Datastore or MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
-Grove* Transportation and Safety Kit containing:
+Grove\* Transportation and Safety Kit containing:
 
-1. Intel® Edison board with an Arduino* breakout board
+1. Intel® Edison board with an Arduino\* breakout board
 2. Grove Base Shield V2
 3. [Grove IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 4. [Grove GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
 
-DFRobot* Starter Kit for Intel® Edison, containing:
+DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison with an Arduino\* breakout board
 2. [IR Distance Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=572)
 3. [GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
 4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
@@ -74,9 +74,9 @@ This sample is already one of the IoT examples included in Intel® System Studio
 10. Your project source files will now be available on the on the upper left of your IDE by default.<br>
 ![](./../../images/cpp/project-src-imported.png)
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
-You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
+You need to have a Grove\* Base Shield V2 connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
 
 1. Plug one end of a Grove cable into the Grove IR Distance Interrupter, and connect the other end to the D2 port on the Grove Base Shield V2.<br>
 ![](./../../images/js/close-call.jpg)
@@ -86,7 +86,7 @@ You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible br
 
 ![](./../../images/js/close-call-dfrobot.jpg)
 
-You need to have a DFRobot\* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* I/O Expansion Shield.
+You need to have a DFRobot\* I/O Expansion Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* I/O Expansion Shield.
 
 1. Plug one end of a DFRobot cable into the IR Distance Sensor, and connect the other end to the D4 port on the I/O Expansion Shield.
 
@@ -98,17 +98,17 @@ This example also uses the **restclient-cpp** library to perform REST calls to t
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
 https://software.intel.com/en-us/node/633284
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
+The Arduino 101\* (branded Genuino 101\* outside the U.S.) needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
 ### Data store server setup
 
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS along with Node.js\*, and a Redis\* data store.
+Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS\* along with Node.js\*, and a Redis\* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -116,7 +116,7 @@ For information on how to set up your own cloud data server, go to:
 
 ### MQTT server setup
 
-You can also optionally store the data generated by this sample program using [MQTT](http://mqtt.org/), a Machine To Machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS.
+You can also optionally store the data generated by this sample program using [MQTT](http://mqtt.org/), a Machine To Machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS\*.
 
 For information on how to connect to your own cloud MQTT messaging server, go to:
 
@@ -153,7 +153,7 @@ Make sure your Intel® IoT Gateway is setup, by following the directions on the 
 
 https://software.intel.com/en-us/node/633284
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
 ### Running the example with the cloud server
 
@@ -169,7 +169,7 @@ To run the example with the optional backend data store, you need to set the `SE
 
 Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board or Intel® IoT Gateway.
 
-### Running the code on the Intel® Edison or Intel® IoT Gateway
+### Running the code on the Intel® Edison board or Intel® IoT Gateway
 
 When you're ready to run the example, click **Run** at the top menu bar in Intel® System Studio.<br>
 ![](./../../images/cpp/cpp-run-eclipse.png)
