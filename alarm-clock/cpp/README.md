@@ -7,11 +7,11 @@ This smart alarm clock application is part of a series of how-to Intel® Interne
 From this exercise, developers will learn how to:
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.
-- Set up a web application server to set the alarm time and store this alarm data using Azure* Redis Cache from Microsoft, Redis Store from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® Galileo board.
+- Set up a web application server to set the alarm time and store this alarm data using Azure\* Redis Cache from Microsoft, Redis Store from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Invoke the services of the Weather Underground\* API for accessing weather data.
-- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT\* from IBM Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
@@ -25,16 +25,16 @@ Using an Intel® Edison board or Intel® IoT Gateway, this project lets you crea
 
 This smart alarm clock has a number of useful features. Set the alarm from yopur mobile phone using a web page served directly from the Intel® Edison board. When the alarm goes off, the buzzer sounds and the LCD indicates it’s time to get up. The rotary dial can be used to adjust the brightness of the display.
 
-In addition, the smart alarm clock can access daily weather data via the Weather Underground* API and use it to change the color of the LCD.
+In addition, the smart alarm clock can access daily weather data via the Weather Underground\* API and use it to change the color of the LCD.
 
-Optionally, all data can be stored using the Intel IoT Examples Data store or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
+Optionally, all data can be stored using the Intel® IoT Examples Data store or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
-Grove* Starter Kit Plus containing:
+Grove\* Starter Kit Plus containing:
 
-1. Intel® Edison board with an Arduino* breakout board
-2. Grove Base Shield V2
+1. Intel® Edison board with an Arduino\* breakout board
+2. Grove*\ Base Shield V2
 3. [Grove Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/groverotary.html)
 4. [Grove Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 5. [Grove Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
@@ -42,7 +42,7 @@ Grove* Starter Kit Plus containing:
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison with an Arduino\* breakout board
 2. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
 3. [Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
 4. [Rotary Dial]()
@@ -50,8 +50,8 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ## Software requirements
 
-1. [Intel® System Studio (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/node/672439)
-2. Microsoft Azure\*, IBM Bluemix\*, or AWS account (optional)
+1. [Intel® System Studio (Eclipse IDE for C/C++ and Java\* development)](https://software.intel.com/en-us/node/672439)
+2. Microsoft Azure\*, IBM Bluemix\*, or AWS\* account (optional)
 3. Weather Underground\* API key
 ### How to set up
 
@@ -78,9 +78,9 @@ This sample is already one of the IoT examples included in Intel® System Studio
 10. Your project source files will now be available on the on the upper left of your IDE by default.<br>
 ![](./../../images/cpp/project-src-imported.png)
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
-You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
+You need to have a Grove\* Base Shield V2 connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
 
 1. Plug one end of a Grove cable into the Grove Rotary Analog Sensor, and connect the other end to the A0 port on the Grove Base Shield V2.<br>
 ![](./../../images/js/alarm-clock.jpg)
@@ -92,7 +92,7 @@ You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible br
 
 ![](./../../images/js/alarm-clock-dfrobot.jpg)
 
-You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
 1. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the LCD Keypad Shield.
 
@@ -106,15 +106,15 @@ You also want to set the current time zone to match the zone you are in. Do this
 
     timedatectl set-timezone America/Los_Angeles
 
-### Weather Underground* API key
+### Weather Underground\* API key
 
-To optionally fetch the real-time weather information, you need to get an API key from the Weather Underground* web site:
+To optionally fetch the real-time weather information, you need to get an API key from the Weather Underground\* web site:
 
 [http://www.wunderground.com/weather/api](http://www.wunderground.com/weather/api)
 
-You can still run the example, but without a Weather Underground* API key you cannot retrive weather data.
+You can still run the example, but without a Weather Underground\* API key you cannot retrive weather data.
 
-Pass your Weather Underground* API key to the sample program by modifying the `WEATHER_API_KEY` key in the `config.json` file as follows:
+Pass your Weather Underground\* API key to the sample program by modifying the `WEATHER_API_KEY` key in the `config.json` file as follows:
 
 1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
 2. Under **C/C++ Remote Application**, click **alarm-clock**.<br> This displays the information for your application.
@@ -128,17 +128,17 @@ Now when you run your program using the **Run** button, it should be able to ret
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
 https://software.intel.com/en-us/node/633284
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
+The Arduino 101\* (branded Genuino 101\* outside the U.S.) needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
 ### Data store server setup
 
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
+Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS\*, along with Node.js\*, and a Redis\* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -146,7 +146,7 @@ For information on how to set up your own cloud data server, go to:
 
 ### MQTT server setup
 
-You can also optionally store the data generated by this sample program using [MQTT](http://mqtt.org/), a Machine To Machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS.
+You can also optionally store the data generated by this sample program using [MQTT](http://mqtt.org/), a Machine To Machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS\*.
 
 For information on how to connect to your own cloud MQTT messaging server, go to:
 
@@ -205,7 +205,7 @@ When the program uploads to the Intel® Edison board, your RGB LCD shows the cur
 
 ## Regenerating HTML and CSS
 
-If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow web server.
+If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow\* web server.
 For help using the shell script, go to this link:
 
 [how-to-run-the-shellscript.md](./../../docs/cpp/how-to-run-the-shellscript.md)
@@ -215,6 +215,6 @@ For help using the shell script, go to this link:
 The alarm is set using a single-page web interface served directly from the Intel® Edison board or Intel® IoT Gateway while the sample program is running.<br>
 ![](./../../images/cpp/alarm-app.png)
 
-The web server runs on port `3000`. If the Intel® Edison board  or Intel® IoT Gateway is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`. If the Intel® Edison board  or Intel® IoT Gateway is connected to Wi-Fi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
