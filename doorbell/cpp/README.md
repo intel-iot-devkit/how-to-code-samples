@@ -7,10 +7,10 @@ This smart doorbell application is part of a series of how-to Intel® Internet o
 From this exercise, developers will learn how to:
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison or Intel® Galileo board.
-- Store the doorbell ring data using Azure* Redis Cache from Microsoft, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon\* Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon\* Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® Galileo board.
+- Store the doorbell ring data using Azure Redis Cache\* from Microsoft, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a MQTT-based server using Microsoft Azure\* IoT Hub, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
@@ -24,13 +24,13 @@ Using an Intel® Edison board, this project lets you create a smart doorbell tha
 
 Naturally, this smart doorbell makes a noise with the buzzer when the I2C Touch Sensor is pressed. In addition, it displays a message on the LCD.
 
-Optionally, all data can be stored using the Intel IoT Examples Data store or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS account.
+Optionally, all data can be stored using the Intel® IoT Examples Data store or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
-Grove* Starter Kit containing:
+Grove\* Starter Kit containing:
 
-1. Intel® Edison board with an Arduino* breakout board
+1. Intel® Edison board with an Arduino\* breakout board
 2. Grove Base Shield V2
 3. [Grove Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/ttp223.html)
 4. [Grove Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
@@ -38,7 +38,7 @@ Grove* Starter Kit containing:
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison with an Arduino\* breakout board
 2. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
 3. [Capacitive Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
 4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
@@ -73,20 +73,20 @@ This sample is already one of the IoT examples included in Intel® System Studio
 10. Your project source files will now be available on the on the upper left of your IDE by default.<br>
 ![](./../../images/cpp/project-src-imported.png)
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
-You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
+You need to have a Grove\* Base Shield V2 connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
 
 1. Plug one end of a Grove cable into the Grove Touch Sensor, and connect the other end to the D4 port on the Grove Base Shield V2.<br>
 ![](./../../images/js/doorbell.jpg)
-2. Plug one end of a Grove cable into the Grove* Buzzer, and connect the other end to the D5 port on the Grove Base Shield V2.
-3. Plug one end of a Grove cable into the Grove* RGB LCD, and connect the other end to any of the I2C ports on the Grove Base Shield V2.
+2. Plug one end of a Grove cable into the Grove\* Buzzer, and connect the other end to the D5 port on the Grove Base Shield V2.
+3. Plug one end of a Grove cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove Base Shield V2.
 
 ### Connecting the DFRobot\* sensors
 
 ![](./../../images/js/doorbell-dfrobot.jpg)
 
-You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
 1. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the LCD Keypad Shield.
 
@@ -98,17 +98,17 @@ This example also uses the **restclient-cpp** library to perform REST calls to t
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
 https://software.intel.com/en-us/node/633284
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
+The Arduino 101\* (branded Genuino 101\* outside the U.S.) needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
 ### Data store server setup
 
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
+Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS\*, along with Node.js\*, and a Redis\* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -116,7 +116,7 @@ For information on how to set up your own cloud data server, go to:
 
 ### MQTT server setup
 
-You can also optionally store the data generated by this sample program using [MQTT](http://mqtt.org/), a Machine To Machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS.
+You can also optionally store the data generated by this sample program using [MQTT](http://mqtt.org/), a Machine To Machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS\*.
 
 For information on how to connect to your own cloud MQTT messaging server, go to:
 
@@ -171,7 +171,7 @@ This compiles the program using the Cross G++ Compiler, links it using the Cross
 After running the program, you should see output similar to the one in the image below.<br>
 ![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
 
-When the program uploads and runs on the Intel® Edison board, the Grove* RGB LCD shows the message above. When pressing the Grove* Touch Sensor, you hear the buzzer go off, and if your server is set up correctly, you get notified.<br>
+When the program uploads and runs on the Intel® Edison board, the Grove\* RGB LCD shows the message above. When pressing the Grove\* Touch Sensor, you hear the buzzer go off, and if your server is set up correctly, you get notified.<br>
 ![](./../../images/cpp/doorbell-lcd.jpg)
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
