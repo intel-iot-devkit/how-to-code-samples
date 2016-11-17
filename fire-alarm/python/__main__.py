@@ -35,6 +35,7 @@ from twilioo import send_sms
 from mqtt import publish_message
 from storage import store_message
 from time import sleep
+from constants.config import ALARM_THRESHOLD
 
 prev = 0
 current = 0
@@ -66,10 +67,10 @@ def monitorTemperature():
     current = board.get_temperature()
     board.write_message("TEMPERATURE: " + str(current))
 
-    if(prev < config["ALARM_THRESHOLD"] and current >= config["ALARM_THRESHOLD"]):
+    if(prev < config[ALARM_THRESHOLD] and current >= config[ALARM_THRESHOLD]):
         start_alarm()
 
-    if(prev >= config["ALARM_THRESHOLD"] and current < config["ALARM_THRESHOLD"]):
+    if(prev >= config[ALARM_THRESHOLD] and current < config[ALARM_THRESHOLD]):
         stop_alarm()
 
     prev = current 

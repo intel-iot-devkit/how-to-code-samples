@@ -20,11 +20,10 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-from mraa import Gpio
+from mraa import Gpio, DIR_OUT
 from mraa import Aio
 from pyupm_i2clcd import SAINSMARTKS
 
-from scheduler import scheduler, ms
 from board import Board
 
 class DfrobotBoard(Board):
@@ -42,6 +41,7 @@ class DfrobotBoard(Board):
         
         self.screen = SAINSMARTKS(8, 9, 4, 5, 6, 7, 0)
         self.buzzer = Gpio(self.buzzer_pin)
+        self.buzzer.dir(DIR_OUT)
         self.temperature = Aio(self.temperature_pin)
 
     # hardware functions
@@ -68,7 +68,7 @@ class DfrobotBoard(Board):
         Stop the hardware buzzer.
         """
 
-        self.buzzer.write(10)
+        self.buzzer.write(0)
 
     def write_message(self, message, line=0):
 

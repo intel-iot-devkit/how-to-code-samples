@@ -82,6 +82,7 @@ class GroveBoard(Board):
         """
 
         self.buzzer.stopSound()
+        self.buzzer.stopSound()
 
     def write_message(self, message, line=0):
 

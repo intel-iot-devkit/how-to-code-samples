@@ -37,6 +37,7 @@ def publish_message(config, payload):
 
     if not { MQTT_SERVER, MQTT_CLIENTID, MQTT_TOPIC } <= set(config): return
 
+
     server = config[MQTT_SERVER]
     port = config.get(MQTT_PORT, 1883)
 

@@ -21,6 +21,7 @@
 
 # app specific
 BOARD = "board"
+ALARM_THRESHOLD = "ALARM_THRESHOLD"
 
 # MQTT server
 MQTT_SERVER = "MQTT_SERVER"

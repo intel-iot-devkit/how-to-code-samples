@@ -1,3 +1,4 @@
 {
-    "kit": "grove"
+   "kit": "dfrobot",
+   "ALARM_THRESHOLD": 28
 }
