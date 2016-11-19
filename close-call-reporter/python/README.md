@@ -1,4 +1,4 @@
-# [Project Name] in Python*
+# Close Call Reporter in Python*
 
 ## Introduction
 
@@ -7,21 +7,38 @@ This smart doorbell application is part of a series of how-to Intel® Internet o
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or from the Intel® Galileo board.<br>
-- Store the doorbell ring data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Store the close call data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
-[Content Here]
+Using an Intel® Edison board, this project lets you create a close call fleet driving reporter that:<br>
+- monitors the Grove* IR Distance Interrupter.<br>
+- monitors the Grove* GPS.<br>
+- keeps track of close calls and logs them using cloud-based data storage.
 
 ## How it works
 
-[Content Here]
+This close call reporter system monitors the direction the IR Distance sensor is pointed to.
+
+It also keeps track of the GPS position of the Intel® Edison board, updating the position frequently to ensure accurate data.
+
+If a close call is detected (that is, the IR Distance sensor is tripped), the Intel® Edison board, if configured, notifies the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
 
 ## Hardware requirements
 
-[Content Here]
+Grove* Transportation and Safety Kit, containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [Grove\* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
+3. [Grove\* GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
+
+DFRobot* Starter Kit for Intel® Edison, containing:
+
+1. Intel® Edison with an Arduino* breakout board
+2. [IR Distance Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=572)
+3. [GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
+4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
 ## Software requirements
 
@@ -51,11 +68,23 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 ### Connecting the Grove\* sensors
 
-[Content Here]
+![](./../../images/js/close-call.jpg)
+
+You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
+
+1. Plug one end of a Grove cable into the Grove\* IR Distance Interrupter, and connect the other end to the D2 port on the Grove\* Shield.
+
+2. Plug one end of a Grove cable into the Grove\* GPS, and connect the other end to the UART port on the Grove\* Shield.
 
 ### Connecting the DFRobot\* sensors
 
-[Content Here]
+![](./../../images/js/close-call-dfrobot.jpg)
+
+You need to have a DFRobot\* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* I/O Expansion Shield.
+
+1. Plug one end of a DFRobot cable into the IR Distance Sensor, and connect the other end to the D4 port on the I/O Expansion Shield.
+
+2. Plug the attached GPS cable TX (white) to the I/O Expansion Shield's RX pin. Plug the attached GPS cable RX (black) to the I/O Expansion Shield's TX pin. Plug the attached GPS cable power (red) to any of the I/O Expansion Shield's 5V pins. Plug the attached GPS cable ground (thicker black) to any of the I/O Expansion Shield's GND.
 
 ### Manual Intel® Edison board setup
 
@@ -102,7 +131,27 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-[Content Here]
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```
+{
+  "kit": "dfrobot"
+}
+```
+
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+
+```
+{
+  "kit": "grove",
+  "SERVER": "http://intel-examples.azurewebsites.net/logger/access-control",
+  "AUTH_TOKEN": "s3cr3t"
+}
+```
+
+For information on how to configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS MQTT messaging server, go to:
+
+[https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
 ## Running the program manually
 
