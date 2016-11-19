@@ -22,8 +22,11 @@
 from __future__ import print_function
 
 from pyupm_i2clcd import Jhd1313m1
+from pyupm_mic import Microphone, thresholdContext as micThresholdContext, uint16Array
 
 from mraa import addSubplatform, GENERIC_FIRMATA
+
+from constants.hardware import SOUND_MEASUREMENT
 
 from scheduler import scheduler, ms
 from board import Board
@@ -39,14 +42,20 @@ class GroveBoard(Board):
         super(GroveBoard, self).__init__()
         
         # pin mappings
+        self.mic_pin = 0
         self.i2c_bus = 6
 
         if "platform" in config and config["platform"] == "firmata":
             addSubplatform("firmata", "/dev/ttyACM0")
             self.i2c_bus += 512
         
+        self.mic = Microphone(self.mic_pin)
         self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
 
+        self.mic_ctx = micThresholdContext()
+        self.mic_ctx.averageReading = 0
+        self.mic_ctx.runningAverage = 0
+        self.mic_ctx.averagedOver = 2
     
     def update_hardware_state(self):
 
@@ -54,9 +63,25 @@ class GroveBoard(Board):
         Update hardware state.
         """
 
-        pass
+        self.trigger_hardware_event(SOUND_MEASUREMENT, self.measure_volume())
 
     # hardware functions
+    def measure_volume(self):
+
+        """
+        Measure the average volume
+        """
+
+        samples = uint16Array(128)
+        length = self.mic.getSampledWindow(2, 128, samples)
+
+        if not length:
+            return 0
+
+        noise = self.mic.findThreshold(self.mic_ctx, 30, samples, length)
+        average = noise / 100
+        return average
+
     def write_message(self, message, line=0):
 
         """
@@ -75,7 +100,10 @@ class GroveBoard(Board):
 
         colors = {
             "red": lambda: self.screen.setColor(255, 0, 0),
+            "purple": lambda: self.screen.setColor(255, 0, 255),
             "blue": lambda: self.screen.setColor(0, 0, 255),
+            "green": lambda: self.screen.setColor(0, 255, 0),
+            "yellow": lambda: self.screen.setColor(255, 255, 0),
             "white": lambda: self.screen.setColor(255, 255, 255)
         }
-        colors.get(color, colors["white"])()  
+        colors.get(color, colors["white"])()
