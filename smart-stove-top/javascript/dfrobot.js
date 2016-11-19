@@ -32,13 +32,24 @@ var exports = module.exports = {};
 var mraa = require("mraa");
 
 // Initialize the DFRobot hardware devices
-var temp = new mraa.Aio(1), // A1
-    buzzer = new mraa.Gpio(16), // aka A2
-    flame = new mraa.Aio(3); // A3
-
-buzzer.dir(mraa.DIR_OUT);
+var temp, buzzer, flame;
 
 exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    temp = new mraa.Aio(1 + 512); // A1
+    buzzer = new mraa.Gpio(16 + 512); // aka A2
+    flame = new mraa.Aio(3 + 512); // A3
+  } else {
+    temp = new mraa.Aio(1); // A1
+    buzzer = new mraa.Gpio(16); // aka A2
+    flame = new mraa.Aio(3); // A3
+  }
+
+  buzzer.dir(mraa.DIR_OUT);
+
   return;
 }
 

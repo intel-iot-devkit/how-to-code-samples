@@ -31,13 +31,23 @@ var exports = module.exports = {};
 var mraa = require("mraa");
 
 // Initialize the DFRobot hardware devices
-var moisture = new (require("jsupm_grovemoisture").GroveMoisture)(1), // A1
-    pump = new mraa.Gpio(16); // aka A2
-
-// Set GPIO direction to output
-pump.dir(mraa.DIR_OUT);
+var moisture, pump;
 
 exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(1 + 512); // A1
+    pump = new mraa.Gpio(16 + 512); // aka A2
+  } else {
+    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(1); // A1
+    pump = new mraa.Gpio(16); // aka A2
+  }
+
+  // Set GPIO direction to output
+  pump.dir(mraa.DIR_OUT);
+
   return;
 }
 
@@ -60,7 +70,7 @@ exports.checkFlowOff = function() {
 
 // Turns on the water
 exports.turnOn = function() {
-  var that = this;    
+  var that = this;
   pump.write(1);
 
   // check flow started after 10 seconds

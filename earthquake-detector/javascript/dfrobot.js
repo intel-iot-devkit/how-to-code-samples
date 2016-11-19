@@ -31,15 +31,27 @@ var exports = module.exports = {};
 var mraa = require("mraa");
 
 // Initialize the DFRobot hardware devices
-var screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
-var ax = new mraa.Aio(3), // A3
-    ay = new mraa.Aio(2), // A2
-    az = new mraa.Aio(1); // A1
+var screen, ax, ay, az;
 
 exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    ax = new mraa.Aio(3 + 512); // A3
+    ay = new mraa.Aio(2 + 512); // A2
+    az = new mraa.Aio(1 + 512); // A1
+    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(520, 521, 516, 517, 518, 519, 512);
+  } else {
+    ax = new mraa.Aio(3); // A3
+    ay = new mraa.Aio(2); // A2
+    az = new mraa.Aio(1); // A1
+    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
+  }
+
   return;
 }
-    
+
 // Cannot set the background color on this LCD display
 exports.color = function(string) {
   return;

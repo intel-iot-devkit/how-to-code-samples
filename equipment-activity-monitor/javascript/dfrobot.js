@@ -26,18 +26,30 @@
 var exports = module.exports = {};
 
 // Initialize the DFRobot hardware devices
+var mraa = require("mraa");
 var mic = require("jsupm_mic");
-var sound = new mic.Microphone(1), // A1
-    vibration = new (require("jsupm_grove").GroveButton)(16), // aka A2
-    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
-
-// Initialize the sound sensor
-var ctx = new mic.thresholdContext();
-ctx.averageReading = 0;
-ctx.runningAverage = 0;
-ctx.averagedOver = 2;
+var sound, vibration, screen;
 
 exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    sound = new mic.Microphone(1 + 512); // A1
+    vibration = new (require("jsupm_grove").GroveButton)(16 + 512); // aka A2
+    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(520, 521, 516, 517, 518, 519, 512);
+  } else {
+    sound = new mic.Microphone(1); // A1
+    vibration = new (require("jsupm_grove").GroveButton)(16); // aka A2
+    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
+  }
+
+  // Initialize the sound sensor
+  var ctx = new mic.thresholdContext();
+  ctx.averageReading = 0;
+  ctx.runningAverage = 0;
+  ctx.averagedOver = 2;
+
   return;
 }
 

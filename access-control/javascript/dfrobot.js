@@ -25,11 +25,23 @@
 
 var exports = module.exports = {};
 
+var mraa = require("mraa");
+
 // Initialize the hardware devices
-var screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0),
-    motion = new (require("jsupm_biss0001").BISS0001)(16);
+var screen, motion;
 
 exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(520, 521, 516, 517, 518, 519, 512);
+    motion = new (require("jsupm_biss0001").BISS0001)(528);
+  } else {
+    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
+    motion = new (require("jsupm_biss0001").BISS0001)(16);
+  }
+
   return;
 }
 
