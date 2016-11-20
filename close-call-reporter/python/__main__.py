@@ -21,6 +21,11 @@
 
 from __future__ import print_function, division
 
+from sys import exit
+from signal import SIGINT, signal
+
+from time import sleep
+
 # This program is using the Python stand 'importlib' module
 # to dynamically import the correct Board class based on config.json
 from importlib import import_module
@@ -28,6 +33,8 @@ from importlib import import_module
 # This program is using the 'simplejson' package
 # to serialize and deserialize json data.
 from simplejson import load as load_json
+
+from reporter import Reporter
 
 from mqtt import publish_message
 from storage import store_message
@@ -45,6 +52,12 @@ else:
     Board = import_module("grove").GroveBoard
 
 board = Board(config)
+reporter = Reporter(config, board)
+
+def signal_handler(signal, frame):
+    exit(0)
+
+signal(SIGINT, signal_handler)
 
 def main():
 
@@ -52,7 +65,14 @@ def main():
     Start main function.
     """
 
-    pass
+    print("Running close call reporter example.")
+
+    try:
+        while True:
+            signal.pause()
+    except AttributeError:
+        while True:
+            sleep(0.05)
 
 if __name__ == "__main__":
     main()

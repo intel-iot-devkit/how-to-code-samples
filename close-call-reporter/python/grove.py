@@ -21,9 +21,14 @@
 
 from __future__ import print_function
 
-from pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_nmea_gps import NMEAGPS
+from upm.pyupm_rfr359f import RFR359F
+
+from pynmea2 import NMEAStreamReader
 
 from mraa import addSubplatform, GENERIC_FIRMATA
+
+from constants.hardware import GPS_DATA_RECEIVED, OBJECT_DETECTED
 
 from scheduler import scheduler, ms
 from board import Board
@@ -39,14 +44,19 @@ class GroveBoard(Board):
         super(GroveBoard, self).__init__()
 
         # pin mappings
-        self.i2c_bus = 6
+        self.interrupter_pin = 2
+        self.uart_bus = 0
 
         if "platform" in config and config["platform"] == "firmata":
             addSubplatform("firmata", "/dev/ttyACM0")
-            self.i2c_bus += 512
+            self.interrupter_pin += 512
+            self.uart_bus += 512
 
-        self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
+        self.obj_detected_state = False
+        self.interrupter = RFR359F(self.interrupter_pin)
 
+        self.gps = NMEAGPS(self.uart_bus, 9600, -1)
+        self.nmea_stream_reader = NMEAStreamReader()
 
     def update_hardware_state(self):
 
@@ -54,28 +64,40 @@ class GroveBoard(Board):
         Update hardware state.
         """
 
-        pass
+        # handle gps data
+
+        gps_data = self.query_gps()
+        for gps_msg in gps_data:
+            self.trigger_hardware_event(GPS_DATA_RECEIVED, gps_msg)
+
+        # handle IR interrupter data
+
+        obj_detected = self.detect_object()
+        if self.obj_detected_state != obj_detected:
+
+            if obj_detected:
+                self.trigger_hardware_event(OBJECT_DETECTED)
+
+            self.obj_detected_state = obj_detected
 
     # hardware functions
-    def write_message(self, message, line=0):
+
+    def query_gps(self):
 
         """
-        Write message to LCD screen.
+        Query GPS receiver.
         """
 
-        message = message.ljust(16)
-        self.screen.setCursor(line, 0)
-        self.screen.write(message)
+        if self.gps.dataAvailable(5000):
 
-    def change_background(self, color):
+            payload = self.gps.readStr(256)
+            data = self.nmea_stream_reader.next(payload)
+            return data
+
+    def detect_object(self):
 
         """
-        Change LCD screen background color.
+        Detect object.
         """
 
-        colors = {
-            "red": lambda: self.screen.setColor(255, 0, 0),
-            "blue": lambda: self.screen.setColor(0, 0, 255),
-            "white": lambda: self.screen.setColor(255, 255, 255)
-        }
-        colors.get(color, colors["white"])()
+        return self.interrupter.objectDetected()

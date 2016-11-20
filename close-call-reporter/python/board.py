@@ -34,7 +34,7 @@ class Board(object):
     __metaclass__ = ABCMeta
 
     def __init__(self):
-        
+
         self.emitter = EventEmitter()
 
         self.hardware_event_job = scheduler.add_job(self.update_hardware_state, "interval", seconds=ms(100), coalesce=True, max_instances=1)
@@ -52,12 +52,12 @@ class Board(object):
         """
         Add hardware event handler.
         """
-        
+
         if once:
             self.emitter.once(event, handler)
         else:
             self.emitter.on(event, handler)
-    
+
     def remove_event_handler(self, event, handler):
 
         """
@@ -67,4 +67,6 @@ class Board(object):
         self.emitter.remove(event, handler)
 
     @abstractmethod
-    def update_hardware_state(self): pass
+    def update_hardware_state(self):
+        
+        pass

@@ -19,20 +19,6 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from logging import basicConfig, ERROR
-
-from apscheduler.schedulers.background import BackgroundScheduler
-
-basicConfig(level=ERROR)
-
-scheduler = BackgroundScheduler()
-
-scheduler.start()
-
-def ms(ms):
-
-    """
-    Converts milliseconds to seconds
-    """
-
-    return ms * 0.001
+# hardware events
+GPS_DATA_RECEIVED = "gps-data-received"
+OBJECT_DETECTED = "object-detected"

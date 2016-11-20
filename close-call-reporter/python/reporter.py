@@ -19,20 +19,34 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from logging import basicConfig, ERROR
+from __future__ import print_function
 
-from apscheduler.schedulers.background import BackgroundScheduler
+from constants.hardware import GPS_DATA_RECEIVED, OBJECT_DETECTED
 
-basicConfig(level=ERROR)
+from log import log
 
-scheduler = BackgroundScheduler()
+class Reporter(object):
 
-scheduler.start()
+    def __init__(self, config, board):
 
-def ms(ms):
+        self.config = config
+        self.board = board
 
-    """
-    Converts milliseconds to seconds
-    """
+        self.last_known_location = "Unknown"
 
-    return ms * 0.001
+        self.board.add_event_handler(GPS_DATA_RECEIVED, self.update_gps)
+        self.board.add_event_handler(OBJECT_DETECTED, self.report_close_call)
+
+    def update_gps(self, data):
+
+        if data.sentence_type == "GGA":
+            self.last_known_location = str(data)
+
+    def report_close_call(self):
+
+        """
+        Report close call.
+        """
+
+        print("close call at", self.last_known_location)
+        log(self.config, self.last_known_location)
