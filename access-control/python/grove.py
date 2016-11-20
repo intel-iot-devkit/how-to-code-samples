@@ -21,8 +21,8 @@
 
 from __future__ import print_function
 
-from pyupm_i2clcd import Jhd1313m1
-from pyupm_biss0001 import BISS0001
+from upm.pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_biss0001 import BISS0001
 
 from mraa import addSubplatform, GENERIC_FIRMATA
 

@@ -42,11 +42,11 @@ class Alarm(object):
                 - code validated -> disarm
     """
 
-    class State:
+    class State(object):
         scanning = 0
         motion_detected = 1
         alarm_triggered = 2
-    
+
     def __init__(self, config, board):
 
         self.config = config
@@ -62,7 +62,7 @@ class Alarm(object):
         self.grace_timeout = timedelta(seconds=30)
 
         self.alarm_triggered = False
-        
+
         def update_motion_state():
             if not self.motion_detected:
                 log(self.config, "motion-detected")

@@ -19,8 +19,8 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from pyupm_i2clcd import SAINSMARTKS
-from pyupm_grove import GroveButton, GroveRotary
+from upm.pyupm_i2clcd import SAINSMARTKS
+from upm.pyupm_grove import GroveButton, GroveRotary
 
 from events import scheduler, emitter, ms
 from board import Board
