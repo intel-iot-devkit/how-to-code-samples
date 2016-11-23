@@ -19,30 +19,39 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from upm.pyupm_i2clcd import SAINSMARTKS
-from upm.pyupm_grove import GroveButton, GroveRotary
+from __future__ import print_function
+from upm.pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_biss0001 import BISS0001
+from mraa import addSubplatform, GENERIC_FIRMATA
+from project.config import HARDWARE_CONFIG, KNOWN_PLATFORMS
+from project.hardware.board import Board, PinMappings
+from project.hardware.events import MOTION_DETECTED
 
-from events import scheduler, emitter, ms
-from board import Board
-
-class DfrobotBoard(Board):
+class GroveBoard(Board):
 
     """
-    Board class for drobot hardware.
+    Board class for Grove hardware.
     """
 
-    def __init__(self, config):
+    def __init__(self):
 
         super(GroveBoard, self).__init__()
-        
+
         # pin mappings
-        self.motion_pin = 16
-        
-        self.motion = BISS0001(self.motion_pin)
-        self.screen = Jhd1313m1(8, 9, 4, 5, 6, 7, 0)
+        self.pin_mappings = PinMappings(
+            motion_pin=4,
+            i2c_bus=6
+        )
+
+        if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
+            addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
+            self.pin_mappings += 512
+
+        self.motion = BISS0001(self.pin_mappings.motion_pin)
+        self.screen = Jhd1313m1(self.pin_mappings.i2c_bus, 0x3E, 0x62)
 
         self.last_motion = False
-    
+
     def update_hardware_state(self):
 
         """
@@ -54,7 +63,7 @@ class DfrobotBoard(Board):
         if current_motion != self.last_motion:
             if current_motion:
                 self.trigger_hardware_event(MOTION_DETECTED)
-            
+
             self.last_motion = current_motion
 
     # hardware functions
@@ -64,7 +73,7 @@ class DfrobotBoard(Board):
         Check PIR motion sensor.
         """
 
-        return self.motion.value()
+        return self.motion.motionDetected()
 
     def write_message(self, message, line=0):
 
@@ -77,10 +86,14 @@ class DfrobotBoard(Board):
         self.screen.write(message)
 
     def change_background(self, color):
-        
+
         """
         Change LCD screen background color.
-        No effect on the dfrobot.
         """
-        
-        pass
+
+        colors = {
+            "red": lambda: self.screen.setColor(255, 0, 0),
+            "blue": lambda: self.screen.setColor(0, 0, 255),
+            "white": lambda: self.screen.setColor(255, 255, 255)
+        }
+        colors.get(color, colors["white"])()

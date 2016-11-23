@@ -19,20 +19,48 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# app specific
-BOARD = "board"
-CODE = "CODE"
+from __future__ import print_function
+from requests import put as put_http, get as get_http
+from project.config import DATA_STORE_CONFIG
+from project.scheduler import SCHEDULER
 
-# MQTT server
-MQTT_SERVER = "MQTT_SERVER"
-MQTT_PORT = "MQTT_PORT"
-MQTT_CLIENTID = "MQTT_CLIENTID"
-MQTT_USERNAME = "MQTT_USERNAME"
-MQTT_PASSWORD = "MQTT_PASSWORD"
-MQTT_CERT = "MQTT_CERT"
-MQTT_KEY = "MQTT_KEY"
-MQTT_TOPIC = "MQTT_TOPIC"
+def store_message(payload, method="PUT"):
 
-# remote data store
-SERVER = "SERVER"
-AUTH_TOKEN = "AUTH_TOKEN"
+    """
+    Publish message to remote data store.
+    """
+
+    if not DATA_STORE_CONFIG:
+        return
+
+    server = DATA_STORE_CONFIG.server
+    auth_token = DATA_STORE_CONFIG.auth_token
+
+    headers = {
+        "X-Auth-Token": auth_token
+    }
+
+    def perform_request():
+
+        """
+        Perform HTTP request.
+        """
+
+        if method == "GET":
+            response = get_http(
+                server,
+                headers=headers,
+                json=payload
+            )
+        else:
+            response = put_http(
+                server,
+                headers=headers,
+                json=payload
+            )
+        response.raise_for_status()
+
+        print("saved to data store")
+
+    SCHEDULER.add_job(perform_request)
+    

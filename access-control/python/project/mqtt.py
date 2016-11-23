@@ -19,46 +19,60 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+from __future__ import print_function
 from ssl import PROTOCOL_TLSv1
-
 from paho.mqtt.publish import single as mqtt_publish_single
 from paho.mqtt.client import MQTTv311
 from simplejson import dumps as serialize_json
+from project.config import MQTT_CONFIG
+from project.scheduler import SCHEDULER
 
-from constants.config import MQTT_SERVER, MQTT_PORT, MQTT_CLIENTID, MQTT_USERNAME, MQTT_PASSWORD, MQTT_CERT, MQTT_KEY, MQTT_TOPIC
-
-from scheduler import scheduler
-
-def publish_message(config, payload):
+def publish_message(payload):
 
     """
     Publish message to MQTT server.
     """
 
-    if not { MQTT_SERVER, MQTT_CLIENTID, MQTT_TOPIC } <= set(config): return
+    if not MQTT_CONFIG:
+        return
 
-    server = config[MQTT_SERVER]
-    port = config.get(MQTT_PORT, 1883)
+    server = MQTT_CONFIG.server
+    port = MQTT_CONFIG.port
 
-    client_id = config[MQTT_CLIENTID]
+    client_id = MQTT_CONFIG.client_id
 
     auth = {
-        "username": config.get(MQTT_USERNAME),
-        "password": config.get(MQTT_PASSWORD)
+        "username": MQTT_CONFIG.username,
+        "password": MQTT_CONFIG.password
     }
 
     tls = {
         "ca_certs": "/etc/ssl/certs/ca-certificates.crt",
         "tls_version": PROTOCOL_TLSv1,
-        "certfile": config.get(MQTT_CERT),
-        "keyfile": config.get(MQTT_KEY)
+        "certfile": MQTT_CONFIG.cert,
+        "keyfile": MQTT_CONFIG.key
     }
 
-    topic = config[MQTT_TOPIC]
+    topic = MQTT_CONFIG.topic
     data = serialize_json(payload)
 
     def perform_request():
-        mqtt_publish_single(topic, payload=data, hostname=server, port=port, client_id=client_id, auth=auth, tls=tls, protocol=MQTTv311)
+
+        """
+        Perform MQTT request.
+        """
+
+        mqtt_publish_single(
+            topic,
+            payload=data,
+            hostname=server,
+            port=port,
+            client_id=client_id,
+            auth=auth,
+            tls=tls,
+            protocol=MQTTv311
+        )
+
         print("published to MQTT server")
 
-    scheduler.add_job(perform_request)
+    SCHEDULER.add_job(perform_request)

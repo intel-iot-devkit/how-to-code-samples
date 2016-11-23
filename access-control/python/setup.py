@@ -19,16 +19,22 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from __future__ import print_function
+from setuptools import setup, find_packages
 
-from datetime import datetime
-
-from mqtt import publish_message
-from storage import store_message
-
-def log(config, event):
-    message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
-    print(message)
-    payload = { "value": message }
-    publish_message(config, payload)
-    store_message(config, payload)
+setup(
+    name="intel-iot-[Project Name]",
+    version="0.5.0.dev1",
+    packages=find_packages(),
+    package_data={
+        "project": ["*.txt", "*.md", "config.json"]
+    },
+    install_requires=[
+        "APScheduler",
+        "PyEventEmitter",
+        "requests",
+        "paho-mqtt",
+        "simplejson",
+        "mraa",
+        "upm.pyupm_i2clcd"
+    ]
+)

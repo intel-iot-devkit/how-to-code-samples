@@ -20,19 +20,20 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-
+from importlib import import_module
+from collections import namedtuple
 from datetime import datetime, timedelta
+from pkg_resources import resource_filename
+from bottle import Bottle, static_file, request, HTTPResponse
+from project.config import HARDWARE_CONFIG, APP_CONFIG
+from project.hardware.events import MOTION_DETECTED
+from project.scheduler import SCHEDULER, ms
+from project.log import log
 
-from constants.config import CODE
-from constants.hardware import MOTION_DETECTED
-
-from scheduler import scheduler, ms
-from log import log
-
-class Alarm(object):
+class Runner(object):
 
     """
-    Alarm class implements Alarm logic.
+    Runner class implements the alarm logic.
 
     The alarm goes through the following states:
         - looking for motion
@@ -42,40 +43,100 @@ class Alarm(object):
                 - code validated -> disarm
     """
 
-    class State(object):
-        scanning = 0
-        motion_detected = 1
-        alarm_triggered = 2
+    AlarmState = namedtuple("AlarmState", "scanning motion_detected alarm_triggered")
+    ALARM_STATE = AlarmState(
+        scanning=1,
+        motion_detected=2,
+        alarm_triggered=3
+    )
 
-    def __init__(self, config, board):
+    def __init__(self):
 
-        self.config = config
-        self.board = board
+        self.project_name = "Alarm Clock"
 
-        self.code = config.get(CODE, "1234")
+        self.server = Bottle()
+        self.server.route("/", callback=self.serve_index)
+        self.server.route("/alarm", callback=self.serve_validation)
 
-        self.alarm_state = Alarm.State.scanning
+        board_name = HARDWARE_CONFIG.kit
+        board_module = "project.hardware.{0}".format(board_name)
+        board_class_name = "{0}Board".format(board_name.capitalize())
+        self.board = getattr(import_module(board_module), board_class_name)()
 
+        self.code = APP_CONFIG.code
+        self.alarm_state = Runner.ALARM_STATE.scanning
         self.previous_time = datetime.utcnow()
-
         self.validated = False
         self.grace_timeout = timedelta(seconds=30)
-
         self.alarm_triggered = False
+        self.motion_detected = False
 
         def update_motion_state():
+
+            """
+            Update motion detected state.
+            """
+
             if not self.motion_detected:
-                log(self.config, "motion-detected")
+                log("motion-detected")
                 self.motion_detected = True
                 self.previous_time = datetime.utcnow()
 
-        self.motion_detected = False
         self.board.add_event_handler(MOTION_DETECTED, update_motion_state)
-        
+
         self.board.change_background("white")
         self.board.write_message("scanning")
 
-        self.alarm_monitor_job = scheduler.add_job(self.monitor_alarm, "interval", seconds=ms(1000), coalesce=True, max_instances=1)
+        self.alarm_monitor_job = SCHEDULER.add_job(
+            self.monitor_alarm,
+            "interval",
+            seconds=ms(1000),
+            coalesce=True,
+            max_instances=1
+        )
+    
+    # server methods
+
+    def start(self):
+
+        """
+        Start runner.
+        """
+
+        self.server.run(
+            host="0.0.0.0",
+            port=3000
+        )
+
+    def serve_index(self):
+
+        """
+        Serve the 'index.html' file.
+        """
+
+        resource_package = __name__
+        resource_path = "index.html"
+        index_path = resource_filename(resource_package, resource_path)
+
+        return static_file(index_path, root = "")
+
+    def serve_validation(self):
+
+        """
+        Handle alarm code validation.
+        """
+
+        if { "code" } <= set(request.query):
+            code = request.query.get("code")
+            
+            if self.validate_code(code):
+                return HTTPResponse(status=200)
+            else:
+                return HttpResponse(status=403)
+
+        return HTTPResponse(status=400)
+    
+    # alarm methods
 
     def monitor_alarm(self):
 
@@ -89,25 +150,25 @@ class Alarm(object):
             if self.validated:
                 self.stop_alarm()
                 return
-            
+
             # handle alarm state
             current_time = datetime.utcnow()
             grace_expired = (current_time - self.previous_time) > self.grace_timeout
-            
+
             # check if alarm should trigger
             if not grace_expired:
                 self.require_validation()
             else:
                 self.start_alarm()
-    
+
     def require_validation(self):
-        
+
         """
         Require validation code.
         """
 
-        if self.alarm_state != Alarm.State.motion_detected:
-            self.alarm_state = Alarm.State.motion_detected
+        if self.alarm_state != Runner.ALARM_STATE.motion_detected:
+            self.alarm_state = Runner.ALARM_STATE.motion_detected
             self.board.change_background("blue")
             self.board.write_message("motion detected")
 
@@ -117,9 +178,9 @@ class Alarm(object):
         Start alarm.
         """
 
-        if self.alarm_state != Alarm.State.alarm_triggered:
-            log(self.config, "alarm-starting")
-            self.alarm_state = Alarm.State.alarm_triggered
+        if self.alarm_state != Runner.ALARM_STATE.alarm_triggered:
+            log("alarm-starting")
+            self.alarm_state = Runner.ALARM_STATE.alarm_triggered
             self.alarm_triggered = True
             self.board.change_background("red")
             self.board.write_message("ALARM")
@@ -129,10 +190,10 @@ class Alarm(object):
         """
         Stop alarm.
         """
-        
-        if self.alarm_state != Alarm.State.scanning:
-            log(self.config, "alarm-stopping")
-            self.alarm_state = Alarm.State.scanning
+
+        if self.alarm_state != Runner.ALARM_STATE.scanning:
+            log("alarm-stopping")
+            self.alarm_state = Runner.ALARM_STATE.scanning
             self.alarm_triggered = False
             self.validated = False
             self.motion_detected = False
@@ -147,6 +208,6 @@ class Alarm(object):
 
         validation_result = True if self.code == code else False
         if validation_result:
-            log(self.config, "validated-entry")
+            log("validated-entry")
         self.validated = validation_result
         return validation_result

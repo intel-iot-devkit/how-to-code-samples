@@ -20,35 +20,19 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
+from logging import basicConfig, ERROR
+from apscheduler.schedulers.background import BackgroundScheduler
 
-from traceback import print_exc
+basicConfig(level=ERROR)
 
-from requests import put as put_http
-from requests.exceptions import RequestException
+SCHEDULER = BackgroundScheduler()
 
-from constants.config import SERVER, AUTH_TOKEN
+SCHEDULER.start()
 
-from scheduler import scheduler
-
-def store_message(config, payload):
+def ms(mills):
 
     """
-    Publish message to remote data store.
+    Converts milliseconds to seconds
     """
-    
-    if not { SERVER, AUTH_TOKEN } <= set(config): return
 
-    server = config[SERVER]
-    auth_token = config[AUTH_TOKEN]
-
-    headers = {
-        "X-Auth-Token": auth_token
-    }
-    
-    def perform_request(): 
-        response = put_http(server, headers=headers, json=payload)
-        response.raise_for_status()
-        print("saved to data store")
-
-    scheduler.add_job(perform_request)
-    
+    return mills * 0.001
