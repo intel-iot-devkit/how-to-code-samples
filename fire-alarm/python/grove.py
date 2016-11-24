@@ -39,7 +39,7 @@ class GroveBoard(Board):
     def __init__(self, config):
 
         super(GroveBoard, self).__init__()
-        
+
         # pin mappings
         self.i2c_bus = 6
         self.buzzer_pin = 5
@@ -48,10 +48,10 @@ class GroveBoard(Board):
 
         if "platform" in config and config["platform"] == "firmata":
             addSubplatform("firmata", "/dev/ttyACM0")
-            self.i2c_bus += 512
+            self.i2c_bus = 512
             self.buzzer_pin += 512
             self.temperature_pin += 512
-        
+
         self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
         self.buzzer = Buzzer(self.buzzer_pin)
         self.temperature = GroveTemp(self.temperature_pin)
@@ -105,4 +105,4 @@ class GroveBoard(Board):
             "blue": lambda: self.screen.setColor(0, 0, 255),
             "white": lambda: self.screen.setColor(255, 255, 255)
         }
-        colors.get(color, colors["white"])()  
+        colors.get(color, colors["white"])()
