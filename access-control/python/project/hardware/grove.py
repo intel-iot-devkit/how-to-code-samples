@@ -46,6 +46,7 @@ class GroveBoard(Board):
         if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
             addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
             self.pin_mappings += 512
+            self.pin_mappings.i2c_bus = 512
 
         self.motion = BISS0001(self.pin_mappings.motion_pin)
         self.screen = Jhd1313m1(self.pin_mappings.i2c_bus, 0x3E, 0x62)
