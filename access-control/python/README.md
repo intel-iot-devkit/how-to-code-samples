@@ -59,20 +59,6 @@ To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on yo
 
 To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
-### Installing the program manually on the Intel® Edison board
-
-Alternatively, you can set up the code manually on the Intel® Edison board.
-
-Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
-
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-Navigate to the directory with this example.
-
-To install Git\* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
-
-    $ opkg install git
-
 ### Connecting the Grove\* sensors
 
 ![](./../../images/js/access-control.jpg)
@@ -93,16 +79,29 @@ You need to have a LCD Display Shield connected to an Arduino\*-compatible break
 
 ### Manual Intel® Edison setup
 
-If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
+If you're running this code on your Intel® Edison board manually, you need to install some dependencies by establishing an SSH session to the board running the following commands.
+
+To install Git\* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
+
+    $ opkg install git
 
 To obtain the Python\* packages needed for this example to execute on the Intel® Edison board:
 
-Establish an SSH connection to the board and navigate to the directory with this example.
+Run the following commands to update to the latest version of Python's package installer:
 
-Then run the following commands:
+    $ pip install --upgrade pip setuptools
 
-    $ pip install --upgrade pip
-    $ pip install -r requirements.txt
+Run the following to update to the latest versions of the Intel MRAA and UPM libaries:
+
+    $ echo "src mraa-upm http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586" > /etc/opkg/mraa-upm.conf
+    $ opkg update
+    $ opkg install mraa upm
+
+Once the dependencies are installed you can install the example itself with the following command:
+
+    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=iot_access_control&subdirectory=access-control/python"
+
+The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot-access-control/` and link the package to the global Python `site-packages` folder.
 
 ### Intel® IoT Gateway setup
 
@@ -132,6 +131,8 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
+When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/iot_access_control/access-control/python/iot_access_control/config.json`.
+
 To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```JSON
@@ -158,13 +159,9 @@ For information on how to configure the example for the optional Microsoft\* Azu
 
 ## Running the program manually
 
-To run the example on the Intel® Edison board, establish an SSH connection to the board and execute the following commands:
+Once the program is installed through `pip` you can run the program by running the following command in an SSH session to the board:
 
-Navigate to the directory with this example on the Edison.
-
-Then run the following command:
-
-    $ python .
+    $ python -m iot_access_control
 
 ### Disabling the alarm
 
