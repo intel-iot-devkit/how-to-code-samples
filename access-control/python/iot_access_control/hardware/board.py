@@ -22,7 +22,7 @@
 from __future__ import print_function
 from abc import ABCMeta, abstractmethod
 from event_emitter import EventEmitter
-from project.scheduler import SCHEDULER, ms
+from ..scheduler import SCHEDULER, ms
 
 class PinMappings(dict):
 

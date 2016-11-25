@@ -23,12 +23,12 @@ from __future__ import print_function
 from importlib import import_module
 from collections import namedtuple
 from datetime import datetime, timedelta
-from pkg_resources import resource_filename
+from pkg_resources import Requirement, resource_filename
 from bottle import Bottle, static_file, request, HTTPResponse
-from project.config import HARDWARE_CONFIG, APP_CONFIG
-from project.hardware.events import MOTION_DETECTED
-from project.scheduler import SCHEDULER, ms
-from project.log import log
+from .config import HARDWARE_CONFIG, APP_CONFIG
+from .hardware.events import MOTION_DETECTED
+from .scheduler import SCHEDULER, ms
+from .log import log
 
 class Runner(object):
 
@@ -52,14 +52,14 @@ class Runner(object):
 
     def __init__(self):
 
-        self.project_name = "Alarm Clock"
+        self.project_name = "Access Control"
 
         self.server = Bottle()
         self.server.route("/", callback=self.serve_index)
         self.server.route("/alarm", callback=self.serve_validation)
 
         board_name = HARDWARE_CONFIG.kit
-        board_module = "project.hardware.{0}".format(board_name)
+        board_module = "{0}.hardware.{1}".format(__package__, board_name)
         board_class_name = "{0}Board".format(board_name.capitalize())
         self.board = getattr(import_module(board_module), board_class_name)()
 
@@ -94,7 +94,7 @@ class Runner(object):
             coalesce=True,
             max_instances=1
         )
-    
+
     # server methods
 
     def start(self):
@@ -116,9 +116,8 @@ class Runner(object):
 
         resource_package = __name__
         resource_path = "index.html"
-        index_path = resource_filename(resource_package, resource_path)
-
-        return static_file(index_path, root = "")
+        package_root = resource_filename(resource_package, "")
+        return static_file(resource_path, root=package_root)
 
     def serve_validation(self):
 
@@ -126,16 +125,16 @@ class Runner(object):
         Handle alarm code validation.
         """
 
-        if { "code" } <= set(request.query):
+        if {"code"} <= set(request.query):
             code = request.query.get("code")
-            
+
             if self.validate_code(code):
                 return HTTPResponse(status=200)
             else:
-                return HttpResponse(status=403)
+                return HTTPResponse(status=403)
 
         return HTTPResponse(status=400)
-    
+
     # alarm methods
 
     def monitor_alarm(self):

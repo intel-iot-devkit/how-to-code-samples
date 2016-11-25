@@ -22,19 +22,17 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="intel-iot-[Project Name]",
-    version="0.5.0.dev1",
+    name="iot_access_control",
+    version="0.5.0",
     packages=find_packages(),
     package_data={
-        "project": ["*.txt", "*.md", "config.json"]
+        "iot_access_control": ["*.txt", "*.html", "*.md", "*.json"]
     },
     install_requires=[
         "APScheduler",
         "PyEventEmitter",
         "requests",
         "paho-mqtt",
-        "simplejson",
-        "mraa",
-        "upm.pyupm_i2clcd"
+        "simplejson"
     ]
 )

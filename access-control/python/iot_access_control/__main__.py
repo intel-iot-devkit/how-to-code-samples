@@ -24,7 +24,7 @@ from time import sleep
 from signal import SIGINT, signal
 from atexit import register as register_exit
 from argparse import ArgumentParser
-from project.runner import Runner
+from .runner import Runner
 
 def debug():
 

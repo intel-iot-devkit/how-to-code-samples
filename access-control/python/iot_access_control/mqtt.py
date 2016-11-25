@@ -24,8 +24,8 @@ from ssl import PROTOCOL_TLSv1
 from paho.mqtt.publish import single as mqtt_publish_single
 from paho.mqtt.client import MQTTv311
 from simplejson import dumps as serialize_json
-from project.config import MQTT_CONFIG
-from project.scheduler import SCHEDULER
+from .config import MQTT_CONFIG
+from .scheduler import SCHEDULER
 
 def publish_message(payload):
 

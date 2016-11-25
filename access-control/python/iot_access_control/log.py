@@ -20,47 +20,34 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-from requests import put as put_http, get as get_http
-from project.config import DATA_STORE_CONFIG
-from project.scheduler import SCHEDULER
+from datetime import datetime
+from .mqtt import publish_message
+from .storage import store_message
 
-def store_message(payload, method="PUT"):
+def send(payload):
 
     """
-    Publish message to remote data store.
+    Publish payload to MQTT server and data store.
     """
 
-    if not DATA_STORE_CONFIG:
-        return
+    publish_message(payload)
+    store_message(payload, method="GET")
 
-    server = DATA_STORE_CONFIG.server
-    auth_token = DATA_STORE_CONFIG.auth_token
+def increment():
 
-    headers = {
-        "X-Auth-Token": auth_token
-    }
+    """
+    Publish timestamp to MQTT server and data store.
+    """
 
-    def perform_request():
+    payload = {"counter": datetime.utcnow().isoformat()}
+    send(payload)
 
-        """
-        Perform HTTP request.
-        """
+def log(event):
 
-        if method == "GET":
-            response = get_http(
-                server,
-                headers=headers,
-                json=payload
-            )
-        else:
-            response = put_http(
-                server,
-                headers=headers,
-                json=payload
-            )
-        response.raise_for_status()
+    """
+    Publish message to MQTT server and data store.
+    """
 
-        print("saved to data store")
-
-    SCHEDULER.add_job(perform_request)
-    
+    message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
+    payload = {"value": message}
+    send(payload)

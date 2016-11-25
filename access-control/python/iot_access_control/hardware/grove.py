@@ -20,50 +20,36 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-from upm.pyupm_i2clcd import SAINSMARTKS
+from upm.pyupm_i2clcd import Jhd1313m1
 from upm.pyupm_biss0001 import BISS0001
 from mraa import addSubplatform, GENERIC_FIRMATA
-from project.config import HARDWARE_CONFIG, KNOWN_PLATFORMS
-from project.hardware.board import Board, PinMappings
-from project.hardware.events import MOTION_DETECTED
+from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
+from .board import Board, PinMappings
+from .events import MOTION_DETECTED
 
-class DfrobotBoard(Board):
+class GroveBoard(Board):
 
     """
-    Board class for drobot hardware.
+    Board class for Grove hardware.
     """
 
     def __init__(self):
 
-        super(DfrobotBoard, self).__init__()
+        super(GroveBoard, self).__init__()
 
         # pin mappings
         self.pin_mappings = PinMappings(
-            motion_pin=16,
-            screen_register_select_pin=8,
-            screen_enable_pin=9,
-            screen_data_0_pin=4,
-            screen_data_1_pin=5,
-            screen_data_2_pin=6,
-            screen_data_3_pin=7,
-            screen_analog_input_pin=0
+            motion_pin=4,
+            i2c_bus=6
         )
 
         if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
             addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
             self.pin_mappings += 512
+            self.pin_mappings.i2c_bus = 512
 
         self.motion = BISS0001(self.pin_mappings.motion_pin)
-
-        self.screen = SAINSMARTKS(
-            self.pin_mappings.screen_register_select_pin,
-            self.pin_mappings.screen_enable_pin,
-            self.pin_mappings.screen_data_0_pin,
-            self.pin_mappings.screen_data_1_pin,
-            self.pin_mappings.screen_data_2_pin,
-            self.pin_mappings.screen_data_3_pin,
-            self.pin_mappings.screen_analog_input_pin
-        )
+        self.screen = Jhd1313m1(self.pin_mappings.i2c_bus, 0x3E, 0x62)
 
         self.last_motion = False
 
@@ -104,7 +90,11 @@ class DfrobotBoard(Board):
 
         """
         Change LCD screen background color.
-        No effect on the dfrobot.
         """
 
-        pass
+        colors = {
+            "red": lambda: self.screen.setColor(255, 0, 0),
+            "blue": lambda: self.screen.setColor(0, 0, 255),
+            "white": lambda: self.screen.setColor(255, 255, 255)
+        }
+        colors.get(color, colors["white"])()
