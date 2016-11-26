@@ -19,19 +19,36 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from apscheduler.schedulers.background import BackgroundScheduler
-from logging import basicConfig
+from __future__ import print_function
+from datetime import datetime, timedelta
+from requests import get as get_http
+from .config import APP_CONFIG
 
-basicConfig()
-
-scheduler = BackgroundScheduler()
-
-scheduler.start()
-
-def ms(ms):
+def verify_earthquake():
 
     """
-    Converts milliseconds to seconds
+    Verify earthquake using USGS service.
     """
 
-    return ms * 0.001
+    geo_lat = APP_CONFIG.latitude
+    geo_long = APP_CONFIG.longitude
+
+    server = "http://earthquake.usgs.gov/fdsnws/event/1/query"
+
+    time_window = datetime.utcnow() - timedelta(minutes=10)
+
+    query = {
+        "format": "geojson",
+        "starttime": time_window.isoformat(),
+        "latitude": geo_lat,
+        "longitude": geo_long,
+        "maxradiuskm": 500
+    }
+
+    print("Calling USGS service.")
+    response = get_http(server, params=query)
+    response.raise_for_status()
+    data = response.json()
+    event_count = len(data["features"])
+    return True if event_count > 0 else False
+    

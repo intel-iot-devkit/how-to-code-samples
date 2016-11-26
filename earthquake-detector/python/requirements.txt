@@ -1,4 +1,0 @@
-APScheduler==3.2.0
-PyEventEmitter==1.0.3
-requests==2.11.1
-simplejson==3.8.2

@@ -19,11 +19,31 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+from __future__ import print_function
 from abc import ABCMeta, abstractmethod
-
 from event_emitter import EventEmitter
+from ..scheduler import SCHEDULER, ms
 
-from scheduler import scheduler, ms
+class PinMappings(dict):
+
+    """
+    Class for holding and manipulating pin mappings.
+    """
+
+    def __init__(self, *args, **kwargs):
+
+        super(PinMappings, self).__init__(*args, **kwargs)
+        self.__dict__ = self
+
+    def __iadd__(self, value):
+        for k in self.iterkeys():
+            self[k] += value
+        return self
+
+    def __isub__(self, value):
+        for k in self.iterkeys():
+            self[k] -= value
+        return self
 
 class Board(object):
 
@@ -34,10 +54,15 @@ class Board(object):
     __metaclass__ = ABCMeta
 
     def __init__(self):
-        
+
         self.emitter = EventEmitter()
 
-        self.hardware_event_job = scheduler.add_job(self.update_hardware_state, "interval", seconds=ms(100), coalesce=True, max_instances=1)
+        self.hardware_event_job = SCHEDULER.add_job(
+            self.update_hardware_state,
+            "interval",
+            seconds=ms(100),
+            coalesce=True,
+            max_instances=1)
 
     def trigger_hardware_event(self, event, *args, **kwargs):
 
@@ -45,22 +70,19 @@ class Board(object):
         Signal hardware event.
         """
 
-        def handler():
-            self.emitter.emit(event, *args, **kwargs)
-        
-        scheduler.add_job(handler)
+        self.emitter.emit(event, *args, **kwargs)
 
     def add_event_handler(self, event, handler, once=False):
 
         """
         Add hardware event handler.
         """
-        
+
         if once:
             self.emitter.once(event, handler)
         else:
             self.emitter.on(event, handler)
-    
+
     def remove_event_handler(self, event, handler):
 
         """
@@ -70,4 +92,10 @@ class Board(object):
         self.emitter.remove(event, handler)
 
     @abstractmethod
-    def update_hardware_state(self): pass
+    def update_hardware_state(self):
+
+        """
+        Abstract method for updating hardware state.
+        """
+
+        pass

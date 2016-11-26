@@ -1,13 +1,14 @@
-# Earthquake detector in Python*
+# Earthquake Detector in Python*
 
 ## Introduction
 
-This earthquake detector application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This Earthquake Detector application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Invoke the services of the United States Geological Survey (USGS) API for accessing earthquake data.
+- Store the Earthquake Detector data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
@@ -18,7 +19,7 @@ Using an Intel® Edison board, this project lets you create an earthquake detect
 
 ## How it works
 
-This earthquake detector constantly reads the 3-axis digital accelerometer looking for movement that could indicate an earthquake.
+The earthquake detector constantly reads the 3-axis digital accelerometer looking for movement that could indicate an earthquake.
 
 When it thinks it detects an earthquake, it attempts to verify with the USGS API that an earthquake actually occurred.
 
@@ -50,7 +51,7 @@ To download a .zip file, in your web browser go to <a href="https://github.com/i
 
 ### Installing the program manually on the Intel® Edison board
 
-Alternatively, you can set up the code manually on the Intel® Edison board.
+You can set up the code manually on the Intel® Edison board.
 
 Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
 
@@ -84,18 +85,48 @@ You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breako
 
 3. Plug one end of a DFRobot\* cable into the plug labeled "Z" on the Triple-Axis Accelerometer, then connect the other end to the A3 port on the LCD Keypad Shield.
 
-### Manual Intel® Edison board setup
+### Intel® Edison board setup
 
-If you're running this code on your Intel® Edison board manually, you will need to install some dependencies.
+If you're running this code on your Intel® Edison board, you need to install some dependencies by establishing an SSH session to the Edison and run the commands in the sections below.
 
-To obtain the Python\* packages needed for this example to execute on the Intel® Edison board:
+#### Update the opkg repo
 
-Establish an SSH connection to the board and navigate to the directory with this example.
+To add the Intel opkg repository:
 
-Then run the following commands:
+    $ echo "src mraa-upm http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586" > /etc/opkg/mraa-upm.conf
+    $ opkg update
 
-    $ pip install --upgrade pip
-    $ pip install -r requirements.txt
+You'll only need to perform this step once.
+
+#### Git
+
+To install Git\* on the Intel® Edison board (if you don’t have it yet):
+
+    $ opkg update
+    $ opkg install git
+
+#### MRAA and UPM Dependencies
+
+To install the latest versions of the MRAA\* and UPM\* libraries:
+
+    $ opkg update
+    $ opkg install mraa
+    $ opkg install upm
+
+#### Python Package Manager (pip)
+
+To install the Python\* package manager needed to install and run the example:
+
+    $ pip install --upgrade pip setuptools
+
+
+#### Install the example
+
+Once all dependencies are installed you can install the example itself with the following command:
+
+    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=iot_earthquake_detector&subdirectory=earthquake-detector/python"
+
+The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_earthquake_detector/` and link the package to the global Python `site-packages` folder.
 
 ### Intel® IoT Gateway setup
 
@@ -113,44 +144,23 @@ You will also need to configure the `config.json` in the example to use the Ardu
 
 ## Configuring the example
 
-To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/iot_earthquake_detector/earthquake-detector/python/iot_earthquake_detector/config.json`.
 
-```
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+
+```JSON
 {
-  "kit": "dfrobot"
-}
-```
-
-To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
-
-```
-{
-  "kit": "grove",
-  "platform": "firmata"
-}
-```
-
-The DFRobot\* variation of this example does not yet support the Arduino\*/Genuino\* 101.
-
-To configure the example to check for earthquakes in your area, change the `LATITUDE` and `LONGITUDE` keys in the `config.json` file as follows:
-
-```
-{
-  "kit": "grove",
-  "LATITUDE": "47.641944",
-  "LONGITUDE": "-122.127222"
+    "kit": "dfrobot"
+    "LATITUDE": "47.641944",
+    "LONGITUDE": "-122.127222"
 }
 ```
 
 ## Running the program manually
 
-To run the example on the Intel® Edison board, establish an SSH connection to the board and execute the following commands:
+Once the example is installed through `pip` you can run the program by running the following command in an SSH session to the board:
 
-Navigate to the directory with this example on the Edison.
-
-Then run the following command:
-
-    $ python .
+    $ python -m iot_earthquake_detector
 
 ### Determining the Intel® Edison board's IP address
 

@@ -19,46 +19,20 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from pyupm_i2clcd import SAINSMARTKS
+from __future__ import print_function
+from logging import basicConfig, ERROR
+from apscheduler.schedulers.background import BackgroundScheduler
 
-from board import Board
+basicConfig(level=ERROR)
 
-class DfrobotBoard(Board):
+SCHEDULER = BackgroundScheduler()
+
+SCHEDULER.start()
+
+def ms(mills):
 
     """
-    Board class for drobot hardware.
+    Converts milliseconds to seconds
     """
 
-    def __init__(self, config):
-
-        super(GroveBoard, self).__init__()
-        
-        self.screen = Jhd1313m1(8, 9, 4, 5, 6, 7, 0)
-    
-    def update_hardware_state(self):
-
-        """
-        Update hardware state.
-        """
-
-        pass
-
-    # hardware functions
-    def write_message(self, message, line=0):
-
-        """
-        Write message to LCD screen.
-        """
-
-        message = message.ljust(16)
-        self.screen.setCursor(line, 0)
-        self.screen.write(message)
-
-    def change_background(self, color):
-        
-        """
-        Change LCD screen background color.
-        No effect on the dfrobot.
-        """
-        
-        pass
+    return mills * 0.001

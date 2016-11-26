@@ -19,7 +19,36 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# app specific
-BOARD = "board"
-LATITUDE = "LATITUDE"
-LONGITUDE = "LONGITUDE"
+from __future__ import print_function, division
+from time import sleep
+from signal import SIGINT, signal
+from atexit import register as register_exit
+from .runner import Runner
+
+def main():
+
+    """
+    Start main function.
+    """
+
+    runner = Runner()
+    print("Running {0} example.".format(runner.project_name))
+
+    def signal_handler(signum, frame):
+        raise SystemExit
+
+    def exit_handler():
+        print("exiting")
+        exit(0)
+
+    register_exit(exit_handler)
+    signal(SIGINT, signal_handler)
+
+    try:
+        signal.pause()
+    except AttributeError:
+        while True:
+            sleep(0.5)
+
+if __name__ == "__main__":
+    main()

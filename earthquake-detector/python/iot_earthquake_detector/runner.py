@@ -19,22 +19,27 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+from __future__ import print_function
+from importlib import import_module
 from time import sleep
+from .config import HARDWARE_CONFIG
+from .usgs import verify_earthquake
+from .hardware.events import ACCELERATION_DETECTED
 
-from constants.hardware import ACCELERATION_DETECTED
+class Runner(object):
 
-from usgs import verify_earthquake
+    def __init__(self):
 
-class Detector(object):
+        self.project_name = "Earthquake Detector"
 
-    def __init__(self, config, board):
-
-        self.config = config
-        self.board = board
+        board_name = HARDWARE_CONFIG.kit
+        board_module = "{0}.hardware.{1}".format(__package__, board_name)
+        board_class_name = "{0}Board".format(board_name.capitalize())
+        self.board = getattr(import_module(board_module), board_class_name)()
 
         self.reset()
         self.board.add_event_handler(ACCELERATION_DETECTED, self.detect_earthquake)
-    
+
     def display_verifying(self):
 
         self.board.write_message("Checking USGS...")
@@ -44,7 +49,7 @@ class Detector(object):
 
         self.board.write_message("Earthquake!")
         self.board.change_background("red")
-    
+
     def display_false_alarm(self):
 
         self.board.write_message("No quake.")
@@ -54,7 +59,7 @@ class Detector(object):
 
         self.board.write_message("Listening...")
         self.board.change_background("white")
-    
+
     def detect_earthquake(self):
 
         """
@@ -62,8 +67,8 @@ class Detector(object):
         """
 
         self.display_verifying()
-        verification = verify_earthquake(self.config)
-        if (verification == True):
+        verification = verify_earthquake()
+        if verification:
             self.display_warning()
         else:
             self.display_false_alarm()

@@ -19,43 +19,19 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from __future__ import print_function
+from setuptools import setup, find_packages
 
-from datetime import datetime, timedelta
-
-from requests import get as get_http
-
-from constants.config import LATITUDE, LONGITUDE
-
-from scheduler import scheduler
-
-def verify_earthquake(config):
-
-    """
-    Verify earthquake using USGS service.
-    """
-    
-    if not { LATITUDE, LONGITUDE } <= set(config): return False
-
-    geo_lat = config[LATITUDE]
-    geo_long = config[LONGITUDE]
-
-    server = "http://earthquake.usgs.gov/fdsnws/event/1/query"
-
-    time_window = datetime.utcnow() - timedelta(minutes=10)
-
-    query = {
-        "format": "geojson",
-        "starttime": time_window.isoformat(),
-        "latitude": geo_lat,
-        "longitude": geo_long,
-        "maxradiuskm": 500
-    }
-    
-    print("calling USGS service")
-    response = get_http(server, params=query)
-    response.raise_for_status()
-    data = response.json()
-    event_count = len(data["features"])
-    return True if event_count > 0 else False
-    
+setup(
+    name="iot_earthquake_detector",
+    version="0.5.0",
+    packages=find_packages(),
+    package_data={
+        "iot_earthquake_detector": ["*.txt", "*.html", "*.md", "*.json"]
+    },
+    install_requires=[
+        "APScheduler",
+        "PyEventEmitter",
+        "requests",
+        "simplejson"
+    ]
+)
