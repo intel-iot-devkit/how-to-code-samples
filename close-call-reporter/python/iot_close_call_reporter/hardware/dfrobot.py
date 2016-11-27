@@ -20,42 +20,38 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-
+from pynmea2 import NMEAStreamReader
 from upm.pyupm_nmea_gps import NMEAGPS
 from upm.pyupm_rfr359f import RFR359F
-
-from pynmea2 import NMEAStreamReader
-
 from mraa import addSubplatform, GENERIC_FIRMATA
+from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
+from .board import Board, PinMappings
+from .events import GPS_DATA_RECEIVED, OBJECT_DETECTED
 
-from constants.hardware import GPS_DATA_RECEIVED, OBJECT_DETECTED
-
-from scheduler import scheduler, ms
-from board import Board
-
-class GroveBoard(Board):
+class DfrobotBoard(Board):
 
     """
-    Board class for Grove hardware.
+    Board class for drobot hardware.
     """
 
-    def __init__(self, config):
+    def __init__(self):
 
-        super(GroveBoard, self).__init__()
+        super(DfrobotBoard, self).__init__()
 
         # pin mappings
-        self.interrupter_pin = 2
-        self.uart_bus = 0
+        self.pin_mappings = PinMappings(
+            interrupter_pin=4,
+            uart_bus=0
+        )
 
-        if "platform" in config and config["platform"] == "firmata":
-            addSubplatform("firmata", "/dev/ttyACM0")
-            self.interrupter_pin += 512
-            self.uart_bus += 512
+        if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
+            addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
+            self.pin_mappings += 512
+
+        self.gps = NMEAGPS(self.pin_mappings.uart_bus, 9600, -1)
+        self.interrupter = RFR359F(self.pin_mappings.interrupter_pin)
 
         self.obj_detected_state = False
-        self.interrupter = RFR359F(self.interrupter_pin)
-
-        self.gps = NMEAGPS(self.uart_bus, 9600, -1)
         self.nmea_stream_reader = NMEAStreamReader()
 
     def update_hardware_state(self):
@@ -81,7 +77,6 @@ class GroveBoard(Board):
             self.obj_detected_state = obj_detected
 
     # hardware functions
-
     def query_gps(self):
 
         """

@@ -20,33 +20,47 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
+from requests import put as put_http, get as get_http
+from .config import DATA_STORE_CONFIG
+from .scheduler import SCHEDULER
 
-from constants.hardware import GPS_DATA_RECEIVED, OBJECT_DETECTED
+def store_message(payload, method="PUT"):
 
-from log import log
+    """
+    Publish message to remote data store.
+    """
 
-class Reporter(object):
+    if not DATA_STORE_CONFIG:
+        return
 
-    def __init__(self, config, board):
+    server = DATA_STORE_CONFIG.server
+    auth_token = DATA_STORE_CONFIG.auth_token
 
-        self.config = config
-        self.board = board
+    headers = {
+        "X-Auth-Token": auth_token
+    }
 
-        self.last_known_location = "Unknown"
-
-        self.board.add_event_handler(GPS_DATA_RECEIVED, self.update_gps)
-        self.board.add_event_handler(OBJECT_DETECTED, self.report_close_call)
-
-    def update_gps(self, data):
-
-        if data.sentence_type == "GGA":
-            self.last_known_location = str(data)
-
-    def report_close_call(self):
+    def perform_request():
 
         """
-        Report close call.
+        Perform HTTP request.
         """
 
-        print("close call at", self.last_known_location)
-        log(self.config, self.last_known_location)
+        if method == "GET":
+            response = get_http(
+                server,
+                headers=headers,
+                json=payload
+            )
+        else:
+            response = put_http(
+                server,
+                headers=headers,
+                json=payload
+            )
+        response.raise_for_status()
+
+        print("saved to data store")
+
+    SCHEDULER.add_job(perform_request)
+    

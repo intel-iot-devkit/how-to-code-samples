@@ -19,46 +19,35 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from pyupm_i2clcd import SAINSMARTKS
+from __future__ import print_function
+from datetime import datetime
+from .mqtt import publish_message
+from .storage import store_message
 
-from board import Board
-
-class DfrobotBoard(Board):
+def send(payload):
 
     """
-    Board class for drobot hardware.
+    Publish payload to MQTT server and data store.
     """
 
-    def __init__(self, config):
+    publish_message(payload)
+    store_message(payload, method="GET")
 
-        super(GroveBoard, self).__init__()
-        
-        self.screen = Jhd1313m1(8, 9, 4, 5, 6, 7, 0)
-    
-    def update_hardware_state(self):
+def increment():
 
-        """
-        Update hardware state.
-        """
+    """
+    Publish timestamp to MQTT server and data store.
+    """
 
-        pass
+    payload = {"counter": datetime.utcnow().isoformat()}
+    send(payload)
 
-    # hardware functions
-    def write_message(self, message, line=0):
+def log(event):
 
-        """
-        Write message to LCD screen.
-        """
+    """
+    Publish message to MQTT server and data store.
+    """
 
-        message = message.ljust(16)
-        self.screen.setCursor(line, 0)
-        self.screen.write(message)
-
-    def change_background(self, color):
-        
-        """
-        Change LCD screen background color.
-        No effect on the dfrobot.
-        """
-        
-        pass
+    message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
+    payload = {"value": message}
+    send(payload)

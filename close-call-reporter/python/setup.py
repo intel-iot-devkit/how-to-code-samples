@@ -19,37 +19,21 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from __future__ import print_function
+from setuptools import setup, find_packages
 
-from datetime import datetime
-
-from mqtt import publish_message
-from storage import store_message
-
-def send(config, payload):
-
-    """
-    Publish payload to MQTT server and data store.
-    """
-
-    publish_message(config, payload)
-    store_message(config, payload, method="GET")
-
-def increment(config):
-
-    """
-    Publish timestamp to MQTT server and data store.
-    """
-
-    payload = { "counter": datetime.utcnow().isoformat() }
-    send(config, payload)
-
-def log(config, event):
-
-    """
-    Publish message to MQTT server and data store.
-    """
-
-    message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
-    payload = { "value": message }
-    send(config, payload)
+setup(
+    name="iot_close_call_reporter",
+    version="0.5.0",
+    packages=find_packages(),
+    package_data={
+        "": ["*.txt", "*.html", "*.md", "*.json"]
+    },
+    install_requires=[
+        "APScheduler",
+        "PyEventEmitter",
+        "requests",
+        "paho-mqtt",
+        "simplejson",
+        "pynmea2"
+    ]
+)

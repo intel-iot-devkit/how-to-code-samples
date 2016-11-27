@@ -2,12 +2,12 @@
 
 ## Introduction
 
-This smart doorbell application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This Close Call Reporter application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Store the close call data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Store the Close Call Reporter data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
@@ -52,52 +52,66 @@ To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on yo
 
 To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
-### Installing the program manually on the Intel® Edison board
-
-Alternatively, you can set up the code manually on the Intel® Edison board.
-
-Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
-
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-Then, navigate to the directory with this example.
-
-To install Git\* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
-
-    $ opkg install git
-
 ### Connecting the Grove\* sensors
 
-![](./../../images/js/close-call.jpg)
+![](./../../images/js/access-control.jpg)
 
-You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove cable into the Grove\* IR Distance Interrupter, and connect the other end to the D2 port on the Grove\* Shield.
+1. Plug one end of a Grove\* cable into the Grove\* PIR Motion Sensor, and connect the other end to the D4 port on the Grove\* Shield.
 
-2. Plug one end of a Grove cable into the Grove\* GPS, and connect the other end to the UART port on the Grove\* Shield.
+2. Plug one end of a Grove\* cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
 ### Connecting the DFRobot\* sensors
 
-![](./../../images/js/close-call-dfrobot.jpg)
+![](./../../images/js/access-control-dfrobot.jpg)
 
-You need to have a DFRobot\* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* I/O Expansion Shield.
+You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Display Shield.
 
-1. Plug one end of a DFRobot cable into the IR Distance Sensor, and connect the other end to the D4 port on the I/O Expansion Shield.
+1. Plug one end of a DFRobot\* cable into the PIR (Motion) Sensor, and connect the other end to the A2 port on the LCD Display Shield.
 
-2. Plug the attached GPS cable TX (white) to the I/O Expansion Shield's RX pin. Plug the attached GPS cable RX (black) to the I/O Expansion Shield's TX pin. Plug the attached GPS cable power (red) to any of the I/O Expansion Shield's 5V pins. Plug the attached GPS cable ground (thicker black) to any of the I/O Expansion Shield's GND.
+### Intel® Edison board setup
 
-### Manual Intel® Edison board setup
+If you're running this code on your Intel® Edison board, you need to install some dependencies by establishing an SSH session to the Edison and run the commands in the sections below.
 
-If you're running this code on your Intel® Edison board manually, you will need to install some dependencies.
+#### Update the opkg repo
 
-To obtain the Python\* packages needed for this example to execute on the Intel® Edison board:
+To add the Intel opkg repository:
 
-Establish an SSH connection to the board and navigate to the directory with this example.
+    $ echo "src mraa-upm http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586" > /etc/opkg/mraa-upm.conf
+    $ opkg update
 
-Then run the following commands:
+You'll only need to perform this step once.
 
-    $ pip install --upgrade pip
-    $ pip install -r requirements.txt
+#### Git
+
+To install Git\* on the Intel® Edison board (if you don’t have it yet):
+
+    $ opkg update
+    $ opkg install git
+
+#### MRAA and UPM Dependencies
+
+To install the latest versions of the MRAA\* and UPM\* libraries:
+
+    $ opkg update
+    $ opkg install mraa
+    $ opkg install upm
+
+#### Python Package Manager (pip)
+
+To install the Python\* package manager needed to install and run the example:
+
+    $ pip install --upgrade pip setuptools
+
+
+#### Install the example
+
+Once all dependencies are installed you can install the example itself with the following command:
+
+    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=iot_close_call_reporter&subdirectory=close-call-reporter/python"
+
+The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_close_call_reporter/` and link the package to the global Python `site-packages` folder.
 
 ### Intel® IoT Gateway setup
 
@@ -131,17 +145,19 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
+When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/iot_close_call_reporter/close-call-reporter/python/iot_close_call_reporter/config.json`.
+
 To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
-```
+```JSON
 {
   "kit": "dfrobot"
 }
 ```
 
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below the "CODE" key as follows:
 
-```
+```JSON
 {
   "kit": "grove",
   "SERVER": "http://intel-examples.azurewebsites.net/logger/access-control",
@@ -155,13 +171,9 @@ For information on how to configure the example for the optional Microsoft\* Azu
 
 ## Running the program manually
 
-To run the example on the Intel® Edison board, establish an SSH connection to the board and execute the following commands:
+Once the example is installed through `pip` you can run the program by running the following command in an SSH session to the board:
 
-Navigate to the directory with this example on the Edison.
-
-Then run the following command:
-
-    $ python .
+    $ python -m iot_close_call_reporter
 
 ### Determining the Intel® Edison board's IP address
 

@@ -20,38 +20,37 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
+from importlib import import_module
+from .config import HARDWARE_CONFIG
+from .hardware.events import GPS_DATA_RECEIVED, OBJECT_DETECTED
+from .log import log
 
-from traceback import print_exc
+class Runner(object):
 
-from requests import put as put_http, get as get_http
-from requests.exceptions import RequestException
+    def __init__(self):
 
-from constants.config import SERVER, AUTH_TOKEN
+        self.project_name = "Close Call Reporter"
 
-from scheduler import scheduler
+        board_name = HARDWARE_CONFIG.kit
+        board_module = "{0}.hardware.{1}".format(__package__, board_name)
+        board_class_name = "{0}Board".format(board_name.capitalize())
+        self.board = getattr(import_module(board_module), board_class_name)()
 
-def store_message(config, payload, method="PUT"):
+        self.last_known_location = "Unknown"
 
-    """
-    Publish message to remote data store.
-    """
-    
-    if not { SERVER, AUTH_TOKEN } <= set(config): return
+        self.board.add_event_handler(GPS_DATA_RECEIVED, self.update_gps)
+        self.board.add_event_handler(OBJECT_DETECTED, self.report_close_call)
 
-    server = config[SERVER]
-    auth_token = config[AUTH_TOKEN]
+    def update_gps(self, data):
 
-    headers = {
-        "X-Auth-Token": auth_token
-    }
-    
-    def perform_request(): 
-        if (method == "GET"):
-            response = get_http(server, headers=headers, json=payload)
-        else:
-            response = put_http(server, headers=headers, json=payload)
-        response.raise_for_status()
-        print("saved to data store")
+        if data.sentence_type == "GGA":
+            self.last_known_location = str(data)
 
-    scheduler.add_job(perform_request)
-    
+    def report_close_call(self):
+
+        """
+        Report close call.
+        """
+
+        print("close call at", self.last_known_location)
+        log(self.last_known_location)

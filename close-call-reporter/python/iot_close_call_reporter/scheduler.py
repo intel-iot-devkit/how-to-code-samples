@@ -19,20 +19,20 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+from __future__ import print_function
 from logging import basicConfig, ERROR
-
 from apscheduler.schedulers.background import BackgroundScheduler
 
 basicConfig(level=ERROR)
 
-scheduler = BackgroundScheduler()
+SCHEDULER = BackgroundScheduler()
 
-scheduler.start()
+SCHEDULER.start()
 
-def ms(ms):
+def ms(mills):
 
     """
     Converts milliseconds to seconds
     """
 
-    return ms * 0.001
+    return mills * 0.001
