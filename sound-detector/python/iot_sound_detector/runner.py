@@ -19,16 +19,22 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from constants.hardware import SOUND_MEASUREMENT
+from __future__ import print_function
+from importlib import import_module
+from .config import HARDWARE_CONFIG
+from .hardware.events import SOUND_MEASUREMENT
+from .log import log
 
-from log import log
+class Runner(object):
 
-class Detector(object):
+    def __init__(self):
 
-    def __init__(self, config, board):
+        self.project_name = "Sound Detector"
 
-        self.config = config
-        self.board = board
+        board_name = HARDWARE_CONFIG.kit
+        board_module = "{0}.hardware.{1}".format(__package__, board_name)
+        board_class_name = "{0}Board".format(board_name.capitalize())
+        self.board = getattr(import_module(board_module), board_class_name)()
 
         self.board.add_event_handler(SOUND_MEASUREMENT, self.display_sound_measurement)
 
@@ -38,7 +44,7 @@ class Detector(object):
         Display average volume measurement.
         """
 
-        log(self.config, volume)
+        print("volume:", volume)
 
         self.board.write_message("avg volume: " + str(volume))
 

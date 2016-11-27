@@ -19,52 +19,20 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from abc import ABCMeta, abstractmethod
+from setuptools import setup, find_packages
 
-from event_emitter import EventEmitter
-
-from scheduler import scheduler, ms
-
-class Board(object):
-
-    """
-    Base class for Board hardware implementations
-    """
-
-    __metaclass__ = ABCMeta
-
-    def __init__(self):
-        
-        self.emitter = EventEmitter()
-
-        self.hardware_event_job = scheduler.add_job(self.update_hardware_state, "interval", seconds=ms(100), coalesce=True, max_instances=1)
-
-    def trigger_hardware_event(self, event, *args, **kwargs):
-
-        """
-        Signal hardware event.
-        """
-
-        self.emitter.emit(event, *args, **kwargs)
-
-    def add_event_handler(self, event, handler, once=False):
-
-        """
-        Add hardware event handler.
-        """
-        
-        if once:
-            self.emitter.once(event, handler)
-        else:
-            self.emitter.on(event, handler)
-    
-    def remove_event_handler(self, event, handler):
-
-        """
-        Remove hardware event handler.
-        """
-
-        self.emitter.remove(event, handler)
-
-    @abstractmethod
-    def update_hardware_state(self): pass
+setup(
+    name="iot_sound_detector",
+    version="0.5.0",
+    packages=find_packages(),
+    package_data={
+        "": ["*.txt", "*.html", "*.md", "*.json"]
+    },
+    install_requires=[
+        "APScheduler",
+        "PyEventEmitter",
+        "requests",
+        "paho-mqtt",
+        "simplejson"
+    ]
+)

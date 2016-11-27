@@ -20,16 +20,12 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-
-from pyupm_i2clcd import Jhd1313m1
-from pyupm_mic import Microphone, thresholdContext as micThresholdContext, uint16Array
-
+from upm.pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_mic import Microphone, thresholdContext as micThresholdContext, uint16Array
 from mraa import addSubplatform, GENERIC_FIRMATA
-
-from constants.hardware import SOUND_MEASUREMENT
-
-from scheduler import scheduler, ms
-from board import Board
+from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
+from .board import Board, PinMappings
+from .events import SOUND_MEASUREMENT
 
 class GroveBoard(Board):
 
@@ -37,26 +33,29 @@ class GroveBoard(Board):
     Board class for Grove hardware.
     """
 
-    def __init__(self, config):
+    def __init__(self):
 
         super(GroveBoard, self).__init__()
-        
-        # pin mappings
-        self.mic_pin = 0
-        self.i2c_bus = 6
 
-        if "platform" in config and config["platform"] == "firmata":
-            addSubplatform("firmata", "/dev/ttyACM0")
-            self.i2c_bus += 512
-        
-        self.mic = Microphone(self.mic_pin)
-        self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
+        # pin mappings
+        self.pin_mappings = PinMappings(
+            mic_pin=0,
+            i2c_bus=6
+        )
+
+        if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
+            addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
+            self.pin_mappings += 512
+            self.pin_mappings.i2c_bus = 512
+
+        self.mic = Microphone(self.pin_mappings.mic_pin)
+        self.screen = Jhd1313m1(self.pin_mappings.i2c_bus, 0x3E, 0x62)
 
         self.mic_ctx = micThresholdContext()
         self.mic_ctx.averageReading = 0
         self.mic_ctx.runningAverage = 0
         self.mic_ctx.averagedOver = 2
-    
+
     def update_hardware_state(self):
 
         """
