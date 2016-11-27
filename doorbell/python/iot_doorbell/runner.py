@@ -19,19 +19,35 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# app specific
-BOARD = "board"
+from __future__ import print_function
+from importlib import import_module
+from .config import HARDWARE_CONFIG
+from .log import increment
+from .hardware.events import TOUCH_UP, TOUCH_DOWN
 
-# MQTT server
-MQTT_SERVER = "MQTT_SERVER"
-MQTT_PORT = "MQTT_PORT"
-MQTT_CLIENTID = "MQTT_CLIENTID"
-MQTT_USERNAME = "MQTT_USERNAME"
-MQTT_PASSWORD = "MQTT_PASSWORD"
-MQTT_CERT = "MQTT_CERT"
-MQTT_KEY = "MQTT_KEY"
-MQTT_TOPIC = "MQTT_TOPIC"
+class Runner(object):
 
-# remote data store
-SERVER = "SERVER"
-AUTH_TOKEN = "AUTH_TOKEN"
+    def __init__(self):
+
+        self.project_name = "Doorbell"
+
+        board_name = HARDWARE_CONFIG.kit
+        board_module = "{0}.hardware.{1}".format(__package__, board_name)
+        board_class_name = "{0}Board".format(board_name.capitalize())
+        self.board = getattr(import_module(board_module), board_class_name)()
+
+        self.board.add_event_handler(TOUCH_DOWN, self.ding_dong)
+        self.board.add_event_handler(TOUCH_UP, self.reset)
+
+        self.reset()
+
+    def ding_dong(self):
+        increment()
+        self.board.write_message("ding dong!")
+        self.board.change_background("green")
+        self.board.start_buzzer()
+
+    def reset(self):
+        self.board.write_message("doorbot ready")
+        self.board.change_background("white")
+        self.board.stop_buzzer()

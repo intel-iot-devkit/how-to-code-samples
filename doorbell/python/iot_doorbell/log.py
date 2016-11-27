@@ -19,29 +19,35 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from constants.hardware import TOUCH_DOWN, TOUCH_UP
+from __future__ import print_function
+from datetime import datetime
+from .mqtt import publish_message
+from .storage import store_message
 
-from log import increment
+def send(payload):
 
-class Doorbell(object):
+    """
+    Publish payload to MQTT server and data store.
+    """
 
-    def __init__(self, config, board):
+    publish_message(payload)
+    store_message(payload, method="GET")
 
-        self.config = config
-        self.board = board
+def increment():
 
-        self.board.add_event_handler(TOUCH_DOWN, self.ding_dong)
-        self.board.add_event_handler(TOUCH_UP, self.reset)
+    """
+    Publish timestamp to MQTT server and data store.
+    """
 
-        self.reset()
+    payload = {"counter": datetime.utcnow().isoformat()}
+    send(payload)
 
-    def ding_dong(self):
-        increment(self.config)
-        self.board.write_message("ding dong!")
-        self.board.change_background("green")
-        self.board.start_buzzer()
+def log(event):
 
-    def reset(self):
-        self.board.write_message("doorbot ready")  
-        self.board.change_background("white")
-        self.board.stop_buzzer()
+    """
+    Publish message to MQTT server and data store.
+    """
+
+    message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
+    payload = {"value": message}
+    send(payload)

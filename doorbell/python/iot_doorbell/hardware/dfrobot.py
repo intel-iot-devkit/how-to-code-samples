@@ -19,14 +19,13 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from mraa import Gpio, DIR_OUT
-
-from pyupm_i2clcd import SAINSMARTKS
-from pyupm_grove import GroveButton
-
-from constants.hardware import TOUCH_DOWN, TOUCH_UP
-
-from board import Board
+from __future__ import print_function
+from upm.pyupm_grove import GroveButton
+from upm.pyupm_i2clcd import SAINSMARTKS
+from mraa import Gpio, DIR_OUT, addSubplatform, GENERIC_FIRMATA
+from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
+from .board import Board, PinMappings
+from .events import TOUCH_UP, TOUCH_DOWN
 
 class DfrobotBoard(Board):
 
@@ -34,19 +33,41 @@ class DfrobotBoard(Board):
     Board class for drobot hardware.
     """
 
-    def __init__(self, config):
+    def __init__(self):
 
-        super(GroveBoard, self).__init__()
+        super(DfrobotBoard, self).__init__()
 
-        self.touch_pin = 16
-        self.buzzer_pin = 15
-        
-        self.touch = GroveButton(self.touch_pin)
-        self.buzzer = Gpio(self.buzzer_pin)
-        self.screen = Jhd1313m1(8, 9, 4, 5, 6, 7, 0)
+        # pin mappings
+        self.pin_mappings = PinMappings(
+            screen_register_select_pin=8,
+            screen_enable_pin=9,
+            screen_data_0_pin=4,
+            screen_data_1_pin=5,
+            screen_data_2_pin=6,
+            screen_data_3_pin=7,
+            screen_analog_input_pin=0
+        )
 
-        self.buzzer.dir(DIR_OUT)
-    
+        if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
+            addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
+            self.pin_mappings += 512
+
+        self.screen = SAINSMARTKS(
+            self.pin_mappings.screen_register_select_pin,
+            self.pin_mappings.screen_enable_pin,
+            self.pin_mappings.screen_data_0_pin,
+            self.pin_mappings.screen_data_1_pin,
+            self.pin_mappings.screen_data_2_pin,
+            self.pin_mappings.screen_data_3_pin,
+            self.pin_mappings.screen_analog_input_pin
+        )
+
+        self.touch = GroveButton(self.pin_mappings.touch_pin)
+        self.buzzer = Gpio(self.pin_mappings.buzzer_pin)
+
+        self.touch_state = False
+        self.stop_buzzer()
+
     def update_hardware_state(self):
 
         """
@@ -54,9 +75,9 @@ class DfrobotBoard(Board):
         """
 
         current_touch_state = self.detect_touch()
-        if (self.touch_state != current_touch_state):
+        if self.touch_state != current_touch_state:
 
-            if (current_touch_state == True):
+            if current_touch_state:
                 self.trigger_hardware_event(TOUCH_DOWN)
             else:
                 self.trigger_hardware_event(TOUCH_UP)
@@ -85,7 +106,7 @@ class DfrobotBoard(Board):
         """
         Stop buzzer.
         """
-        
+
         self.buzzer.write(0)
 
     def write_message(self, message, line=0):
@@ -99,10 +120,10 @@ class DfrobotBoard(Board):
         self.screen.write(message)
 
     def change_background(self, color):
-        
+
         """
         Change LCD screen background color.
         No effect on the dfrobot.
         """
-        
+
         pass

@@ -19,37 +19,36 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from __future__ import print_function
+from __future__ import print_function, division
+from time import sleep
+from signal import SIGINT, signal
+from atexit import register as register_exit
+from .runner import Runner
 
-from datetime import datetime
-
-from mqtt import publish_message
-from storage import store_message
-
-def send(config, payload):
-
-    """
-    Publish payload to MQTT server and data store.
-    """
-
-    publish_message(config, payload)
-    store_message(config, payload, method="GET")
-
-def increment(config):
+def main():
 
     """
-    Publish timestamp to MQTT server and data store.
+    Start main function.
     """
 
-    payload = { "counter": datetime.utcnow().isoformat() }
-    send(config, payload)
+    runner = Runner()
+    print("Running {0} example.".format(runner.project_name))
 
-def log(config, event):
+    def signal_handler(signum, frame):
+        raise SystemExit
 
-    """
-    Publish message to MQTT server and data store.
-    """
+    def exit_handler():
+        print("exiting")
+        exit(0)
 
-    message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
-    payload = { "value": message }
-    send(config, payload)
+    register_exit(exit_handler)
+    signal(SIGINT, signal_handler)
+
+    try:
+        signal.pause()
+    except AttributeError:
+        while True:
+            sleep(0.5)
+
+if __name__ == "__main__":
+    main()

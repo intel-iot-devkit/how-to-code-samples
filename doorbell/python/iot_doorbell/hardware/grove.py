@@ -20,16 +20,12 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-
-from pyupm_ttp223 import TTP223
-from pyupm_buzzer import Buzzer
-from pyupm_i2clcd import Jhd1313m1
-
-from mraa import addSubplatform, GENERIC_FIRMATA
-
-from constants.hardware import TOUCH_DOWN, TOUCH_UP
-
-from board import Board
+from upm.pyupm_ttp223 import TTP223
+from upm.pyupm_i2clcd import Jhd1313m1
+from mraa import Gpio, DIR_OUT, addSubplatform, GENERIC_FIRMATA
+from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
+from .board import Board, PinMappings
+from .events import TOUCH_UP, TOUCH_DOWN
 
 class GroveBoard(Board):
 
@@ -37,27 +33,29 @@ class GroveBoard(Board):
     Board class for Grove hardware.
     """
 
-    def __init__(self, config):
+    def __init__(self):
 
         super(GroveBoard, self).__init__()
 
-        self.touch_state = False
-
         # pin mappings
-        self.touch_pin = 4
-        self.buzzer_pin = 5
-        self.i2c_bus = 6
+        self.pin_mappings = PinMappings(
+            touch_pin=4,
+            buzzer_pin=5,
+            i2c_bus=6
+        )
 
-        if "platform" in config and config["platform"] == "firmata":
-            addSubplatform("firmata", "/dev/ttyACM0")
-            self.touch_pin += 512
-            self.buzzer_pin += 512
-            self.i2c_bus += 512
+        if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
+            addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
+            self.pin_mappings += 512
+            self.pin_mappings.i2c_bus = 512
 
-        self.touch = TTP223(self.touch_pin)
-        self.buzzer = Buzzer(self.buzzer_pin)
-        self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
+        self.screen = Jhd1313m1(self.pin_mappings.i2c_bus, 0x3E, 0x62)
+        self.touch = TTP223(self.pin_mappings.touch_pin)
+        self.buzzer = Gpio(self.pin_mappings.buzzer_pin)
 
+        self.buzzer.dir(DIR_OUT)
+
+        self.touch_state = False
         self.stop_buzzer()
 
     def update_hardware_state(self):
@@ -67,9 +65,9 @@ class GroveBoard(Board):
         """
 
         current_touch_state = self.detect_touch()
-        if (self.touch_state != current_touch_state):
+        if self.touch_state != current_touch_state:
 
-            if (current_touch_state == True):
+            if current_touch_state:
                 self.trigger_hardware_event(TOUCH_DOWN)
             else:
                 self.trigger_hardware_event(TOUCH_UP)
@@ -91,7 +89,7 @@ class GroveBoard(Board):
         Start buzzer.
         """
 
-        self.buzzer.playSound(2600, 0)
+        self.buzzer.write(1)
 
     def stop_buzzer(self):
 
@@ -99,9 +97,7 @@ class GroveBoard(Board):
         Stop buzzer.
         """
 
-        self.buzzer.setVolume(0.5)
-        self.buzzer.stopSound()
-        self.buzzer.stopSound()
+        self.buzzer.write(0)
 
     def write_message(self, message, line=0):
 
@@ -121,8 +117,10 @@ class GroveBoard(Board):
 
         colors = {
             "red": lambda: self.screen.setColor(255, 0, 0),
-            "green": lambda: self.screen.setColor(0, 255, 0),
+            "purple": lambda: self.screen.setColor(255, 0, 255),
             "blue": lambda: self.screen.setColor(0, 0, 255),
+            "green": lambda: self.screen.setColor(0, 255, 0),
+            "yellow": lambda: self.screen.setColor(255, 255, 0),
             "white": lambda: self.screen.setColor(255, 255, 255)
         }
         colors.get(color, colors["white"])()
