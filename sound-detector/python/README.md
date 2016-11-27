@@ -1,26 +1,43 @@
-# [Project Name] in Python*
+# Sound Detector in Python*
 
 ## Introduction
 
-This [Project Name] application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This Sound Detector application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Store the [Project Name] data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Store the Sound Detector data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
-[Content Here]
+Using an Intel® Edison board, this project lets you create a smart loudness detector system that:<br>
+- monitors a microphone sensor to detect the loudness in the area.<br>
+- keeps track of access, using cloud-based data storage.
 
 ## How it works
 
-[Content Here]
+This sound detector monitor uses the sensor to constantly keep track of the decibel level in a room.
+Every 1sec the sensor finds the average sound samples and prints it to the RGB lcd screen.
+
+Additionally, various events (looking-for-motion, motion-detected, invalid-code, etc.) are logged.
+Optionally, all data can be stored using the Intel® IoT Examples Datastore running in your own Microsoft Azure account.
+Also, optionally, the monitor stores the loudness data using the Intel® IoT Example Data store running in your own Microsoft Azure* account.
 
 ## Hardware requirements
 
-[Content Here]
+Grove* Starter Kit Plus containing:
+
+1. Intel® Edison platform with an Arduino* breakout board.
+2. [Grove Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/microphone.html).
+3. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html).
+
+DFRobot\* Starter Kit for Intel® Edison, containing:
+
+1. Intel® Edison with an Arduino\* breakout board.
+2. [Analog Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/loudness.html).
+3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html).
 
 ## Software requirements
 
@@ -50,11 +67,19 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 ### Connecting the Grove\* sensors
 
-[Content Here]
+![](./../../images/java/sound-detector.jpg)
+
+You need to have a Grove* Shield connected to an Arduino-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+
+1. Plug one end of a Grove cable into the Grove Sound Sensor, and connect the other end to the A0 port on the Grove Shield.
+
+2. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
 
 ### Connecting the DFRobot\* sensors
 
-[Content Here]
+You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Display Shield.
+
+1. Plug one end of a DFRobot\* cable into the Analog Sound Sensor, and connect the other end to the A2 port on the LCD Display Shield.
 
 ### Intel® Edison board setup
 
@@ -95,9 +120,9 @@ To install the Python\* package manager needed to install and run the example:
 
 Once all dependencies are installed you can install the example itself with the following command:
 
-    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=[Project Module Name]&subdirectory=[Project Dir]/python"
+    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=iot_sound_detector&subdirectory=sound-detector/python"
 
-The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/[Project Module Name]/` and link the package to the global Python `site-packages` folder.
+The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_sound_detector/` and link the package to the global Python `site-packages` folder.
 
 ### Intel® IoT Gateway setup
 
@@ -131,7 +156,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/[Project Module Name]/[Project Dir]/python/[Project Module Name]/config.json`.
+When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/iot_sound_detector/sound-detector/python/iot_sound_detector/config.json`.
 
 To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
@@ -155,11 +180,11 @@ For information on how to configure the example for the optional Microsoft\* Azu
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
-## Running the program manually
+## Running the program
 
 Once the example is installed through `pip` you can run the program by running the following command in an SSH session to the board:
 
-    $ python -m [Project Module Name]
+    $ python -m iot_sound_detector
 
 ### Determining the Intel® Edison board's IP address
 
