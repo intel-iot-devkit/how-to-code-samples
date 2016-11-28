@@ -23,9 +23,9 @@ from __future__ import print_function
 from upm.pyupm_i2clcd import SAINSMARTKS
 from upm.pyupm_biss0001 import BISS0001
 from mraa import addSubplatform, GENERIC_FIRMATA
-from .config import HARDWARE_CONFIG, KNOWN_PLATFORMS
-from .hardware.board import Board, PinMappings
-from .hardware.events import MOTION_DETECTED
+from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
+from .board import Board, PinMappings
+from .events import MOTION_DETECTED
 
 class DfrobotBoard(Board):
 
