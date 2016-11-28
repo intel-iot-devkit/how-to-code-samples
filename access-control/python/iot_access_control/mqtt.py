@@ -44,14 +44,14 @@ def publish_message(payload):
     auth = {
         "username": MQTT_CONFIG.username,
         "password": MQTT_CONFIG.password
-    }
+    } if MQTT_CONFIG.username and MQTT_CONFIG.password else None
 
     tls = {
         "ca_certs": "/etc/ssl/certs/ca-certificates.crt",
         "tls_version": PROTOCOL_TLSv1,
         "certfile": MQTT_CONFIG.cert,
         "keyfile": MQTT_CONFIG.key
-    }
+    } if MQTT_CONFIG.port == 8883 else None
 
     topic = MQTT_CONFIG.topic
     data = serialize_json(payload)
