@@ -50,4 +50,5 @@ def log(event):
 
     message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
     payload = {"value": message}
+    print(message)
     send(payload)
