@@ -118,6 +118,7 @@ class DfrobotBoard(Board):
         message = message.ljust(16)
         self.screen.setCursor(line, 0)
         self.screen.write(message)
+        print(message)
 
     def change_background(self, color):
 

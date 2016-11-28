@@ -43,7 +43,7 @@ class Runner(object):
 
     def ding_dong(self):
         increment()
-        self.board.write_message("ding dong!")
+        self.board.write_message("ring!")
         self.board.change_background("green")
         self.board.start_buzzer()
 
