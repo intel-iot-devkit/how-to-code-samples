@@ -67,6 +67,8 @@ class DfrobotBoard(Board):
         self.touch = GroveButton(self.pin_mappings.touch_pin)
         self.buzzer = Gpio(self.pin_mappings.buzzer_pin)
 
+        self.buzzer.dir(DIR_OUT)
+        
         self.touch_state = False
         self.stop_buzzer()
 
