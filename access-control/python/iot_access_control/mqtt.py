@@ -41,32 +41,20 @@ def publish_message(payload):
 
     client_id = MQTT_CONFIG.client_id
 
+    auth = {
+        "username": MQTT_CONFIG.username,
+        "password": MQTT_CONFIG.password
+    } if MQTT_CONFIG.username and MQTT_CONFIG.password else None
+
+    tls = {
+        "ca_certs": "/etc/ssl/certs/ca-certificates.crt",
+        "tls_version": PROTOCOL_TLSv1,
+        "certfile": MQTT_CONFIG.cert,
+        "keyfile": MQTT_CONFIG.key
+    } if MQTT_CONFIG.port == 8883 else None
+
     topic = MQTT_CONFIG.topic
     data = serialize_json(payload)
-
-    parms = {
-      "payload": data,
-      "hostname": server,
-      "port": port,
-      "client_id": client_id
-    }
-
-    if MQTT_CONFIG.username is not None:
-        auth = {
-            "username": MQTT_CONFIG.username,
-            "password": MQTT_CONFIG.password
-        }
-        parms["auth"]=auth
-
-    if MQTT_CONFIG.cert is not None and MQTT_CONFIG.key is not None:
-        tls = {
-            "ca_certs": "/etc/ssl/certs/ca-certificates.crt",
-            "tls_version": PROTOCOL_TLSv1,
-            "certfile": MQTT_CONFIG.cert,
-            "keyfile": MQTT_CONFIG.key
-        }
-        parms["tls"]=tls
-        parms["protocol"]=MQTTv311
 
     def perform_request():
 
@@ -76,7 +64,13 @@ def publish_message(payload):
 
         mqtt_publish_single(
             topic,
-            **parms
+            payload=data,
+            hostname=server,
+            port=port,
+            client_id=client_id,
+            auth=auth,
+            tls=tls,
+            protocol=MQTTv311
         )
 
         print("published to MQTT server")
