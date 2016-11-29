@@ -139,9 +139,17 @@ Make sure your Intel® IoT Gateway is setup, by following the directions on the 
 
 https://software.intel.com/en-us/node/633284
 
-You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
+To install and run the example, you will need to install Python setuptools. This is easy to do, by running:
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
+    $ wget https://bootstrap.pypa.io/ez_setup.py -O - | python
+
+Once these dependencies are installed you can install the example itself with the following command:
+
+    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=iot_doorbell&subdirectory=doorbell/python"
+
+The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_doorbell/` and link the package to the global Python `site-packages` folder.
+
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino\*/Genuino\* 101.
 
 You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
 
