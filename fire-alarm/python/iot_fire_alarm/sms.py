@@ -20,65 +20,30 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-from ssl import PROTOCOL_TLSv1
-from paho.mqtt.publish import single as mqtt_publish_single
-from paho.mqtt.client import MQTTv311
 from simplejson import dumps as serialize_json
-from .config import MQTT_CONFIG
+from twilio.rest import TwilioRestClient
+from .config import TWILIO_CONFIG
 from .scheduler import SCHEDULER
 
-def publish_message(payload):
+def send_sms(payload):
 
     """
-    Publish message to MQTT server.
+    Send SMS via Twilio.
     """
 
-    if not MQTT_CONFIG:
+    if not TWILIO_CONFIG:
         return
 
-    server = MQTT_CONFIG.server
-    port = MQTT_CONFIG.port
-
-    client_id = MQTT_CONFIG.client_id
-
-    topic = MQTT_CONFIG.topic
-    data = serialize_json(payload)
-
-    parms = {
-      "payload": data,
-      "hostname": server,
-      "port": port,
-      "client_id": client_id
-    }
-
-    if MQTT_CONFIG.username is not None:
-        auth = {
-            "username": MQTT_CONFIG.username,
-            "password": MQTT_CONFIG.password
-        }
-        parms["auth"]=auth
-
-    if MQTT_CONFIG.cert is not None and MQTT_CONFIG.key is not None:
-        tls = {
-            "ca_certs": "/etc/ssl/certs/ca-certificates.crt",
-            "tls_version": PROTOCOL_TLSv1,
-            "certfile": MQTT_CONFIG.cert,
-            "keyfile": MQTT_CONFIG.key
-        }
-        parms["tls"]=tls
-        parms["protocol"]=MQTTv311
+    client = TwilioRestClient(TWILIO_CONFIG.account_sid, TWILIO_CONFIG.auth_token)
 
     def perform_request():
 
-        """
-        Perform MQTT request.
-        """
-
-        mqtt_publish_single(
-            topic,
-            **parms
+        client.messages.create(
+            body=serialize_json(payload),
+            to=TWILIO_CONFIG.inbound_number,
+            from_=TWILIO_CONFIG.outbound_number
         )
 
-        print("published to MQTT server")
+        print("Sent SMS message.")
 
     SCHEDULER.add_job(perform_request)

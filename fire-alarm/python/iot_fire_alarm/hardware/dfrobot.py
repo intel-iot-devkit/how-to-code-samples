@@ -20,12 +20,12 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-from upm.pyupm_grove import GroveButton
 from upm.pyupm_i2clcd import SAINSMARTKS
+from upm.pyupm_lm35 import LM35
 from mraa import Gpio, DIR_OUT, addSubplatform, GENERIC_FIRMATA
 from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
 from .board import Board, PinMappings
-from .events import TOUCH_UP, TOUCH_DOWN
+from .events import TEMPRETURE_CHANGED
 
 class DfrobotBoard(Board):
 
@@ -39,8 +39,8 @@ class DfrobotBoard(Board):
 
         # pin mappings
         self.pin_mappings = PinMappings(
-            touch_pin=16,
-            buzzer_pin=15,
+            temperature_pin=1,
+            buzzer_pin=16,
             screen_register_select_pin=8,
             screen_enable_pin=9,
             screen_data_0_pin=4,
@@ -64,13 +64,10 @@ class DfrobotBoard(Board):
             self.pin_mappings.screen_analog_input_pin
         )
 
-        self.touch = GroveButton(self.pin_mappings.touch_pin)
+        self.temperature = LM35(self.pin_mappings.temperature_pin)
         self.buzzer = Gpio(self.pin_mappings.buzzer_pin)
 
         self.buzzer.dir(DIR_OUT)
-
-        self.touch_state = False
-        self.stop_buzzer()
 
     def update_hardware_state(self):
 
@@ -78,24 +75,17 @@ class DfrobotBoard(Board):
         Update hardware state.
         """
 
-        current_touch_state = self.detect_touch()
-        if self.touch_state != current_touch_state:
-
-            if current_touch_state:
-                self.trigger_hardware_event(TOUCH_DOWN)
-            else:
-                self.trigger_hardware_event(TOUCH_UP)
-
-            self.touch_state = current_touch_state
+        current_temp = self.read_temperature()
+        self.trigger_hardware_event(TEMPRETURE_CHANGED, current_temp)
 
     # hardware functions
-    def detect_touch(self):
+    def read_temperature(self):
 
         """
-        Detect touch state.
+        Read temperature value in Celcius.
         """
 
-        return self.touch.value()
+        return self.temperature.getTemperature()
 
     def start_buzzer(self):
 
@@ -122,7 +112,6 @@ class DfrobotBoard(Board):
         message = message.ljust(16)
         self.screen.setCursor(line, 0)
         self.screen.write(message)
-        print(message)
 
     def change_background(self, color):
 

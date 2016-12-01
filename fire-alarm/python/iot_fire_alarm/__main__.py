@@ -19,24 +19,36 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from abc import ABCMeta, abstractmethod
+from __future__ import print_function, division
+from time import sleep
+from signal import SIGINT, signal
+from atexit import register as register_exit
+from .runner import Runner
 
-class Board(object):
+def main():
 
     """
-    Base class for Board hardware implementations
+    Start main function.
     """
 
-    __metaclass__ = ABCMeta
+    runner = Runner()
+    print("Running {0} example.".format(runner.project_name))
 
-    @abstractmethod
-    def stop_buzzer(self): pass
+    def signal_handler(signum, frame):
+        raise SystemExit
 
-    @abstractmethod
-    def write_message(self): pass
+    def exit_handler():
+        print("exiting")
+        exit(0)
 
-    @abstractmethod
-    def change_background(self): pass
+    register_exit(exit_handler)
+    signal(SIGINT, signal_handler)
 
-    @abstractmethod
-    def get_temperature(self): pass
+    try:
+        signal.pause()
+    except AttributeError:
+        while True:
+            sleep(0.5)
+
+if __name__ == "__main__":
+    main()

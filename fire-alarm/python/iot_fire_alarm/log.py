@@ -19,26 +19,37 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# app specific
-BOARD = "board"
-ALARM_THRESHOLD = "ALARM_THRESHOLD"
+from __future__ import print_function
+from datetime import datetime
+from .mqtt import publish_message
+from .storage import store_message
+from .sms import send_sms
 
-# MQTT server
-MQTT_SERVER = "MQTT_SERVER"
-MQTT_PORT = "MQTT_PORT"
-MQTT_CLIENTID = "MQTT_CLIENTID"
-MQTT_USERNAME = "MQTT_USERNAME"
-MQTT_PASSWORD = "MQTT_PASSWORD"
-MQTT_CERT = "MQTT_CERT"
-MQTT_KEY = "MQTT_KEY"
-MQTT_TOPIC = "MQTT_TOPIC"
+def send(payload):
 
-# remote data store
-SERVER = "SERVER"
-AUTH_TOKEN = "AUTH_TOKEN"
+    """
+    Publish payload to MQTT server, data store and SMS.
+    """
 
-# twilio
-TWILIO_ACCT_SID = "TWILIO_ACCT_SID"
-TWILIO_AUTH_TOKEN = "TWILIO_AUTH_TOKEN"
-TWILIO_OUTBOUND_NUMBER = "TWILIO_OUTBOUND_NUMBER"
-TWILIO_INBOUND_NUMBER = "TWILIO_INBOUND_NUMBER"
+    publish_message(payload)
+    store_message(payload, method="GET")
+    send_sms(payload)
+
+def increment():
+
+    """
+    Publish timestamp to MQTT server, data store and SMS.
+    """
+
+    payload = {"counter": datetime.utcnow().isoformat()}
+    send(payload)
+
+def log(event):
+
+    """
+    Publish message to MQTT server, data store and SMS.
+    """
+
+    message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
+    payload = {"value": message}
+    send(payload)
