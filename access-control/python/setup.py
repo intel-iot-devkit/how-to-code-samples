@@ -33,6 +33,7 @@ setup(
         "PyEventEmitter",
         "requests",
         "paho-mqtt",
-        "simplejson"
+        "simplejson",
+        "bottle"
     ]
 )
