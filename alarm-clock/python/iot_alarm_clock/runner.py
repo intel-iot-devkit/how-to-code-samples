@@ -47,6 +47,7 @@ class Runner(object):
         # setup HTTP server
         self.server = Bottle()
         self.server.route("/", callback=self.serve_index)
+        self.server.route("/styles.css", callback=self.serve_css)
         self.server.route("/alarm.json", callback=self.serve_alarm)
 
         # alarm state
@@ -220,6 +221,17 @@ class Runner(object):
 
         resource_package = __name__
         resource_path = "index.html"
+        package_root = resource_filename(resource_package, "")
+        return static_file(resource_path, root=package_root)
+
+    def serve_css(self):
+
+        """
+        Serve the 'styles.css' file.
+        """
+
+        resource_package = __name__
+        resource_path = "styles.css"
         package_root = resource_filename(resource_package, "")
         return static_file(resource_path, root=package_root)
 
