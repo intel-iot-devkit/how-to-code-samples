@@ -3,6 +3,10 @@
 **/node_modules/
 **/xdk/
 
+# Python
+__pycache__/
+*.py[cod]
+
 # C++
 **/Debug/
 
