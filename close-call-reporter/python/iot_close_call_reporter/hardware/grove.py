@@ -63,8 +63,9 @@ class GroveBoard(Board):
         # handle gps data
 
         gps_data = self.query_gps()
-        for gps_msg in gps_data:
-            self.trigger_hardware_event(GPS_DATA_RECEIVED, gps_msg)
+        if gps_data:
+            for gps_msg in gps_data:
+                self.trigger_hardware_event(GPS_DATA_RECEIVED, gps_msg)
 
         # handle IR interrupter data
 
@@ -83,11 +84,16 @@ class GroveBoard(Board):
         Query GPS receiver.
         """
 
+        print("Running GPS query.")
         if self.gps.dataAvailable(5000):
 
-            payload = self.gps.readStr(256)
+            payload = self.gps.readStr(256).decode("utf8").encode("ascii")
             data = self.nmea_stream_reader.next(payload)
+            print("GPS result: {0} messages.".format(len(data)))
             return data
+        else:
+            print("GPS result: No Data.")
+            return None
 
     def detect_object(self):
 

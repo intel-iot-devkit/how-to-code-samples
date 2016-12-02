@@ -43,6 +43,11 @@ class Runner(object):
 
     def update_gps(self, data):
 
+        """
+        Handle GPS report.
+        """
+
+        print("GPS report: {0}.".format(data))
         if data.sentence_type == "GGA":
             self.last_known_location = str(data)
 
@@ -52,5 +57,5 @@ class Runner(object):
         Report close call.
         """
 
-        print("close call at", self.last_known_location)
+        print("Close call at {0}.".format(self.last_known_location))
         log(self.last_known_location)
