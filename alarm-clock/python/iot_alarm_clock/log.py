@@ -18,3 +18,36 @@
 # LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+from __future__ import print_function
+from datetime import datetime
+from .mqtt import publish_message
+from .storage import store_message
+
+def send(payload):
+
+    """
+    Publish payload to MQTT server and data store.
+    """
+
+    publish_message(payload)
+    store_message(payload, method="GET")
+
+def increment():
+
+    """
+    Publish timestamp to MQTT server and data store.
+    """
+
+    payload = {"counter": datetime.utcnow().isoformat()}
+    send(payload)
+
+def log(event):
+
+    """
+    Publish message to MQTT server and data store.
+    """
+
+    message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
+    payload = {"value": message}
+    send(payload)

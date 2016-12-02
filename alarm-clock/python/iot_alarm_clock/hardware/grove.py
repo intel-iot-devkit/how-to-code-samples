@@ -19,18 +19,15 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from __future__ import print_function, division
-
+from __future__ import print_function
 from math import floor
-
-from pyupm_buzzer import Buzzer
-from pyupm_i2clcd import Jhd1313m1
-from pyupm_grove import GroveButton, GroveRotary
-
-from mraa import addSubplatform, GENERIC_FIRMATA
-
-from events import scheduler, emitter, ms
-from board import Board
+from upm.pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_button import Button
+from upm.pyupm_rotary import Rotary
+from mraa import Gpio, DIR_OUT, addSubplatform, GENERIC_FIRMATA
+from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
+from .board import Board, PinMappings
+from .events import ROTARY, BUTTON_RELEASED
 
 class GroveBoard(Board):
 
@@ -38,46 +35,50 @@ class GroveBoard(Board):
     Board class for Grove hardware.
     """
 
-    def __init__(self, config):
+    def __init__(self):
+
+        super(GroveBoard, self).__init__()
 
         # pin mappings
-        self.buzzer_pin = 6
-        self.button_pin = 5
-        self.rotary_pin = 0
-        self.i2c_bus = 6
+        self.pin_mappings = PinMappings(
+            buzzer_pin=6,
+            button_pin=5,
+            rotary_pin=0,
+            i2c_bus=6
+        )
 
-        if "platform" in config and config["platform"] == "firmata":
-            addSubplatform("firmata", "/dev/ttyACM0")
-            self.buzzer_pin += 512
-            self.button_pin += 512
-            self.rotary_pin += 512
-            self.i2c_bus += 512
-        
-        self.buzzer = Buzzer(self.buzzer_pin)
-        self.button = GroveButton(self.button_pin)
-        self.rotary = GroveRotary(self.rotary_pin)
-        self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
+        if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
+            addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
+            self.pin_mappings += 512
+            self.pin_mappings.i2c_bus = 512
 
-        # setup hardware event dispatch
-        emitter.on("rotary", self.change_brightness)
+        self.screen = Jhd1313m1(self.pin_mappings.i2c_bus, 0x3E, 0x62)
+        self.buzzer = Gpio(self.pin_mappings.buzzer_pin)
+        self.rotary = Rotary(self.pin_mappings.rotary_pin)
+        self.button = Button(self.pin_mappings.button_pin)
 
-        self.prev_button = 0
+        self.buzzer.dir(DIR_OUT)
 
-        def hardware_event_loop():
-            rotary = self.rotary
-            emitter.emit("rotary", value=rotary.abs_value())
+        self.rotary_value = 0
+        self.button_state = False
 
-            pressed = self.button.value()
 
-            if pressed and not self.prev_button:
-                emitter.emit("button-pressed")
+    def update_hardware_state(self):
 
-            if not pressed and self.prev_button:
-                emitter.emit("button-released")
+        """
+        Update hardware state.
+        """
 
-            self.prev_button = pressed
-        
-        scheduler.add_job(hardware_event_loop, "interval", seconds=ms(250))
+        current_rotary_value = self.read_rotary()
+        if current_rotary_value != self.rotary_value:
+            self.trigger_hardware_event(ROTARY, current_rotary_value)
+            self.rotary_value = current_rotary_value
+
+        current_button_state = self.button.value()
+        if current_button_state != self.button_state:
+            if not current_button_state:
+                self.trigger_hardware_event(BUTTON_RELEASED)
+            self.button_state = current_button_state
 
     # hardware functions
     def start_buzzer(self):
@@ -86,8 +87,7 @@ class GroveBoard(Board):
         Start the hardware buzzer.
         """
 
-        self.buzzer.setVolume(0.5)
-        self.buzzer.playSound(2600, 0)
+        self.buzzer.write(1)
 
     def stop_buzzer(self):
 
@@ -95,8 +95,15 @@ class GroveBoard(Board):
         Stop the hardware buzzer.
         """
 
-        self.buzzer.stopSound()
-        self.buzzer.stopSound()
+        self.buzzer.write(0)
+
+    def read_rotary(self):
+
+        """
+        Read rotary value.
+        """
+
+        return self.rotary.abs_value()
 
     def write_message(self, message, line=0):
 
@@ -116,6 +123,10 @@ class GroveBoard(Board):
 
         colors = {
             "red": lambda: self.screen.setColor(255, 0, 0),
+            "purple": lambda: self.screen.setColor(255, 0, 255),
+            "blue": lambda: self.screen.setColor(0, 0, 255),
+            "green": lambda: self.screen.setColor(0, 255, 0),
+            "yellow": lambda: self.screen.setColor(255, 255, 0),
             "white": lambda: self.screen.setColor(255, 255, 255)
         }
         colors.get(color, colors["white"])()
@@ -130,5 +141,4 @@ class GroveBoard(Board):
         end = 1020
         value = int(floor((value - start) / end * 255))
         value = 0 if value < 0 else 255 if value > 255 else value
-        self.screen.setColor(value, value, value)   
-    
+        self.screen.setColor(value, value, value)

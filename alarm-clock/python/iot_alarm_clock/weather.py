@@ -19,29 +19,27 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from __future__ import print_function
+from requests import get as get_http
+from .config import WEATHER_CONFIG
 
-from board import Board
-
-class SimBoard(Board):
+def get_weather():
 
     """
-    Board class for simulated hardware debug.
+    Get weather data from Weather Underground.
     """
 
-    def __init__(*args, **kwargs): pass
+    if not WEATHER_CONFIG:
+        return
 
-    def start_buzzer(self):
-        print("sim: start_buzzer")
 
-    def stop_buzzer(self):
-        print("sim: stop_buzzer")        
+    url = "http://api.wunderground.com/api/{0}/conditions/q/CA/{1}.json".format(
+        WEATHER_CONFIG.api_key,
+        WEATHER_CONFIG.location
+    )
 
-    def write_message(self, message, line=0):
-        print("sim: write_message - [line {1}] {0}".format(message, line))
+    response = get_http(url)
+    response.raise_for_status()
+    data = response.json()
+    conditions = data["current_observation"]["weather"]
 
-    def change_background(color):
-        print("sim: change_background - {0}".format(color))
-
-    def change_brightness(value):
-        print("sim: change_brightness - {0}".format(value))
+    return conditions.encode("ascii", "ignore")

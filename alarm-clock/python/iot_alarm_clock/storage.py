@@ -19,23 +19,48 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from requests import get as get_http, HTTPError
+from __future__ import print_function
+from requests import put as put_http, get as get_http
+from .config import DATA_STORE_CONFIG
+from .scheduler import SCHEDULER
 
-def get_weather(config):
+def store_message(payload, method="PUT"):
 
     """
-    Get weather data from Weather Underground.
+    Publish message to remote data store.
     """
+
+    if not DATA_STORE_CONFIG:
+        return
+
+    server = DATA_STORE_CONFIG.server
+    auth_token = DATA_STORE_CONFIG.auth_token
+
+    headers = {
+        "X-Auth-Token": auth_token
+    }
+
+    def perform_request():
+
+        """
+        Perform HTTP request.
+        """
+
+        if method == "GET":
+            response = get_http(
+                server,
+                headers=headers,
+                json=payload
+            )
+        else:
+            response = put_http(
+                server,
+                headers=headers,
+                json=payload
+            )
+        response.raise_for_status()
+
+        print("saved to data store")
+
+    SCHEDULER.add_job(perform_request)
     
-    if not { "WEATHER_API_KEY", "LOCATION" } <= set(config): return
-
-    api_key = config["WEATHER_API_KEY"]
-    location = config["LOCATION"]
-
-    url = "http://api.wunderground.com/api/{0}/conditions/q/CA/{1}.json".format(api_key, location)
-
-    response = get_http(url)
-    data = response.json()
-    conditions = data["current_observation"]["weather"]
-
-    return conditions.encode("ascii", "ignore")

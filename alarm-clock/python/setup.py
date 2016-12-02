@@ -19,19 +19,22 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# app specific
-BOARD = "board"
+from setuptools import setup, find_packages
 
-# MQTT server
-MQTT_SERVER = "MQTT_SERVER"
-MQTT_PORT = "MQTT_PORT"
-MQTT_CLIENTID = "MQTT_CLIENTID"
-MQTT_USERNAME = "MQTT_USERNAME"
-MQTT_PASSWORD = "MQTT_PASSWORD"
-MQTT_CERT = "MQTT_CERT"
-MQTT_KEY = "MQTT_KEY"
-MQTT_TOPIC = "MQTT_TOPIC"
-
-# remote data store
-SERVER = "SERVER"
-AUTH_TOKEN = "AUTH_TOKEN"
+setup(
+    name="iot_alarm_clock",
+    version="0.5.0",
+    packages=find_packages(),
+    package_data={
+        "": ["*.txt", "*.html", "*.md", "*.json"]
+    },
+    install_requires=[
+        "APScheduler",
+        "PyEventEmitter",
+        "requests",
+        "paho-mqtt",
+        "simplejson",
+        "bottle",
+        "arrow"
+    ]
+)
