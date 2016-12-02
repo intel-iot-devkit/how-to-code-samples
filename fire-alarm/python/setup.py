@@ -19,32 +19,21 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from twilio.rest import TwilioRestClient
+from setuptools import setup, find_packages
 
-from constants.config import TWILIO_ACCT_SID, TWILIO_AUTH_TOKEN, TWILIO_OUTBOUND_NUMBER, TWILIO_INBOUND_NUMBER
-
-from scheduler import scheduler
-
-def send_sms(config, payload):
- 
-    """
-    Send SMS via Twilio.
-    """
-
-    if not { TWILIO_ACCT_SID, TWILIO_AUTH_TOKEN, TWILIO_OUTBOUND_NUMBER, TWILIO_INBOUND_NUMBER } <= set(config): return
-
-    twilio_sid = config[TWILIO_ACCT_SID]
-    twilio_auth = config[TWILIO_AUTH_TOKEN]
-    twilio_outbound = config[TWILIO_OUTBOUND_NUMBER]
-    twilio_inbound = config[TWILIO_INBOUND_NUMBER]
-
-    client = TwilioRestClient(twilio_sid, twilio_auth)
-
-    def perform_request():
-        message = client.messages.create(body=payload,
-            to=twilio_inbound,
-            from_=twilio_outbound)
-
-        print("sent SMS")
-
-    scheduler.add_job(perform_request)
+setup(
+    name="iot_fire_alarm",
+    version="0.5.0",
+    packages=find_packages(),
+    package_data={
+        "": ["*.txt", "*.html", "*.md", "*.json"]
+    },
+    install_requires=[
+        "APScheduler",
+        "PyEventEmitter",
+        "requests",
+        "paho-mqtt",
+        "simplejson",
+        "twilio"
+    ]
+)

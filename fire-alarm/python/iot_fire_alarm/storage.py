@@ -19,19 +19,48 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from apscheduler.schedulers.background import BackgroundScheduler
-from logging import basicConfig
+from __future__ import print_function
+from requests import put as put_http, get as get_http
+from .config import DATA_STORE_CONFIG
+from .scheduler import SCHEDULER
 
-basicConfig()
-
-scheduler = BackgroundScheduler()
-
-scheduler.start()
-
-def ms(ms):
+def store_message(payload, method="PUT"):
 
     """
-    Converts milliseconds to seconds
+    Publish message to remote data store.
     """
 
-    return ms * 0.001
+    if not DATA_STORE_CONFIG:
+        return
+
+    server = DATA_STORE_CONFIG.server
+    auth_token = DATA_STORE_CONFIG.auth_token
+
+    headers = {
+        "X-Auth-Token": auth_token
+    }
+
+    def perform_request():
+
+        """
+        Perform HTTP request.
+        """
+
+        if method == "GET":
+            response = get_http(
+                server,
+                headers=headers,
+                json=payload
+            )
+        else:
+            response = put_http(
+                server,
+                headers=headers,
+                json=payload
+            )
+        response.raise_for_status()
+
+        print("Saved to data store.")
+
+    SCHEDULER.add_job(perform_request)
+    

@@ -20,15 +20,12 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-
-from pyupm_buzzer import Buzzer
-from pyupm_grove  import GroveTemp
-from pyupm_i2clcd import Jhd1313m1
-
-from mraa import addSubplatform, GENERIC_FIRMATA
-
-from scheduler import scheduler, ms
-from board import Board
+from upm.pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_temperature import Temperature
+from mraa import Gpio, DIR_OUT, addSubplatform, GENERIC_FIRMATA
+from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
+from .board import Board, PinMappings
+from .events import TEMPRETURE_CHANGED
 
 class GroveBoard(Board):
 
@@ -36,32 +33,42 @@ class GroveBoard(Board):
     Board class for Grove hardware.
     """
 
-    def __init__(self, config):
+    def __init__(self):
 
         super(GroveBoard, self).__init__()
 
         # pin mappings
-        self.i2c_bus = 6
-        self.buzzer_pin = 5
-        self.temperature_pin = 0
-        self.current = 0
+        self.pin_mappings = PinMappings(
+            temperature_pin=0,
+            buzzer_pin=5,
+            i2c_bus=6
+        )
 
-        if "platform" in config and config["platform"] == "firmata":
-            addSubplatform("firmata", "/dev/ttyACM0")
-            self.i2c_bus = 512
-            self.buzzer_pin += 512
-            self.temperature_pin += 512
+        if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
+            addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
+            self.pin_mappings += 512
+            self.pin_mappings.i2c_bus = 512
 
-        self.screen = Jhd1313m1(self.i2c_bus, 0x3E, 0x62)
-        self.buzzer = Buzzer(self.buzzer_pin)
-        self.temperature = GroveTemp(self.temperature_pin)
+        self.screen = Jhd1313m1(self.pin_mappings.i2c_bus, 0x3E, 0x62)
+        self.temperature = Temperature(self.pin_mappings.temperature_pin)
+        self.buzzer = Gpio(self.pin_mappings.buzzer_pin)
 
-    # hardware functions
+        self.buzzer.dir(DIR_OUT)
 
-    def get_temperature(self):
+    def update_hardware_state(self):
 
         """
-        Get the temperature and convert to degrees celcius.
+        Update hardware state.
+        """
+
+        current_temp = self.read_temperature()
+        self.trigger_hardware_event(TEMPRETURE_CHANGED, current_temp)
+
+    # hardware functions
+    def read_temperature(self):
+
+        """
+        Read temperature value in Celcius.
         """
 
         return self.temperature.value()
@@ -69,20 +76,18 @@ class GroveBoard(Board):
     def start_buzzer(self):
 
         """
-        Start the hardware buzzer.
+        Start buzzer.
         """
 
-        self.buzzer.setVolume(0.5)
-        self.buzzer.playSound(2600, 0)
+        self.buzzer.write(1)
 
     def stop_buzzer(self):
 
         """
-        Stop the hardware buzzer.
+        Stop buzzer.
         """
 
-        self.buzzer.stopSound()
-        self.buzzer.stopSound()
+        self.buzzer.write(0)
 
     def write_message(self, message, line=0):
 
@@ -102,7 +107,10 @@ class GroveBoard(Board):
 
         colors = {
             "red": lambda: self.screen.setColor(255, 0, 0),
+            "purple": lambda: self.screen.setColor(255, 0, 255),
             "blue": lambda: self.screen.setColor(0, 0, 255),
+            "green": lambda: self.screen.setColor(0, 255, 0),
+            "yellow": lambda: self.screen.setColor(255, 255, 0),
             "white": lambda: self.screen.setColor(255, 255, 255)
         }
         colors.get(color, colors["white"])()

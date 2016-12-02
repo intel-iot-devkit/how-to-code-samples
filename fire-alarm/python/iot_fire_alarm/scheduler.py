@@ -20,36 +20,19 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
+from logging import basicConfig, ERROR
+from apscheduler.schedulers.background import BackgroundScheduler
 
-from datetime import datetime
+basicConfig(level=ERROR)
 
-from mqtt import publish_message
-from storage import store_message
+SCHEDULER = BackgroundScheduler()
 
-def send(config, payload):
+SCHEDULER.start()
 
-    """
-    Publish payload to MQTT server and data store.
-    """
-
-    publish_message(config, payload)
-    store_message(config, payload, method="GET")
-
-def increment(config):
+def ms(mills):
 
     """
-    Publish timestamp to MQTT server and data store.
+    Converts milliseconds to seconds
     """
 
-    payload = { "counter": datetime.utcnow().isoformat() }
-    send(config, payload)
-
-def log(config, event):
-
-    """
-    Publish message to MQTT server and data store.
-    """
-
-    message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
-    payload = { "value": message }
-    send(config, payload)
+    return mills * 0.001
