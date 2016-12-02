@@ -37,21 +37,21 @@ def publish_message(payload):
         return
 
     server = MQTT_CONFIG.server
-    port = 1883 if MQTT_CONFIG.port is None else MQTT_CONFIG.port
+    port = MQTT_CONFIG.port
 
     client_id = MQTT_CONFIG.client_id
 
     auth = {
         "username": MQTT_CONFIG.username,
         "password": MQTT_CONFIG.password
-    }
+    } if MQTT_CONFIG.username and MQTT_CONFIG.password else None
 
     tls = {
         "ca_certs": "/etc/ssl/certs/ca-certificates.crt",
         "tls_version": PROTOCOL_TLSv1,
         "certfile": MQTT_CONFIG.cert,
         "keyfile": MQTT_CONFIG.key
-    }
+    } if MQTT_CONFIG.port == 8883 else None
 
     topic = MQTT_CONFIG.topic
     data = serialize_json(payload)
@@ -63,7 +63,8 @@ def publish_message(payload):
         """
 
         mqtt_publish_single(
-            topic, payload=data,
+            topic,
+            payload=data,
             hostname=server,
             port=port,
             client_id=client_id,
@@ -72,6 +73,6 @@ def publish_message(payload):
             protocol=MQTTv311
         )
 
-        print("Published to MQTT server.")
+        print("published to MQTT server")
 
     SCHEDULER.add_job(perform_request)
