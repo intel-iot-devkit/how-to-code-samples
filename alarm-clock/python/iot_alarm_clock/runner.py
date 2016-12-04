@@ -55,7 +55,7 @@ class Runner(object):
         self.alarm_time = utcnow().floor("second")
         self.alarm_set = False
         self.alarm_disarm_durration = None
-        self.alarm_duration = {
+        self.alarm_input = {
             "hour": 0,
             "minute": 0,
             "second": 0
@@ -127,7 +127,7 @@ class Runner(object):
             self.alarm_job = SCHEDULER.add_job(
                 alarm_actions,
                 "interval",
-                seconds=ms(100),
+                seconds=ms(500),
                 coalesce=True,
                 max_instances=1
             )
@@ -146,7 +146,7 @@ class Runner(object):
 
         if self.alarm_set:
 
-            print("Alarm button pressed. Disarming alarm.")
+            print("Alarm button pressed.")
             self.alarm_off()
             alarm_disarm_duration = (utcnow() - self.alarm_time)
             print("Alarm runtime: {0}.".format(alarm_disarm_duration))
@@ -202,19 +202,23 @@ class Runner(object):
 
             print("Process alarm query parameters: {0}.".format(dict(request.query)))
 
-            duration = {
-                "hour": int(request.query.get("hour")) or 0,
-                "minute": int(request.query.get("minute")) or 0,
-                "second": int(request.query.get("second")) or 0
+            raw_hour = int(request.query.get("hour"))
+            raw_minute = int(request.query.get("minute"))
+            raw_second = int(request.query.get("second"))
+
+            alarm_input = {
+                "hour":  0 if raw_hour < 0 else 23 if raw_hour > 23 else raw_hour,
+                "minute":  0 if raw_minute < 0 else 59 if raw_minute > 59 else raw_minute,
+                "second":  0 if raw_second < 0 else 59 if raw_second > 59 else raw_second
             }
 
             self.alarm_time = utcnow().replace(
-                hours=duration["hour"],
-                minutes=duration["minute"],
-                seconds=duration["second"]
+                hour=alarm_input["hour"],
+                minute=alarm_input["minute"],
+                second=alarm_input["second"]
             )
 
-            self.alarm_duration = duration
+            self.alarm_input = alarm_input
             self.alarm_set = True
 
             print("Alarm set to go off at {0}.".format(self.alarm_time.format("h:mm:ss A")))
@@ -242,8 +246,8 @@ class Runner(object):
         """
 
         payload = {
-            "hour": self.alarm_duration["hour"],
-            "minute": self.alarm_duration["minute"],
-            "second": self.alarm_duration["second"]
+            "hour": self.alarm_input["hour"],
+            "minute": self.alarm_input["minute"],
+            "second": self.alarm_input["second"]
         }
         return payload
