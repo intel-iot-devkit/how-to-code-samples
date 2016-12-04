@@ -20,7 +20,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-from pynmea2 import NMEAStreamReader
+from pynmea2 import NMEAStreamReader, ParseError, ChecksumError
 from upm.pyupm_nmea_gps import NMEAGPS
 from upm.pyupm_rfr359f import RFR359F
 from mraa import addSubplatform, GENERIC_FIRMATA
@@ -87,8 +87,13 @@ class GroveBoard(Board):
         print("Running GPS query.")
         if self.gps.dataAvailable(5000):
 
-            payload = self.gps.readStr(256).decode("utf8").encode("ascii")
-            data = self.nmea_stream_reader.next(payload)
+            try:
+                payload = self.gps.readStr(256).decode("utf8", "ignore")
+                data = self.nmea_stream_reader.next(payload)
+            except (ParseError, ChecksumError):
+                print("GPS result: (Error) No Data.")
+                return None
+
             print("GPS result: {0} messages.".format(len(data)))
             return data
         else:
