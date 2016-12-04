@@ -20,7 +20,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-from upm.pyupm_grove import GroveButton
+from upm.pyupm_button import Button
 from upm.pyupm_i2clcd import SAINSMARTKS
 from mraa import Gpio, DIR_OUT, addSubplatform, GENERIC_FIRMATA
 from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
@@ -64,7 +64,7 @@ class DfrobotBoard(Board):
             self.pin_mappings.screen_analog_input_pin
         )
 
-        self.touch = GroveButton(self.pin_mappings.touch_pin)
+        self.touch = Button(self.pin_mappings.touch_pin)
         self.buzzer = Gpio(self.pin_mappings.buzzer_pin)
 
         self.buzzer.dir(DIR_OUT)
