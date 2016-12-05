@@ -147,6 +147,23 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/iot_close_call_reporter/close-call-reporter/python/iot_close_call_reporter/config.json`.
 
+To configure the GPS hardware for the example set the `GPS_BAUD` config key in `config.json` to the UART baud rate used by your specific GPS device. The `GPS_BAUD` config value is set to `9600` by default.
+
+```JSON
+{
+    "kit": "grove",
+    "GPS_BAUD": 9600
+}
+```
+
+The table below contains the GPS baud rates for the common GPS hardware used with this example:
+
+| GPS Hardware                   | UART Baud Rate |
+| ------------------------------ | -------------- |
+| Grove GPS                      | 9600           |
+| DFRobot GPS Receiver (Model A) | 38400          |
+| DFRobot GPS Receiver (Model B) | 115200         |
+
 To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```JSON

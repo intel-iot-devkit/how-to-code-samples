@@ -1,3 +1,4 @@
 {
-    "kit": "grove"
+    "kit": "grove",
+    "GPS_BAUD": 9600
 }

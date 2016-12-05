@@ -48,7 +48,9 @@ class DfrobotBoard(Board):
             addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
             self.pin_mappings += 512
 
-        self.gps = NMEAGPS(self.pin_mappings.uart_bus, 38400, -1)
+        self.gps_baud = HARDWARE_CONFIG.gps_baud
+        self.gps = NMEAGPS(self.pin_mappings.uart_bus, self.gps_baud, -1)
+
         self.interrupter = RFR359F(self.pin_mappings.interrupter_pin)
 
         self.obj_detected_state = False
