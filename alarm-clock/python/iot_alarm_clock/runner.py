@@ -71,7 +71,7 @@ class Runner(object):
         Start runner.
         """
 
-        SCHEDULER.add_job(self.start_clock, "interval", coalesce=True, seconds=ms(50))
+        SCHEDULER.add_job(self.start_clock, "interval", coalesce=True, seconds=ms(1000))
 
         self.server.run(
             host="0.0.0.0",
