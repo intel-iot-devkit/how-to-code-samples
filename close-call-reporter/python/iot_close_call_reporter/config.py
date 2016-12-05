@@ -24,10 +24,11 @@ from pkg_resources import resource_stream
 from simplejson import load as load_json
 
 # hardware platform
-HardwareConfig = namedtuple("HardwareConfig", "kit platform")
+HardwareConfig = namedtuple("HardwareConfig", "kit platform gps_baud")
 
 KIT = "kit"
 PLATFORM = "PLATFORM"
+GPS_BAUD = "GPS_BAUD"
 
 Kits = namedtuple("Kits", "grove dfrobot")
 KNOWN_KITS = Kits(
@@ -73,7 +74,8 @@ with resource_stream(RESOURCE_PACKAGE, RESOURCE_PATH) as data:
 
     HARDWARE_CONFIG = HardwareConfig(
         kit=RAW_CONFIG.get(KIT, KNOWN_KITS.grove),
-        platform=RAW_CONFIG.get(PLATFORM)
+        platform=RAW_CONFIG.get(PLATFORM),
+        gps_baud=RAW_CONFIG.get(GPS_BAUD, 9600)
     )
 
     MQTT_CONFIG = MqttConfig(
