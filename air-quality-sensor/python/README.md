@@ -165,12 +165,12 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/iot_air_quality_sensor/air-quality-sensor/python/iot_air_quality_sensor/config.json`.
 
-To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`, and the `THRESHOLD` key set to `50`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` and the `THRESHOLD` key to `500` as follows:
 
 ```JSON
 {
   "kit": "dfrobot",
-  "THRESHOLD": 50
+  "THRESHOLD": 500
 }
 ```
 
