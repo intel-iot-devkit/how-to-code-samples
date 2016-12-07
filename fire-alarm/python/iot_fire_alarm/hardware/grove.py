@@ -43,11 +43,13 @@ class GroveBoard(Board):
             buzzer_pin=5,
             i2c_bus=6
         )
+        self.voltage_adjust = 1.0
 
         if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
             addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
             self.pin_mappings += 512
             self.pin_mappings.i2c_bus = 512
+            self.voltage_adjust = 0.66
 
         self.screen = Jhd1313m1(self.pin_mappings.i2c_bus, 0x3E, 0x62)
         self.temperature = Temperature(self.pin_mappings.temperature_pin)
@@ -71,7 +73,7 @@ class GroveBoard(Board):
         Read temperature value in Celcius.
         """
 
-        return self.temperature.value()
+        return self.temperature.value() * self.voltage_adjust
 
     def start_buzzer(self):
 
