@@ -24,6 +24,7 @@ from importlib import import_module
 from .config import HARDWARE_CONFIG
 from .hardware.events import SOUND_MEASUREMENT
 from .log import log
+from .scheduler import SCHEDULER, ms
 
 class Runner(object):
 
@@ -37,6 +38,11 @@ class Runner(object):
         self.board = getattr(import_module(board_module), board_class_name)()
 
         self.board.add_event_handler(SOUND_MEASUREMENT, self.display_sound_measurement)
+        SCHEDULER.add_job(
+            self.log_sound_measurement,
+            "interval",
+            seconds=ms(5000),
+            coalesce=True)
 
     def display_sound_measurement(self, volume):
 
@@ -44,6 +50,7 @@ class Runner(object):
         Display average volume measurement.
         """
 
+        self.volume = volume
         print("volume:", volume)
 
         self.board.write_message("avg volume: " + str(volume))
@@ -60,3 +67,11 @@ class Runner(object):
             self.board.change_background("purple")
         else:
             self.board.change_background("red")
+
+    def log_sound_measurement(self):
+
+        """
+        Log average volume measurement.
+        """
+
+        log("avg volume: " + str(self.volume))
