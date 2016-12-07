@@ -81,11 +81,11 @@ class DfrobotBoard(Board):
         """
 
         noise = self.mic.loudness()
-        in_min = 0
+        in_min = 1
         in_max = 5
         out_min = 0
         out_max = 100
-        average = (noise - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+        average = (in_min - noise) * (out_max - out_min) / (in_max - in_min) + out_min
         return round(average, 2)
 
     def write_message(self, message, line=0):
