@@ -10,10 +10,9 @@ From this exercise, developers will learn how to:<br>
 - Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon\* Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
-
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a smart access control system that:<br>
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a smart access control system that:<br>
 - monitors a motion sensor to detect when a person is in an area that requires authorization.<br>
 - can be accessed with your mobile phone via the built-in web interface to disable the alarm.<br>
 - keeps track of access, using cloud-based data storage.
@@ -50,14 +49,6 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 ## Software requirements
 
 1. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
-
-### How to set up
-
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
-
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ### Connecting the Grove\* sensors
 
@@ -154,6 +145,16 @@ To configure the example for the Grove* kit, just leave the `kit` key in the `co
 }
 ```
 
+To configure the example for the Arduino\*/Genuino\* 101, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
+
+```JSON
+{
+  "kit": "dfrobot",
+  "CODE": "4321",
+  "PLATFORM": "firmata"
+}
+```
+
 To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below the "CODE" key as follows:
 
 ```JSON
@@ -169,9 +170,9 @@ For information on how to configure the example for the optional Microsoft\* Azu
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
-## Running the program manually
+## Running the program
 
-Once the program is installed through `pip` you can run the program by running the following command in an SSH session to the board:
+Once the program is installed and configured as detailed above, you can execute the program by running the following command in an SSH session to the board:
 
     $ python -m iot_access_control
 

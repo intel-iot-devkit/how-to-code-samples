@@ -2,17 +2,17 @@
 
 ## Introduction
 
-This Sound Detector application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This Sound Detector application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
+- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Store the Sound Detector data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a smart loudness detector system that:<br>
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a smart loudness detector system that:<br>
 - monitors a microphone sensor to detect the loudness in the area.<br>
 - keeps track of access, using cloud-based data storage.
 
@@ -42,28 +42,6 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 ## Software requirements
 
 1. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
-
-### How to set up
-
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
-
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
-
-### Installing the program manually on the Intel® Edison board
-
-You can set up the code manually on the Intel® Edison board.
-
-Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
-
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-Then, navigate to the directory with this example.
-
-To install Git\* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
-
-    $ opkg install git
 
 ### Connecting the Grove\* sensors
 
@@ -114,7 +92,6 @@ To install the latest versions of the MRAA\* and UPM\* libraries:
 To install the Python\* package manager needed to install and run the example:
 
     $ pip install --upgrade pip setuptools
-
 
 #### Install the example
 
@@ -174,6 +151,15 @@ To configure the example for the Grove* kit, just leave the `kit` key in the `co
 }
 ```
 
+To configure the example for the Arduino\*/Genuino\* 101, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
+
+```JSON
+{
+  "kit": "dfrobot",
+  "PLATFORM": "firmata"
+}
+```
+
 To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below the "CODE" key as follows:
 
 ```JSON
@@ -190,7 +176,7 @@ For information on how to configure the example for the optional Microsoft\* Azu
 
 ## Running the program
 
-Once the example is installed through `pip` you can run the program by running the following command in an SSH session to the board:
+Once the program is installed and configured as detailed above, you can execute the program by running the following command in an SSH session to the board:
 
     $ python -m iot_sound_detector
 

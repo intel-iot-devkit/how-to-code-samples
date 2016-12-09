@@ -2,24 +2,26 @@
 
 ## Introduction
 
-This Alarm Clock application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This smart alarm clock application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Store the Alarm Clock data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
+- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon\* Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Invoke the services of the Weather Underground\* API for accessing weather data.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a smart alarm clock that:<br>
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a smart alarm clock that:<br>
 - can be accessed with your mobile phone via the built-in web interface to set the alarm time.<br>
 - displays live weather data on the LCD.<br>
 - keeps track of how long it takes you to wake up each morning, using cloud-based data storage.
 
 ## How it works
 
-This smart alarm clock has a number of useful features. Set the alarm using a web page served directly from the Intel® Edison board using your mobile phone. When the alarm goes off, the buzzer sounds and the LCD indicates it’s time to get up. The rotary dial can be used to adjust the brightness of the display.
+This smart alarm clock has a number of useful features. Set the alarm using a web page served directly from the Intel® Edison board or Intel® IoT Gateway using your mobile phone. When the alarm goes off, the buzzer sounds and the LCD indicates it’s time to get up. The rotary dial can be used to adjust the brightness of the display.
 
 In addition, the smart alarm clock can access daily weather data via the Weather Underground* API and use it to change the color of the LCD.
 Optionally, all data can also be stored using the Intel® IoT Examples Datastore running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
@@ -47,28 +49,6 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 ## Software requirements
 
 1. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
-
-### How to set up
-
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
-
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
-
-### Installing the program manually on the Intel® Edison board
-
-You can set up the code manually on the Intel® Edison board.
-
-Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
-
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-Then, navigate to the directory with this example.
-
-To install Git\* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
-
-    $ opkg install git
 
 ### Connecting the Grove\* sensors
 
@@ -181,12 +161,12 @@ To configure the example for the Grove* kit, just leave the `kit` key in the `co
 }
 ```
 
-To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino\*/Genuino\* 101, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
 
 ```JSON
 {
   "kit": "grove",
-  "platform": "firmata"
+  "PLATFORM": "firmata"
 }
 
 To configure the example for the optional real-time weather data, obtain a key from the Weather Underground\* website as documented above, and then change the `WEATHER_API_KEY` and `LOCATION` keys in the `config.json` file as follows:
@@ -213,9 +193,9 @@ For information on how to configure the example for the optional Microsoft\* Azu
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
-## Running the program manually
+## Running the program
 
-Once the example is installed through `pip` you can run the program by running the following command in an SSH session to the board:
+Once the program is installed and configured as detailed above, you can execute the program by running the following command in an SSH session to the board:
 
     $ python -m iot_alarm_clock
 

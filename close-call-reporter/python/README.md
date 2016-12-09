@@ -44,14 +44,6 @@ DFRobot* Starter Kit for Intel® Edison, containing:
 
 1. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
 
-### How to set up
-
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
-
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
-
 ### Connecting the Grove\* sensors
 
 ![](./../../images/js/close-call.jpg)
@@ -106,7 +98,6 @@ To install the Python\* package manager needed to install and run the example:
 
     $ pip install --upgrade pip setuptools
 
-
 #### Install the example
 
 Once all dependencies are installed you can install the example itself with the following command:
@@ -114,20 +105,6 @@ Once all dependencies are installed you can install the example itself with the 
     $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=iot_close_call_reporter&subdirectory=close-call-reporter/python"
 
 The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_close_call_reporter/` and link the package to the global Python `site-packages` folder.
-
-### Intel® IoT Gateway setup
-
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
-
-Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
-
-https://software.intel.com/en-us/node/633284
-
-You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
-
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
-
-You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
 
 ### Data store server setup
 
@@ -188,9 +165,9 @@ For information on how to configure the example for the optional Microsoft\* Azu
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
-## Running the program manually
+## Running the program
 
-Once the example is installed through `pip` you can run the program by running the following command in an SSH session to the board:
+Once the program is installed and configured as detailed above, you can execute the program by running the following command in an SSH session to the board:
 
     $ python -m iot_close_call_reporter
 
