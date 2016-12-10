@@ -8,7 +8,7 @@ From this exercise, developers will learn how to:<br>
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Store air quality data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
@@ -32,13 +32,13 @@ This sample can be used with either the Grove\* Home Automation Kit from Seeed S
 
 Grove\* Home Automation Kit, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with an Arduino 101
+1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
 2. [Grove\* Air Quality Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/tp401.html)
 3. [Grove\* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with an Arduino 101
+1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
 2. [Analog Gas Sensor](http://www.dfrobot.com/wiki/index.php?title=Analog_Gas_Sensor_SKU:SEN0127).
 3. [Buzzer](http://www.dfrobot.com/wiki/index.php?title=Digital_Buzzer_Module_(SKU:_DFR0032)).
 4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
@@ -101,7 +101,6 @@ To install the Python\* package manager needed to install and run the example:
 
     $ pip install --upgrade pip setuptools
 
-
 #### Install the example
 
 Once all dependencies are installed you can install the example itself with the following command:
@@ -112,15 +111,23 @@ The `pip` command will install required Python dependencies, save the source cod
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\*(branded Genuino 101\* outside the U.S.).
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
 https://software.intel.com/en-us/node/633284
 
-You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
+To install and run the example, you will need to install Python setuptools. This is easy to do, by running:
 
-The Arduino 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101.
+    $ wget https://bootstrap.pypa.io/ez_setup.py -O - | python
+
+Once these dependencies are installed you can install the example itself with the following command:
+
+    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=iot_access_control&subdirectory=access-control/python"    
+
+The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot-access-control/` and link the package to the global Python `site-packages` folder.
+
+The Arduino 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino 101.
 
 You will also need to configure the `config.json` in the example to use the Arduino 101. See the section "Configuring the example" below.
 

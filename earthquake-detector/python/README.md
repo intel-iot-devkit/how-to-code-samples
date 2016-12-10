@@ -8,36 +8,36 @@ From this exercise, developers will learn how to:<br>
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Invoke the services of the United States Geological Survey (USGS) API for accessing earthquake data.
+- Invoke the services of the United States Geological Survey (USGS)\* API for accessing earthquake data.
 
 ## What it is
 
 Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create an earthquake detector that:<br>
 - senses motion using the digital accelerometer.<br>
-- checks live earthquake data, using the USGS API.<br>
+- checks live earthquake data, using the USGS\* API.<br>
 - displays the earthquake on the LCD.
 
 ## How it works
 
 The earthquake detector constantly reads the 3-axis digital accelerometer looking for movement that could indicate an earthquake.
 
-When it thinks it detects an earthquake, it attempts to verify with the USGS API that an earthquake actually occurred.
+When it thinks it detects an earthquake, it attempts to verify with the USGS\* API that an earthquake actually occurred.
 
 If so, it displays a warning on the LCD.
 
 ## Hardware requirements
 
-This sample can be used with either the Grove\* Starter Kit Plus from Seeed Studio, or else the DFRobot\* Edison Starter Kit with some extra DFRobot\* parts.
+This sample can be used with either the Grove\* Starter Kit Plus from Seeed Studio\*, or else the Starter Kit for Intel® Edison/Galileo from DFRobot\*.
 
 Grove\* Starter Kit Plus, containing:
 
-1. Intel® Edison board with an Arduino* breakout board
+1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
 2. [Grove\* 3-Axis Digital Accelerometer (1.5G)](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
 3. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
 2. [Triple Axis Accelerometer](http://www.dfrobot.com/index.php?route=product/product&description=true&product_id=507).
 3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
@@ -108,7 +108,7 @@ The `pip` command will install required Python dependencies, save the source cod
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\*(branded Genuino 101\* outside the U.S.).
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
@@ -124,15 +124,15 @@ Once these dependencies are installed you can install the example itself with th
 
 The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_earthquake_detector/` and link the package to the global Python `site-packages` folder.
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino\*/Genuino\* 101.
+The Arduino 101\* needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino 101.
 
-You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino 101\*. See the section "Configuring the example" below.
 
 ## Configuring the example
 
 When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/iot_earthquake_detector/earthquake-detector/python/iot_earthquake_detector/config.json`.
 
-To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```JSON
 {
@@ -142,7 +142,7 @@ To configure the example for the Grove* kit, just leave the `kit` key in the `co
 }
 ```
 
-To configure the example for the Arduino\*/Genuino\* 101, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino 101, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
 
 ```JSON
 {
