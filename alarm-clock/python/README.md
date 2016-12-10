@@ -8,8 +8,8 @@ From this exercise, developers will learn how to:<br>
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Set up a web application server to set the alarm time and store this alarm data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 - Invoke the services of the Weather Underground\* API for accessing weather data.
 
 ## What it is
@@ -24,7 +24,8 @@ Using an Intel® Edison board or Intel® IoT Gateway, this project lets you crea
 This smart alarm clock has a number of useful features. Set the alarm using a web page served directly from the Intel® Edison board or Intel® IoT Gateway using your mobile phone. When the alarm goes off, the buzzer sounds and the LCD indicates it’s time to get up. The rotary dial can be used to adjust the brightness of the display.
 
 In addition, the smart alarm clock can access daily weather data via the Weather Underground\* API and use it to change the color of the LCD.
-Optionally, all data can also be stored using the Intel® IoT Examples Datastore running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
+
+Optionally, all data can also be stored Intel IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -32,7 +33,7 @@ This sample can be used with either the Grove\* Starter Kit Plus from Seeed Stud
 
 Grove\* Starter Kit Plus, containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
 2. [Grove\* Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/groverotary.html)
 3. [Grove\* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html).
 4. [Grove\* Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
@@ -40,7 +41,7 @@ Grove\* Starter Kit Plus, containing:
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
 2. [Buzzer](http://iotdk.intel.com/docs/master/upm/classupm_1_1_buzzer.html).
 3. [Button](http://iotdk.intel.com/docs/master/upm/classupm_1_1_button.html)
 4. [Rotary Dial](http://iotdk.intel.com/docs/master/upm/classupm_1_1_rotary.html)
@@ -127,11 +128,19 @@ Make sure your Intel® IoT Gateway is setup, by following the directions on the 
 
 https://software.intel.com/en-us/node/633284
 
-You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
+To install and run the example, you will need to install Python setuptools. This is easy to do, by running:
 
-The Arduino 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino 101.
+    $ wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 
-You will also need to configure the `config.json` in the example to use the Arduino 101. See the section "Configuring the example" below.
+Once these dependencies are installed you can install the example itself with the following command:
+
+    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=iot_alarm_clock&subdirectory=alarm-clock/python"    
+
+The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot-alarm-clock/` and link the package to the global Python `site-packages` folder.
+
+The Arduino 101\* needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino 101.
+
+You will also need to configure the `config.json` in the example to use the Arduino 101\*. See the section "Configuring the example" below.
 
 ### Data store server setup
 
