@@ -63,9 +63,9 @@ You need to have a Grove\* Shield connected to an Arduino-compatible breakout bo
 
 You need to have a DFRobot\* LCD Keypad Shield connected to an Arduino-compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* LCD Keypad Shield.
 
-1. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the DFRobot\* LCD Keypad Shield.
+1. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A2 port on the DFRobot\* LCD Keypad Shield.
 
-2. Plug one end of a DFRobot\* cable into the Air Quality Sensor, and connect the other end to the A2 port on the DFRobot\* I/O Expansion Shield.
+2. Plug one end of a DFRobot\* cable into the Air Quality Sensor, and connect the other end to the A3 port on the DFRobot\* I/O Expansion Shield.
 
 ### Intel® Edison board setup
 
