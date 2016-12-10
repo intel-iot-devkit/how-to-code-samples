@@ -39,8 +39,8 @@ class DfrobotBoard(Board):
 
         # pin mappings
         self.pin_mappings = PinMappings(
-            temperature_pin=1,
-            buzzer_pin=16,
+            temperature_pin=2,
+            buzzer_pin=15,
             screen_register_select_pin=8,
             screen_enable_pin=9,
             screen_data_0_pin=4,
@@ -49,10 +49,12 @@ class DfrobotBoard(Board):
             screen_data_3_pin=7,
             screen_analog_input_pin=0
         )
+        self.voltage_adjust = 1.0
 
         if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
             addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
             self.pin_mappings += 512
+            self.voltage_adjust = 0.66
 
         self.screen = SAINSMARTKS(
             self.pin_mappings.screen_register_select_pin,
@@ -65,8 +67,9 @@ class DfrobotBoard(Board):
         )
 
         self.temperature = LM35(self.pin_mappings.temperature_pin)
-        self.buzzer = Gpio(self.pin_mappings.buzzer_pin)
+        self.temperature.setScale(self.voltage_adjust)
 
+        self.buzzer = Gpio(self.pin_mappings.buzzer_pin)
         self.buzzer.dir(DIR_OUT)
 
     def update_hardware_state(self):
@@ -85,7 +88,7 @@ class DfrobotBoard(Board):
         Read temperature value in Celcius.
         """
 
-        return self.temperature.getTemperature()
+        return self.temperature.getTemperature() * self.voltage_adjust
 
     def start_buzzer(self):
 
