@@ -60,7 +60,7 @@ You need to have a Grove\* Shield connected to an Arduino-compatible breakout bo
 
 ![](./../../images/js/close-call-dfrobot.jpg)
 
-You need to have a DFRobot\* I/O Expansion Shield connected to an Arduino\*- ompatible breakout board to plug all the DFRobot\* devices into the DFRobot\* I/O Expansion Shield.
+You need to have a DFRobot\* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* I/O Expansion Shield.
 
 1. Plug one end of a DFRobot\* cable into the IR Distance Sensor, and connect the other end to the D4 port on the I/O Expansion Shield.
 
