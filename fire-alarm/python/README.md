@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This smart fire alarm application application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
+This smart fire alarm application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -29,7 +29,7 @@ If the temperature exceeds a certain threshold (set to 28 degrees Celsius in thi
 
 In addition, it can send a text message to a specified number through Twilio\*, warning the recipient of a possible fire danger.
 
-Optionally, it can log fire events using the Intel IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS\* account.
+Optionally, it can log fire events using the Intel IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -37,14 +37,14 @@ This sample can be used with either the Grove\* Starter Kit Plus from Seeed Stud
 
 Grove\* Starter Kit Plus, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
 2. [Grove\* Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
 3. [Grove\* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+Starter Kit for Intel® Edison/Galileo from DFRobot\*, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
 2. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
 3. [Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
@@ -64,13 +64,13 @@ You need to have a Grove\* Shield connected to an Arduino-compatible breakout bo
 
 2. Plug one end of a Grove\* cable into the Grove\* Buzzer, and connect the other end to the D5 port on the Grove\* Shield.
 
-3. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
+3. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C\* ports on the Grove\* Shield.
 
 ### Connecting the DFRobot\* sensors
 
 ![](./../../images/js/fire-alarm-dfrobot.jpg)
 
-You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+You need to have a LCD Keypad Shield connected to an Arduino-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
 1. Plug one end of a DFRobot\* cable into the Analog Temperature Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
 
@@ -80,7 +80,7 @@ You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breako
 
 If you're running this code on your Intel® Edison board, you need to install some dependencies by establishing an SSH session to the Edison and run the commands in the sections below.
 
-#### Update the opkg repo
+#### Update the opkg repository
 
 To add the Intel opkg repository:
 
@@ -127,7 +127,7 @@ Make sure your Intel® IoT Gateway is setup, by following the directions on the 
 
 https://software.intel.com/en-us/node/633284
 
-To install and run the example, you will need to install Python setuptools. This is easy to do, by running:
+To install and run the example, you will need to install Python\* setup tools. This is easy to do, by running:
 
     $ wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 
@@ -139,7 +139,7 @@ The `pip` command will install required Python dependencies, save the source cod
 
 The Arduino 101\* needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino 101.
 
-You will also need to configure the `config.json` in the example to use the Arduino 101\*. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino 101. See the section "Configuring the example" below.
 
 ### Twilio\* API key
 
