@@ -31,13 +31,13 @@ This sample can be used with either the Grove\* Starter Kit Plus from Seeed Stud
 
 Grove\* Starter Kit Plus, containing:
 
-1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
+1. Intel® Edison board with an Arduino\* compatible breakout board or Intel® IoT Gateway with Arduino 101
 2. [Grove\* 3-Axis Digital Accelerometer (1.5G)](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
 3. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+DFRobot\* Starter Kit for Intel® Edison board, containing:
 
-1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
+1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Arduino 101
 2. [Triple Axis Accelerometer](http://www.dfrobot.com/index.php?route=product/product&description=true&product_id=507).
 3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
@@ -45,7 +45,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ![](./../../images/js/earthquake-detector.jpg)
 
-You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
 1. Plug one end of a Grove\* cable into the Grove\* 3-Axis Digital Accelerometer, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
@@ -55,7 +55,7 @@ You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout 
 
 ![](./../../images/js/earthquake-detector-dfrobot.jpg)
 
-You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
 1. Plug one end of a DFRobot\* cable into the plug labeled "X" on the Triple-Axis Accelerometer, then connect the other end to the A1 port on the LCD Keypad Shield.
 
@@ -76,7 +76,7 @@ To add the Intel opkg repository:
 
 You'll only need to perform this step once.
 
-#### Git
+#### Git\*
 
 To install Git\* on the Intel® Edison board (if you don’t have it yet):
 
@@ -85,13 +85,13 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet):
 
 #### MRAA and UPM Dependencies
 
-To install the latest versions of the MRAA\* and UPM\* libraries:
+To install the latest versions of the MRAA and UPM libraries:
 
     $ opkg update
     $ opkg install mraa
     $ opkg install upm
 
-#### Python Package Manager (pip)
+#### Python\* Package Manager (pip)
 
 To install the Python\* package manager needed to install and run the example:
 
@@ -108,7 +108,7 @@ The `pip` command will install required Python dependencies, save the source cod
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino 101\*(branded Genuino 101\* outside the U.S.).
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
@@ -124,9 +124,9 @@ Once these dependencies are installed you can install the example itself with th
 
 The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_earthquake_detector/` and link the package to the global Python `site-packages` folder.
 
-The Arduino 101\* needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino 101.
+The Arduino 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino 101.
 
-You will also need to configure the `config.json` in the example to use the Arduino 101\*. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino 101. See the section "Configuring the example" below.
 
 ## Configuring the example
 
