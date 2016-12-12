@@ -2,7 +2,7 @@
 
 ## Introduction
 
-is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
+This smart sound detector application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -19,11 +19,11 @@ Using an Intel® Edison board or Intel® IoT Gateway, this project lets you crea
 
 ## How it works
 
-This sound detector monitor uses the sensor to constantly keep track of the decibel level in a room. Every 1sec the sensor finds the average sound samples and prints it to the RGB lcd screen.
+This sound detector monitor uses the sensor to constantly keep track of the decibel level in a room. Every second the sensor finds the average sound samples and prints them to the RGB LCD screen.
 
 Additionally, various events (looking-for-motion, motion-detected, invalid-code, etc.) are logged.
 
-Optionally, it can log fire events using the Intel IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
+Optionally, it can log fire events using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -31,13 +31,13 @@ This sample can be used with either the Grove\* Starter Kit Plus from Seeed Stud
 
 Grove\* Starter Kit Plus, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
 2. [Grove Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/microphone.html).
 3. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html).
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+Starter Kit for Intel® Edison/Galileo from DFRobot\*, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
 2. [Analog Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/loudness.html).
 3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html).
 
@@ -57,7 +57,7 @@ You need to have a Grove\* Shield connected to an Arduino-compatible breakout bo
 
 ### Connecting the DFRobot\* sensors
 
-You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+You need to have a LCD Keypad Shield connected to an Arduino-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
 1. Plug one end of a DFRobot\* cable into the Analog Sound Sensor, and connect the other end to the A2 port on the LCD Display Shield.
 
@@ -67,7 +67,7 @@ If you're running this code on your Intel® Edison board, you need to install so
 
 #### Update the opkg repo
 
-To add the Intel opkg repository:
+To add Intel's opkg repository:
 
     $ echo "src mraa-upm http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586" > /etc/opkg/mraa-upm.conf
     $ opkg update
@@ -81,7 +81,7 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet):
     $ opkg update
     $ opkg install git
 
-#### MRAA and UPM Dependencies
+#### MRAA\* and UPM\* Dependencies
 
 To install the latest versions of the MRAA\* and UPM\* libraries:
 
@@ -89,7 +89,7 @@ To install the latest versions of the MRAA\* and UPM\* libraries:
     $ opkg install mraa
     $ opkg install upm
 
-#### Python Package Manager (pip)
+#### Python\* Package Manager (pip)
 
 To install the Python\* package manager needed to install and run the example:
 
@@ -123,7 +123,7 @@ The `pip` command will install required Python dependencies, save the source cod
 
 The Arduino 101\* needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino 101.
 
-You will also need to configure the `config.json` in the example to use the Arduino 101\*. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino 101. See the section "Configuring the example" below.
 
 ### Data store server setup
 

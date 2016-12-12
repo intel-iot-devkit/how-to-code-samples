@@ -8,13 +8,13 @@ From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Store the Close Call Reporter data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Set up a MQTT-based server using Microsoft Azure\* IoT Hub, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
 Using an Intel® Edison board, this project lets you create a close call fleet driving reporter that:<br>
-- monitors the Grove* IR Distance Interrupter.<br>
-- monitors the Grove* GPS.<br>
+- monitors the Grove\* IR Distance Interrupter.<br>
+- monitors the Grove\* GPS.<br>
 - keeps track of close calls and logs them using cloud-based data storage.
 
 ## How it works
@@ -23,7 +23,7 @@ This close call reporter system monitors the direction the IR Distance sensor is
 
 It also keeps track of the GPS position of the Intel® Edison board, updating the position frequently to ensure accurate data.
 
-If a close call is detected (that is, the IR Distance sensor is tripped), the Intel® Edison board, if configured, notifies the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
+If a close call is detected (that is, the IR Distance sensor is tripped), the Intel® Edison board, if configured, notifies the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
 
 ## Hardware requirements
 
@@ -31,13 +31,13 @@ This sample can be used with either the Grove\* Transportation and Safety Kit fr
 
 Grove\* Transportation and Safety Kit, containing:
 
-1. Intel® Edison with an Arduino-compatible breakout board
+1. Intel® Edison board with an Arduino\* compatible breakout board
 2. [Grove\* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 3. [Grove\* GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
 
-DFRobot* Starter Kit for Intel® Edison, containing:
+DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino* breakout board
+1. Intel® Edison with an Arduino\* breakout board
 2. [IR Distance Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=572)
 3. [GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
 4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
@@ -79,7 +79,7 @@ To add the Intel opkg repository:
 
 You'll only need to perform this step once.
 
-#### Git
+#### Git\*
 
 To install Git\* on the Intel® Edison board (if you don’t have it yet):
 
@@ -88,13 +88,13 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet):
 
 #### MRAA and UPM Dependencies
 
-To install the latest versions of the MRAA\* and UPM\* libraries:
+To install the latest versions of the MRAA and UPM libraries:
 
     $ opkg update
     $ opkg install mraa
     $ opkg install upm
 
-#### Python Package Manager (pip)
+#### Python\* Package Manager (pip)
 
 To install the Python\* package manager needed to install and run the example:
 
