@@ -32,23 +32,26 @@ var exports = module.exports = {};
 var mraa = require("mraa");
 
 // Initialize the DFRobot hardware devices
-var temp, buzzer, flame;
+var temp, buzzer, flame, voltage;
 
 exports.init = function(config) {
   if (config.platform == "firmata") {
     // open connection to firmata
     mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
 
-    temp = new mraa.Aio(1 + 512); // A1
-    buzzer = new mraa.Gpio(16 + 512); // aka A2
-    flame = new mraa.Aio(3 + 512); // A3
+    temp = new mraa.Aio(3 + 512); // A3
+    buzzer = new mraa.Gpio(15 + 512); // aka A1
+    flame = new mraa.Aio(2 + 512); // A2
+    voltage = 0.33;
   } else {
-    temp = new mraa.Aio(1); // A1
-    buzzer = new mraa.Gpio(16); // aka A2
-    flame = new mraa.Aio(3); // A3
+    temp = new mraa.Aio(3); // A3
+    buzzer = new mraa.Gpio(15); // aka A1
+    flame = new mraa.Aio(2); // A2
+    voltage = 1.0;
   }
 
   buzzer.dir(mraa.DIR_OUT);
+  buzzer.write(0);
 
   return;
 }
@@ -74,10 +77,10 @@ exports.fireAlarm = function() {
 // returns the temperature of the pot or pan on the stovetop
 // using the analog temperature sensor
 exports.objectTemperature = function() {
-  return (500 * temp.read()) / 1024;
+  return ((500 * temp.read()) / 1024) * voltage;
 }
 
 // returns if an open flame is detected using flame sensor
 exports.flameDetected = function() {
-  return (flame.read() >= 800);
+  return (flame.read() * voltage >= 800);
 }
