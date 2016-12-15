@@ -39,13 +39,15 @@ exports.init = function(config) {
     mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
 
     buzzer = new mraa.Gpio(15 + 512); // aka A1
-    air = new (require("jsupm_gas").MQ2)(2 + 512); // aka A2
+    air = new (require("jsupm_gas").MQ2)(3 + 512); // aka A3
   } else {
     buzzer = new mraa.Gpio(15); // aka A1
-    air = new (require("jsupm_gas").MQ2)(2); // aka A2
+    air = new (require("jsupm_gas").MQ2)(3); // aka A3
   }
 
   buzzer.dir(mraa.DIR_OUT);
+  buzzer.write(0);
+
   return;
 }
 
