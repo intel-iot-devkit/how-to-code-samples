@@ -33,8 +33,6 @@ var mraa = require("mraa");
 // Initialize the DFRobot hardware devices
 var buzzer, touch, screen;
 
-buzzer.dir(mraa.DIR_OUT);
-
 exports.init = function(config) {
   if (config.platform == "firmata") {
     // open connection to firmata
@@ -49,6 +47,9 @@ exports.init = function(config) {
     screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
   }
 
+  buzzer.dir(mraa.DIR_OUT);
+  buzzer.write(0);
+  
   return;
 }
 
