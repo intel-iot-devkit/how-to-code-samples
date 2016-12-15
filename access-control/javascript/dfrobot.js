@@ -36,10 +36,10 @@ exports.init = function(config) {
     mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
 
     screen = new (require("jsupm_i2clcd").SAINSMARTKS)(520, 521, 516, 517, 518, 519, 512);
-    motion = new (require("jsupm_biss0001").BISS0001)(528);
+    motion = new (require("jsupm_biss0001").BISS0001)(528); // aka A2
   } else {
     screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
-    motion = new (require("jsupm_biss0001").BISS0001)(16);
+    motion = new (require("jsupm_biss0001").BISS0001)(16); // aka A2
   }
 
   return;

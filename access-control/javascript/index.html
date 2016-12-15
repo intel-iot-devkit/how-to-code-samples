@@ -1,75 +1,81 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Access Control</title>
-
+<link rel="stylesheet" href="styles.css">
     <style>
-      * { box-sizing: border-box;}
-
-      html {
-        font-size: 30px;
-        font-family: sans-serif;
-      }
-
-      button {
-        font-size: 30px;
-        background: none;
-        border: 1px solid #444;
-        border-radius: 5px;
-        margin: 5px;
-        cursor: pointer;
-      }
-
-      #pad .row button {
-        width: 55px;
-        height: 55px;
-      }
-
-      button:hover {
-        background: #efefef;
-      }
-
-      #display, #submit, #clear {
-        display: block;
-        width: 205px;
+      .row {
+        margin: 5px 0;
       }
 
       #display {
-        margin: 5px;
         font-family: monospace;
-        border: 1px solid #444;
         text-align: center;
         color: red;
-        line-height: 1;
+        margin-bottom: 15px;
         min-height: 40px;
       }
+
+      .buttons-cell {
+        margin-top: 15px;
+      }
     </style>
-  </head>
-  <body>
-    <div id="pad">
-      <div id="display"></div>
+</head>
+<body>
+    <div class="container">
+      <div id="pad" class="col-xs-12 col-md-4 col-md-offset-4">
+        <div class="row">
+          <div class="col-xs-12">
+            <div id="display" class="form-control"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <button class="btn btn-default btn-lg btn-block">7</button>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-default btn-lg btn-block">8</button>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-default btn-lg btn-block">9</button>
+          </div>
+        </div>
 
-      <div class="row">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
+        <div class="row">
+          <div class="col-xs-4">
+            <button class="btn btn-default btn-lg btn-block">4</button>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-default btn-lg btn-block">5</button>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-default btn-lg btn-block">6</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4">
+            <button class="btn btn-default btn-lg btn-block">1</button>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-default btn-lg btn-block">2</button>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-default btn-lg btn-block">3</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-md-6 buttons-cell">
+            <button id="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+          </div>
+          <div class="col-xs-12 col-md-6 buttons-cell">
+            <button id="clear" class="btn btn-info btn-lg btn-block">Clear</button>
+          </div>
+        </div>
+
       </div>
-
-      <div class="row">
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-      </div>
-
-      <div class="row">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-      </div>
-
-      <button id="submit">Submit</button>
-      <button id="clear">Clear</button>
     </div>
 
     <script>
@@ -77,32 +83,25 @@
           display = document.getElementById("display"),
           submit = document.getElementById("submit"),
           clear = document.getElementById("clear");
-
       function add(e) {
         if (display.textContent.length >= 4) { return; }
         var num = e.target.textContent;
         display.textContent += num;
       }
-
       function clearDisplay() {
         display.textContent = "";
       }
-
       clear.addEventListener("click", clearDisplay);
-
       submit.addEventListener("click", function() {
         var req = new XMLHttpRequest(),
             code = display.textContent;
-
         req.open("get", "/alarm?code=" + code, true);
         req.send();
-
         clearDisplay();
       });
-
       for (var i = 0; i < numpad.length; i++) {
         numpad[i].addEventListener("click", add);
       }
     </script>
-  </body>
+</body>
 </html>
