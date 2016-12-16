@@ -108,6 +108,7 @@ function offSchedule() {
 
 // send a text indicating something's wrong
 function alert() {
+  console.log("Lighting alert");
   board.message("Lighting alert");
 
   if (!config.TWILIO_ACCT_SID || !config.TWILIO_AUTH_TOKEN) {
@@ -195,6 +196,11 @@ function server() {
     fs.readFile(path.join(__dirname, "index.html"), {encoding: "utf-8"}, serve);
   }
 
+  // styles for the web page
+  function styles(req, res) {
+    res.sendFile(path.join(__dirname, "styles.css"));
+  }
+
   // Returns JSON of the current lighting system schedule
   function json(req, res) {
     res.json({ data: SCHEDULE });
@@ -210,6 +216,7 @@ function server() {
   app.use(require("body-parser").json());
 
   app.get("/", index);
+  app.get("/styles.css", styles);
   app.get("/schedule", json);
   app.put("/schedule", update);
   app.get("/on", function(req, res) { turnOn(); res.send(""); });

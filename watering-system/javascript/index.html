@@ -1,125 +1,132 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Watering System</title>
-  </head>
-  <body>
-    <h1>Watering System</h1>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-12">
+            <h1>Watering System</h1>
+        </div>
+        <div class="col-md-12" id="schedule">
+            <h4>Schedule</h4>
 
-    <div id="schedule">
-      <h4>Schedule</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Hour</th>
+                            <th>0</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                            <th>9</th>
+                            <th>10</th>
+                            <th>11</th>
+                            <th>12</th>
+                            <th>13</th>
+                            <th>14</th>
+                            <th>15</th>
+                            <th>16</th>
+                            <th>17</th>
+                            <th>18</th>
+                            <th>19</th>
+                            <th>20</th>
+                            <th>21</th>
+                            <th>22</th>
+                            <th>23</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>On</td>
+                            <td><input id="0-on" type="checkbox"></td>
+                            <td><input id="1-on" type="checkbox"></td>
+                            <td><input id="2-on" type="checkbox"></td>
+                            <td><input id="3-on" type="checkbox"></td>
+                            <td><input id="4-on" type="checkbox"></td>
+                            <td><input id="5-on" type="checkbox"></td>
+                            <td><input id="6-on" type="checkbox"></td>
+                            <td><input id="7-on" type="checkbox"></td>
+                            <td><input id="8-on" type="checkbox"></td>
+                            <td><input id="9-on" type="checkbox"></td>
+                            <td><input id="10-on" type="checkbox"></td>
+                            <td><input id="11-on" type="checkbox"></td>
+                            <td><input id="12-on" type="checkbox"></td>
+                            <td><input id="13-on" type="checkbox"></td>
+                            <td><input id="14-on" type="checkbox"></td>
+                            <td><input id="15-on" type="checkbox"></td>
+                            <td><input id="16-on" type="checkbox"></td>
+                            <td><input id="17-on" type="checkbox"></td>
+                            <td><input id="18-on" type="checkbox"></td>
+                            <td><input id="19-on" type="checkbox"></td>
+                            <td><input id="20-on" type="checkbox"></td>
+                            <td><input id="21-on" type="checkbox"></td>
+                            <td><input id="22-on" type="checkbox"></td>
+                            <td><input id="23-on" type="checkbox"></td>
+                        </tr>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Hour</th>
-            <th>0</th>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
-            <th>8</th>
-            <th>9</th>
-            <th>10</th>
-            <th>11</th>
-            <th>12</th>
-            <th>13</th>
-            <th>14</th>
-            <th>15</th>
-            <th>16</th>
-            <th>17</th>
-            <th>18</th>
-            <th>19</th>
-            <th>20</th>
-            <th>21</th>
-            <th>22</th>
-            <th>23</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>On</td>
-            <td><input id="0-on" type="checkbox"></td>
-            <td><input id="1-on" type="checkbox"></td>
-            <td><input id="2-on" type="checkbox"></td>
-            <td><input id="3-on" type="checkbox"></td>
-            <td><input id="4-on" type="checkbox"></td>
-            <td><input id="5-on" type="checkbox"></td>
-            <td><input id="6-on" type="checkbox"></td>
-            <td><input id="7-on" type="checkbox"></td>
-            <td><input id="8-on" type="checkbox"></td>
-            <td><input id="9-on" type="checkbox"></td>
-            <td><input id="10-on" type="checkbox"></td>
-            <td><input id="11-on" type="checkbox"></td>
-            <td><input id="12-on" type="checkbox"></td>
-            <td><input id="13-on" type="checkbox"></td>
-            <td><input id="14-on" type="checkbox"></td>
-            <td><input id="15-on" type="checkbox"></td>
-            <td><input id="16-on" type="checkbox"></td>
-            <td><input id="17-on" type="checkbox"></td>
-            <td><input id="18-on" type="checkbox"></td>
-            <td><input id="19-on" type="checkbox"></td>
-            <td><input id="20-on" type="checkbox"></td>
-            <td><input id="21-on" type="checkbox"></td>
-            <td><input id="22-on" type="checkbox"></td>
-            <td><input id="23-on" type="checkbox"></td>
-          </tr>
+                        <tr>
+                            <td>Off</td>
+                            <td><input id="0-off" type="checkbox"></td>
+                            <td><input id="1-off" type="checkbox"></td>
+                            <td><input id="2-off" type="checkbox"></td>
+                            <td><input id="3-off" type="checkbox"></td>
+                            <td><input id="4-off" type="checkbox"></td>
+                            <td><input id="5-off" type="checkbox"></td>
+                            <td><input id="6-off" type="checkbox"></td>
+                            <td><input id="7-off" type="checkbox"></td>
+                            <td><input id="8-off" type="checkbox"></td>
+                            <td><input id="9-off" type="checkbox"></td>
+                            <td><input id="10-off" type="checkbox"></td>
+                            <td><input id="11-off" type="checkbox"></td>
+                            <td><input id="12-off" type="checkbox"></td>
+                            <td><input id="13-off" type="checkbox"></td>
+                            <td><input id="14-off" type="checkbox"></td>
+                            <td><input id="15-off" type="checkbox"></td>
+                            <td><input id="16-off" type="checkbox"></td>
+                            <td><input id="17-off" type="checkbox"></td>
+                            <td><input id="18-off" type="checkbox"></td>
+                            <td><input id="19-off" type="checkbox"></td>
+                            <td><input id="20-off" type="checkbox"></td>
+                            <td><input id="21-off" type="checkbox"></td>
+                            <td><input id="22-off" type="checkbox"></td>
+                            <td><input id="23-off" type="checkbox"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-          <tr>
-            <td>Off</td>
-            <td><input id="0-off" type="checkbox"></td>
-            <td><input id="1-off" type="checkbox"></td>
-            <td><input id="2-off" type="checkbox"></td>
-            <td><input id="3-off" type="checkbox"></td>
-            <td><input id="4-off" type="checkbox"></td>
-            <td><input id="5-off" type="checkbox"></td>
-            <td><input id="6-off" type="checkbox"></td>
-            <td><input id="7-off" type="checkbox"></td>
-            <td><input id="8-off" type="checkbox"></td>
-            <td><input id="9-off" type="checkbox"></td>
-            <td><input id="10-off" type="checkbox"></td>
-            <td><input id="11-off" type="checkbox"></td>
-            <td><input id="12-off" type="checkbox"></td>
-            <td><input id="13-off" type="checkbox"></td>
-            <td><input id="14-off" type="checkbox"></td>
-            <td><input id="15-off" type="checkbox"></td>
-            <td><input id="16-off" type="checkbox"></td>
-            <td><input id="17-off" type="checkbox"></td>
-            <td><input id="18-off" type="checkbox"></td>
-            <td><input id="19-off" type="checkbox"></td>
-            <td><input id="20-off" type="checkbox"></td>
-            <td><input id="21-off" type="checkbox"></td>
-            <td><input id="22-off" type="checkbox"></td>
-            <td><input id="23-off" type="checkbox"></td>
-          </tr>
-        </tbody>
-      </table>
+            <button class="btn btn-success btn-lg" id="update">Update</button>
+        </div>
 
-      <button id="update">Update</button>
-    </div>
+        <div class="col-md-12 manual">
+            <h2>Manual Control</h2>
+            <button class="btn btn-success btn-lg" id="on">On</button>
+            <button class="btn btn-danger btn-lg" id="off">Off</button>
+        </div>
 
-    <div class="manual">
-      <h1>Manual Control</h1>
-      <button id="on">On</button>
-      <button id="off">Off</button>
-    </div>
+        <div class="col-md-12" id="moisture">
+            <h1>Moisture</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    $MOISTUREDATA$
+                </tbody>
+            </table>
+        </div>
 
-    <div id="moisture">
-      <h1>Moisture</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Time</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          $MOISTUREDATA$
-        </tbody>
-      </table>
     </div>
 
     <script>
@@ -129,45 +136,35 @@
 
     <script>
       var $ = document.getElementById.bind(document);
-
       function render(err, res) {
         if (err) { return console.error(err); }
         var schedule = res.body.data;
-
         Object.keys(schedule).forEach(function(hour) {
           ["on", "off"].forEach(function(state) {
             var elem = $("" + hour + "-" + state);
-
             if (schedule[hour][state] !== elem.checked) {
               elem.checked = schedule[hour][state];
             }
           });
         });
       }
-
       $("on").addEventListener("click", function() { request.get("/on").end(); });
       $("off").addEventListener("click", function() { request.get("/off").end(); });
-
       // request state of schedule from server
       request("/schedule", render);
-
       // update server when button pressed
       $("update").addEventListener("click", function() {
         var data = {};
-
         var checkboxes = document.getElementsByTagName("input");
-
         for (var i = 0; i < checkboxes.length; i++) {
           var checkbox = checkboxes[i],
               hour = checkbox.id.split("-")[0],
               state = checkbox.id.split("-")[1];
-
           data[hour] = data[hour] || {};
           data[hour][state] = checkbox.checked;
         }
-
         request.put("/schedule").send(data).end();
       });
     </script>
-  </body>
+</body>
 </html>

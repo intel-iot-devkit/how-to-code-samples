@@ -30,13 +30,24 @@ var exports = module.exports = {};
 // pin used to turn on/off the buzzer
 var mraa = require("mraa");
 
+var buzzer, air;
+
 // Initialize the DFRobot hardware devices
-var buzzer = new mraa.Gpio(15), // aka A1
-    air = new (require("jsupm_gas").MQ2)(2); // aka A2
-
-buzzer.dir(mraa.DIR_OUT);
-
 exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    buzzer = new mraa.Gpio(15 + 512); // aka A1
+    air = new (require("jsupm_gas").MQ2)(3 + 512); // aka A3
+  } else {
+    buzzer = new mraa.Gpio(15); // aka A1
+    air = new (require("jsupm_gas").MQ2)(3); // aka A3
+  }
+
+  buzzer.dir(mraa.DIR_OUT);
+  buzzer.write(0);
+
   return;
 }
 

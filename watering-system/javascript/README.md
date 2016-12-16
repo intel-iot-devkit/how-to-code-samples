@@ -8,7 +8,7 @@ From this exercise, developers will learn how to:<br>
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or from the Intel® Galileo board.<br>
+- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® IoT Gateway.<br>
 - Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon\* Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 - Invoke the services of the Twilio\* API for sending text messages.
@@ -145,7 +145,7 @@ In addition, you need a breadboard and an extra 5V power supply to provide power
 
 You need to use the Relay Module to connect the water pump.
 
-1. Plug one end of a DFRobot\* cable into the Relay Module, and connect the other end to the A2 port on the I/O Expansion Shield.
+1. Plug one end of a DFRobot\* cable into the Relay Module, and connect the other end to the A1 port on the I/O Expansion Shield.
 
 2. Connect one wire from the pump to the GND of the power source reserved for the pump.
 
@@ -153,7 +153,7 @@ You need to use the Relay Module to connect the water pump.
 
 4. Connect the COM (Common) connector on the Relay Module to the + of the 5V power source reserved for the pump.
 
-5. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A1 port on the I/O Expansion Shield.
+5. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A3 port on the I/O Expansion Shield.
 
 ### Manual Intel® Edison setup
 
@@ -171,7 +171,7 @@ You can run this example using an Intel® IoT Gateway connected to an Arduino\*/
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
-https://software.intel.com/en-us/node/633284
+https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iotdk
 
 You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
@@ -230,8 +230,6 @@ To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key w
   "platform": "firmata"
 }
 ```
-
-The DFRobot\* variation of this example does not yet support the Arduino\*/Genuino\* 101.
 
 To configure the example for sending optional text messages, obtain an API key from the Twilio\* website as explained above, and then change the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the `config.json` file as follows:
 
