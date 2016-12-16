@@ -120,9 +120,9 @@ You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout 
 
 You need to have a I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the I/O Expansion Shield.
 
-1. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A1 port on the I/O Expansion Shield.
+1. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A3 port on the I/O Expansion Shield.
 
-2. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A2 port on the I/O Expansion Shield.
+2. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the I/O Expansion Shield.
 
 ### Manual Intel® Edison board setup
 

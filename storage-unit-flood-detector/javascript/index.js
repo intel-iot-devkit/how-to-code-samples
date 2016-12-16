@@ -71,12 +71,18 @@ function alert() {
 // indicating a possible flood.
 // If so, it calls the `alert()` function.
 function main() {
-  var prev;
+  var triggered = false;
 
   setInterval(function() {
     var value = board.moistureValue();
-    if (prev === 0 && value !== 0) { alert(); }
-    prev = value;
+    if (!triggered && value > 200) {
+      alert();
+      triggered = true;
+      // reset after 1 minute
+      setTimeout(function() {
+        triggered = false;
+      }, 60000);
+    }
   }, 1000);
 }
 

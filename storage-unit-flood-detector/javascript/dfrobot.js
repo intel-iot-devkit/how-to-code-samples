@@ -38,15 +38,16 @@ exports.init = function(config) {
     // open connection to firmata
     mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
 
-    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(1 + 512); // A1
-    buzzer = new mraa.Gpio(16 + 512); // aka A2
+    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(3 + 512); // A3
+    buzzer = new mraa.Gpio(15 + 512); // aka A1
   } else {
-    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(1); // A1
-    buzzer = new mraa.Gpio(16); // aka A2
+    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(3); // A3
+    buzzer = new mraa.Gpio(15); // aka A1
   }
 
   buzzer.dir(mraa.DIR_OUT);
-
+  buzzer.write(0);
+  
   return;
 }
 
