@@ -118,7 +118,7 @@ You cannot send text messages without obtaining a Twilio API key first. You can 
 
 You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
 
-Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
+Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
 
 https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iotdk
 
