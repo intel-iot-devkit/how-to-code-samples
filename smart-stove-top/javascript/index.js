@@ -119,12 +119,18 @@ function server() {
     fs.readFile(path.join(__dirname, "index.html"), {encoding: "utf-8"}, serve);
   }
 
+  // styles for the web page
+  function styles(req, res) {
+    res.sendFile(path.join(__dirname, "styles.css"));
+  }
+
   // Return the JSON data for the currently set target temperature
   function json(req, res) {
     res.json({ temp: TARGET_TEMP });
   }
 
   app.get("/", index);
+  app.get("/styles.css", styles);
   app.get("/temp.json", json);
 
   app.listen(process.env.PORT || 3000);

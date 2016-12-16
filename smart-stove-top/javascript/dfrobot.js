@@ -82,5 +82,5 @@ exports.objectTemperature = function() {
 
 // returns if an open flame is detected using flame sensor
 exports.flameDetected = function() {
-  return (flame.read() * voltage >= 800);
+  return (flame.read() * voltage >= 300);
 }
