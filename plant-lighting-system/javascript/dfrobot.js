@@ -35,12 +35,12 @@ exports.init = function(config) {
     // open connection to firmata
     mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
 
-    light = new (require("jsupm_grove").GroveLight)(1 + 512); // A1
-    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(2 + 512); // A2
+    light = new (require("jsupm_grove").GroveLight)(2 + 512); // A2
+    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(3 + 512); // A3
     screen = new (require("jsupm_i2clcd").SAINSMARTKS)(520, 521, 516, 517, 518, 519, 512);
   } else {
-    light = new (require("jsupm_grove").GroveLight)(1); // A1
-    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(2); // A2
+    light = new (require("jsupm_grove").GroveLight)(2); // A2
+    moisture = new (require("jsupm_grovemoisture").GroveMoisture)(3); // A3
     screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
   }
 
@@ -58,6 +58,7 @@ exports.message = function(string, line) {
 
 // Are the lights on?
 exports.checkLightsOn = function() {
+  console.log(light.value());
   if (light.value() < 2) {
     return true;
   }
