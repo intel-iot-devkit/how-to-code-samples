@@ -112,7 +112,7 @@ You can run this example using an Intel® IoT Gateway connected to an Arduino 10
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
-https://software.intel.com/en-us/node/633284
+https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iotdk
 
 To install and run the example, you will need to install Python setuptools. This is easy to do, by running:
 
