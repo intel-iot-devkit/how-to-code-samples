@@ -1,34 +1,39 @@
-# [Project Name] in Python*
+# Robot Arm in Python*
 
 ## Introduction
 
-This [Project Name] application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This Robot Arm application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Store the [Project Name] data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Set up a web application server to control a robot arm using a web page served directly from the Intel® Edison board.
 
 ## What it is
 
-[Content Here]
+Using an Intel® Edison board, this project lets you create a robot arm that:<br>
+- continuously checks the Grove\* Joystick.<br>
+- moves two stepper motors based on the joystick control.<br>
+- can be accessed via the built-in web interface to control the motors.
 
 ## How it works
 
-[Content Here]
+The robot arm example allows you to control a robotic arm using a thumb joystick.
+Each axis of the joystick corresponds to a motor to control.
+
+Additionally, the motors can be controlled individually via a web page served directly from the Intel® Edison board.
 
 ## Hardware requirements
 
-[Content Here]
+Grove\* Robotics Kit, containing:
 
-## Software requirements
-
-1. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
+1. Intel® Edison board with an Arduino\* breakout board
+2. [Grove\* Thumb Joystick](http://iotdk.intel.com/docs/master/upm/node/classes/joystick12.html)
+3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html) (x2)
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -50,11 +55,17 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 ### Connecting the Grove\* sensors
 
-[Content Here]
+![](./../../images/js/robot-arm.jpg)
 
-### Connecting the DFRobot\* sensors
+You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-[Content Here]
+You need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
+
+In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison board and the motors, so you need either 2 batteries or 2 power supplies in total.
+
+1. Plug each of the stepper motor controllers into 4 pins on the Arduino* breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino\* breakout board (VCC), and to the separate 5V power for the motors (VM).
+
+2. Plug one end of a Grove\* cable into the Grove\* Thumb Joystick, and connect the other end to the A0 port on the Grove\* Shield.
 
 ### Intel® Edison board setup
 
@@ -90,14 +101,13 @@ To install the Python\* package manager needed to install and run the example:
 
     $ pip install --upgrade pip setuptools
 
-
 #### Install the example
 
 Once all dependencies are installed you can install the example itself with the following command:
 
-    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=[Project Module Name]&subdirectory=[Project Dir]/python"
+    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=iot_robot_arm&subdirectory=robot-arm/python"
 
-The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/[Project Module Name]/` and link the package to the global Python `site-packages` folder.
+The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_robot_arm/` and link the package to the global Python `site-packages` folder.
 
 ### Intel® IoT Gateway setup
 
@@ -113,53 +123,25 @@ The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If y
 
 You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
 
-### Data store server setup
-
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
-
-For information on how to set up your own cloud data server, go to:
-
-[https://github.com/intel-iot-devkit/intel-iot-examples-datastore](https://github.com/intel-iot-devkit/intel-iot-examples-datastore)
-
-### MQTT server setup
-
-You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS.
-
-For information on how to connect to your own cloud MQTT messaging server, go to:
-
-[https://github.com/intel-iot-devkit/intel-iot-examples-mqtt](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt)
-
 ## Configuring the example
 
-When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/[Project Module Name]/[Project Dir]/python/[Project Module Name]/config.json`.
+When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/iot_robot_arm/robot-arm/python/iot_robot_arm/config.json`.
 
-To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`.
 
-```JSON
-{
-  "kit": "dfrobot"
-}
-```
-
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below the "CODE" key as follows:
+To configure the example for the Arduino 101, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
 
 ```JSON
 {
   "kit": "grove",
-  "SERVER": "http://intel-examples.azurewebsites.net/logger/access-control",
-  "AUTH_TOKEN": "s3cr3t"
+  "PLATFORM": "firmata"
 }
-```
-
-For information on how to configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS MQTT messaging server, go to:
-
-[https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
 ## Running the program manually
 
 Once the example is installed through `pip` you can run the program by running the following command in an SSH session to the board:
 
-    $ python -m [Project Module Name]
+    $ python -m iot_robot_arm
 
 ### Determining the Intel® Edison board's IP address
 
