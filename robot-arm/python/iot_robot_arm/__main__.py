@@ -31,9 +31,6 @@ def main():
     Start main function.
     """
 
-    runner = Runner()
-    print("Running {0} example.".format(runner.project_name))
-
     def signal_handler(signum, frame):
         raise SystemExit
 
@@ -43,6 +40,10 @@ def main():
 
     register_exit(exit_handler)
     signal(SIGINT, signal_handler)
+
+    runner = Runner()
+    print("Running {0} example.".format(runner.project_name))
+    runner.start()
 
     try:
         signal.pause()

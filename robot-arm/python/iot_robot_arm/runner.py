@@ -21,6 +21,8 @@
 
 from __future__ import print_function
 from importlib import import_module
+from pkg_resources import resource_filename
+from bottle import Bottle, static_file, request, HTTPResponse
 from .config import HARDWARE_CONFIG
 from .hardware.grove import STEP_DIRECTION
 from .hardware.events import JOYSTICK_READING
@@ -36,6 +38,10 @@ class Runner(object):
         board_class_name = "{0}Board".format(board_name.capitalize())
         self.board = getattr(import_module(board_module), board_class_name)()
 
+        self.server = Bottle()
+        self.server.route("/", callback=self.serve_index)
+        self.server.route("/<motor_id>-<direction>", "POST", callback=self.handle_motor)
+
         self.board.add_event_handler(JOYSTICK_READING, self.handle_joystick)
 
     def scale(self, data):
@@ -49,15 +55,64 @@ class Runner(object):
         x_input = self.scale(data.x)
         y_input = self.scale(data.y)
 
-        print("x input:", x_input)
-        print("y input:", y_input)
-
         if x_input == 1:
+            print("[Joystick] Moving motor 1 clockwise.")
             self.board.move(1, STEP_DIRECTION.cw)
         if x_input == -1:
+            print("[Joystick] Moving motor 1 counter clockwise.")
             self.board.move(1, STEP_DIRECTION.ccw)
 
         if y_input == 1:
+            print("[Joystick] Moving motor 2 clockwise.")
             self.board.move(2, STEP_DIRECTION.cw)
         if y_input == -1:
+            print("[Joystick] Moving motor 2 counter clockwise.")
             self.board.move(2, STEP_DIRECTION.ccw)
+
+    # server methods
+
+    def start(self):
+
+        """
+        Start runner.
+        """
+
+        self.server.run(
+            host="0.0.0.0",
+            port=3000
+        )
+
+    def serve_index(self):
+
+        """
+        Serve the 'index.html' file.
+        """
+
+        resource_package = __name__
+        resource_path = "index.html"
+        package_root = resource_filename(resource_package, "")
+        return static_file(resource_path, root=package_root)
+
+    def handle_motor(self, motor_id, direction):
+
+        """
+        Handle remote motor direction.
+        """
+
+        print("HTTP API /{0}-{1}".format(motor_id, direction))
+
+        if not (motor_id == "one" or motor_id == "two"):
+            return HTTPResponse(status="404 Unknown Motor Id")
+
+        if not (direction == "cw" or direction == "ccw"):
+            return HTTPResponse(status="404 Unknown Motor Direction")
+
+        print("[Remote] Moving motor {0} {1}.".format(
+            1 if motor_id == "one" else 2,
+            "clockwise" if direction == "cw" else "counter clockwise"
+        ))
+
+        self.board.move(
+            1 if motor_id == "one" else 2,
+            STEP_DIRECTION.cw if direction == "cw" else STEP_DIRECTION.ccw
+        )
