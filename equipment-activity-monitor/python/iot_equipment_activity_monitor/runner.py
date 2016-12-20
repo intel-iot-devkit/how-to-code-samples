@@ -50,7 +50,7 @@ class Runner(object):
         self.monitor_job = SCHEDULER.add_job(
             self.monitor_activity,
             "interval",
-            seconds=ms(100),
+            seconds=ms(1000),
             coalesce=True,
             max_instances=1)
 

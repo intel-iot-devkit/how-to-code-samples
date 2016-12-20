@@ -87,7 +87,7 @@ with resource_stream(RESOURCE_PACKAGE, RESOURCE_PATH) as data:
 
     MQTT_CONFIG = MqttConfig(
         server=RAW_CONFIG.get(MQTT_SERVER),
-        port=RAW_CONFIG.get(MQTT_PORT),
+        port=RAW_CONFIG.get(MQTT_PORT, 1883),
         client_id=RAW_CONFIG.get(MQTT_CLIENTID),
         username=RAW_CONFIG.get(MQTT_USERNAME),
         password=RAW_CONFIG.get(MQTT_PASSWORD),

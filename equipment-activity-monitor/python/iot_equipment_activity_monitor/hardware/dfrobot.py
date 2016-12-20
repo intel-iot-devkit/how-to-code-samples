@@ -40,8 +40,8 @@ class DfrobotBoard(Board):
 
         # pin mappings
         self.pin_mappings = PinMappings(
-            sound_pin=1,
-            vibration_pin=16,
+            sound_pin=2,
+            vibration_pin=15,
             screen_register_select_pin=8,
             screen_enable_pin=9,
             screen_data_0_pin=4,

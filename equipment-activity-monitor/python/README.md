@@ -90,9 +90,9 @@ You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout 
 
 You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
-1. Plug one end of a DFRobot\* cable into Analog Sound Sensor, then connect the other end to the A1 port on the LCD Keypad Shield.
+1. Plug one end of a DFRobot\* cable into Analog Sound Sensor, then connect the other end to the A2 port on the LCD Keypad Shield.
 
-2. Plug one end of a DFRobot\* cable into the Digital Vibration Sensor, then connect the other end to the A2 port on the LCD Keypad Shield.
+2. Plug one end of a DFRobot\* cable into the Digital Vibration Sensor, then connect the other end to the A1 port on the LCD Keypad Shield.
 
 ### Intel® Edison board setup
 
