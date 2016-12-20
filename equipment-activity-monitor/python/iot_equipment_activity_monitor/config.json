@@ -1,0 +1,5 @@
+{
+    "kit": "dfrobot",
+    "VIBRATION_THRESHOLD": 100,
+    "NOISE_THRESHOLD": 0
+}
