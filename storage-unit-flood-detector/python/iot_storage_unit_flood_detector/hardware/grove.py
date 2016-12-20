@@ -40,14 +40,12 @@ class GroveBoard(Board):
         # pin mappings
         self.pin_mappings = PinMappings(
             moisture_pin=0,
-            speaker_pin=5,
-            i2c_bus=6
+            speaker_pin=5
         )
 
         if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
             addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
             self.pin_mappings += 512
-            self.pin_mappings.i2c_bus = 512
 
         self.moisture = Moisture(self.pin_mappings.moisture_pin)
         self.speaker = Speaker(self.pin_mappings.speaker_pin)

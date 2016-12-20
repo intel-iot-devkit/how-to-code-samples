@@ -42,7 +42,7 @@ class Runner(object):
 
     def update_moisture(self, reading):
 
-        trigger = True if reading > 0 else False
+        trigger = True if reading > 10 else False
 
         if self.triggered != trigger:
             if trigger:

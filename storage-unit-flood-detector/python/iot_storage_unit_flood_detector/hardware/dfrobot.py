@@ -40,8 +40,8 @@ class DfrobotBoard(Board):
 
         # pin mappings
         self.pin_mappings = PinMappings(
-            moisture_pin=0,
-            speaker_pin=16
+            moisture_pin=2,
+            speaker_pin=15
         )
 
         if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
