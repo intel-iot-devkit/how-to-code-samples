@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="static/css.css">
+    <title>Color Match Game</title>
+
+</head>
+
+<body>
+    <div>
+        <input type="button" id="btnStartGame" value="Start game">
+    </div>
+
+    <div class="round-button floating-button">
+        <div class="round-button-circle ">
+            <a id="blueButton" class="round-button"></a>
+        </div>
+    </div>
+
+    <div class="round-button floating-button">
+        <div class="round-button-circle" style="background:#4DCF46">
+            <a id="greenButton" class="round-button"></a>
+        </div>
+    </div>
+
+    <div style="clear: both"></div>
+
+    <div class="round-button floating-button">
+        <div class="round-button-circle" style="background:#EAF522">
+            <a id="yellowButton" class="round-button"></a>
+        </div>
+    </div>
+
+    <div class="round-button floating-button">
+        <div class="round-button-circle" style="background:#F52222">
+            <a id="redButton" class="round-button"></a>
+        </div>
+    </div>
+
+    <audio id="colorRedSound" src="static/color0.mp3" preload="auto"></audio>
+    <audio id="colorBlueSound" src="static/color1.mp3" preload="auto"></audio>
+    <audio id="colorGreenSound" src="static/color2.mp3" preload="auto"></audio>
+    <audio id="colorYellowSound" src="static/color3.mp3" preload="auto"></audio>
+
+    <script src="static/jquery.min.js"></script>
+    <script src="static/main.js"></script>
+</body>
+</html>
