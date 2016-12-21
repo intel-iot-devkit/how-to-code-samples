@@ -181,6 +181,11 @@ function server() {
     fs.readFile(path.join(__dirname, "index.html"), {encoding: "utf-8"}, serve);
   }
 
+  // styles for the web page
+  function styles(req, res) {
+    res.sendFile(path.join(__dirname, "styles.css"));
+  }
+
   // Set new watering system schedule as submitted
   // by the web page using HTTP PUT
   function update(req, res) {
@@ -191,6 +196,7 @@ function server() {
   app.use(require("body-parser").json());
 
   app.get("/", index);
+  app.get("/styles.css", styles);
   app.get("/schedule", function(req, res) { res.json({ data: SCHEDULE }); });
   app.put("/schedule", update);
   app.get("/on", function(req, res) { turnOn(); res.send(""); });

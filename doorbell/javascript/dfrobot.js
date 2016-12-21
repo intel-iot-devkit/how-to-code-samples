@@ -31,13 +31,25 @@ var exports = module.exports = {};
 var mraa = require("mraa");
 
 // Initialize the DFRobot hardware devices
-var buzzer = new mraa.Gpio(15), // aka A1
-    touch = new (require("jsupm_grove").GroveButton)(16), // aka A2
-    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
-
-buzzer.dir(mraa.DIR_OUT);
+var buzzer, touch, screen;
 
 exports.init = function(config) {
+  if (config.platform == "firmata") {
+    // open connection to firmata
+    mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+    buzzer = new mraa.Gpio(15 + 512); // aka A1
+    touch = new (require("jsupm_grove").GroveButton)(16 + 512); // aka A2
+    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(520, 521, 516, 517, 518, 519, 512);
+  } else {
+    buzzer = new mraa.Gpio(15); // aka A1
+    touch = new (require("jsupm_grove").GroveButton)(16); // aka A2
+    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
+  }
+
+  buzzer.dir(mraa.DIR_OUT);
+  buzzer.write(0);
+  
   return;
 }
 

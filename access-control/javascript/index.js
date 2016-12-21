@@ -165,9 +165,16 @@ function server() {
     res.send("");
   }
 
-  app.get("/", index);
-  app.get("/alarm", defuse);
+  // styles for the web page
+  function styles(req, res) {
+    res.sendFile(path.join(__dirname, "styles.css"));
+  }
 
+
+  app.get("/", index);
+  app.get("/styles.css", styles);
+  app.get("/alarm", defuse);
+  
   app.listen(3000);
 }
 

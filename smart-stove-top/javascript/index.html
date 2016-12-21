@@ -1,37 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Smart Range</title>
-  </head>
-  <body>
-    <h1>Smart Range</h1>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-12">
+            <h1>Smart Range</h1>
 
-    <form>
-      <label for="temp">Target Temperature (Celsius)</label>
-      <input type="number" id="temp" name="temp"></select>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="temp" class="col-md-3 control-label">Target Temperature (Celsius)</label>
+                    <div class="col-md-4 input-group">
+                        <input class="form-control" type="number" id="temp" name="temp">
+                        <span class="input-group-btn">
+                            <input class="btn btn-primary" type="submit" value="Set Target">
+                        </span>
+                    </div>
+                </div>
+            </form>
 
-      <input type="submit" value="Set Target">
-    </form>
+        </div>
+    </div>
 
     <script>
       (function() {
         var req = new XMLHttpRequest();
-
         req.addEventListener("load", function() {
           var json;
-
           try {
             json = JSON.parse(this.response);
           } catch (e) {
             return; // unable to parse JSON, something went wrong
           }
-
           document.getElementById("temp").value = json.temp;
         });
-
         req.open("get", "/temp.json", true);
         req.send();
       })();
     </script>
-  </body>
+</body>
 </html>

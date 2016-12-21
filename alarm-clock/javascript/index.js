@@ -152,6 +152,11 @@ function server() {
     fs.readFile(path.join(__dirname, "index.html"), {encoding: "utf-8"}, serve);
   }
 
+  // styles for the web page
+  function styles(req, res) {
+    res.sendFile(path.join(__dirname, "styles.css"));
+  }
+
   // Set new alarm time submitted by the web page using HTTP GET
   function get(req, res) {
     var params = req.query,
@@ -182,6 +187,7 @@ function server() {
   }
 
   app.get("/", get);
+  app.get("/styles.css", styles);
   app.get("/alarm.json", json);
 
   app.listen(3000);

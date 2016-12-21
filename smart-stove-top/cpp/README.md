@@ -168,9 +168,9 @@ After running the program, you should see output similar to the one in the image
 
 You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
-Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
+Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
 
-https://software.intel.com/en-us/node/633284
+https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iotdk
 
 The Arduino 101\* (branded Genuino 101\* outside the U.S.) needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
