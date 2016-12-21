@@ -2,26 +2,27 @@
 
 ## Introduction
 
-This Color Match Game application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This Color Match Game application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Set up a web application server to let users play the color matching game usinig their web browser.
 
 ## What it is
 
 Using an Intel® Edison board, this project lets you create a color match game.<br>
 - a UI of the game is exposed through an embedded server, providing with buttons for color matching as well as a "start game" button<br>
-- when starting the game, for each level a sequence of colors is displayed on the RGB LCD screen of the Intel® Edison board. The player needs to click on the corresponding buttons on the website.
+- when starting the game, for each level a sequence of colors is displayed on the RGB LCD screen of the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.). The player needs to click on the corresponding buttons on the website.
 - for each level the sequence has one more color.<br>
 - when a user clicks a color, the same color is displayed on the RGB LCD screen.<br>
 - different tones are played when user clicks on color buttons.
 
 ## Hardware requirements
 
-Grove* Indoor Environment Kit containing:
+Grove* Starter Kit containing:
 
-1. Intel® Edison platform with an Arduino* breakout board
+1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
 2. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
@@ -108,8 +109,6 @@ You can run this example using an Intel® IoT Gateway connected to an Arduino\*/
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
 https://software.intel.com/en-us/node/633284
-
-You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
 The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
 
