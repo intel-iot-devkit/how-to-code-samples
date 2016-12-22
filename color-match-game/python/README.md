@@ -20,18 +20,18 @@ Using an Intel® Edison board, this project lets you create a color match game.<
 
 ## Hardware requirements
 
-Grove* Starter Kit containing:
+Grove\* Starter Kit containing:
 
-1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
-2. [Grove* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+1. Intel® Edison board with an Arduino-compatible breakout board or Intel® IoT Gateway with a Arduino 101
+2. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
 
-1. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
+1. Microsoft Azure\*, IBM Bluemix\*, or Amazon Web Services (AWS)\* account (optional)
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -55,7 +55,7 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 ![](./../../images/java/ColorMatchGame.jpg)
 
-You need to have a Grove* Shield connected to an Arduino-compatible breakout board to plug all the Grove* devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino-compatible breakout board to plug all the Grove\* devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
 1. Plug one end of a Grove cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove Shield.
 
@@ -72,7 +72,7 @@ To add the Intel opkg repository:
 
 You'll only need to perform this step once.
 
-#### Git
+#### Git\*
 
 To install Git\* on the Intel® Edison board (if you don’t have it yet):
 
@@ -81,13 +81,13 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet):
 
 #### MRAA and UPM Dependencies
 
-To install the latest versions of the MRAA\* and UPM\* libraries:
+To install the latest versions of the MRAA and UPM libraries:
 
     $ opkg update
     $ opkg install mraa
     $ opkg install upm
 
-#### Python Package Manager (pip)
+#### Python\* Package Manager (pip)
 
 To install the Python\* package manager needed to install and run the example:
 
@@ -126,7 +126,7 @@ Once the example is installed through `pip` you can run the program by running t
 
 The color match game is set using a single-page web interface served from the Intel® Edison board while the sample program is running.
 
-The web server runs on port `8080`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080/home`.
+The web server runs on port `8080`, so if the Intel® Edison board is connected to Wi-Fi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080/home`.
 
 ### Determining the Intel® Edison board's IP address
 
