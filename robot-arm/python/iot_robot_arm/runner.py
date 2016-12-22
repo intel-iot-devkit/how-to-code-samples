@@ -40,6 +40,7 @@ class Runner(object):
 
         self.server = Bottle()
         self.server.route("/", callback=self.serve_index)
+        self.server.route("/styles.css", callback=self.serve_css)
         self.server.route("/<motor_id>-<direction>", "POST", callback=self.handle_motor)
 
         self.board.add_event_handler(JOYSTICK_READING, self.handle_joystick)
@@ -90,6 +91,17 @@ class Runner(object):
 
         resource_package = __name__
         resource_path = "index.html"
+        package_root = resource_filename(resource_package, "")
+        return static_file(resource_path, root=package_root)
+
+    def serve_css(self):
+
+        """
+        Serve the 'styles.css' file.
+        """
+
+        resource_package = __name__
+        resource_path = "styles.css"
         package_root = resource_filename(resource_package, "")
         return static_file(resource_path, root=package_root)
 
