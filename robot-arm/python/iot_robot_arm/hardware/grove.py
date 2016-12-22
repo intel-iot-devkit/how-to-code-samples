@@ -62,10 +62,12 @@ class GroveBoard(Board):
             i2c_bus=6
         )
 
+        self.voltage = 1.0
         if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
             addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
             self.pin_mappings += 512
             self.pin_mappings.i2c_bus = 512
+            self.voltage = 1.33
 
         self.screen = Jhd1313m1(self.pin_mappings.i2c_bus, 0x3E, 0x62)
         self.joy = Joystick12(self.pin_mappings.joy_x_pin, self.pin_mappings.joy_y_pin)
@@ -111,8 +113,8 @@ class GroveBoard(Board):
 
     def read_joystick(self):
 
-        x_input = self.joy.getXInput()
-        y_input = self.joy.getYInput()
+        x_input = self.joy.getXInput() * self.voltage
+        y_input = self.joy.getYInput() * self.voltage
         return JoyStickReading(x=x_input, y=y_input)
 
     def write_message(self, message, line=0):
