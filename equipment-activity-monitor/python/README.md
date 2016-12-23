@@ -1,4 +1,4 @@
-# Equipment Activity Monitor in Python*
+# Equipment Activity Monitor in Python\*
 
 ## Introduction
 
@@ -7,9 +7,9 @@ This Equipment Activity Monitor application is part of a series of how-to Intel�
 From this exercise, developers will learn how to:<br>
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Set up a web application server to let users store alarm data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon\* Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Set up a web application server to let users store alarm data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
@@ -26,7 +26,7 @@ If both exceed a defined threshold, it lights up the display to indicate the equ
 
 Once the equipment is no longer used, it clears the display.
 
-Optionally, equipment usage start/stop events can also be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
+Optionally, equipment usage start/stop events can also be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -34,14 +34,14 @@ This sample can be used with either the Grove\* Transportation and Safety Kit fr
 
 Grove\* Starter Kit Plus, containing:
 
-1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
+1. Intel® Edison board with an Arduino-compatible breakout board or Intel® IoT Gateway with Arduino 101
 2. [Grove\* Sound Sensor](http://www.seeedstudio.com/depot/Grove-Sound-Sensor-p-752.html)
 3. [Grove\* Piezo Vibration Sensor](http://www.seeedstudio.com/depot/Grove-Piezo-Vibration-Sensor-p-1411.html)
 4. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
+1. Intel® Edison baord with an Arduino-compatible breakout board or Intel® IoT Gateway with Arduino 101
 2. [Analog Sound Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=83).
 3. [Digital Vibration Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=79)
 4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
@@ -52,7 +52,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -88,7 +88,7 @@ You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout 
 
 ![](./../../images/js/equipment-activity-dfrobot.jpg)
 
-You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
 1. Plug one end of a DFRobot\* cable into Analog Sound Sensor, then connect the other end to the A2 port on the LCD Keypad Shield.
 
@@ -100,14 +100,14 @@ If you're running this code on your Intel® Edison board, you need to install so
 
 #### Update the opkg repo
 
-To add the Intel® opkg repository:
+To add the opkg repository:
 
     $ echo "src mraa-upm http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586" > /etc/opkg/mraa-upm.conf
     $ opkg update
 
 You'll only need to perform this step once.
 
-#### Git
+#### Git\*
 
 To install Git\* on the Intel® Edison board (if you don’t have it yet):
 
@@ -116,13 +116,13 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet):
 
 #### MRAA and UPM Dependencies
 
-To install the latest versions of the MRAA\* and UPM\* libraries:
+To install the latest versions of the MRAA and UPM libraries:
 
     $ opkg update
     $ opkg install mraa
     $ opkg install upm
 
-#### Python Package Manager (pip)
+#### Python\* Package Manager (pip)
 
 To install the Python\* package manager needed to install and run the example:
 
@@ -191,7 +191,7 @@ To configure the example for the Arduino 101, add a `PLATFORM` key with the valu
   "NOISE_THRESHOLD": 0
 }
 
-To configure the example for the optional Microsoft\* Azure\*, IBM Bluemix\*, or AWS\* data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below as follows:
+To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS\* data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below as follows:
 
 ```JSON
 {
@@ -203,7 +203,7 @@ To configure the example for the optional Microsoft\* Azure\*, IBM Bluemix\*, or
 }
 ```
 
-For information on how to configure the example for the optional Microsoft\* Azure\*, IBM Bluemix\*, or AWS\* MQTT messaging server, go to:
+For information on how to configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS\* MQTT messaging server, go to:
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
