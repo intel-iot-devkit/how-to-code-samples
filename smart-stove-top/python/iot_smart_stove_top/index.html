@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Smart Range</title>
+  </head>
+  <body>
+    <h1>Smart Range</h1>
+
+    <form>
+      <label for="temp">Target Temperature (Celsius)</label>
+      <input type="number" id="temp" name="temp"></select>
+
+      <input type="submit" value="Set Target">
+    </form>
+
+    <script>
+      (function() {
+        var req = new XMLHttpRequest();
+
+        req.addEventListener("load", function() {
+          var json;
+
+          try {
+            json = JSON.parse(this.response);
+          } catch (e) {
+            return; // unable to parse JSON, something went wrong
+          }
+
+          document.getElementById("temp").value = json.temp;
+        });
+
+        req.open("get", "/temp.json", true);
+        req.send();
+      })();
+    </script>
+  </body>
+</html>
