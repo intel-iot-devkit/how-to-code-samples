@@ -6,7 +6,7 @@ This Robot Arm application is part of a series of how-to Intel® Internet of Thi
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Interface with the Intel® Edison platform IO and sensor repository using MRAA\* and UPM\* from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Set up a web application server to control a robot arm using a web page served directly from the Intel® Edison board.
 
 ## What it is
