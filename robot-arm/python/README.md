@@ -34,7 +34,7 @@ Grove\* Robotics Kit, containing:
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
+To begin, clone the **How-To Intel® IoT Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -44,7 +44,7 @@ To download a .zip file, in your web browser go to <a href="https://github.com/i
 
 You can set up the code manually on the Intel® Edison board.
 
-Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
+Clone the **How-To Intel® IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -64,11 +64,11 @@ You need to power the Intel® Edison board with the external power adapter that 
 
 In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison board and the motors, so you need either 2 batteries or 2 power supplies in total.
 
-1. Plug each of the stepper motor controllers into 4 pins on the Arduino* breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino\* breakout board (VCC), and to the separate 5V power for the motors (VM).
+1. Plug each of the stepper motor controllers into 4 pins on the Arduino\* breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino\* breakout board (VCC), and to the separate 5V power for the motors (VM).
 
 2. Plug one end of a Grove\* cable into the Grove\* Thumb Joystick, and connect the other end to the A0 port on the Grove\* Shield.
 
-3. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
+3. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C\* ports on the Grove\* Shield.
 
 ### Intel® Edison board setup
 
@@ -114,7 +114,7 @@ The `pip` command will install required Python dependencies, save the source cod
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
@@ -122,9 +122,9 @@ https://software.intel.com/en-us/node/633284
 
 You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
+The Arduino 101\* needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino 101.
 
-You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino 101. See the section "Configuring the example" below.
 
 ## Configuring the example
 
@@ -146,7 +146,7 @@ Once the example is installed through `pip` you can run the program by running t
 
     $ python -m iot_robot_arm
 
-### Determining the Intel® Edison board's IP address
+### Determining the IP address of the Intel® Edison board
 
 You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
