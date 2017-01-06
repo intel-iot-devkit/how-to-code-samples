@@ -79,7 +79,7 @@ The jars can be found at the IOT Devkit installation root path\iss-iot-win\devki
 
 ### Connecting the Grove* sensors
 
-![](./../../images/java/ColorMatchGame.jpg)
+![](./../../images/python/color-match-game.jpg)
 
 You need to have a Grove* Shield connected to an Arduino-compatible breakout board to plug all the Grove* devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove* Shield set to **5V**.
 
