@@ -37,7 +37,7 @@
  *
  * @cc
  * @cxx -std=c++1y
- * @ld -lupm-ttp223 -lupm-buzzer -lupm-i2clcd -lcurl
+ * @ld -lupm-ttp223 -lupm-buzzer -lupm-i2clcd -lupm-jhd1313m1 -lcurl
  *
  * Additional source files required to build this example:
  * @req datastore.cpp
