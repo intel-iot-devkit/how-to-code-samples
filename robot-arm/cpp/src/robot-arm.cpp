@@ -101,7 +101,7 @@ struct Devices
 
   //functions to set speed and direction of motors
   //steps 4096 is one full revolution of the motor
-  void move(upm::ULN200XA* motor, upm::ULN200XA::ULN200XA_DIRECTION_T direction) {
+  void move(upm::ULN200XA* motor, ULN200XA_DIRECTION_T direction) {
     motor->setSpeed(5);
     motor->setDirection(direction);
     motor->stepperSteps(512);
@@ -109,24 +109,24 @@ struct Devices
 
   void stop(upm::ULN200XA* motor) {
     motor->setSpeed(5);
-    motor->setDirection(upm::ULN200XA::DIR_CW);
+    motor->setDirection(ULN200XA_DIR_CW);
     motor->stepperSteps(0);
   }
 
   void move_1_clockwise() {
-    move(stepperOne, upm::ULN200XA::DIR_CW);
+    move(stepperOne, ULN200XA_DIR_CW);
   }
 
   void move_1_counter_clockwise() {
-    move(stepperOne, upm::ULN200XA::DIR_CCW);
+    move(stepperOne, ULN200XA_DIR_CCW);
   }
 
   void move_2_clockwise() {
-    move(stepperTwo, upm::ULN200XA::DIR_CW);
+    move(stepperTwo, ULN200XA_DIR_CW);
   }
 
   void move_2_counter_clockwise() {
-    move(stepperTwo, upm::ULN200XA::DIR_CCW);
+    move(stepperTwo, ULN200XA_DIR_CCW);
   }
 
   // function to turn the joystick input -1, 0, or 1

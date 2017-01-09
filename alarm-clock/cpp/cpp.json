@@ -1,5 +1,5 @@
 {
   "main": "src/alarm-clock.cpp",
-  "ldflags": "-lmraa -lupm-i2clcd -lupm-buzzer -lupm-grove -lboost_system -lboost_thread -lboost_filesystem -lboost_date_time -lpthread -lcurl -lpaho-mqtt3cs ",
+  "ldflags": "-lmraa -lupm-i2clcd -lupm-jhd1313m1 -lupm-buzzer -lupm-grove -lboost_system -lboost_thread -lboost_filesystem -lboost_date_time -lpthread -lcurl -lpaho-mqtt3cs ",
   "cxxflags": "-std=c++1y"
 }

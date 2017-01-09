@@ -36,7 +36,7 @@
  *
  * @cc
  * @cxx -std=c++1y
- * @ld -lupm-mma7660 -lupm-i2clcd -lcurl
+ * @ld -lupm-mma7660 -lupm-i2clcd -lupm-jhd1313m1 -lcurl
  *
  * Additional source files required to build this example:
  *

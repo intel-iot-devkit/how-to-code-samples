@@ -33,7 +33,7 @@
 #include <string>
 #include <signal.h>
 
-#include <ublox6.hpp>
+#include <nmea_gps.hpp>
 #include <rfr359f.hpp>
 
 using namespace std;
@@ -42,7 +42,7 @@ using namespace std;
 struct Devices
 {
   upm::RFR359F* detector;
-  upm::Ublox6* nmea;
+  upm::NMEAGPS *nmea;
 
   Devices(){
   };
@@ -50,8 +50,7 @@ struct Devices
   // Initialization function
   void init() {
     detector = new upm::RFR359F(2);
-    nmea = new upm::Ublox6(0);
-    initPort();
+    nmea = new upm::NMEAGPS(0, 9600, -1);
   };
 
   // Cleanup on exit
@@ -60,28 +59,18 @@ struct Devices
     delete nmea;
   }
 
-  int initPort(){
-    if (!nmea->setupTty(B38400)) {
-      cerr << "Failed to setup tty port parameters" << endl;
-      return 1;
-    }
-    return 0;
-  }
-
 	// Get GPS data
   string gps_info(){
     size_t bufferLength = 256;
     string result;
-    char nmeaBuffer[bufferLength];
 
-    if (nmea->dataAvailable()) {
-      int rv = nmea->readData(nmeaBuffer, bufferLength);
-      if (rv > 0) {
-        result = nmeaBuffer;
-        return result;
+    if (nmea->dataAvailable(bufferLength)) {
+      string rv = nmea->readStr(bufferLength);
+      if (rv.length() > 0) {
+        return rv;
       }
 
-      if (rv < 0) {
+      if (rv.length() < 0) {
         cerr << "Port read error." << endl;
         return "GPS Error";
       }

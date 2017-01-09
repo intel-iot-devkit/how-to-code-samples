@@ -38,7 +38,7 @@
  *
  * @cc
  * @cxx -std=c++1y
- * @ld -lupm-i2clcd -lupm-buzzer -lpaho-mqtt3cs -lupm-grove -lboost_system -lboost_thread -lboost_filesystem -lboost_date_time -lpthread -lcurl
+ * @ld -lupm-i2clcd -lupm-jhd1313m1 -lupm-buzzer -lpaho-mqtt3cs -lupm-grove -lboost_system -lboost_thread -lboost_filesystem -lboost_date_time -lpthread -lcurl
  *
  * Additional source files required to build this example:
  * @req datastore.cpp

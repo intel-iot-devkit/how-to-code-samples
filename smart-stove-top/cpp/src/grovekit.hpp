@@ -112,6 +112,11 @@ struct Devices
     speaker->playSound('c', true, "high");
   }
 
+  // Not used by Grove kit
+  void stopAlarm() {
+    return;
+  }
+
   // Reads the flame sensor
   bool flameDetected() {
     return flame->flameDetected();
