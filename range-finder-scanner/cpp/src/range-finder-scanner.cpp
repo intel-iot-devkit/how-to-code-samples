@@ -96,7 +96,7 @@ struct Devices
 
   // Moves the stepper motor around and around
   void move(){
-    stepper->setDirection(upm::ULN200XA::DIR_CW);
+    stepper->setDirection(ULN200XA_DIR_CW);
     stepper->setSpeed(5);
     stepper->stepperSteps(4096/360);
   }

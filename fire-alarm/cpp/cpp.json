@@ -1,5 +1,5 @@
 {
   "main": "src/fire-alarm.cpp",
-  "ldflags": "-lmraa -lupm-i2clcd -lpaho-mqtt3cs -lcurl -lssl -lcrypto -lupm-grove -lupm-buzzer ",
+  "ldflags": "-lmraa -lupm-i2clcd -lupm-jhd1313m1 -lpaho-mqtt3cs -lcurl -lssl -lcrypto -lupm-grove -lupm-buzzer ",
   "cxxflags": "-std=c++1y"
 }
