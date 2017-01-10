@@ -31,13 +31,37 @@ var fs = require("fs");
 // the file path to the html file used to view the range finder status
 var path = require("path");
 
+// Load configuration data from `config.json` file. Edit this file
+// to change to correct values for your configuration
+var config = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "config.json"))
+);
+
+// Initialize the hardware devices
+var mraa = require("mraa");
+// pins
+var rangerPin = 2,
+    stepper1input1 = 9, stepper1input2 = 10,
+    stepper1input3 = 11, stepper1input4 = 12;
+
+if (config.platform == "firmata") {
+  // open connection to firmata
+  mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+  rangerPin += 512;
+  stepper1input1 += 512;
+  stepper1input2 += 512;
+  stepper1input3 += 512;
+  stepper1input4 += 512;
+}
+
 // Array to store range
 var STATE = Array(360);
 
 // Initialize the hardware devices
 var ULN200XA = require("jsupm_uln200xa");
-var dist = new (require("jsupm_rfr359f").RFR359F)(2),
-    motor = new ULN200XA.ULN200XA(4096, 9, 10, 11, 12);
+var dist = new (require("jsupm_rfr359f").RFR359F)(rangerPin),
+    motor = new ULN200XA.ULN200XA(4096, stepper1input1, stepper1input2, stepper1input3, stepper1input4);
 
 // Starts the built-in web server for the web page
 // used to view the ranger finder status
@@ -54,7 +78,13 @@ function server() {
     fs.readFile(path.join(__dirname, "index.html"), {encoding: "utf-8"}, serve);
   }
 
+  // styles for the web page
+  function styles(req, res) {
+    res.sendFile(path.join(__dirname, "styles.css"));
+  }
+
   app.get("/", index);
+  app.get("/styles.css", styles);
   app.get("/data.json", function(req, res) { res.json(STATE); });
 
   app.listen(process.env.PORT || 3000);

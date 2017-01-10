@@ -3,10 +3,9 @@
   "private": true,
   "main": "index.js",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.4.0"
   },
   "dependencies": {
-    "express": "^4.13.3",
-    "mraa": "^0.7.3"
+    "express": "^4.13.3"
   }
 }

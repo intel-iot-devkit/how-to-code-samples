@@ -2,17 +2,17 @@
 
 ## Introduction
 
-This range finder scanner application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This range finder scanner application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.<br>
-- Set up a web application server to view range finder data using a web page served directly from the Intel® Edison board.
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
+- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® IoT Gateway.<br>
+- Set up a web application server to view range finder data using a web page served directly from the Intel® Edison board or Intel® IoT Gateway.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a range finding scanner that:<br>
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a range finding scanner that:<br>
 - continuously checks the Grove* IR Distance Interrupter.<br>
 - moves the stepper motor in a 360-degree circle.<br>
 - can be accessed via the built-in web interface to view range finder data.
@@ -21,13 +21,13 @@ Using an Intel® Edison board, this project lets you create a range finding scan
 
 As the stepper motor turns, it pauses to get readings from the Grove* IR Distance Interrupter.
 
-These readings can be seen by viewing the web page served directly from the Intel® Edison board.
+These readings can be seen by viewing the web page served directly from the Intel® Edison board or Intel® IoT Gateway.
 
 ## Hardware requirements
 
 Grove* Robotics Kit containing:
 
-1. Intel® Edison board with an Arduino* breakout board
+1. Intel® Edison board with an Arduino* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
 2. [Grove* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html)
 
@@ -74,7 +74,7 @@ In the **Address** field, type `192.168.2.15`.
 In the **Port** field, type `58888`.
 Click **Connect** to save your connection.
 
-### Installing the program manually on the Intel® Edison board 
+### Installing the program manually on the Intel® Edison board
 
 Alternatively, you can set up the code manually on the Intel® Edison board.
 
@@ -110,6 +110,30 @@ To obtain the Node.js* modules needed for this example to execute on the Intel®
 
 ```
 npm install
+```
+
+### Intel® IoT Gateway setup
+
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+
+Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
+
+https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iotdk
+
+You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
+
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
+
+You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
+
+## Configuring the example
+
+To configure the example for the Intel® Edison board, just leave the `platform` key in the `config.json` set to `edison`. To configure the example for the Intel® IoT Gateway, change the `platform` key in the `config.json` to `firmata` as follows:
+
+```
+{
+  "platform": "firmata"
+}
 ```
 
 ## Running the program using Intel® XDK IoT Edition
