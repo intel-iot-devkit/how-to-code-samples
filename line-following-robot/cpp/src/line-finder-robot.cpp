@@ -135,8 +135,8 @@ struct Devices
     stepLeft->setSpeed(5);
     stepRight->setSpeed(5);
 
-    stepLeft->setDirection(upm::ULN200XA::DIR_CW);
-    stepRight->setDirection(upm::ULN200XA::DIR_CW);
+    stepLeft->setDirection(ULN200XA_DIR_CW);
+    stepRight->setDirection(ULN200XA_DIR_CW);
 
     stepLeft->stepperSteps(1024);
     stepRight->stepperSteps(1024);
@@ -149,8 +149,8 @@ struct Devices
     stepLeft->setSpeed(5);
     stepRight->setSpeed(5);
 
-    stepLeft->setDirection(upm::ULN200XA::DIR_CW);
-    stepRight->setDirection(upm::ULN200XA::DIR_CCW);
+    stepLeft->setDirection(ULN200XA_DIR_CW);
+    stepRight->setDirection(ULN200XA_DIR_CCW);
 
     stepLeft->stepperSteps(512);
     stepRight->stepperSteps(512);

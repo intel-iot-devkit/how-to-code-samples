@@ -37,7 +37,7 @@
  *
  * @cc
  * @cxx -std=c++1y
- * @ld -lupm-i2clcd -lump-mic -lupm-ldt0028 -lpaho-mqtt3cs -lcurl
+ * @ld -lupm-i2clcd -lupm-jhd1313m1 -lump-mic -lupm-ldt0028 -lpaho-mqtt3cs -lcurl
  *
  * Additional source files required to build this example:
  * @req datastore.cpp

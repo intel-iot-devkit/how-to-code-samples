@@ -1,5 +1,5 @@
 {
   "main": "src/doorbell.cpp",
-  "ldflags": "-lmraa -lupm-i2clcd -lcurl -lupm-ttp223 -lupm-buzzer -lupm-grove -lpaho-mqtt3cs ",
+  "ldflags": "-lmraa -lupm-i2clcd -lupm-jhd1313m1 -lcurl -lupm-ttp223 -lupm-buzzer -lupm-grove -lpaho-mqtt3cs ",
   "cxxflags": "-std=c++1y"
 }

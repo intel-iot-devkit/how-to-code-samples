@@ -75,7 +75,7 @@ struct Devices
     accel = new upm::MMA7660(i2cBus, MMA7660_DEFAULT_I2C_ADDR);
 
     accel->setModeStandby();
-    accel->setSampleRate(upm::MMA7660::AUTOSLEEP_64);
+    accel->setSampleRate(MMA7660_AUTOSLEEP_64);
     accel->setModeActive();
 
     // screen connected to the i2c bus
