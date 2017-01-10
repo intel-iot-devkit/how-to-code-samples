@@ -22,7 +22,7 @@ Using an Intel® Edison board or Intel® IoT Gateway, this project lets you crea
 The robot arm example allows you to control a robotic arm using a thumb joystick.
 Each axis of the joystick corresponds to a motor to control.
 
-Additionally, the motors can be controlled individually via a web page served directly from the Intel® Edison board.
+Additionally, the motors can be controlled individually via a web page served directly from the Intel® Edison board or Intel® IoT Gateway.
 
 ## Hardware requirements
 
