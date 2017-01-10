@@ -49,8 +49,8 @@ class GroveBoard(Board):
 
         # pin mappings
         self.pin_mappings = PinMappings(
-            joy_x_pin=0,
-            joy_y_pin=1,
+            joy_x_pin=2,
+            joy_y_pin=3,
             step1_in1_pin=9,
             step1_in2_pin=10,
             step1_in3_pin=11,
