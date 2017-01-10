@@ -34,11 +34,43 @@ var fs = require("fs");
 // the file path to the html file used to view the range finder status
 var path = require("path");
 
+// Load configuration data from `config.json` file. Edit this file
+// to change to correct values for your configuration
+var config = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "config.json"))
+);
+
 // Initialize the hardware devices
+var mraa = require("mraa");
+// pins
+var joyPinX = 2, joyPinY = 3,
+    stepper1input1 = 9, stepper1input2 = 10,
+    stepper1input3 = 11, stepper1input4 = 12,
+    stepper2input1 = 4, stepper2input2 = 5,
+    stepper2input3 = 6, stepper2input4 = 7,
+    voltageAdjust = 1.0;
+
+if (config.platform == "firmata") {
+  // open connection to firmata
+  mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+  joyPinX += 512;
+  joyPinY += 512;
+  stepper1input1 += 512;
+  stepper1input2 += 512;
+  stepper1input3 += 512;
+  stepper1input4 += 512;
+  stepper2input1 += 512;
+  stepper2input2 += 512;
+  stepper2input3 += 512;
+  stepper2input4 += 512;
+  voltageAdjust = 1.33;
+}
+
 var ULN200XA = require("jsupm_uln200xa");
-var thumb = new (require("jsupm_joystick12").Joystick12)(0, 1),
-    step1 = new ULN200XA.ULN200XA(4096, 9, 10, 11, 12),
-    step2 = new ULN200XA.ULN200XA(4096, 4, 5, 6, 7);
+var thumb = new (require("jsupm_joystick12").Joystick12)(joyPinX, joyPinY),
+    step1 = new ULN200XA.ULN200XA(4096, stepper1input1, stepper1input2, stepper1input3, stepper1input4),
+    step2 = new ULN200XA.ULN200XA(4096, stepper2input1, stepper2input2, stepper2input3, stepper2input4);
 
 // Moves the stepper motor
 function move(stepper, dir, speed, steps) {
@@ -73,7 +105,13 @@ function server() {
     fs.readFile(path.join(__dirname, "index.html"), {encoding: "utf-8"}, serve);
   }
 
+  // styles for the web page
+  function styles(req, res) {
+    res.sendFile(path.join(__dirname, "styles.css"));
+  }
+
   app.get("/", index);
+  app.get("/styles.css", styles);
 
   // Handler for each of the RESTful endpoints to control the arm
   function handle(stepper, dir) {
@@ -104,15 +142,15 @@ function main() {
   server();
 
   setInterval(function() {
-    x = scale(thumb.getXInput());
-    y = scale(thumb.getYInput());
+    x = scale(thumb.getXInput() * voltageAdjust);
+    y = scale(thumb.getYInput() * voltageAdjust);
 
     if (x === 1) { move(step1, CLOCKWISE); }
     if (x === -1) { move(step1, COUNTERCLOCKWISE); }
 
     if (y === 1) { move(step2, CLOCKWISE); }
     if (y === -1) { move(step2, COUNTERCLOCKWISE); }
-  }, 50);
+  }, 100);
 }
 
 main();

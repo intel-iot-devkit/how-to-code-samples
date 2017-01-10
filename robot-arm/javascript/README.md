@@ -2,17 +2,17 @@
 
 ## Introduction
 
-This robot arm application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This robot arm application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.<br>
-- Set up a web application server to control a robot arm using a web page served directly from the Intel® Edison board.
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
+- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® IoT Gateway.<br>
+- Set up a web application server to control a robot arm using a web page served directly from the Intel® Edison board or Intel® IoT Gateway.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a robot arm that:<br>
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a robot arm that:<br>
 - continuously checks the Grove* Joystick.<br>
 - moves two stepper motors based on the joystick control.<br>
 - can be accessed via the built-in web interface to control the motors.
@@ -28,7 +28,7 @@ Additionally, the motors can be controlled individually via a web page served di
 
 Grove* Robotics Kit containing:
 
-1. Intel® Edison board with an Arduino* breakout board
+1. Intel® Edison board with an Arduino* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
 2. [Grove Thumb Joystick](http://iotdk.intel.com/docs/master/upm/node/classes/joystick12.html)
 3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html) (x2)
 
@@ -100,7 +100,7 @@ In addition, you need a breadboard and an extra 5V power supply to provide power
 
 1. Plug each of the stepper motor controllers into 4 pins on the Arduino* breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino* breakout board (VCC), and to the separate 5V power for the motors (VM).
 
-2. Plug one end of a Grove* cable into the Grove* Thumb Joystick, and connect the other end to the A0 port on the Grove* Shield.
+2. Plug one end of a Grove* cable into the Grove* Thumb Joystick, and connect the other end to the A2 port on the Grove* Shield.
 
 ### Manual Intel® Edison board setup
 
@@ -110,6 +110,30 @@ To obtain the Node.js* modules needed for this example to execute on Intel® Edi
 
 ```
 npm install
+```
+
+### Intel® IoT Gateway setup
+
+You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+
+Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
+
+https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iotdk
+
+You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
+
+The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
+
+You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
+
+## Configuring the example
+
+To configure the example for the Intel® Edison board, just leave the `platform` key in the `config.json` set to `edison`. To configure the example for the Intel® IoT Gateway, change the `platform` key in the `config.json` to `firmata` as follows:
+
+```
+{
+  "platform": "firmata"
+}
 ```
 
 ## Running the program using Intel® XDK IoT Edition
