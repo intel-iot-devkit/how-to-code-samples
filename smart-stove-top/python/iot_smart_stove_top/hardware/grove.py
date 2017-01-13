@@ -78,7 +78,7 @@ class GroveBoard(Board):
     # hardware functions
     def read_obj_temp(self):
 
-        return self.temp.objectTemp()
+        return self.temp.objectTemperature()
 
     def detect_flame(self):
 

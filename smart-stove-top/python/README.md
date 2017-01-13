@@ -1,27 +1,48 @@
-# [Project Name] in Python*
+# Smart Stove Top in Python*
 
 ## Introduction
 
-This [Project Name] application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This Smart Stove Top application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Store the [Project Name] data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Store the Smart Stove Top data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services\* (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
-Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a smart access control system that:<br>
-[Content Here]
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a smart stove top that:<br>
+- allows you to set a target temperature.<br>
+- monitors your stove and notifies you when your set temperature is reached.<br>
+- stores historical temperature data using cloud-based data storage.
 
 ## How it works
 
-[Content Here]
+This smart stove top sensor has a number of useful features designed to help you monitor the temperature of the food you are cooking on your legacy stove top.
+Set the target temperature for a pot on your range top via a web page served directly from the Intel® Edison board, using your mobile phone.
+
+When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, alarm goes off.
+
+Optionally, all data can be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
 
 ## Hardware requirements
 
-[Content Here]
+This sample can be used with either the Grove* Home Automation Kit from Seeed Studio, or else the DFRobot\* Edison Starter Kit with some additional DFRobot\* parts.
+
+Grove\* Home Automation Kit, containing:
+
+1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+2. [Grove\* IR Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/otp538u.html)
+3. [Grove\* Flame Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/yg1006.html)
+4. [Grove\* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
+
+DFRobot\* Starter Kit for Intel® Edison, containing:
+
+1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+2. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
+3. [Flame Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=195)
+4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
 ## Software requirements
 
@@ -51,11 +72,27 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 ### Connecting the Grove\* sensors
 
-[Content Here]
+![](./../../images/js/smart-stove.jpg)
+
+You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+
+1. Plug one end of a Grove\* cable into the Grove\* IR Temperature Sensor, and connect the other end to the A0 port on the Grove\* Shield.
+
+2. Plug one end of a Grove\* cable into the Grove\* Flame Sensor, and connect the other end to the D4 port on the Grove\* Shield.
+
+3. Plug one end of a Grove\* cable into the Grove\* Speaker, and connect the other end to the D5 port on the Grove\* Shield.
 
 ### Connecting the DFRobot\* sensors
 
-[Content Here]
+![](./../../images/js/smart-stove-dfrobot.jpg)
+
+You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+
+1. Plug one end of a DFRobot\* cable into the Analog Temperature Sensor, and connect the other end to the A3 port on the LCD Keypad Shield.
+
+2. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the LCD Keypad Shield.
+
+3. Plug one end of a DFRobot\* cable into the Flame Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
 
 ### Intel® Edison board setup
 
@@ -96,9 +133,9 @@ To install the Python\* package manager needed to install and run the example:
 
 Once all dependencies are installed you can install the example itself with the following command:
 
-    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=[Project Module Name]&subdirectory=[Project Dir]/python"
+    $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=iot_smart_stove_top&subdirectory=smart-stove-top/python"
 
-The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/[Project Module Name]/` and link the package to the global Python `site-packages` folder.
+The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_smart_stove_top/` and link the package to the global Python `site-packages` folder.
 
 ### Intel® IoT Gateway setup
 
@@ -132,13 +169,14 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 ## Configuring the example
 
-When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/[Project Module Name]/[Project Dir]/python/[Project Module Name]/config.json`.
+When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/iot_smart_stove_top/smart-stove-top/python/iot_smart_stove_top/config.json`.
 
 To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```JSON
 {
   "kit": "dfrobot"
+  "TARGET_TEMP": 30
 }
 ```
 
@@ -147,7 +185,8 @@ To configure the example for the Arduino 101\*, add a `PLATFORM` key with the va
 ```JSON
 {
   "kit": "grove",
-  "PLATFORM": "firmata"
+  "PLATFORM": "firmata",
+  "TARGET_TEMP": 30
 }
 ```
 
@@ -156,6 +195,7 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
 ```JSON
 {
   "kit": "grove",
+  "TARGET_TEMP": 30,
   "SERVER": "http://intel-examples.azurewebsites.net/logger/access-control",
   "AUTH_TOKEN": "s3cr3t"
 }
@@ -169,7 +209,7 @@ For information on how to configure the example for the optional Microsoft Azure
 
 Once the example is installed through `pip` you can run the program by running the following command in an SSH session to the board:
 
-    $ python -m [Project Module Name]
+    $ python -m iot_smart_stove_top
 
 ### Determining the Intel® Edison board's IP address
 

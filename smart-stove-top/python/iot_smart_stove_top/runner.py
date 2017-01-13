@@ -24,6 +24,7 @@ from datetime import datetime, timedelta
 from importlib import import_module
 from pkg_resources import resource_filename
 from bottle import Bottle, static_file, request
+from .hardware.events import TEMP_READING, FLAME_DETECTED
 from .config import HARDWARE_CONFIG, APP_CONFIG
 from .log import log
 
@@ -37,6 +38,9 @@ class Runner(object):
         board_module = "{0}.hardware.{1}".format(__package__, board_name)
         board_class_name = "{0}Board".format(board_name.capitalize())
         self.board = getattr(import_module(board_module), board_class_name)()
+
+        self.board.add_event_handler(TEMP_READING, self.update_temp)
+        self.board.add_event_handler(FLAME_DETECTED, self.update_flame)
 
         # setup HTTP server
         self.server = Bottle()
@@ -69,6 +73,7 @@ class Runner(object):
     def update_temp(self, temp):
 
         should_trigger = temp >= self.target_temp
+        print("temp:", temp)
 
         if should_trigger and not self.temp_triggered:
             print("Temperature alarm triggered.")
