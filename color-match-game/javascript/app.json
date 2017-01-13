@@ -1,0 +1,18 @@
+{
+  "title": "Color Match Game",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "sample": true,
+  "template": false,
+  "visible": true,
+  "sortWeight" : "0.0",
+  "repoSource": "github",
+  "repoUser": "intel-iot-devkit",
+  "repoName": "how-to-code-samples",
+  "repoPath": "tree/master/color-match-game/javascript",
+  "tooltip": "Color match game",
+  "description": "Color match game that uses LCD screen with backlit RGB LED",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/color-match-game/javascript",
+  "keywords": ["lcd"],
+  "targets": ["edison"],
+  "runtimes": ["node"]
+}
