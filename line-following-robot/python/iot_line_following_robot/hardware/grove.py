@@ -46,14 +46,12 @@ class GroveBoard(Board):
             left_step_in2_pin=5,
             left_step_in3_pin=6,
             left_step_in4_pin=7,
-            line_finder_pin=2,
-            i2c_bus=6
+            line_finder_pin=2
         )
 
         if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
             addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
             self.pin_mappings += 512
-            self.pin_mappings.i2c_bus = 512
 
         self.right_step = ULN200XA(
             4096,
