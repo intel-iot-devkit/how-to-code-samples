@@ -1,4 +1,4 @@
-# Copyright (c) 2015 - 2016 Intel Corporation.
+# Copyright (c) 2015 - 2017 Intel Corporation.
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -50,4 +50,5 @@ def log(event):
 
     message = "{0} {1}".format(datetime.utcnow().isoformat(), event)
     payload = {"value": message}
+    print(message)
     send(payload)
