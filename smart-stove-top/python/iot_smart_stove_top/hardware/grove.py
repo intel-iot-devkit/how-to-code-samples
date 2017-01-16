@@ -1,4 +1,4 @@
-# Copyright (c) 2015 - 2016 Intel Corporation.
+# Copyright (c) 2015 - 2017 Intel Corporation.
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -42,8 +42,8 @@ class GroveBoard(Board):
         self.pin_mappings = PinMappings(
             speaker_pin=5,
             flame_pin=4,
-            temp_obj_pin=1,
-            temp_ambient_pin=0,
+            temp_obj_pin=3,
+            temp_ambient_pin=2,
             i2c_bus=6,
             reference_voltage=5.0
         )
