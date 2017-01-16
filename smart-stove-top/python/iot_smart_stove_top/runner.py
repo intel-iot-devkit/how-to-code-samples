@@ -1,4 +1,4 @@
-# Copyright (c) 2015 - 2016 Intel Corporation.
+# Copyright (c) 2015 - 2017 Intel Corporation.
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -45,6 +45,7 @@ class Runner(object):
         # setup HTTP server
         self.server = Bottle()
         self.server.route("/", callback=self.serve_index)
+        self.server.route("/styles.css", callback=self.serve_css)
         self.server.route("/temp.json", callback=self.serve_temp)
 
         # hardware state
@@ -53,7 +54,7 @@ class Runner(object):
 
         self.log_triggered = False
         self.last_log = datetime.utcnow()
-        self.log_interval = timedelta(seconds=1)
+        self.log_interval = timedelta(seconds=5)
 
         self.target_temp = APP_CONFIG.target_temp
 
@@ -82,9 +83,10 @@ class Runner(object):
             self.board.play_temp()
 
         if self.log_triggered:
-            log_delta = self.last_log - datetime.utcnow()
+            log_delta = datetime.utcnow() - self.last_log
             if log_delta >= self.log_interval:
                 log(temp)
+                self.last_log = datetime.utcnow()
 
         if not should_trigger and self.temp_triggered:
             self.temp_triggered = False
@@ -116,6 +118,17 @@ class Runner(object):
 
         resource_package = __name__
         resource_path = "index.html"
+        package_root = resource_filename(resource_package, "")
+        return static_file(resource_path, root=package_root)
+
+    def serve_css(self):
+
+        """
+        Serve the 'styles.css' file.
+        """
+
+        resource_package = __name__
+        resource_path = "styles.css"
         package_root = resource_filename(resource_package, "")
         return static_file(resource_path, root=package_root)
 
