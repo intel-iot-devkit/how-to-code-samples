@@ -25,7 +25,7 @@ from json import dumps
 from pkg_resources import resource_filename
 from bottle import Bottle, static_file, response
 from .config import HARDWARE_CONFIG
-from .scheduler import SCHEDULER
+from .scheduler import SCHEDULER, ms
 
 class Runner(object):
 
@@ -49,7 +49,7 @@ class Runner(object):
         self.sweep_job = SCHEDULER.add_job(
             self.sweep,
             "interval",
-            seconds=10,
+            seconds=ms(10),
             coalesce=True,
             max_instances=1
         )
