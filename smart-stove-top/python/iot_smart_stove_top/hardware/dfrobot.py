@@ -25,6 +25,7 @@ from mraa import Gpio, DIR_OUT, Aio, addSubplatform, GENERIC_FIRMATA
 from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
 from ..scheduler import SCHEDULER
 from .board import Board, PinMappings
+from .events import TEMP_READING, FLAME_DETECTED
 
 class DfrobotBoard(Board):
 
@@ -38,14 +39,16 @@ class DfrobotBoard(Board):
 
         # pin mappings
         self.pin_mappings = PinMappings(
-            temp_pin=1,
-            flame_pin=3,
+            temp_pin=3,
+            flame_pin=2,
             speaker_pin=16,
+            reference_voltage=1.0
         )
 
         if HARDWARE_CONFIG.platform == KNOWN_PLATFORMS.firmata:
             addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
             self.pin_mappings += 512
+            self.pin_mappings.reference_voltage = 0.33
 
         self.temp = Aio(self.pin_mappings.temp_pin)
         self.flame = Aio(self.pin_mappings.flame_pin)
@@ -59,16 +62,21 @@ class DfrobotBoard(Board):
         Update hardware state.
         """
 
-        pass
+        obj_temp = self.read_obj_temp()
+        self.trigger_hardware_event(TEMP_READING, obj_temp)
+
+        flame_detected = self.detect_flame()
+        self.trigger_hardware_event(FLAME_DETECTED, flame_detected)
+
 
     # hardware functions
     def read_obj_temp(self):
 
-        return self.temp.objectTemp()
+        return ((500 * self.temp.read()) / 1024) * self.pin_mappings.reference_voltage
 
     def detect_flame(self):
 
-        return self.flame.flameDetected()
+        return (self.flame.read() * self.pin_mappings.reference_voltage >= 300)
 
     def play_beep(self):
 
