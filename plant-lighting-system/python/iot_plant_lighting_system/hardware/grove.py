@@ -39,8 +39,8 @@ class GroveBoard(Board):
 
         # pin mappings
         self.pin_mappings = PinMappings(
-            light_pin=0,
-            moisture_pin=1,
+            light_pin=2,
+            moisture_pin=3,
             i2c_bus=6
         )
 
