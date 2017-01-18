@@ -28,6 +28,8 @@ It automatically checks moisture sensor data at periodic intervals, and displays
 
 If the water pump is supposed to be on but the water flow sensor does not detect that the pumping is talking place as expected, it sends a text message to a specified number through Twilio\* so the watering system can be repaired.
 
+Note that the DFRobot\* Starter Kit does not include a water flow sensor so this sample estimates water flow status based on the moisture sensor when using this kit.
+
 Optionally, it can also log watering system events using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
 
 ## Hardware requirements
@@ -41,6 +43,7 @@ Grove\* Environment & Agriculture Kit, containing:
 3. [Water Pump](http://www.seeedstudio.com/depot/6V-Mini-Water-Pump-p-1945.html)
 4. [Water Flow Sensor](http://www.seeedstudio.com/depot/G18-Water-Flow-Sensor-p-1346.html)
 5. [Grove\* Dry-Reed Relay](http://iotdk.intel.com/docs/master/upm/node/classes/groverelay.html)
+6. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
@@ -100,6 +103,8 @@ You need to use the Grove\* Dry-Reed Relay board to connect the water pump.
 5. Connect the Water Flow Sensor by plugging the red wire into the 5V pin, the black wire into the GND pin, and the yellow wire into digital pin 2 on the Grove\* Shield.
 
 6. Plug one end of a Grove\* cable into the Grove\* Moisture Sensor, and connect the other end to the A3 port on the Grove\* Shield.
+
+7. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
 ### Connecting the DFRobot\* sensors
 
