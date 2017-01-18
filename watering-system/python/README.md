@@ -99,7 +99,7 @@ You need to use the Grove\* Dry-Reed Relay board to connect the water pump.
 
 5. Connect the Water Flow Sensor by plugging the red wire into the 5V pin, the black wire into the GND pin, and the yellow wire into digital pin 2 on the Grove\* Shield.
 
-6. Plug one end of a Grove\* cable into the Grove\* Moisture Sensor, and connect the other end to the A0 port on the Grove\* Shield.
+6. Plug one end of a Grove\* cable into the Grove\* Moisture Sensor, and connect the other end to the A3 port on the Grove\* Shield.
 
 ### Connecting the DFRobot\* sensors
 
