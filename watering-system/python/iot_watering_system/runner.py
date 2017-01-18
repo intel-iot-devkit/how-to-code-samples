@@ -59,7 +59,7 @@ class Runner(object):
         self.monitor_moisture_job = SCHEDULER.add_job(
             self.monitor_moisture,
             "interval",
-            minutes=15
+            minutes=5
         )
 
         self.monitor_flow_job = SCHEDULER.add_job(
