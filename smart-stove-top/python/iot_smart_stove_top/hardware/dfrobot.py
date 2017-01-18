@@ -41,7 +41,7 @@ class DfrobotBoard(Board):
         self.pin_mappings = PinMappings(
             temp_pin=3,
             flame_pin=2,
-            speaker_pin=16,
+            speaker_pin=15,
             reference_voltage=1.0
         )
 
