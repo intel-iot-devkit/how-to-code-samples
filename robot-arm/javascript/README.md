@@ -6,14 +6,14 @@ This robot arm application is part of a series of how-to Intel® Internet of Thi
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® IoT Gateway.<br>
 - Set up a web application server to control a robot arm using a web page served directly from the Intel® Edison board or Intel® IoT Gateway.
 
 ## What it is
 
 Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a robot arm that:<br>
-- continuously checks the Grove* Joystick.<br>
+- continuously checks the Grove\* Joystick.<br>
 - moves two stepper motors based on the joystick control.<br>
 - can be accessed via the built-in web interface to control the motors.
 
@@ -26,9 +26,9 @@ Additionally, the motors can be controlled individually via a web page served di
 
 ## Hardware requirements
 
-Grove* Robotics Kit containing:
+Grove\* Robotics Kit containing:
 
-1. Intel® Edison board with an Arduino* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison board with an Arduino\* breakout board or Intel® IoT Gateway with a Arduino 101\* (branded Genuino 101\* outside the U.S.) board
 2. [Grove Thumb Joystick](http://iotdk.intel.com/docs/master/upm/node/classes/joystick12.html)
 3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html) (x2)
 
@@ -38,7 +38,7 @@ Grove* Robotics Kit containing:
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -66,7 +66,7 @@ You need to connect to your Intel® Edison board from your computer to send code
 
 ![](./../../images/js/xdk-select-device.png)
 
-Click the **IoT Device** menu at the bottom left. If your Intel® Edison is automatically recognized, select it.
+Click the **IoT Device** menu at the bottom left. If your Intel® Edison board is automatically recognized, select it.
 
 ![](./../../images/js/xdk-manual-connect.png)
 
@@ -84,29 +84,29 @@ Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison bo
 
 Then, navigate to the directory with this example.
 
-To install Git* on Intel® Edison (if you don’t have it yet), establish an SSH connection to the board and run the following command:
+To install Git\* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
 
     $ opkg install git
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
 ![](./../../images/js/robot-arm.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
 You need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
 In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison board and the motors, so you need either 2 batteries or 2 power supplies in total.
 
-1. Plug each of the stepper motor controllers into 4 pins on the Arduino* breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino* breakout board (VCC), and to the separate 5V power for the motors (VM).
+1. Plug each of the stepper motor controllers into 4 pins on the Arduino\* breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino\* breakout board (VCC), and to the separate 5V power for the motors (VM).
 
-2. Plug one end of a Grove* cable into the Grove* Thumb Joystick, and connect the other end to the A2 port on the Grove* Shield.
+2. Plug one end of a Grove\* cable into the Grove\* Thumb Joystick, and connect the other end to the A2 port on the Grove\* Shield.
 
 ### Manual Intel® Edison board setup
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
 
-To obtain the Node.js* modules needed for this example to execute on Intel® Edison, run the following command:
+To obtain the Node.js\* modules needed for this example to execute on the Intel® Edison board, run the following command:
 
 ```
 npm install
@@ -114,7 +114,7 @@ npm install
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
 
 Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
 
@@ -122,9 +122,9 @@ https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iot
 
 You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
+The Arduino 101\* (branded Genuino 101\* outside the U.S.) board needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
 
-You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino 101\* (branded Genuino 101\* outside the U.S.) board. See the section "Configuring the example" below.
 
 ## Configuring the example
 
@@ -146,11 +146,11 @@ Click the **Upload** icon to upload the files to the Intel® Edison board.
 
 ![](./../../images/js/xdk-run.png)
 
-Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the code on Intel® Edison board.
 
 ![](./../../images/js/xdk-upload-run.png)
 
-If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
+If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison board.
 
 ![](./../../images/js/robot-arm-output.png)
 
@@ -158,7 +158,7 @@ You will see output similar to the above when the program is running.
 
 ## Running the program manually
 
-To run the example manually on Intel® Edison, establish an SSH connection to the board and execute the following command:
+To run the example manually on Intel® Edison board, establish an SSH connection to the board and execute the following command:
 
     node index.js
 
@@ -168,7 +168,7 @@ To run the example manually on Intel® Edison, establish an SSH connection to th
 
 Optionally, the motors can be controlled directly via a web page served by the program running on the Intel® Edison board.
 
-The web server runs on port `3000`, so if the Intel® Edison board is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel® Edison board is connected to Wi-Fi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining the Intel® Edison board's IP address
 
