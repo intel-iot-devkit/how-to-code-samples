@@ -6,9 +6,9 @@ This Smart Stove Top application is part of a series of how-to Intel® Internet 
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Store the Smart Stove Top data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services\* (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Store the Smart Stove Top data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
@@ -24,7 +24,7 @@ Set the target temperature for a pot on your range top via a web page served dir
 
 When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, alarm goes off.
 
-Optionally, all data can be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
+Optionally, all data can be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
@@ -32,14 +32,14 @@ This sample can be used with either the Grove\* Home Automation Kit from Seeed S
 
 Grove\* Home Automation Kit, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101\* (branded Genuino 101\* outside the U.S.) board
 2. [Grove\* IR Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/otp538u.html)
 3. [Grove\* Flame Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/yg1006.html)
 4. [Grove\* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison board with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101\* (branded Genuino 101\* outside the U.S.) board
 2. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
 3. [Flame Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=195)
 4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
@@ -50,7 +50,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -60,7 +60,7 @@ To download a .zip file, in your web browser go to <a href="https://github.com/i
 
 ![](./../../images/js/smart-stove.jpg)
 
-You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
 1. Plug one end of a Grove\* cable into the Grove\* IR Temperature Sensor, and connect the other end to the A2 port on the Grove\* Shield.
 
@@ -72,7 +72,7 @@ You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout 
 
 ![](./../../images/js/smart-stove-dfrobot.jpg)
 
-You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
 1. Plug one end of a DFRobot\* cable into the Analog Temperature Sensor, and connect the other end to the A3 port on the LCD Keypad Shield.
 
@@ -80,7 +80,7 @@ You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breako
 
 3. Plug one end of a DFRobot\* cable into the Flame Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
 
-### Manual Intel® Edison setup
+### Manual Intel® Edison board setup
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies by establishing an SSH session to the board running the following commands.
 
@@ -90,7 +90,7 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 To obtain the Python\* packages needed for this example to execute on the Intel® Edison board:
 
-Run the following commands to update to the latest version of Python's package installer:
+Run the following commands to update to the latest version of the Python\* package installer:
 
     $ pip install --upgrade pip setuptools
 
@@ -108,7 +108,7 @@ The `pip` command will install required Python dependencies, save the source cod
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino 101\*(branded Genuino 101\* outside the U.S.).
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\*(branded Genuino 101\* outside the U.S.) board.
 
 Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
 
@@ -124,7 +124,7 @@ Once these dependencies are installed you can install the example itself with th
 
 The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_smart_stove_top/` and link the package to the global Python `site-packages` folder.
 
-The Arduino 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino 101.
+The Arduino 101\* (branded Genuino 101\* outside the U.S.) board needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually on to your Arduino 101.
 
 You will also need to configure the `config.json` in the example to use the Arduino 101. See the section "Configuring the example" below.
 
@@ -148,7 +148,7 @@ For information on how to connect to your own cloud MQTT messaging server, go to
 
 When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/iot_smart_stove_top/smart-stove-top/python/iot_smart_stove_top/config.json`.
 
-To configure the example for the Grove* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
+To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```JSON
 {
@@ -157,7 +157,7 @@ To configure the example for the Grove* kit, just leave the `kit` key in the `co
 }
 ```
 
-To configure the example for the Arduino 101\*, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino 101\* (branded Genuino 101\* outside the U.S.) board, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
 
 ```JSON
 {
@@ -194,7 +194,7 @@ Once the example is installed through `pip` you can run the program by running t
 
 The target temperature is set using a single-page web interface served directly from the Intel® Edison board or Intel® IoT Gateway while the sample program is running.
 
-The web server runs on port `3000`, so if the Intel® Edison board or Intel® IoT Gateway is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel® Edison board or Intel® IoT Gateway is connected to Wi-Fi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining the Intel® Edison board's IP address
 
