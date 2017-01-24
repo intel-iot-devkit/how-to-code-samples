@@ -7,15 +7,15 @@ This Color Match Game application is part of a series of how-to Intel® Internet
 From this exercise, developers will learn how to:<br>
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® IoT Gateway.<br>
 - Set up a web application server to let users play the color matching game using their web browser.
 
 ## What it is
 
-Using an Intel® Edison or or Intel® IoT Gateway, this project lets you create a color match game.<br>
+Using an Intel® Edison board or or Intel® IoT Gateway, this project lets you create a color match game.<br>
 - a UI of the game is exposed through an embedded server, providing with buttons for color matching as well as a "start game" button<br>
-- when starting the game, for each level a sequence of colors is displayed on the RGB LCD screen of the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.). The player needs to click on the corresponding buttons on the website.
+- when starting the game, for each level a sequence of colors is displayed on the RGB LCD screen of the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board. The player needs to click on the corresponding buttons on the website.
 - for each level the sequence has one more color.<br>
 - when a user clicks a color, the same color is displayed on the RGB LCD screen.<br>
 - different tones are played when user clicks on color buttons.
@@ -28,7 +28,7 @@ Description goes here...
 
 Grove\* Starter Kit containing:
 
-1. Intel® Edison board with an Arduino-compatible breakout board or Intel® IoT Gateway with a Arduino 101
+1. Intel® Edison board with an Arduino\* compatible breakout board or Intel® IoT Gateway with a Arduino 101\* (branded Genuino 101\* outside the U.S.) board
 2. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 ## Software requirements
@@ -107,7 +107,7 @@ npm install
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
 
 Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
 
@@ -115,15 +115,15 @@ https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iot
 
 You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
+The Arduino 101\* (branded Genuino 101\* outside the U.S.) board needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
 
-You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino 101\* (branded Genuino 101\* outside the U.S.) board. See the section "Configuring the example" below.
 
 ## Configuring the example
 
 To configure the example for the Intel® Edison board, just leave the `platform` key in the `config.json` set to `edison`.
 
-To configure the example for the Arduino\*/Genuino\* 101, change the `platform` key to the value `firmata` in the `config.json`, as follows:
+To configure the example for the Arduino 101\* (branded Genuino 101\* outside the U.S.), change the `platform` key to the value `firmata` in the `config.json`, as follows:
 
 ```
 {
