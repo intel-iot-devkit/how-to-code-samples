@@ -7,10 +7,10 @@ This smart sound detector application is part of a series of how-to Intel® Inte
 From this exercise, developers will learn how to:<br>
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® IoT Gateway.<br>
-- Store this sound data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon\* Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Store this sound data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
 
@@ -30,24 +30,24 @@ This sample can be used with either the Grove\* Starter Kit Plus from Seeed Stud
 
 Grove\* Starter Kit Plus, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
+1. Intel® Edison board with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
 2. [Grove Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/microphone.html).
 3. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html).
 
 Starter Kit for Intel® Edison/Galileo from DFRobot\*, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
+1. Intel® Edison board with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
 2. [Analog Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/loudness.html).
 3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html).
 
 ### Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
+2. Microsoft Azure\*, IBM Bluemix\*, or AWS\* account (optional)
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -75,7 +75,7 @@ You need to connect to your Intel® Edison board from your computer to send code
 
 ![](./../../images/js/xdk-select-device.png)
 
-Click the **IoT Device** menu at the bottom left. If your Intel® Edison is automatically recognized, select it.
+Click the **IoT Device** menu at the bottom left. If your Intel® Edison board is automatically recognized, select it.
 
 ![](./../../images/js/xdk-manual-connect.png)
 
@@ -98,7 +98,7 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
     $ opkg install git
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
 ![](./../../images/java/sound-detector.jpg)
 
@@ -108,7 +108,7 @@ You need to have a Grove\* Shield connected to an Arduino-compatible breakout bo
 
 2. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
-### Connecting the DFRobot* sensors
+### Connecting the DFRobot\* sensors
 
 You need to have a LCD Keypad Shield connected to an Arduino-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
@@ -116,7 +116,7 @@ You need to have a LCD Keypad Shield connected to an Arduino-compatible breakout
 
 ### Installing the program manually on the Intel® Edison board
 
-If you're running this code on your Intel® Edison manually, you need to install some dependencies.
+If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
 
 To obtain the Node.js\* modules needed for this example to execute on the Intel® Edison board, run the following command:
 
@@ -126,7 +126,7 @@ npm install
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
 Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
 
@@ -134,13 +134,13 @@ https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iot
 
 You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
+The Arduino 101\* (branded Genuino 101\* outside the U.S.) board needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
 
-You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino 101\* (branded Genuino 101\* outside the U.S.) board. See the section "Configuring the example" below.
 
 ### Data store server setup
 
-Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
+Optionally, you can store the data generated by this sample program in a backend database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS\*, along with Node.js\*, and a Redis\* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -148,7 +148,7 @@ For information on how to set up your own cloud data server, go to:
 
 ### MQTT server setup
 
-You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS.
+You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS\*.
 
 For information on how to connect to your own cloud MQTT messaging server, go to:
 
@@ -164,7 +164,7 @@ To configure the example for the Grove\* kit, just leave the `kit` key in the `c
 }
 ```
 
-To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino 101\* (branded Genuino 101\* outside the U.S.) board, add a `platform` key with the value `firmata` to the `config.json`, as follows:
 
 ```
 {
@@ -173,7 +173,7 @@ To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key w
 }
 ```
 
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below the "THRESHOLD" value as follows:
+To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS\* data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below the "THRESHOLD" value as follows:
 
 ```
 {
@@ -183,7 +183,7 @@ To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, 
 }
 ```
 
-For information on how to configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS MQTT messaging server, go to:
+For information on how to configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS\* MQTT messaging server, go to:
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
 
