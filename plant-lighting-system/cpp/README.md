@@ -98,9 +98,9 @@ You need to have a Grove\* Base Shield V2 connected to an Arduino\* compatible b
 
 You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
-1. Plug one end of a DFRobot\* cable into the Analog Ambient Light Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
+1. Plug one end of a DFRobot\* cable into the Analog Ambient Light Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
 
-2. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
+2. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A3 port on the LCD Keypad Shield.
 
 ### Twilio\* API Key
 

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2015 - 2016 Intel Corporation.
+* Copyright (c) 2015 - 2017 Intel Corporation.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the
@@ -36,18 +36,53 @@ struct Devices
   mraa::Gpio* buzzer;
   upm::MQ2* sensor;
 
+  int buzzerPin = 15,
+      airPin = 2;
+
   Devices() {
   };
 
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        buzzerPin += 512;
+        airPin += 512;
+        break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        buzzerPin += 512;
+        airPin += 512;
+    }
+  }
+
   // Initialization function
   void init() {
+    mraa_init();
+
+    set_pins();
+
   	// buzzer connected to digital 15 aka A1
-    buzzer = new mraa::Gpio(15);
+    buzzer = new mraa::Gpio(buzzerPin);
     buzzer->dir(mraa::DIR_OUT);
     stop_buzzing();
 
     // air sensor connected to analog A2
-    sensor = new upm::MQ2(2);
+    sensor = new upm::MQ2(airPin);
   };
 
   // Starts the buzzer making noise
