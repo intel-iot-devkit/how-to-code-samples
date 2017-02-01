@@ -1,0 +1,18 @@
+{
+  "title": "Sound Detector",
+  "projectTypeName": "com.intel.xdk.projecttype.iotapp",
+  "sample": true,
+  "template": false,
+  "visible": true,
+  "sortWeight" : "0.0",
+  "repoSource": "github",
+  "repoUser": "intel-iot-devkit",
+  "repoName": "how-to-code-samples",
+  "repoPath": "tree/master/sound-detector/javascript",
+  "tooltip": "Checks the sound levels.",
+  "description": "Continuously checks the sound level, and optionally log via cloud-based data storage.",
+  "articleUrl": "https://github.com/intel-iot-devkit/how-to-code-samples/tree/master/sound-detector/javascript",
+  "keywords": ["microphone", "lcd"],
+  "targets": ["edison"],
+  "runtimes": ["node"]
+}
