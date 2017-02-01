@@ -41,10 +41,34 @@ var datastore = require("./datastore");
 var mqtt = require("./mqtt");
 
 // Initialize the hardware devices
+var mraa = require("mraa");
+// pins
+var lineFinderPin = 2,
+    stepper1input1 = 9, stepper1input2 = 10,
+    stepper1input3 = 11, stepper1input4 = 12,
+    stepper2input1 = 4, stepper2input2 = 5,
+    stepper2input3 = 6, stepper2input4 = 7;
+
+if (config.platform == "firmata") {
+  // open connection to firmata
+  mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
+
+  lineFinderPin += 512;
+  stepper1input1 += 512;
+  stepper1input2 += 512;
+  stepper1input3 += 512;
+  stepper1input4 += 512;
+  stepper2input1 += 512;
+  stepper2input2 += 512;
+  stepper2input3 += 512;
+  stepper2input4 += 512;
+}
+
+// Initialize the hardware devices
 var ULN200XA = require("jsupm_uln200xa");
-var lineFinder = new (require("jsupm_grovelinefinder").GroveLineFinder)(2),
-    right = new ULN200XA.ULN200XA(4096, 9, 10, 11, 12),
-    left = new ULN200XA.ULN200XA(4096, 4, 5, 6, 7);
+var lineFinder = new (require("jsupm_grovelinefinder").GroveLineFinder)(lineFinderPin),
+    right = new ULN200XA.ULN200XA(4096, stepper1input1, stepper1input2, stepper1input3, stepper1input4),
+    left = new ULN200XA.ULN200XA(4096, stepper2input1, stepper2input2, stepper2input3, stepper2input4);
 
 var looking = "left";
 

@@ -1,4 +1,5 @@
 {
+  "platform": "edison",
   "CLOCKWISE": 1,
-  "WHITE_LINES": 0
+  "WHITE_LINES": 1
 }

@@ -2,33 +2,33 @@
 
 ## Introduction
 
-This range finder scanner application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This range finder scanner application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.<br>
-- Set up a web application server to view range finder data using a web page served directly from the Intel® Edison board.
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® IoT Gateway.<br>
+- Set up a web application server to view range finder data using a web page served directly from the Intel® Edison board or Intel® IoT Gateway.
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a range finding scanner that:<br>
-- continuously checks the Grove* IR Distance Interrupter.<br>
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a range finding scanner that:<br>
+- continuously checks the Grove\* IR Distance Interrupter.<br>
 - moves the stepper motor in a 360-degree circle.<br>
 - can be accessed via the built-in web interface to view range finder data.
 
 ## How it works
 
-As the stepper motor turns, it pauses to get readings from the Grove* IR Distance Interrupter.
+As the stepper motor turns, it pauses to get readings from the Grove\* IR Distance Interrupter.
 
-These readings can be seen by viewing the web page served directly from the Intel® Edison board.
+These readings can be seen by viewing the web page served directly from the Intel® Edison board or Intel® IoT Gateway.
 
 ## Hardware requirements
 
-Grove* Robotics Kit containing:
+Grove\* Robotics Kit containing:
 
-1. Intel® Edison board with an Arduino* breakout board
-2. [Grove* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
+1. Intel® Edison board with an Arduino\* breakout board or Intel® IoT Gateway with a Arduino 101\* (branded Genuino 101\* outside the U.S.) board
+2. [Grove\* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html)
 
 ## Software requirements
@@ -37,7 +37,7 @@ Grove* Robotics Kit containing:
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git* on your computer as follows:
+To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -74,7 +74,7 @@ In the **Address** field, type `192.168.2.15`.
 In the **Port** field, type `58888`.
 Click **Connect** to save your connection.
 
-### Installing the program manually on the Intel® Edison board 
+### Installing the program manually on the Intel® Edison board
 
 Alternatively, you can set up the code manually on the Intel® Edison board.
 
@@ -84,21 +84,21 @@ Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison bo
 
 Then, navigate to the directory with this example.
 
-To install Git* on the Intel® Edison board, if you don’t have it yet, establish an SSH connection to the board and run the following command:
+To install Git\* on the Intel® Edison board, if you don’t have it yet, establish an SSH connection to the board and run the following command:
 
     $ opkg install git
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
 ![](./../../images/js/range-finder.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
 You need to power the Intel® Edison board with the external power adaptor that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
 In addition, you need a breadboard and an extra 5V power supply to provide power to the motor. Note: you need a separate battery or power supply for the motor. You cannot use the same power supply for both the Intel® Edison board and the motor, so you need either 2 batteries or 2 power supplies in total.
 
-1. Plug the stepper motor controller into pins 9, 10, 11, and 12 on the Arduino* breakout board for it to be able to be controlled. Connect the controller to ground (GND), to the 5V power coming from the Arduino* breakout board (VCC), and to the separate 5V power for the motor (VM).
+1. Plug the stepper motor controller into pins 9, 10, 11, and 12 on the Arduino\* breakout board for it to be able to be controlled. Connect the controller to ground (GND), to the 5V power coming from the Arduino\* breakout board (VCC), and to the separate 5V power for the motor (VM).
 
 2. Plug one end of a Grove cable into the Grove IR Distance Interrupter, and connect the other end to the D2 port on the Grove Shield.
 
@@ -106,10 +106,34 @@ In addition, you need a breadboard and an extra 5V power supply to provide power
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
 
-To obtain the Node.js* modules needed for this example to execute on the Intel® Edison board, run the following command:
+To obtain the Node.js\* modules needed for this example to execute on the Intel® Edison board, run the following command:
 
 ```
 npm install
+```
+
+### Intel® IoT Gateway setup
+
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
+
+Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
+
+https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iotdk
+
+You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
+
+The Arduino 101\* (branded Genuino 101\* outside the U.S.) board needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
+
+You will also need to configure the `config.json` in the example to use the Arduino 101\* (branded Genuino 101\* outside the U.S.) board. See the section "Configuring the example" below.
+
+## Configuring the example
+
+To configure the example for the Intel® Edison board, just leave the `platform` key in the `config.json` set to `edison`. To configure the example for the Intel® IoT Gateway, change the `platform` key in the `config.json` to `firmata` as follows:
+
+```
+{
+  "platform": "firmata"
+}
 ```
 
 ## Running the program using Intel® XDK IoT Edition
@@ -144,7 +168,7 @@ To run the example manually on the Intel® Edison board, establish an SSH connec
 
 The range finder data is viewed using a single-page web interface served from the Intel® Edison board while the sample program is running.
 
-The web server runs on port `3000`, so if the Intel® Edison board is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel® Edison board is connected to Wi-Fi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining the Intel® Edison board's IP address
 
