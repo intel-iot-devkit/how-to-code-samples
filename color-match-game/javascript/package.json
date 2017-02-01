@@ -1,0 +1,11 @@
+{
+  "description": "color-match-game",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": ">=4.4.0"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
