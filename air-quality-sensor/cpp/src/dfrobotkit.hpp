@@ -37,7 +37,7 @@ struct Devices
   upm::MQ2* sensor;
 
   int buzzerPin = 15,
-      airPin = 2;
+      airPin = 3;
 
   Devices() {
   };

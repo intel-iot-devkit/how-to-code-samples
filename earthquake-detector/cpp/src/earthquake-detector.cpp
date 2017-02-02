@@ -104,7 +104,7 @@ void verify(Devices* devices) {
   query << "longitude=" << longitude() << "&";
   query << "maxradiuskm=500";
 
-  cerr << query.str();
+  cerr << query.str() << endl;
 
   RestClient::response r = RestClient::get(query.str());
 
