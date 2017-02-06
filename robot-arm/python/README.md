@@ -66,7 +66,7 @@ In addition, you need a breadboard and an extra 5V power supply to provide power
 
 1. Plug each of the stepper motor controllers into 4 pins on the Arduino\* breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino\* breakout board (VCC), and to the separate 5V power for the motors (VM).
 
-2. Plug one end of a Grove\* cable into the Grove\* Thumb Joystick, and connect the other end to the A0 port on the Grove\* Shield.
+2. Plug one end of a Grove\* cable into the Grove\* Thumb Joystick, and connect the other end to the A2 port on the Grove\* Shield.
 
 3. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C\* ports on the Grove\* Shield.
 
