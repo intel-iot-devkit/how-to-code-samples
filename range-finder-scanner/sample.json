@@ -8,6 +8,10 @@
     "hwreq" : ["Grove Distance Interrupter connected to digital pin 2 (Grove Base Shield Port D2)",
                "ULN200XA Stepper Driver connected to pins 9, 10, 11, and 12"],
     "libs": ["boost", "upm", "curl", "paho"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }

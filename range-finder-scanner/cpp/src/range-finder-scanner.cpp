@@ -63,6 +63,8 @@
 #include "html.h"
 #include "styles.h"
 
+using namespace std;
+
 bool degrees[360];
 
 // The hardware devices that the example is going to connect to
@@ -71,16 +73,59 @@ struct Devices
   upm::RFR359F* interuptor;
   upm::ULN200XA* stepper;
 
+  int rangePin = 2,
+      stepInputPin1 = 9,
+      stepInputPin2 = 10,
+      stepInputPin3 = 11,
+      stepInputPin4 = 12;
+
   Devices(){
   };
 
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+         break;
+      case MRAA_GENERIC_FIRMATA:
+         rangePin += 512;
+         stepInputPin1 += 512;
+         stepInputPin2 += 512;
+         stepInputPin3 += 512;
+         stepInputPin4 += 512;
+
+         break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        rangePin += 512;
+        stepInputPin1 += 512;
+        stepInputPin2 += 512;
+        stepInputPin3 += 512;
+        stepInputPin4 += 512;
+    }
+  }
+
   // Initialization function
   void init() {
+    set_pins();
+
     // range finder connected to d2
-    interuptor = new upm::RFR359F(2);
+    interuptor = new upm::RFR359F(rangePin);
 
     // stepper motor connected to d9,10,11,12
-    stepper = new upm::ULN200XA(4096, 9, 10, 11, 12);
+    stepper = new upm::ULN200XA(4096, stepInputPin1, stepInputPin2, stepInputPin3, stepInputPin4);
 
     for (int i = 0; i < 360; i++){
       degrees[i] = false;
@@ -139,15 +184,6 @@ void exit_handler(int param)
 int main() {
   // Handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
-
-  // check that we are running on Galileo or Edison
-  mraa_platform_t platform = mraa_get_platform_type();
-  if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
-    (platform != MRAA_INTEL_GALILEO_GEN2) &&
-    (platform != MRAA_INTEL_EDISON_FAB_C)) {
-    std::cerr << "ERROR: Unsupported platform" << std::endl;
-    return MRAA_ERROR_INVALID_PLATFORM;
-  }
 
   // create and initialize UPM devices
   devices.init();

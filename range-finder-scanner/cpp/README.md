@@ -5,9 +5,9 @@ This range finder scanner application is part of a series of how-to Intel® Inte
 From this exercise, developers will learn how to:
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run these code samples in the Intel® System Studio IoT Edition (Eclipse\* IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.
-- Set up a web application server to view range finder data using a web page served up directly from the Intel® Edison board.
+- Set up a web application server to view range finder data using a web page served up directly from the Intel® Edison board or Intel® IoT Gateway.
 
 ## What It Is
 
@@ -21,12 +21,12 @@ Using an Intel® Edison board or Intel® IoT Gateway, this project lets you crea
 
 As the stepper motor turns, it pauses to get readings from the Grove* IR Distance Interrupter.
 
-These readings can be viewed on a web page served up directly from the Intel® Edison board.
+These readings can be viewed on a web page served up directly from the Intel® Edison board or Intel® IoT Gateway.
 
 ## Hardware requirements
 Grove* Robotics Kit containing:
 
-1. Intel® Edison board with an Arduino* breakout board
+1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
 2. Grove Base Shield V2
 3. [Grove IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 4. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html)
@@ -64,9 +64,9 @@ This sample is already one of the IoT examples included in Intel® System Studio
 
 You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
 
-You need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
+You need to power the Intel® Edison board or Arduino 101\* with the external power adapter that comes with your starter kit, or substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
 
-In addition, you need a breadboard and an extra **5V** power supply to provide power to the stepper motor. 
+In addition, you need a breadboard and an extra **5V** power supply to provide power to the stepper motor.
 
 Note: You need a separate battery or power supply for the motor. You cannot use the same power supply for both the Intel® Edison board and the motor, so you need either 2 batteries or 2 power supplies in total.
 
