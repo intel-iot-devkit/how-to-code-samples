@@ -37,6 +37,8 @@ struct Devices
       buzzerPin = 15,
       tempsPin = 3;
 
+  float voltageAdj = 1.0;
+
   Devices(){
   };
 
@@ -52,6 +54,7 @@ struct Devices
         flamePin += 512;
         buzzerPin += 512;
         tempsPin += 512;
+        voltageAdj = 0.66;
         break;
       default:
         // try using firmata
@@ -67,6 +70,7 @@ struct Devices
         flamePin += 512;
         buzzerPin += 512;
         tempsPin += 512;
+        voltageAdj = 0.66;
     }
   }
 
@@ -112,7 +116,7 @@ struct Devices
 
   // Reads the ambient temperature sensor
   float objectTemperature(){
-	   return (500 * temps->read()) / 1024;
+	  return ((500 * temps->read()) / 1024) * voltageAdj;
   }
 };
 
