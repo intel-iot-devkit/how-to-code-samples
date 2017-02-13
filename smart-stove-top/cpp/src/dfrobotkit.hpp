@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2015 - 2016 Intel Corporation.
+* Copyright (c) 2015 - 2017 Intel Corporation.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the
@@ -33,23 +33,63 @@ struct Devices
   mraa::Gpio* buzzer;
   mraa::Aio* temps;
 
+  int flamePin = 2,
+      buzzerPin = 15,
+      tempsPin = 3;
+
+  float voltageAdj = 1.0;
+
   Devices(){
   };
+
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+        break;
+      case MRAA_GENERIC_FIRMATA:
+        flamePin += 512;
+        buzzerPin += 512;
+        tempsPin += 512;
+        voltageAdj = 0.66;
+        break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        flamePin += 512;
+        buzzerPin += 512;
+        tempsPin += 512;
+        voltageAdj = 0.66;
+    }
+  }
 
   // Initialization function
   void init() {
     mraa_init();
 
-    // temperature sensor connected to A1 (analog in)
-    temps = new mraa::Aio(1);
+    set_pins();
 
-    // buzzer connected to A2 (aka digital out 16)
-    buzzer = new mraa::Gpio(16);
+    // temperature sensor connected to A3 (analog in)
+    temps = new mraa::Aio(tempsPin);
+
+    // buzzer connected to A1 (aka digital out 15)
+    buzzer = new mraa::Gpio(buzzerPin);
     buzzer->dir(mraa::DIR_OUT);
     stopAlarm();
 
-    // flame sensor on A3
-    flame = new mraa::Aio(3);
+    // flame sensor on A2
+    flame = new mraa::Aio(flamePin);
   }
 
   // Cleanup on exit
@@ -76,7 +116,7 @@ struct Devices
 
   // Reads the ambient temperature sensor
   float objectTemperature(){
-	   return (500 * temps->read()) / 1024;
+	  return ((500 * temps->read()) / 1024) * voltageAdj;
   }
 };
 

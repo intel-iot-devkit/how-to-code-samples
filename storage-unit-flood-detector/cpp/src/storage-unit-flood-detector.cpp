@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2015 - 2016 Intel Corporation.
+* Copyright (c) 2015 - 2017 Intel Corporation.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the
@@ -32,7 +32,10 @@
  *
  * @hardware Sensors used:\n
  * Grove Speaker\n
- * Grove Mousture Sensor\n
+ * Grove Moisture Sensor\n
+ * OR\n
+ * DFRobot Speaker\n
+ * DFRobot Moisture Sensor\n
  *
  * @cc
  * @cxx -std=c++1y
@@ -42,7 +45,7 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 09/22/2016
+ * @date 02/13/2017
  */
 
 #include <stdlib.h>

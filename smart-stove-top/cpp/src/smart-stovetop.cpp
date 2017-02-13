@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2015 - 2016 Intel Corporation.
+* Copyright (c) 2015 - 2017 Intel Corporation.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the
@@ -34,6 +34,10 @@
  * Grove Speaker\n
  * Grove Flame Sensor\n
  * Grove IR Temperature Sensor\n
+ * OR\n
+ * DFRobot Speaker\n
+ * DFRobot Flame Sensor\n
+ * DFRobot Temperature Sensor\n
  *
  * @cc
  * @cxx -std=c++1y
@@ -43,7 +47,7 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 09/22/2016
+ * @date 02/13/2017
  */
 #include <iostream>
 #include <string>
@@ -69,7 +73,7 @@ using namespace std;
 using namespace std;
 
 // Global temp value for app; will change when you use app
-float myTemp = 1000;
+float myTemp = 50;
 
 // Send notification to remote datastore
 void notify() {
@@ -105,9 +109,9 @@ void senseFlame() {
 	}
 }
 
-// Continously reads the IR temperature sensor every 1 minute for
-// both object and ambient temperature, and compares the two.
-// Sounds alarm if object temp is higher than set temp.
+// Continuously reads the temperature sensor every 1 second for
+// object temperature, and compares to target.
+// Sounds alarm if object temp is higher than target.
 void senseTemp(){
 	for(;;) {
 		float temp1 = devices.objectTemperature();
@@ -121,7 +125,7 @@ void senseTemp(){
 			notify();
 		}
 		else
-			sleep(60);
+			sleep(1);
 	}
 }
 
