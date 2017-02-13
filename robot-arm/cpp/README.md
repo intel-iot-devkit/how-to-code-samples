@@ -7,7 +7,7 @@ This robot arm application is part of a series of how-to Intel® Internet of Thi
 From this exercise, developers will learn how to:
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.
 - Set up a web application server to control a robot arm using a web page served up directly from the Intel® Edison board.
 
@@ -29,7 +29,7 @@ Additionally, the motors can be controlled individually via a web page served up
 
 Grove* Robotics Kit containing:
 
-1. Intel® Edison board with an Arduino* breakout board
+1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
 2. Grove Base Shield V2
 3. [Grove Thumb Joystick](http://iotdk.intel.com/docs/master/upm/node/classes/joystick12.html)
 4. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html) (x2)
@@ -67,9 +67,9 @@ This sample is already one of the IoT examples included in Intel® System Studio
 
 You need to have a Grove* Base Shield V2 connected to the Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
 
-You need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
+You need to power the Intel® Edison board or Arduino 101\* board with the external power adapter that comes with your starter kit, or substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
 
-In addition, you need a breadboard and an extra **5V** power supply to provide power to both the motors. 
+In addition, you need a breadboard and an extra **5V** power supply to provide power to both the motors.
 
 Note: You need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison board and the motors, so you need either 2 batteries or 2 power supplies in total.
 
@@ -108,7 +108,7 @@ The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If y
 
 If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow* web server.
 
-For help using the shell script, go to this link: 
+For help using the shell script, go to this link:
 
 [how-to-run-the-shellscript.md](./../../docs/cpp/how-to-run-the-shellscript.md)
 

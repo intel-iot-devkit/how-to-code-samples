@@ -8,6 +8,10 @@
     "hwreq" : ["Connect stepper motor controller #1 to pins 4, 5, 6, and 7, and stepper motor controller #2 to pins 8, 9, 10, and 11. ",
                "Grove Joystick connected to analog pin 0 (Grove Base Shield Port A0)"],
     "libs": ["boost", "upm", "curl", "paho"],
-    "compatible": ["Edison"]
+    "compatible": [
+         "Edison",
+         "Gateway 32-Bit",
+         "Gateway 64-Bit"
+    ]
   }
 }
