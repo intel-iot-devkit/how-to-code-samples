@@ -3,7 +3,7 @@
   "projectTypeName": "com.intel.xdk.projecttype.iotapp",
   "sample": true,
   "template": false,
-  "visible": true,
+  "visible": false,
   "sortWeight" : "0.0",
   "repoSource": "github",
   "repoUser": "intel-iot-devkit",

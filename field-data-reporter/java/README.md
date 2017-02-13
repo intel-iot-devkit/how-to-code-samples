@@ -1,6 +1,8 @@
-# Field data reporter in Java*
+# **DEPRECATED** Field data reporter in Java*
 
 ## Introduction
+
+**Please note that this sample has been deprecated and is no longer supported.**
 
 This wrist field data reporter application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
