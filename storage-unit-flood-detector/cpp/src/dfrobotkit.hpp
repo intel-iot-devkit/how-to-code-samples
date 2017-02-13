@@ -34,7 +34,7 @@ struct Devices
   upm::GroveMoisture* moisture;
 
   int buzzerPin = 15,
-      moisturePin = 2;
+      moisturePin = 3;
 
   Devices(){
   };
@@ -78,7 +78,7 @@ struct Devices
     buzzer->dir(mraa::DIR_OUT);
     stop_alarm();
 
-    // moisture sensor on analog (A2)
+    // moisture sensor on analog (A3)
     moisture = new upm::GroveMoisture(moisturePin);
   }
 
@@ -90,7 +90,7 @@ struct Devices
 
   // Sounds the alarm
   void alarm() {
-    buzzer->write(0);
+    buzzer->write(1);
     sleep(1);
     stop_alarm();
   }
