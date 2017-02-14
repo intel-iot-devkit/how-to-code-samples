@@ -13,27 +13,27 @@ From this exercise, developers will learn how to:
 
 Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a range finding scanner that:
 
-- continuously checks the Grove* IR Distance Interrupter.
+- continuously checks the Grove\* IR Distance Interrupter.
 - moves the stepper motor in a 360-degree circle.
 - can be accessed via a built-in web interface to view range finder data.
 
 ## How It Works
 
-As the stepper motor turns, it pauses to get readings from the Grove* IR Distance Interrupter.
+As the stepper motor turns, it pauses to get readings from the Grove\* IR Distance Interrupter.
 
 These readings can be viewed on a web page served up directly from the Intel® Edison board or Intel® IoT Gateway.
 
 ## Hardware requirements
-Grove* Robotics Kit containing:
+Grove\* Robotics Kit containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison board with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
 2. Grove Base Shield V2
 3. [Grove IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 4. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html)
 
 ## Software requirements
 
-1. [Intel® System Studio (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/node/672439)
+1. [Intel® System Studio (Eclipse IDE for C/C++ and Java\* development)](https://software.intel.com/en-us/node/672439)
 
 ### How to set up
 
@@ -60,19 +60,19 @@ This sample is already one of the IoT examples included in Intel® System Studio
 10. Your project source files will now be available on the on the upper left of your IDE by default.<br>
 ![](./../../images/cpp/project-src-imported.png)
 
-### Connecting the Grove* sensors
+### Connecting the Grove\* sensors
 
-You need to have a Grove* Base Shield V2 connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
+You need to have a Grove\* Base Shield V2 connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.) board compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
 
-You need to power the Intel® Edison board or Arduino 101\* with the external power adapter that comes with your starter kit, or substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
+You need to power the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board with the external power adapter that comes with your starter kit, or substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
 
 In addition, you need a breadboard and an extra **5V** power supply to provide power to the stepper motor.
 
 Note: You need a separate battery or power supply for the motor. You cannot use the same power supply for both the Intel® Edison board and the motor, so you need either 2 batteries or 2 power supplies in total.
 
-1. Plug the stepper motor controller into four pins (9, 10, 11, and 12) on the Arduino* breakout board. It also must be connected to ground (GND), to the **5V** power coming from the Arduino* breakout board (VCC), and to the separate **5V** power for the motor (VM).<br>
+1. Plug the stepper motor controller into four pins (9, 10, 11, and 12) on the Arduino\* breakout board. It also must be connected to ground (GND), to the **5V** power coming from the Arduino\* breakout board (VCC), and to the separate **5V** power for the motor (VM).<br>
 ![](./../../images/js/range-finder.jpg)
-2. Plug one end of a Grove* cable into the Grove* IR Distance Interrupter, and connect the other end to the D2 port on the Grove* Base Shield V2.
+2. Plug one end of a Grove\* cable into the Grove\* IR Distance Interrupter, and connect the other end to the D2 port on the Grove\* Base Shield V2.
 
 ### Connecting your Intel® Edison board or Intel® IoT Gateway to Intel® System Studio
 
@@ -83,13 +83,13 @@ If prompted for the username and password, the username is **root** and the pass
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
 https://software.intel.com/en-us/node/633284
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino\*/Genuino\* 101.
+The Arduino 101\* (branded Genuino 101\* outside the U.S.) board needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
 
 ### Running the code on the Intel® Edison board or Intel® IoT Gateway
 
@@ -103,7 +103,7 @@ After running the program, you should see output similar to the one in the image
 
 ## Regenerating HTML and CSS
 
-If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow* web server.
+If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow\* web server.
 For help using the shell script, go to this link:
 
 [how-to-run-the-shellscript.md](./../../docs/cpp/how-to-run-the-shellscript.md)
@@ -113,6 +113,6 @@ For help using the shell script, go to this link:
 Range data is viewed using a single-page web interface served directly from the Intel® Edison board while the sample program is running.<br>
 ![](./../../images/js/range-finder-web.png)
 
-The web server runs on port `3000`, so if the Intel® Edison board or Intel® IoT Gateway is connected to WiFi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel® Edison board or Intel® IoT Gateway is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
