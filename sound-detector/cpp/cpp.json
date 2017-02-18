@@ -1,0 +1,5 @@
+{
+  "main": "src/sound-detector.cpp",
+  "ldflags": "-lmraa -lupm-i2clcd -lupm-jhd1313m1 -lpaho-mqtt3cs -lcurl -lupm-mic -lupm-ldt0028 -lupm-grove ",
+  "cxxflags": "-std=c++1y"
+}
