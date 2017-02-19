@@ -24,6 +24,7 @@
 #ifndef GROVEKIT_HPP_
 #define GROVEKIT_HPP_
 
+#include <mraa.hpp>
 #include <mic.hpp>
 #include <jhd1313m1.hpp>
 
@@ -34,7 +35,7 @@ struct Devices
 {
   upm::Microphone *mic = NULL;
   thresholdContext micCtx;
-  uint16_t soundBuffer [128];
+  uint16_t soundBuffer[128];
 
   upm::Jhd1313m1* screen;
 
