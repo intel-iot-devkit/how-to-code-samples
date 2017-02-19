@@ -14,38 +14,33 @@ From this exercise, developers will learn how to:
 
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a shop-floor equipment activity monitor that:
-
-- tracks equipment usage by monitoring sound and vibration sensors.
-- provides a visual notification whenever the equipment is in use.
-- logs equipment usage data using cloud-based storage.
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a smart loudness detector system that:<br>
+- monitors a microphone sensor to detect the loudness in the area.<br>
+- keeps track of the sound levels, using cloud-based data storage.
 
 ## How it works
 
-This equipment activity monitor checks for sound and vibration.
+## How it works
 
-If both parameters cross a predefined threshold, the display is lit to indicate the equipment is in use.
+This sound detector monitor uses the sensor to constantly keep track of the decibel level in a room. Every 100 ms the sensor finds the average sound samples and prints them to the LCD screen.
 
-Once the equipment is no longer being used, the monitor clears the display.
-
-Optionally, equipment usage start/stop events can be stored using the Intel® IoT Examples Data store or on an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
+Optionally, it can log the sound level using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
 
 ## Hardware requirements
 
-Grove\* Starter Kit containing:
+This sample can be used with either the Grove\* Starter Kit Plus from Seeed Studio\*, or else the Starter Kit for Intel® Edison/Galileo from DFRobot\*.
 
-1. Intel® Edison board with an Arduino\* breakout board
-2. Grove Base Shield V2
-3. [Grove Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/microphone.html)
-4. [Grove Piezo Vibration Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/ldt0028.html)
-5. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+Grove\* Starter Kit Plus, containing:
 
-DFRobot\* Starter Kit for Intel® Edison board, containing:
+1. Intel® Edison board with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
+2. [Grove Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/microphone.html).
+3. [Grove RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html).
 
-1. Intel® Edison board with an Arduino\* breakout board
-2. [Analog Sound Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=83).
-3. [Digital Vibration Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=79)
-4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
+Starter Kit for Intel® Edison/Galileo from DFRobot\*, containing:
+
+1. Intel® Edison board with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
+2. [Analog Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/loudness.html).
+3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html).
 
 ## Software requirements
 
@@ -79,22 +74,19 @@ This sample is already one of the IoT examples included in Intel® System Studio
 
 ### Connecting the Grove\* sensors
 
-You need to have the Grove\* Base Shield V2 connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
+![](./../../images/java/sound-detector.jpg)
 
-1. Plug one end of a Grove cable into the Grove Sound Sensor, and connect the other end to the AO port on the Grove Base Shield V2.<br>
-![](./../../images/js/equipment-activity.jpg)
-2. Plug one end of a Grove cable into the Grove Piezo Vibration Sensor, and connect the other end to the A2 port on the Grove Base Shield V2.
-3. Plug one end of a Grove cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove Base Shield V2.
+You need to have a Grove\* Shield connected to an Arduino-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+
+1. Plug one end of a Grove\* cable into the Grove\* Sound Sensor, and connect the other end to the A0 port on the Grove\* Shield.
+
+2. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
 ### Connecting the DFRobot\* sensors
 
-![](./../../images/js/equipment-activity-dfrobot.jpg)
+You need to have a LCD Keypad Shield connected to an Arduino-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
-You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
-
-1. Plug one end of a DFRobot\* cable into Analog Sound Sensor, then connect the other end to the A3 port on the LCD Keypad Shield.
-
-2. Plug one end of a DFRobot\* cable into the Digital Vibration Sensor, then connect the other end to the A2 port on the LCD Keypad Shield.
+1. Plug one end of a DFRobot\* cable into the Analog Sound Sensor, and connect the other end to the A2 port on the LCD Display Shield.
 
 ### Intel® Edison board setup
 
@@ -158,7 +150,7 @@ To run the example with the optional backend data store, you need to set the `SE
 2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
 3. In the **Commands to execute before application** field, add the following environment variables, except use the server and authentication token that correspond to your own setup:<br>
 
-        chmod 755 /tmp/equipment-activity;export SERVER="http://intel-examples.azurewebsites.net/logger/equipment-activity"; export AUTH_TOKEN="YOURTOKEN"
+        chmod 755 /tmp/sound-detector;export SERVER="http://intel-examples.azurewebsites.net/logger/equipment-activity"; export AUTH_TOKEN="YOURTOKEN"
 
 4. Click **Apply** to save your new environment variables.
 
@@ -176,8 +168,5 @@ After running the program, you should see output similar to the one in the image
 
 Successful output should be similar to the one in the image below.<br>
 ![](./../../images/cpp/cpp-equp-act-mon-successful-output.png)
-
-The LCD should now display `ready`.<br>
-![](./../../images/cpp/equipment-lcd.jpg)
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
