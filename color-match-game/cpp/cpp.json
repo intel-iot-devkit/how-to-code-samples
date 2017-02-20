@@ -1,0 +1,5 @@
+{
+  "main": "src/color-match.cpp",
+  "ldflags": "-lmraa -lupm-jhd1313m1 -lboost_system -lboost_thread -lboost_filesystem -lboost_date_time -lpthread ",
+  "cxxflags": "-std=c++1y"
+}
