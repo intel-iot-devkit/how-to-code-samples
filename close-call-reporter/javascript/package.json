@@ -8,6 +8,7 @@
   "dependencies": {
     "superagent": "^1.3.0",
     "mqtt": "^1.7.4",
-    "nmea": "latest"
+    "nmea": "latest",
+    "uuid": "^3.0.1"
   }
 }

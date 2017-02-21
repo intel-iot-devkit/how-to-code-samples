@@ -21,44 +21,80 @@
 * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+"use strict";
+
 // The program is using the `mqtt` module
 // to publish data to remote MQTT server
-var mqtt = require('mqtt');
+const mqtt = require('mqtt');
 
 // The program is using the Node.js built-in `fs` module
 // to load the SSL certificates, if needed
-var fs = require("fs");
+const fs = require("fs");
+
+const uuid = require("uuid/v4");
 
 // Publish data to MQTT server
 function publish(config, payload) {
-  if (!config.MQTT_SERVER || !config.MQTT_CLIENTID) {
-    return;
-  }
+    if (!config.MQTT_SERVER) {
+        return;
+    }
 
-  var data = {d: payload}
-  var options = {
-    clientId: config.MQTT_CLIENTID,
-    username: config.MQTT_USERNAME,
-    password: config.MQTT_PASSWORD
-  };
+    // mqtt params
+    let data = payload;
+    let topic = config.MQTT_TOPIC
 
-  if (config.MQTT_CERT && config.MQTT_KEY) {
-    options.cert = fs.readFileSync(config.MQTT_CERT);
-    options.key = fs.readFileSync(config.MQTT_KEY);
-  }
+    let options = {
+        clientId: config.MQTT_CLIENTID,
+        username: config.MQTT_USERNAME,
+        password: config.MQTT_PASSWORD
+    };
 
-  console.log("Connecting to MQTT server...");
-  var client  = mqtt.connect(config.MQTT_SERVER, options);
-  client.on('connect', function () {
-    client.publish(config.MQTT_TOPIC, JSON.stringify(data));
-    console.log("MQTT message published:", data);
-    client.end();
-  });
+    if (config.MQTT_CERT && config.MQTT_KEY) {
+        options.cert = fs.readFileSync(config.MQTT_CERT);
+        options.key = fs.readFileSync(config.MQTT_KEY);
+    }
+
+    // service specific config
+    let service = config.MQTT_SERVICE || {}
+    switch (service.NAME) {
+        case "m2x":
+            if (!service.API_KEY && !service.DEVICE_ID && !service.STREAM_ID) {
+                console.error("Required MQTT config values for M2X missing.")
+                return;
+            }
+
+            topic = `m2x/${config.MQTT_SERVICE.API_KEY}/requests`;
+            data = JSON.stringify({
+                id: uuid(),
+                method: "POST",
+                resource: `/v2/devices/${config.MQTT_SERVICE.DEVICE_ID}/streams/${config.MQTT_SERVICE.STREAM_ID}/values`,
+                body: {
+                    values: [{
+                        timestamp: new Date().toISOString(),
+                        value: JSON.stringify(payload)
+                    }]
+                }
+            });
+            break;
+
+        default:
+            data = JSON.stringify({ d: data });
+            break;
+    }
+
+    console.log("Connecting to MQTT server...");
+    var client = mqtt.connect(config.MQTT_SERVER, options);
+    client.on('connect', function () {
+        console.log(topic);
+        client.publish(topic, data);
+        console.log("MQTT message published:", data);
+        client.end();
+    });
 }
 
 exports.log = publish;
 
-exports.increment = function(config) {
-  var payload = {counter: new Date().toISOString()};
-  publish(config, payload);
+exports.increment = function (config) {
+    var payload = { counter: new Date().toISOString() };
+    publish(config, payload);
 };
