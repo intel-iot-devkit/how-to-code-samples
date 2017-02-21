@@ -59,6 +59,7 @@ MQTT_PASSWORD = "MQTT_PASSWORD"
 MQTT_CERT = "MQTT_CERT"
 MQTT_KEY = "MQTT_KEY"
 MQTT_TOPIC = "MQTT_TOPIC"
+MQTT_SERVICE = "MQTT_SERVICE"
 
 # remote data store
 DataStoreConfig = namedtuple("DataStoreConfig", "server auth_token")
@@ -92,11 +93,12 @@ with resource_stream(RESOURCE_PACKAGE, RESOURCE_PATH) as data:
         port=RAW_CONFIG.get(MQTT_PORT, 1883),
         client_id=RAW_CONFIG.get(MQTT_CLIENTID),
         username=RAW_CONFIG.get(MQTT_USERNAME),
-        password=RAW_CONFIG.get(MQTT_PORT),
+        password=RAW_CONFIG.get(MQTT_PASSWORD),
         cert=RAW_CONFIG.get(MQTT_CERT),
         key=RAW_CONFIG.get(MQTT_KEY),
-        topic=RAW_CONFIG.get(MQTT_TOPIC)
-    ) if {MQTT_SERVER, MQTT_CLIENTID, MQTT_TOPIC} <= set(RAW_CONFIG) else None
+        topic=RAW_CONFIG.get(MQTT_TOPIC),
+        service=RAW_CONFIG.get(MQTT_SERVICE)
+    ) if {MQTT_SERVER} <= set(RAW_CONFIG) else None
 
     DATA_STORE_CONFIG = DataStoreConfig(
         server=RAW_CONFIG.get(SERVER),
