@@ -1,6 +1,8 @@
-# Field data reporter in JavaScript*
+# **DEPRECATED** Field data reporter in JavaScript*
 
 ## Introduction
+
+**Please note that this sample has been deprecated and is no longer supported.**
 
 This wrist field data reporter application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
