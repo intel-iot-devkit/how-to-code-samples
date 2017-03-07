@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2015 - 2016 Intel Corporation.
+* Copyright (c) 2015 - 2017 Intel Corporation.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the
@@ -43,7 +43,7 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 04/04/2016
+ * @date 02/13/2017
  */
 
 #include <stdlib.h>
@@ -72,22 +72,83 @@ struct Devices
   upm::ULN200XA* stepperTwo;
   upm::Joystick12* joystick;
 
+  int joystickPin1 = 0,
+      joystickPin2 = 1,
+      stepLeftInputPin1 = 9,
+      stepLeftInputPin2 = 10,
+      stepLeftInputPin3 = 11,
+      stepLeftInputPin4 = 12,
+      stepRightInputPin1 = 4,
+      stepRightInputPin2 = 5,
+      stepRightInputPin3 = 6,
+      stepRightInputPin4 = 7;
+
+  float voltageAdjust = 1.0;
+
   Devices(){
   };
 
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+         break;
+      case MRAA_GENERIC_FIRMATA:
+         joystickPin1 += 512;
+         joystickPin2 += 512;
+         stepLeftInputPin1 += 512;
+         stepLeftInputPin2 += 512;
+         stepLeftInputPin3 += 512;
+         stepLeftInputPin4 += 512;
+         stepRightInputPin1 += 512;
+         stepRightInputPin2 += 512;
+         stepRightInputPin3 += 512;
+         stepRightInputPin4 += 512;
+         voltageAdjust = 1.33;
+
+         break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        joystickPin1 += 512;
+        joystickPin2 += 512;
+        stepLeftInputPin1 += 512;
+        stepLeftInputPin2 += 512;
+        stepLeftInputPin3 += 512;
+        stepLeftInputPin4 += 512;
+        stepRightInputPin1 += 512;
+        stepRightInputPin2 += 512;
+        stepRightInputPin3 += 512;
+        stepRightInputPin4 += 512;
+        voltageAdjust = 1.33;
+    }
+  }
+
   // Initialization function
   void init() {
+    set_pins();
 
     // first stepper motor connected to d8, 9, 10, 11
-    stepperOne = new upm::ULN200XA(4096, 8, 9, 10, 11);
+    stepperOne = new upm::ULN200XA(4096, stepLeftInputPin1, stepLeftInputPin2, stepLeftInputPin3, stepLeftInputPin4);
     stop(stepperOne);
 
     // second stepper motor connected to 4, 5, 6, 7
-    stepperTwo = new upm::ULN200XA(4096, 4, 5, 6, 7);
+    stepperTwo = new upm::ULN200XA(4096, stepRightInputPin1, stepRightInputPin2, stepRightInputPin3, stepRightInputPin4);
     stop(stepperTwo);
 
     // joystick connected to A0 and A1
-    joystick = new upm::Joystick12(0,1);
+    joystick = new upm::Joystick12(joystickPin1, joystickPin2);
   };
 
   // Cleanup on exit
@@ -139,22 +200,26 @@ struct Devices
 
   // Handle joystick input and movement
   void joystick_move() {
-    float x = joystick->getXInput();
-    float y = joystick->getYInput();
+    float x = joystick->getXInput() * voltageAdjust;
+    float y = joystick->getYInput() * voltageAdjust;
 
     if (scale(x) == 1) {
+      std::cout << "Move 1 clockwise." << std::endl;
       move_1_clockwise();
     }
 
     if (scale(x) == -1) {
+      std::cout << "Move 1 counter-clockwise." << std::endl;
       move_1_counter_clockwise();
     }
 
     if (scale(y) == 1) {
+      std::cout << "Move 2 clockwise." << std::endl;
       move_2_clockwise();
     }
 
     if (scale(y) == -1){
+      std::cout << "Move 2 counter-clockwise." << std::endl;
       move_2_counter_clockwise();
     }
 
@@ -182,15 +247,6 @@ void exit_handler(int param)
 int main() {
   // Handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
-
-  // check that we are running on Galileo or Edison
-  mraa_platform_t platform = mraa_get_platform_type();
-  if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
-    (platform != MRAA_INTEL_GALILEO_GEN2) &&
-    (platform != MRAA_INTEL_EDISON_FAB_C)) {
-    std::cerr << "ERROR: Unsupported platform" << std::endl;
-    return MRAA_ERROR_INVALID_PLATFORM;
-  }
 
   // create and initialize UPM devices
   devices.init();

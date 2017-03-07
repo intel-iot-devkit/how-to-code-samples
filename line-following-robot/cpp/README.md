@@ -4,10 +4,10 @@ This line following robot application is part of a series of how-to for Intel's 
 
 From this exercise, developers will learn how to:
 
-- Connect the Intel® Edison board, a computing platform designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
+- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.
-- Set up a web application server to store line detection data using Azure Redis Cache\* from Microsoft, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Set up a web application server to store line detection data using Azure Redis Cache\* from Microsoft\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
 
 ## What it is
@@ -27,9 +27,9 @@ Optionally, all data can be stored using the Intel® IoT Examples Data store or 
 
 ## Hardware requirements
 
-Grove* Robotics Kit containing:
+Grove\* Robotics Kit containing:
 
-1. Intel® Edison board with an Arduino\* breakout board
+1. Intel® Edison board with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101\* (branded Genuino 101\* outside the U.S.) board
 2. Grove Base Shield V2
 3. [Grove Line Finder](http://iotdk.intel.com/docs/master/upm/node/classes/grovelinefinder.html)
 4. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html) (x2)
@@ -68,11 +68,11 @@ This sample is already one of the IoT examples included in Intel® System Studio
 
 You need to have a Grove\* Base Shield V2 connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
 
-You need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or else substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
+You need to power the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board with the external power adapter that comes with your starter kit, or else substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
 
 In addition, you need a breadboard and additional **5V** power supply to provide power to both the motors.
 
-Note: You need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison board and the motors, so you need either 2 batteries or 2 power supplies in total.
+Note: You need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board and the motors, so you need either 2 batteries or 2 power supplies in total.
 
 1. Plug each stepper motor controllers into four pins on the Arduino\* breakout board. Connect stepper motor controller #1 to pins 4, 5, 6, and 7, and stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both the controllers to ground (GND), to the **5V** power coming from the Arduino\* breakout board (VCC), and to the separate **5V** power for the motors (VM).<br>
 ![](./../../images/js/line-follower.jpg)
@@ -84,13 +84,13 @@ This example uses the **restclient-cpp** library to perform REST calls to the re
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.).
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
 https://software.intel.com/en-us/node/633284
 
-The Arduino 101\* (branded Genuino 101\* outside the U.S.) needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101\* (branded Genuino 101\* outside the U.S.).
+The Arduino 101\* (branded Genuino 101\* outside the U.S.) board needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101\* (branded Genuino 101\* outside the U.S.) board.
 
 ### Datastore server setup
 

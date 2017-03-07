@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2015 - 2016 Intel Corporation.
+* Copyright (c) 2015 - 2017 Intel Corporation.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the
@@ -43,7 +43,7 @@
  * @req datastore.cpp
  * @req mqtt.cpp
  *
- * @date 04/04/2016
+ * @date 02/13/2017
  */
 
 #include <stdlib.h>
@@ -65,7 +65,7 @@
 
 using namespace std;
 
-// Notify remote datastore
+// Notify remote datastoare
 void notify(std::string message) {
 
   std::time_t now = std::time(NULL);
@@ -87,19 +87,74 @@ struct Devices
   upm::ULN200XA* stepLeft;
   upm::ULN200XA* stepRight;
 
+  int linePin = 2,
+      stepLeftInputPin1 = 9,
+      stepLeftInputPin2 = 10,
+      stepLeftInputPin3 = 11,
+      stepLeftInputPin4 = 12,
+      stepRightInputPin1 = 4,
+      stepRightInputPin2 = 5,
+      stepRightInputPin3 = 6,
+      stepRightInputPin4 = 7;
+
   Devices(){
   };
 
+  // Set pins/init as needed for specific platforms
+  void set_pins() {
+    mraa_platform_t platform = mraa_get_platform_type();
+    switch (platform) {
+      case MRAA_INTEL_GALILEO_GEN1:
+      case MRAA_INTEL_GALILEO_GEN2:
+      case MRAA_INTEL_EDISON_FAB_C:
+         break;
+      case MRAA_GENERIC_FIRMATA:
+         linePin += 512;
+         stepLeftInputPin1 += 512;
+         stepLeftInputPin2 += 512;
+         stepLeftInputPin3 += 512;
+         stepLeftInputPin4 += 512;
+         stepRightInputPin1 += 512;
+         stepRightInputPin2 += 512;
+         stepRightInputPin3 += 512;
+         stepRightInputPin4 += 512;
+
+         break;
+      default:
+        // try using firmata
+        string port = "/dev/ttyACM0";
+        if (getenv("PORT"))
+        {
+          port = getenv("PORT");
+        }
+        mraa_result_t res = mraa_add_subplatform(MRAA_GENERIC_FIRMATA, port.c_str());
+        if (res != MRAA_SUCCESS){
+          std::cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << std::endl;
+        }
+        linePin += 512;
+        stepLeftInputPin1 += 512;
+        stepLeftInputPin2 += 512;
+        stepLeftInputPin3 += 512;
+        stepLeftInputPin4 += 512;
+        stepRightInputPin1 += 512;
+        stepRightInputPin2 += 512;
+        stepRightInputPin3 += 512;
+        stepRightInputPin4 += 512;
+    }
+  }
+
   // Initialization function
   void init() {
+    set_pins();
+
     // line finder connected to d2
-    finder = new upm::GroveLineFinder(2);
+    finder = new upm::GroveLineFinder(linePin);
 
     // left stepper motor connected to d9,10,11,12
-    stepLeft = new upm::ULN200XA(4096, 9, 10, 11, 12);
+    stepLeft = new upm::ULN200XA(4096, stepLeftInputPin1, stepLeftInputPin2, stepLeftInputPin3, stepLeftInputPin4);
 
     // right stepper motor connected to 4, 5, 6, 7
-    stepRight = new upm::ULN200XA(4096, 4, 5, 6, 7);
+    stepRight = new upm::ULN200XA(4096, stepRightInputPin1, stepRightInputPin2, stepRightInputPin3, stepRightInputPin4);
   };
 
   // Cleanup on exit
@@ -121,10 +176,12 @@ struct Devices
       std::cout << "Line detected: " << val << std::endl;
 
       if (val) {
+        std::cout << "Moving on line..." << std::endl;
         moveForward();
-        notify("Moving on line. \n");
+        notify("moving\n");
       }
       else
+        std::cout << "Pivoting..." << std::endl;
         pivotClockwise();
     }
   }
@@ -172,15 +229,6 @@ void exit_handler(int param)
 int main() {
   // Handles ctrl-c or other orderly exits
   signal(SIGINT, exit_handler);
-
-  // check that we are running on Galileo or Edison
-  mraa_platform_t platform = mraa_get_platform_type();
-  if ((platform != MRAA_INTEL_GALILEO_GEN1) &&
-    (platform != MRAA_INTEL_GALILEO_GEN2) &&
-    (platform != MRAA_INTEL_EDISON_FAB_C)) {
-    std::cerr << "ERROR: Unsupported platform" << std::endl;
-    return MRAA_ERROR_INVALID_PLATFORM;
-  }
 
   // create and initialize UPM devices
   devices.init();
