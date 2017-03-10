@@ -28,6 +28,8 @@
 #include <iostream>
 #include <sstream>
 
+#include "../lib/jsoncpp/json/json.h"
+
 extern "C" {
   #include "MQTTClient.h"
   #include "MQTTClientPersistence.h"
@@ -67,5 +69,24 @@ void log_mqtt(std::string payload);
  *  MQTT_CA - file name of root Certificate Authority (CA) certificate for verifying the MQTT server
  */
 void increment_mqtt();
+
+/* Cleanup mqtt resources
+ *
+ */
+void close_mqtt();
+
+/* MQTT Helpers */
+
+std::string random_string();
+
+std::string std_getenv(const std::string& name);
+
+enum class MqttServiceName
+{
+  None,
+  M2X
+};
+
+MqttServiceName map_mqtt_service_name(const std::string &name);
 
 #endif /* MQTT_H_ */
