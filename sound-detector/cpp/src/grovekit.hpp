@@ -26,7 +26,7 @@
 
 #include <mraa.hpp>
 #include <mic.hpp>
-#include <jhd1313m1.hpp>
+#include <jhd1313m1.hxx>
 
 using namespace std;
 
@@ -52,11 +52,11 @@ struct Devices
       case MRAA_INTEL_GALILEO_GEN2:
       case MRAA_INTEL_EDISON_FAB_C:
         screenBus = 0;
-        micPin = 0;
+        micPin = 2;
         break;
       case MRAA_GENERIC_FIRMATA:
         screenBus = 0 + 512;
-        micPin = 0 + 512;
+        micPin = 2 + 512;
         break;
       default:
         // try using firmata
@@ -70,7 +70,7 @@ struct Devices
           cerr << "ERROR: Base platform " << platform << " on port " << port.c_str() << " for reason " << res << endl;
         }
         screenBus = 0 + 512;
-        micPin = 0 + 512;
+        micPin = 2 + 512;
     }
   };
 
