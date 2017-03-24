@@ -34,7 +34,7 @@
 #include <chrono>
 #include <string>
 
-#include <jhd1313m1.hpp>
+#include <jhd1313m1.hxx>
 
 using namespace std;
 
