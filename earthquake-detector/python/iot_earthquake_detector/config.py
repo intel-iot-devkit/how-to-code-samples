@@ -47,7 +47,7 @@ LATITUDE = "LATITUDE"
 LONGITUDE = "LONGITUDE"
 
 # MQTT server
-MqttConfig = namedtuple("MqttConfig", "server port client_id username password cert key topic")
+MqttConfig = namedtuple("MqttConfig", "server port client_id username password cert key topic service")
 
 MQTT_SERVER = "MQTT_SERVER"
 MQTT_PORT = "MQTT_PORT"

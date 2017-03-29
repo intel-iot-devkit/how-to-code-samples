@@ -46,7 +46,7 @@ AppConfig = namedtuple("AppConfig", "target_temp")
 TARGET_TEMP = "TARGET_TEMP"
 
 # MQTT server
-MqttConfig = namedtuple("MqttConfig", "server port client_id username password cert key topic")
+MqttConfig = namedtuple("MqttConfig", "server port client_id username password cert key topic service")
 
 MQTT_SERVER = "MQTT_SERVER"
 MQTT_PORT = "MQTT_PORT"
