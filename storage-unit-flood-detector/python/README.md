@@ -141,8 +141,6 @@ Make sure your Intel® IoT Gateway is setup, by following the directions on the 
 
 https://software.intel.com/en-us/node/633284
 
-You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
-
 The Arduino 101\* needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino 101\*.
 
 You will also need to configure the `config.json` in the example to use the Arduino 101\*. See the section "Configuring the example" below.
