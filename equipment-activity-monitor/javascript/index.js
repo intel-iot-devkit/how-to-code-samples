@@ -47,7 +47,7 @@ if (config.kit) {
 board.init(config);
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 // Display and then store record in the remote datastore/mqtt server
 // of how long the equipment being monitored was in use for
@@ -56,7 +56,7 @@ function notify(state) {
   var payload = { value: state + " " + new Date().toISOString() };
 
   datastore.log(config, payload);
-  mqtt.log(config, payload);
+  services.log(config, payload);
 }
 
 // Main function, checks every 20ms to see if either vibrations or

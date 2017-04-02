@@ -47,7 +47,7 @@ if (config.kit) {
 board.init(config);
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 // Store record in the remote datastore when moisture is detected
 function notify() {
@@ -56,7 +56,7 @@ function notify() {
   var payload = { value: new Date().toISOString() };
 
   datastore.log(config, payload);
-  mqtt.log(config, payload);
+  services.log(config, payload);
 }
 
 // Alert when moisture is detected

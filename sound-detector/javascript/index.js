@@ -47,13 +47,13 @@ if (config.kit) {
 board.init(config);
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 // Store record in the remote mqtt or datastore for the sound detector
 function log(val) {
   var payload = { value: val };
   datastore.log(config, payload);
-  mqtt.log(config, payload);
+  services.log(config, payload);
 }
 
 // Display value on the LCD for the microphone

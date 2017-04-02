@@ -38,7 +38,7 @@ var config = JSON.parse(
 );
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 // Initialize the hardware devices
 var mraa = require("mraa");
@@ -120,7 +120,7 @@ function log(callback) {
   var payload = { value: new Date().toISOString() };
   console.log(payload);
   datastore.log(config, payload);
-  mqtt.log(config, payload);
+  services.log(config, payload);
 }
 
 // The main function repeatedly calls `findLine()`

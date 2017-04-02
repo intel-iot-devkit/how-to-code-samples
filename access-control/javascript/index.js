@@ -38,7 +38,7 @@ var config = JSON.parse(
 );
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+var services = require("./services");
 
 var TIMEOUT = 30 * 1000;
 
@@ -65,7 +65,7 @@ function log(event) {
 
   var payload = { value: msg };
   datastore.log(config, payload);
-  mqtt.log(config, payload);
+  services.log(config, payload);
 }
 
 // Turns on the alarm

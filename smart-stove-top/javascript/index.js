@@ -50,7 +50,7 @@ if (config.kit) {
 board.init(config);
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 // Log record in the remote datastore of the current temperature
 // every 1 minute
@@ -60,7 +60,7 @@ function log() {
     var payload = { value: board.objectTemperature() };
 
     datastore.log(config, payload);
-    mqtt.log(config, payload);
+    services.log(config, payload);
   }
 
   notify();

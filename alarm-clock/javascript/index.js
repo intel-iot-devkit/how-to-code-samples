@@ -55,7 +55,7 @@ if (config.kit) {
 board.init(config);
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 // State of the alarm
 var current,
@@ -115,7 +115,7 @@ function notify(duration) {
 
   var payload = { value: duration };
   datastore.log(config, payload);
-  mqtt.log(config, payload);
+  services.log(config, payload);
 }
 
 // Call the remote Weather Underground API to check the weather conditions
