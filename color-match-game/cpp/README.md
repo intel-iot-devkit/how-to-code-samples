@@ -28,7 +28,7 @@ Grove\* Starter Kit containing:
 
 ## Software requirements
 
-1. [Intel® System Studio (Eclipse IDE for C/C++ and Java* development)](https://software.intel.com/en-us/node/672439)
+1. [Intel® System Studio (Eclipse IDE for C/C++ and Java\* development)](https://software.intel.com/en-us/node/672439)
 
 ### How to set up
 
@@ -46,7 +46,7 @@ This sample is already one of the IoT examples included in Intel® System Studio
 ![](./../../images/cpp/select-os.png)
 6. The next tab will ask for connection name and target name. If you do not know these click **Search Target**.<br>
 ![](./../../images/cpp/search-target.png)
-7. Select your Edison from the dropdown list. Select **OK**.<br>
+7. Select your Intel® Edison board from the dropdown list. Select **OK**.<br>
 ![](./../../images/cpp/click-how-to-code-samples.png)
 8. Your connection name and target name should be filled in. Select **Finish**.<br>
 ![](./../../images/cpp/finish-target.png)
@@ -65,7 +65,7 @@ You need to have a Grove\* Shield connected to an Arduino-compatible breakout bo
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.) 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.).
 
 Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
 
@@ -103,6 +103,6 @@ We have a useful tutorial on how to use the shell script here:
 
 The color match game is set using a single-page web interface served from the Intel® Edison board or Intel® IoT Gateway while the sample program is running.
 
-The web server runs on port `3000`, so if the Intel® Edison board or Intel® IoT Gateway are connected to Wi-Fi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000/`.
+The web server runs on port `3000`, so if the Intel® Edison board or Intel® IoT Gateway are connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000/`.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
