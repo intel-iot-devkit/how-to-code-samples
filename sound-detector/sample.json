@@ -7,7 +7,11 @@
   "platform" : {
     "hwreq" : ["Grove RGB LCD on I2C",
                "Grove Sound Sensor connected to analog pin 0 (Grove Base Shield Port A0)"],
-    "libs": ["upm"],
-    "compatible": ["Edison"]
+  "libs": ["upm", "curl", "paho"],
+    "compatible": [
+      "Edison",
+      "Gateway 32-Bit",
+      "Gateway 64-Bit"
+    ]
   }
 }
