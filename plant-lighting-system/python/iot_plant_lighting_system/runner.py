@@ -24,6 +24,7 @@ from importlib import import_module
 from datetime import datetime
 from pkg_resources import resource_filename
 from bottle import Bottle, static_file, request, HTTPResponse, template, TEMPLATE_PATH
+from twisted.internet import reactor
 from .config import HARDWARE_CONFIG
 from .scheduler import SCHEDULER
 from .log import log

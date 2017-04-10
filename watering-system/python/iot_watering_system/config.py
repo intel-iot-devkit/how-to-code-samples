@@ -97,29 +97,29 @@ RESOURCE_PATH = "config.json"
 
 with resource_stream(RESOURCE_PACKAGE, RESOURCE_PATH) as data:
 
-    RAW_CONFIG = load_json(data)
+    raw_config = load_json(data)
 
     HARDWARE_CONFIG = HardwareConfig(
-        kit=RAW_CONFIG.get(KIT, KNOWN_KITS.grove),
-        platform=RAW_CONFIG.get(PLATFORM)
+        kit=raw_config.get(KIT, KNOWN_KITS.grove),
+        platform=raw_config.get(PLATFORM)
     )
 
     TWILIO_CONFIG = TwilioConfig(
-        account_sid=RAW_CONFIG.get(TWILIO_ACCOUNT_SID),
-        auth_token=RAW_CONFIG.get(TWILIO_AUTH_TOKEN),
-        outbound_number=RAW_CONFIG.get(TWILIO_OUTBOUND_NUMBER),
-        inbound_number=RAW_CONFIG.get(TWILIO_INBOUND_NUMBER)
+        account_sid=raw_config.get(TWILIO_ACCOUNT_SID),
+        auth_token=raw_config.get(TWILIO_AUTH_TOKEN),
+        outbound_number=raw_config.get(TWILIO_OUTBOUND_NUMBER),
+        inbound_number=raw_config.get(TWILIO_INBOUND_NUMBER)
     ) if {
         TWILIO_ACCOUNT_SID,
         TWILIO_AUTH_TOKEN,
         TWILIO_INBOUND_NUMBER,
         TWILIO_OUTBOUND_NUMBER
-    } <= set(RAW_CONFIG) else None
+    } <= set(raw_config) else None
 
     DATA_STORE_CONFIG = DataStoreConfig(
-        server=RAW_CONFIG.get(SERVER),
-        auth_token=RAW_CONFIG.get(AUTH_TOKEN)
-    ) if {SERVER, AUTH_TOKEN} <= set(RAW_CONFIG) else None
+        server=raw_config.get(SERVER),
+        auth_token=raw_config.get(AUTH_TOKEN)
+    ) if {SERVER, AUTH_TOKEN} <= set(raw_config) else None
 
     # service configs
 

@@ -73,31 +73,30 @@ RESOURCE_PATH = "config.json"
 
 with resource_stream(RESOURCE_PACKAGE, RESOURCE_PATH) as data:
 
-    RAW_CONFIG = load_json(data)
+    raw_config = load_json(data)
 
     HARDWARE_CONFIG = HardwareConfig(
-        kit=RAW_CONFIG.get(KIT, KNOWN_KITS.grove),
-        platform=RAW_CONFIG.get(PLATFORM)
+        kit=raw_config.get(KIT, KNOWN_KITS.grove),
+        platform=raw_config.get(PLATFORM)
     )
 
     APP_CONFIG = AppConfig(
-        latitude=RAW_CONFIG.get(LATITUDE, "47.641944"),
-        longitude=RAW_CONFIG.get(LONGITUDE, "-122.127222")
+        latitude=raw_config.get(LATITUDE, "47.641944"),
+        longitude=raw_config.get(LONGITUDE, "-122.127222")
     )
 
     MQTT_CONFIG = MqttConfig(
-        server=RAW_CONFIG.get(MQTT_SERVER),
-        port=RAW_CONFIG.get(MQTT_PORT, 1883),
-        client_id=RAW_CONFIG.get(MQTT_CLIENTID),
-        username=RAW_CONFIG.get(MQTT_USERNAME),
-        password=RAW_CONFIG.get(MQTT_PORT),
-        cert=RAW_CONFIG.get(MQTT_CERT),
-        key=RAW_CONFIG.get(MQTT_KEY),
-        topic=RAW_CONFIG.get(MQTT_TOPIC),
-        service=RAW_CONFIG.get(MQTT_SERVICE)
-    ) if not {MQTT_SERVER, MQTT_CLIENTID, MQTT_TOPIC} <= set(RAW_CONFIG) else None
+        server=raw_config.get(MQTT_SERVER),
+        port=raw_config.get(MQTT_PORT, 1883),
+        client_id=raw_config.get(MQTT_CLIENTID),
+        username=raw_config.get(MQTT_USERNAME),
+        password=raw_config.get(MQTT_PORT),
+        cert=raw_config.get(MQTT_CERT),
+        key=raw_config.get(MQTT_KEY),
+        topic=raw_config.get(MQTT_TOPIC)
+    ) if not {MQTT_SERVER, MQTT_CLIENTID, MQTT_TOPIC} <= set(raw_config) else None
 
     DATA_STORE_CONFIG = DataStoreConfig(
-        server=RAW_CONFIG.get(SERVER),
-        auth_token=RAW_CONFIG.get(AUTH_TOKEN)
-    ) if not {SERVER, AUTH_TOKEN} <= set(RAW_CONFIG) else None
+        server=raw_config.get(SERVER),
+        auth_token=raw_config.get(AUTH_TOKEN)
+    ) if not {SERVER, AUTH_TOKEN} <= set(raw_config) else None
