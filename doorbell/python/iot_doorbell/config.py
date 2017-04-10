@@ -42,18 +42,37 @@ KNOWN_PLATFORMS = Platforms(
 
 # app specific
 
-# MQTT server
-MqttConfig = namedtuple("MqttConfig", "server port client_id username password cert key topic service")
+# services
 
-MQTT_SERVER = "MQTT_SERVER"
-MQTT_PORT = "MQTT_PORT"
-MQTT_CLIENTID = "MQTT_CLIENTID"
-MQTT_USERNAME = "MQTT_USERNAME"
-MQTT_PASSWORD = "MQTT_PASSWORD"
-MQTT_CERT = "MQTT_CERT"
-MQTT_KEY = "MQTT_KEY"
-MQTT_TOPIC = "MQTT_TOPIC"
-MQTT_SERVICE = "MQTT_SERVICE"
+SERVICES = "services"
+
+M2XConfig = namedtuple("M2XConfig", "api_key device_id stream_id")
+
+M2X_SERVICE_NAME = "m2x"
+M2X_API_KEY = "api_key"
+M2X_DEVICE_ID = "device_id"
+M2X_STREAM_ID = "stream_id"
+
+PredixConfig = namedtuple("Predix", "uaa_client_id uaa_client_secret uaa_url timeseries_zone_id timeseries_ingest_url")
+
+PREDIX_SERVICE_NAME = "predix"
+PREDIX_UAA_CLIENT_ID = "uaa_client_id"
+PREDIX_UAA_CLIENT_SECRET = "uaa_client_secret"
+PREDIX_UAA_URL = "uaa_url"
+PREDIX_TIMESERIES_ZONE_ID = "timeseries_zone_id"
+PREDIX_TIMESERIES_INGEST_URL = "timeseries_ingest_url"
+
+MqttConfig = namedtuple("MqttConfig", "server port client_id username password cert key topic")
+
+MQTT_SERVICE_NAME = "mqtt"
+MQTT_SERVER = "server"
+MQTT_PORT = "port"
+MQTT_CLIENTID = "client_id"
+MQTT_USERNAME = "username"
+MQTT_PASSWORD = "password"
+MQTT_CERT = "cert"
+MQTT_KEY = "key"
+MQTT_TOPIC = "topic"
 
 # remote data store
 DataStoreConfig = namedtuple("DataStoreConfig", "server auth_token")
