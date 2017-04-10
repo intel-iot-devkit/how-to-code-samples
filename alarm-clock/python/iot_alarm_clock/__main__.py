@@ -20,9 +20,9 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function, division
-from time import sleep
-from signal import SIGINT, signal
-from atexit import register as register_exit
+from os import environ
+from twisted.internet import reactor
+from certifi import where as locate_trust_store
 from .runner import Runner
 
 def main():
@@ -35,21 +35,7 @@ def main():
     print("Running {0} example.".format(runner.project_name))
     runner.start()
 
-    def signal_handler(signum, frame):
-        raise SystemExit
-
-    def exit_handler():
-        print("exiting")
-        exit(0)
-
-    register_exit(exit_handler)
-    signal(SIGINT, signal_handler)
-
-    try:
-        signal.pause()
-    except AttributeError:
-        while True:
-            sleep(0.5)
+    reactor.run()
 
 if __name__ == "__main__":
     main()

@@ -23,6 +23,7 @@ from __future__ import print_function
 from importlib import import_module
 from arrow import utcnow
 from bottle import Bottle, static_file, request
+from twisted.internet import reactor
 from pkg_resources import resource_filename
 from .config import HARDWARE_CONFIG, WEATHER_CONFIG
 from .scheduler import SCHEDULER, ms
@@ -73,10 +74,10 @@ class Runner(object):
 
         SCHEDULER.add_job(self.start_clock, "interval", coalesce=True, seconds=ms(1000))
 
-        self.server.run(
+        reactor.callInThread(lambda: self.server.run(
             host="0.0.0.0",
             port=3000
-        )
+        ))
 
     # alarm methods
 
