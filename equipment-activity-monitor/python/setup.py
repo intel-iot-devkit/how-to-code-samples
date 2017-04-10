@@ -33,6 +33,12 @@ setup(
         "PyEventEmitter",
         "requests",
         "paho-mqtt",
-        "simplejson"
+        "simplejson",
+        "twisted",
+        "pyopenssl",
+        "service_identity",
+        "idna",
+        "autobahn",
+        "certifi"
     ]
 )
