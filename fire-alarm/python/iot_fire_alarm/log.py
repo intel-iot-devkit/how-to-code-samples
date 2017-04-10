@@ -21,7 +21,7 @@
 
 from __future__ import print_function
 from datetime import datetime
-from .mqtt import publish_message
+from .services import service_message
 from .storage import store_message
 from .sms import send_sms
 
@@ -31,7 +31,7 @@ def send(payload):
     Publish payload to MQTT server, data store and SMS.
     """
 
-    publish_message(payload)
+    service_message(payload)
     store_message(payload, method="GET")
     send_sms(payload)
 
