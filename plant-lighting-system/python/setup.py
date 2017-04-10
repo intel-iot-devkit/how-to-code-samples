@@ -35,6 +35,12 @@ setup(
         "paho-mqtt",
         "simplejson",
         "bottle",
-        "twilio"
+        "twilio",
+        "twisted",
+        "pyopenssl",
+        "service_identity",
+        "idna",
+        "autobahn",
+        "certifi"
     ]
 )

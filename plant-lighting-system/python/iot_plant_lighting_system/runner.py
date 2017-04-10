@@ -76,10 +76,10 @@ class Runner(object):
 
         self.monitor_moisture()
 
-        self.server.run(
+        reactor.callInThread(lambda: self.server.run(
             host="0.0.0.0",
             port=3000
-        )
+        ))
 
     # hardware methods
 
