@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This Watering System application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This Watering System application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
@@ -60,7 +60,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ### How to set up
 
-To begin, clone the **How-To Intel IoT Code Samples** repository with Git\* on your computer as follows:
+To begin, clone the **How-To Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
@@ -70,7 +70,7 @@ To download a .zip file, in your web browser go to <a href="https://github.com/i
 
 You can set up the code manually on the Intel® Edison board.
 
-Clone the **How-To Intel IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
+Clone the **How-To Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
