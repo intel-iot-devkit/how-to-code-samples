@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This close call fleet driving reporter application is part of a series of how-to Intel® IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
+This close call fleet driving reporter application is part of a series of how-to IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
@@ -43,7 +43,7 @@ Grove Transportation & Safety Kit containing:
 
 ### How to set up
 
-To begin, clone the How-To Intel® IoT Code Samples repository with Git* on your computer as follows:
+To begin, clone the How-To Code Samples repository with Git* on your computer as follows:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
