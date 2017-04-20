@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This shop-floor equipment activity monitor application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® IoT Gateway, Intel® Edison board, cloud platforms, APIs, and other technologies.
+This shop-floor equipment activity monitor application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® IoT Gateway, Intel® Edison board, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
