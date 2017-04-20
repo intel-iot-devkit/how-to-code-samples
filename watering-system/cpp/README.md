@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This automatic watering system application is part of a series of how-tos for Intel's Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
+This automatic watering system application is part of a series of how-tos for Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
