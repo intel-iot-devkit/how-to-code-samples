@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This line following robot application is part of a series of how-to Intel® Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
+This line following robot application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
@@ -40,7 +40,7 @@ Grove\* Robotics Kit containing:
 
 ### How to set up
 
-To begin, clone the **How-To Intel® IoT Code Samples** repository with Git\* on your computer as follows:
+To begin, clone the **How-To Code Samples** repository with Git\* on your computer as follows:
 
     $ git clone https://github.com/Intel®-iot-devkit/how-to-code-samples.git
 
@@ -81,7 +81,7 @@ Click **Connect** to save your connection.
 
 Alternatively, you can set up the code manually on the Intel® Edison board.
 
-Clone the **How-To Intel® IoT Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
+Clone the **How-To Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
 
     $ git clone https://github.com/Intel®-iot-devkit/how-to-code-samples.git
 
