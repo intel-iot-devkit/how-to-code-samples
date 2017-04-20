@@ -4,7 +4,7 @@
 
 **Please note that this sample has been deprecated and is no longer supported.**
 
-This Bluetooth\* low energy scan bracelet application is part of a series of how-to Intel IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
+This Bluetooth\* low energy scan bracelet application is part of a series of how-to IoT code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:
 
