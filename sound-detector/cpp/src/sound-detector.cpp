@@ -67,7 +67,7 @@ using namespace std;
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 #include "datastore.h"
-#include "mqtt.h"
+#include "services/services.h"
 
 // Call remote datastore server to log activity
 void notify(int reading) {
@@ -80,7 +80,7 @@ void notify(int reading) {
   text << "\"" << reading << " " << mbstr << "\"}";
 
   cout << reading << " " << mbstr << endl;
-  log_mqtt(text.str());
+  log_service(text.str());
   log_datastore(text.str());
 }
 

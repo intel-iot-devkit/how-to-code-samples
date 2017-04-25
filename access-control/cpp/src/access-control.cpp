@@ -71,7 +71,7 @@ using namespace std;
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 #include "datastore.h"
-#include "mqtt.h"
+#include "services/services.h"
 
 Devices devices;
 
@@ -95,7 +95,7 @@ void notify(std::string message) {
   text << "{\"state\":";
   text << "\"" << message << " " << mbstr << "\"}";
 
-  log_mqtt(text.str());
+  log_service(text.str());
   log_datastore(text.str());
 }
 

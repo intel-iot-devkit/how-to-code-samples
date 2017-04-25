@@ -63,7 +63,7 @@ using namespace std;
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 #include "datastore.h"
-#include "mqtt.h"
+#include "services/services.h"
 
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/hci.h>
@@ -81,7 +81,7 @@ void log(string event) {
   text << "{\"value\":";
   text << "\"" << event << mbstr << "\"}";
 
-  log_mqtt(text.str());
+  log_service(text.str());
   log_datastore(text.str());
 }
 
