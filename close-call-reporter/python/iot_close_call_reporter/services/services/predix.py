@@ -106,7 +106,7 @@ class PredixTimeSeriesProtocol(WebSocketClientProtocol):
 
     def onClose(self, clean, code, reason):
 
-        print("Predix Time Series connetion colosed.")
+        print("Predix Time Series connetion closed.")
 
     def pushDatapoint(self):
 
