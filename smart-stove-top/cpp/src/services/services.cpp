@@ -43,6 +43,7 @@ void log_service(std::string const &message) {
 
     /* Predix Service Dispatch */
 
+    #if defined(USE_PREDIX_SERVICE)
     auto predix_config_result = get_predix_config();
     predix_service_config predix_config;
     bool predix_config_valid;
@@ -51,6 +52,7 @@ void log_service(std::string const &message) {
     if (predix_config_valid) {
     	predix_publish(message);
     }
+	#endif
 
     /* MQTT Service Dispatch */
     auto mqtt_config_result = get_mqtt_config();

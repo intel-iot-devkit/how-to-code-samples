@@ -21,6 +21,7 @@
 * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#if defined(USE_PREDIX_SERVICE)
 #ifndef SERVICES_TRANSPORTS_PREDIX_PREDIX_H_INCLUDED
 #define SERVICES_TRANSPORTS_PREDIX_PREDIX_H_INCLUDED
 
@@ -64,4 +65,5 @@ void setup_connection(std::string const &ws_url, std::string const &zone_id, std
 std::pair<predix_service_config, bool> get_predix_config();
 void predix_publish(std::string const &message);
 
+#endif
 #endif

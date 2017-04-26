@@ -29,8 +29,11 @@
 #include <iostream>
 #include <utility>
 
-#include "transports/m2x/m2x.h"
+#if defined(USE_PREDIX_SERVICE)
 #include "transports/predix/predix.h"
+#endif
+
+#include "transports/m2x/m2x.h"
 #include "transports/mqtt/mqtt.h"
 
 void increment_service();

@@ -21,6 +21,7 @@
 * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#if defined(USE_PREDIX_SERVICE)
 #include "predix.h"
 
 ws_client wsc;
@@ -221,3 +222,5 @@ void predix_publish(std::string const &message)
 
     timeseries_push(predix_config.timeseries_ingest_url, predix_config.timeseries_zone_id, token, message);
 }
+
+#endif
