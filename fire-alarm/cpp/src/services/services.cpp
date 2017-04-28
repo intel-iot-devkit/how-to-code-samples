@@ -41,9 +41,20 @@ void log_service(std::string const &message) {
         m2x_publish(message);
     }
 
+    /* SAP Service Dispatch */
+    
+    auto sap_config_result = get_sap_config();
+    sap_service_config sap_config;
+    bool sap_config_valid;
+    std::tie(sap_config, sap_config_valid) = sap_config_result;
+
+    if (sap_config_valid) {
+        sap_publish(message);
+    }
+
     /* Predix Service Dispatch */
 
-    #if defined(USE_PREDIX_SERVICE)
+	#if defined(USE_PREDIX_SERVICE)
     auto predix_config_result = get_predix_config();
     predix_service_config predix_config;
     bool predix_config_valid;
@@ -63,5 +74,4 @@ void log_service(std::string const &message) {
     if (mqtt_config_valid) {
     	mqtt_publish(message);
     }
-
 }

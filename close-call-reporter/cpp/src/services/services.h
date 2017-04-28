@@ -34,6 +34,7 @@
 #endif
 
 #include "transports/m2x/m2x.h"
+#include "transports/sap/sap.h"
 #include "transports/mqtt/mqtt.h"
 
 void increment_service();
