@@ -53,7 +53,7 @@ M2X_API_KEY = "api_key"
 M2X_DEVICE_ID = "device_id"
 M2X_STREAM_ID = "stream_id"
 
-PredixConfig = namedtuple("Predix", "uaa_client_id uaa_client_secret uaa_url timeseries_zone_id timeseries_ingest_url")
+PredixConfig = namedtuple("PredixConfig", "uaa_client_id uaa_client_secret uaa_url timeseries_zone_id timeseries_ingest_url")
 
 PREDIX_SERVICE_NAME = "predix"
 PREDIX_UAA_CLIENT_ID = "uaa_client_id"
@@ -61,6 +61,14 @@ PREDIX_UAA_CLIENT_SECRET = "uaa_client_secret"
 PREDIX_UAA_URL = "uaa_url"
 PREDIX_TIMESERIES_ZONE_ID = "timeseries_zone_id"
 PREDIX_TIMESERIES_INGEST_URL = "timeseries_ingest_url"
+
+SapConfig = namedtuple("SapConfig", "mms_endpoint device_id message_type_id oauth_token")
+
+SAP_SERVICE_NAME = "sap"
+SAP_MMS_ENDPOINT = "mms_endpoint"
+SAP_DEVICE_ID = "device_id"
+SAP_MESSAGE_TYPE_ID = "message_type_id"
+SAP_OAUTH_TOKEN = "oauth_token"
 
 MqttConfig = namedtuple("MqttConfig", "server port client_id username password cert key topic")
 
@@ -96,19 +104,50 @@ with resource_stream(RESOURCE_PACKAGE, RESOURCE_PATH) as data:
         platform=raw_config.get(PLATFORM)
     )
 
-    MQTT_CONFIG = MqttConfig(
-        server=raw_config.get(MQTT_SERVER),
-        port=raw_config.get(MQTT_PORT, 1883),
-        client_id=raw_config.get(MQTT_CLIENTID),
-        username=raw_config.get(MQTT_USERNAME),
-        password=raw_config.get(MQTT_PASSWORD),
-        cert=raw_config.get(MQTT_CERT),
-        key=raw_config.get(MQTT_KEY),
-        topic=raw_config.get(MQTT_TOPIC),
-        service=raw_config.get(MQTT_SERVICE)
-    ) if {MQTT_SERVER} <= set(raw_config) else None
-
     DATA_STORE_CONFIG = DataStoreConfig(
         server=raw_config.get(SERVER),
         auth_token=raw_config.get(AUTH_TOKEN)
     ) if {SERVER, AUTH_TOKEN} <= set(raw_config) else None
+
+    # service configs
+
+    raw_services = raw_config.get("services", {})
+
+    raw_predix = raw_services.get(PREDIX_SERVICE_NAME, {})
+    PREDIX_CONFIG = PredixConfig(
+        uaa_client_id=raw_predix.get(PREDIX_UAA_CLIENT_ID),
+        uaa_client_secret=raw_predix.get(PREDIX_UAA_CLIENT_SECRET),
+        uaa_url=raw_predix.get(PREDIX_UAA_URL),
+        timeseries_zone_id=raw_predix.get(PREDIX_TIMESERIES_ZONE_ID),
+        timeseries_ingest_url=raw_predix.get(PREDIX_TIMESERIES_INGEST_URL)
+    ) if {
+        PREDIX_UAA_CLIENT_ID, PREDIX_UAA_CLIENT_SECRET, PREDIX_UAA_URL,
+        PREDIX_TIMESERIES_ZONE_ID, PREDIX_TIMESERIES_INGEST_URL
+    } <= set(raw_predix) else None
+
+    raw_m2x = raw_services.get(M2X_SERVICE_NAME, {})
+    M2X_CONFIG = M2XConfig(
+        api_key=raw_m2x.get(M2X_API_KEY),
+        device_id=raw_m2x.get(M2X_DEVICE_ID),
+        stream_id=raw_m2x.get(M2X_STREAM_ID)
+    ) if {M2X_API_KEY, M2X_DEVICE_ID, M2X_STREAM_ID} <= set(raw_m2x) else None
+
+    raw_sap = raw_services.get(SAP_SERVICE_NAME, {})
+    SAP_CONFIG = SapConfig(
+        mms_endpoint=raw_sap.get(SAP_MMS_ENDPOINT),
+        device_id=raw_sap.get(SAP_DEVICE_ID),
+        message_type_id=raw_sap.get(SAP_MESSAGE_TYPE_ID),
+        oauth_token=raw_sap.get(SAP_OAUTH_TOKEN)
+    ) if {SAP_MMS_ENDPOINT, SAP_OAUTH_TOKEN} <= set(raw_sap) else None
+
+    raw_mqtt = raw_services.get(MQTT_SERVICE_NAME, {})
+    MQTT_CONFIG = MqttConfig(
+        server=raw_mqtt.get(MQTT_SERVER),
+        port=raw_mqtt.get(MQTT_PORT, 1883),
+        client_id=raw_mqtt.get(MQTT_CLIENTID),
+        username=raw_mqtt.get(MQTT_USERNAME),
+        password=raw_mqtt.get(MQTT_PASSWORD),
+        cert=raw_mqtt.get(MQTT_CERT),
+        key=raw_mqtt.get(MQTT_KEY),
+        topic=raw_mqtt.get(MQTT_TOPIC)
+    ) if {MQTT_SERVER, MQTT_CLIENTID, MQTT_TOPIC} <= set(raw_mqtt) else None

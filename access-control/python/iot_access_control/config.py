@@ -56,7 +56,7 @@ M2X_API_KEY = "api_key"
 M2X_DEVICE_ID = "device_id"
 M2X_STREAM_ID = "stream_id"
 
-PredixConfig = namedtuple("Predix", "uaa_client_id uaa_client_secret uaa_url timeseries_zone_id timeseries_ingest_url")
+PredixConfig = namedtuple("PredixConfig", "uaa_client_id uaa_client_secret uaa_url timeseries_zone_id timeseries_ingest_url")
 
 PREDIX_SERVICE_NAME = "predix"
 PREDIX_UAA_CLIENT_ID = "uaa_client_id"
@@ -64,6 +64,14 @@ PREDIX_UAA_CLIENT_SECRET = "uaa_client_secret"
 PREDIX_UAA_URL = "uaa_url"
 PREDIX_TIMESERIES_ZONE_ID = "timeseries_zone_id"
 PREDIX_TIMESERIES_INGEST_URL = "timeseries_ingest_url"
+
+SapConfig = namedtuple("SapConfig", "mms_endpoint device_id message_type_id oauth_token")
+
+SAP_SERVICE_NAME = "sap"
+SAP_MMS_ENDPOINT = "mms_endpoint"
+SAP_DEVICE_ID = "device_id"
+SAP_MESSAGE_TYPE_ID = "message_type_id"
+SAP_OAUTH_TOKEN = "oauth_token"
 
 MqttConfig = namedtuple("MqttConfig", "server port client_id username password cert key topic")
 
@@ -130,6 +138,14 @@ with resource_stream(RESOURCE_PACKAGE, RESOURCE_PATH) as data:
         device_id=raw_m2x.get(M2X_DEVICE_ID),
         stream_id=raw_m2x.get(M2X_STREAM_ID)
     ) if {M2X_API_KEY, M2X_DEVICE_ID, M2X_STREAM_ID} <= set(raw_m2x) else None
+
+    raw_sap = raw_services.get(SAP_SERVICE_NAME, {})
+    SAP_CONFIG = SapConfig(
+        mms_endpoint=raw_sap.get(SAP_MMS_ENDPOINT),
+        device_id=raw_sap.get(SAP_DEVICE_ID),
+        message_type_id=raw_sap.get(SAP_MESSAGE_TYPE_ID),
+        oauth_token=raw_sap.get(SAP_OAUTH_TOKEN)
+    ) if {SAP_MMS_ENDPOINT, SAP_OAUTH_TOKEN} <= set(raw_sap) else None
 
     raw_mqtt = raw_services.get(MQTT_SERVICE_NAME, {})
     MQTT_CONFIG = MqttConfig(
