@@ -20,7 +20,8 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function, division
-from os import environ
+from os import environ, _exit
+from signal import signal, SIGINT
 from twisted.internet import reactor
 from certifi import where as locate_trust_store
 from .runner import Runner
@@ -38,7 +39,13 @@ def main():
     print("Running {0} example.".format(runner.project_name))
     runner.start()
 
-    reactor.run()
+    def signal_handle(sig, frame):
+        reactor.stop()
+        _exit(0)
+    
+    signal(SIGINT, signal_handle)
+
+    reactor.run(installSignalHandlers=0)
 
 if __name__ == "__main__":
     main()
