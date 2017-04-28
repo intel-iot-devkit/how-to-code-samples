@@ -41,6 +41,11 @@ function servicesInit(config) {
             transports.push(predix);
         }
 
+        if (config.services.sap) {
+            const sap = require('./transports/sap');
+            transports.push(sap);
+        }
+
         if (config.services.mqtt) {
             const mqtt = require('./transports/mqtt');
             transports.push(mqtt);
