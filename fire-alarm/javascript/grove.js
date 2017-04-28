@@ -50,7 +50,7 @@ exports.init = function(config) {
 
   temp = new (require("jsupm_grove").GroveTemp)(tempPin),
   buzzer = new (require("jsupm_buzzer").Buzzer)(buzzerPin),
-  screen = new (require("jsupm_i2clcd").Jhd1313m1)(i2cBus, 0x3E, 0x62);
+  screen = new (require("jsupm_jhd1313m1").Jhd1313m1)(i2cBus, 0x3E, 0x62);
 }
 
 // Colors used for the RGB LED

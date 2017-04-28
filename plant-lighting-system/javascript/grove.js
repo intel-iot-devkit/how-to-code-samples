@@ -48,7 +48,7 @@ exports.init = function(config) {
 
   light = new (require("jsupm_grove").GroveLight)(lightPin);
   moisture = new (require("jsupm_grovemoisture").GroveMoisture)(moisturePin);
-  screen = new (require("jsupm_i2clcd").Jhd1313m1)(i2cBus, 0x3E, 0x62);
+  screen = new (require("jsupm_jhd1313m1").Jhd1313m1)(i2cBus, 0x3E, 0x62);
 }
 
 // Displays a message on the RGB LED

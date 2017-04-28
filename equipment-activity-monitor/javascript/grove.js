@@ -49,7 +49,7 @@ exports.init = function(config) {
 
   sound = new mic.Microphone(soundPin),
   vibration = new (require("jsupm_ldt0028").LDT0028)(vibrationPin),
-  screen = new (require("jsupm_i2clcd").Jhd1313m1)(i2cBus, 0x3E, 0x62);
+  screen = new (require("jsupm_jhd1313m1").Jhd1313m1)(i2cBus, 0x3E, 0x62);
 
   ctx = new mic.thresholdContext();
   ctx.averageReading = 0;
