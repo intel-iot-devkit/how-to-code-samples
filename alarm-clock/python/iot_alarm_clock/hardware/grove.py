@@ -21,7 +21,7 @@
 
 from __future__ import print_function
 from math import floor
-from upm.pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_jhd1313m1 import Jhd1313m1
 from upm.pyupm_button import Button
 from upm.pyupm_rotary import Rotary
 from mraa import Gpio, DIR_OUT, addSubplatform, GENERIC_FIRMATA

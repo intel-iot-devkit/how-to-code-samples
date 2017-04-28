@@ -20,7 +20,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-from upm.pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_jhd1313m1 import Jhd1313m1
 from upm.pyupm_biss0001 import BISS0001
 from mraa import addSubplatform, GENERIC_FIRMATA
 from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS

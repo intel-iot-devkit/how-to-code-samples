@@ -21,7 +21,7 @@
 
 from __future__ import print_function
 from time import sleep
-from upm.pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_jhd1313m1 import Jhd1313m1
 from upm.pyupm_wfs import WFS
 from upm.pyupm_moisture import Moisture
 from mraa import Gpio, DIR_OUT, addSubplatform, GENERIC_FIRMATA
