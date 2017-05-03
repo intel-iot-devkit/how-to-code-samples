@@ -8,8 +8,8 @@ From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Set up a web application server to control a robot arm using a web page served directly from the Intel® Edison board or Intel® IoT Gateway.
-- Store the Line Following Robot data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services\* (AWS), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T\* M2X\*, GE\* Predix\*, or SAP\* Cloud Platform IoT, different cloud-based IoT platforms for machine to machine communication.
+- Store the Line Following Robot data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or Elasticache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T M2X\*, Predix\* from GE, or SAP Cloud Platform\* IoT, different cloud-based IoT platforms for machine to machine communication.
 
 ## What it is
 
@@ -23,35 +23,35 @@ Using an Intel® Edison board or Intel® IoT Gateway, this project lets you crea
 
 The line finder robot uses the two attached motors to attempt to follow a line, keeping track of it with the line finder sensor. If on the line, it moves forward. Otherwise, it pivots in place, trying to locate it using the line finder sensor.
 
-Optionally, data can be stored using your own Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* account.
+Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
 ## Hardware requirements
 
-Grove* Robotics Kit containing:
+Grove\* Robotics Kit containing:
 
-1. Intel® Edison with an Arduino-compatible breakout board or Intel® IoT Gateway with Intel® Arduino 101
+1. Intel® Edison module with an Arduino\* compatible breakout board or Intel® IoT Gateway with Arduino 101
 2. [Grove Line Finder](http://iotdk.Intel®.com/docs/master/upm/node/classes/grovelinefinder.html)
 3. [Stepper Motor Controller & Stepper Motor](http://iotdk.Intel®.com/docs/master/upm/node/classes/uln200xa.html) (x2)
 
 ## Software requirements
 
-1. Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* account (optional)
+1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 ### Connecting the Grove\* sensors
 
 ![](./../../images/js/line-follower.jpg)
 
-You need to have a Grove* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
 You need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
 In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® Edison board and the motors, so you need either 2 batteries or 2 power supplies in total.
 
-1. Plug each of the stepper motor controllers into four pins on the Arduino* breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino* breakout board (VCC), and to the separate 5V power for the motors (VM).
+1. Plug each of the stepper motor controllers into four pins on the Arduino\* breakout board for it to be able to be controlled. Connect stepper motor controller #1 to pins 4, 5, 6, and 7. Connect stepper motor controller #2 to pins 9, 10, 11, and 12. Connect both controllers to ground (GND), to the 5V power coming from the Arduino\* breakout board (VCC), and to the separate 5V power for the motors (VM).
 
-2. Plug one end of a Grove* cable into the Grove* Line Finder, and connect the other end to the D2 port on the Grove* Shield.
+2. Plug one end of a Grove\* cable into the Grove* Line Finder, and connect the other end to the D2 port on the Grove* Shield.
 
-### Manual Intel® Edison setup
+### Manual Intel® Edison board setup
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies by establishing an SSH session to the board running the following commands.
 
@@ -65,7 +65,7 @@ Run the following commands to update to the latest version of Python's package i
 
     $ pip install --upgrade pip setuptools
 
-Run the following to update to the latest versions of the Intel MRAA and UPM libaries:
+Run the following to update to the latest versions of the Intel® MRAA and UPM libaries:
 
     $ echo "src mraa-upm http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586" > /etc/opkg/mraa-upm.conf
     $ opkg update
@@ -101,7 +101,7 @@ You will also need to configure the `config.json` in the example to use the Ardu
 
 ### IoT cloud setup
 
-You can optionally store the data generated by this sample program using cloud-based IoT platforms from Microsoft\* Azure\*, IBM\* Bluemix*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\*.
+You can optionally store the data generated by this sample program using cloud-based IoT platforms from Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\*.
 
 For information on how to connect to your own cloud server, go to:
 
@@ -119,7 +119,7 @@ For information on how to set up your own cloud data server, go to:
 
 When the example is installed through `pip` the `config.json` file that holds the configuration for the example lives in `~/python/examples/iot_line_following_robot/line-following-robot/python/iot_line_following_robot/config.json`.
 
-To configure the example for the Arduino 101\*, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino 101, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
 
 ```JSON
 {
@@ -138,7 +138,7 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
 }
 ```
 
-For information on how to configure the example for an optional Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* IoT cloud server, go to:
+For information on how to configure the example for an optional Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* IoT cloud server, go to:
 
 [https://github.com/intel-iot-devkit/iot-samples-cloud-setup](https://github.com/intel-iot-devkit/iot-samples-cloud-setup)
 
@@ -148,7 +148,7 @@ Once the example is installed through `pip` you can run the program by running t
 
     $ python -m iot_line_following_robot
 
-### Determining the Intel® Edison board's IP address
+### Determining the Intel® Edison board IP address
 
 You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
