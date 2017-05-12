@@ -21,7 +21,7 @@
 
 from __future__ import print_function
 from upm.pyupm_button import Button
-from upm.pyupm_i2clcd import SAINSMARTKS
+from upm.pyupm_lcdks import LCDKS
 from mraa import Gpio, DIR_OUT, addSubplatform, GENERIC_FIRMATA
 from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
 from .board import Board, PinMappings
@@ -54,7 +54,7 @@ class DfrobotBoard(Board):
             addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
             self.pin_mappings += 512
 
-        self.screen = SAINSMARTKS(
+        self.screen = LCDKS(
             self.pin_mappings.screen_register_select_pin,
             self.pin_mappings.screen_enable_pin,
             self.pin_mappings.screen_data_0_pin,

@@ -1,4 +1,4 @@
-# Copyright (c) 2015 - 2017 Intel Corporation.
+# Copyright (c) 2015 - 2016 Intel Corporation.
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -21,11 +21,11 @@
 
 from __future__ import print_function
 from logging import basicConfig, ERROR
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.twisted import TwistedScheduler
 
 basicConfig(level=ERROR)
 
-SCHEDULER = BackgroundScheduler()
+SCHEDULER = TwistedScheduler()
 
 SCHEDULER.start()
 

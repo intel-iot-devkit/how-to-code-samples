@@ -21,7 +21,7 @@
 
 from __future__ import print_function
 from collections import namedtuple
-from upm.pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_jhd1313m1 import Jhd1313m1
 from upm.pyupm_uln200xa import ULN200XA, ULN200XA_DIR_CW as DIR_CW, ULN200XA_DIR_CCW as DIR_CCW
 from upm.pyupm_joystick12 import Joystick12
 from mraa import addSubplatform, GENERIC_FIRMATA

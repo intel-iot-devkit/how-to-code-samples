@@ -8,8 +8,8 @@ From this exercise, developers will learn how to:<br>
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
 - Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Set up a web application server to let users store alarm data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, or IoT from Amazon Web Services (AWS)\*, different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Set up a web application server to let users store alarm data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or Elasticache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T M2X\*, Predix\* from GE, or SAP Cloud Platform\* IoT, different cloud-based IoT platforms for machine to machine communication.
 
 ## What it is
 
@@ -26,7 +26,7 @@ If both exceed a defined threshold, it lights up the display to indicate the equ
 
 Once the equipment is no longer used, it clears the display.
 
-Optionally, equipment usage start/stop events can also be stored using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft Azure\*, IBM Bluemix\*, or AWS\* account.
+Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
 ## Hardware requirements
 
@@ -34,7 +34,7 @@ This sample can be used with either the Grove\* Transportation and Safety Kit fr
 
 Grove\* Starter Kit Plus, containing:
 
-1. Intel® Edison board with an Arduino-compatible breakout board or Intel® IoT Gateway with Arduino 101
+1. Intel® Edison board with an Arduino\* compatible breakout board or Intel® IoT Gateway with Arduino 101
 2. [Grove\* Sound Sensor](http://www.seeedstudio.com/depot/Grove-Sound-Sensor-p-752.html)
 3. [Grove\* Piezo Vibration Sensor](http://www.seeedstudio.com/depot/Grove-Piezo-Vibration-Sensor-p-1411.html)
 4. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
@@ -48,7 +48,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ## Software requirements
 
-1. Microsoft Azure\*, IBM Bluemix\*, or AWS\* account (optional)
+1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 ### How to set up
 
@@ -76,7 +76,7 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 ![](./../../images/js/equipment-activity.jpg)
 
-You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
 1. Plug one end of a Grove\* cable into the Grove\* Sound Sensor, and connect the other end to the A0 port on the Grove\* Shield.
 
@@ -96,7 +96,7 @@ You need to have a LCD Keypad Shield connected to an Arduino\* compatible breako
 
 ### Intel® Edison board setup
 
-If you're running this code on your Intel® Edison board, you need to install some dependencies by establishing an SSH session to the Edison and run the commands in the sections below.
+If you're running this code on your Intel® Edison board, you need to install some dependencies by establishing an SSH session to the Intel® Edison board and run the commands in the sections below.
 
 #### Update the opkg repo
 
@@ -128,7 +128,6 @@ To install the Python\* package manager needed to install and run the example:
 
     $ pip install --upgrade pip setuptools
 
-
 #### Install the example
 
 Once all dependencies are installed you can install the example itself with the following command:
@@ -149,6 +148,14 @@ The Arduino 101 needs to have the Firmata\* firmware installed. If you have IMRA
 
 You will also need to configure the `config.json` in the example to use the Arduino 101. See the section "Configuring the example" below.
 
+### IoT cloud setup
+
+You can optionally store the data generated by this sample program using cloud-based IoT platforms from Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\*.
+
+For information on how to connect to your own cloud server, go to:
+
+[https://github.com/intel-iot-devkit/iot-samples-cloud-setup](https://github.com/intel-iot-devkit/iot-samples-cloud-setup)
+
 ### Data store server setup
 
 Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS\*, along with Node.js\*, and a Redis\* data store.
@@ -156,14 +163,6 @@ Optionally, you can store the data generated by this sample program in a back-en
 For information on how to set up your own cloud data server, go to:
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-datastore](https://github.com/intel-iot-devkit/intel-iot-examples-datastore)
-
-### MQTT server setup
-
-You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft Azure\*, IBM Bluemix\*, or AWS\*.
-
-For information on how to connect to your own cloud MQTT messaging server, go to:
-
-[https://github.com/intel-iot-devkit/intel-iot-examples-mqtt](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt)
 
 ## Configuring the example
 
@@ -201,9 +200,9 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
 }
 ```
 
-For information on how to configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS\* MQTT messaging server, go to:
+For information on how to configure the example for an optional Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* IoT cloud server, go to:
 
-[https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
+[https://github.com/intel-iot-devkit/iot-samples-cloud-setup](https://github.com/intel-iot-devkit/iot-samples-cloud-setup)
 
 ## Running the program manually
 

@@ -21,7 +21,7 @@
 
 from __future__ import print_function
 from upm.pyupm_ttp223 import TTP223
-from upm.pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_jhd1313m1 import Jhd1313m1
 from mraa import Gpio, DIR_OUT, addSubplatform, GENERIC_FIRMATA
 from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
 from .board import Board, PinMappings

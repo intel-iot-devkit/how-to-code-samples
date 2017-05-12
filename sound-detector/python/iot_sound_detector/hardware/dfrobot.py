@@ -20,7 +20,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-from upm.pyupm_i2clcd import SAINSMARTKS
+from upm.pyupm_lcdks import LCDKS
 from upm.pyupm_loudness import Loudness
 from mraa import addSubplatform, GENERIC_FIRMATA
 from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
@@ -53,7 +53,7 @@ class DfrobotBoard(Board):
             addSubplatform(GENERIC_FIRMATA, "/dev/ttyACM0")
             self.pin_mappings += 512
 
-        self.screen = SAINSMARTKS(
+        self.screen = LCDKS(
             self.pin_mappings.screen_register_select_pin,
             self.pin_mappings.screen_enable_pin,
             self.pin_mappings.screen_data_0_pin,

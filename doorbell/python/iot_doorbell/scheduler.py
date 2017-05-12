@@ -21,11 +21,11 @@
 
 from __future__ import print_function
 from logging import basicConfig, ERROR
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.twisted import TwistedScheduler
 
 basicConfig(level=ERROR)
 
-SCHEDULER = BackgroundScheduler()
+SCHEDULER = TwistedScheduler()
 
 SCHEDULER.start()
 

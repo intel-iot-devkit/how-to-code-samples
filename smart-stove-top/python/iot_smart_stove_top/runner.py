@@ -24,6 +24,7 @@ from datetime import datetime, timedelta
 from importlib import import_module
 from pkg_resources import resource_filename
 from bottle import Bottle, static_file, request
+from twisted.internet import reactor
 from .hardware.events import TEMP_READING, FLAME_DETECTED
 from .config import HARDWARE_CONFIG, APP_CONFIG
 from .log import log
@@ -64,10 +65,10 @@ class Runner(object):
         Start runner.
         """
 
-        self.server.run(
+        reactor.callInThread(lambda: self.server.run(
             host="0.0.0.0",
             port=3000
-        )
+        ))
 
     # hardware methods
 

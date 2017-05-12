@@ -21,7 +21,7 @@
 
 from __future__ import print_function
 from time import sleep
-from upm.pyupm_i2clcd import Jhd1313m1
+from upm.pyupm_jhd1313m1 import Jhd1313m1
 from upm.pyupm_ldt0028 import LDT0028
 from upm.pyupm_mic import Microphone, thresholdContext, uint16Array
 from mraa import addSubplatform, GENERIC_FIRMATA

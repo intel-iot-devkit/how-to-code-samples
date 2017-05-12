@@ -25,6 +25,7 @@ from collections import namedtuple
 from datetime import datetime, timedelta
 from pkg_resources import Requirement, resource_filename
 from bottle import Bottle, static_file, request, HTTPResponse
+from twisted.internet import reactor
 from .config import HARDWARE_CONFIG, APP_CONFIG
 from .hardware.events import MOTION_DETECTED
 from .scheduler import SCHEDULER, ms
@@ -103,10 +104,10 @@ class Runner(object):
         Start runner.
         """
 
-        self.server.run(
+        reactor.callInThread(lambda: self.server.run(
             host="0.0.0.0",
             port=3000
-        )
+        ))
 
     def serve_index(self):
 

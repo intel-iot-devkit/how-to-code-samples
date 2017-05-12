@@ -1,4 +1,4 @@
-# Copyright (c) 2015 - 2017 Intel Corporation.
+# Copyright (c) 2015 - 2016 Intel Corporation.
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -20,10 +20,14 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function, division
-from time import sleep
-from signal import SIGINT, signal
-from atexit import register as register_exit
+from os import environ, _exit
+from signal import signal, SIGINT
+from twisted.internet import reactor
+from certifi import where as locate_trust_store
 from .runner import Runner
+
+# OPENSSL workaround to bootstrap certificate trust store
+environ["SSL_CERT_FILE"] = locate_trust_store()
 
 def main():
 
@@ -31,25 +35,17 @@ def main():
     Start main function.
     """
 
-    def signal_handler(signum, frame):
-        raise SystemExit
-
-    def exit_handler():
-        print("exiting.")
-        exit(0)
-
-    register_exit(exit_handler)
-    signal(SIGINT, signal_handler)
-
     runner = Runner()
     print("Running {0} example.".format(runner.project_name))
     runner.start()
 
-    try:
-        signal.pause()
-    except AttributeError:
-        while True:
-            sleep(0.5)
+    def signal_handle(sig, frame):
+        reactor.stop()
+        _exit(0)
+    
+    signal(SIGINT, signal_handle)
+
+    reactor.run(installSignalHandlers=0)
 
 if __name__ == "__main__":
     main()

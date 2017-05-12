@@ -34,6 +34,12 @@ setup(
         "requests",
         "paho-mqtt",
         "simplejson",
-        "pynmea2"
+        "pynmea2",
+        "twisted",
+        "pyopenssl",
+        "service_identity",
+        "idna",
+        "autobahn",
+        "certifi"
     ]
 )

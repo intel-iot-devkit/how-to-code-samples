@@ -35,6 +35,12 @@ setup(
         "paho-mqtt",
         "simplejson",
         "bottle",
-        "arrow"
+        "arrow",
+        "twisted",
+        "pyopenssl",
+        "service_identity",
+        "idna",
+        "autobahn",
+        "certifi"
     ]
 )

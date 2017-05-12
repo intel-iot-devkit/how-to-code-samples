@@ -20,7 +20,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 from __future__ import print_function
-from upm.pyupm_i2clcd import SAINSMARTKS
+from upm.pyupm_lcdks import LCDKS
 from upm.pyupm_biss0001 import BISS0001
 from mraa import addSubplatform, GENERIC_FIRMATA
 from ..config import HARDWARE_CONFIG, KNOWN_PLATFORMS
@@ -55,7 +55,7 @@ class DfrobotBoard(Board):
 
         self.motion = BISS0001(self.pin_mappings.motion_pin)
 
-        self.screen = SAINSMARTKS(
+        self.screen = LCDKS(
             self.pin_mappings.screen_register_select_pin,
             self.pin_mappings.screen_enable_pin,
             self.pin_mappings.screen_data_0_pin,
