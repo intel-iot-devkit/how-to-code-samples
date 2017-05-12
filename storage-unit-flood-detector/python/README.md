@@ -6,9 +6,9 @@ This Storage Unit Flood Detector application is part of a series of how-to Inter
 
 From this exercise, developers will learn how to:<br>
 - Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing solutions.<br>
-- Interface with the Intel® Edison platform IO and sensor repository using MRAA\* and UPM\* from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore IoT and implement innovative projects.<br>
-- Store the Storage Unit Flood Detector data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or ElastiCache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T\* M2X\*, GE\* Predix\*, or SAP\* Cloud Platform IoT, different cloud-based IoT platforms for machine to machine communication.
+- Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore IoT and implement innovative projects.<br>
+- Store the Storage Unit Flood Detector data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or Elasticache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T M2X\*, Predix\* from GE, or SAP Cloud Platform\* IoT, different cloud-based IoT platforms for machine to machine communication.
 
 ## What it is
 
@@ -23,7 +23,7 @@ This Storage Unit Flood Detector uses the moisture sensor to constantly ensure t
 
 If the moisture level exceeds a defined threshold, the detector makes a sound to indicate a warning.
 
-Optionally, data can be stored using your own Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* account.
+Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
 ## Hardware requirements
 
@@ -31,20 +31,20 @@ This sample can be used with either the Grove\* Home Automation Kit from Seeed S
 
 Grove\* Home Automation Kit, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with an Arduino 101\* (branded Genuino 101\* outside the U.S.)
+1. Intel® Edison module with an Arduino\* breakout board or Intel® IoT Gateway with an Arduino 101\* (branded Genuino 101\* outside the U.S.)
 2. [Grove\* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
 3. [Grove\* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with an Arduino 101\*
+1. Intel® Edison module with an Arduino\* breakout board or Intel® IoT Gateway with an Arduino 101
 2. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599)
 3. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84)
 4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
 ## Software requirements
 
-1. Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* account (optional)
+1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 ### How to set up
 
@@ -96,14 +96,14 @@ If you're running this code on your Intel® Edison board, you need to install so
 
 #### Update the opkg repo
 
-To add the Intel opkg repository:
+To add the Intel® opkg repository:
 
     $ echo "src mraa-upm http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586" > /etc/opkg/mraa-upm.conf
     $ opkg update
 
 You'll only need to perform this step once.
 
-#### Git
+#### Git\*
 
 To install Git\* on the Intel® Edison board (if you don’t have it yet):
 
@@ -112,13 +112,13 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet):
 
 #### MRAA and UPM Dependencies
 
-To install the latest versions of the MRAA\* and UPM\* libraries:
+To install the latest versions of the MRAA and UPM libraries:
 
     $ opkg update
     $ opkg install mraa
     $ opkg install upm
 
-#### Python Package Manager (pip)
+#### Python\* Package Manager (pip)
 
 To install the Python\* package manager needed to install and run the example:
 
@@ -134,19 +134,19 @@ The `pip` command will install required Python dependencies, save the source cod
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino 101\*.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101.
 
 Make sure your Intel® IoT Gateway is setup, by following the directions on the web site here:
 
 https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iotdk
 
-The Arduino 101\* needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino 101\*.
+The Arduino 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino 101.
 
-You will also need to configure the `config.json` in the example to use the Arduino 101\*. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino 101. See the section "Configuring the example" below.
 
 ### IoT cloud setup
 
-You can optionally store the data generated by this sample program using cloud-based IoT platforms from Microsoft\* Azure\*, IBM\* Bluemix*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\*.
+You can optionally store the data generated by this sample program using cloud-based IoT platforms from Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\*.
 
 For information on how to connect to your own cloud server, go to:
 
@@ -172,7 +172,7 @@ To configure the example for the Grove\* kit, just leave the `kit` key in the `c
 }
 ```
 
-To configure the example for the Arduino 101\*, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino 101, add a `PLATFORM` key with the value `firmata` to the `config.json`, as follows:
 
 ```JSON
 {
@@ -191,7 +191,7 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
 }
 ```
 
-For information on how to configure the example for an optional Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* IoT cloud server, go to:
+For information on how to configure the example for an optional Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* IoT cloud server, go to:
 
 [https://github.com/intel-iot-devkit/iot-samples-cloud-setup](https://github.com/intel-iot-devkit/iot-samples-cloud-setup)
 
@@ -201,7 +201,7 @@ Once the example is installed through `pip` you can run the program by running t
 
     $ python -m iot_storage_unit_flood_detector
 
-### Determining the Intel® Edison board's IP address
+### Determining the Intel® Edison board IP address
 
 You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
