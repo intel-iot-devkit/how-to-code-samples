@@ -7,15 +7,16 @@ This smart alarm clock application is part of a series of how-to Internet of Thi
 From this exercise, developers will learn how to:<br>
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.)
+ board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® IoT Gateway.<br>
-- Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon\* Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T\* M2X\*, GE\* Predix\*, or SAP\* Cloud Platform IoT, different cloud-based IoT platforms for machine to machine communication.
+- Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or Elasticache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T M2X\*, Predix\* from GE, or SAP Cloud Platform\* IoT, different cloud-based IoT platforms for machine to machine communication.
 - Invoke the services of the Weather Underground\* API for accessing weather data.
 
 ## What it is
 
-Using an Intel® Edison or Intel® IoT Gateway, this project lets you create a smart alarm clock that:<br>
+Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a smart alarm clock that:<br>
 - can be accessed with your mobile phone via the built-in web interface to set the alarm time.<br>
 - displays live weather data on the LCD.<br>
 - keeps track of how long it takes you to wake up each morning, using cloud-based data storage.
@@ -24,9 +25,9 @@ Using an Intel® Edison or Intel® IoT Gateway, this project lets you create a s
 
 This smart alarm clock has a number of useful features. Set the alarm using a web page served directly from the Intel® Edison board or Intel® IoT Gateway using your mobile phone. When the alarm goes off, the buzzer sounds and the LCD indicates it’s time to get up. The rotary dial can be used to adjust the brightness of the display.
 
-In addition, the smart alarm clock can access daily weather data via the Weather Underground* API and use it to change the color of the LCD.
+In addition, the smart alarm clock can access daily weather data via the Weather Underground\* API and use it to change the color of the LCD.
 
-Optionally, data can be stored using your own Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* account.
+Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
 ## Hardware requirements
 
@@ -34,7 +35,7 @@ This sample can be used with either the Grove\* Starter Kit Plus from Seeed Stud
 
 Grove\* Starter Kit Plus, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison module with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
 2. [Grove\* Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/groverotary.html)
 3. [Grove\* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html).
 4. [Grove\* Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
@@ -42,7 +43,7 @@ Grove\* Starter Kit Plus, containing:
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison module with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
 2. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
 3. [Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
 4. [Rotary Dial]()
@@ -51,7 +52,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* account (optional)
+2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 3. Weather Underground\* API key (optional)
 
 ### How to set up
@@ -110,7 +111,7 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 ![](./../../images/js/alarm-clock.jpg)
 
-You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
+You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
 1. Plug one end of a Grove\* cable into the Grove\* Rotary Analog Sensor, and connect the other end to the A0 port on the Grove\* Shield.
 
@@ -124,7 +125,7 @@ You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout 
 
 ![](./../../images/js/alarm-clock-dfrobot.jpg)
 
-You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
+You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
 1. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the LCD Keypad Shield.
 
@@ -132,7 +133,7 @@ You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breako
 
 3. Plug one end of a DFRobot\* cable into the Rotary Analog Sensor, and connect the other end to the A3 port on the LCD Keypad Shield.
 
-### Manual Intel® Edison setup
+### Manual Intel® Edison board setup
 
 If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
 
@@ -144,7 +145,7 @@ npm install
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101.
 
 Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
 
@@ -152,9 +153,9 @@ https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iot
 
 You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
+The Arduino 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino 101.
 
-You will also need to configure the `config.json` in the example to use the Arduino\*/Genuino\* 101. See the section "Configuring the example" below.
+You will also need to configure the `config.json` in the example to use the Arduino 101. See the section "Configuring the example" below.
 
 ### Weather Underground\* API key
 
@@ -162,7 +163,7 @@ To optionally fetch the real-time weather information, you need to get an API ke
 
 <a href="http://www.wunderground.com/weather/api/">http://www.wunderground.com/weather/api</a>
 
-You cannot retrieve weather conditions without obtaining a Weather Underground* API key first. You can still run the example, but without the weather data.
+You cannot retrieve weather conditions without obtaining a Weather Underground\* API key first. You can still run the example, but without the weather data.
 
 Pass your Weather Underground\* API key to the sample program by modifying the `WEATHER_API_KEY` key in the `config.json` file as follows:
 
@@ -174,7 +175,7 @@ Pass your Weather Underground\* API key to the sample program by modifying the `
 
 ### IoT cloud setup
 
-You can optionally store the data generated by this sample program using cloud-based IoT platforms from Microsoft\* Azure\*, IBM\* Bluemix*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\*.
+You can optionally store the data generated by this sample program using cloud-based IoT platforms from Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\*.
 
 For information on how to connect to your own cloud server, go to:
 
@@ -182,7 +183,7 @@ For information on how to connect to your own cloud server, go to:
 
 ### Data store server setup
 
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
+Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
 
 For information on how to set up your own cloud data server, go to:
 
@@ -198,7 +199,7 @@ To configure the example for the Grove\* kit, just leave the `kit` key in the `c
 }
 ```
 
-To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
 
 ```
 {
@@ -217,7 +218,7 @@ To configure the example for the optional real-time weather data, obtain a key f
 }
 ```
 
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
@@ -227,7 +228,7 @@ To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, 
 }
 ```
 
-To configure the example for both the weather data, as well as either the Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `WEATHER_API_KEY`, `LOCATION`, `SERVER`, and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for both the weather data, as well as either the Microsoft Azure\*, IBM\ Bluemix\*, or AWS data store, change the `WEATHER_API_KEY`, `LOCATION`, `SERVER`, and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
@@ -239,7 +240,7 @@ To configure the example for both the weather data, as well as either the Micros
 }
 ```
 
-For information on how to configure the example for an optional Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* IoT cloud server, go to:
+For information on how to configure the example for an optional Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* IoT cloud server, go to:
 
 [https://github.com/intel-iot-devkit/iot-samples-cloud-setup](https://github.com/intel-iot-devkit/iot-samples-cloud-setup)
 
@@ -275,9 +276,9 @@ To run the example manually on the Intel® Edison board, establish an SSH connec
 
 The alarm is set using a single-page web interface served directly from the Intel® Edison board while the sample program is running.
 
-The web server runs on port `3000`, so if the Intel® Edison board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel® Edison board is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
-### Determining the Intel® Edison IP address
+### Determining the Intel® Edison board IP address
 
 You can determine what IP address the Intel® Edison board is connected to by running the following command:
 
