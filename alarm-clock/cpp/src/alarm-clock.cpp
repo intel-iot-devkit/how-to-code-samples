@@ -71,7 +71,7 @@ using namespace std;
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 #include "datastore.h"
-#include "mqtt.h"
+#include "services/services.h"
 
 // Is the alarm currently ringing?
 bool alarmRinging = false;
@@ -110,7 +110,7 @@ void log_wakeup() {
   stringstream text;
   text << "{\"value\": \"" << to_string(duration) << "\"}";
 
-  log_mqtt(text.str());
+  log_service(text.str());
   log_datastore(text.str());
 }
 

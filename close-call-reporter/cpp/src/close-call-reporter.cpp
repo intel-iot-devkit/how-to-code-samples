@@ -63,7 +63,7 @@
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 #include "datastore.h"
-#include "mqtt.h"
+#include "services/services.h"
 
 using namespace std;
 
@@ -86,7 +86,7 @@ void notify(string message, string location) {
   text << "\"" << location << "\"";
   text << "}";
 
-  log_mqtt(text.str());
+  log_service(text.str());
   log_datastore(text.str());
 }
 

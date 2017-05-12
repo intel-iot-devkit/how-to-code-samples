@@ -62,12 +62,12 @@ using namespace std;
 #endif
 
 #include "datastore.h"
-#include "mqtt.h"
+#include "services/services.h"
 
 Devices devices;
 
 // Call datastore/mqtt to increment the count of visitors who rang the doorbell
-void increment() {
+void increment_increment() {
   increment_datastore();
   increment_mqtt();
 }

@@ -66,7 +66,7 @@ using namespace std;
 #include "../lib/restclient-cpp/include/restclient-cpp/restclient.h"
 
 #include "datastore.h"
-#include "mqtt.h"
+#include "services/services.h"
 
 // Send notification to remote datastore
 void notify() {
@@ -78,7 +78,7 @@ void notify() {
   text << "{\"value\":";
   text << "\"" << mbstr << "\"}";
 
-  log_mqtt(text.str());
+  log_service(text.str());
   log_datastore(text.str());
 }
 
