@@ -40,12 +40,12 @@ exports.init = function(config) {
 
     temp = new mraa.Aio(3 + 512); // A3
     buzzer = new mraa.Gpio(16 + 512); // aka A2
-    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(520, 521, 516, 517, 518, 519, 512);
+    screen = new (require("jsupm_lcdks").LCDKS)(520, 521, 516, 517, 518, 519, 512);
     voltage = 0.33;
   } else {
     temp = new mraa.Aio(3); // A3
     buzzer = new mraa.Gpio(16); // aka A2
-    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
+    screen = new (require("jsupm_lcdks").LCDKS)(8, 9, 4, 5, 6, 7, 0);
     voltage = 1.0;
   }
 

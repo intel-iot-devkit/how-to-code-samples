@@ -47,7 +47,7 @@ if (config.kit) {
 board.init(config);
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 // Store record in the remote datastore when the air quality
 // level has exceeded the allowed threshold of safety
@@ -57,7 +57,7 @@ function sendAlert() {
 
   var payload = { value: msg };
   datastore.log(config, payload);
-  mqtt.log(config, payload);
+  services.log(config, payload);
 }
 
 // Alert user that the air quality level has exceeded

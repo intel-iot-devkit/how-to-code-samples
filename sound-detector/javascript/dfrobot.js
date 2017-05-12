@@ -39,10 +39,10 @@ exports.init = function(config) {
     mraa.addSubplatform(mraa.GENERIC_FIRMATA, "/dev/ttyACM0");
 
     sound = new mic.Microphone(3 + 512); // A3
-    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(520, 521, 516, 517, 518, 519, 512);
+    screen = new (require("jsupm_lcdks").LCDKS)(520, 521, 516, 517, 518, 519, 512);
   } else {
     sound = new mic.Microphone(3); // A3
-    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
+    screen = new (require("jsupm_lcdks").LCDKS)(8, 9, 4, 5, 6, 7, 0);
   }
 
   // Initialize the sound sensor

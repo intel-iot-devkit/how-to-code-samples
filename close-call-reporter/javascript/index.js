@@ -38,7 +38,7 @@ var config = JSON.parse(
 );
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 var LOCATION;
 
@@ -57,7 +57,7 @@ function report() {
   var payload = { value: new Date().toISOString() + " " + LOCATION };
 
   datastore.log(config, payload);
-  mqtt.log(config, payload);
+  services.log(config, payload);
 }
 
 // The main function checks the distance sensor every 1 second,

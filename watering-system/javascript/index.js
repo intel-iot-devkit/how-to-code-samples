@@ -38,7 +38,7 @@ var config = JSON.parse(
 );
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 // The program is using the `later` module
 // to handle scheduling of recurring tasks
@@ -94,7 +94,7 @@ function log(event) {
   var payload = { value: event + " " + new Date().toISOString() };
 
   datastore.log(config, payload);
-  mqtt.log(config, payload);
+  services.log(config, payload);
 }
 
 // Generates a later schedule for when the water should be turned on

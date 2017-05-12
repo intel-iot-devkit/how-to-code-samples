@@ -45,7 +45,7 @@ exports.init = function(config) {
   }
 
   accel = new accelerometer.MMA7660(i2cBus, 0x4c),
-  screen = new (require("jsupm_i2clcd").Jhd1313m1)(i2cBus, 0x3E, 0x62);
+  screen = new (require("jsupm_jhd1313m1").Jhd1313m1)(i2cBus, 0x3E, 0x62);
 
   // Initialize the accelerometer to enable 64 samples per second
   accel.setModeStandby();

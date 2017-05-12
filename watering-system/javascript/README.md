@@ -7,10 +7,10 @@ This automatic watering system application is part of a series of how-to Interne
 From this exercise, developers will learn how to:<br>
 
 - Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison board or Intel® Arduino/Genuino 101 board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® IoT Gateway.<br>
-- Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache\* from Microsoft\* Azure\*, Redis Store\* from IBM\* Bluemix\*, or ElastiCache\* using Redis\* from Amazon\* Web Services\* (AWS\*), different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Set up a MQTT-based server using IoT Hub from Microsoft\* Azure\*, IoT from IBM\* Bluemix\*, or IoT from Amazon Web Services\* (AWS), different cloud machine to machine messaging services based on the industry standard MQTT protocol.
+- Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or Elasticache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
+- Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T M2X\*, Predix\* from GE, or SAP Cloud Platform\* IoT, different cloud-based IoT platforms for machine to machine communication.
 - Invoke the services of the Twilio\* API for sending text messages.
 
 ## What it is
@@ -24,13 +24,13 @@ Using an Intel® Edison board or Intel® IoT Gateway, this project lets you crea
 
 ## How it works
 
-This watering system allows you to set the watering schedule via a web page served directly from an Intel® Edison or an Intel® IoT Gateway, by using your mobile phone.
+This watering system allows you to set the watering schedule via a web page served directly from an Intel® Edison board or an Intel® IoT Gateway, by using your mobile phone.
 
 It automatically checks moisture sensor data at periodic intervals, and displays this data on the web page.
 
 If the water pump is supposed to be on but the water flow sensor does not detect that the pumping is talking place as expected, it sends a text message to a specified number through Twilio\* so the watering system can be repaired.
 
-Optionally, it can also log watering system events using the Intel® IoT Examples Datastore or an MQTT server running in your own Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account.
+Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
 ## Hardware requirements
 
@@ -38,7 +38,7 @@ This sample can be used with either the Grove\* Environment & Agriculture Kit fr
 
 Grove\* Environment & Agriculture Kit, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison module with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
 2. [Grove\* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
 3. [Water Pump](http://www.seeedstudio.com/depot/6V-Mini-Water-Pump-p-1945.html)
 4. [Water Flow Sensor](http://www.seeedstudio.com/depot/G18-Water-Flow-Sensor-p-1346.html)
@@ -46,7 +46,7 @@ Grove\* Environment & Agriculture Kit, containing:
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino/Genuino 101
+1. Intel® Edison module with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
 2. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599)
 3. [Immersible Pump & Water Tube](http://www.dfrobot.com/index.php?route=product/product&keyword=water pump&product_id=667)
 4. [Relay Module](http://www.dfrobot.com/index.php?route=product/product&product_id=64)
@@ -55,7 +55,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 ## Software requirements
 
 1. Intel® XDK IoT Edition
-2. Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS account (optional)
+2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, GE Predix\*, or SAP\* account (optional)
 3. Twilio\* account (optional)
 
 ### How to set up
@@ -139,7 +139,7 @@ You need to use the Grove\* Dry-Reed Relay board to connect the water pump.
 
 ![](./../../images/js/watering-dfrobot.jpg)
 
-You need to have a I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the I/O Expansion Shield.
+You need to have a I/O Expansion Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the I/O Expansion Shield.
 
 In addition, you need a breadboard and an extra 5V power supply to provide power to the pump. Note: you need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel® Edison board and the pump.
 
@@ -155,11 +155,11 @@ You need to use the Relay Module to connect the water pump.
 
 5. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A3 port on the I/O Expansion Shield.
 
-### Manual Intel® Edison setup
+### Manual Intel® Edison board setup
 
-If you're running this code on your Intel® Edison manually, you need to install some dependencies.
+If you're running this code on your Intel® Edison board manually, you need to install some dependencies.
 
-To obtain the Node.js\* modules needed for this example to execute on Intel® Edison, run the following command:
+To obtain the Node.js\* modules needed for this example to execute on Intel® Edison board, run the following command:
 
 ```
 npm install
@@ -167,7 +167,7 @@ npm install
 
 ### Intel® IoT Gateway setup
 
-You can run this example using an Intel® IoT Gateway connected to an Arduino\*/Genuino\* 101.
+You can run this example using an Intel® IoT Gateway connected to an Arduino 101.
 
 Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
 
@@ -175,7 +175,7 @@ https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iot
 
 You must install the Intel® XDK on the Intel® IoT Gateway, by following the directions on the above link, under the section "Connecting to the Intel® XDK".
 
-The Arduino\*/Genuino\* 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino\*/Genuino\* 101.
+The Arduino 101 needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manully on to your Arduino 101.
 
 You will also need to configure the `config.json` in the example to use the Arduino*/Genuino* 101. See the section "Configuring the example" below.
 
@@ -196,21 +196,21 @@ Pass your Twilio\* API key and authentication token to the sample program by mod
 }
 ```
 
+### IoT cloud setup
+
+You can optionally store the data generated by this sample program using cloud-based IoT platforms from Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\*.
+
+For information on how to connect to your own cloud server, go to:
+
+[https://github.com/intel-iot-devkit/iot-samples-cloud-setup](https://github.com/intel-iot-devkit/iot-samples-cloud-setup)
+
 ### Data store server setup
 
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
+Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS, along with Node.js\*, and a Redis\* data store.
 
 For information on how to set up your own cloud data server, go to:
 
 [https://github.com/intel-iot-devkit/intel-iot-examples-datastore](https://github.com/intel-iot-devkit/intel-iot-examples-datastore)
-
-### MQTT server setup
-
-You can also optionally store the data generated by this sample program using MQTT, a machine-to-machine messaging server. You can use MQTT to connect to Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS.
-
-For information on how to connect to your own cloud MQTT messaging server, go to:
-
-[https://github.com/intel-iot-devkit/intel-iot-examples-mqtt](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt)
 
 ## Configuring the example
 
@@ -222,7 +222,7 @@ To configure the example for the Grove\* kit, just leave the `kit` key in the `c
 }
 ```
 
-To configure the example for the Arduino\*/Genuino\* 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
+To configure the example for the Arduino 101, add a `platform` key with the value `firmata` to the `config.json`, as follows:
 
 ```
 {
@@ -241,7 +241,7 @@ To configure the example for sending optional text messages, obtain an API key f
 }
 ```
 
-To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS data store, change the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
@@ -251,7 +251,7 @@ To configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, 
 }
 ```
 
-To configure the example for both the text messages and the Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS data store, change the `TWILIO_ACCT_SID`, `TWILIO_AUTH_TOKEN`, `SERVER`, and `AUTH_TOKEN` keys in the `config.json` file as follows:
+To configure the example for both the text messages and the Microsoft Azure\*, IBM Bluemix\*, or AWS data store, change the `TWILIO_ACCT_SID`, `TWILIO_AUTH_TOKEN`, `SERVER`, and `AUTH_TOKEN` keys in the `config.json` file as follows:
 
 ```
 {
@@ -263,9 +263,9 @@ To configure the example for both the text messages and the Microsoft\* Azure\*,
 }
 ```
 
-For information on how to configure the example for the optional Microsoft\* Azure\*, IBM\* Bluemix\*, or AWS MQTT messaging server, go to:
+For information on how to configure the example for an optional Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* IoT cloud server, go to:
 
-[https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/](https://github.com/intel-iot-devkit/intel-iot-examples-mqtt/)
+[https://github.com/intel-iot-devkit/iot-samples-cloud-setup](https://github.com/intel-iot-devkit/iot-samples-cloud-setup)
 
 ## Running the program using Intel® XDK IoT Edition
 
@@ -277,11 +277,11 @@ Click the **Upload** icon to upload the files to the Intel® Edison board.
 
 ![](./../../images/js/xdk-run.png)
 
-Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the code on Intel® Edison.
+Click the **Run** icon at the bottom of Intel® XDK IoT Edition. This runs the code on Intel® Edison board.
 
 ![](./../../images/js/xdk-upload-run.png)
 
-If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison.
+If you made changes to the code, click **Upload and Run**. This runs the latest code with your changes on Intel® Edison board.
 
 ![](./../../images/js/watering-system-output.png)
 
@@ -297,13 +297,13 @@ To run the example manually on Intel® Edison, establish an SSH connection to th
 
 ![](./../../images/js/watering-system-web.png)
 
-The schedule for the watering system is set using a single-page web interface served from Intel® Edison while the sample program is running.
+The schedule for the watering system is set using a single-page web interface served from the Intel® Edison board while the sample program is running.
 
-The web server runs on port `3000`, so if Intel® Edison is connected to WiFi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if Intel® Edison board is connected to WiFi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
-### Determining the Intel® Edison IP address
+### Determining the Intel® Edison board IP address
 
-You can determine what IP address Intel® Edison is connected to by running the following command:
+You can determine what IP address Intel® Edison board is connected to by running the following command:
 
     ip addr show | grep wlan
 

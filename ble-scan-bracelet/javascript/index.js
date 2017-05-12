@@ -49,7 +49,7 @@ var config = JSON.parse(
 var noble = require("noble");
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 // Initialize the hardware device
 var screen = new (require("jsupm_i2clcd").SSD1308)(0, 0x3C);
@@ -71,7 +71,7 @@ function log(name, state) {
 
   var payload = { value: name + " " + state + " " + new Date().toISOString() };
   datastore.log(config, payload);
-  mqtt.log(config, payload);
+  services.log(config, payload);
 }
 
 // Check to see if any devices that we could previously

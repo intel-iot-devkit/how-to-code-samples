@@ -41,12 +41,12 @@ exports.init = function(config) {
     buzzer = new mraa.Gpio(15 + 512); // aka A1
     button = new (require("jsupm_grove").GroveButton)(16 + 512); // aka A2
     rotary = new (require("jsupm_grove").GroveRotary)(3 + 512); // A3
-    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(520, 521, 516, 517, 518, 519, 512);
+    screen = new (require("jsupm_lcdks").LCDKS)(520, 521, 516, 517, 518, 519, 512);
   } else {
     buzzer = new mraa.Gpio(15); // aka A1
     button = new (require("jsupm_grove").GroveButton)(16); // aka A2
     rotary = new (require("jsupm_grove").GroveRotary)(3); // A3
-    screen = new (require("jsupm_i2clcd").SAINSMARTKS)(8, 9, 4, 5, 6, 7, 0);
+    screen = new (require("jsupm_lcdks").LCDKS)(8, 9, 4, 5, 6, 7, 0);
   }
 
   buzzer.dir(mraa.DIR_OUT);

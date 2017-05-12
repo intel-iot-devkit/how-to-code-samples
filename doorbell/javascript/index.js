@@ -47,14 +47,14 @@ if (config.kit) {
 board.init(config);
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 // Increment the datastore/mqtt server count of doorbell rings
 function increment() {
   console.log("doorbell ring");
 
   datastore.increment(config);
-  mqtt.increment(config);
+  services.increment(config);
 }
 
 // Logs a doorbell ring, prints a message to the display,

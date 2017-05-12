@@ -38,7 +38,7 @@ var config = JSON.parse(
 );
 
 var datastore = require("./datastore");
-var mqtt = require("./mqtt");
+const services = require("./services");
 
 // Initialize the hardware devices
 var screen = new (require("jsupm_i2clcd").SSD1308)(0, 0x3C),
@@ -117,7 +117,7 @@ function alert() {
 
   var payload = { value: new Date().toISOString() };
   datastore.log(config, payload);
-  mqtt.log(config, payload);
+  services.log(config, payload);
 }
 
 // The main function starts reading the accelerometer
