@@ -115,9 +115,9 @@ You need to have a Grove\* Shield connected to an Arduino\* compatible breakout 
 
 1. Plug one end of a Grove\* cable into the Grove\* Rotary Analog Sensor, and connect the other end to the A0 port on the Grove\* Shield.
 
-2. Plug one end of a Grove\* cable into the Grove Button, and connect the other end to the D4 port on the Grove\* Shield.
+2. Plug one end of a Grove\* cable into the Grove Button, and connect the other end to the D5 port on the Grove\* Shield.
 
-3. Plug one end of a Grove\* cable into the Grove Buzzer, and connect the other end to the D5 port on the Grove\* Shield.
+3. Plug one end of a Grove\* cable into the Grove Buzzer, and connect the other end to the D6 port on the Grove\* Shield.
 
 4. Plug one end of a Grove\* cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
 
