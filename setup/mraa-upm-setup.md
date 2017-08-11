@@ -40,11 +40,13 @@ If you get 'Error: Cannot find module 'mraa' ' , then the Node.js bindings haven
 
 C++
 
-Create a blank application 
+Create a blank application and include the mraa.hpp header file.
 
 ```C++
 #include "mraa.hpp"
 ```
+
+If it compiles *on the target platform* then it is installed correctly.
 
 Java
 
