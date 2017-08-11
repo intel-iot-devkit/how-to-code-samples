@@ -62,7 +62,7 @@ To download a .zip file, in your web browser go to <a href="https://github.com/i
 
 ## Setting up a JavaScript editor
 
-There are multiple ways to run the JavaScript code found in this sample.  See the article on JavaScript IDE Options for IoT for more info.
+There are multiple ways to run the JavaScript code found in this sample.  See the document on JavaScript IDE Options for IoT for more info.
 
 ### Installing the program manually on the target system
 
@@ -158,17 +158,7 @@ The web server runs on port `3000`, so if the Intel® Edison board is connected 
 
 ### Determining your platform's IP Address
 
+You can find the instructions for determining your platform's IP Address in the Finding your IP Address document.
 
-
-You can determine what IP address the Intel® Edison board is connected to by running the following command:
-
-    ip addr show | grep wlan
-
-You will see output similar to the following:
-
-    3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
-        inet 192.168.1.13/24 brd 192.168.1.255 scope global wlan0
-
-The IP address is shown next to `inet`. In the example above, the IP address is `192.168.1.13`.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
