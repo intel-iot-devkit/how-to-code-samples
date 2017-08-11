@@ -24,21 +24,21 @@ If you get 'mraa-gpio' command not found, then it isn't installed.
 
 ##Tests for each language binding
 
-Python:
+###Python:
 
 	$ python
 	>>> import mraa
 
 If that doesn't result in an error then the Python bindings are present.  
 
-Node.js
+###Node.js
 
 	$ node
 	> var m = require('mraa')
 	
 If you get 'Error: Cannot find module 'mraa' ' , then the Node.js bindings haven't been installed.  If you've installed mraa using apt-get and the ppa package, then the Node.js bindings will not be included. See the section below*** on Installing using npm.
 
-C++
+###C++
 
 Create a blank application and include the mraa.hpp header file.
 
@@ -48,12 +48,12 @@ Create a blank application and include the mraa.hpp header file.
 
 If it compiles *on the target platform* then it is installed correctly.
 
-Java
+###Java
 
+See this example https://github.com/intel-iot-devkit/mraa/blob/master/examples/java/Example.java 
 
 ##Check version number
-		For UPM: https://github.com/intel-iot-devkit/upm/releases 
-		For MRAA: https://github.com/intel-iot-devkit/mraa/releases 
+	For MRAA: https://github.com/intel-iot-devkit/mraa/releases 
 		
 ##Installing using apt-get (For Ubuntu Desktop or Server)
 
