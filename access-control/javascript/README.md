@@ -2,19 +2,17 @@
 
 ## Introduction
 
-This access control system application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
+This access control system application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and compatible IoT hardware, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
-- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Run this code sample in Intel® XDK IoT Edition, an IDE for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or Intel® IoT Gateway.<br>
+- Interface with and sensors using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Set up a web application server to let users enter the access code to disable the alarm system and store this alarm data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or Elasticache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T M2X\*, Predix\* from GE, or SAP Cloud Platform\* IoT, different cloud-based IoT platforms for machine to machine communication.
 
 ## What it is
 
-Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a smart access control system that:<br>
+Using a compatible Intel® IoT Platform, this project lets you create a smart access control system that:<br>
 - monitors a motion sensor to detect when a person is in an area that requires authorization.<br>
 - can be accessed with your mobile phone via the built-in web interface to disable the alarm.<br>
 - keeps track of access, using cloud-based data storage.
@@ -34,23 +32,22 @@ Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, 
 
 ## Hardware requirements
 
-This sample can be used with either the Grove\* Transportation and Safety Kit from Seeed Studio, or else the DFRobot\* Edison Starter Kit.
+This sample can be used with either Grove or DFRobot components.
 
 Grove\* Transportation and Safety Kit, containing:
 
-1. Intel® Edison module with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
-2. [Grove\* PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
-3. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+1. [Grove\* PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
+2. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison module with an Arduino\* breakout board or Intel® IoT Gateway with Intel® Arduino 101
-2. [PIR (Motion) Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html).
-3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
+1. [PIR (Motion) Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html).
+2. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
-1. Intel® XDK IoT Edition
+1. 
+2. MRAA & UPM
 2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 ### How to set up
@@ -61,50 +58,19 @@ To begin, clone the **How-To Code Samples** repository with Git\* on your comput
 
 To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
-## Adding the program to Intel® XDK IoT Edition
+## Setting up a JavaScript editor
 
-In Intel® XDK IoT Edition, select **Import Your Node.js Project**:
+There are multiple ways to run the JavaScript code found in this sample.  See the article on JavaScript IDE Options for IoT for more info.
 
-![](./../../images/js/xdk-menu.png)
+### Installing the program manually on the target system
 
-On the **New Project** screen, click on the folder icon:
+Alternatively, you can set up the code manually on your system.
 
-![](./../../images/js/xdk-new-project.png)
-
-Navigate to the directory where the example project exists and select it:
-
-![](./../../images/js/xdk-select.png)
-
-Choose a name for the project, then click on the **Create** button. Then click on the **Continue** button to finish creating your project:
-
-![](./../../images/js/xdk-new-project-name.png)
-
-You need to connect to your Intel® Edison board from your computer to send code to it.
-
-![](./../../images/js/xdk-select-device.png)
-
-Click the **IoT Device** menu at the bottom left. If your Intel® Edison board is automatically recognized, select it.
-
-![](./../../images/js/xdk-manual-connect.png)
-
-Otherwise, select **Add Manual Connection**.
-In the **Address** field, type `192.168.2.15`.
-In the **Port** field, type `58888`.
-Click **Connect** to save your connection.
-
-### Installing the program manually on the Intel® Edison board
-
-Alternatively, you can set up the code manually on the Intel® Edison board.
-
-Clone the **How-To Code Samples** repository to your Intel® Edison board after you establish an SSH connection to it, as follows:
+Clone the **How-To Code Samples** repository to your board:
 
     $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 
 Navigate to the directory with this example.
-
-To install Git\* on the Intel® Edison board (if you don’t have it yet), establish an SSH connection to the board and run the following command:
-
-    $ opkg install git
 
 ### Connecting the Grove\* sensors
 
