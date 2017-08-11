@@ -43,6 +43,10 @@ If you get 'Error: Cannot find module 'mraa' ' , then the Node.js bindings haven
 
 ##Installing using npm
 
+	$ npm install mraa
+
+For more details on how this installation differs see this section on Installing for Node.js only (https://github.com/intel-iot-devkit/mraa#installing-for-nodejs-only) 
+
 #Installing using rpm
 
 ##Flashing Arduino 101 with Firmata sketch
