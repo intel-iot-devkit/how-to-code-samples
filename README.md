@@ -26,7 +26,9 @@ Navigate to the directory with this example.
 
 These samples are currently supported by the following platforms:
 
--Intel IoT Gateway using Arduino 101 (https://software.intel.com/en-us/iot/hardware/gateways) 
+Intel IoT Gateway using Arduino 101 (https://software.intel.com/en-us/iot/hardware/gateways) 
+
+## Software Requirements
 
 ### mraa
 
@@ -43,6 +45,21 @@ For Java or C/C++ development, use the Intel System Studio IoT Edition - https:/
 For JavaScript development, use the Intel® XDK - https://software.intel.com/en-us/intel-xdk
 
 ## Configuring the examples
+
+Each example includes a configuration file to setup sensors, cloud credentials, and other services.
+
+For C++ look in cpp.json
+For Java look in /src/config.properties
+For JavaScript look in config.json
+For Python look in config.py
+
+Refer to each example for the specific configuration needed.
+
+## Cloud and datstore configuration
+
+Specific instructions on setting up individual cloud services can be found here https://github.com/intel-iot-devkit/iot-samples-cloud-setup
+
+Adding a Redis\* datastore can be done by following instructions here https://github.com/intel-iot-devkit/intel-iot-examples-datastore 
 
 ## Finding your board's IP address
 
