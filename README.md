@@ -10,29 +10,45 @@ To begin, clone the **How-To Code Samples** repository with Git\* on your comput
 
 To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
-#Setup
+### Installing the program manually on the target system
 
-##Hardware Compatibility
+Alternatively, you can set up the code manually on your system.
+
+Clone the **How-To Code Samples** repository to your board:
+
+    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
+
+Navigate to the directory with this example.
+
+# Setup
+
+## Hardware Compatibility
 
 These samples are currently supported by the following platforms:
 
 -Intel IoT Gateway using Arduino 101 (https://software.intel.com/en-us/iot/hardware/gateways) 
 
-##Software Requirements
+### mraa
 
-###Operating System
+[mraa.io](mraa.io)
 
-###mraa
+### upm
 
-###upm
+[upm.io](upm.io)
 
-##Configuring the examples
+### Integrated Development Environments (IDEs)
 
-##Finding your board's IP address
+For Java or C/C++ development, use the Intel System Studio IoT Edition - https://software.intel.com/en-us/iot/tools-ide/ide/iss-iot-edition 
 
-###On Wind River Linux
+For JavaScript development, use the Intel® XDK - https://software.intel.com/en-us/intel-xdk
 
-###On Ubuntu
+## Configuring the examples
+
+## Finding your board's IP address
+
+### On Wind River Linux
+
+### On Ubuntu
 
 ##
 
