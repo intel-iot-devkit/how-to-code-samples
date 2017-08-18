@@ -48,10 +48,10 @@ For JavaScript development, use the Intel® XDK - https://software.intel.com/en-
 
 Each example includes a configuration file to setup sensors, cloud credentials, and other services.
 
-For C++ look in cpp.json
-For Java look in /src/config.properties
-For JavaScript look in config.json
-For Python look in config.py
+For C++ look in cpp.json  
+For Java look in /src/config.properties  
+For JavaScript look in config.json  
+For Python look in config.py  
 
 Refer to each example for the specific configuration needed.
 
