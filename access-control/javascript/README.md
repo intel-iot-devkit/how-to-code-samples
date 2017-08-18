@@ -59,24 +59,6 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 2. Packages as listed in https://github.com/fromgilbert/how-to-code-samples/blob/master/access-control/javascript/package.json 
 2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
-### Clone the repository
-
-To begin, clone the **How-To Code Samples** repository with Git\* on your computer as follows:
-
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-To download a .zip file, in your web browser go to <a href="https://github.com/intel-iot-devkit/how-to-code-samples">https://github.com/intel-iot-devkit/how-to-code-samples</a> and click the **Download ZIP** button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
-
-### Installing the program manually on the target system
-
-Alternatively, you can set up the code manually on your system.
-
-Clone the **How-To Code Samples** repository to your board:
-
-    $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
-
-Navigate to the directory with this example.
-
 ### Connecting the Grove\* sensors
 
 ![](./../../images/access-control-grove.JPG)
