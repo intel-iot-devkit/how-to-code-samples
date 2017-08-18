@@ -79,7 +79,7 @@ Navigate to the directory with this example.
 
 ### Connecting the Grove\* sensors
 
-![](./../../access-control-grove.jpg)
+![](./../../access-control-grove.JPG)
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
@@ -89,7 +89,7 @@ You need to have a Grove\* Shield connected to an Arduino\* compatible breakout 
 
 ### Connecting the DFRobot\* sensors
 
-![](./../../images/access-control-dfrobot.jpg)
+![](./../../images/access-control-dfrobot.JPG)
 
 You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Display Shield.
 
