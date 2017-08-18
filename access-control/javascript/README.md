@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This access control system application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and compatible IoT hardware, cloud platforms, APIs, and other technologies.
+This access control system application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel® IoT Platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -30,14 +30,20 @@ Additionally, various events (`looking-for-motion`, `motion-detected`, `invalid-
 
 Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
+## First time setup  
+For the samples in this repository, see the general setup instructions for compatible boards, operating systems, and libraries.
+
+<link to top-most readme>
+
 ## Hardware requirements
 
 This sample can be used with either Grove or DFRobot components.
 
 Grove\* Transportation and Safety Kit, containing:
 
-1. [Grove\* PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
-2. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
+1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
+2. [Grove\* PIR Motion Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/biss0001.html)
+3. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
