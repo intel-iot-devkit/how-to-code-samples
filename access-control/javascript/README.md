@@ -33,11 +33,11 @@ Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, 
 ## First time setup  
 For the samples in this repository, see the general setup instructions for compatible boards, operating systems, and libraries.
 
-<link to top-most readme>
+https://github.com/fromgilbert/how-to-code-samples/blob/master/README.md 
 
 ## Hardware requirements
 
-Besides the generic hardware requirements for all of these samples <link to top-most readme hw req>, here's what you need to run this example
+Besides the generic hardware requirements for all of these samples https://github.com/fromgilbert/how-to-code-samples/blob/master/README.md#hardware-compatibility, here's what you need to run this example
 
 This sample can be used with either Grove or DFRobot components.
 
@@ -95,8 +95,6 @@ For information on how to set up your own cloud data server, go to:
 
 ## Configuring the example
 
-General information on configuring these examples can be found in <link to top-most readme, config examples section>
-
 To configure the example for the Grove\* kit, just leave the `kit` key in the `config.json` set to `grove`. To configure the example for the DFRobot\* kit, change the `kit` key in the `config.json` to `dfrobot` as follows:
 
 ```
@@ -132,13 +130,13 @@ To run this example on the board, simply enter
 
 ![](./../../images/js/access-control-web.png)
 
-The alarm is disabled using a single-page web interface served directly from the Intel® Edison board while the sample program is running.
+The alarm is disabled using a single-page web interface served directly from the the target platform while the sample program is running.
 
-The web server runs on port `3000`, so if the Intel® Edison board is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if your target platform is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining your platform's IP Address
 
-How to find your board's IP address can be found in <link to top-most doc Find IP Address section>
+How to find your board's IP address can be found in https://github.com/fromgilbert/how-to-code-samples/blob/master/README.md#finding-your-boards-ip-address
 
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
