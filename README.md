@@ -46,7 +46,7 @@ For JavaScript development, use the Intel® XDK - https://software.intel.com/en-
 
 ## Configuring the examples
 
-Each example includes a configuration file to setup sensors, cloud credentials, and other services.
+Each example includes a configuration file to setup sensors and other application parameters.
 
 For C++ look in cpp.json  
 For Java look in /src/config.properties  
@@ -55,7 +55,7 @@ For Python look in config.py
 
 Refer to each example for the specific configuration needed.
 
-## Cloud and datstore configuration
+## Cloud and datastore configuration
 
 Specific instructions on setting up individual cloud services can be found here https://github.com/intel-iot-devkit/iot-samples-cloud-setup
 
