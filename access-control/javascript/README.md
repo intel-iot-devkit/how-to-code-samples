@@ -31,13 +31,11 @@ Additionally, various events (`looking-for-motion`, `motion-detected`, `invalid-
 Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
 ## First time setup  
-For the samples in this repository, see the general setup instructions for compatible boards, operating systems, and libraries.
-
-https://github.com/fromgilbert/how-to-code-samples/blob/master/README.md 
+For the samples in this repository, see the ![General Setup Instructions](./../../README.md) for compatible boards, operating systems, and libraries.
 
 ## Hardware requirements
 
-Besides the generic hardware requirements for all of these samples https://github.com/fromgilbert/how-to-code-samples/blob/master/README.md#hardware-compatibility, here's what you need to run this example
+In addition to the ![generic hardare requirements](./../../README.md#hardware-compatibility) for all of these samples, here's what you need to run this example
 
 This sample can be used with either Grove or DFRobot components.
 
@@ -56,12 +54,12 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 1. Node.js 
 2. MRAA and UPM Node.js bindings <link to mraa and upm install docs>
-2. Packages as listed in https://github.com/fromgilbert/how-to-code-samples/blob/master/access-control/javascript/package.json 
+2. Packages as listed in the package.json file in this example 
 2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 ### Connecting the Grove\* sensors
 
-![](./../../images/access-control-grove.JPG)
+![](./images/access-control-grove.JPG)
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
@@ -71,7 +69,7 @@ You need to have a Grove\* Shield connected to an Arduino\* compatible breakout 
 
 ### Connecting the DFRobot\* sensors
 
-![](./../../images/access-control-dfrobot.JPG)
+![](./images/access-control-dfrobot.JPG)
 
 You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Display Shield.
 
@@ -128,7 +126,7 @@ To run this example on the board, simply enter
 
 ### Disabling the alarm
 
-![](./../../images/js/access-control-web.png)
+![](./images/js/access-control-web.png)
 
 The alarm is disabled using a single-page web interface served directly from the the target platform while the sample program is running.
 
@@ -136,7 +134,6 @@ The web server runs on port `3000`, so if your target platform is connected to W
 
 ### Determining your platform's IP Address
 
-How to find your board's IP address can be found in https://github.com/fromgilbert/how-to-code-samples/blob/master/README.md#finding-your-boards-ip-address
-
+See the section on Finding Your Board's IP Address at the bottom of the Setup Instructions readme ![Setup Instructions](./../../README.md#finding-your-boards-ip-address). 
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
