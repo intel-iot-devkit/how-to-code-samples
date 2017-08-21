@@ -35,7 +35,7 @@ For the samples in this repository, see the ![General Setup Instructions](./../.
 
 ## Hardware requirements
 
-In addition to the ![generic hardare requirements](./../../README.md#hardware-compatibility) for all of these samples, here's what you need to run this example
+In addition to using a compatible platform listed in ![Hardware Compatibility](./../../README.md#hardware-compatibility), here is additional hardware you will need to run this example
 
 This sample can be used with either Grove or DFRobot components.
 
