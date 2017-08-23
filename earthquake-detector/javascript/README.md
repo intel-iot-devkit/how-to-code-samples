@@ -104,9 +104,10 @@ To install Git\* on the Intel® Edison board, if you don’t have it yet, establ
 
 You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove\* cable into the Grove\* 3-Axis Digital Accelerometer, and connect the other end to any of the I2C ports on the Grove\* Shield.
-
-2. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
+Sensor | Pin
+--- | ---
+Grove\* 3-Axis Digital Accelerometer | I2C
+Grove\* RGB LCD | I2C
 
 ### Connecting the DFRobot\* sensors
 
@@ -114,11 +115,11 @@ You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout 
 
 You need to have a LCD Keypad Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
-1. Plug one end of a DFRobot\* cable into the plug labeled "X" on the Triple-Axis Accelerometer, then connect the other end to the A1 port on the LCD Keypad Shield.
-
-2. Plug one end of a DFRobot\* cable into the plug labeled "Y" on the Triple-Axis Accelerometer, then connect the other end to the A2 port on the LCD Keypad Shield.
-
-3. Plug one end of a DFRobot\* cable into the plug labeled "Z" on the Triple-Axis Accelerometer, then connect the other end to the A3 port on the LCD Keypad Shield.
+Sensor | Pin
+--- | ---
+One end of a DFRobot\* cable into the plug labeled "X" on the Triple-Axis Accelerometer | A1
+One end of a DFRobot\* cable into the plug labeled "Y" on the Triple-Axis Accelerometer | A2
+One end of a DFRobot\* cable into the plug labeled "Z" on the Triple-Axis Accelerometer | A3
 
 ### Manual Intel® Edison board setup
 
