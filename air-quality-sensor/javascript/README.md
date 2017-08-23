@@ -108,9 +108,10 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove\* cable into the Grove\* Air Quality Sensor, and connect the other end to the AO port on the Grove\* Shield.
-
-2. Plug one end of a Grove\* cable into the Grove\* Speaker, and connect the other end to the D5 port on the Grove\* Shield.
+Sensor | Pin
+--- | ---
+Grove\* Air Quality Sensor | AO
+Grove\* Speaker | D5
 
 ### Connecting the DFRobot\* sensors
 
@@ -118,9 +119,10 @@ You need to have a Grove\* Shield connected to an Arduino\* compatible breakout 
 
 You need to have a DFRobot\* LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* LCD Keypad Shield.
 
-1. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the DFRobot\* LCD Keypad Shield.
-
-2. Plug one end of a DFRobot\* cable into the Air Quality Sensor, and connect the other end to the A3 port on the DFRobot\* LCD Keypad Shield.
+Sensor | Pin
+--- | ---
+Buzzer | A1
+Air Quality Sensor | A3
 
 ### Installing the program manually on the Intel® Edison board
 
