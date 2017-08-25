@@ -98,9 +98,10 @@ You need to power the Intel® Edison board with the external power adaptor that 
 
 In addition, you need a breadboard and an extra 5V power supply to provide power to the motor. Note: you need a separate battery or power supply for the motor. You cannot use the same power supply for both the Intel® Edison board and the motor, so you need either 2 batteries or 2 power supplies in total.
 
-1. Plug the stepper motor controller into pins 9, 10, 11, and 12 on the Arduino\* breakout board for it to be able to be controlled. Connect the controller to ground (GND), to the 5V power coming from the Arduino\* breakout board (VCC), and to the separate 5V power for the motor (VM).
-
-2. Plug one end of a Grove cable into the Grove IR Distance Interrupter, and connect the other end to the D2 port on the Grove Shield.
+Sensor | Pin
+--- | ---
+Stepper motor controller | Pins 9, 10, 11, and 12
+Controller to ground (GND) | 5V (VCC) and 5V (VM)
 
 ### Manual Intel® Edison board setup
 
