@@ -64,13 +64,12 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove\* cable into the Grove\* Rotary Analog Sensor, and connect the other end to the A0 port on the Grove\* Shield.
-
-2. Plug one end of a Grove\* cable into the Grove Button, and connect the other end to the D4 port on the Grove\* Shield.
-
-3. Plug one end of a Grove\* cable into the Grove Buzzer, and connect the other end to the D5 port on the Grove\* Shield.
-
-4. Plug one end of a Grove\* cable into the Grove RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
+Sensor | Pin
+--- | ---
+Grove\* Rotary Analog Sensor | A0
+Grove Button | D4
+Grove Buzzer | D5
+Grove RGB LCD | I2C
 
 ### Connecting the DFRobot\* sensors
 
@@ -78,11 +77,11 @@ You need to have a Grove\* Shield connected to an Arduino\* compatible breakout 
 
 You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
-1. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the LCD Keypad Shield.
-
-2. Plug one end of a DFRobot\* cable into the Button, and connect the other end to the A2 port on the LCD Keypad Shield.
-
-3. Plug one end of a DFRobot\* cable into the Rotary Analog Sensor, and connect the other end to the A3 port on the LCD Keypad Shield.
+Sensor | Pin
+--- | ---
+Buzzer | A1
+Button | A2
+Rotary Analog Sensor | A3
 
 ### Weather Underground\* API key
 
