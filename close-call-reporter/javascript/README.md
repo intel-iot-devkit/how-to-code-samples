@@ -57,9 +57,10 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove cable into the Grove\* IR Distance Interrupter, and connect the other end to the D2 port on the Grove\* Shield.
-
-2. Plug one end of a Grove cable into the Grove\* GPS, and connect the other end to the UART port on the Grove\* Shield.
+Sensor | Pin
+--- | ---
+Grove\* IR Distance Interrupter | D2
+Grove\* GPS | UART port
 
 ### Connecting the DFRobot\* sensors
 
@@ -67,9 +68,13 @@ You need to have a Grove\* Shield connected to an Arduino\* compatible breakout 
 
 You need to have a DFRobot\* I/O Expansion Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* I/O Expansion Shield.
 
-1. Plug one end of a DFRobot cable into the IR Distance Sensor, and connect the other end to the D4 port on the I/O Expansion Shield.
-
-2. Plug the attached GPS cable TX (white) to the I/O Expansion Shield's RX pin. Plug the attached GPS cable RX (black) to the I/O Expansion Shield's TX pin. Plug the attached GPS cable power (red) to any of the I/O Expansion Shield's 5V pins. Plug the attached GPS cable ground (thicker black) to any of the I/O Expansion Shield's GND.
+Sensor | Pin
+--- | ---
+IR Distance Sensor | D4
+GPS cable TX (white) | RX pin
+GPS cable RX (black) | TX pin
+GPS cable power (red) | 5V pins
+GPS cable ground (thicker black) | GND
 
 ### IoT cloud setup (optional)
 
