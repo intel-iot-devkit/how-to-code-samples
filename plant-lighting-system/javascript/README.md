@@ -115,11 +115,11 @@ To install Git\* on the Intel® Edison board (if you don’t have it yet), estab
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove cable into the Grove\* Light Sensor, and connect the other end to the A0 port on the Grove\* Shield.
-
-2. Plug one end of a Grove cable into the Grove\* Moisture Sensor, and connect the other end to the A1 port on the Grove\* Shield.
-
-3. Plug one end of a Grove cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
+Sensor | Pin
+--- | ---
+Grove\* Light Sensor | A0
+Grove\* Moisture Sensor | A1
+Grove\* RGB LCD | I2C
 
 ### Connecting the DFRobot\* sensors
 
@@ -127,9 +127,10 @@ You need to have a Grove\* Shield connected to an Arduino\* compatible breakout 
 
 You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
-1. Plug one end of a DFRobot\* cable into the Analog Ambient Light Sensor, and connect the other end to the A1 port on the LCD Keypad Shield.
-
-2. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A2 port on the LCD Keypad Shield.
+Sensor | Pin
+--- | ---
+Analog Ambient Light Sensor | A1
+Moisture Sensor | A2
 
 ### Manual Intel® Edison board setup
 
