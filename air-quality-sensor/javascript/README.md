@@ -12,7 +12,7 @@ From this exercise, developers will learn how to:<br>
 
 ## What it is
 
-Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create an air quality monitor that:<br>
+Using a compatible Intel® IoT Platform, this project lets you create an air quality monitor that:<br>
 - continuously checks the air quality for airborne contaminants.<br>
 - sounds an audible warning when the air quality is unhealthy.<br>
 - stores a record of each time the air quality sensor detects contaminants, using cloud-based data storage.
@@ -36,13 +36,12 @@ This sample can be used with either Grove or DFRobot components.
 
 Grove\* Home Automation Kit, containing:
 
-1. Intel® Edison module with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
+1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
 2. [Grove\* Air Quality Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/tp401.html)
 3. [Grove* Speaker](http://iotdk.intel.com/docs/master/upm/node/classes/grovespeaker.html)
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-1. Intel® Edison module with an Arduino\* breakout board or Intel® IoT Gateway with Arduino 101
 2. [Analog Gas Sensor](http://www.dfrobot.com/wiki/index.php?title=Analog_Gas_Sensor_SKU:SEN0127).
 3. [Buzzer](http://www.dfrobot.com/wiki/index.php?title=Digital_Buzzer_Module_(SKU:_DFR0032)).
 4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
@@ -56,23 +55,25 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ### Connecting the Grove\* sensors
 
-**PLACEHOLDER FOR IMAGE**
+![](./../images/air-quality.jpg)
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove\* cable into the Grove\* Air Quality Sensor, and connect the other end to the AO port on the Grove\* Shield.
-
-2. Plug one end of a Grove\* cable into the Grove\* Speaker, and connect the other end to the D5 port on the Grove\* Shield.
+Sensor | Pin
+--- | ---
+Grove\* Air Quality Sensor | AO
+Grove\* Speaker | D5
 
 ### Connecting the DFRobot\* sensors
 
-**PLACEHOLDER FOR IMAGE**
+![](./../images/air-quality-dfrobot.jpg)
 
 You need to have a DFRobot\* LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* LCD Keypad Shield.
 
-1. Plug one end of a DFRobot\* cable into the Buzzer, and connect the other end to the A1 port on the DFRobot\* LCD Keypad Shield.
-
-2. Plug one end of a DFRobot\* cable into the Air Quality Sensor, and connect the other end to the A3 port on the DFRobot\* LCD Keypad Shield.
+Sensor | Pin
+--- | ---
+Buzzer | A1
+Air Quality Sensor | A3
 
 ### IoT cloud setup (optional)
 
