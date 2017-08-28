@@ -52,8 +52,10 @@ In addition, you need a breadboard and an extra 5V power supply to provide power
 
 Sensor | Pin
 --- | ---
-Stepper motor controller | Pins 9, 10, 11, and 12
+Stepper motor controller | Digital pins 9, 10, 11, and 12
 Controller to ground (GND) | 5V (VCC) and 5V (VM)
+
+Look at the bottom of the shield to determine the pin numbers.
 
 ## Configuring the example
 
