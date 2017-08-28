@@ -44,7 +44,7 @@ Grove\* Home Automation Kit, containing:
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-2. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
+1. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
 3. [Flame Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=195)
 4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
@@ -57,7 +57,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ### Connecting the Grove\* sensors
 
-![](./../smart-stove-grove.JPG)
+![](./../images/smart-stove-grove.JPG)
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
@@ -69,7 +69,7 @@ Grove\* Speaker | D5
 
 ### Connecting the DFRobot\* sensors
 
-![](./../smart-stove-dfrobot.JPG)
+![](./../images/smart-stove-dfrobot.JPG)
 
 You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
