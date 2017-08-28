@@ -43,7 +43,7 @@ This sample can be used with either Grove or DFRobot components.
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-2. [Analog Sound Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=83).
+1. [Analog Sound Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=83).
 3. [Digital Vibration Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=79)
 4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
