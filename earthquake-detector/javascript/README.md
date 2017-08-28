@@ -41,7 +41,7 @@ Grove\* Starter Kit Plus, containing:
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-2. [Triple Axis Accelerometer](http://www.dfrobot.com/index.php?route=product/product&description=true&product_id=507).
+1. [Triple Axis Accelerometer](http://www.dfrobot.com/index.php?route=product/product&description=true&product_id=507).
 3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
