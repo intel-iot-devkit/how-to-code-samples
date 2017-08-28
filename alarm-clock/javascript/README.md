@@ -45,7 +45,7 @@ Grove\* Starter Kit Plus, containing:
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-2. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
+1. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
 3. [Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
 4. [Rotary Dial]()
 5. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
