@@ -37,7 +37,7 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 In addition to using a compatible platform listed in ![Hardware Compatibility](./../../README.md#hardware-compatibility), here is additional hardware you will need to run this example.
 
-This sample can be used with either Grove or DFRobot components.
+This sample can be used with either Grove\* or DFRobot\* components.
 
 Grove\* Indoor Environment Kit, containing:
 
@@ -48,13 +48,13 @@ Grove\* Indoor Environment Kit, containing:
 
 DFRobot\* Starter Kit for Intel® Edison containing:
 
-2. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599).
+1. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599).
 3. [Analog Ambient Light Sensor](www.dfrobot.com/index.php?route=product/product&product_id=1004)
 4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ## Software requirements
 
-2. MRAA and UPM Node.js bindings <link to mraa and upm install docs>
+1. MRAA and UPM Node.js bindings <link to mraa and upm install docs>
 2. Packages as listed in the package.json file in this example
 2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 3. Twilio\* account (optional)
