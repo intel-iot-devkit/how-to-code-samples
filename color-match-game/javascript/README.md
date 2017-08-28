@@ -39,7 +39,7 @@ Grove\* Starter Kit containing:
 
 ### Connecting the Grove\* sensors
 
-![](./../../images/python/color-match-game.jpg)
+![](./../images/color-match-grove.JPG)
 
 You need to have a Grove\* Shield connected to an Arduino-compatible breakout board to plug all the Grove\* devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
