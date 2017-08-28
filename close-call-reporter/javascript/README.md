@@ -30,7 +30,7 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 ## Hardware requirements
 In addition to using a compatible platform listed in ![Hardware Compatibility](./../../README.md#hardware-compatibility), here is additional hardware you will need to run this example
 
-This sample can be used with either Grove or DFRobot components.
+This sample can be used with either Grove\* or DFRobot\* components.
 
 Grove\* Transportation and Safety Kit, containing:
 
