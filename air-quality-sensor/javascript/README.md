@@ -55,7 +55,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ### Connecting the Grove\* sensors
 
-![](./../images/air-quality.JPG)
+![](./../images/air-quality-grove.JPG)
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
