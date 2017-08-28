@@ -37,7 +37,7 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 In addition to using a compatible platform listed in ![Hardware Compatibility](./../../README.md#hardware-compatibility), here is additional hardware you will need to run this example
 
-This sample can be used with either Grove or DFRobot components.
+This sample can be used with either Grove\* or DFRobot\* components.
 
 Grove\* Environment & Agriculture Kit, containing:
 
@@ -49,7 +49,7 @@ Grove\* Environment & Agriculture Kit, containing:
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-2. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599)
+1. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599)
 3. [Immersible Pump & Water Tube](http://www.dfrobot.com/index.php?route=product/product&keyword=water pump&product_id=667)
 4. [Relay Module](http://www.dfrobot.com/index.php?route=product/product&product_id=64)
 5. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
