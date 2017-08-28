@@ -48,7 +48,7 @@ Grove\* Starter Kit Plus, containing:
 
 DFRobot\* Starter Kit for Intel® Edison, containing:
 
-2. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
+1. [Analog Temperature Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovetemp.html)
 3. [Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
