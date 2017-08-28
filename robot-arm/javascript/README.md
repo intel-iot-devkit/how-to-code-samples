@@ -51,9 +51,11 @@ In addition, you need a breadboard and an extra 5V power supply to provide power
 
 Sensor | Pin
 --- | ---
-Stepper motor controller #1 | 4, 5, 6, and 7
-Stepper motor controller #2 | 9, 10, 11, and 12
+Stepper motor controller #1 | Digital pins 4, 5, 6, and 7
+Stepper motor controller #2 | Digital pins 9, 10, 11, and 12
 Both controllers to ground (GND) | 5V power coming from the Arduino\* breakout board (VCC), and to the separate 5V power for the motors (VM).
+
+Look at the bottom of the shield to determine the pin numbers.
 
 2. Plug one end of a Grove\* cable into the Grove\* Thumb Joystick, and connect the other end to the A2 port on the Grove\* Shield.
 
