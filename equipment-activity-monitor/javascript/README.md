@@ -60,11 +60,11 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-1. Plug one end of a Grove\* cable into the Grove\* Sound Sensor, and connect the other end to the A0 port on the Grove\* Shield.
-
-2. Plug one end of a Grove\* cable into the Grove\* Piezo Vibration Sensor, and connect the other end to the A2 port on the Grove\* Shield.
-
-3. Plug one end of a Grove\* cable into the Grove\* RGB LCD, and connect the other end to any of the I2C ports on the Grove\* Shield.
+Sensor | Pin
+--- | ---
+Grove\* Sound Sensor | A0
+Grove\* Piezo Vibration Sensor | A2
+Grove\* RGB LCD | I2C
 
 ### Connecting the DFRobot\* sensors
 
@@ -72,9 +72,10 @@ You need to have a Grove\* Shield connected to an Arduino\* compatible breakout 
 
 You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
-1. Plug one end of a DFRobot\* cable into Analog Sound Sensor, then connect the other end to the A1 port on the LCD Keypad Shield.
-
-2. Plug one end of a DFRobot\* cable into the Digital Vibration Sensor, then connect the other end to the A2 port on the LCD Keypad Shield.
+Sensor | Pin
+--- | ---
+Analog Sound Sensor | A1
+Digital Vibration Sensor | A2
 
 ### IoT cloud setup (optional)
 
