@@ -20,7 +20,7 @@ Using a compatible Intel® IoT Platform, this project lets you create a smart st
 ## How it works
 
 This smart stove top sensor has a number of useful features designed to help you monitor the temperature of the food you are cooking on your legacy stove top.
-Set the target temperature for a pot on your range top via a web page served directly from the Intel® Edison board, using your mobile phone.
+Set the target temperature for a pot on your range top via a web page served directly from the Intel® IoT Platform, using your mobile phone.
 
 When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, alarm goes off.
 
@@ -33,7 +33,7 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 In addition to using a compatible platform listed in ![Hardware Compatibility](./../../README.md#hardware-compatibility), here is additional hardware you will need to run this example
 
-This sample can be used with either Grove or DFRobot components.
+This sample can be used with either Grove\* or DFRobot\* components.
 
 Grove\* Home Automation Kit, containing:
 
