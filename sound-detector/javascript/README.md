@@ -39,7 +39,7 @@ Grove\* Starter Kit Plus, containing:
 
 Starter Kit for Intel® Edison/Galileo from DFRobot\*, containing:
 
-2. [Analog Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/loudness.html).
+1. [Analog Sound Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/loudness.html).
 3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html).
 
 ### Software requirements
