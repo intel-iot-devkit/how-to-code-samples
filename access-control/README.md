@@ -1,4 +1,4 @@
-# Access control code sample
+# Access control
 
 ## Introduction
 
