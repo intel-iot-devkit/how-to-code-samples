@@ -17,7 +17,7 @@ Sensor | Pin
 Grove\* IR Distance Interrupter | D2
 Grove\* GPS | UART port
 
-## DFRobot\*
+### DFRobot\*
 
 Sensor | Pin
 --- | ---
