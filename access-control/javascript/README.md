@@ -11,16 +11,13 @@ More information about this sample, how to set it up, and how it works can be fo
 For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
-
-###Grove
-
+### Grove
 Sensor | Pin
 --- | ---
 PIR Motion Sensor | D4
 Grove RGB LCD | I2C
 
-###DRFobot
-
+### DRFobot
 You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Display Shield.
 
 Sensor | Pin
