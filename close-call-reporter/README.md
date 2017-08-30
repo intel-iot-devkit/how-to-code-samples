@@ -25,10 +25,10 @@ It also keeps track of the GPS position, updating the position frequently to ens
 Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the ![General Setup Instructions](./README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
-In addition to using a compatible platform listed in ![Hardware Compatibility](./../../README.md#hardware-compatibility), here is additional hardware you will need to run this example
+In addition to using a compatible platform listed in ![Hardware Compatibility](./README.md#hardware-compatibility), here is additional hardware you will need to run this example
 
 This sample can be used with either Grove\* or DFRobot\* components.
 
@@ -46,7 +46,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ### Connecting the Grove\* sensors
 
-![](./../images/close-call-grove.JPG)
+![](./images/close-call-grove.JPG)
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
@@ -57,7 +57,7 @@ Grove\* GPS | UART port
 
 ### Connecting the DFRobot\* sensors
 
-![](./../images/close-call-dfrobot.JPG)
+![](./images/close-call-dfrobot.JPG)
 
 You need to have a DFRobot\* I/O Expansion Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* I/O Expansion Shield.
 
