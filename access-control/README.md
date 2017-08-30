@@ -1,4 +1,4 @@
-# Access control in JavaScript*
+# Access control code sample
 
 ## Introduction
 
