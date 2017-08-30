@@ -26,11 +26,11 @@ If the sensor detects one of several different gases and the detected level exce
 Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the ![General Setup Instructions](./../README.md#setup) for required boards and libraries.
 
 ### Hardware requirements
 
-In addition to using a compatible platform listed in ![Hardware Compatibility](./../../README.md#hardware-compatibility), here is additional hardware you will need to run this example
+In addition to using a compatible platform listed in ![Hardware Compatibility](./../README.md#hardware-compatibility), here is additional hardware you will need to run this example
 
 This sample can be used with either Grove\* or DFRobot\* components.
 
@@ -48,7 +48,7 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 ### Connecting the Grove\* sensors
 
-![](./../images/air-quality-grove.JPG)
+![](./images/air-quality-grove.JPG)
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
@@ -59,7 +59,7 @@ Grove\* Speaker | D5
 
 ### Connecting the DFRobot\* sensors
 
-![](./../images/air-quality-dfrobot.JPG)
+![](./images/air-quality-dfrobot.JPG)
 
 You need to have a DFRobot\* LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* LCD Keypad Shield.
 
