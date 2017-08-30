@@ -41,6 +41,14 @@ Sensor | Pin
 --- | ---
 Grove RGB LCD | I2C
 
+### Accessing the game
+
+![](./../../images/java/color-match-game-web.JPG)
+
+The color match game is set using a single-page web interface served from the Intel® IoT Platform while the sample program is running.
+
+The web server runs on port `8080`, so if the Intel® IoT Platform is connected to Wi-Fi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080/home`. 
+
 ### Determining your platform's IP address
 
 See the section on Finding Your Board's IP Address at the bottom of the ![Setup Instructions](./../../README.md#finding-your-boards-ip-address) readme.
