@@ -5,10 +5,29 @@ Using a compatible Intel® IoT Platform, this project lets you create a smart ac
 - can be accessed with your mobile phone via the built-in web interface to disable the alarm.<br>
 - keeps track of access, using cloud-based data storage.
 
+More information about this sample, how to set it up, and how it works can be found in the ![project README](./../README.md)
+
 ## First time setup
 For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
+
+###Grove
+
+Sensor | Pin
+--- | ---
+PIR Motion Sensor | D4
+Grove RGB LCD | I2C
+
+###DRFobot
+
+You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Display Shield.
+
+Sensor | Pin
+--- | ---
+PIR (Motion) Sensor | A2
+
+More details on the hardware requirements can be found in the ![project README](./../README.md)
 
 ## Software requirements
 
