@@ -5,14 +5,6 @@ Using a compatible Intel® IoT Platform, this project lets you create a smart al
 - displays live weather data on the LCD.<br>
 - keeps track of how long it takes you to wake up each morning, using cloud-based data storage.
 
-## How it works
-
-This smart alarm clock has a number of useful features. Set the alarm using a web page served directly from the compatible Intel® IoT Platform using your mobile phone. When the alarm goes off, the buzzer sounds and the LCD indicates it’s time to get up. The rotary dial can be used to adjust the brightness of the display.
-
-In addition, the smart alarm clock can access daily weather data via the Weather Underground\* API and use it to change the color of the LCD.
-
-Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
-
 ## First time setup  
 For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
 
