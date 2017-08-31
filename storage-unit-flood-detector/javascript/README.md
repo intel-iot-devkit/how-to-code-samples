@@ -12,12 +12,16 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
+You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
+
 Sensor | Pin
 --- | ---
 Grove\* Moisture Sensor | A0
 Grove\* Speaker | D5
 
 ### DFRobot\*
+
+You need to have a I/O Expansion Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the I/O Expansion Shield.
 
 Sensor | Pin
 --- | ---
