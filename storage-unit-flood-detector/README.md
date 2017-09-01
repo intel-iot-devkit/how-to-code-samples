@@ -26,11 +26,11 @@ If the moisture level exceeds a defined threshold, it makes a sound to indicate 
 Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the ![General Setup Instructions](./../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
 
-In addition to using a compatible platform listed in ![Hardware Compatibility](./../../README.md#hardware-compatibility), here is additional hardware you will need to run this example
+In addition to using a compatible platform listed in ![Hardware Compatibility](./../README.md#hardware-compatibility), here is additional hardware you will need to run this example
 
 This sample can be used with either Grove\* or DFRobot\* components.
 
@@ -70,7 +70,7 @@ Buzzer | A1
 
 ### Determining your platform's IP Address
 
-See the section on Finding Your Board's IP Address at the bottom of the ![Setup Instructions](./../../README.md#finding-your-boards-ip-address) readme. 
+See the section on Finding Your Board's IP Address at the bottom of the ![Setup Instructions](./../README.md#finding-your-boards-ip-address) readme. 
 
 The IP address is shown next to `inet`. In the example above, the IP address is `192.168.1.13`.
 
