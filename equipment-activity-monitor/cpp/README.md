@@ -1,6 +1,57 @@
 # Equipment Activity Monitor in C++
 
+## What it is
+
+Using a compatible Intel® IoT Platform, this project lets you create a shop-floor equipment activity monitor that:<br>
+- tracks equipment usage by monitoring sound and vibration sensors.<br>
+- issues a visual notification whenever the equipment is in use.<br>
+- logs equipment usage using cloud-based data storage.
+
+## First time setup
+For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+
+### Grove
+Sensor | Pin
+--- | ---
+Grove\* Sound Sensor | A0
+Grove\* Piezo Vibration Sensor | A2
+Grove\* RGB LCD | I2C
+
+### DFRobot
+Sensor | Pin
+--- | ---
+Analog Sound Sensor | A1
+Digital Vibration Sensor | A2
+
+
 Follow all the steps listed in the project's root directory to configure your hardware and software prerequisites.
+
+Successful output should be similar to the one in the image below.<br>
+![](./../../images/cpp/cpp-equp-act-mon-successful-output.png)
+
+The LCD should now display `ready`.<br>
+![](./../../images/cpp/equipment-lcd.jpg)
+
+## Software requirements
+
+1. Node.js 
+2. MRAA and UPM Node.js bindings <link to mraa and upm install docs>
+2. Packages as listed in the package.json file in this example 
+2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
+
+## Configuring the example
+
+The type of kit (Grove or DFRobot) can be configured in the ![kits.h](kits.h) file.
+
+Specific pin setup and timing can be configured in the respsective ![grovekit.hpp](grovekit.hpp) and ![dfrobotkit.hpp](dfrobotkit.hpp) files.
+
+## Running the program
+
+To run this example on the board, simply enter
+
+    $ make
+    $ build
+    $ ./equipment-activity
 
 Successful output should be similar to the one in the image below.<br>
 ![](./../../images/cpp/cpp-equp-act-mon-successful-output.png)
