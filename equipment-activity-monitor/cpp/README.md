@@ -23,27 +23,19 @@ Sensor | Pin
 Analog Sound Sensor | A1
 Digital Vibration Sensor | A2
 
-
-Follow all the steps listed in the project's root directory to configure your hardware and software prerequisites.
-
-Successful output should be similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-equp-act-mon-successful-output.png)
-
-The LCD should now display `ready`.<br>
-![](./../../images/cpp/equipment-lcd.jpg)
-
 ## Software requirements
 
-1. Node.js 
-2. MRAA and UPM Node.js bindings <link to mraa and upm install docs>
-2. Packages as listed in the package.json file in this example 
+1. MRAA and UPM C++ bindings
 2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
+3. Note: The following libraries are included with the repo and already linked to in the code 
+  -jsoncpp
+  -restclient
 
 ## Configuring the example
 
-The type of kit (Grove or DFRobot) can be configured in the ![kits.h](kits.h) file.
+The type of kit (Grove or DFRobot) can be configured in the ![kits.h](./src/kits.h) file.
 
-Specific pin setup and timing can be configured in the respsective ![grovekit.hpp](./src/grovekit.hpp) and ![dfrobotkit.hpp](dfrobotkit.hpp) files.
+Specific pin setup and timing can be configured in the respsective ![grovekit.hpp](./src/grovekit.hpp) and ![dfrobotkit.hpp](./src/dfrobotkit.hpp) files.
 
 ## Running the program
 
