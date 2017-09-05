@@ -45,9 +45,6 @@ To run this example on the board, simply enter
     $ build
     $ ./equipment-activity
 
-Successful output should be similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-equp-act-mon-successful-output.png)
-
 The LCD should now display `ready`.<br>
 ![](./../../images/cpp/equipment-lcd.jpg)
 
