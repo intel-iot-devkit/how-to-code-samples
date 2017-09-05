@@ -43,7 +43,7 @@ The LCD should now display `ready`.<br>
 
 The type of kit (Grove or DFRobot) can be configured in the ![kits.h](kits.h) file.
 
-Specific pin setup and timing can be configured in the respsective ![grovekit.hpp](grovekit.hpp) and ![dfrobotkit.hpp](dfrobotkit.hpp) files.
+Specific pin setup and timing can be configured in the respsective ![grovekit.hpp](./src/grovekit.hpp) and ![dfrobotkit.hpp](dfrobotkit.hpp) files.
 
 ## Running the program
 
