@@ -80,6 +80,7 @@ To run this example on the board, simply enter
 
     $ npm install
     $ npm run
+    $ ./air-quality-sensor
     
 You will see output similar to below when the program is running.
 
