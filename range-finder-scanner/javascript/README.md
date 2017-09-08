@@ -6,7 +6,7 @@ Using a compatible Intel® IoT Platform, this project lets you create a range fi
 - can be accessed via the built-in web interface to view range finder data.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries. You need either Grove or DFRobot sensors but not both.
 
 ## Hardware requirements
 
@@ -31,6 +31,7 @@ More details on the hardware requirements can be found in the ![project README](
 
 ## Software requirements
 
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm) 
 1. Node.js 
 2. MRAA and UPM Node.js bindings <link to mraa and upm install docs>
 2. Packages as listed in the package.json file in this example 
@@ -51,5 +52,12 @@ To run this example on the board, simply enter
 
     $ npm install
     $ npm run
+    $ ./range-finder-scanner
+  
+You will see output similar to below when the program is running.
+
+![](./../../images/js/range-finder-output.png)
+
+Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
