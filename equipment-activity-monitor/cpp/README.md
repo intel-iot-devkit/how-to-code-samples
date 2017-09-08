@@ -50,6 +50,8 @@ To run this example on the board, simply enter
 The LCD should now display `ready`.<br>
 ![](./../../images/cpp/equipment-lcd.jpg)
 
+Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+
 ## Running the example with the cloud server
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse as follows:
