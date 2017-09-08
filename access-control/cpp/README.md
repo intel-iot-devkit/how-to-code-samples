@@ -53,7 +53,7 @@ To configure the example for the specific hardware kit that you are using, eithe
 6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
-### Running the program
+## Running the program
 
 To run this example on the board, simply enter
 
