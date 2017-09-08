@@ -10,6 +10,8 @@ Using a compatible Intel® IoT Platform, this project lets you create a shop-flo
 ## First time setup
 For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove or DFRobot sensors but not both.
 
+## Hardware Requirements
+
 ### Grove
 Sensor | Pin
 --- | ---
