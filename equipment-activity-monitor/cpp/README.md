@@ -12,14 +12,14 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ## Hardware Requirements
 
-### Grove
+### Grove\*
 Sensor | Pin
 --- | ---
 Grove\* Sound Sensor | A0
 Grove\* Piezo Vibration Sensor | A2
 Grove\* RGB LCD | I2C
 
-### DFRobot
+### DFRobot\*
 Sensor | Pin
 --- | ---
 Analog Sound Sensor | A1
