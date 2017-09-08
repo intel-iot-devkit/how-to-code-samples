@@ -8,7 +8,7 @@ Using a compatible Intel® IoT Platform, this project lets you create a shop-flo
 - logs equipment usage using cloud-based data storage.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove or DFRobot sensors but not both.
 
 ### Grove
 Sensor | Pin
@@ -23,9 +23,11 @@ Sensor | Pin
 Analog Sound Sensor | A1
 Digital Vibration Sensor | A2
 
+For more specific information on the hardware requirements see ![Hardware Details](./../README.md#hardware-requirements)
+
 ## Software requirements
 
-1. MRAA and UPM C++ bindings
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm) 
 2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 3. Note: The following libraries are included with the repo and already linked to in the code 
   -jsoncpp
