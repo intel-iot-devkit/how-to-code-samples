@@ -43,7 +43,7 @@ Grove RGB LCD | I2C
 
 ### Accessing the game
 
-![](./../../images/java/color-match-game-web.JPG)
+![](./../images/java/color-match-game-web.JPG)
 
 The color match game is set using a single-page web interface served from the Intel® IoT Platform while the sample program is running.
 
