@@ -95,7 +95,7 @@ Moisture Sensor | A3
 
 ### Setting the watering schedule
 
-![](./../../images/js/watering-system-web.png)
+![](./../images/js/watering-system-web.png)
 
 The schedule for the watering system is set using a single-page web interface served from the Intel® IoT Platform while the sample program is running.
 
