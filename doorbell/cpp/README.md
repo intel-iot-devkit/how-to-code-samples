@@ -54,6 +54,22 @@ To configure the example for the specific hardware kit that you are using, eithe
 6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
+### Running the program
+
+To run this example on the board, simply enter
+
+    $ make
+    $ build
+    $ ./doorbell
+
+After running the program, you should see output similar to the one in the image below.<br>
+![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+
+When the program uploads and runs on the Intel® IoT Platform, the Grove\* RGB LCD shows the message above. When pressing the Grove\* Touch Sensor, you hear the buzzer go off, and if your server is set up correctly, you get notified.<br>
+![](./../../images/cpp/doorbell-lcd.jpg)
+
+Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+
 ### Running the example with the cloud server
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
@@ -66,22 +82,7 @@ To run the example with the optional backend data store, you need to set the `SE
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board or Intel® IoT Gateway.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® IoT Platform.
 
-### Running the program
-
-To run this example on the board, simply enter
-
-    $ make
-    $ build
-    $ ./doorbell
-
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
-
-When the program uploads and runs on the Intel® Edison board, the Grove\* RGB LCD shows the message above. When pressing the Grove\* Touch Sensor, you hear the buzzer go off, and if your server is set up correctly, you get notified.<br>
-![](./../../images/cpp/doorbell-lcd.jpg)
-
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
