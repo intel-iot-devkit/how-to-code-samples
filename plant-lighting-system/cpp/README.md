@@ -72,8 +72,8 @@ To run this example on the board, simply enter
 
     $ make
     $ build
-    $ ./equipment-activity
-
+    $ ./plant-lighting-system
+    
 After running the program, you should see output similar to the one in the image below.<br>
 ![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
 
