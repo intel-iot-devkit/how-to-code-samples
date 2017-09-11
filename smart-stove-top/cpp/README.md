@@ -67,7 +67,7 @@ To run the example with the optional back-end data store, you need to set the `S
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board or Intel® IoT Gateway.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® IoT Platform.
 
 ### Running the program
 
