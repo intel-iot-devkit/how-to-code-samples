@@ -77,6 +77,7 @@ To configure the example for the Arduino 101, add a `PLATFORM` key with the valu
   "VIBRATION_THRESHOLD": 100,
   "NOISE_THRESHOLD": 0
 }
+```
 
 To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS\* data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below as follows:
 
@@ -89,6 +90,7 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
   "AUTH_TOKEN": "s3cr3t"
 }
 ```
+
 ## Running the program
 
 Once the example is installed through `pip` you can run the program by running the following command in an SSH session to the board:
