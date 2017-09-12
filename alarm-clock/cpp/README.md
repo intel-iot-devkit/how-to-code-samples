@@ -63,7 +63,7 @@ Pass your Weather Underground\* API key to the sample program by modifying the `
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to retrieve real-time weather data from the Intel® Edison board.
+Now when you run your program using the **Run** button, it should be able to retrieve real-time weather data from the Intel® IoT Platform.
 
 ### Running the program
 
@@ -76,7 +76,7 @@ To run this example on the board, simply enter
 After running the program, you should see output similar to the one in the image below.<br>
 ![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
 
-When the program uploads to the Intel® Edison board, your RGB LCD shows the current time.<br>
+When the program uploads to the Intel® IoT Platform, your RGB LCD shows the current time.<br>
 ![](./../../images/cpp/alarm-clock-lcd.jpg)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
