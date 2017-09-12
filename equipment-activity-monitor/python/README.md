@@ -98,6 +98,8 @@ Once the example is installed through `pip` you can run the program by running t
 The LCD should now display `ready`.<br>
 ![](./../images/equipment-lcd.jpg)
 
+Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+
 ### IoT cloud setup (optional)
 
 For information on how to configure the example for an optional Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* IoT cloud server, go to:
