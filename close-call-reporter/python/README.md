@@ -1,128 +1,58 @@
 # Close Call Reporter in Python*
 
-## Introduction
-
-This Close Call Reporter application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison development platform, cloud platforms, APIs, and other technologies.
-
-From this exercise, developers will learn how to:<br>
-- Connect the Intel® Edison development platform, a computing platform designed for prototyping and producing IoT and wearable computing products.<br>
-- Interface with the Intel® Edison board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
-- Store the Close Call Reporter data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or Elasticache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T M2X\*, Predix\* from GE, or SAP Cloud Platform\* IoT, different cloud-based IoT platforms for machine to machine communication.
-
 ## What it is
 
-Using an Intel® Edison board, this project lets you create a close call fleet driving reporter that:<br>
+Using a compatible Intel® IoT Platform, this project lets you create a close call fleet driving reporter that:<br>
 - monitors the Grove\* IR Distance Interrupter.<br>
 - monitors the Grove\* GPS.<br>
 - keeps track of close calls and logs them using cloud-based data storage.
 
-## How it works
-
-This close call reporter system monitors the direction the IR Distance sensor is pointed to.
-
-It also keeps track of the GPS position, updating the position frequently to ensure accurate data.
-
-Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
+## First time setup
+For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
 
 ## Hardware requirements
 
-This sample can be used with either the Grove\* Transportation and Safety Kit from Seeed Studio\*, or else the Starter Kit for Intel® Edison/Galileo from DFRobot\*.
+### Grove\* 
 
-Grove\* Transportation and Safety Kit, containing:
+Sensor | Pin
+--- | ---
+Grove\* IR Distance Interrupter | D2
+Grove\* GPS | UART port
 
-1. Intel® Edison board with an Arduino\* compatible breakout board
-2. [Grove\* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
-3. [Grove\* GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
+### DFRobot\* 
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+Sensor | Pin
+--- | ---
+IR Distance Sensor | D4
+GPS cable TX (white) | RX pin
+GPS cable RX (black) | TX pin
+GPS cable power (red) | 5V pins
+GPS cable ground (thicker black) | GND
 
-1. Intel® Edison module with an Arduino\* breakout board
-2. [IR Distance Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=572)
-3. [GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
-4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
+For more specific information on the hardware requirements see ![Hardware Details](./../README.md#hardware-requirements)
 
 ## Software requirements
 
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
+2. Python 2.7
+3. Packages as listed in the ![setup.py](setup.py) file in this directory
 1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
-### Connecting the Grove\* sensors
+You can install the dependencies.
 
-![](./../../images/js/close-call.jpg)
-
-You need to have a Grove\* Shield connected to an Arduino-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
-
-1. Plug one end of a Grove\* cable into the Grove\* IR Distance Interrupter, and connect the other end to the D2 port on the Grove\* Shield.
-
-2. Plug one end of a Grove\* cable into the Grove\* GPS, and connect the other end to the UART port on the Grove\* Shield.
-
-### Connecting the DFRobot\* sensors
-
-![](./../../images/js/close-call-dfrobot.jpg)
-
-You need to have a DFRobot\* I/O Expansion Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* I/O Expansion Shield.
-
-1. Plug one end of a DFRobot\* cable into the IR Distance Sensor, and connect the other end to the D4 port on the I/O Expansion Shield.
-
-2. Plug the attached GPS cable TX (white) to the I/O Expansion Shield's RX pin. Plug the attached GPS cable RX (black) to the I/O Expansion Shield's TX pin. Plug the attached GPS cable power (red) to any of the I/O Expansion Shield's 5V pins. Plug the attached GPS cable ground (thicker black) to any of the I/O Expansion Shield's GND.
-
-### Intel® Edison board setup
-
-If you're running this code on your Intel® Edison board, you need to install some dependencies by establishing an SSH session to the Edison and run the commands in the sections below.
-
-#### Update the opkg repo
-
-To add the Intel® opkg repository:
-
-    $ echo "src mraa-upm http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586" > /etc/opkg/mraa-upm.conf
-    $ opkg update
-
-You'll only need to perform this step once.
-
-#### Git\*
-
-To install Git\* on the Intel® Edison board (if you don’t have it yet):
-
-    $ opkg update
-    $ opkg install git
-
-#### MRAA and UPM Dependencies
-
-To install the latest versions of the MRAA and UPM libraries:
-
-    $ opkg update
-    $ opkg install mraa
-    $ opkg install upm
-
-#### Python\* Package Manager (pip)
+## Python\* Package Manager (pip)
 
 To install the Python\* package manager needed to install and run the example:
 
     $ pip install --upgrade pip setuptools
 
-#### Install the example
+## Install the example
 
 Once all dependencies are installed you can install the example itself with the following command:
 
     $ pip install --src ~/python/examples/ -e "git+https://github.com/intel-iot-devkit/how-to-code-samples.git#egg=iot_close_call_reporter&subdirectory=close-call-reporter/python"
 
 The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_close_call_reporter/` and link the package to the global Python `site-packages` folder.
-
-### IoT cloud setup
-
-You can optionally store the data generated by this sample program using cloud-based IoT platforms from Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\*.
-
-For information on how to connect to your own cloud server, go to:
-
-[https://github.com/intel-iot-devkit/iot-samples-cloud-setup](https://github.com/intel-iot-devkit/iot-samples-cloud-setup)
-
-### Data store server setup
-
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS\*, along with Node.js\*, and a Redis\* data store.
-
-For information on how to set up your own cloud data server, go to:
-
-[https://github.com/intel-iot-devkit/intel-iot-examples-datastore](https://github.com/intel-iot-devkit/intel-iot-examples-datastore)
 
 ## Configuring the example
 
@@ -173,17 +103,14 @@ Once the program is installed and configured as detailed above, you can execute 
 
     $ python -m iot_close_call_reporter
 
-### Determining the Intel® Edison board IP address
+Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
-You can determine what IP address the Intel® Edison board is connected to by running the following command:
+## IoT cloud setup (optional)
 
-    ip addr show | grep wlan
+You can optionally store the data generated by this sample program using cloud-based IoT platforms from Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\*.
 
-You will see the output similar to the following:
+For information on how to connect to your own cloud server, go to:
 
-    3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
-        inet 192.168.1.13/24 brd 192.168.1.255 scope global wlan0
-
-The IP address is shown next to `inet`. In the example above, the IP address is `192.168.1.13`.
+[https://github.com/intel-iot-devkit/iot-samples-cloud-setup](https://github.com/intel-iot-devkit/iot-samples-cloud-setup)
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
