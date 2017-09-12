@@ -79,9 +79,9 @@ Rotary Analog Sensor | A3
 
 ![](./../images/js/alarm-clock-web.png)
 
-The alarm is set using a single-page web interface served directly from the Intel® Edison board while the sample program is running.
+The alarm is set using a single-page web interface served directly from the Intel® IoT Platform while the sample program is running.
 
-The web server runs on port `3000`, so if the Intel® Edison board is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel® IoT Platform is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining your platform's IP Address
 
