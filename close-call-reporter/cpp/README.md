@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create a close-call fleet driving reporter that:
+Using a compatible Intel® IoT Platform, this project lets you create a close-call fleet driving reporter that:
 
 - monitors the Grove\* IR Distance Interrupter;
 - monitors the Grove\* GPS;
