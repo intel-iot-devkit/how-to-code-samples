@@ -87,15 +87,10 @@ Then log in on the target using ssh:
 Next step is to run the program using `java`, providing the path to the copied jar file and the name of the `main` class:
 
 	# java -cp AccessControl-1.0-SNAPSHOT-shaded.jar howToCodeSamples.AccessControl
-
-### Expected result  
-You will see output similar to the following when the program is running.
-
-![](./../images/access-control-output.png)
-    
+ 
 ### Disabling the alarm  
 The alarm is disabled using a single-page web interface served directly from the target while the sample program is running.<br>
-![](./../../images/cpp/access-control.png)
+![](./../images/access-control.png)
 
 The web server runs on port `8080`, so if the target is connected to WiFi on `192.168.1.13` the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
 
