@@ -54,10 +54,10 @@ To configure the required access code to be used for the example app, change the
 
 ```
 
-## Running the program from the command line
+## Running the program from the command line  
 For this to work you will need to have Maven installed, a guide can be found on the Maven website: <a href="https://maven.apache.org/install.html">https://maven.apache.org/install.html</a>
 
-###Running the program directly on the target
+### Running the program directly on the target  
 If you have copied the source files from Git directly on the board and already installed Maven, then you can compile and run the program directly onto the target.
 Log in to the board using ssh and navigate to the location of the `pom.xml` file.
 
@@ -88,13 +88,12 @@ Next step is to run the program using `java`, providing the path to the copied j
 
 	# java -cp AccessControl-1.0-SNAPSHOT-shaded.jar howToCodeSamples.AccessControl
 
-###Expected result
+### Expected result  
 You will see output similar to the following when the program is running.
 
 ![](./../../images/java/looks_when_running.png)
     
-### Disabling the alarm
-
+### Disabling the alarm  
 The alarm is disabled using a single-page web interface served directly from the target while the sample program is running.<br>
 ![](./../../images/cpp/access-control.png)
 
