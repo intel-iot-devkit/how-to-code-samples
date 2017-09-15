@@ -91,7 +91,7 @@ Next step is to run the program using `java`, providing the path to the copied j
 ### Expected result  
 You will see output similar to the following when the program is running.
 
-![](./../../images/java/looks_when_running.png)
+![](./../images/access-control-output.png)
     
 ### Disabling the alarm  
 The alarm is disabled using a single-page web interface served directly from the target while the sample program is running.<br>
@@ -117,7 +117,7 @@ For information on how to set up your own cloud data server, go to:
 [https://github.com/intel-iot-devkit/intel-iot-examples-datastore](https://github.com/intel-iot-devkit/intel-iot-examples-datastore)
 
 
-### Running the example with the cloud server
+#### Running the example with the cloud server
 
 To run the example with the optional back-end data store, you need to change the `SERVER` and `AUTH_TOKEN` keys in the `config.properties` file to the server URL and authentication token that correspond to your own data store server setup. For example:
 
