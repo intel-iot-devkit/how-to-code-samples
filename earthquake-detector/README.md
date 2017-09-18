@@ -1,4 +1,4 @@
-# Earthquake detector in JavaScript*
+# Earthquake detector
 
 ## Introduction
 
