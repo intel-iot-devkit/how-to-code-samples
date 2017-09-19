@@ -10,6 +10,12 @@ From this exercise, developers will learn how to:<br>
 - Store this sound data using Azure Redis Cache\* from Microsoft Azure\*, Redis Store\* from IBM Bluemix\*, or Elasticache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
 - Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T M2X\*, Predix\* from GE, or SAP Cloud Platform\* IoT, different cloud-based IoT platforms for machine to machine communication.
 
+Available in:  
+ ![C](./cpp)  
+ ![Java\*](./java)  
+ ![JavaScript\*](./javascript)  
+ ![Python\*](./python) 
+
 ## What it is
 
 Using a compatible Intel® IoT Platform, this project lets you create a smart loudness detector system that:<br>
