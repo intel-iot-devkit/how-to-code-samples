@@ -9,6 +9,12 @@ From this exercise, developers will learn how to:<br>
 - Interface with and sensors using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Set up a web application server to let users play the color matching game using their web browser.
 
+Available in:  
+ ![C](./cpp)  
+ ![Java\*](./java)  
+ ![JavaScript\*](./javascript)  
+ ![Python\*](./python) 
+
 ## What it is
 
 Using a compatible Intel® IoT Platform, this project lets you create a color match game.<br>
