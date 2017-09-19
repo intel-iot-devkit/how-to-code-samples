@@ -9,6 +9,12 @@ From this exercise, developers will learn how to:<br>
 - Interface with and sensors using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
 - Invoke the services of the United States Geological Survey (USGS) API for accessing earthquake data.
 
+Available in:  
+ ![C](./cpp)  
+ ![Java\*](./java)  
+ ![JavaScript\*](./javascript)  
+ ![Python\*](./python) 
+
 ## How it works
 
 This earthquake detector constantly reads the 3-axis digital accelerometer looking for movement that could indicate an earthquake.
