@@ -105,4 +105,16 @@ Once the program is installed and configured as detailed above, you can execute 
     
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
+After running the program you should have output similar to:
+```
+Grove Air Quality Sensor
+Heating sensor for 3 minutes…
+Please wait, 1 minute(s) passed..
+Please wait, 2 minute(s) passed..
+Sensor ready!
+raw: 	77ppm: 	0.95	Normal Indoor Air
+raw: 	40ppm: 	01.15	Fresh Air
+raw: 	36ppm: 	0.98	Fresh Air
+```
+
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
