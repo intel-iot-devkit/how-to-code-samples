@@ -61,8 +61,21 @@ To run this example on the board, simply enter
     $ build
     $ ./access-control
 
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+After running the program, you should see output similar to the output below.<br>
+
+```
+11:27:35 **** Rebuild of configuration Debug for project access-control ****
+Info: Interal Builder is used for build
+i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
+ i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
+ i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
+ i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
+ i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
+ i586-poky-linux-g++ "--sysroot=C:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux" -lmraa -o access-control "src\\access-control.o" "lib\\twilio-cplu"...
+
+ 
+ 11:27:40 Build Finished (took 5s.378ms)
+  ```
 
 ## Regenerating the HTML and CSS
 
