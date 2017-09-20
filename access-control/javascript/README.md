@@ -70,12 +70,6 @@ To run this example on the board, simply enter
     
 You will see output similar to below when the program is running.
 
-![](./../../images/js/access-control-output.png)
-
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
-
-After running the program, you should see output similar to the output below.<br>
-
 ```
 11:27:35 **** Rebuild of configuration Debug for project access-control ****
 Info: Interal Builder is used for build
@@ -89,6 +83,9 @@ i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\
  
  11:27:40 Build Finished (took 5s.378ms)
   ```
+
+Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+
 
 ### IoT cloud setup (optional)
 
