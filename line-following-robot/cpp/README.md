@@ -40,8 +40,15 @@ To run this example on the board, simply enter
     $ build
     $ ./line-following-robot
 
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+You will see output similar to below when the program is running.
+
+```
+{ value: '2016-04-22T03:28:35.962Z' } 
+Connecting to MQTT server... 
+moving forward 
+MQTT message published: { d: { value: '2016-04-22T03:28:35.962Z' } } 
+finding line 
+```
 
 ## Running the example with the cloud server
 
