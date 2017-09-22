@@ -102,6 +102,16 @@ Once the example is installed through `pip` you can run the program by running t
 
     $ python -m iot_plant_lighting_system
     
+You will see output similar to below when the program is running.
+
+```
+MQTT message published: { d: { value: 'off 2016-04-22T03:39:36.101Z' } } 
+SMS sent { sid: 'SM14faee6a517f44db91d985c9ee68b3b2', 
+	date_created: 'Fri, 22 Apr 2016 03:39:36 +0000', 
+	date_updated: 'Fri, 22 Apr 2016 03:39:36 +0000', 
+	date_sent: null, 
+```
+
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ## IoT cloud setup (optional)
