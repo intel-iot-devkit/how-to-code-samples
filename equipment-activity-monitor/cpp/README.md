@@ -49,6 +49,13 @@ To run this example on the board, simply enter
     $ build
     $ ./equipment-activity
 
+```
+Noise level: 305
+Value: start 2016-04-22T02:54:15.946Z 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 'start 2016-04-22T02:54:15.951Z' } }
+Vibration: 48 
+```
 The LCD should now display `ready`.<br>
 ![](./../../images/cpp/equipment-lcd.jpg)
 
