@@ -65,6 +65,15 @@ Next step is to run the program using `java`, providing the path to the copied j
 
 	# java -cp RobotArm-1.0-SNAPSHOT-shaded.jar howToCodeSamples.RobotArm
 
+You will see output similar to below when the program is running.
+
+```
+UPLOADING: Uploading project bundle to IoT device. 
+[Upload Complete] move 2 1020 
+move 1 1020 
+move 2 1020 
+```
+
 ## Regenerating HTML and CSS
 
 If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow\* web server.
