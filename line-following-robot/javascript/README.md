@@ -76,6 +76,13 @@ To run this example on the board, simply enter
     
 You will see output similar to below when the program is running.
 
+```
+{ value: '2016-04-22T03:28:35.962Z' } 
+Connecting to MQTT server... 
+moving forward 
+MQTT message published: { d: { value: '2016-04-22T03:28:35.962Z' } } 
+finding line 
+```
 ![](./../../images/js/line-following-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
