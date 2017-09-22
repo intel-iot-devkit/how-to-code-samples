@@ -76,7 +76,13 @@ To run this example on the board, simply enter
     $ ./equipment-activity-monitor
     
 You will see output similar to below when the program is running.
-
+```
+Noise level: 305
+Value: start 2016-04-22T02:54:15.946Z 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 'start 2016-04-22T02:54:15.951Z' } }
+Vibration: 48 
+```
 ![](./../../images/js/equipment-activity-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
