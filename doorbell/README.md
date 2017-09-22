@@ -1,4 +1,4 @@
-# Doorbell in JavaScript*
+# Doorbell
 
 ## Introduction
 
