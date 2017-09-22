@@ -1,4 +1,4 @@
-# Earthquake detector
+# Earthquake Detector
 
 ## Introduction
 
@@ -10,7 +10,7 @@ From this exercise, developers will learn how to:<br>
 - Invoke the services of the United States Geological Survey (USGS) API for accessing earthquake data.
 
 Available in:  
- ![C](./cpp)  
+ ![C++](./cpp)  
  ![Java\*](./java)  
  ![JavaScript\*](./javascript)  
  ![Python\*](./python) 
