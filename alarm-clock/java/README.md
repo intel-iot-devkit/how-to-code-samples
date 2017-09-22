@@ -110,7 +110,13 @@ Next step is to run the program using `java`, providing the path to the copied j
 
 	# java -cp AlarmClock-1.0-SNAPSHOT-shaded.jar howToCodeSamples.AlarmClock
 
-
+After running the program, you should see output similar to the text below.
+```
+[Upload Complete] forecast: Clear
+Alarm duration (ms): 3256
+Connecting to MQTT server...
+MQTT message published: { d: {value: '3256'} }
+```
 ## Regenerating HTML and CSS
 
 If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow\* web server.
