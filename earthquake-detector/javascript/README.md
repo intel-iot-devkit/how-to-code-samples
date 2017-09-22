@@ -1,3 +1,5 @@
+# Earthquake Detector in JavaScript*
+
 ## What it is
 
 Using a compatible Intel® IoT Platform, this project lets you create an earthquake detector that:<br>
@@ -70,8 +72,6 @@ UPLOADING: Uploading project bundle to IoT device.
 [Upload Complete] Checking... 
 No quake. 
 ```
-
-![](./../../images/js/earthquake-detector-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
