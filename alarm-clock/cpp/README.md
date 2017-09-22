@@ -73,8 +73,15 @@ To run this example on the board, simply enter
     $ build
     $ ./equipment-activity
 
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+After running the program, you should see output similar to the text below.<br>
+```
+[Upload Complete] forecast: Clear
+Alarm duration (ms): 3256
+Connecting to MQTT server...
+MQTT message published: { d: {value: '3256'} }
+```
+
+
 
 When the program uploads to the Intel® IoT Platform, your RGB LCD shows the current time.<br>
 ![](./../../images/cpp/alarm-clock-lcd.jpg)
