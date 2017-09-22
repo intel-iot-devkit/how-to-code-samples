@@ -71,6 +71,13 @@ To run this example on the board, simply enter
     
 You will see output similar to below when the program is running.
 
+```
+close call at $GPGGA,022655.000,3405.0861,N,11816.6856,W,2,8,1.07,154.4,M,-33.6,M,0000,0000*65
+Connecting to MQTT server...
+MQTT message published: { d: { value: '2016-04-22T02:26:56.373Z $GPGGA,022655.000,3405.0861,N,11816.6856,W,2,8,1.07,154.4,M,-33.6,M,0000,0000*65\r'
+} }
+```
+
 ![](./../../images/js/close-call-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
