@@ -105,6 +105,15 @@ Once the program is installed and configured as detailed above, you can execute 
 
     $ python -m iot_alarm_clock
     
+You will see output similar to below when the program is running.
+
+```
+[Upload Complete] forecast: Clear
+Alarm duration (ms): 3256
+Connecting to MQTT server...
+MQTT message published: { d: {value: '3256'} }
+```
+    
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ## IoT cloud setup (optional)
