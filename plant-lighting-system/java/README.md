@@ -105,6 +105,16 @@ Next step is to run the program using `java`, providing the path to the copied j
 
 	# java -cp PlantLightingSystem-1.0-SNAPSHOT-shaded.jar howToCodeSamples.PlantLightingSystem
 
+You will see output similar to below when the program is running.
+
+```
+MQTT message published: { d: { value: 'off 2016-04-22T03:39:36.101Z' } } 
+SMS sent { sid: 'SM14faee6a517f44db91d985c9ee68b3b2', 
+	date_created: 'Fri, 22 Apr 2016 03:39:36 +0000', 
+	date_updated: 'Fri, 22 Apr 2016 03:39:36 +0000', 
+	date_sent: null, 
+```
+
 ## Regenerating HTML and CSS
 
 If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow\* web server.
