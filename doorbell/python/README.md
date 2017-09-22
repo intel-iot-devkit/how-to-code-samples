@@ -91,6 +91,15 @@ For information on how to configure the example for an optional Microsoft Azure\
 Once the program is installed and configured as detailed above, you can execute the program by running the following command in an SSH session to the board:
 
     $ python -m iot_doorbell
+
+You will see output similar to below when the program is running.
+
+```
+UPLOADING: Uploading project bundle to IoT device.
+[ Upload Complete ] doorbell ring
+Connecting to MQTT server...
+MQTT message published: { d: {counter: '2016-04-22T02:38:43.667Z'} }
+```
     
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
