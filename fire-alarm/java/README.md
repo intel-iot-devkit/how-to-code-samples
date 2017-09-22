@@ -105,6 +105,15 @@ Next step is to run the program using `java`, providing the path to the copied j
 
 	# java -cp FireAlarm-1.0-SNAPSHOT-shaded.jar howToCodeSamples.FireAlarm
 
+You will see output similar to below when the program is running.
+
+```
+[Upload Complete] fire alarm 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 'fire alarm', datetime: '2016-04-22T03:17:28.279Z' } } 
+SMS sent { sid: 'SMdd79f27e8e184ee891225854888ef009', 
+date_created: 'Fri, 22 Apr 2016 03:17:29 +0000', 
+```
 
 ### IoT cloud setup (optional)
 
