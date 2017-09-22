@@ -35,8 +35,14 @@ To run this example on the board, simply enter
     $ build
     $ ./range-finder-scanner
 
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+You will see output similar to below when the program is running.
+
+```
+296 false
+297 false
+298 false
+299 false 
+```
 
 ## Regenerating HTML and CSS
 
