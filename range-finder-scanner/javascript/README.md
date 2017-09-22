@@ -56,6 +56,12 @@ To run this example on the board, simply enter
   
 You will see output similar to below when the program is running.
 
+```
+296 false
+297 false
+298 false
+299 false 
+```
 ![](./../../images/js/range-finder-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
