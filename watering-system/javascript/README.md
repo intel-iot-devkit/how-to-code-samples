@@ -140,6 +140,12 @@ To run this example on the board, simply enter
     
 You will see output similar to below when the program is running.
 
+```
+UPLOADING: Uploading project bundle to IoT device. 
+[Upload Complete] moisture (46) 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 'moisture (46) 2016-04-22705:14:56.681Z' } } 
+```
 ![](./../../images/js/watering-system-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
