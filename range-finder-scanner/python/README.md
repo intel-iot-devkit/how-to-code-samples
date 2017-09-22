@@ -48,6 +48,15 @@ Once the example is installed through `pip` you can run the program by running t
 
     $ python -m iot_range_finder_scanner
     
+You will see output similar to below when the program is running.
+
+```
+296 false
+297 false
+298 false
+299 false 
+```
+
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
