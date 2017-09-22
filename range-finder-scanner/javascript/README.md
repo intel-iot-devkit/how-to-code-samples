@@ -1,3 +1,5 @@
+# Range Finder Scanner in JavaScript*
+
 ## What it is
 
 Using a compatible Intel® IoT Platform, this project lets you create a range finding scanner that:<br>
@@ -62,7 +64,6 @@ You will see output similar to below when the program is running.
 298 false
 299 false 
 ```
-![](./../../images/js/range-finder-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
