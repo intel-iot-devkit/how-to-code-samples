@@ -73,14 +73,18 @@ To run this example on the board, simply enter
     $ build
     $ ./fire-alarm
 
-Successful output should be similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-equp-act-mon-successful-output.png)
+You will see output similar to below when the program is running.
+
+```
+[Upload Complete] fire alarm 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 'fire alarm', datetime: '2016-04-22T03:17:28.279Z' } } 
+SMS sent { sid: 'SMdd79f27e8e184ee891225854888ef009', 
+date_created: 'Fri, 22 Apr 2016 03:17:29 +0000', 
+```
 
 When the program is uploaded to the Intel® IoT Platform, the program starts to continuously monitor the temperature. If it exceeds the threshold, the `Fire Alarm!` message is displayed on the LCD.<br>
 ![](./../../images/cpp/fire-alarm-lcd.jpg)
-
-When the temperature sensor is heated, another output message is displayed in the Intel® System Studio console, similar to the image above. This means you sent your SMS alert successfully.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-output-sms-sent.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
