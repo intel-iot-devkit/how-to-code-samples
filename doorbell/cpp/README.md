@@ -62,8 +62,14 @@ To run this example on the board, simply enter
     $ build
     $ ./doorbell
 
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+You will see output similar to below when the program is running.
+
+```
+UPLOADING: Uploading project bundle to IoT device.
+[ Upload Complete ] doorbell ring
+Connecting to MQTT server...
+MQTT message published: { d: {counter: '2016-04-22T02:38:43.667Z'} }
+```
 
 When the program uploads and runs on the Intel® IoT Platform, the Grove\* RGB LCD shows the message above. When pressing the Grove\* Touch Sensor, you hear the buzzer go off, and if your server is set up correctly, you get notified.<br>
 ![](./../../images/cpp/doorbell-lcd.jpg)
