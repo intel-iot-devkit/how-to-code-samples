@@ -12,7 +12,7 @@ From this exercise, developers will learn how to:<br>
 - Invoke the services of the Twilio\* API for sending text messages.
 
 Available in:  
- ![C](./cpp)  
+ ![C++](./cpp)  
  ![Java\*](./java)  
  ![JavaScript\*](./javascript)  
  ![Python\*](./python) 
