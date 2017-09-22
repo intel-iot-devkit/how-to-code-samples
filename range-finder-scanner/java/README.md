@@ -64,6 +64,14 @@ Next step is to run the program using `java`, providing the path to the copied j
 
 	# java -cp RangeFinderScanner-1.0-SNAPSHOT-shaded.jar howToCodeSamples.RangeFinderScanner
 
+You will see output similar to below when the program is running.
+
+```
+296 false
+297 false
+298 false
+299 false 
+```
 
 ## Regenerating HTML and CSS
 
