@@ -1,3 +1,5 @@
+# Robot Arm in JavaScript*
+
 ## What it is
 
 Using a compatible Intel® IoT Platform, this project lets you create a robot arm that:<br>
@@ -60,7 +62,6 @@ UPLOADING: Uploading project bundle to IoT device.
 move 1 1020 
 move 2 1020 
 ```
-![](./../../images/js/robot-arm-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
