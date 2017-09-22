@@ -1,3 +1,5 @@
+# Plant Lighting System in JavaScript*
+
 ## What it is
 
 Using a compatible Intel® IoT Platform, this project lets you create an automatic plant lighting monitor system that:<br>
@@ -123,7 +125,6 @@ SMS sent { sid: 'SM14faee6a517f44db91d985c9ee68b3b2',
 	date_updated: 'Fri, 22 Apr 2016 03:39:36 +0000', 
 	date_sent: null, 
 ```
-![](./../../images/js/lighting-system-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
