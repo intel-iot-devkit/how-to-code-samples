@@ -1,4 +1,4 @@
-﻿# Earthquake detector in C++
+# Earthquake detector in C++
 
 ## What it is
 
@@ -60,8 +60,13 @@ To run this example on the board, simply enter
     $ build
     $ ./earthquake-detector
 
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+You will see output similar to below when the program is running.
+
+```
+UPLOADING: Uploading project bundle to IoT device. 
+[Upload Complete] Checking... 
+No quake. 
+```
 
 When the the program loads correctly, your Grove\* RGB LCD shows the `quakebot ready` message.<br>
 ![](./../../images/cpp/earthquake-lcd.jpg)
