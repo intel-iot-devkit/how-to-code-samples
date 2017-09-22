@@ -9,7 +9,7 @@ From this exercise, developers will learn how to:<br>
 - Set up a web application server to control a robot arm using a web page served directly from the Intel® IoT Platform.
 
 Available in:  
- ![C](./cpp)  
+ ![C++](./cpp)  
  ![Java\*](./java)  
  ![JavaScript\*](./javascript)  
  ![Python\*](./python) 
