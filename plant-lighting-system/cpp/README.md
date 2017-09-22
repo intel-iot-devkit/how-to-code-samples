@@ -74,11 +74,15 @@ To run this example on the board, simply enter
     $ build
     $ ./plant-lighting-system
     
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+You will see output similar to below when the program is running.
 
-Successful output should be similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-equp-act-mon-successful-output.png)
+```
+MQTT message published: { d: { value: 'off 2016-04-22T03:39:36.101Z' } } 
+SMS sent { sid: 'SM14faee6a517f44db91d985c9ee68b3b2', 
+	date_created: 'Fri, 22 Apr 2016 03:39:36 +0000', 
+	date_updated: 'Fri, 22 Apr 2016 03:39:36 +0000', 
+	date_sent: null, 
+```
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
