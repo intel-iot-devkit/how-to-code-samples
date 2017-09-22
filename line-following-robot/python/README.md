@@ -66,6 +66,16 @@ Once the example is installed through `pip` you can run the program by running t
 
     $ python -m iot_line_following_robot
     
+You will see output similar to below when the program is running.
+
+```
+{ value: '2016-04-22T03:28:35.962Z' } 
+Connecting to MQTT server... 
+moving forward 
+MQTT message published: { d: { value: '2016-04-22T03:28:35.962Z' } } 
+finding line 
+```
+
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ### IoT cloud setup (optional)
