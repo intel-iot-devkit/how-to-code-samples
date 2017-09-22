@@ -1,3 +1,5 @@
+# Doorbell in JavaScript*
+
 ## What it is
 
 Using a compatible Intel® IoT Platform, this project lets you create a smart doorbell that:
@@ -89,7 +91,6 @@ UPLOADING: Uploading project bundle to IoT device.
 Connecting to MQTT server...
 MQTT message published: { d: {counter: '2016-04-22T02:38:43.667Z'} }
 ```
-![](./../../images/js/doorbell-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
     
