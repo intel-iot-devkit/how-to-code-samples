@@ -1,3 +1,5 @@
+# Alarm Clock in JavaScript*
+
 ## What it is
 
 Using a compatible Intel® IoT Platform, this project lets you create a smart alarm clock that:<br>
@@ -132,8 +134,6 @@ Alarm duration (ms): 3256
 Connecting to MQTT server...
 MQTT message published: { d: {value: '3256'} }
 ```
-
-![](./../../images/js/alarm-clock-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
