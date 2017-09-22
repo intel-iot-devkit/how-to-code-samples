@@ -10,7 +10,7 @@ From this exercise, developers will learn how to:<br>
 - Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T M2X\*, Predix\* from GE, or SAP Cloud Platform\* IoT, different cloud-based IoT platforms for machine to machine communication.
 
 Available in:  
- ![C](./cpp)  
+ ![C++](./cpp)  
  ![Java\*](./java)  
  ![JavaScript\*](./javascript)  
  ![Python\*](./python) 
