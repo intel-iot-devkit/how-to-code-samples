@@ -130,6 +130,13 @@ To run this example on the board, simply enter
     
 You will see output similar to below when the program is running.
 
+```
+[Upload Complete] fire alarm 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 'fire alarm', datetime: '2016-04-22T03:17:28.279Z' } } 
+SMS sent { sid: 'SMdd79f27e8e184ee891225854888ef009', 
+date_created: 'Fri, 22 Apr 2016 03:17:29 +0000', 
+```
 ![](./../../images/js/fire-alarm-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
