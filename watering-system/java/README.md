@@ -119,6 +119,15 @@ Next step is to run the program using `java`, providing the path to the copied j
 
 	# java -cp WateringSystem-1.0-SNAPSHOT-shaded.jar howToCodeSamples.WateringSystem
 
+You will see output similar to below when the program is running.
+
+```
+UPLOADING: Uploading project bundle to IoT device. 
+[Upload Complete] moisture (46) 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 'moisture (46) 2016-04-22705:14:56.681Z' } } 
+```
+
 ## Regenerating HTML and CSS
 
 If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow\* web server.
