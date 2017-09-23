@@ -1,3 +1,5 @@
+# Storage Unit Flood Detector in JavaScript*
+
 ## What it is
 
 Using a compatible Intel® IoT Platform, this project lets you create a storage unit flood detector that:<br>
@@ -87,7 +89,6 @@ UPLOADING: Uploading project bundle to IoT device.
 Connecting to MQTT server... 
 MQTT message published: { d: { value: '2016-04-22705:08:41.682Z' } } 
 ```
-![](./../../images/js/flood-detect-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
