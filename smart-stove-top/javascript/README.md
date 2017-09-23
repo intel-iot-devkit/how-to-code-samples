@@ -1,3 +1,5 @@
+# Smart Stove Top in JavaScript*
+
 ## What it is
 
 Using a compatible Intel® IoT Platform, this project lets you create a smart stove top that:<br>
@@ -80,7 +82,6 @@ App is already running
 Connecting to MQTT server... 
 MQTT message published: { d: { value: 104.1676025390625 } } 
 ```
-![](./../../images/js/smart-stove-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
