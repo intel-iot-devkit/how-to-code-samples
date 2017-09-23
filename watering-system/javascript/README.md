@@ -1,3 +1,5 @@
+# Watering System in JavaScript*
+
 ## What it is
 
 Using a compatible Intel® IoT Platform, this project lets you create an automatic watering system that:<br>
@@ -146,7 +148,6 @@ UPLOADING: Uploading project bundle to IoT device.
 Connecting to MQTT server... 
 MQTT message published: { d: { value: 'moisture (46) 2016-04-22705:14:56.681Z' } } 
 ```
-![](./../../images/js/watering-system-output.png)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
