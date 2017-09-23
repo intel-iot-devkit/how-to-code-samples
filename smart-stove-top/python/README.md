@@ -83,6 +83,13 @@ Once the example is installed through `pip` you can run the program by running t
 
     $ python -m iot_smart_stove_top
 
+```
+App is already running 
+95.0885009765625 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 104.1676025390625 } } 
+```
+
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ## IoT cloud setup (optional)
