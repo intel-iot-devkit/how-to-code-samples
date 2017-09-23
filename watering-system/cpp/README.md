@@ -70,11 +70,14 @@ To run this example on the board, simply enter
     $ build
     $ ./watering-system
     
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+You will see output similar to below when the program is running.
 
-Successful output should be similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-equp-act-mon-successful-output.png)
+```
+UPLOADING: Uploading project bundle to IoT device. 
+[Upload Complete] moisture (46) 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 'moisture (46) 2016-04-22705:14:56.681Z' } } 
+```
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
