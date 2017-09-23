@@ -85,6 +85,8 @@ Next step is to run the program using `java`, providing the path to the copied j
 
 	# java -cp SmartStoveTop-1.0-SNAPSHOT-shaded.jar howToCodeSamples.SmartStoveTop
 
+You will see output similar to below when the program is running.
+
 ```
 App is already running 
 95.0885009765625 
