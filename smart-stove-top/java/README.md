@@ -85,6 +85,13 @@ Next step is to run the program using `java`, providing the path to the copied j
 
 	# java -cp SmartStoveTop-1.0-SNAPSHOT-shaded.jar howToCodeSamples.SmartStoveTop
 
+```
+App is already running 
+95.0885009765625 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 104.1676025390625 } } 
+```
+
 ## Regenerating HTML and CSS
 
 If you make any changes to either the **index.html** or **styles.css** file, you need to regenerate the .hex file used to serve up the assets via the built-in Crow\* web server.
