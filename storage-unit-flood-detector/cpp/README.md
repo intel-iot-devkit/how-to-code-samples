@@ -61,8 +61,14 @@ To run this example on the board, simply enter
     $ build
     $ ./storage-unit-flood-detector
     
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+You will see output similar to below when the program is running.
+
+```
+UPLOADING: Uploading project bundle to IoT device. 
+[Upload Complete] Moisture alarm 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: '2016-04-22705:08:41.682Z' } } 
+```
 
 Then you get output from the sensor in the console telling you if it is dry, moist, or wet.
 
