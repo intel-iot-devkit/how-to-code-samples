@@ -77,8 +77,14 @@ To run this example on the board, simply enter
     $ build
     $ ./smart-stove-top
 
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+You will see output similar to below when the program is running.
+
+```
+App is already running 
+95.0885009765625 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 104.1676025390625 } } 
+```
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
