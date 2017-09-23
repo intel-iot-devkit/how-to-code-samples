@@ -83,6 +83,8 @@ Once the example is installed through `pip` you can run the program by running t
 
     $ python -m iot_smart_stove_top
 
+You will see output similar to below when the program is running.
+
 ```
 App is already running 
 95.0885009765625 
