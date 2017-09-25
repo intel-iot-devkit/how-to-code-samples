@@ -53,17 +53,11 @@ To optionally fetch the real-time weather information, you need to get an API ke
 
 You can still run the example, but without a Weather Underground\* API key you cannot retrive weather data.
 
-Pass your Weather Underground\* API key to the sample program by modifying the `WEATHER_API_KEY` key in the `config.json` file as follows:
-
-1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
-2. Under **C/C++ Remote Application**, click **alarm-clock**.<br> This displays the information for your application.
-3. In the **Commands to execute before application** field, add the following environment variables, except use the API key that corresponds to your own setup:<br>
+Pass your Weather Underground\* API key to the sample program by setting the API_KEY environment variable on your target platform:
 
         chmod 755 /tmp/alarm-clock; export API_KEY="YOURKEY"
 
-4. Click **Apply** to save your new environment variables.
-
-Now when you run your program using the **Run** button, it should be able to retrieve real-time weather data from the Intel® IoT Platform.
+Now when you run your program, it should be able to retrieve real-time weather data from the Intel® IoT Platform.
 
 ### Running the program
 
