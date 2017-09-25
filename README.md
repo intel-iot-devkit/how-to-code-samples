@@ -27,16 +27,19 @@ Navigate to the directory with this example.
 These samples are currently supported by the following platforms:
 
 Intel IoT Gateway using Arduino 101 (https://software.intel.com/en-us/iot/hardware/gateways) 
+Make sure your Intel® IoT Gateway is setup with an operating system, by following the directions on the web site here:
+
+https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iotdk
 
 ## Software Requirements
 
 ### mraa
 
-[mraa.io](mraa.io)
+[mraa.io](https://github.com/intel-iot-devkit/mraa)
 
 ### upm
 
-[upm.io](upm.io)
+[upm.io](https://upm.mraa.io/)
 
 ### Integrated Development Environments (IDEs)
 
@@ -60,12 +63,4 @@ Refer to each example for the specific configuration needed.
 Specific instructions on setting up individual cloud services can be found here https://github.com/intel-iot-devkit/iot-samples-cloud-setup
 
 Adding a Redis\* datastore can be done by following instructions here https://github.com/intel-iot-devkit/intel-iot-examples-datastore 
-
-## Finding your board's IP address
-
-### On Wind River Linux
-
-### On Ubuntu
-
-##
 
