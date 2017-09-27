@@ -35,6 +35,26 @@ More details on the hardware requirements can be found in the ![project README](
 3. Microsof Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 ## Configuring the example
+### Set up the source files
+You now need to copy the source files and the config file to the project.
+Drag all of the files from your git repository's "src" folder into the new project's src folder in Intel® System Studio IoT Edition. Make sure previously auto-generated main class is overridden.
+
+The project uses the following external jars: [gson-2.6.1](http://central.maven.org/maven2/com/google/code/gson/gson/2.6.1/gson-2.6.1.jar), [jetty-all-9.3.7.v20160115-uber](http://repo1.maven.org/maven2/org/eclipse/jetty/aggregate/jetty-all/9.3.7.v20160115/jetty-all-9.3.7.v20160115-uber.jar), [joda-time-2.9.2](http://repo.maven.apache.org/maven2/joda-time/joda-time/2.9.2/joda-time-2.9.2.jar). These can be found in the Maven Central Repository. Create a "jars" folder in the project's root directory, and copy all needed jars in this folder.
+In Intel® System Studio IoT Edition, select all jar files in "jars" folder and  right click -> Build path -> Add to build path
+
+![](./../../images/java/add to build path.png)
+
+Now you need to add the UPM jar files relevant to this specific sample.
+right click on the project's root -> Build path -> Configure build path. Java Build Path -> 'Libraries' tab -> click on "add external JARs..."
+
+For this sample you will need the following jars:
+
+1. upm_i2clcd.jar
+2. upm_biss0001.jar
+
+The jars can be found at the IOT Devkit installation root path\iss-iot-win\devkit-x86\sysroots\i586-poky-linux\usr\lib\java
+
+### Set the kit
 
 To configure the example for the specific hardware kit that you are using, either Grove\* or DFRobot\* you will need to change the `INTEL_IOT_KIT` key in the `config.properties` file to either **GROVEKIT** (this is the default) or **DFROBOTKIT**, depending on which hardware kit you wish to use. For example:
 
@@ -54,39 +74,7 @@ To configure the required access code to be used for the example app, change the
 
 ```
 
-## Running the program from the command line  
-For this to work you will need to have Maven installed, a guide can be found on the Maven website: <a href="https://maven.apache.org/install.html">https://maven.apache.org/install.html</a>
 
-### Running the program directly on the target  
-If you have copied the source files from Git directly on the board and already installed Maven, then you can compile and run the program directly onto the target.
-Log in to the board using ssh and navigate to the location of the `pom.xml` file.
-
-First you will need to compile the source files:
-
-	# mvn compile
-
-Then you can execute the program. The following command will run the `main` file in a separate Java process:
-
-	# mvn exec:exec
-
-### Compiling on host machine and deploying to target
-If you want to compile the project on your local PC and then deploy it to the target you need to run `mvn package` at the location where the `pom.xml` file exists, or you can specify the file location using the `-f` parameter:
-
-	$ mvn package -f <path_to_pom_file>
-
-This will compile the source files and pack them in `.jar` archives. It will create a folder called `target` where you will find two jars, `AccessControl-1.0-SNAPSHOT.jar` and `AccessControl-1.0-SNAPSHOT-shaded.jar`. The first one contains only the classes from the current module, while the `shaded` version contains the classes from the current module and its dependencies, so running the program using the second jar will be easier since you don't have to worry about adding all the dependency jars to the classpath.
-
-Next step is to copy the generated jar on the target using `scp`. The following command will copy the file to the `home` folder of user `root` on the target:
-
-	$ scp target/AccessControl-1.0-SNAPSHOT-shaded.jar root@<target_ip>:
-
-Then log in on the target using ssh:
-
-	$ ssh root@<target_ip>
-
-Next step is to run the program using `java`, providing the path to the copied jar file and the name of the `main` class:
-
-	# java -cp AccessControl-1.0-SNAPSHOT-shaded.jar howToCodeSamples.AccessControl
  
 ### Disabling the alarm  
 The alarm is disabled using a single-page web interface served directly from the target while the sample program is running.<br>
