@@ -38,14 +38,14 @@ In addition to using a compatible platform listed in ![Hardware Compatibility](.
 
 This sample can be used with either the Grove\* Starter Kit Plus from Seeed Studio, or else the DFRobot\* Edison Starter Kit.
 
-Grove\* Starter Kit Plus, containing:
+Grove: 
 
 1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
 2. [Grove\* Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/ttp223.html)
 3. [Grove\* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+DFRobot: 
 
 1. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
 3. [Capacitive Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
