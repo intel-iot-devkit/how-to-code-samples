@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart alarm clock that:<br>
+Using a compatible Intel-based platform, this project lets you create a smart alarm clock that:<br>
 - can be accessed with your mobile phone via the built-in web interface to set the alarm time.<br>
 - displays live weather data on the LCD.<br>
 - keeps track of how long it takes you to wake up each morning, using cloud-based data storage.
@@ -33,7 +33,7 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
 2. Python 2.7
 3. Packages as listed in the ![setup.py](setup.py) file in this directory
 1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
@@ -74,7 +74,7 @@ To configure the example for the Arduino 101, add a `PLATFORM` key with the valu
   "kit": "grove",
   "PLATFORM": "firmata"
 }
-
+```
 To configure the example for the optional real-time weather data, obtain a key from the Weather Underground\* website as documented above, and then change the `WEATHER_API_KEY` and `LOCATION` keys in the `config.json` file as follows:
 
 ```JSON
