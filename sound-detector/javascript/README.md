@@ -65,9 +65,13 @@ To run this example on the board, simply enter
     $ npm run
     $ ./sound-detector
     
+### Expected output
 You will see output similar to below when the program is running.
-
-![](./../../images/js/smart-stove-output.png)
+```
+95.0885009765625 
+Connecting to MQTT server... 
+MQTT message published: { d: value: 184/167345840388 } } 
+```
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
