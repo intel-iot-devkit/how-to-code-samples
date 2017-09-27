@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This air quality monitor application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel® IoT Platform, cloud platforms, APIs, and other technologies.
+This air quality monitor application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel-based platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -18,7 +18,7 @@ Available in:
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create an air quality monitor that:<br>
+Using a compatible Intel-based platform, this project lets you create an air quality monitor that:<br>
 - continuously checks the air quality for airborne contaminants.<br>
 - sounds an audible warning when the air quality is unhealthy.<br>
 - stores a record of each time the air quality sensor detects contaminants, using cloud-based data storage.
@@ -73,9 +73,5 @@ Sensor | Pin
 --- | ---
 Buzzer | A1
 Air Quality Sensor | A3
-
-### Determining your platform's IP Address
-
-See the section on Finding Your Board's IP Address at the bottom of the Setup Instructions readme ![Setup Instructions](./../README.md#finding-your-boards-ip-address). 
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
