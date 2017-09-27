@@ -35,6 +35,12 @@ More details on the hardware requirements can be found in the ![project README](
 3. Microsof Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 ## Configuring the example
+### Clone the repo
+clone the How-To Code Samples repository with Git* on your computer as follows:
+
+$ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
+To download a .zip file, in your web browser go to https://github.com/intel-iot-devkit/how-to-code-samples and click the Download ZIP button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
+
 ### Set up the source files
 You now need to copy the source files and the config file to the project.
 Drag all of the files from your git repository's "src" folder into the new project's src folder in Intel® System Studio IoT Edition. Make sure previously auto-generated main class is overridden.
