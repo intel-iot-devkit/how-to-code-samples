@@ -28,17 +28,12 @@ For more specific information on the hardware requirements see ![Hardware Detail
 ## Software requirements
 
 1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
-2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional
+2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
+3. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional
 
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
 
-## Running the program
-
-To run this example on the board, simply enter
-
-    $ make
-    $ build
-    $ ./line-following-robot
+## Expected output
 
 You will see output similar to below when the program is running.
 
@@ -50,7 +45,7 @@ MQTT message published: { d: { value: '2016-04-22T03:28:35.962Z' } }
 finding line 
 ```
 
-## Running the example with the cloud server
+## Running the example with the cloud server (optional)
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
 
