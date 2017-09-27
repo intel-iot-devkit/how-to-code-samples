@@ -26,15 +26,9 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
+2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
 
-### Running the program
-
-To run this example on the board, simply enter
-
-    $ make
-    $ build
-    $ ./range-finder-scanner
-
+### Expected output
 You will see output similar to below when the program is running.
 
 ```
@@ -43,6 +37,11 @@ You will see output similar to below when the program is running.
 298 false
 299 false 
 ```
+
+Range data is viewed using a single-page web interface served directly from your board while the sample program is running.<br>
+![](./../../images/js/range-finder-web.png)
+
+The web server runs on port `3000`, so if your board is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ## Regenerating HTML and CSS
 
