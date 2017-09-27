@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a robot arm that:<br>
+Using a compatible Intel-based platform, this project lets you create a robot arm that:<br>
 - continuously checks the Grove\* Joystick.<br>
 - moves two stepper motors based on the joystick control.<br>
 - can be accessed via the built-in web interface to control the motors.
@@ -24,7 +24,7 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
 2. Python 2.7
 3. Packages as listed in the ![setup.py](setup.py) file in this directory
 
@@ -59,7 +59,7 @@ To configure the example for the Arduino 101, add a `PLATFORM` key with the valu
 }
 ```
 
-## Running the program manually
+## Running the program 
 
 Once the example is installed through `pip` you can run the program by running the following command in an SSH session to the board:
 
@@ -68,8 +68,7 @@ Once the example is installed through `pip` you can run the program by running t
 You will see output similar to below when the program is running.
 
 ```
-UPLOADING: Uploading project bundle to IoT device. 
-[Upload Complete] move 2 1020 
+move 2 1020 
 move 1 1020 
 move 2 1020 
 ```
