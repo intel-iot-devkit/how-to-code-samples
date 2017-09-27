@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart stove top that:
+Using a compatible Intel-based platform, this project lets you create a smart stove top that:
 
 - monitors the temperature using the sensor and gives an audible notification when your food reaches the desired temperature and you need to turn down the heat.
 - can be accessed with your mobile phone via a built-in web interface to set the desired temperature.
@@ -35,7 +35,9 @@ For more specific information on the hardware requirements see ![Hardware Detail
 ## Software requirements
 
 1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
-2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
+2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
+
+3. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
 
 ## Configuring the example for your hardware kit
@@ -55,7 +57,25 @@ To configure the example for the specific hardware kit that you are using, eithe
 6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
-### Running the example with the cloud server
+You will see output similar to below when the program is running.
+
+```
+App is already running 
+95.0885009765625 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 104.1676025390625 } } 
+```
+
+### Setting the temperature
+
+The target temperature is set using a single-page web interface served up from the Intel® Edison board or Intel® IoT Gateway while the sample program is running.<br>
+![](./../../images/cpp/smrt-rng-app.png)
+
+The web server runs on port `3000`; if the Intel® Edison board or Intel® IoT Gateway is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+
+Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+
+### Running the example with the cloud server (optional)
 
 To run the example with the optional back-end data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse as follows:
 
@@ -67,26 +87,10 @@ To run the example with the optional back-end data store, you need to set the `S
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® IoT Platform.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from your board.
 
-### Running the program
 
-To run this example on the board, simply enter
 
-    $ make
-    $ build
-    $ ./smart-stove-top
-
-You will see output similar to below when the program is running.
-
-```
-App is already running 
-95.0885009765625 
-Connecting to MQTT server... 
-MQTT message published: { d: { value: 104.1676025390625 } } 
-```
-
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ## Regenerating HTML and CSS
 
