@@ -34,7 +34,7 @@ More details on the hardware requirements can be found in the ![project README](
 
 ## Software requirements
 
-1. ![Intel® System Studio] (https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
+1. ![Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
 2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
 2. Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* account (optional)
 3. Weather Underground\* API key
