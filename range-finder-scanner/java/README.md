@@ -60,6 +60,7 @@ In order for the sample to run you will need to copy some files to your board. T
 Two sorts of files need to be copied from the sample repository:
 
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
+2. web files- files within site_contents folder need to be copied to "/var/RangeFinderScanner"
 
 ### Expected output
 
@@ -71,6 +72,13 @@ You will see output similar to below when the program is running.
 298 false
 299 false 
 ```
+### Viewing the range data
+
+![](./../../images/java/range-finder-web.png)
+
+The schedule for the lighting system is set using a single-page web interface served from your board while the sample program is running.
+
+The web server runs on port `8080`, so if your board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
 
 ## Regenerating HTML and CSS
 
