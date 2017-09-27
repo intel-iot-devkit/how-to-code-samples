@@ -89,7 +89,10 @@ Alarm duration (ms): 3256
 Connecting to MQTT server...
 MQTT message published: { d: {value: '3256'} }
 ```
+When the program uploads to the Intel-based platform, your RGB LCD shows the current time.<br>
+![](./../../images/cpp/alarm-clock-lcd.jpg)
 
+Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 ### Running the example with the cloud server (optional)
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
@@ -103,11 +106,6 @@ To run the example with the optional backend data store, you need to set the `SE
 4. Click **Apply** to save your new environment variables.
 
 Now when you run your program using the **Run** button, it should be able to call your server to save the data right from your board
-
-When the program uploads to the Intel-based platform, your RGB LCD shows the current time.<br>
-![](./../../images/cpp/alarm-clock-lcd.jpg)
-
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ## Regenerating HTML and CSS
 
