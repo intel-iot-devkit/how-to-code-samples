@@ -81,11 +81,17 @@ To configure the example for the specific hardware kit that you are using, eithe
 You will see output similar to below when the program is running.
 
 ```
-App is already running 
 95.0885009765625 
 Connecting to MQTT server... 
 MQTT message published: { d: { value: 104.1676025390625 } } 
 ```
+### Setting the temperature
+
+![](./../../images/java/smart-stove-web.png)
+
+The target temperature is set using a single-page web interface served from your board while the sample program is running.
+
+The web server runs on port `8080`, so if your board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
 
 ## Regenerating HTML and CSS
 
