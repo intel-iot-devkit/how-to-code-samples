@@ -84,8 +84,7 @@ To configure the example for the specific hardware kit that you are using, eithe
 You will see output similar to below when the program is running.
 
 ```
-UPLOADING: Uploading project bundle to IoT device.
-[ Upload Complete ] doorbell ring
+doorbell ring
 Connecting to MQTT server...
 MQTT message published: { d: {counter: '2016-04-22T02:38:43.667Z'} }
 ```
