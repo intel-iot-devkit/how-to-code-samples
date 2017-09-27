@@ -96,7 +96,7 @@ Two sorts of files need to be copied from the sample repository:
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 2. web files- files within site_contents folder need to be copied to "/var/AlarmClock"
 
-## Configuring the example
+## Set the kit
 
 To configure the example for the specific hardware kit that you are using, either Grove\* or DFRobot\* you will need to change the `INTEL_IOT_KIT` key in the `config.properties` file to either **GROVEKIT** (this is the default) or **DFROBOTKIT**, depending on which hardware kit you wish to use. For example:
 
