@@ -25,54 +25,61 @@ More details on the hardware requirements can be found in the ![project README](
 
 ## Software requirements
 
-1. [Java](https://software.intel.com/en-us/java-for-iot-reference)
+1. ![Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
 2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
 
-## Running the program from the command line
+## Configuring the example
+### Clone the repo
+Clone the How-To Code Samples repository with Git* on your computer as follows:
 
-This can be easily achieved with basic Maven commands. For this to work you will need to have Maven installed, a guide can be found on the Maven website: <a href="https://maven.apache.org/install.html">https://maven.apache.org/install.html</a>
+$ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
+To download a .zip file, in your web browser go to https://github.com/intel-iot-devkit/how-to-code-samples and click the Download ZIP button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
-### Running the program directly on the target 
+### Set up the source files
+You now need to copy the source files and the config file to the project.
+Drag all of the files from your git repository's "src" folder into the new project's src folder in Intel® System Studio IoT Edition. Make sure previously auto-generated main class is overridden.
 
-If you have copied the source files from Git directly on the board and already installed Maven, then you can compile and run the program directly onto the target.
-Log in to the board using ssh and navigate to the location of the `pom.xml` file.
+The project uses the following external jars: [jetty-all-9.3.7.v20160115-uber](http://repo1.maven.org/maven2/org/eclipse/jetty/aggregate/jetty-all/9.3.7.v20160115/jetty-all-9.3.7.v20160115-uber.jar). These can be found in the Maven Central Repository. Create a "jars" folder in the project's root directory, and copy all needed jars in this folder.
+In Intel® System Studio IoT Edition, select all jar files in "jars" folder and  right click -> Build path -> Add to build path
 
-First you will need to compile the source files:
+![](./../../images/java/add to build path.png)
 
-	# mvn compile
+Now you need to add the UPM jar files relevant to this specific sample.
+Right-click on the project's root -> Build path -> Configure build path. Java Build Path -> 'Libraries' tab -> click on "add external JARs..."
 
-Then you can execute the program. The following command will run the `main` file in a separate Java process:
+For this sample you will need the following jars:
 
-	# mvn exec:exec
+1. upm_uln200xa.jar
+2. upm_joystick.jar
 
-### Compiling on host machine and deploying to target
+The jars can be found at the IOT Devkit installation root path\iss-iot-win\devkit-x86\sysroots\i586-poky-linux\usr\lib\java
 
-If you want to compile the project on your local PC and then deploy it to the target you need to run `mvn package` at the location where the `pom.xml` file exists, or you can specify the file location using the `-f` parameter:
+### Preparing your target platform before running the project
 
-	$ mvn package -f <path_to_pom_file>
+In order for the sample to run you will need to copy some files to your board. This can be done using SCP through SSH.<br>
+Two sorts of files need to be copied from the sample repository:
 
-This will compile the source files and pack them in `.jar` archives. It will create a folder called `target` where you will find two jars, `RobotArm-1.0-SNAPSHOT.jar` and `RobotArm-1.0-SNAPSHOT-shaded.jar`. The first one contains only the classes from the current module, while the `shaded` version contains the classes from the current module and its dependencies, so running the program using the second jar will be easier since you don't have to worry about adding all the dependency jars to the classpath.
+1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
+2. web files- files within site_contents folder need to be copied to "/var/RobotArm"
 
-Next step is to copy the generated jar on the target using `scp`. The following command will copy the file to the `home` folder of user `root` on the target:
 
-	$ scp target/RobotArm-1.0-SNAPSHOT-shaded.jar root@<target_ip>:
-
-Then log in on the target using ssh:
-
-	$ ssh root@<target_ip>
-
-Next step is to run the program using `java`, providing the path to the copied jar file and the name of the `main` class:
-
-	# java -cp RobotArm-1.0-SNAPSHOT-shaded.jar howToCodeSamples.RobotArm
+### Expected output
 
 You will see output similar to below when the program is running.
 
 ```
-UPLOADING: Uploading project bundle to IoT device. 
-[Upload Complete] move 2 1020 
+move 2 1020 
 move 1 1020 
 move 2 1020 
 ```
+
+### Controlling via a browser
+
+![](./../../images/java/robot-arm-web.png)
+
+Optionally, the motors can be controlled directly via a web page served by the program running on your board.
+
+The web server runs on port `8080`, so if your board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
 
 ## Regenerating HTML and CSS
 
