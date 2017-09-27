@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This access control system application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel® IoT Platform, cloud platforms, APIs, and other technologies.
+This access control system application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel-based platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -18,7 +18,7 @@ Available in:
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart access control system that:<br>
+Using a compatible Intel-based platform, this project lets you create a smart access control system that:<br>
 - monitors a motion sensor to detect when a person is in an area that requires authorization.<br>
 - can be accessed with your mobile phone via the built-in web interface to disable the alarm.<br>
 - keeps track of access, using cloud-based data storage.
