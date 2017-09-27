@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a robot arm that:
+Using a compatible Intel-based platform, this project lets you create a robot arm that:
 
 - continuously checks the Grove\* Joystick.
 - moves two stepper motors, based on the control of the joystick.
@@ -27,23 +27,22 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
+2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
 
-## Running the program
 
-To run this example on the board, simply enter
-
-    $ make
-    $ build
-    $ ./robot-arm
-
-You will see output similar to below when the program is running.
+## Expected output
 
 ```
-UPLOADING: Uploading project bundle to IoT device. 
-[Upload Complete] move 2 1020 
+move 2 1020 
 move 1 1020 
 move 2 1020 
 ```
+### Controlling the robot arm via a web browser
+
+The robot arm is controlled using a single-page web interface served directly from your board while the sample program is running.<br>
+![](./../../images/cpp/robot-arm-web.png)
+
+The web server runs on port `3000`; if your board is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ## Regenerating HTML and CSS
 
