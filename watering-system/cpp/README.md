@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create an automatic watering system that:
+Using a compatible Intel-based platform, this project lets you create an automatic watering system that:
 
 - turns a water pump on and off based on a configurable schedule.
 - detects if the watering system is pumping when expected, by using a water flow sensor.
@@ -41,20 +41,13 @@ For more specific information on the hardware requirements see ![Hardware Detail
 ## Software requirements
 
 1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
-2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
-3. Twilio\* account
+2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
+3. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
+4. Twilio\* account (optional)
 
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
 
-### Copy the libraries on Windows\*
-
-For help installing and using WinSCP, go to this link:
-
-[using-winscp.md](./../../docs/cpp/using-winscp.md)
-
-Note: You need to turn SSH on by running the `configure_edison --password` command on the board. Once you set the password, make sure you write it down. You only need to do this once and it is set when you reboot the Intel® Edison board.
-
-### Twilio\* API Key
+### Twilio\* API Key (optional)
 
 To optionally send text messages, you need to register for an account and get an API key from the Twilio\* website:
 
@@ -62,13 +55,7 @@ To optionally send text messages, you need to register for an account and get an
 
 You can still run the example, but without a Twilio API key you cannot send SMS alerts.
 
-## Running the program
-
-To run this example on the board, simply enter
-
-    $ make
-    $ build
-    $ ./watering-system
+## Expected output
     
 You will see output similar to below when the program is running.
 
@@ -78,10 +65,17 @@ UPLOADING: Uploading project bundle to IoT device.
 Connecting to MQTT server... 
 MQTT message published: { d: { value: 'moisture (46) 2016-04-22705:14:56.681Z' } } 
 ```
+## Setting the watering schedule
 
+The schedule for the watering system is set using a single-page web interface served up from the Intel® Edison board or Intel® IoT Gateway while the sample program is running.<br>
+![](./../../images/cpp/water-sys-app.png)
+
+The latest data values from the connected Grove\* Moisture Sensor are displayed at the bottom of the web page.
+
+The web server runs on port `3000`; if the your board is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
-## Running the example with the cloud server
+## Running the example with the cloud server (optional)
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
 
@@ -93,7 +87,7 @@ To run the example with the optional backend data store, you need to set the `SE
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® IoT Platform.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from your board.
 
 ## Regenerating HTML and CSS
 
