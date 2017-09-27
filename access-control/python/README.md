@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart access control system that:<br>
+Using a compatible Intel-based platform, this project lets you create a smart access control system that:<br>
 - monitors a motion sensor to detect when a person is in an area that requires authorization.<br>
 - can be accessed with your mobile phone via the built-in web interface to disable the alarm.<br>
 - keeps track of access, using cloud-based data storage.
@@ -82,15 +82,11 @@ Once the program is installed and configured as detailed above, you can execute 
 
 You will see output similar to below when the program is running.
  
-11:27:35 **** Rebuild of configuration Debug for project access-control ****
-Info: Interal Builder is used for build
-i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
- i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
- i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
- i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
- i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
- i586-poky-linux-g++ "--sysroot=C:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux" -lmraa -o access-control "src\\access-control.o" "lib\\twilio-cplu"...
- 
- 11:27:40 Build Finished (took 5s.378ms)
+```
+MQTT message published: { d: { value: '2016-04-21T23:57:18.254Z looking-for-motion'  }}
+2016-04-21T23:57:30.559Z motion-detected 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: '2016-04-21T23:57:30.559Z motion-detected'  }}
+```
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
