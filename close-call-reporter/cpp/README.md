@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a close-call fleet driving reporter that:
+Using a compatible Intel-based platform, this project lets you create a close-call fleet driving reporter that:
 
 - monitors the Grove\* IR Distance Interrupter;
 - monitors the Grove\* GPS;
@@ -99,6 +99,6 @@ To run the example with the optional backend data store, you need to set the `SE
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board or Intel® IoT Gateway.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from your board.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
