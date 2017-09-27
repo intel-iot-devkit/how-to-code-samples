@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a storage unit flood detector that:
+Using a compatible Intel-based platform, this project lets you create a storage unit flood detector that:
 
 - continuously checks the moisture sensor.
 - sounds an audible warning when it looks like flooding.
@@ -32,7 +32,8 @@ For more specific information on the hardware requirements see ![Hardware Detail
 ## Software requirements
 
 1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
-2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
+2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
+3. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
 
@@ -53,19 +54,11 @@ To configure the example for the specific hardware kit that you are using, eithe
 6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
-## Running the program 
-
-To run this example on the board, simply enter
-
-    $ make
-    $ build
-    $ ./storage-unit-flood-detector
-    
+   
 You will see output similar to below when the program is running.
 
 ```
-UPLOADING: Uploading project bundle to IoT device. 
-[Upload Complete] Moisture alarm 
+Moisture alarm 
 Connecting to MQTT server... 
 MQTT message published: { d: { value: '2016-04-22705:08:41.682Z' } } 
 ```
@@ -76,7 +69,7 @@ When the sensor detects enough moisture, it sends a signal to the server; the co
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
-### Running the example with the cloud server
+### Running the example with the cloud server (optional)
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio
  as follows:
@@ -89,6 +82,6 @@ To run the example with the optional backend data store, you need to set the `SE
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® IoT Platform.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from your board.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
