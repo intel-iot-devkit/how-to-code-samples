@@ -30,7 +30,7 @@ More details on the hardware requirements can be found in the ![project README](
 
 ## Software requirements
 
-1. [Java](https://software.intel.com/en-us/java-for-iot-reference)
+1. ![Intel® System Studio] (https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
 2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
 3. Microsof Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
@@ -40,9 +40,7 @@ You now need to copy the source files and the config file to the project.
 Drag all of the files from your git repository's "src" folder into the new project's src folder in Intel® System Studio IoT Edition. Make sure previously auto-generated main class is overridden.
 
 The project uses the following external jars: [gson-2.6.1](http://central.maven.org/maven2/com/google/code/gson/gson/2.6.1/gson-2.6.1.jar), [jetty-all-9.3.7.v20160115-uber](http://repo1.maven.org/maven2/org/eclipse/jetty/aggregate/jetty-all/9.3.7.v20160115/jetty-all-9.3.7.v20160115-uber.jar), [joda-time-2.9.2](http://repo.maven.apache.org/maven2/joda-time/joda-time/2.9.2/joda-time-2.9.2.jar). These can be found in the Maven Central Repository. Create a "jars" folder in the project's root directory, and copy all needed jars in this folder.
-In Intel® System Studio IoT Edition, select all jar files in "jars" folder and  right click -> Build path -> Add to build path
-
-![](./../../images/java/add to build path.png)
+In Intel® System Studio, select all jar files in "jars" folder and  right click -> Build path -> Add to build path
 
 Now you need to add the UPM jar files relevant to this specific sample.
 right click on the project's root -> Build path -> Configure build path. Java Build Path -> 'Libraries' tab -> click on "add external JARs..."
@@ -74,8 +72,9 @@ To configure the required access code to be used for the example app, change the
 
 ```
 
+### Expected output
+After running the program, you should see output similar to the output below.<br>
 
- 
 ### Disabling the alarm  
 The alarm is disabled using a single-page web interface served directly from the target while the sample program is running.<br>
 ![](./../images/access-control.png)
@@ -112,20 +111,6 @@ To run the example with the optional back-end data store, you need to change the
 ```
 Now, when you run your program using the **Run** button, it should be able to call your server to save the data right from the target
 
-After running the program, you should see output similar to the output below.<br>
 
-```
-11:27:35 **** Rebuild of configuration Debug for project access-control ****
-Info: Interal Builder is used for build
-i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
- i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
- i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
- i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
- i586-poky-linux-g++ -std=c++1y "-IC:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux/usr/include/upm" "-IC:\\Users\\jlisti_000\\Documents\\Git..."
- i586-poky-linux-g++ "--sysroot=C:\\Users\\jlsti_000\\Desktop\\<ip-adddress>\\iotdk-ide-win\\devkit-x86\\sysroots\\i586-poky-linux" -lmraa -o access-control "src\\access-control.o" "lib\\twilio-cplu"...
-
- 
- 11:27:40 Build Finished (took 5s.378ms)
-  ```
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
