@@ -2,7 +2,7 @@
 
 ## What it is
 
-UUsing a compatible Intel® IoT Platform, this project lets you create a line following robot that:<br>
+Using a compatible Intel-based platform, this project lets you create a line following robot that:<br>
 - continuously checks the line finder sensor.<br>
 - moves forward if on the line, using the stepper motors.<br>
 - tries to pivot to find the line if not on it, using the stepper motors.<br>
@@ -26,7 +26,7 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
 2. Python 2.7
 3. Packages as listed in the ![setup.py](setup.py) file in this directory
 1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
