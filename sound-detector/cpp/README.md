@@ -51,14 +51,7 @@ To configure the example for the specific hardware kit that you are using, eithe
 ![](./../../images/cpp/name-var-ok.png)
 6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
-
     
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
-
-Successful output should be similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-equp-act-mon-successful-output.png)
-
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ### Running the example with the cloud server (optional)
