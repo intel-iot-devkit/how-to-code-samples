@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create an earthquake detector that:<br>
+Using a compatible Intel-based platform, this project lets you create an earthquake detector that:<br>
 - senses motion using the digital accelerometer.<br>
 - checks live earthquake data, using the USGS\* API.<br>
 - displays the earthquake on the LCD.
@@ -31,7 +31,7 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
 2. Python 2.7
 3. Packages as listed in the ![setup.py](setup.py) file in this directory
 
@@ -83,8 +83,7 @@ Once the program is installed and configured as detailed above, you can execute 
 You will see output similar to below when the program is running.
 
 ```
-UPLOADING: Uploading project bundle to IoT device. 
-[Upload Complete] Checking... 
+Checking... 
 No quake. 
 ```
 
