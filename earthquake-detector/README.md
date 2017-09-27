@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This earthquake detector application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel® IoT Platform, cloud platforms, APIs, and other technologies.
+This earthquake detector application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel-based platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -65,9 +65,5 @@ Sensor | Pin
 One end of a DFRobot\* cable into the plug labeled "X" on the Triple-Axis Accelerometer | A1
 One end of a DFRobot\* cable into the plug labeled "Y" on the Triple-Axis Accelerometer | A2
 One end of a DFRobot\* cable into the plug labeled "Z" on the Triple-Axis Accelerometer | A3
-
-### Determining your platform's IP Address
-
-See the section on Finding Your Board's IP Address at the bottom of the ![Setup Instructions](./../README.md#finding-your-boards-ip-address) readme. 
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
