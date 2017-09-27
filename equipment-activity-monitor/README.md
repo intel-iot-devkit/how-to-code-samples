@@ -40,14 +40,15 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 In addition to using a compatible platform listed in ![Hardware Compatibility](./../README.md#hardware-compatibility), here is additional hardware you will need to run this example.
 
-This sample can be used with either Grove or DFRobot components.
+This sample can be used with either Grove or DFRobot components.  
+Grove:
 
 1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
 2. [Grove\* Sound Sensor](http://www.seeedstudio.com/depot/Grove-Sound-Sensor-p-752.html)
 3. [Grove\* Piezo Vibration Sensor](http://www.seeedstudio.com/depot/Grove-Piezo-Vibration-Sensor-p-1411.html)
 4. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+DFRobot:
 
 1. [Analog Sound Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=83).
 3. [Digital Vibration Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=79)

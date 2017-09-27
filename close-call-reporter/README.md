@@ -38,13 +38,13 @@ In addition to using a compatible platform listed in ![Hardware Compatibility](.
 
 This sample can be used with either Grove\* or DFRobot\* components.
 
-Grove\* Transportation and Safety Kit, containing:
+Grove:
 
 1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
 2. [Grove\* IR Distance Interrupter](http://iotdk.intel.com/docs/master/upm/node/classes/rfr359f.html)
 3. [Grove\* GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+DFRobot:
 
 1. [IR Distance Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=572)
 3. [GPS](http://iotdk.intel.com/docs/master/upm/node/classes/ublox6.html)
@@ -75,8 +75,5 @@ GPS cable RX (black) | TX pin
 GPS cable power (red) | 5V pins
 GPS cable ground (thicker black) | GND
 
-### Determining your platform's IP address
-
-See the section on Finding Your Board's IP Address at the bottom of the ![Setup Instructions](./../../README.md#finding-your-boards-ip-address) readme. 
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.

@@ -32,13 +32,13 @@ In addition to using a compatible platform listed in ![Hardware Compatibility](.
 
 This sample can be used with either Grove\* or DFRobot\* components.
 
-Grove\* Starter Kit Plus, containing:
+Grove: 
 
 1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
 2. [Grove\* 3-Axis Digital Accelerometer (1.5G)](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
 3. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+DFRobot: 
 
 1. [Triple Axis Accelerometer](http://www.dfrobot.com/index.php?route=product/product&description=true&product_id=507).
 3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
@@ -65,9 +65,5 @@ Sensor | Pin
 One end of a DFRobot\* cable into the plug labeled "X" on the Triple-Axis Accelerometer | A1
 One end of a DFRobot\* cable into the plug labeled "Y" on the Triple-Axis Accelerometer | A2
 One end of a DFRobot\* cable into the plug labeled "Z" on the Triple-Axis Accelerometer | A3
-
-### Determining your platform's IP Address
-
-See the section on Finding Your Board's IP Address at the bottom of the ![Setup Instructions](./../README.md#finding-your-boards-ip-address) readme. 
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.

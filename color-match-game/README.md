@@ -10,7 +10,7 @@ From this exercise, developers will learn how to:<br>
 - Set up a web application server to let users play the color matching game using their web browser.
 
 Available in:  
- ![C](./cpp)  
+ ![C++](./cpp)  
  ![Java\*](./java)  
  ![JavaScript\*](./javascript)  
  ![Python\*](./python) 
@@ -30,9 +30,7 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 ## Hardware requirements
 In addition to using a compatible platform listed in ![Hardware Compatibility](./../README.md#hardware-compatibility), here is additional hardware you will need to run this example
 
-This sample can be used with either Grove\* or DFRobot\* components.
-
-Grove\* Starter Kit containing:
+This sample can be used with either Grove components:
 
 1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
 2. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
@@ -55,9 +53,6 @@ The color match game is set using a single-page web interface served from the In
 
 The web server runs on port `8080`, so if the Intel-based platform is connected to Wi-Fi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080/home`. 
 
-### Determining your platform's IP address
-
-See the section on Finding Your Board's IP Address at the bottom of the ![Setup Instructions](./../README.md#finding-your-boards-ip-address) readme.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
 

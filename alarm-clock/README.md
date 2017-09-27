@@ -41,7 +41,7 @@ In addition to using a compatible platform listed in ![Hardware Compatibility](.
 
 This sample can be used with either Grove\* or DFRobot\* components.
 
-Grove\* Starter Kit Plus, containing:
+Grove:
 
 1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
 2. [Grove\* Rotary Analog Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/groverotary.html)
@@ -49,7 +49,7 @@ Grove\* Starter Kit Plus, containing:
 4. [Grove\* Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
 5. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+DFRobot:
 
 1. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
 3. [Button](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)

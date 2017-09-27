@@ -38,14 +38,14 @@ In addition to using a compatible platform listed in ![Hardware Compatibility](.
 
 This sample can be used with either the Grove\* Starter Kit Plus from Seeed Studio, or else the DFRobot\* Edison Starter Kit.
 
-Grove\* Starter Kit Plus, containing:
+Grove: 
 
 1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
 2. [Grove\* Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/ttp223.html)
 3. [Grove\* Buzzer](http://iotdk.intel.com/docs/master/upm/node/classes/buzzer.html)
 4. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+DFRobot: 
 
 1. [Buzzer](http://www.dfrobot.com/index.php?route=product/product&product_id=84).
 3. [Capacitive Touch Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovebutton.html)
@@ -73,9 +73,5 @@ Sensor | Pin
 --- | ---
 Buzzer | A1
 Touch Sensor | A2
-
-### Determining your platform's IP Address
-
-See the section on Finding Your Board's IP Address at the bottom of the ![Setup Instructions](./../README.md#finding-your-boards-ip-address) readme.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
