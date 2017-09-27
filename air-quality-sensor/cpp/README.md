@@ -1,7 +1,7 @@
 ﻿# Air quality sensor in C++
 
 ## What it is
-Using a compatible Intel® IoT Platform, this project lets you create an air quality monitor that:
+Using a compatible Intel-based platforms, this project lets you create an air quality monitor that:
 
 - continuously monitors the air quality for airborne contaminants.
 - sounds an audible warning when the air quality is unhealthful.
@@ -50,14 +50,6 @@ To configure the example for the specific hardware kit that you are using, eithe
 6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
-## Running the program
-
-To run this example on the board, simply enter
-
-    $ make
-    $ build
-    $ ./air-quality-sensor
-
 After running the program you should have output similar to:
 ```
 Grove Air Quality Sensor
@@ -69,5 +61,14 @@ raw: 	77ppm: 	0.95	Normal Indoor Air
 raw: 	40ppm: 	01.15	Fresh Air
 raw: 	36ppm: 	0.98	Fresh Air
 ```
+### Running the example with the cloud server (optional)
 
+To run the example with the optional back-end data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Eclipse as follows:
+
+1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
+2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
+3. In the **Commands to execute before application** field, add the environment variables so it looks like this, except using the server and authentication token that correspond to your own setup:<br>
+
+        chmod 755 /tmp/air-quality; export SERVER="http://intel-iot-example-data.azurewebsites.net/logger/air-quality"; export AUTH_TOKEN="Enter Auth Token Here"
+        
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
