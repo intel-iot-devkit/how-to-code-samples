@@ -88,7 +88,7 @@ for this sample you will need the following jars:
 
 The jars can be found at the IOT Devkit installation root path\iss-iot-win\devkit-x86\sysroots\i586-poky-linux\usr\lib\java 
 
-## Preparing your target platform before running the project
+### Preparing your target platform before running the project
 
 In order for the sample to run you will need to copy some files to your board. This can be done using SCP through SSH.<br>
 Two sorts of files need to be copied from the sample repository:
@@ -96,7 +96,7 @@ Two sorts of files need to be copied from the sample repository:
 1. Jar files- external libraries in the project need to be copied to "/usr/lib/java"
 2. web files- files within site_contents folder need to be copied to "/var/AlarmClock"
 
-## Set the kit
+### Set the kit
 
 To configure the example for the specific hardware kit that you are using, either Grove\* or DFRobot\* you will need to change the `INTEL_IOT_KIT` key in the `config.properties` file to either **GROVEKIT** (this is the default) or **DFROBOTKIT**, depending on which hardware kit you wish to use. For example:
 
