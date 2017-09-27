@@ -34,7 +34,7 @@ More details on the hardware requirements can be found in the ![project README](
 
 1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
 1. Node.js 
-2. MRAA and UPM Node.js bindings <link to mraa and upm install docs>
+2. [MRAA and UPM Node.js bindings](https://github.com/intel-iot-devkit/upm/blob/master/docs/installing.md)
 2. Packages as listed in the package.json file in this example 
 
 ## Configuring the example
