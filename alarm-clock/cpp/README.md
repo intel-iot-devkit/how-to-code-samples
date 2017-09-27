@@ -53,19 +53,34 @@ To optionally fetch the real-time weather information, you need to get an API ke
 
 You can still run the example, but without a Weather Underground\* API key you cannot retrive weather data.
 
-Pass your Weather Underground\* API key to the sample program by setting the API_KEY environment variable on your target platform:
+Pass your Weather Underground\* API key to the sample program by modifying the `WEATHER_API_KEY` key in the `config.json` file as follows:
+
+1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
+2. Under **C/C++ Remote Application**, click **alarm-clock**.<br> This displays the information for your application.
+3. In the **Commands to execute before application** field, add the following environment variables, except use the API key that corresponds to your own setup:<br>
 
         chmod 755 /tmp/alarm-clock; export API_KEY="YOURKEY"
 
-Now when you run your program, it should be able to retrieve real-time weather data from the Intel® IoT Platform.
+4. Click **Apply** to save your new environment variables.
 
-### Running the program
+Now when you run your program using the **Run** button, it should be able to retrieve real-time weather data from the Intel® Edison board.
 
-To run this example on the board, simply enter
+## Configuring the example for your hardware kit
 
-    $ make
-    $ build
-    $ ./equipment-activity
+To configure the example for the specific hardware kit that you are using, either Grove\* or DFRobot\*:
+
+1. From the main menu, select **Project > Properties** dialog box is displayed.
+![](./../../images/cpp/click-project-properties.png)
+2. Expand the section **C/C++ General**. <br>Click on the **Paths and Symbols** sub-section, and click on the **Symbols** tab.
+![](./../../images/cpp/click-gen-path-symbols.png)
+3. Now click on **GNU C++**, and click on the **Add** button.
+![](./../../images/cpp/click-gnupp-add.png)
+4. In the **Name** field, enter "INTEL_IOT_KIT". In the **Value** field, enter either "GROVEKIT" (this is the default) or "DFROBOTKIT", depending on which hardware kit you wish to use.
+![](./../../images/cpp/add-name-and-var.png)
+5. Your new name symbol and value will now be displayed. Click **OK**.
+![](./../../images/cpp/name-var-ok.png)
+6. Another dialog box will appear asking to rebuild project. Click **OK**.
+![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
 After running the program, you should see output similar to the text below.<br>
 ```
@@ -75,9 +90,21 @@ Connecting to MQTT server...
 MQTT message published: { d: {value: '3256'} }
 ```
 
+### Running the example with the cloud server (optional)
 
+To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
 
-When the program uploads to the Intel® IoT Platform, your RGB LCD shows the current time.<br>
+1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
+2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
+3. In the **Commands to execute before application** field, add the following environment variables, except use the server and authentication token that correspond to your own setup:<br>
+
+        chmod 755 /tmp/alarm-clock;export API_KEY="YOURKEY"; export SERVER="http://intel-examples.azurewebsites.net/logger/alarm-clock"; export AUTH_TOKEN="YOURTOKEN"
+
+4. Click **Apply** to save your new environment variables.
+
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from your board
+
+When the program uploads to the Intel-based platform, your RGB LCD shows the current time.<br>
 ![](./../../images/cpp/alarm-clock-lcd.jpg)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
