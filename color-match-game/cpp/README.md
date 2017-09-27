@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a color match game.<br>
+Using a compatible Intel-based platform, this project lets you create a color match game.<br>
 - a UI of the game is exposed through an embedded server, providing with buttons for color matching as well as a "start game" button<br>
 - when starting the game, for each level a sequence of colors is displayed on the RGB LCD screen of the Intel® IoT Platform. The player needs to click on the corresponding buttons on the website.
 - for each level the sequence has one more color.<br>
@@ -24,18 +24,16 @@ For more specific information on the hardware requirements see ![Hardware Detail
 ## Software requirements
 
 1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
+2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
 
-### Running the program
+### Accessing the game
 
-To run this example on the board, simply enter
+![](./../../images/java/color-match-game-web.JPG)
 
-    $ make
-    $ build
-    $ ./color-match-game
+The color match game is set using a single-page web interface served from the Intel® Edison board or Intel® IoT Gateway while the sample program is running.
 
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
+The web server runs on port `3000`, so if the Intel® Edison board or Intel® IoT Gateway are connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000/`.
 
 ## Regenerating the HTML and CSS
 
