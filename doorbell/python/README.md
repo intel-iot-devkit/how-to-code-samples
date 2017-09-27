@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart doorbell that:
+Using a compatible Intel-based platform, this project lets you create a smart doorbell that:
 - issues an audible notification whenever the doorbell is rung.
 - issues a visual notification whenever the doorbell is rung.
 - keeps track of visitors using cloud-based data storage.
@@ -71,7 +71,7 @@ To configure the example for the Arduino 101, add a `PLATFORM` key with the valu
   "kit": "grove",
   "PLATFORM": "firmata"
 }
-
+```
 To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or AWS\* data store, add the `SERVER` and `AUTH_TOKEN` keys in the `config.json` file below the "CODE" key as follows:
 
 ```JSON
@@ -95,8 +95,7 @@ Once the program is installed and configured as detailed above, you can execute 
 You will see output similar to below when the program is running.
 
 ```
-UPLOADING: Uploading project bundle to IoT device.
-[ Upload Complete ] doorbell ring
+doorbell ring
 Connecting to MQTT server...
 MQTT message published: { d: {counter: '2016-04-22T02:38:43.667Z'} }
 ```
