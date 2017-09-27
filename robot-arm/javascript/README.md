@@ -2,12 +2,12 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a robot arm that:<br>
+Using a compatible Intel-based platform, this project lets you create a robot arm that:<br>
 - continuously checks the Grove\* Joystick.<br>
 - moves two stepper motors based on the joystick control.<br>
 - can be accessed via the built-in web interface to control the motors.
 
-Additionally, the motors can be controlled individually via a web page served directly from the Intel® IoT Platform.
+Additionally, the motors can be controlled individually via a web page served directly from the Intel-based platform.
 
 ## First time setup  
 For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries. You need either Grove or DFRobot sensors but not both.
@@ -18,9 +18,9 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
-You need to power the Intel® IoT Platform with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
+You need to power the Intel-based platform with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
-In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® IoT Platform and the motors, so you need either 2 batteries or 2 power supplies in total.
+In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel-based platform and the motors, so you need either 2 batteries or 2 power supplies in total.
 
 Sensor | Pin
 --- | ---

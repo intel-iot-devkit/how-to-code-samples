@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create an earthquake detector that:<br>
+Using a compatible Intel-based platform, this project lets you create an earthquake detector that:<br>
 - senses motion using the digital accelerometer.<br>
 - checks live earthquake data, using the USGS API.<br>
 - displays the earthquake on the LCD.

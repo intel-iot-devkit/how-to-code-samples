@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This close call fleet driving reporter application is part of a series of how-to Internet of Things (IoT)code sample exercises using the Intel® IoT Developer Kit and a compatible Intel® IoT Platform, cloud platforms, APIs, and other technologies.
+This close call fleet driving reporter application is part of a series of how-to Internet of Things (IoT)code sample exercises using the Intel® IoT Developer Kit and a compatible Intel-based platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Interface with and sensors using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
@@ -17,7 +17,7 @@ Available in:
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a close call fleet driving reporter that:<br>
+Using a compatible Intel-based platform, this project lets you create a close call fleet driving reporter that:<br>
 - monitors the Grove\* IR Distance Interrupter.<br>
 - monitors the Grove\* GPS.<br>
 - keeps track of close calls and logs them using cloud-based data storage.

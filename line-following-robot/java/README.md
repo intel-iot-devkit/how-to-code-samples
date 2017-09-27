@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a line-following robot that:
+Using a compatible Intel-based platform, this project lets you create a line-following robot that:
 
 - continuously checks the line finder sensor.
 - moves forward if on the line, using stepper motors.

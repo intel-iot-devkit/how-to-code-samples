@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This storage unit flood detector application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel® IoT Platform, cloud platforms, APIs, and other technologies.
+This storage unit flood detector application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel-based platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -18,7 +18,7 @@ Available in:
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a storage unit flood detector that:<br>
+Using a compatible Intel-based platform, this project lets you create a storage unit flood detector that:<br>
 - continuously checks the moisture sensor.<br>
 - sounds an audible warning in case of a possible flooding.<br>
 - stores a record of each time water is detected, using cloud-based data storage.

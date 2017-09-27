@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart fire alarm that:
+Using a compatible Intel-based platform, this project lets you create a smart fire alarm that:
 
 - constantly monitors for unsafe temperature levels.
 - audibly notifies of alerts using the buzzer.

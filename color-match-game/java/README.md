@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a color match game.<br>
+Using a compatible Intel-based platform, this project lets you create a color match game.<br>
 - a UI of the game is exposed through an embedded server, providing with buttons for color matching as well as a "start game" button<br>
 - when starting the game, for each level a sequence of colors is displayed on the RGB LCD screen of the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board. The player needs to click on the corresponding buttons on the website.
 - for each level the sequence has one more color.<br>

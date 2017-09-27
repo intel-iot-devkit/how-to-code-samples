@@ -26,7 +26,7 @@ Using a compatible Intel-based platform, this project lets you create a smart al
 
 ## How it works
 
-This smart alarm clock has a number of useful features. Set the alarm using a web page served directly from the compatible Intel® IoT Platform using your mobile phone. When the alarm goes off, the buzzer sounds and the LCD indicates it’s time to get up. The rotary dial can be used to adjust the brightness of the display.
+This smart alarm clock has a number of useful features. Set the alarm using a web page served directly from the compatible Intel-based platform using your mobile phone. When the alarm goes off, the buzzer sounds and the LCD indicates it’s time to get up. The rotary dial can be used to adjust the brightness of the display.
 
 In addition, the smart alarm clock can access daily weather data via the Weather Underground\* API and use it to change the color of the LCD.
 

@@ -1,6 +1,6 @@
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create an air quality monitor that:<br>
+Using a compatible Intel-based platform, this project lets you create an air quality monitor that:<br>
 - continuously checks the air quality for airborne contaminants.<br>
 - sounds an audible warning when the air quality is unhealthy.<br>
 - stores a record of each time the air quality sensor detects contaminants, using cloud-based data storage.

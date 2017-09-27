@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart stove top that:<br>
+Using a compatible Intel-based platform, this project lets you create a smart stove top that:<br>
 - allows you to set a target temperature.<br>
 - monitors your stove and notifies you when your set temperature is reached.<br>
 - stores historical temperature data using cloud-based data storage.

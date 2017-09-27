@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a robot arm that:
+Using a compatible Intel-based platform, this project lets you create a robot arm that:
 
 - continuously checks the Grove\* Joystick.
 - moves two stepper motors, based on the control of the joystick.

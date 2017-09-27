@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create an automatic watering system that:
+Using a compatible Intel-based platform, this project lets you create an automatic watering system that:
 
 - turns a water pump on and off based on a configurable schedule.
 - detects if the watering system is pumping when expected, by using a water flow sensor.

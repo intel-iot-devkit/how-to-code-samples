@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This automatic plant lighting system monitor application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, and a compatible Intel® IoT Platform, cloud platforms, cloud platforms, APIs, and other technologies.
+This automatic plant lighting system monitor application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, and a compatible Intel-based platform, cloud platforms, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -19,7 +19,7 @@ Available in:
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create an automatic plant lighting monitor system that:<br>
+Using a compatible Intel-based platform, this project lets you create an automatic plant lighting monitor system that:<br>
 - uses a light sensor to determine if a separate automated lighting system is turned on or off based on a configurable schedule.<br>
 - can be accessed with your mobile phone via the built-in web interface to set the lighting times.<br>
 - monitors the water levels using a connected moisture sensor.<br>
@@ -28,7 +28,7 @@ Using a compatible Intel® IoT Platform, this project lets you create an automat
 
 ## How it works
 
-The system allows setting the lighting schedule via a web page served directly from the Intel® IoT Platform by using your mobile phone.
+The system allows setting the lighting schedule via a web page served directly from the Intel-based platform by using your mobile phone.
 
 If the lighting is supposed to be on, but the light sensor does not detect any light, it sends a text alert to a specified number through Twilio\*.
 
@@ -85,9 +85,9 @@ Moisture Sensor | A2
 
 ![](./../../images/js/lighting-system-web.png)
 
-The schedule for the lighting system is set using a single-page web interface served from the Intel® IoT Platform while the sample program is running.
+The schedule for the lighting system is set using a single-page web interface served from the Intel-based platform while the sample program is running.
 
-The web server runs on port `3000`; if the Intel® IoT Platform is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`; if the Intel-based platform is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining your platform's IP Address
 

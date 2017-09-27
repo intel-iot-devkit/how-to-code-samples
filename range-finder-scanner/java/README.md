@@ -2,7 +2,7 @@
 
 ## What It Is
 
-Using a compatible Intel® IoT Platform, this project lets you create a range finding scanner that:
+Using a compatible Intel-based platform, this project lets you create a range finding scanner that:
 
 - continuously checks the Grove\* IR Distance Interrupter.
 - moves the stepper motor in a 360-degree circle.

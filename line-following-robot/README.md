@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This line following robot application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel® IoT Platform, cloud platforms, APIs, and other technologies.
+This line following robot application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel-based platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 - Interface with and sensors using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
@@ -17,7 +17,7 @@ Available in:
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a line following robot that:<br>
+Using a compatible Intel-based platform, this project lets you create a line following robot that:<br>
 - continuously checks the line finder sensor.<br>
 - moves forward if on the line, using the stepper motors.<br>
 - tries to pivot to find the line if not on it, using the stepper motors.<br>
@@ -48,9 +48,9 @@ Grove\* Robotics Kit containing:
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
-You need to power the Intel® IoT Platform with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
+You need to power the Intel-based platform with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
-In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® IoT Platform and the motors, so you need either 2 batteries or 2 power supplies in total.
+In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel-based platform and the motors, so you need either 2 batteries or 2 power supplies in total.
 
 Sensor | Pin
 --- | ---

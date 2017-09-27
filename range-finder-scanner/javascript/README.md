@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a range finding scanner that:<br>
+Using a compatible Intel-based platform, this project lets you create a range finding scanner that:<br>
 - continuously checks the Grove\* IR Distance Interrupter.<br>
 - moves the stepper motor in a 360-degree circle.<br>
 - can be accessed via the built-in web interface to view range finder data.
@@ -18,9 +18,9 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
-You need to power the Intel® IoT Platform with the external power adaptor that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
+You need to power the Intel-based platform with the external power adaptor that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
-In addition, you need a breadboard and an extra 5V power supply to provide power to the motor. Note: you need a separate battery or power supply for the motor. You cannot use the same power supply for both the Intel® IoT Platform and the motor, so you need either 2 batteries or 2 power supplies in total.
+In addition, you need a breadboard and an extra 5V power supply to provide power to the motor. Note: you need a separate battery or power supply for the motor. You cannot use the same power supply for both the Intel-based platform and the motor, so you need either 2 batteries or 2 power supplies in total.
 
 Sensor | Pin
 --- | ---

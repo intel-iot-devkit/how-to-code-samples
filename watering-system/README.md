@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This automatic watering system application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel® IoT Platform, cloud platforms, APIs, and other technologies.
+This automatic watering system application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel-based platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -19,7 +19,7 @@ Available in:
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create an automatic watering system that:<br>
+Using a compatible Intel-based platform, this project lets you create an automatic watering system that:<br>
 - turns a water pump on or off based on a configurable schedule.<br>
 - detects if the pumping occurs when expected, by using a water flow sensor.<br>
 - can be accessed with your mobile phone via the built-in web interface to set the watering times;<br>
@@ -28,7 +28,7 @@ Using a compatible Intel® IoT Platform, this project lets you create an automat
 
 ## How it works
 
-This watering system allows you to set the watering schedule via a web page served directly from an Intel® IoT Platform, by using your mobile phone.
+This watering system allows you to set the watering schedule via a web page served directly from an Intel-based platform, by using your mobile phone.
 
 It automatically checks moisture sensor data at periodic intervals, and displays this data on the web page.
 
@@ -66,9 +66,9 @@ DFRobot\* Starter Kit for Intel® Edison, containing:
 
 You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
-You need to power the Intel® IoT Platform with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
+You need to power the Intel-based platform with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
-In addition, you need a breadboard and an extra 5V power supply to provide power to the pump. Note: you need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel® IoT Platform and the pump, so you need either 2 batteries or two power supplies in total.
+In addition, you need a breadboard and an extra 5V power supply to provide power to the pump. Note: you need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel-based platform and the pump, so you need either 2 batteries or two power supplies in total.
 
 You need to use the Grove\* Dry-Reed Relay board to connect the water pump.
 
@@ -87,7 +87,7 @@ Grove\* Moisture Sensor | A0
 
 You need to have a I/O Expansion Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the I/O Expansion Shield.
 
-In addition, you need a breadboard and an extra 5V power supply to provide power to the pump. Note: you need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel® IoT Platform and the pump.
+In addition, you need a breadboard and an extra 5V power supply to provide power to the pump. Note: you need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel-based platform and the pump.
 
 You need to use the Relay Module to connect the water pump.
 
@@ -103,9 +103,9 @@ Moisture Sensor | A3
 
 ![](./../images/js/watering-system-web.png)
 
-The schedule for the watering system is set using a single-page web interface served from the Intel® IoT Platform while the sample program is running.
+The schedule for the watering system is set using a single-page web interface served from the Intel-based platform while the sample program is running.
 
-The web server runs on port `3000`, so if the Intel® IoT Platform is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`, so if the Intel-based platform is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining your platform's IP Address
 

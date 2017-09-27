@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This smart fire alarm application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel® IoT Platform, cloud platforms, APIs, and other technologies.
+This smart fire alarm application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel-based platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -19,7 +19,7 @@ Available in:
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart fire alarm that:<br>
+Using a compatible Intel-based platform, this project lets you create a smart fire alarm that:<br>
 - constantly monitors for unsafe temperature levels.<br>
 - issues an audible notification using the buzzer.<br>
 - issues a visual notification using the LCD.<br>

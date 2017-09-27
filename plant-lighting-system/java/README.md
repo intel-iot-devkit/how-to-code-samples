@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create an automatic plant lighting monitor system that:
+Using a compatible Intel-based platform, this project lets you create an automatic plant lighting monitor system that:
 
 - checks if a separate automated lighting system is turned on or off based on a configurable schedule, by using a light sensor.
 - can be accessed with your mobile phone to set the lighting periods via a built-in web interface.

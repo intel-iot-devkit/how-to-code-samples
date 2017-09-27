@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart stove top that:
+Using a compatible Intel-based platform, this project lets you create a smart stove top that:
 
 - monitors the temperature using the sensor and gives an audible notification when your food reaches the desired temperature and you need to turn down the heat.
 - can be accessed with your mobile phone via a built-in web interface to set the desired temperature.

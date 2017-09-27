@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart doorbell that:
+Using a compatible Intel-based platform, this project lets you create a smart doorbell that:
 - issues an audible notification whenever the doorbell is rung.
 - issues a visual notification whenever the doorbell is rung.
 - keeps track of visitors using cloud-based data storage.

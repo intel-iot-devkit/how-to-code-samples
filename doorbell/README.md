@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This smart doorbell application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel® IoT Platform, cloud platforms, APIs, and other technologies.
+This smart doorbell application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel-based platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -18,7 +18,7 @@ Available in:
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart doorbell that:
+Using a compatible Intel-based platform, this project lets you create a smart doorbell that:
 - issues an audible notification whenever the doorbell is rung.
 - issues a visual notification whenever the doorbell is rung.
 - keeps track of visitors using cloud-based data storage.

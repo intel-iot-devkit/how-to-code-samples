@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart doorbell that:
+Using a compatible Intel-based platform, this project lets you create a smart doorbell that:
 
 - issues an audible notification whenever the doorbell is rung.
 - displays a visual notification whenever the doorbell is rung.
@@ -64,7 +64,7 @@ Connecting to MQTT server...
 MQTT message published: { d: {counter: '2016-04-22T02:38:43.667Z'} }
 ```
 
-When the program uploads and runs on the Intel® IoT Platform, the Grove\* RGB LCD shows the message above. When pressing the Grove\* Touch Sensor, you hear the buzzer go off, and if your server is set up correctly, you get notified.<br>
+When the program uploads and runs on the Intel-based platform, the Grove\* RGB LCD shows the message above. When pressing the Grove\* Touch Sensor, you hear the buzzer go off, and if your server is set up correctly, you get notified.<br>
 ![](./../../images/cpp/doorbell-lcd.jpg)
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.

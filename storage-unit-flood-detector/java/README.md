@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a storage unit flood detector that:
+Using a compatible Intel-based platform, this project lets you create a storage unit flood detector that:
 
 - continuously checks the moisture sensor.
 - sounds an audible warning when it looks like flooding.

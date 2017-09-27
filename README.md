@@ -1,6 +1,6 @@
 # How-to code samples  
 
-These applications are how-to code samples using the Intel® IoT Developer Kit and compatible Intel® IoT Platforms, cloud platforms, APIs, and other technologies. 
+These applications are how-to code samples using the Intel® IoT Developer Kit and compatible Intel-based platforms, cloud platforms, APIs, and other technologies. 
 
 ## To clone this repository
 

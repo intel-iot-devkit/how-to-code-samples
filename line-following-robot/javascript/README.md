@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a line following robot that:<br>
+Using a compatible Intel-based platform, this project lets you create a line following robot that:<br>
 - continuously checks the line finder sensor.<br>
 - moves forward if on the line, using the stepper motors.<br>
 - tries to pivot to find the line if not on it, using the stepper motors.<br>
@@ -17,9 +17,9 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
-You need to power the Intel® IoT Platform with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
+You need to power the Intel-based platform with the external power adapter that comes with your starter kit, or substitute it with an external 12V 1.5A power supply. You can also use an external battery, such as a 5V USB battery.
 
-In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel® IoT Platform and the motors, so you need either 2 batteries or 2 power supplies in total.
+In addition, you need a breadboard and an extra 5V power supply to provide power to both motors. Note: you need a separate battery or power supply for the motors. You cannot use the same power supply for both the Intel-based platform and the motors, so you need either 2 batteries or 2 power supplies in total.
 
 Sensor | Pin
 --- | ---
@@ -42,7 +42,7 @@ More details on the hardware requirements can be found in the ![project README](
 
 ## Configuring the example
 
-To configure the example for the Intel® IoT Platform, just leave the `platform` key in the `config.json` set to `edison`. To configure the example for the Intel® IoT Gateway, change the `platform` key in the `config.json` to `firmata` as follows:
+To configure the example for the Intel-based platform, just leave the `platform` key in the `config.json` set to `edison`. To configure the example for the Intel® IoT Gateway, change the `platform` key in the `config.json` to `firmata` as follows:
 
 ```
 {

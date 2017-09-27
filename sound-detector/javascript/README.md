@@ -1,6 +1,6 @@
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart loudness detector system that:<br>
+Using a compatible Intel-based platform, this project lets you create a smart loudness detector system that:<br>
 - monitors a microphone sensor to detect the loudness in the area.<br>
 - keeps track of the sound levels, using cloud-based data storage.
 

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This Color Match Game application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, and a compatible Intel® IoT Platform cloud platforms, APIs, and other technologies.
+This Color Match Game application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, and a compatible Intel-based platform cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -17,7 +17,7 @@ Available in:
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a color match game.<br>
+Using a compatible Intel-based platform, this project lets you create a color match game.<br>
 - a UI of the game is exposed through an embedded server, providing with buttons for color matching as well as a "start game" button<br>
 - when starting the game, for each level a sequence of colors is displayed on the RGB LCD screen of the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board. The player needs to click on the corresponding buttons on the website.
 - for each level the sequence has one more color.<br>
@@ -51,9 +51,9 @@ Grove RGB LCD | I2C
 
 ![](./../images/java/color-match-game-web.JPG)
 
-The color match game is set using a single-page web interface served from the Intel® IoT Platform while the sample program is running.
+The color match game is set using a single-page web interface served from the Intel-based platform while the sample program is running.
 
-The web server runs on port `8080`, so if the Intel® IoT Platform is connected to Wi-Fi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080/home`. 
+The web server runs on port `8080`, so if the Intel-based platform is connected to Wi-Fi\* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080/home`. 
 
 ### Determining your platform's IP address
 

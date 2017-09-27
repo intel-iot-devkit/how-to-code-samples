@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart alarm clock that:
+Using a compatible Intel-based platform, this project lets you create a smart alarm clock that:
 
 - can be accessed with your mobile phone via the built-in web interface to set the alarm time.
 - displays live weather data on the LCD.

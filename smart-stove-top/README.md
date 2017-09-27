@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This smart stove top application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel® IoT Platform, cloud platforms, APIs, and other technologies.
+This smart stove top application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel-based platform, cloud platforms, APIs, and other technologies.
 
 From this exercise, developers will learn how to:<br>
 
@@ -18,7 +18,7 @@ Available in:
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart stove top that:<br>
+Using a compatible Intel-based platform, this project lets you create a smart stove top that:<br>
 - allows you to set a target temperature.<br>
 - monitors your stove and notifies you when your set temperature is reached.<br>
 - stores historical temperature data using cloud-based data storage.
@@ -26,7 +26,7 @@ Using a compatible Intel® IoT Platform, this project lets you create a smart st
 ## How it works
 
 This smart stove top sensor has a number of useful features designed to help you monitor the temperature of the food you are cooking on your legacy stove top.
-Set the target temperature for a pot on your range top via a web page served directly from the Intel® IoT Platform, using your mobile phone.
+Set the target temperature for a pot on your range top via a web page served directly from the Intel-based platform, using your mobile phone.
 
 When the target temperature is reached, the speaker issues an audible notification. If an open flame from a pot boiling over is detected, alarm goes off.
 
@@ -83,9 +83,9 @@ Flame Sensor | A2
 
 ![](./../../images/js/smart-stove-web.png)
 
-The target temperature is set using a single-page web interface served from the Intel® IoT Platform while the sample program is running.
+The target temperature is set using a single-page web interface served from the Intel-based platform while the sample program is running.
 
-The web server runs on port `3000`; if the Intel® IoT Platform is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+The web server runs on port `3000`; if the Intel-based platform is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining your platform's IP Address
 
