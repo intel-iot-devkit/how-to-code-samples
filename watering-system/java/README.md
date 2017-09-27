@@ -39,21 +39,12 @@ Moisture Sensor | A3
 More details on the hardware requirements can be found in the ![project README](./../README.md)
 
 ## Software requirements
-
-1. [Java](https://software.intel.com/en-us/java-for-iot-reference)
+1. ![Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
 2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
-2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
-3. Twilio\* account
+3. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
+4. Twilio\* account (optional)
 
-### Copy the libraries on Windows\*
-
-For help installing and using WinSCP, go to this link:
-
-[using-winscp.md](./../../docs/cpp/using-winscp.md)
-
-Note: You need to turn SSH on by running the `configure_edison --password` command on the board. Once you set the password, make sure you write it down. You only need to do this once and it is set when you reboot the target.
-
-### Twilio\* API Key
+### Twilio\* API Key (optional)
 
 To optionally send text messages, you need to register for an account and get an API key from the Twilio\* website:
 
@@ -61,7 +52,7 @@ To optionally send text messages, you need to register for an account and get an
 
 You can still run the example, but without a Twilio API key you cannot send SMS alerts.
 
-### Configuring the example with your Twilio\* API key
+### Configuring the example with your Twilio\* API key (optional)
 
 Pass your Twilio\* API key and authentication token to the sample program by modifying the `TWILIO_ACCT_SID` and `TWILIO_AUTH_TOKEN` keys in the `config.properties` file. `NUMBER_TO_SEND_TO` and `TWILIO_OUTGOING_NUMBER` are also part of the Twilio\* setup. For example:
 
@@ -114,7 +105,6 @@ To configure the example for the specific hardware kit that you are using, eithe
 ```
 
 ### Expected output
-
 You will see output similar to below when the program is running.
 
 ```
@@ -122,6 +112,13 @@ moisture (46)
 Connecting to MQTT server... 
 MQTT message published: { d: { value: 'moisture (46) 2016-04-22705:14:56.681Z' } } 
 ```
+### Setting the lighting schedule
+
+![](./../../images/java/watering-system-web.png)
+
+The schedule for the lighting system is set using a single-page web interface served from your board while the sample program is running.
+
+The web server runs on port `8080`, so if your board is connected to Wi-Fi* on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:8080`.
 
 ## Regenerating HTML and CSS
 
