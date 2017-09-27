@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create an earthquake detector that:
+Using a compatible Intel-based platform, this project lets you create an earthquake detector that:
 
 - senses motion using a digital accelerometer.
 - checks live earthquake data, using the USGS API.
@@ -34,6 +34,7 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
+2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
 
 ## Configuring the example for your hardware kit
 
@@ -51,14 +52,6 @@ To configure the example for the specific hardware kit that you are using, eithe
 ![](./../../images/cpp/name-var-ok.png)
 6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
-
-### Running the program
-
-To run this example on the board, simply enter
-
-    $ make
-    $ build
-    $ ./earthquake-detector
 
 You will see output similar to below when the program is running.
 
