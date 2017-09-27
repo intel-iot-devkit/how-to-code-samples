@@ -60,7 +60,6 @@ To configure the example for the specific hardware kit that you are using, eithe
 You will see output similar to below when the program is running.
 
 ```
-App is already running 
 95.0885009765625 
 Connecting to MQTT server... 
 MQTT message published: { d: { value: 104.1676025390625 } } 
