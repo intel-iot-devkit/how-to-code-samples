@@ -32,13 +32,13 @@ In addition to using a compatible platform listed in ![Hardware Compatibility](.
 
 This sample can be used with either Grove\* or DFRobot\* components.
 
-Grove\* Starter Kit Plus, containing:
+Grove: 
 
 1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
 2. [Grove\* 3-Axis Digital Accelerometer (1.5G)](http://iotdk.intel.com/docs/master/upm/node/classes/mma7660.html)
 3. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+DFRobot: 
 
 1. [Triple Axis Accelerometer](http://www.dfrobot.com/index.php?route=product/product&description=true&product_id=507).
 3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
