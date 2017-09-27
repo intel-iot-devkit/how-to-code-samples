@@ -54,8 +54,7 @@ For this sample you will need the following jars:
 
 The jars can be found at the IOT Devkit installation root path\iss-iot-win\devkit-x86\sysroots\i586-poky-linux\usr\lib\java
 
-
-## Preparing your target platform before running the project
+### Preparing your target platform before running the project
 
 In order for the sample to run you will need to copy some files to your board. This can be done using SCP through SSH.<br>
 Two sorts of files need to be copied from the sample repository:
