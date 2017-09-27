@@ -53,14 +53,6 @@ To configure the example for the specific hardware kit that you are using, eithe
 6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
-## Running the program
-
-To run this example on the board, simply enter
-
-    $ make
-    $ build
-    $ ./access-control
-
 After running the program, you should see output similar to the output below.<br>
 
 ```
@@ -69,6 +61,18 @@ MQTT message published: { d: { value: '2016-04-21T23:57:18.254Z looking-for-moti
 Connecting to MQTT server... 
 MQTT message published: { d: { value: '2016-04-21T23:57:30.559Z motion-detected'  }}
 ```
+
+### Running the example with the cloud server
+
+To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
+
+1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
+2. Under **C/C++ Remote Application**, click **access-control**.<br> This displays the information for the application.
+3. In the **Commands to execute before application** field, add the environment variables so it looks like this, except using the server and authentication token that correspond to your own setup:<br>
+
+        chmod 755 /tmp/access-control; export SERVER="http://intel-examples.azurewebsites.net/logger/access-control"; export AUTH_TOKEN="YOURTOKEN"
+
+4. Click **Apply** to save your new environment variables.
 
 ## Regenerating the HTML and CSS
 
