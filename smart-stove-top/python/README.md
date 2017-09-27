@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart stove top that:<br>
+Using a compatible Intel-based platform, this project lets you create a smart stove top that:<br>
 - allows you to set a target temperature.<br>
 - monitors your stove and notifies you when your set temperature is reached.<br>
 - stores historical temperature data using cloud-based data storage.
@@ -32,7 +32,7 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
 2. Python 2.7
 3. Packages as listed in the ![setup.py](setup.py) file in this directory
 1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
@@ -73,9 +73,6 @@ To configure the example for the optional Microsoft Azure\*, IBM Bluemix\*, or A
 }
 ```
 
-For information on how to configure the example for an optional Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* IoT cloud server, go to:
-
-[https://github.com/intel-iot-devkit/iot-samples-cloud-setup](https://github.com/intel-iot-devkit/iot-samples-cloud-setup)
 
 ## Running the program
 
@@ -86,7 +83,6 @@ Once the example is installed through `pip` you can run the program by running t
 You will see output similar to below when the program is running.
 
 ```
-App is already running 
 95.0885009765625 
 Connecting to MQTT server... 
 MQTT message published: { d: { value: 104.1676025390625 } } 
