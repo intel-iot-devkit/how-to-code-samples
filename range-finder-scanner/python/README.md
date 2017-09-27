@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a range finding scanner that:<br>
+Using a compatible Intel-based platform, this project lets you create a range finding scanner that:<br>
 - continuously checks the Grove\* IR Distance Interrupter.<br>
 - moves the stepper motor in a 360-degree circle.<br>
 - can be accessed via the built-in web interface to view range finder data.
@@ -23,7 +23,7 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
 2. Python 2.7
 3. Packages as listed in the ![setup.py](setup.py) file in this directory
 
