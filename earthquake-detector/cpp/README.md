@@ -56,8 +56,7 @@ To configure the example for the specific hardware kit that you are using, eithe
 You will see output similar to below when the program is running.
 
 ```
-UPLOADING: Uploading project bundle to IoT device. 
-[Upload Complete] Checking... 
+Checking... 
 No quake. 
 ```
 
