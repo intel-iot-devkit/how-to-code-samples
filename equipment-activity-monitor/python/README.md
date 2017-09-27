@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a shop-floor equipment activity monitor that:<br>
+Using a compatible Intel-based platform, this project lets you create a shop-floor equipment activity monitor that:<br>
 - tracks equipment usage by monitoring sound and vibration sensors.<br>
 - issues a visual notification whenever the equipment is in use.<br>
 - logs equipment usage using cloud-based data storage.
@@ -35,7 +35,7 @@ More details on the hardware requirements can be found in the ![project README](
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm) 
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/)  
 2. Python 2.7
 3. Packages as listed in the ![setup.py](setup.py) file in this directory
 4. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
