@@ -45,7 +45,7 @@ In addition to using a compatible platform listed in ![Hardware Compatibility](.
 
 This sample can be used with either Grove\* or DFRobot\* components.
 
-Grove\* Environment & Agriculture Kit, containing:
+Grove: 
 
 1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
 2. [Grove\* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
@@ -53,7 +53,7 @@ Grove\* Environment & Agriculture Kit, containing:
 4. [Water Flow Sensor](http://www.seeedstudio.com/depot/G18-Water-Flow-Sensor-p-1346.html)
 5. [Grove\* Dry-Reed Relay](http://iotdk.intel.com/docs/master/upm/node/classes/groverelay.html)
 
-DFRobot\* Starter Kit for Intel® Edison, containing:
+DFRobot: 
 
 1. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599)
 3. [Immersible Pump & Water Tube](http://www.dfrobot.com/index.php?route=product/product&keyword=water pump&product_id=667)
@@ -106,9 +106,5 @@ Moisture Sensor | A3
 The schedule for the watering system is set using a single-page web interface served from the Intel-based platform while the sample program is running.
 
 The web server runs on port `3000`, so if the Intel-based platform is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
-
-### Determining your platform's IP Address
-
-See the section on Finding Your Board's IP Address at the bottom of the ![Setup Instructions](./../README.md#finding-your-boards-ip-address) readme. 
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
