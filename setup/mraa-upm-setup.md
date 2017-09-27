@@ -4,7 +4,7 @@ If you want to check whether your installation of mraa was successful, or if you
 
 Important note:  mraa is built in C with SWIG bindings to C++, Python, Java, and Node.js.  Installation in one doesn't guarantee installation in any of the others.  In particular, Node.js bindings can only be installed through the node package manager (npm).
 
-Important note: upm, a sensor library which is dependent on mraa to operate, has a separate installation procedure (https://github.com/intel-iot-devkit/upm/blob/master/docs/installing.md) once mraa has been installed.
+Important note: upm, a sensor library which is dependent on mraa to operate, has a separate installation procedure (https://upm.mraa.io/blob/master/docs/installing.md) once mraa has been installed.
 
 1. If you're running Ubuntu, enter:
 
