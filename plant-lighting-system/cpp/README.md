@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create an automatic plant lighting monitor system that:
+Using a compatible Intel-based platform, this project lets you create an automatic plant lighting monitor system that:
 
 - checks if a separate automated lighting system is turned on or off based on a configurable schedule, by using a light sensor.
 - can be accessed with your mobile phone to set the lighting periods via a built-in web interface.
@@ -41,7 +41,7 @@ For more specific information on the hardware requirements see ![Hardware Detail
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
 
 
-### Twilio\* API Key
+### Twilio\* API Key (optional)
 
 To optionally send text messages, you need to register for an account and get an API key from the Twilio\* web site:
 
@@ -66,13 +66,6 @@ To configure the example for the specific hardware kit that you are using, eithe
 6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
-### Running the program
-
-To run this example on the board, simply enter
-
-    $ make
-    $ build
-    $ ./plant-lighting-system
     
 You will see output similar to below when the program is running.
 
@@ -84,9 +77,18 @@ SMS sent { sid: 'SM14faee6a517f44db91d985c9ee68b3b2',
 	date_sent: null, 
 ```
 
+### Setting the lighting schedule
+
+The schedule for the lighting system is set using a single-page web interface served up from your board while the sample program is running.<br>
+![](./../../images/cpp/plant-ligt-app.png)
+
+The latest data values from the connected Grove\* Moisture Sensor are displayed at the bottom of the web page.
+
+The web server runs on port `3000`, so if your board is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
-### Running the example with the cloud server
+### Running the example with the cloud server (optional)
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® IoT Gateway to Intel® System Studio as follows:
 
@@ -98,7 +100,7 @@ To run the example with the optional backend data store, you need to set the `SE
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® IoT Platform.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from your board.
 
 ## Regenerating HTML and CSS
 
