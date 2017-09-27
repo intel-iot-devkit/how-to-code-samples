@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart fire alarm that:
+Using a compatible Intel-based platform, this project lets you create a smart fire alarm that:
 
 - constantly monitors for unsafe temperature levels.
 - audibly notifies of alerts using the buzzer.
@@ -35,12 +35,13 @@ For more specific information on the hardware requirements see ![Hardware Detail
 ## Software requirements
 
 1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
-2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
-3. Twilio\* account
+2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
+3. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
+4. Twilio\* account
 
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
 
-### Twilio\* API Key
+### Twilio\* API Key (optional)
 
 To optionally send text messages, you need to register for an account and get an API key from the Twilio\* web site:
 
@@ -65,14 +66,6 @@ To configure the example for the specific hardware kit that you are using, eithe
 6. Another dialog box will appear asking to rebuild project. Click **OK**.
 ![](./../../images/cpp/path-symbol-rebuild-ok.png)
 
-### Running the program
-
-To run this example on the board, simply enter
-
-    $ make
-    $ build
-    $ ./fire-alarm
-
 You will see output similar to below when the program is running.
 
 ```
@@ -83,12 +76,14 @@ SMS sent { sid: 'SMdd79f27e8e184ee891225854888ef009',
 date_created: 'Fri, 22 Apr 2016 03:17:29 +0000', 
 ```
 
-When the program is uploaded to the Intel® IoT Platform, the program starts to continuously monitor the temperature. If it exceeds the threshold, the `Fire Alarm!` message is displayed on the LCD.<br>
+When the program is uploaded to the board, the program starts to continuously monitor the temperature. If it exceeds the threshold, the `Fire Alarm!` message is displayed on the LCD.<br>
 ![](./../../images/cpp/fire-alarm-lcd.jpg)
+
+When the temperature sensor is heated, another output message is displayed in the Intel® System Studio console, this means you sent your SMS alert successfully.<br>
 
 Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
-## Running the example with the cloud server
+## Running the example with the cloud server (optional)
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
 
@@ -100,6 +95,6 @@ To run the example with the optional backend data store, you need to set the `SE
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® IoT Platform.
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from your board.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
