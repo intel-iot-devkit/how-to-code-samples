@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a smart fire alarm that:<br>
+Using a compatible Intel-based platform, this project lets you create a smart fire alarm that:<br>
 - constantly monitors for unsafe temperature levels.<br>
 - issues an audible notification using the buzzer.<br>
 - issues a visual notification using the LCD.<br>
@@ -33,7 +33,7 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm)
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
 2. Python 2.7
 3. Packages as listed in the ![setup.py](setup.py) file in this directory
 1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
@@ -55,7 +55,7 @@ Once all dependencies are installed you can install the example itself with the 
 
 The `pip` command will install required Python dependencies, save the source code for the example in `~/python/examples/iot_fire_alarm/` and link the package to the global Python `site-packages` folder.
 
-### Twilio\* API key
+### Twilio\* API key (optional)
 
 To optionally send text messages, you need to register for an account and get an API key from the Twilio\* website:
 
@@ -144,7 +144,7 @@ Once the program is installed and configured as detailed above, you can execute 
 You will see output similar to below when the program is running.
 
 ```
-[Upload Complete] fire alarm 
+fire alarm 
 Connecting to MQTT server... 
 MQTT message published: { d: { value: 'fire alarm', datetime: '2016-04-22T03:17:28.279Z' } } 
 SMS sent { sid: 'SMdd79f27e8e184ee891225854888ef009', 
