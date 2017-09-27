@@ -2,7 +2,7 @@
 
 ## What it is
 
-Using a compatible Intel® IoT Platform, this project lets you create a close call fleet driving reporter that:<br>
+Using a compatible Intel-based platform, this project lets you create a close call fleet driving reporter that:<br>
 - monitors the Grove\* IR Distance Interrupter.<br>
 - monitors the Grove\* GPS.<br>
 - keeps track of close calls and logs them using cloud-based data storage.
