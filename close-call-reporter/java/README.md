@@ -34,7 +34,7 @@ More details on the hardware requirements can be found in the ![project README](
 
 ## Software requirements
 
-1. Java
+1. [Java](https://software.intel.com/en-us/java-for-iot-reference)
 2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://github.com/intel-iot-devkit/upm) 
 2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
