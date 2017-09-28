@@ -1,21 +1,8 @@
 ﻿# Watering system in C++
 
-## Introduction
-
-This automatic watering system application is part of a series of how-tos for Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit, Intel® Edison board, Intel® IoT Gateway, cloud platforms, APIs, and other technologies.
-
-From this exercise, developers will learn how to:
-
-- Connect the Intel® Edison board or Intel® IoT Gateway, computing platforms designed for prototyping and producing IoT and wearable computing products.
-- Interface with the Intel® Edison board or Arduino 101\* (branded Genuino 101\* outside the U.S.) board IO and sensor repository using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
-- Run these code samples in the Intel® System Studio IoT Edition (Eclipse IDE for C/C++ and Java\* development) for creating applications that interact with sensors and actuators, enabling a quick start for developing software for the Intel® Edison board or the Intel® Galileo board.
-- Set up a web application server to set the watering system time and store this data using Azure Redis Cache\* from Microsoft\*, Redis Store\* from IBM Bluemix\*, or Elasticache\* using Redis\* from Amazon Web Services (AWS)\*, different cloud services for connecting IoT solutions including data analysis, machine learning, and a variety of productivity tools to simplify the process of connecting your sensors to the cloud and getting your IoT project up and running quickly.
-- Invoke the services of the Twilio\* API for sending text messages.
-- Connect to a server using IoT Hub from Microsoft Azure\*, IoT from IBM Bluemix\*, IoT from Amazon Web Services (AWS)\*, AT&T M2X\*, Predix\* from GE, or SAP Cloud Platform\* IoT, different cloud-based IoT platforms for machine to machine communication.
-
 ## What it is
 
-Using an Intel® Edison board or Intel® IoT Gateway, this project lets you create an automatic watering system that:
+Using a compatible Intel-based platform, this project lets you create an automatic watering system that:
 
 - turns a water pump on and off based on a configurable schedule.
 - detects if the watering system is pumping when expected, by using a water flow sensor.
@@ -23,111 +10,44 @@ Using an Intel® Edison board or Intel® IoT Gateway, this project lets you crea
 - keeps track of the watering system, using cloud-based data storage.
 - sends text messages to alert the user if the system if not working as expected.
 
-## How it works
-
-This watering system application has several useful features.
-
-Using your mobile phone, you can set the watering system schedule using a web page served directly from the Intel® Edison board or Intel® IoT Gateway.
-
-The watering system automatically checks the moisture sensor data at specified intervals and displays that data on the web page.
-
-If the water pump is supposed to be on but the water flow sensor does not detect that the pumping is talking place as expected, the application sends an SMS to a specified number through Twilio\* so the watering system can be repaired.
-
-Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
+## First time setup
+For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
 
 ## Hardware requirements
 
-Grove\* Environment & Agriculture Kit containing:
+### Grove\*
 
-1. Intel® Edison board with an Arduino\* breakout board
-2. Grove Base Shield V2
-3. [Grove Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
-4. [Water Pump](http://www.seeedstudio.com/depot/6V-Mini-Water-Pump-p-1945.html)
-5. [Water Flow Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovewfs.html)
-6. [Dry-reed Relay](http://iotdk.intel.com/docs/master/upm/node/classes/groverelay.html)
+Sensor | Pin
+--- | ---
+Grove\* Dry-Reed Relay | D4
+One wire from the pump | 5V power source
+Other wire from pump | One of the Power connectors on the Grove\* Dry-Reed Relay board
+Other power connector  on the Grove\* Dry-Reed Relay board | 5V power source reserved for the pump
+Water Flow Sensor | Red wire into the 5V pin, the black wire into the GND pin, and the yellow wire into digital pin 2
+Grove\* Moisture Sensor | A0
+
+### DFRobot\*
+
+Sensor | Pin
+--- | ---
+Relay Module | A1
+One wire from the pump | GND of the power source
+Other wire from the pump | NC (Normally Closed) connector on the Relay Module
+COM (Common) connector | + of the 5V power source
+Moisture Sensor | A3
+
+For more specific information on the hardware requirements see ![Hardware Details](./../README.md#hardware-requirements)
 
 ## Software requirements
 
-1. [Intel® System Studio (Eclipse IDE for C/C++ and Java\* development)](https://software.intel.com/en-us/node/672439)
-2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
-3. Twilio\* account
+1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io)
+2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
+3. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
+4. Twilio\* account (optional)
 
-### How to set up
+Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
 
-This sample is already one of the IoT examples included in Intel® System Studio. To start using it, follow these steps:
-
-1. From the main menu, select **Intel® IoT > Import IoT Examples**.<br>
-![](./../../images/cpp/import-iot-examples.png)
-2. Expand the tree view for **C++ > How To Code Samples > Watering System** and click **Import Example**.<br>
-![](./../../images/cpp/click-how-to-code-samples.png)
-3. Select your developer board from the selection window then select **Next**.<br>
-![](./../../images/cpp/select-board.png)
-4. Select **Intel® IoT C/C++ project** from the Select a project type window then click **Next**.<br>
-![](./../../images/cpp/select-project-type.png)
-5. Select **Yocto** from the Selct target OS dropdown menu then click **Next**.<br>
-![](./../../images/cpp/select-os.png)
-6. The next tab will ask for connection name and target name. If you do not know these click **Search Target**.<br>
-![](./../../images/cpp/search-target.png)
-7. Select your Edison from the dropdown list. Select **OK**.<br>
-![](./../../images/cpp/click-how-to-code-samples.png)
-8. Your connection name and target name should be filled in. Select **Finish**.<br>
-![](./../../images/cpp/finish-target.png)
-9. A new window will open for you and you will need to choose a name for your project and click **Next**.<br>
-![](./../../images/cpp/enter-project-name.png)
-10. Your project source files will now be available on the on the upper left of your IDE by default.<br>
-![](./../../images/cpp/project-src-imported.png)
-
-### Connecting the Grove\* sensors
-
-You need to have a Grove\* Base Shield V2 connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Base Shield V2. Make sure you have the tiny VCC switch on the Grove Base Shield V2 set to **5V**.
-
-For this example, you need to power the Intel® Edison board with the external power adapter that comes with your starter kit, or else substitute an external **12V 1.5A** power supply. You can also use an external battery, such as a **5V** USB battery.
-
-In addition, you need a breadboard and an extra **5V** power supply to provide power to the pump.
-
-Note: You need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel® Edison board and the pump, so you need either 2 batteries or 2 power supplies.
-
-You need to use the Grove\* Dry-reed Relay board to connect the Water Pump.
-
-1. Plug one end of a Grove\* cable into the Grove\* Dry-reed Relay, and connect the other end to the D4 port on the Grove Base Shield V2.<br>
-![](./../../images/js/watering.jpg)
-2. Plug one wire from the Water Pump into the 5V power source reserved for the pump.
-3. Plug the other wire from the Water Pump into one of the power connectors on the Grove Dry-reed Relay board.
-4. Plug the other power connector on the Grove\* Dry-reed Relay board into the ground of the 5V power source reserved for the Water Pump.
-5. Plug the Water Flow Sensor's red wire into the 5V pin on the Grove\* Base Shield V2.
-6. Plug the Water Flow Sensor's black wire into the GND pin on the Grove\* Base Shield V2.
-7. Plug the Water Flow Sensor's yellow wire into the 2 pin (aka digital pin 2) on the Grove\* Base Shield V2.
-8. Plug one end of a Grove cable into the Grove\* Moisture Sensor, and connect the other end to the A0 port on the Grove Base Shield V2.
-
-### Connecting the DFRobot\* sensors
-
-![](./../../images/js/watering-dfrobot.jpg)
-
-You need to have a I/O Expansion Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the I/O Expansion Shield.
-
-In addition, you need a breadboard and an extra 5V power supply to provide power to the pump. Note: you need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel® Edison board and the pump.
-
-You need to use the Relay Module to connect the water pump.
-
-1. Plug one end of a DFRobot\* cable into the Relay Module, and connect the other end to the A2 port on the I/O Expansion Shield.
-
-2. Connect one wire from the pump to the GND of the power source reserved for the pump.
-
-3. Connect the other wire from the pump to the NC (Normally Closed) connector on the Relay Module.
-
-4. Connect the COM (Common) connector on the Relay Module to the + of the 5V power source reserved for the pump.
-
-5. Plug one end of a DFRobot\* cable into the Moisture Sensor, and connect the other end to the A3 port on the I/O Expansion Shield.
-
-### Copy the libraries on Windows\*
-
-For help installing and using WinSCP, go to this link:
-
-[using-winscp.md](./../../docs/cpp/using-winscp.md)
-
-Note: You need to turn SSH on by running the `configure_edison --password` command on the board. Once you set the password, make sure you write it down. You only need to do this once and it is set when you reboot the Intel® Edison board.
-
-### Twilio\* API Key
+### Twilio\* API Key (optional)
 
 To optionally send text messages, you need to register for an account and get an API key from the Twilio\* website:
 
@@ -135,65 +55,39 @@ To optionally send text messages, you need to register for an account and get an
 
 You can still run the example, but without a Twilio API key you cannot send SMS alerts.
 
-### IoT cloud setup
+## Expected output
+    
+You will see output similar to below when the program is running.
 
-You can optionally store the data generated by this sample program using cloud-based IoT platforms from Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\*.
+```
+UPLOADING: Uploading project bundle to IoT device. 
+[Upload Complete] moisture (46) 
+Connecting to MQTT server... 
+MQTT message published: { d: { value: 'moisture (46) 2016-04-22705:14:56.681Z' } } 
+```
+## Setting the watering schedule
 
-For information on how to connect to your own cloud server, go to:
+The schedule for the watering system is set using a single-page web interface served up from the Intel® Edison board or Intel® IoT Gateway while the sample program is running.<br>
+![](./../../images/cpp/water-sys-app.png)
 
-[https://github.com/intel-iot-devkit/iot-samples-cloud-setup](https://github.com/intel-iot-devkit/iot-samples-cloud-setup)
+The latest data values from the connected Grove\* Moisture Sensor are displayed at the bottom of the web page.
 
-### Data store server setup
+The web server runs on port `3000`; if the your board is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
+Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
 
-Optionally, you can store the data generated by this sample program in a back-end database deployed using Microsoft Azure\*, IBM Bluemix\*, or AWS\*, along with Node.js\*, and a Redis\* data store.
-
-For information on how to set up your own cloud data server, go to:
-
-[https://github.com/intel-iot-devkit/intel-iot-examples-datastore](https://github.com/intel-iot-devkit/intel-iot-examples-datastore)
-
-### Connecting your Intel® Edison board or Intel® IoT Gateway to Intel® System Studio
-
-1. On the **Target SSH Connections** tab, right-click your device and select **Connect**.<br>
-![](./../../images/cpp/cpp-connection-eclipse-ide-win4.png)
-
-If prompted for the username and password, the username is **root** and the password is whatever you specified when configuring the Intel® Edison board.
-
-### Intel® IoT Gateway setup
-
-You can run this example using an Intel® IoT Gateway connected to an Arduino 101\* (branded Genuino 101\* outside the U.S.).
-
-Make sure your Intel® IoT Gateway is setup using Intel® IoT Gateway Software Suite, by following the directions on the web site here:
-
-https://software.intel.com/en-us/getting-started-with-intel-iot-gateways-and-iotdk
-
-The Arduino 101\* (branded Genuino 101\* outside the U.S.) needs to have the Firmata\* firmware installed. If you have IMRAA installed on your gateway, this will be done automatically. Otherwise, install the StandardFirmata or ConfigurableFirmata sketch manually onto your Arduino 101\* (branded Genuino 101\* outside the U.S.).
-
-### Running the example with the cloud server
+## Running the example with the cloud server (optional)
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
 
 1. From the **Run** menu, select **Run Configurations**.<br> The **Run Configurations** dialog box is displayed.
-2. Under **C/C++ Remote Application**, click **doorbell**.<br> This displays the information for the application.
+2. Under **C/C++ Remote Application**, click **watering-system**.<br> This displays the information for the application.
 3. In the **Commands to execute before application** field, add the following environment variables, except use the server and authentication token that correspond to your own setup:<br>
 
         chmod 755 /tmp/watering-system; export SERVER="http://intel-iot-example-data.azurewebsites.net/logger/watering-system"; export AUTH_TOKEN="Enter Auth Token Here"; export TWILIO_SID="Enter Twilio SID Here"; export TWILIO_TOKEN="Enter Twilio Token Here"; export TWILIO_TO="Enter Number to Send to here Formattted 555-555-5555"; export TWILIO_FROM="Enter Number to be Sent From Here Formated 555-555-5555"
 
 4. Click **Apply** to save your new environment variables.
 
-Now when you run your program using the **Run** button, it should be able to call your server to save the data right from the Intel® Edison board or Intel® IoT Gateway.
-
-### Running the code on the Intel® Edison board or Intel® IoT Gateway
-
-When you're ready to run the example, click **Run** at the top menu bar in Intel® System Studio.<br>
-![](./../../images/cpp/cpp-run-eclipse.png)
-
-This compiles the program using the Cross G++ Compiler, links it using the Cross G++ Linker, transfers the binary to the Intel® Edison board or Intel® IoT Gateway, and then executes it on the board itself.
-
-After running the program, you should see output similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-run-eclipse-successful-build.png)
-
-Successful output should be similar to the one in the image below.<br>
-![](./../../images/cpp/cpp-equp-act-mon-successful-output.png)
+Now when you run your program using the **Run** button, it should be able to call your server to save the data right from your board.
 
 ## Regenerating HTML and CSS
 
@@ -202,14 +96,5 @@ If you make any changes to either the **index.html** or **styles.css** file, you
 For help using the shell script, go to this link:
 
 [how-to-run-the-shellscript.md](./../../docs/cpp/how-to-run-the-shellscript.md)
-
-## Setting the watering schedule
-
-The schedule for the watering system is set using a single-page web interface served up from the Intel® Edison board or Intel® IoT Gateway while the sample program is running.<br>
-![](./../../images/cpp/water-sys-app.png)
-
-The latest data values from the connected Grove\* Moisture Sensor are displayed at the bottom of the web page.
-
-The web server runs on port `3000`; if the Intel® Edison board or Intel® IoT Gateway is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
