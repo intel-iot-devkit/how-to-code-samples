@@ -37,7 +37,7 @@ Additionally, various events (`looking-for-motion`, `motion-detected`, `invalid-
 Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for supported boards and libraries.
+For all the samples in this repository, see the ![General Setup Instructions](./../README.md#setup) for supported boards and libraries.
 
 ## Hardware requirements
 
