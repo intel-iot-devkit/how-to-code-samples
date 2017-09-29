@@ -34,7 +34,7 @@
 #include <chrono>
 #include <string>
 
-#include <jhd1313m1.hxx>
+#include <jhd1313m1.hpp>
 
 using namespace std;
 
@@ -106,7 +106,7 @@ struct Devices
   }
 
   // Change the color of the Display
-  void color(const size_t c = 0x0000ff) {
+  void color(const size_t color = 0x0000ff) {
     size_t red   = (color & 0xff0000) >> 16;
     size_t green = (color & 0x00ff00) >> 8;
     size_t blue  = (color & 0x0000ff);
