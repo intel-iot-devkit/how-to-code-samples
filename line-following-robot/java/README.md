@@ -26,8 +26,8 @@ Grove\* Line Finder | D2
 More details on the hardware requirements can be found in the ![project README](./../README.md)
 
 ## Software requirements
-1. ![Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
-2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
+2. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 ## Configuring the example
@@ -35,6 +35,7 @@ More details on the hardware requirements can be found in the ![project README](
 Clone the How-To Code Samples repository with Git* on your computer as follows:
 
 $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
+
 To download a .zip file, in your web browser go to https://github.com/intel-iot-devkit/how-to-code-samples and click the Download ZIP button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
 
 ### Set up the source files
