@@ -9,7 +9,7 @@ Using a compatible Intel-based platform, this project lets you create an air qua
 - stores a record of each time the air quality sensor detects contaminants, using cloud-based data storage.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
 
@@ -27,12 +27,12 @@ Sensor | Pin
 Buzzer | A1
 Air Quality Sensor | A3
 
-More details on the hardware requirements can be found in the ![project README](./../README.md)
+More details on the hardware requirements can be found in the [project README](./../README.md)
 
 ## Software requirements
 
-1. ![Intel® System Studio] (https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
-2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
+2. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 3. Microsof Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 ## Configuring the example
