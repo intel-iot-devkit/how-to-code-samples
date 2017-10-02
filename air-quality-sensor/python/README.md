@@ -8,7 +8,7 @@ Using a compatible Intel-based platform this project lets you create an air qual
 - stores a record of each time the air quality sensor detects contaminants, using cloud-based data storage.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
 
 ## Hardware requirements
 
@@ -26,13 +26,13 @@ Sensor | Pin
 Buzzer | A1
 Air Quality Sensor | A3
 
-For more specific information on the hardware requirements see ![Hardware Details](./../README.md#hardware-requirements)
+For more specific information on the hardware requirements see [Hardware Details](./../README.md#hardware-requirements)
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io/) 
 2. Python 2.7
-3. Packages as listed in the ![setup.py](setup.py) file in this directory
+3. Packages as listed in the [setup.py](setup.py) file in this directory
 1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 You can install the dependencies.
@@ -103,7 +103,7 @@ Once the program is installed and configured as detailed above, you can execute 
 
     $ python -m iot_air_quality_sensor
     
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 After running the program you should have output similar to:
 ```
