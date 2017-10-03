@@ -33,7 +33,7 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io/) 
 2. Python 2.7
 3. Packages as listed in the ![setup.py](setup.py) file in this directory
 1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
@@ -45,7 +45,7 @@ You can install the dependencies.
 
 To optionally send text messages, you need to register for an account and get an API key from the Twilio\* website:
 
-<a href="https://www.twilio.com">https://www.twilio.com</a>
+[https://www.twilio.com](https://www.twilio.com)
 
 You cannot send text messages without obtaining a Twilio API key first. You can still run the example, but without the text messages.
 
