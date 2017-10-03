@@ -1,11 +1,10 @@
 # Robot Arm
 
 ## Introduction
-
 This robot arm application is part of a series of how-to Internet of Things (IoT) code sample exercises using the Intel® IoT Developer Kit and a compatible Intel-based platform, cloud platforms, APIs, and other technologies.
 
-From this exercise, developers will learn how to:<br>
-- Interface with and sensors using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.<br>
+From this exercise, developers will learn how to:
+- Interface with and sensors using MRAA and UPM from the Intel® IoT Developer Kit, a complete hardware and software solution to help developers explore the IoT and implement innovative projects.
 - Set up a web application server to control a robot arm using a web page served directly from the Intel-based platform.
 
 Available in:  
@@ -15,14 +14,12 @@ Available in:
  ![Python\*](./python) 
 
 ## What it is
-
 Using a compatible Intel-based platform, this project lets you create a robot arm that:<br>
 - continuously checks the Grove\* Joystick.<br>
 - moves two stepper motors based on the joystick control.<br>
 - can be accessed via the built-in web interface to control the motors.
 
 ## How it works
-
 The robot arm example allows you to control a robotic arm using a thumb joystick.
 Each axis of the joystick corresponds to a motor to control.
 
@@ -38,8 +35,7 @@ In addition to using a compatible platform listed in ![Hardware Compatibility](.
 3. [Stepper Motor Controller & Stepper Motor](http://iotdk.intel.com/docs/master/upm/node/classes/uln200xa.html) (x2)
 
 ### Connecting the Grove\* sensors
-
-![](./robot-arm-grove.JPG)
+[](./robot-arm-grove.JPG)
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove Shield. Make sure you have the tiny VCC switch on the Grove Shield set to **5V**.
 
@@ -55,18 +51,16 @@ Both controllers to ground (GND) | 5V power coming from the Arduino\* breakout b
 
 Look at the bottom of the shield to determine the pin numbers.
 
-2. Plug one end of a Grove\* cable into the Grove\* Thumb Joystick, and connect the other end to the A2 port on the Grove\* Shield.
+Plug one end of a Grove\* cable into the Grove\* Thumb Joystick, and connect the other end to the A2 port on the Grove\* Shield.
 
 ### Controlling via a browser
-
-![](./../../images/js/robot-arm-web.png)
+[](./../../images/js/robot-arm-web.png)
 
 Optionally, the motors can be controlled directly via a web page served by the program running on the Intel-based platform.
 
 The web server runs on port `3000`, so if the Intel-based platform is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
 ### Determining your platform's IP Address
-
-See the section on Finding Your Board's IP Address at the bottom of the ![Setup Instructions](./../README.md#finding-your-boards-ip-address) readme. 
+See the section on Finding Your Board's IP Address at the bottom of the [Setup Instructions](./../README.md#finding-your-boards-ip-address) readme. 
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
