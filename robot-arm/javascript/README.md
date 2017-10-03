@@ -2,15 +2,15 @@
 
 ## What it is
 
-Using a compatible Intel-based platform, this project lets you create a robot arm that:<br>
-- continuously checks the Grove\* Joystick.<br>
-- moves two stepper motors based on the joystick control.<br>
+Using a compatible Intel-based platform, this project lets you create a robot arm that:
+- continuously checks the Grove\* Joystick.
+- moves two stepper motors based on the joystick control.
 - can be accessed via the built-in web interface to control the motors.
 
 Additionally, the motors can be controlled individually via a web page served directly from the Intel-based platform.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries. You need either Grove or DFRobot sensors but not both.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries. You need either Grove or DFRobot sensors but not both.
 
 ## Hardware requirements
 
@@ -28,11 +28,11 @@ Stepper motor controller #1 | Digital pins 4, 5, 6, and 7
 Stepper motor controller #2 | Digital pins 9, 10, 11, and 12
 Both controllers to ground (GND) | 5V power coming from the Arduino\* breakout board (VCC), and to the separate 5V power for the motors (VM).
 
-More details on the hardware requirements can be found in the ![project README](./../README.md)
+More details on the hardware requirements can be found in the [project README](./../README.md)
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 1. Node.js 
 2. [MRAA and UPM Node.js bindings](https://github.com/intel-iot-devkit/upm/blob/master/docs/installing.md)
 2. Packages as listed in the package.json file in this example 
@@ -63,6 +63,6 @@ move 1 1020
 move 2 1020 
 ```
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
