@@ -1,4 +1,4 @@
-﻿# Storage unit flood detector in C++
+# Storage unit flood detector in C++
 
 ## What it is
 
@@ -31,8 +31,8 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io)
-2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io)
+2. [Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
 3. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
@@ -67,7 +67,7 @@ Then you get output from the sensor in the console telling you if it is dry, moi
 
 When the sensor detects enough moisture, it sends a signal to the server; the console output informs you of this.
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ### Running the example with the cloud server (optional)
 
