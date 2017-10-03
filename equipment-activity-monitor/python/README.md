@@ -8,7 +8,7 @@ Using a compatible Intel-based platform, this project lets you create a shop-flo
 - logs equipment usage using cloud-based data storage.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries. You need either Grove or DFRobot sensors but not both.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries. You need either Grove or DFRobot sensors but not both.
 
 ## Hardware requirements
 
@@ -31,13 +31,13 @@ Sensor | Pin
 Analog Sound Sensor | A1
 Digital Vibration Sensor | A2
 
-More details on the hardware requirements can be found in the ![project README](./../README.md)
+More details on the hardware requirements can be found in the [project README](./../README.md)
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/)  
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io/)  
 2. Python 2.7
-3. Packages as listed in the ![setup.py](setup.py) file in this directory
+3. Packages as listed in the [setup.py](setup.py) file in this directory
 4. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 You can install the dependencies 
@@ -111,7 +111,7 @@ Vibration: 48
 The LCD should now display `ready`.<br>
 ![](./../images/equipment-lcd.jpg)
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ### IoT cloud setup (optional)
 
