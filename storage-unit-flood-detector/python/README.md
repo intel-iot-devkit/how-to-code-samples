@@ -2,9 +2,9 @@
 
 ## What it is
 
-Using a compatible Intel-based platform, this project lets you create a smart access control system that:<br>
-- continuously checks the moisture sensor.<br>
-- sounds an audible warning in case of a possible flooding.<br>
+Using a compatible Intel-based platform, this project lets you create a smart access control system that:
+- continuously checks the moisture sensor.
+- sounds an audible warning in case of a possible flooding.
 - stores a record of each time water is detected, using cloud-based data storage.
 
 ## First time setup
@@ -30,9 +30,9 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io/) 
 2. Python 2.7
-3. Packages as listed in the ![setup.py](setup.py) file in this directory
+3. Packages as listed in the [setup.py](setup.py) file in this directory
 1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 You can install the dependencies.
@@ -101,6 +101,6 @@ Connecting to MQTT server...
 MQTT message published: { d: { value: '2016-04-22705:08:41.682Z' } } 
 ```
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
