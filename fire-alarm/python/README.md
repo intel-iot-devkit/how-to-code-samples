@@ -10,7 +10,7 @@ Using a compatible Intel-based platform, this project lets you create a smart fi
 - sends text messages to alert others of a possible fire.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
 
 ## Hardware requirements
 
@@ -29,13 +29,13 @@ Sensor | Pin
 Analog Temperature Sensor | A3
 Buzzer | A2
 
-For more specific information on the hardware requirements see ![Hardware Details](./../README.md#hardware-requirements)
+For more specific information on the hardware requirements see [Hardware Details](./../README.md#hardware-requirements)
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io/) 
 2. Python 2.7
-3. Packages as listed in the ![setup.py](setup.py) file in this directory
+3. Packages as listed in the [setup.py](setup.py) file in this directory
 1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 2. Twilio\* account (optional)
 
@@ -151,7 +151,7 @@ SMS sent { sid: 'SMdd79f27e8e184ee891225854888ef009',
 date_created: 'Fri, 22 Apr 2016 03:17:29 +0000', 
 ```
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ### IoT cloud setup (optional)
 
