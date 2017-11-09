@@ -15,6 +15,8 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
+![](./../../alarm-clock/images/alarm-clock-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* Rotary Analog Sensor | A0
@@ -23,6 +25,8 @@ Grove Buzzer | D5
 Grove RGB LCD | I2C
 
 ### DFRobot\*
+
+![](./../../alarm-clock/images/alarm-clock-dfrobot.JPG)
 
 Sensor | Pin
 --- | ---
