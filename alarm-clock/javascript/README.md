@@ -14,7 +14,7 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
-![](./images/alarm-clock-grove.JPG)
+![](./../../alarm-clock/images/alarm-clock-grove.JPG)
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
@@ -27,7 +27,7 @@ Grove RGB LCD | I2C
 
 ### DFRobot\*
 
-![](./images/alarm-clock-dfrobot.JPG)
+![](./../../alarm-clock/images/alarm-clock-dfrobot.JPG)
 
 You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
