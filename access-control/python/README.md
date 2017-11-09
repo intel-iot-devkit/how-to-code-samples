@@ -14,12 +14,16 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
+![](./../../access-control/images/access-control-grove.JPG)
+
 Sensor | Pin
 --- | ---
 PIR Motion Sensor | D4
 Grove RGB LCD | I2C
 
 ### DFRobot\* 
+
+![](./../../access-control/images/access-control-dfrobot.JPG)
 
 Sensor | Pin
 --- | ---
