@@ -15,6 +15,8 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
+![](./../../color-match-game/images/color-match-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove RGB LCD | I2C
