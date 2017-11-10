@@ -14,12 +14,16 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
+![](./../../earthquake-detector/images/earthquake-detector-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* 3-Axis Digital Accelerometer | I2C
 Grove\* RGB LCD | I2C
 
 ### DFRobot\* 
+
+![](./../../earthquake-detector/images/earthquake-detector-dfrobot.JPG)
 
 Sensor | Pin
 --- | ---
