@@ -14,10 +14,24 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
+### Grove\*
+
+![](./../../earthquake-detector/images/earthquake-detector-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* 3-Axis Digital Accelerometer | I2C
 Grove\* RGB LCD | I2C
+
+#### DFRobot\* 
+
+![](./../../earthquake-detector/images/earthquake-detector-dfrobot.JPG)
+
+Sensor | Pin
+--- | ---
+One end of a DFRobot\* cable into the plug labeled "X" on the Triple-Axis Accelerometer | A1
+One end of a DFRobot\* cable into the plug labeled "Y" on the Triple-Axis Accelerometer | A2
+One end of a DFRobot\* cable into the plug labeled "Z" on the Triple-Axis Accelerometer | A3
 
 More details on the hardware requirements can be found in the ![project README](./../README.md)
 
