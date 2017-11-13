@@ -17,6 +17,8 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
+![](./../../fire-alarm/images/fire-alarm-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* Temperature Sensor | A0
@@ -24,6 +26,8 @@ Grove\* Buzzer | D5
 Grove\* RGB LCD | I2C
 
 ### DFRobot\* 
+
+![](./../../fire-alarm/images/fire-alarm-dfrobot.JPG)
 
 Sensor | Pin
 --- | ---
