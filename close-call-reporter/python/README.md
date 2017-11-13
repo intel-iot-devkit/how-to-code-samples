@@ -14,12 +14,16 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\* 
 
+![](./../../close-call-reporter/images/close-call-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* IR Distance Interrupter | D2
 Grove\* GPS | UART port
 
 ### DFRobot\* 
+
+![](./../../close-call-reporter/images/close-call-dfrobot.JPG)
 
 Sensor | Pin
 --- | ---
