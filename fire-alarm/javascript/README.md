@@ -16,6 +16,8 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
+![](./../../fire-alarm/images/fire-alarm-grove.JPG)
+
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
 Sensor | Pin
@@ -25,6 +27,8 @@ Grove\* Buzzer | D5
 Grove\* RGB LCD | I2C
 
 ### DFRobot\*
+
+![](./../../fire-alarm/images/fire-alarm-dfrobot.JPG)
 
 You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
