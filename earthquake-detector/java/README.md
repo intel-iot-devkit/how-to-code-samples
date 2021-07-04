@@ -9,7 +9,7 @@ Using a compatible Intel-based platform, this project lets you create an earthqu
 - displays an earthquake warning on the LCD.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
 
@@ -28,12 +28,12 @@ One end of a DFRobot\* cable into the plug labeled "X" on the Triple-Axis Accele
 One end of a DFRobot\* cable into the plug labeled "Y" on the Triple-Axis Accelerometer | A2
 One end of a DFRobot\* cable into the plug labeled "Z" on the Triple-Axis Accelerometer | A3
 
-More details on the hardware requirements can be found in the ![project README](./../README.md)
+More details on the hardware requirements can be found in the [project README](./../README.md)
 
 ## Software requirements
 
-1. ![Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
-2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
+2. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 
 ## Configuring the example
 ### Clone the repo
