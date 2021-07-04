@@ -6,7 +6,7 @@ Using a compatible Intel-based platform, this project lets you create an air qua
 - stores a record of each time the air quality sensor detects contaminants, using cloud-based data storage.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries. You need either Grove or DFRobot sensors but not both.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries. You need either Grove or DFRobot sensors but not both.
 
 ## Hardware requirements
 
@@ -28,11 +28,11 @@ Sensor | Pin
 Buzzer | A1
 Air Quality Sensor | A3
 
-More details on the hardware requirements can be found in the ![project README](./../README.md)
+More details on the hardware requirements can be found in the [project README](./../README.md)
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 1. Node.js 
 2. [MRAA and UPM Node.js bindings](https://github.com/intel-iot-devkit/upm/blob/master/docs/installing.md)
 3. Packages as listed in the package.json file in this example 
@@ -86,7 +86,7 @@ You will see output similar to below when the program is running.
 
 ![](./../../images/js/air-quality-output.png)
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 After running the program you should have output similar to:
 ```
