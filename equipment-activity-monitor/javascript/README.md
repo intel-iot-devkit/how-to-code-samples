@@ -8,7 +8,7 @@ Using a compatible Intel-based platform, this project lets you create a shop-flo
 - logs equipment usage using cloud-based data storage.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries. You need either Grove or DFRobot sensors but not both.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries. You need either Grove or DFRobot sensors but not both.
 
 ## Hardware requirements
 
@@ -31,11 +31,11 @@ Sensor | Pin
 Analog Sound Sensor | A1
 Digital Vibration Sensor | A2
 
-More details on the hardware requirements can be found in the ![project README](./../README.md)
+More details on the hardware requirements can be found in the [project README](./../README.md)
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 1. Node.js 
 2. [MRAA and UPM Node.js bindings](https://github.com/intel-iot-devkit/upm/blob/master/docs/installing.md)
 2. Packages as listed in the package.json file in this example 
@@ -87,7 +87,7 @@ MQTT message published: { d: { value: 'start 2016-04-22T02:54:15.951Z' } }
 Vibration: 48 
 ```
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ### IoT cloud setup (optional)
 
