@@ -10,7 +10,7 @@ Using a compatible Intel-based platform, this project lets you create a smart st
 - keeps track of the cooking temperature using cloud-based data storage.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
 
@@ -33,8 +33,8 @@ Flame Sensor | A2
 More details on the hardware requirements can be found in the ![project README](./../README.md)
 
 ## Software requirements
-1. ![Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
-2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
+2. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 2. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 ## Configuring the example
@@ -87,7 +87,7 @@ MQTT message published: { d: { value: 104.1676025390625 } }
 ```
 ### Setting the temperature
 
-![](./../../images/java/smart-stove-web.png)
+[](./../../images/java/smart-stove-web.png)
 
 The target temperature is set using a single-page web interface served from your board while the sample program is running.
 
