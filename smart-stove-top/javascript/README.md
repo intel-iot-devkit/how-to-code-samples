@@ -14,11 +14,25 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove Shield set to 5V.
 
+### Grove\*
+
+![](./../../smart-stove-top/images/smart-stove-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* IR Temperature Sensor | A0
 Grove\* Flame Sensor | D4
 Grove\* Speaker | D5
+
+### DFRobot\* 
+
+![](./../../smart-stove-top/images/smart-stove-dfrobot.JPG)
+
+Sensor | Pin
+--- | ---
+Analog Temperature Sensor | A3
+Buzzer | A1
+Flame Sensor | A2
 
 More details on the hardware requirements can be found in the ![project README](./../README.md)
 
