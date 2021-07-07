@@ -13,6 +13,9 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 ## Hardware Requirements
 
 ### Grove\*
+
+![](./../../equipment-activity-monitor/images/equipment-activity-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* Sound Sensor | A0
@@ -20,6 +23,9 @@ Grove\* Piezo Vibration Sensor | A2
 Grove\* RGB LCD | I2C
 
 ### DFRobot\*
+
+![](./../../equipment-activity-monitor/images/equipment-activity-dfrobot.JPG)
+
 Sensor | Pin
 --- | ---
 Analog Sound Sensor | A1
