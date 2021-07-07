@@ -16,13 +16,18 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
+### Grove\*
+![](./../../plant-lighting-system/images/lighting-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* Light Sensor | A0
 Grove\* Moisture Sensor | A1
 Grove\* RGB LCD | I2C
 
-### Connecting the DFRobot\* sensors
+### DFRobot\*
+
+![](./../../plant-lighting-system/images/lighting-dfrobot.JPG)
 
 You need to have a LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the LCD Keypad Shield.
 
