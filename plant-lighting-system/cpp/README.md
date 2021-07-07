@@ -17,13 +17,17 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\* 
 
+![](./../../plant-lighting-system/images/lighting-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* Light Sensor | A0
 Grove\* Moisture Sensor | A1
 Grove\* RGB LCD | I2C
 
-### DFRobot\* Starter Kit for Intel® Edison containing:
+### DFRobot\*
+
+![](./../../plant-lighting-system/images/lighting-dfrobot.JPG)
 
 Sensor | Pin
 --- | ---
