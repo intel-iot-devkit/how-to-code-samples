@@ -10,7 +10,7 @@ Using a compatible Intel-based platform, this project lets you create an automat
 - sends text messages to alert recipients if the system is not working as expected.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
 
 ## Hardware requirements
 
@@ -36,13 +36,13 @@ Other wire from the pump | NC (Normally Closed) connector on the Relay Module
 COM (Common) connector | + of the 5V power source
 Moisture Sensor | A3
 
-For more specific information on the hardware requirements see ![Hardware Details](./../README.md#hardware-requirements)
+For more specific information on the hardware requirements see [Hardware Details](./../README.md#hardware-requirements)
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io/) 
 2. Python 2.7
-3. Packages as listed in the ![setup.py](setup.py) file in this directory
+3. Packages as listed in the [setup.py](setup.py) file in this directory
 1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 2. Twilio\* account (optional)
 
@@ -66,7 +66,7 @@ The `pip` command will install required Python dependencies, save the source cod
 
 To optionally send text messages, you need to register for an account and get an API key from the Twilio\* web site:
 
-<a href="https://www.twilio.com">https://www.twilio.com</a>
+[https://www.twilio.com](https://www.twilio.com)
 
 You cannot send text messages without obtaining a Twilio\* API key first. You can still run the example, but without the text messages.
 
@@ -138,6 +138,6 @@ Connecting to MQTT server...
 MQTT message published: { d: { value: 'moisture (46) 2016-04-22705:14:56.681Z' } } 
 ```
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 IMPORTANT NOTICE: This software is sample software. It is not designed or intended for use in any medical, life-saving or life-sustaining systems, transportation systems, nuclear systems, or for any other mission-critical application in which the failure of the system could lead to critical injury or death. The software may not be fully tested and may contain bugs or errors; it may not be intended or suitable for commercial release. No regulatory approvals for the software have been obtained, and therefore software may not be certified for use in certain countries or environments.
