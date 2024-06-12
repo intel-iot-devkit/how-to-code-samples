@@ -9,7 +9,7 @@ Using a compatible Intel-based platform, this project lets you create a smart al
 - keeps track of how long it takes you to wake up each morning, using cloud-based data storage.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
 
@@ -30,12 +30,12 @@ Buzzer | A1
 Button | A2
 Rotary Analog Sensor | A3
 
-More details on the hardware requirements can be found in the ![project README](./../README.md)
+More details on the hardware requirements can be found in the [project README](./../README.md)
 
 ## Software requirements
 
-1. ![Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
-2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
+2. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 2. Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* account (optional)
 3. Weather Underground\* API key
 
