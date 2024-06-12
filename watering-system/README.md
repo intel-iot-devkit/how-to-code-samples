@@ -1,4 +1,4 @@
-﻿# Watering System
+# Watering System
 
 ## Introduction
 
@@ -56,13 +56,13 @@ Grove:
 DFRobot: 
 
 1. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599)
-3. [Immersible Pump & Water Tube](http://www.dfrobot.com/index.php?route=product/product&keyword=water pump&product_id=667)
-4. [Relay Module](http://www.dfrobot.com/index.php?route=product/product&product_id=64)
-5. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
+2. [Immersible Pump & Water Tube](https://www.dfrobot.com/product-667.html)
+3. [Relay Module](http://www.dfrobot.com/index.php?route=product/product&product_id=64)
+4. [I/O Expansion Shield](http://www.dfrobot.com/index.php?route=product/product&product_id=1009)
 
 ### Connecting the Grove\* sensors
 
-![](./images/watering-grove.JPG)
+[](./images/watering-grove.JPG)
 
 You need to have a Grove\* Shield connected to an Arduino\*-compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
@@ -83,7 +83,7 @@ Grove\* Moisture Sensor | A0
 
 ### Connecting the DFRobot\* sensors
 
-![](./images/watering-dfrobot.JPG)
+[](./images/watering-dfrobot.JPG)
 
 You need to have a I/O Expansion Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the I/O Expansion Shield.
 
@@ -101,7 +101,7 @@ Moisture Sensor | A3
 
 ### Setting the watering schedule
 
-![](./../images/js/watering-system-web.png)
+[](./../images/js/watering-system-web.png)
 
 The schedule for the watering system is set using a single-page web interface served from the Intel-based platform while the sample program is running.
 
