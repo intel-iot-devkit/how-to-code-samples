@@ -1,4 +1,4 @@
-# Color match game in JavaScript*
+# Color match game
 
 ## Introduction
 
@@ -10,10 +10,10 @@ From this exercise, developers will learn how to:<br>
 - Set up a web application server to let users play the color matching game using their web browser.
 
 Available in:  
- ![C++](./cpp)  
- ![Java\*](./java)  
- ![JavaScript\*](./javascript)  
- ![Python\*](./python) 
+ [C++](./cpp)  
+ [Java\*](./java)  
+ [JavaScript\*](./javascript)  
+ [Python\*](./python) 
 
 ## What it is
 
@@ -25,10 +25,10 @@ Using a compatible Intel-based platform, this project lets you create a color ma
 - different tones are played when user clicks on color buttons.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the [General Setup Instructions](./../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
-In addition to using a compatible platform listed in ![Hardware Compatibility](./../README.md#hardware-compatibility), here is additional hardware you will need to run this example
+In addition to using a compatible platform listed in [Hardware Compatibility](./../README.md#hardware-compatibility), here is additional hardware you will need to run this example
 
 This sample can be used with either Grove components:
 
