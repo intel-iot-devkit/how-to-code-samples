@@ -1,14 +1,13 @@
 # Robot Arm in Python*
 
 ## What it is
-
 Using a compatible Intel-based platform, this project lets you create a robot arm that:<br>
-- continuously checks the Grove\* Joystick.<br>
-- moves two stepper motors based on the joystick control.<br>
+- continuously checks the Grove\* Joystick.
+- moves two stepper motors based on the joystick control.
 - can be accessed via the built-in web interface to control the motors.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
 
 ## Hardware requirements
 
@@ -24,9 +23,9 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io/) 
 2. Python 2.7
-3. Packages as listed in the ![setup.py](setup.py) file in this directory
+3. Packages as listed in the [setup.py](setup.py) file in this directory
 
 You can install the dependencies.
 
