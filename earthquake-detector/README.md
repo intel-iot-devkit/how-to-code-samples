@@ -10,10 +10,10 @@ From this exercise, developers will learn how to:<br>
 - Invoke the services of the United States Geological Survey (USGS) API for accessing earthquake data.
 
 Available in:  
- ![C++](./cpp)  
- ![Java\*](./java)  
- ![JavaScript\*](./javascript)  
- ![Python\*](./python) 
+[C++](./cpp)  
+[Java\*](./java)  
+[JavaScript\*](./javascript)  
+[Python\*](./python) 
 
 ## How it works
 
@@ -24,11 +24,11 @@ When it thinks it detects an earthquake, it attempts to verify with the USGS API
 If so, it displays a warning on the LCD.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../README.md#setup) for requested boards and libraries.
+For all the samples in this repository, see the [General Setup Instructions](./../README.md#setup) for requested boards and libraries.
 
 ## Hardware requirements
 
-In addition to using a compatible platform listed in ![Hardware Compatibility](./../README.md#hardware-compatibility), here is additional hardware you will need to run this example.
+In addition to using a compatible platform listed in [Hardware Compatibility](./../README.md#hardware-compatibility), here is additional hardware you will need to run this example.
 
 This sample can be used with either Grove\* or DFRobot\* components.
 
