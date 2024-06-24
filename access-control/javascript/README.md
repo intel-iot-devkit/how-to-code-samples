@@ -12,12 +12,18 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ## Hardware requirements
 ### Grove
+
+![](./../../access-control/images/access-control-grove.JPG)
+
 Sensor | Pin
 --- | ---
 PIR Motion Sensor | D4
 Grove RGB LCD | I2C
 
 ### DRFobot
+
+![](./../../access-control/images/access-control-dfrobot.JPG)
+
 You need to have a LCD Display Shield connected to an Arduino\*-compatible breakout board to plug all the DFRobot\* devices into the LCD Display Shield.
 
 Sensor | Pin
