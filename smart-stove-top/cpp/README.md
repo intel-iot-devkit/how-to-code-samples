@@ -10,7 +10,7 @@ Using a compatible Intel-based platform, this project lets you create a smart st
 - keeps track of the cooking temperature using cloud-based data storage.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
 
 ## Hardware requirements
 
@@ -34,8 +34,8 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io)
-2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io)
+2. [Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
 
 3. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
@@ -72,7 +72,7 @@ The target temperature is set using a single-page web interface served up from t
 
 The web server runs on port `3000`; if the Intel® Edison board or Intel® IoT Gateway is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ### Running the example with the cloud server (optional)
 
