@@ -2,9 +2,9 @@
 
 ## What it is
 
-Using a compatible Intel-based platform, this project lets you create a smart stove top that:<br>
-- allows you to set a target temperature.<br>
-- monitors your stove and notifies you when your set temperature is reached.<br>
+Using a compatible Intel-based platform, this project lets you create a smart stove top that:
+- allows you to set a target temperature.
+- monitors your stove and notifies you when your set temperature is reached.
 - stores historical temperature data using cloud-based data storage.
 
 ## First time setup
@@ -32,9 +32,9 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io/) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io/) 
 2. Python 2.7
-3. Packages as listed in the ![setup.py](setup.py) file in this directory
+3. Packages as listed in the [setup.py](setup.py) file in this directory
 1. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 
 You can install the dependencies.
@@ -88,7 +88,7 @@ Connecting to MQTT server...
 MQTT message published: { d: { value: 104.1676025390625 } } 
 ```
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ## IoT cloud setup (optional)
 
