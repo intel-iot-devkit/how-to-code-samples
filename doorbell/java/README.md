@@ -15,6 +15,8 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
+![](./../../doorbell/images/doorbell-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* Touch Sensor | D4 
@@ -22,6 +24,8 @@ Grove\* Buzzer | D5
 Grove\* RGB LCD | I2C
 
 ### DFRobot\*
+
+![](./../../doorbell/images/doorbell-dfrobot.JPG)
 
 Sensor | Pin
 --- | ---
