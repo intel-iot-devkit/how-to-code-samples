@@ -14,12 +14,16 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
+![](./../../air-quality-sensor/images/air-quality-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* Air Quality Sensor | AO
 Grove\* Speaker | D5
 
 ### DFRobot\*
+
+![](./../../air-quality-sensor/images/air-quality-dfrobot.JPG)
 
 Sensor | Pin
 --- | ---
