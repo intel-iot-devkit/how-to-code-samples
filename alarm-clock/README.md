@@ -12,10 +12,10 @@ From this exercise, developers will learn how to:<br>
 - Invoke the services of the Weather Underground\* API for accessing weather data.
 
 Available in:  
- ![C++](./cpp)  
- ![Java*](./java)  
- ![JavaScript*](./javascript)  
- ![Python*](./python)  
+ [C++](./cpp)  
+ [Java\*](./java)  
+ [JavaScript\*](./javascript)  
+ [Python\*](./python)  
 
 ## What it is
 
@@ -33,11 +33,11 @@ In addition, the smart alarm clock can access daily weather data via the Weather
 Optionally, data can be stored using your own Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account.
 
 ## First time setup  
-For all the samples in this repository, see the ![General Setup Instructions](./../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the [General Setup Instructions](./../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
 
-In addition to using a compatible platform listed in ![Hardware Compatibility](./../README.md#hardware-compatibility), here is additional hardware you will need to run this example
+In addition to using a compatible platform listed in [Hardware Compatibility](./../README.md#hardware-compatibility), here is additional hardware you will need to run this example
 
 This sample can be used with either Grove\* or DFRobot\* components.
 
