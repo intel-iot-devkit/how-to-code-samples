@@ -2,11 +2,11 @@
 
 ## What it is
 
-Using a compatible Intel-based platform, this project lets you create an automatic watering system that:<br>
-- turns a water pump on or off based on a configurable schedule.<br>
-- detects if the pumping occurs when expected, by using a water flow sensor.<br>
-- can be accessed with your mobile phone via the built-in web interface to set the watering times;<br>
-- keeps track of watering events, using cloud-based data storage.<br>
+Using a compatible Intel-based platform, this project lets you create an automatic watering system that:
+- turns a water pump on or off based on a configurable schedule.
+- detects if the pumping occurs when expected, by using a water flow sensor.
+- can be accessed with your mobile phone via the built-in web interface to set the watering times.
+- keeps track of watering events, using cloud-based data storage.
 - sends text messages to alert recipients if the system is not working as expected.
 
 ## First time setup  
@@ -37,7 +37,9 @@ Grove\* Moisture Sensor | A0
 
 You need to have a I/O Expansion Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the I/O Expansion Shield.
 
-In addition, you need a breadboard and an extra 5V power supply to provide power to the pump. Note: you need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel-based platform and the pump.
+In addition, you need a breadboard and an extra 5V power supply to provide power to the pump. 
+
+*Note*: you need a separate battery or power supply for the pump. You cannot use the same power supply for both the Intel-based platform and the pump.
 
 You need to use the Relay Module to connect the water pump.
 
@@ -49,11 +51,11 @@ Other wire from the pump | NC (Normally Closed) connector on the Relay Module
 COM (Common) connector | + of the 5V power source
 Moisture Sensor | A3
 
-More details on the hardware requirements can be found in the ![project README](./../README.md)
+More details on the hardware requirements can be found in the [project README](./../README.md)
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 1. Node.js 
 2. [MRAA and UPM Node.js bindings](https://github.com/intel-iot-devkit/upm/blob/master/docs/installing.md)
 2. Packages as listed in the package.json file in this example 
@@ -64,7 +66,7 @@ More details on the hardware requirements can be found in the ![project README](
 
 To optionally send text messages, you need to register for an account and get an API key from the Twilio\* web site:
 
-<a href="https://www.twilio.com">https://www.twilio.com</a>
+[https://www.twilio.com](https://www.twilio.com)
 
 You cannot send text messages without obtaining a Twilio\* API key first. You can still run the example, but without the text messages.
 
