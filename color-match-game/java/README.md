@@ -9,7 +9,7 @@ Using a compatible Intel-based platform, this project lets you create a color ma
 - when a user clicks a color, the same color is displayed on the RGB LCD screen.<br>
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
 
@@ -19,15 +19,15 @@ Sensor | Pin
 --- | ---
 Grove RGB LCD | I2C
 
-More details on the hardware requirements can be found in the ![project README](./../README.md)
+More details on the hardware requirements can be found in the [project README](./../README.md)
 
 ## Software requirements
 
-1. ![Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
-2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
+2. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 
 ## Configuring the example
-Clone the How-To Code Samples repository with Git* on your computer as follows:
+Clone the How-To Code Samples repository with Git\* on your computer as follows:
 
 $ git clone https://github.com/intel-iot-devkit/how-to-code-samples.git
 To download a .zip file, in your web browser go to https://github.com/intel-iot-devkit/how-to-code-samples and click the Download ZIP button at the lower right. Once the .zip file is downloaded, uncompress it, and then use the files in the directory for this example.
