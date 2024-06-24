@@ -11,6 +11,8 @@ Using an Intel® Edison board, this project lets you create a shop-floor equipme
 
 ### Grove\*
 
+![](./../../equipment-activity-monitor/images/equipment-activity-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove Sound Sensor | A0
