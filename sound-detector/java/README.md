@@ -13,12 +13,16 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
+![](./../../sound-detector/images/sound-detector-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* Sound Sensor | A0
 Grove\* RGB LCD | I2C
 
 ### DFRobot\*
+
+![](./../../sound-detector/images/sound-detector-dfrobot.JPG)
 
 Sensor | Pin
 --- | ---
