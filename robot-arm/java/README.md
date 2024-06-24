@@ -9,7 +9,7 @@ Using a compatible Intel-based platform, this project lets you create a robot ar
 - can be accessed via a built-in web interface to control the motors.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
 
@@ -25,8 +25,8 @@ More details on the hardware requirements can be found in the ![project README](
 
 ## Software requirements
 
-1. ![Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
-2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
+2. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 
 ## Configuring the example
 ### Clone the repo
@@ -42,7 +42,7 @@ Drag all of the files from your git repository's "src" folder into the new proje
 The project uses the following external jars: [jetty-all-9.3.7.v20160115-uber](http://repo1.maven.org/maven2/org/eclipse/jetty/aggregate/jetty-all/9.3.7.v20160115/jetty-all-9.3.7.v20160115-uber.jar). These can be found in the Maven Central Repository. Create a "jars" folder in the project's root directory, and copy all needed jars in this folder.
 In Intel® System Studio IoT Edition, select all jar files in "jars" folder and  right click -> Build path -> Add to build path
 
-![](./../../images/java/add to build path.png)
+[](./../../images/java/add to build path.png)
 
 Now you need to add the UPM jar files relevant to this specific sample.
 Right-click on the project's root -> Build path -> Configure build path. Java Build Path -> 'Libraries' tab -> click on "add external JARs..."
@@ -75,7 +75,7 @@ move 2 1020
 
 ### Controlling via a browser
 
-![](./../../images/java/robot-arm-web.png)
+[](./../../images/java/robot-arm-web.png)
 
 Optionally, the motors can be controlled directly via a web page served by the program running on your board.
 
