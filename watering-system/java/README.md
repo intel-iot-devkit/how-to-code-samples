@@ -11,7 +11,7 @@ Using a compatible Intel-based platform, this project lets you create an automat
 - sends text messages to alert the user if the system if not working as expected.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.
 
 ## Hardware requirements
 
@@ -39,8 +39,8 @@ Moisture Sensor | A3
 More details on the hardware requirements can be found in the ![project README](./../README.md)
 
 ## Software requirements
-1. ![Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
-2. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-java)
+2. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 3. Microsoft Azure\*, IBM Bluemix\*, AT&T M2X\*, AWS\*, Predix\*, or SAP\* account (optional)
 4. Twilio\* account (optional)
 
@@ -114,7 +114,7 @@ MQTT message published: { d: { value: 'moisture (46) 2016-04-22705:14:56.681Z' }
 ```
 ### Setting the lighting schedule
 
-![](./../../images/java/watering-system-web.png)
+[](./../../images/java/watering-system-web.png)
 
 The schedule for the lighting system is set using a single-page web interface served from your board while the sample program is running.
 
