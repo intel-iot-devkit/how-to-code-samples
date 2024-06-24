@@ -48,15 +48,15 @@ This sample can be used with either Grove\* or DFRobot\* components.
 Grove\* Indoor Environment Kit, containing:
 
 1. [Grove\* Base Shield V2](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html)
-2. [Grove\* Moisture Sensor](http://iotdk.Intel®.com/docs/master/upm/node/classes/grovemoisture.html)
-3. [Grove\* Light Sensor](http://iotdk.Intel®.com/docs/master/upm/node/classes/grovelight.html)
-4. [Grove\* RGB LCD](http://iotdk.Intel®.com/docs/master/upm/node/classes/jhd1313m1.html)
+2. [Grove\* Moisture Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovemoisture.html)
+3. [Grove\* Light Sensor](http://iotdk.intel.com/docs/master/upm/node/classes/grovelight.html)
+4. [Grove\* RGB LCD](http://iotdk.intel.com/docs/master/upm/node/classes/jhd1313m1.html)
 
 DFRobot\* Starter Kit for Intel® Edison containing:
 
-1. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599).
-3. [Analog Ambient Light Sensor](www.dfrobot.com/index.php?route=product/product&product_id=1004)
-4. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
+1. [Moisture Sensor](http://www.dfrobot.com/index.php?route=product/product&product_id=599)
+2. [Analog Ambient Light Sensor](https://www.dfrobot.com/product-1004.html)
+3. [LCD Keypad Shield](http://iotdk.intel.com/docs/master/upm/node/classes/sainsmartks.html)
 
 ### Connecting the Grove\* sensors
 
