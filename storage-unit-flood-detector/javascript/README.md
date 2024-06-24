@@ -2,9 +2,9 @@
 
 ## What it is
 
-Using a compatible Intel-based platform, this project lets you create a storage unit flood detector that:<br>
-- continuously checks the moisture sensor.<br>
-- sounds an audible warning in case of a possible flooding.<br>
+Using a compatible Intel-based platform, this project lets you create a storage unit flood detector that:
+- continuously checks the moisture sensor.
+- sounds an audible warning in case of a possible flooding.
 - stores a record of each time water is detected, using cloud-based data storage.
 
 ## First time setup  
@@ -34,7 +34,7 @@ More details on the hardware requirements can be found in the ![project README](
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
 1. Node.js 
 2. [MRAA and UPM Node.js bindings](https://github.com/intel-iot-devkit/upm/blob/master/docs/installing.md)
 2. Packages as listed in the package.json file in this example 
@@ -90,7 +90,7 @@ Connecting to MQTT server...
 MQTT message published: { d: { value: '2016-04-22705:08:41.682Z' } } 
 ```
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 
 ### IoT cloud setup (optional)
 
