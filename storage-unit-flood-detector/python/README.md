@@ -14,12 +14,16 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\* 
 
+![](./../../storage-unit-flood-detector/images/flood-detector-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* Moisture Sensor | A0
 Grove\* Speaker | D5
 
 ### DFRobot\* 
+
+![](./../../storage-unit-flood-detector/images/flood-detector-dfrobot.JPG)
 
 Sensor | Pin
 --- | ---
