@@ -9,7 +9,7 @@ Using a compatible Intel-based platform, this project lets you create a smart al
 - keeps track of how long it takes you to wake up each morning, using cloud-based data storage.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove or DFRobot sensors but not both.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove or DFRobot sensors but not both.
 
 ## Hardware requirements
 
@@ -30,12 +30,12 @@ Buzzer | A1
 Button | A2
 Rotary Analog Sensor | A3
 
-For more specific information on the hardware requirements see ![Hardware Details](./../README.md#hardware-requirements)
+For more specific information on the hardware requirements see [Hardware Details](./../README.md#hardware-requirements)
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io) 
-2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io) 
+2. [Intel® System Studio](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
 3. Microsoft\* Azure\*, IBM\* Bluemix\*, AT&T\* M2X\*, AWS\*, GE\* Predix\*, or SAP\* account (optional)
 4. Weather Underground\* API key
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
@@ -93,7 +93,7 @@ MQTT message published: { d: {value: '3256'} }
 When the program uploads to the Intel-based platform, your RGB LCD shows the current time.<br>
 ![](./../../images/cpp/alarm-clock-lcd.jpg)
 
-Refer to ![How it Works](./../README.md#how-it-works) for details on the functionality.
+Refer to [How it Works](./../README.md#how-it-works) for details on the functionality.
 ### Running the example with the cloud server (optional)
 
 To run the example with the optional backend data store, you need to set the `SERVER` and `AUTH_TOKEN` environment variables. You can do this in Intel® System Studio as follows:
