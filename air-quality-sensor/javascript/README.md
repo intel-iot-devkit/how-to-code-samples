@@ -12,6 +12,8 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\* 
 
+![](./../../air-quality-sensor/images/air-quality-grove.JPG)
+
 You need to have a Grove\* Shield connected to an Arduino\* compatible breakout board to plug all the Grove\* devices into the Grove\* Shield. Make sure you have the tiny VCC switch on the Grove\* Shield set to **5V**.
 
 Sensor | Pin
@@ -20,6 +22,8 @@ Grove\* Air Quality Sensor | AO
 Grove\* Speaker | D5
 
 ### DFRobot\*
+
+![](./../../air-quality-sensor/images/air-quality-dfrobot.JPG)
 
 You need to have a DFRobot\* LCD Keypad Shield connected to an Arduino\* compatible breakout board to plug all the DFRobot\* devices into the DFRobot\* LCD Keypad Shield.
 
