@@ -1,4 +1,4 @@
-﻿# Robot arm in C++
+# Robot arm in C++
 
 ## What it is
 
@@ -9,7 +9,7 @@ Using a compatible Intel-based platform, this project lets you create a robot ar
 - can be accessed via a built-in web interface to control the motors.
 
 ## First time setup
-For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
+For all the samples in this repository, see the [General Setup Instructions](./../../README.md#setup) for required boards and libraries.  You need either Grove\* or DFRobot\* sensors but not both.
 
 ## Hardware requirements
 
@@ -25,9 +25,9 @@ For more specific information on the hardware requirements see ![Hardware Detail
 
 ## Software requirements
 
-1. ![MRAA](https://github.com/intel-iot-devkit/mraa) and ![UPM](https://upm.mraa.io)
+1. [MRAA](https://github.com/intel-iot-devkit/mraa) and [UPM](https://upm.mraa.io)
 Note: The following libraries are included with the repo and already linked to in the code -jsoncpp -restclient
-2. Intel® System Studio ![https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
+2. Intel® System Studio [https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c](https://software.intel.com/en-us/creating-iot-projects-with-intel-system-studio-2018-c) 
 
 
 ## Expected output
@@ -40,7 +40,7 @@ move 2 1020
 ### Controlling the robot arm via a web browser
 
 The robot arm is controlled using a single-page web interface served directly from your board while the sample program is running.<br>
-![](./../../images/cpp/robot-arm-web.png)
+[](./../../images/cpp/robot-arm-web.png)
 
 The web server runs on port `3000`; if your board is connected to Wi-Fi on `192.168.1.13`, the address to browse to if you are on the same network is `http://192.168.1.13:3000`.
 
