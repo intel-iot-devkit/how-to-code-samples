@@ -8,11 +8,22 @@ Using a compatible Intel-based platform, this project lets you create a smart lo
 For all the samples in this repository, see the ![General Setup Instructions](./../../README.md#setup) for required boards and libraries. You need either Grove or DFRobot sensors but not both.
 
 ### Hardware requirements
+### Grove\*
+
+![](./../../sound-detector/images/sound-detector-grove.JPG)
 
 Sensor | Pin
 --- | ---
 Grove\* Sound Sensor | A0
 Grove\* RGB LCD | I2C
+
+### DFRobot\*
+
+![](./../../sound-detector/images/sound-detector-dfrobot.JPG)
+
+Sensor | Pin
+--- | ---
+Analog Sound Sensor | A2
 
 More details on the hardware requirements can be found in the ![project README](./../README.md)
 
