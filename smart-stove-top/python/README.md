@@ -14,6 +14,8 @@ For all the samples in this repository, see the ![General Setup Instructions](./
 
 ### Grove\*
 
+![](./../../smart-stove-top/images/smart-stove-grove.JPG)
+
 Sensor | Pin
 --- | ---
 Grove\* IR Temperature Sensor | A0
@@ -21,6 +23,8 @@ Grove\* Flame Sensor | D4
 Grove\* Speaker | D5
 
 ### DFRobot\* 
+
+![](./../../smart-stove-top/images/smart-stove-dfrobot.JPG)
 
 Sensor | Pin
 --- | ---
